@@ -4,4 +4,23 @@
   <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
    <h2>Welcome, <%= current_user["display_name"] %>! </h2>
+   <ul>
+       <li><b>Membership ID:</b> <%= current_user["membership_id"] %> </li>
+       <li><b>Unique ID:</b> <%= current_user["unique_id"] %> </li>
+        <li>
+           <% if !current_user["xbox_display_name"].nil? %>
+                <b>Xbox Gamertag: </b><%= current_user["xbox_display_name"] %> 
+            <% elsif !current_user["psn_display_name"].nil? %>
+                <b>PSN Online ID: </b><%= current_user["psn_display_name"] %> 
+            <% end %>
+        </li>
+      
+   </ul>
+          <h4>Profile Picture:</h4> 
+            <%= image_tag( current_user["profile_picture"] , :alt => "profile") %>
+        
+   
 <% end %>
+
+
+

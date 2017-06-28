@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628140620) do
+ActiveRecord::Schema.define(version: 20170628211415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20170628140620) do
     t.string   "membership_id"
     t.string   "display_name"
     t.string   "unique_name"
+    t.string   "request_data"
+    t.string   "profile_picture"
+    t.string   "about"
+    t.string   "xbox_display_name"
+    t.string   "psn_display_name"
     t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end

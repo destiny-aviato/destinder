@@ -4,16 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def bungie
-    # puts "in bungie callback"
-    # request.env.each do |k, v|
-    #     if k == 'omniauth.strategy'
-    #       puts v.to_s
-    #     else  
-    #       puts "#{k}: #{v}"
-    #     end 
-    # end
-    @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+    
     if @user.persisted?
       @user.remember_me = true
       logger.debug

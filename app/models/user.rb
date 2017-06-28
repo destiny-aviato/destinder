@@ -18,6 +18,18 @@ class User < ApplicationRecord
       user.membership_id = auth.info.membership_id
       user.display_name  = auth.info.display_name
       user.unique_name   = auth.info.unique_name
-   end
+      user.profile_picture  = "https://www.bungie.net/#{auth.extra.bungieNetUser["profilePicturePath"]}"
+      user.about = auth.extra.bungieNetUser["about"]
+      
+      if auth.extra.bungieNetUser.key?("psnDisplayName")
+        user.psn_display_name = auth.extra.bungieNetUser["psnDisplayName"]
+      elsif auth.extra.bungieNetUser.key?("xboxDisplayName")
+        user.xbox_display_name = auth.extra.bungieNetUser["xboxDisplayName"]
+      end
+      
+      
+
   end
+end
+
 end
