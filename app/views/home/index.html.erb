@@ -1,0 +1,16 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Home Page</h1>
+
+
+<% unless current_user %>
+  <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+<% else %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
+<br/>
+<% if current_user %>
+	<% current_user.attributes.each do |k, v| %>
+		<b><%= k %>:</b> <%= v %> <br>
+	<% end %>
+<% end %>
