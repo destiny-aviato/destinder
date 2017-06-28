@@ -18,7 +18,7 @@ Getting started:
     CLIENT_ID: '<client_id>'
     CLIENT_SECRET: '<client_secret>'
     X_API_KEY: '<client api key>'
-    REDIRECT_URL: "https://aqueous-anchorage-88625.herokuapp.com/users/auth/bungie/callback" #leave this as is for now
+    REDIRECT_URL: "https://glacial-savannah-28014.herokuapp.com/users/auth/bungie/callback" #leave this as is for now
 ```
 
 You will want to create an application on https://www.bungie.net/en/Application/ to generate these keys. Select OAuth Client Type = Confidential, and add the same redirect_url above to the application settings. Select all permissions under scope except for "Move or equip Destiny gear and other items." Finally add `*` as the Origin header. 
