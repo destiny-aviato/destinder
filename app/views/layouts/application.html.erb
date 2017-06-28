@@ -1,22 +1,18 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bungie</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Intense Spire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+<body class="<%= params[:controller] %> <%= params[:action] %>">
+    <%= render 'layouts/header' %>
     <div class="container">
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= yield %>
-  </div>
+      <%= yield %>
+    </div>
   </body>
-</html>
+</html> 

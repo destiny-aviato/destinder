@@ -1,0 +1,60 @@
+<header class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+
+    <a class="navbar-brand" href="/">Intense Spire</a>
+    <nav>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",    root_path %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+               aria-expanded="false">Trials <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Stats",    "/" %></li>
+              <li><%= link_to "LFG",    "/" %></li>
+            </ul>
+          </li>
+
+
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">Raids <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Stats",    "#" %></li>
+                <li><%= link_to "LFG",    "#" %></li>
+              </ul>
+            </li>
+            
+           
+           <li><%= link_to "Help",    "#" %></li>
+
+           <% if user_signed_in? %> 
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <strong><%= current_user.display_name %></strong>                       
+                        <span class="caret"></span>
+                    </a>
+              <ul class="dropdown-menu">
+                <li>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                </li>
+              </ul>
+            </li>
+        <% else %> 
+            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+        <% end %> 
+            
+                
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
