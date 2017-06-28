@@ -12,9 +12,9 @@ class User < ApplicationRecord
   def password_required?
     false
   end
-  
+
   def self.from_omniauth(auth)
-    where(:uid => auth.uid).first_or_create do |user|
+     where(provider: auth.provider, :uid => auth.uid).first_or_create do |user|
       user.membership_id = auth.info.membership_id
       user.display_name  = auth.info.display_name
       user.unique_name   = auth.info.unique_name
