@@ -43,8 +43,20 @@
         <div class="tile is-parent">
             <article class="tile is-child notification is-success">
                 <div class="content">
-                    <p class="title">Display Name</p>
-                    <p class="subtitle"><%= current_user["display_name"] %></p>
+                    <p class="title">User Attributes</p>
+                    <!--<p class="subtitle"><%= current_user["display_name"] %></p>-->
+                    <ul>
+                        <li><b>Display Name: </b><%= current_user["display_name"] %></li>
+                        <li><b>About: </b><%= current_user["about"] %></li>
+                        <li><b>API Membership ID: </b><%= current_user["api_membership_id"] %></li>
+                        <li><b>API Membership Type: </b>
+                            <% if current_user["api_membership_type"] == "1" %>
+                                XBL
+                            <% else %>
+                                PSN
+                            <% end %>
+                        </li>
+                    </ul>
                     <div class="content">
                         <!-- Content -->
                     </div>
