@@ -11,10 +11,35 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bulma";
+ /* wrapper */
+  .has-dropdown input[type="checkbox"] {
+    display: none;
+  }
 
-body { padding-top: 100px; }
-footer { margin-top: 100px; }
-table, td, th { vertical-align: middle; border: none; }
-th { border-bottom: 1px solid #DDD; }
+  .has-dropdown input[type="checkbox"]:checked ~ .dropdown {
+    display: block;
+  }
+
+  /* dropdown basic */
+  .dropdown {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+  }
+
+  /* dropdown optional styling */
+  .dropdown li:hover {
+    background-color: #eee;
+    cursor: pointer;
+  }
+
+  .image.is-square img, .image.is-1by1 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-16by9 img, .image.is-2by1 img {
+    bottom: 0;
+    left: 10%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 85%;
+    width: 67%;
+}
