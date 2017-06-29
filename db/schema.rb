@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(version: 20170629182416) do
     t.string   "about"
     t.string   "xbox_display_name"
     t.string   "psn_display_name"
-    t.string   "api_membership_id"
-    t.string   "api_membership_type"
     t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
