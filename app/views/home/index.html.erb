@@ -1,62 +1,66 @@
 <!--<p id="notice"><%= notice %></p>-->
-<% if !current_user %>
-    <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
-        <% else %>
-            <div class="tile is-ancestor">
-                <div class="tile is-vertical is-8">
-                    <div class="tile">
-                        <div class="tile is-parent is-vertical">
-                            <article class="tile is-child notification is-primary">
-                                <p class="title">Membership ID</p>
-                                <p class="subtitle">
-                                    <%= current_user["membership_id"] %>
-                                </p>
-                            </article>
-                            <article class="tile is-child notification is-warning">
-                                <p class="title">Unique ID</p>
-                                <p class="subtitle">
-                                    <%= current_user["unique_id"] %>
-                                </p>
-                            </article>
-                        </div>
-                        <div class="tile is-parent">
-                            <article class="tile is-child notification is-info">
-                                <p class="title">
-                                    <% if !current_user["xbox_display_name"].nil? %>
-                                        <%= current_user["xbox_display_name"] %>
+<div id="background">
+    <% if !current_user %>
+        <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+            <% else %>
+                <div class="tile is-ancestor">
+                    <div class="tile is-vertical is-8">
+                        <div class="tile">
+                            <div class="tile is-parent is-vertical tile-styling">
+                                <article class="tile is-child notification is-primary">
+                                    <p class="title">Membership ID</p>
+                                    <p class="subtitle">
+                                        <%= current_user["membership_id"] %>
+                                    </p>
+                                </article>
+                                <article class="tile is-child notification is-warning tile-styling">
+                                    <p class="title">Unique ID</p>
+                                    <p class="subtitle">
+                                        <%= current_user["unique_id"] %>
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="tile is-parent tile-styling">
+                                <article class="tile is-child notification is-info">
+                                    <p class="title">
+                                        <% if !current_user["xbox_display_name"].nil? %>
+                                            <strong><%= current_user["xbox_display_name"] %></strong>
                                             <% elsif !current_user["psn_display_name"].nil? %>
                                                 <%= current_user["psn_display_name"] %>
                                                     <% end %>
-                                </p>
-                                <figure class="image is-4by3">
-                                    <%= image_tag( current_user["profile_picture"] ) %>
-                                </figure>
+                                    </p>
+                                    <figure class="image is-4by3">
+                                        <%= image_tag( current_user["profile_picture"] ) %>
+                                    </figure>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="tile is-parent tile-styling">
+                            <article class="tile is-child notification is-danger">
+                                <p class="title">Wide tile</p>
+                                <p class="subtitle">Aligned with the right tile..</p>
+                                <div class="content">
+                                    <!-- Content -->
+                                </div>
                             </article>
                         </div>
                     </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification is-danger">
-                            <p class="title">Wide tile</p>
-                            <p class="subtitle">Aligned with the right tile..</p>
+                    <div class="tile is-parent tile-styling">
+                        <article class="tile is-child notification is-success">
                             <div class="content">
-                                <!-- Content -->
+                                <p class="title"><strong>Recent Updates</strong></p>
+                                <hr/>
+                                <p class="subtitle">Welcome
+                                    <%= current_user["display_name"] %>! Are you tired of endlesly sifting through LFG posts only to find out that the people you are inviting are lying about their stats? <br/>
+                                        </br/>Us Too.<br/><br/>That's where Intense Spire steps in. Your one stop shop for LFG adds and Statistics that pull <strong>directly from Bungie themselves.</strong>
+                                </p>
+                                <div class="content">
+                                    <!-- Content -->
+                                </div>
                             </div>
                         </article>
                     </div>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child notification is-success">
-                        <div class="content">
-                            <p class="title">Display Name</p>
-                            <p class="subtitle">
-                                <%= current_user["display_name"] %>
-                            </p>
-                            <div class="content">
-                                <!-- Content -->
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
 
-            <% end %>
+                <% end %>
+</div>
