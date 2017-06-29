@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-default">
+<!--<header class="navbar navbar-fixed-top navbar-default">
   <div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -64,4 +64,63 @@
       </div>
     </nav>
   </div>
-</header>
+</header>-->
+
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item">
+      <!--<img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">-->
+      
+    </a>
+  </div>
+
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle">
+    <span></span>
+  <span></span>
+  <span></span>
+  </span>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav-right nav-menu">
+    <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
+    <% if user_signed_in? %> 
+      <a class="nav-item">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <%= image_tag( current_user["profile_picture"] ) %>
+        </figure>
+        <% if !current_user["xbox_display_name"].nil? %>
+          <%= current_user["xbox_display_name"] %>
+        <% elsif !current_user["psn_display_name"].nil? %>
+          <%= current_user["psn_display_name"] %>
+        <% end %>
+      </a>
+
+      <% else %> 
+          <%= link_to "Login", new_user_session_path, :class => 'nav-item is-tab'  %>
+      <% end %>
+    
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-item is-tab'  %>
+    <% end %>
+
+      <div class="nav-item is-tab">
+        <div class="field is-grouped">
+          <p class="control">
+            <a class="button">
+            <span class="icon">
+              <i class="fa fa-paypal"></i>
+            </span>
+            <span>Donate</span>
+          </a>
+          </p>
+        </div>
+      </div>
+  </div>
+</nav>
+
+
+
