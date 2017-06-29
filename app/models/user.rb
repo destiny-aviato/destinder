@@ -20,15 +20,15 @@ class User < ApplicationRecord
       user.unique_name   = auth.info.unique_name
       user.profile_picture  = "https://www.bungie.net/#{auth.extra.bungieNetUser["profilePicturePath"]}"
       user.about = auth.extra.bungieNetUser["about"]
-      
+      user.api_membership_id = auth.extra.destinyMemberships[0]["membershipId"]
+      user.api_membership_type = auth.extra.destinyMemberships[0]["membershipType"]
+
       if auth.extra.bungieNetUser.key?("psnDisplayName")
         user.psn_display_name = auth.extra.bungieNetUser["psnDisplayName"]
       elsif auth.extra.bungieNetUser.key?("xboxDisplayName")
         user.xbox_display_name = auth.extra.bungieNetUser["xboxDisplayName"]
       end
       
-      
-
   end
 end
 
