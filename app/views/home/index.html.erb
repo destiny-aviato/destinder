@@ -7,10 +7,8 @@
             <div class="tile">
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child notification is-primary">
-                        <p class="title">Membership ID</p>
-                        <p class="subtitle">
-                            <%= current_user["membership_id"] %>
-                        </p>
+                        <p class="title"><%= link_to "Stats",    stats_path %></p>
+                    
                     </article>
                     <article class="tile is-child notification is-warning">
                         <p class="title">Unique ID</p>
