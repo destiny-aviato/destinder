@@ -20,3 +20,8 @@
 /config/application.yml
 
 .vscode/
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
