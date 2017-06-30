@@ -2,88 +2,83 @@
 
     <% if !current_user %>
         <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
-            <% else %>
-                <div class="tile is-ancestor">
-                    <div class="tile is-vertical is-8">
-                        <div class="tile">
-                            <div class="tile is-parent is-vertical tile-styling">
-                                <article class="tile is-child notification is-primary">
-                                    <p class="title">
-                                        <%= link_to "Stats",    stats_path %>
-                                    </p>
-                                </article>
-                                <article class="tile is-child notification is-warning tile-styling">
-                                    <p class="title">User Attributes</p>
-                                    <!--<p class="subtitle"><%= current_user["display_name"] %></p>-->
-                                    <ul>
-                                        <li><b>Display Name: </b>
-                                            <%= current_user["display_name"] %>
-                                        </li>
-                                        <li><b>About: </b>
-                                            <%= current_user["about"] %>
-                                        </li>
-                                        <li><b>API Membership ID: </b>
-                                            <%= current_user["api_membership_id"] %>
-                                        </li>
-                                        <li><b>API Membership Type: </b>
-                                            <% if current_user["api_membership_type"] == "1" %>
-                                                XBL
-                                                <% else %>
-                                                    PSN
-                                                    <% end %>
-                                        </li>
-                                    </ul>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="tile is-parent tile-styling">
-                                <article class="tile is-child notification is-info">
-                                    <p class="title">
-                                        <% if !current_user["xbox_display_name"].nil? %>
-                                            <strong><%= current_user["xbox_display_name"] %></strong>
-                                            <% elsif !current_user["psn_display_name"].nil? %>
-                                                <%= current_user["psn_display_name"] %>
-                                                    <% end %>
-                                    </p>
-                                    <figure class="image is-4by3">
-                                        <%= image_tag( current_user["profile_picture"] ) %>
-                                    </figure>
-                                </article>
-                            </div>
-
-
-
-
-                        </div>
-
-                        <div class="tile is-parent tile-styling">
-                            <article class="tile is-child notification is-danger">
-                                <p class="title">Wide tile</p>
-                                <p class="subtitle">Aligned with the right tile..</p>
-                                <div class="content">
-                                    <!-- Content -->
-                                </div>
-                            </article>
-                        </div>
+    <% else %>
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-8">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical tile-styling">
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">
+                                <%= link_to "Find Player Stats", new_player_stat_path %>
+                            </p>
+                        </article>
+                        <article class="tile is-child notification is-warning tile-styling">
+                            <p class="title">User Attributes</p>
+                            <ul>
+                                <li><b>Display Name: </b>
+                                    <%= current_user["display_name"] %>
+                                </li>
+                                <li><b>About: </b>
+                                    <%= current_user["about"] %>
+                                </li>
+                                <li><b>API Membership ID: </b>
+                                    <%= current_user["api_membership_id"] %>
+                                </li>
+                                <li><b>API Membership Type: </b>
+                                    <% if current_user["api_membership_type"] == "1" %>
+                                        XBL
+                                    <% else %>
+                                        PSN
+                                    <% end %>
+                                </li>
+                            </ul>
+                            </p>
+                        </article>
                     </div>
                     <div class="tile is-parent tile-styling">
-                        <article class="tile is-child notification is-success">
-                            <div class="content">
-                                <p class="title"><strong>Recent Updates</strong></p>
-                                <hr/>
-                                <p class="subtitle">Welcome
-                                    <%= current_user["display_name"] %>!
-                                </p>
-                                <div class="content">
-                                    Are you tired of endlesly sifting through LFG posts only to find out that the people you are inviting are lying about their stats? <br/>
-                                    </br/>Us Too.<br/><br/>That's where Intense Spire steps in. Your one stop shop for LFG adds and Statistics that pull <strong>directly from Bungie themselves.</strong>
-                                </div>
-                            </div>
+                        <article class="tile is-child notification is-info">
+                            <p class="title">
+                                <% if !current_user["xbox_display_name"].nil? %>
+                                    <strong><%= current_user["xbox_display_name"] %></strong>
+                                <% elsif !current_user["psn_display_name"].nil? %>
+                                    <%= current_user["psn_display_name"] %>
+                                <% end %>
+                            </p>
+                            <figure class="image is-4by3">
+                                <%= image_tag( current_user["profile_picture"] ) %>
+                            </figure>
                         </article>
                     </div>
                 </div>
-                <div id="background-image">
 
+                <div class="tile is-parent tile-styling">
+                    <article class="tile is-child notification is-danger">
+                        <p class="title">Wide tile</p>
+                        <p class="subtitle">Aligned with the right tile..</p>
+                        <div class="content">
+                            <!-- Content -->
+                        </div>
+                    </article>
                 </div>
+            </div>
+            <div class="tile is-parent tile-styling">
+                <article class="tile is-child notification is-success">
+                    <div class="content">
+                        <p class="title"><strong>Recent Updates</strong></p>
+                        <hr/>
+                        <p class="subtitle">Welcome
+                            <%= current_user["display_name"] %>!
+                        </p>
+                        <div class="content">
+                            Are you tired of endlesly sifting through LFG posts only to find out that the people you are inviting are lying about their stats? <br/>
+                            </br/>Us Too.<br/><br/>That's where Intense Spire steps in. Your one stop shop for LFG adds and Statistics that pull <strong>directly from Bungie themselves.</strong>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div id="background-image">
 
-                <% end %>
+        </div>
+
+<% end %>

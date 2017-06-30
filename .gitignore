@@ -20,6 +20,7 @@
 /config/application.yml
 
 .vscode/
+dump.rdb
 
 ### macOS ###
 *.DS_Store

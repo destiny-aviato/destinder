@@ -39,6 +39,9 @@ gem 'devise'
 gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
+gem 'sidekiq'
+gem "typhoeus"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

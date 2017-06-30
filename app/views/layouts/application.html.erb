@@ -11,6 +11,7 @@
 
 <body class="<%= params[:controller] %> <%= params[:action] %>">
     <%= render 'layouts/header' %>
+    <%= flash_messages %>
     <div class="container">
       <%= yield %>
     </div>
