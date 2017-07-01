@@ -23,12 +23,6 @@ ActiveRecord::Schema.define(version: 20170630180128) do
     t.string   "stats_data"
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string   "display_name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "encrypted_password"
