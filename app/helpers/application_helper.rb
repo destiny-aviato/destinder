@@ -7,7 +7,7 @@ module ApplicationHelper
     def flash_messages(opts = {})
         flash.each do |msg_type, message|
             concat(content_tag(:div, message, class: "#{bulma_class_for(msg_type)}") do
-            concat content_tag(:button, 'x', class: "delete", data: { dismiss: 'alert' })
+            concat content_tag(:button, '', class: "delete", data: { dismiss: 'alert' })
             concat "     #{message}"
             end)
         end
