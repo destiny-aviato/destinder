@@ -40,7 +40,6 @@ gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
 gem 'sidekiq'
-gem "typhoeus"
 gem 'rest-client'
 
 
