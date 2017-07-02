@@ -3,17 +3,35 @@
     <% if !current_user %>
         <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
     <% else %>
-        <div class="tile is-ancestor">
-            <div class="tile is-vertical is-8">
-                <div class="tile">
-                    <div class="tile is-parent is-vertical tile-styling">
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">
-                                <%= link_to "Find Player Stats", new_player_stat_path %>
-                            </p>
-                        </article>
-                        <article class="tile is-child notification is-warning tile-styling">
-                            <p class="title">User Attributes</p>
+
+
+
+    <div class="columns is-mobile">
+            <div class="column is-half is-offset-one-quarter">
+                <p class="title gamertag"> Welcome,
+                    <% if !current_user["xbox_display_name"].nil? %>
+                         <strong><%= current_user["xbox_display_name"] %></strong>!
+                    <% elsif !current_user["psn_display_name"].nil? %>
+                         <%= current_user["psn_display_name"] %>
+                    <% end %>
+                </p>
+                <hr/>
+            </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    
+
+
+    <div class="columns is-mobile">
+      <div class="column">
+        <figure class="image is-4by3">
+                                <%= image_tag( current_user["profile_picture"] ) %>
+                            </figure>
+      </div>
+      <div class="column">
+        <p class="title center">User Attributes</p>
                             <ul>
                                 <li><b>Display Name: </b>
                                     <%= current_user["display_name"] %>
@@ -33,31 +51,57 @@
                                 </li>
                             </ul>
                             </p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <p class="title center">Weekly Stats</p>
+    <div class="columns is-mobile">
+      <div class="column is-half">
+       Content goes here!
+      </div>
+      <div class="column">
+       More Content goes here
+      </div>
+      <div class="column">
+        More Content goes here!
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+ <div class="tile is-ancestor">
+            <div class="tile is-vertical is-8">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical tile-styling">
+                        <article class="tile is-child notification is-primary">
+                            <p class="title">
+                                <%= link_to "Find Player Stats", new_player_stat_path %>
+                            </p>
                         </article>
+
                     </div>
                     <div class="tile is-parent tile-styling">
                         <article class="tile is-child notification is-info">
-                            <p class="title">
-                                <% if !current_user["xbox_display_name"].nil? %>
-                                    <strong><%= current_user["xbox_display_name"] %></strong>
-                                <% elsif !current_user["psn_display_name"].nil? %>
-                                    <%= current_user["psn_display_name"] %>
-                                <% end %>
-                            </p>
-                            <figure class="image is-4by3">
-                                <%= image_tag( current_user["profile_picture"] ) %>
-                            </figure>
+                                    
                         </article>
                     </div>
                 </div>
 
                 <div class="tile is-parent tile-styling">
                     <article class="tile is-child notification is-danger">
-                        <p class="title">Wide tile</p>
-                        <p class="subtitle">Aligned with the right tile..</p>
-                        <div class="content">
-                            <!-- Content -->
-                        </div>
+                        <p class="title">This Week At Bungie - 06/29/2017</p>
+                        <p class="subtitle">
+                        <div class="content text-content">
+		<div>This week at Bungie, we’re talking about teamwork.</div><div><br></div><div>Whether you’re facing a Raid Boss or another Crucible team in Destiny, the most important choice you can make before you step on the battlefield is the Guardians you’ll bring with you. Clans have served this function well for many players in our community. Teams dedicated to the game have equipped people with allies for their battles and friends for real life.</div><div><br></div><div>At the Destiny 2 Gameplay Premiere, <a href="https://youtu.be/kmFGetMZi6s?t=36m52s" title="" target="">we started a conversation</a> about how Clans will evolve in Destiny. Today, we’re ready to forecast the next steps that Clan leaders will take toward the future. If you’re a member of a Clan, you’ll find details below that will help you to unite with your teammates on a new frontier. If that’s never been your style as a player, scroll to the first break for renewed marching orders from the Iron Lords.</div><div><br></div><div>Concerned Clan Overlords have been asking us: “<b><i>Bungie, will my Clan be there for me in Destiny 2</i></b>?”</div><div><br></div><div>The answer to this question is “<b><i>Yes</i></b>,” but the migration will require some action on your part. <a href="https://www.bungie.net/en/Clans/Popular" title="" target="">Every Clan on Bungie.net</a> is based on discussion Groups that were infused with tech to transmit some crucial information into the game. Some of these Groups even have a time-honored legacy that dates back to an ancient time when Bungie.net served the Halo Nation. To enhance the experience of being in a Clan in Destiny, we’re breaking some bones.</div><div><br></div><div>Starting on <b>July 25, 2017</b>, Clan leaders should visit their base of operations on Bungie.net and decide if they want to convert their Group to a Destiny 2 Clan. Clan Founders will be able to transfer their title and permissions to another member who will be a more faithful leader for future adventures. If you have bigger plans for the existing Group that hosts your Clan, you can leave it as is and explore your own community purpose outside of the game. This housekeeping period will last for one month. After that time, new Clan creation functionality will go live on Bungie.net to support Destiny 2. Stay tuned for more information on that deadline!</div><div><br></div><div>These Clans will retain their basic structure. To sustain the intimate family feel that makes for good tactical chatter, membership will remain capped at 100 members. Each Destiny 2 account will be able to join one Clan on each platform.</div><div><br></div><div>Clans in Destiny 2 will enjoy new features in the game. Clans will be the <b><i>guides</i></b> of a new community, leading solo players to embrace the endgame one mission carry at a time. You’ll be able to manage your Roster and send invitations to new members right where you play. Every Guardian who calls a Clan home will earn rewards based on the success of their teammates.</div><div><br></div><div>These new features required a measure of sacrifice. If your Clan is part of a sprawling Alliance of affiliated fighting units, this evolution in the Clan experience will break that connective tissue on Bungie.net. We know this creates challenges for the larger community entities, and we’re already thinking about new and better ways for Clans to lock arms around a common mission. For the time being, we hope you’ll agree that enhanced Clan support will be better for every player of Destiny 2.</div><div><br></div><div>Once the Destiny 2 BETA is done and dusted, the Clan leaders among us will help us all take our next steps toward the launch. We’ll tell you more about exactly how that will work when your maintenance window opens on <b>July 25</b>. Stay tuned for previews of the interface and a new suite of Player Support documentation about how to manage your Clan’s trek to Destiny 2.
+                        </p>
+                       
                     </article>
                 </div>
             </div>
@@ -77,8 +121,36 @@
                 </article>
             </div>
         </div>
-        <div id="background-image">
 
-        </div>
+        <br/>
+        <hr/>
+        <br/>
+        <br/>
+        
+<div class="columns">
 
+  <div class="column">
+    <img class="icon-images" src="http://destinyclanwars.com/img/icons/event_too.png"></img>
+  </div>
+
+
+  <div class="column">
+    <img class="icon-images" src="http://static.tumblr.com/8659f87d3e2b11e8253a1ca4c6e75dc4/c16xlyc/2LAog66ki/tumblr_static_bu9i4epn0g84cc4k44cok0848.png"></img>
+  </div>
+
+
+
+  <div class="column">
+   <img class="icon-images" src="http://moxgaming.com/images/destiny_icon.png"></img>
+  </div>
+
+
+
+  <div class="column">
+    <img class="icon-images" src="http://destinyclanwars.com/img/icons/event_too.png"></img>
+  </div>
+
+
+
+</div>
 <% end %>
