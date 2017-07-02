@@ -1,5 +1,7 @@
 class PlayerStat < ApplicationRecord
 
+    validates :display_name, presence: true
+
     def self.collect_data(user, membership_type)
         
         user.downcase!
