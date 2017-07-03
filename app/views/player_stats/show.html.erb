@@ -1,5 +1,35 @@
-Stats for <b><%= @player_stat.display_name %> </b><br>   
-<%= @player_stat.membership_type %> <br>
+<body style='background-image: none !important;' >
+
+<div class="tabs is-boxed">
+  <ul>
+    <li class="is-active">
+      <a href='#'>
+        <span class="icon is-small"><i class="fa fa-image"></i></span>
+        <span>Trials of Osiris</span>
+      </a>
+    </li>
+    <li>
+      <a href='#'>
+        <span class="icon is-small"><i class="fa fa-music"></i></span>
+        <span>Raids</span>
+      </a>
+    </li>
+    <li>
+      <a href='#'>
+        <span class="icon is-small"><i class="fa fa-film"></i></span>
+        <span>Videos</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+        <span>Documents</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<h1>Stats for <b><%= @player_stat.display_name %> </h1></b><br>   
 <pre>
     <code>
         <%= (@player_stat.stats_data) %>
@@ -8,3 +38,4 @@ Stats for <b><%= @player_stat.display_name %> </b><br>
 
 
 
+</body>

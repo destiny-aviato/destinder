@@ -1,9 +1,10 @@
+<body style='background-image: none !important;' >
 <h1>Find a player</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@player_stat) do |f| %>
-
+    <%= render 'shared/error_messages' %>
     <div class="field has-addons">
     <p class="control">
         <span class="select">
@@ -21,3 +22,4 @@
     <% end %>
   </div>
 </div>
+</body>
