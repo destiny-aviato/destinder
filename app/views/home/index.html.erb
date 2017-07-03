@@ -1,9 +1,9 @@
-<div id="background">
-
     <% if !current_user %>
-        <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
-    <% else %>
+        <body style='background-image: none !important;' >
+         <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 
+    <% else %>
+<div id="background">
 
 
     <div class="columns is-mobile">
@@ -27,8 +27,8 @@
     <div class="columns is-mobile">
       <div class="column">
         <figure class="image is-4by3">
-                                <%= image_tag( current_user["profile_picture"] ) %>
-                            </figure>
+            <%= image_tag( current_user["profile_picture"] ) %>
+        </figure>
       </div>
       <div class="column">
         <p class="title center">User Attributes</p>
@@ -89,7 +89,9 @@
                     </div>
                     <div class="tile is-parent tile-styling">
                         <article class="tile is-child notification is-info">
-                                    
+                            <p class="title">
+                                <%= link_to "Search for Players", microposts_path %>
+                            </p>     
                         </article>
                     </div>
                 </div>
