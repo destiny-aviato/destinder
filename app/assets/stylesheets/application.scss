@@ -52,24 +52,26 @@
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    height: 60%;
-    width: 45%;
+    height: 150px;
+    width: 150px;
+    min-width: 125px;
+    min-height: 125px;
     border-radius: 999px;
-    border: 7px solid #00d1b2;
+    border: 7px solid #F8CE81;
 }
 
 
 
 
 
-body {
+#background{
     background-image: url("http://i.imgur.com/QpFQNa8.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100%;
     height: 100%;
     z-index: 98;
-
+    max-width: 1450px;
+    background-position: center center;
 }
 
 hr{
@@ -123,23 +125,25 @@ hr{
 
 
 .notification.is-danger {
-    background-color: #00d1b2;
+    background-color: #666666;
     color: white;
 }
 
 .center {margin-left: auto; margin-right: auto;}
 
 .gamertag{color: white; font-size: 38px; font-weight: bold; text-shadow:
-    -2px -2px 0 #00d1b2,
-    2px -2px 0 #00d1b2,
-    -2px 2px 0 #00d1b2,
-    2px 2px 0 #00d1b2;}
+    -2px -2px 0 #666666,
+    2px -2px 0 #666666,
+    -2px 2px 0 #666666,
+    2px 2px 0 #666666;}
 
 
 .icon-images{
-    border: 8px solid #00d1b2;
+    border: 8px solid #F8CE81;
     width: 150px; 
     height: 150px;
+    min-width: 100px;
+    min-height: 100px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -163,4 +167,10 @@ hr{
     -ms-transform:scale(1.1); /* IE 9 */
     -o-transform:scale(1.1); /* Opera */
      transform:scale(1.1);
+}
+
+.notification.is-primary {
+    background-color: #666666;
+    color: #fff;
+
 }
