@@ -41,11 +41,13 @@ gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
 gem 'sidekiq'
 gem 'rest-client'
+gem 'will_paginate'
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'faker'
 end
 
 group :development do
