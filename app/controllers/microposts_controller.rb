@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
 
     def index
-        @microposts = Micropost.all.paginate(page: params[:page])
+        @microposts = Micropost.all.paginate(page: params[:page], per_page: 10)
         @micropost = current_user.microposts.build 
     end
 
