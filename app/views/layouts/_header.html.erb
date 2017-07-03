@@ -19,14 +19,15 @@
   <div id='nav-menu' class="nav-right nav-menu">
     <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
     <% if user_signed_in? %> 
-      <a class="nav-item">
+      
+       <a href="/profile" class="nav-item is-tab">
         <figure class="image is-16x16" style="margin-right: 8px;">
           <%= image_tag( current_user["profile_picture"] ) %>
         </figure>
         <% if !current_user["xbox_display_name"].nil? %>
-          <%= link_to current_user["xbox_display_name"], profile_path, class: "nav-item is-tab" %>
+          <%= current_user["xbox_display_name"] %>
         <% elsif !current_user["psn_display_name"].nil? %>
-          <%= link_to current_user["psn_display_name"], profile_path, class: "nav-item is-tab" %>
+          <%= current_user["psn_display_name"] %>
         <% end %>
       </a>
 
@@ -46,7 +47,7 @@
               <i class="fa fa-paypal"></i>
             </span>
             <span>Donate</span>
-          </a>
+            </a>
           </p>
         </div>
       </div>
