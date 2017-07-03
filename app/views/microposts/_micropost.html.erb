@@ -1,44 +1,91 @@
 <% if !micropost.user["xbox_display_name"].nil? %>
-        <% @display = micropost.user["xbox_display_name"] %>
+  <% @display = micropost.user["xbox_display_name"] %>
+  <% @message = "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{@display}" %>
 <% elsif !micropost.user["psn_display_name"].nil? %>
-        <% @display = micropost.user["psn_display_name"] %>
+   <% @display = micropost.user["psn_display_name"] %>
 <% end %>
 
-<body style='background-image: none !important;' >
+<body style='background-image: none !important;'>
 
-<div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-64x64">
-        <%= image_tag( micropost.user["profile_picture"] ) %>
-      </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= link_to @display, "/profile" %></strong> 
-          <small>
-            
-          </small>
-            <small>Posted <%= time_ago_in_words(micropost.created_at) %> ago.</small>
-          <br>
-          <%= micropost.content %>
-        </p>
+  <div class="box">
+    <article class="media">
+
+<!--Profile Image-->
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <%= image_tag( micropost.user["profile_picture"] ) %>
+        </figure>
       </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-reply"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
-          </a>
-          <a class="level-item">
-            <span class="icon is-small"><i class="fa fa-heart"></i></span>
-          </a>
+
+<!--Post Content -->
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><%= link_to @display, "/profile" %></strong>
+
+            <small>Posted <%= time_ago_in_words(micropost.created_at) %> ago.</small>
+            <br>
+            <%= micropost.content %>
+          </p>
         </div>
-      </nav>
-    </div>
-  </article>
-</div>
+      </div>
+
+<!--Badges and Contact-->
+      <div class="media-right">
+        <nav class="level is-mobile">
+          <div class="level-right">
+
+            <% if micropost.user["xbox_display_name"] == "Luminusss" %>
+              <a class="level-item">
+                <span class="tag is-info">Top 100</span>
+              </a>
+            <% elsif micropost.user["xbox_display_name"] == "ii WALZ ii" %>
+              <a class="level-item"> 
+                <span class="tag is-danger">Waste of Time</span>
+              </a>
+            <% end %>
+
+      <div class="field is-grouped">
+        <p class="control">
+          <%= link_to @message,  class: "button" do %>
+                <span class="icon">
+                  <i class="fa fa-envelope"></i>
+                </span>
+                <span>Message</span>
+          <% end %>          
+        </p>
+          </div>
+        </nav>
+      </div>
+    </article>
+
+<!--Stats-->
+    <nav class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">ELO</p>
+          <p>1647</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Weekly K/D</p>
+          <p>1.96</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Yearly K/D</p>
+          <p>1.87</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Flawless</p>
+          <p>87x</p>
+        </div>
+      </div>
+    </nav>
+  </div>
+
 </body>
