@@ -1,0 +1,44 @@
+<% if !micropost.user["xbox_display_name"].nil? %>
+        <% @display = micropost.user["xbox_display_name"] %>
+<% elsif !micropost.user["psn_display_name"].nil? %>
+        <% @display = micropost.user["psn_display_name"] %>
+<% end %>
+
+<body style='background-image: none !important;' >
+
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <%= image_tag( micropost.user["profile_picture"] ) %>
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= link_to @display, "/profile" %></strong> 
+          <small>
+            
+          </small>
+            <small>Posted <%= time_ago_in_words(micropost.created_at) %> ago.</small>
+          <br>
+          <%= micropost.content %>
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+</body>

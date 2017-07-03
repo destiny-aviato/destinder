@@ -1,0 +1,12 @@
+<h3 class="title is-3">Post an Ad</h3>
+
+ <%= render 'shared/micropost_form' %>
+
+<h3 class="title is-3">Recent Ads (<%= @microposts.count %>)</h3>
+<ol class="microposts">
+    <%= render @microposts %>
+</ol>
+
+<%= will_paginate @microposts, :page_links => false %>
+
+
