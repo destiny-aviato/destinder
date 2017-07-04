@@ -7,6 +7,8 @@ class MicropostsController < ApplicationController
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
+        @micropost.user.elo = Micropost.get_elo(@micropost.user.api_membership_id )
+        @micropost.user.save!
         if @micropost.save
             flash[:success] = "Post created!"
             redirect_to microposts_path

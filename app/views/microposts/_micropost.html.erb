@@ -23,7 +23,7 @@
           <p>
             <strong><%= link_to @display, "/profile" %></strong>
 
-            <small>Posted <%= time_ago_in_words(micropost.created_at) %> ago.</small>
+            <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
             <br>
             <%= micropost.content %>
           </p>
@@ -64,7 +64,7 @@
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">ELO</p>
-          <p>1647</p>
+          <p><%= micropost.user["elo"] %></p>
         </div>
       </div>
       <div class="level-item has-text-centered">
