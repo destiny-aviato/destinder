@@ -60,10 +60,6 @@
     border: 7px solid #F8CE81;
 }
 
-
-
-
-
 #background{
     background-image: url("http://i.imgur.com/QpFQNa8.png");
     background-repeat: no-repeat;
@@ -74,27 +70,8 @@
     background-position: center center;
 }
 
-hr{
-    color: 00d1b2;
-}
 
 
-
-.notification.is-success {
-    background-color: #666666;
-    color: #fff;
-}
-
-.notification.is-info {
-    background-color: #666666;
-    color: #fff;
-}
-
-.notification.is-warning {
-    background-color: #666666;
-    color: rgba(0, 0, 0, 0.7);
-
-}
 .title {
     color: #363636;
     font-size: 2rem;
@@ -104,73 +81,122 @@ hr{
     padding-top: 50px;
 }
 
-.tile.is-ancestor:not(:last-child) {
-    margin-bottom: 0.75rem;
-    opacity: 0.7;
-}
 
-.tile.is-parent:hover{
-    opacity: 0.9;
-    -webkit-transition: all 1s ease; /* Safari and Chrome */
-    -moz-transition: all 1s ease; /* Firefox */
-    -ms-transition: all 1s ease; /* IE 9 */
-    -o-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
-    -webkit-transform:scale(1.05); /* Safari and Chrome */
-    -moz-transform:scale(1.05); /* Firefox */
-    -ms-transform:scale(1.05); /* IE 9 */
-    -o-transform:scale(1.05); /* Opera */
-     transform:scale(1.05);
-}
-
-
-.notification.is-danger {
-    background-color: #666666;
-    color: white;
-}
 
 .center {margin-left: auto; margin-right: auto;}
 
 .gamertag{color: white; font-size: 38px; font-weight: bold; text-shadow:
-    -2px -2px 0 #666666,
-    2px -2px 0 #666666,
-    -2px 2px 0 #666666,
-    2px 2px 0 #666666;}
+    -2px -2px 0 #28BDA4,
+    2px -2px 0 #28BDA4,
+    -2px 2px 0 #28BDA4,
+    2px 2px 0 #28BDA4;}
+
+.info-card{
+
+border-left: 1px solid #DBDBDB;
+border-right: 1px solid #DBDBDB;
+border-bottom: 1px solid #DBDBDB;
+border-bottom-right-radius:  10px;
+border-bottom-left-radius:  10px;
+height: 350px;
+color: #28BDA4;
+font-weight: bold;
+position: relative;
 
 
-.icon-images{
-    border: 8px solid #F8CE81;
-    width: 150px; 
-    height: 150px;
-    min-width: 100px;
-    min-height: 100px;
+}
+
+.info-card p{
+    padding-left: 10px;
+    display: block;
+}
+
+.info-card hr{
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.columns:not(.is-desktop) {
-    display: flex;
+.info-card-title{
+    color: #28BDA4;
     text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.info-card-stat{
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    border-bottom-right-radius:  10px;
+    border-bottom-left-radius:  10px;
+    min-height: 40%;
+}
+
+
+.background-image-trials {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/5977b8f663e72562c7993b43ea429b8b.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+}
+
+.background-image-skirmish {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/c5bb061278f5d2c67368e2033da3702d.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+}
+
+.background-image-control {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/51bfee9018337b37f05e5707bec862e1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    position: relative;
+}
+
+.background-image-clash {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/cfb63b37fb5ac8121fe3fc8a858fa3a3.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    
 }
 
 
 
-.icon-images:hover{
-    opacity: 0.9;
-    -webkit-transition: all 1s ease; /* Safari and Chrome */
-    -moz-transition: all 1s ease; /* Firefox */
-    -ms-transition: all 1s ease; /* IE 9 */
-    -o-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
-    -webkit-transform:scale(1.1); /* Safari and Chrome */
-    -moz-transform:scale(1.1); /* Firefox */
-    -ms-transform:scale(1.1); /* IE 9 */
-    -o-transform:scale(1.1); /* Opera */
-     transform:scale(1.1);
+
+.background-image-vog {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/c5bb061278f5d2c67368e2033da3702d.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
 }
 
-.notification.is-primary {
-    background-color: #666666;
-    color: #fff;
+.background-image-ce {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/cfb63b37fb5ac8121fe3fc8a858fa3a3.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+}
+
+.background-image-kf {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/d6ed6cea7cdb3345ab8b5eafd263238d.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
 
 }
+
+.background-image-wom {
+    background-image: url("https://www.bungie.net/common/destiny_content/icons/51bfee9018337b37f05e5707bec862e1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    
+}
+
+
