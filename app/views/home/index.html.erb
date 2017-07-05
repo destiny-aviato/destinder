@@ -5,19 +5,19 @@
     <% else %>
             <div id="new-background">
 
-            <div class="columns is-mobile">
-                        <div class="column is-half is-offset-one-quarter">
-                            <p class="title gamertag"> Welcome,
-                                <% if !current_user["xbox_display_name"].nil? %>
-                                    <strong><%= current_user["xbox_display_name"] %></strong>!
-                                <% elsif !current_user["psn_display_name"].nil? %>
-                                    <%= current_user["psn_display_name"] %>
-                                <% end %>
-                            </p>
-                            <hr/>
-                        </div>
+                <div class="columns is-mobile">
+                            <div class="column is-half is-offset-one-quarter">
+                                <p class="title gamertag"> Welcome,
+                                    <% if !current_user["xbox_display_name"].nil? %>
+                                        <strong><%= current_user["xbox_display_name"] %></strong>!
+                                    <% elsif !current_user["psn_display_name"].nil? %>
+                                        <%= current_user["psn_display_name"] %>
+                                    <% end %>
+                                </p>
+                                <hr/>
+                            </div>
+                </div>
             </div>
-
 
             <div class="columns is-mobile">
                         <div class="column is-half is-offset-one-quarter title">
@@ -26,8 +26,9 @@
                         </div>
             </div>
 
-
+<div id="new-background-2">
             <hr/>
+            <br/>
             <div class="columns">
             <div class="column">
                 
@@ -97,15 +98,18 @@
 
             </div>
 
+<br/>
+<br/>
+<br/>
 
+           <div class="columns is-mobile">
+                        <div class="column is-12 title white-background">
 
-            <div class="columns is-mobile">
-                        <div class="column is-half is-offset-one-quarter title">
-
-                            <h2>Destiny Raids</h2>
+                            <h2>Raid Progress</h2>
                         </div>
             </div>
 
+<br/>
 
             <hr/>
             <div class="columns">
@@ -173,7 +177,7 @@
 
 
             </div>
-
+</div>
 
 
 <div>

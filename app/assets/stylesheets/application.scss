@@ -60,16 +60,24 @@
     border: 7px solid #F8CE81;
 }
 
-#background{
-    background-image: url("http://i.imgur.com/QpFQNa8.png");
+#new-background{
+    background-image: url("http://ps4daily.com/wp-content/uploads/2014/07/destiny-wallpaper-65.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;
+    width: 100%;
     z-index: 98;
-    max-width: 1450px;
     background-position: center center;
 }
 
+#new-background-2{
+    background-image: url("http://ps4daily.com/wp-content/uploads/2014/07/destiny-wallpaper-65.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    z-index: 98;
+    background-position: center center;
+
+}
 
 
 .title {
@@ -79,6 +87,11 @@
     line-height: 1.125;
     text-align: center;
     padding-top: 50px;
+}
+
+.white-background{
+    background-color: white;
+    width: 100%;
 }
 
 
