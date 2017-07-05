@@ -1,5 +1,6 @@
 class PlayerStat < ApplicationRecord
-
+    serialize :stats_data
+    serialize :characters
     validates :display_name, presence: true
 
     def self.collect_data(user, membership_type)
@@ -27,7 +28,13 @@ class PlayerStat < ApplicationRecord
         )
 
         data2 = JSON.parse(response2.body)
+        characters =[]
+        data2["Response"]["data"]["characters"].each do |x| 
+            characters << x["characterBase"]["classType"]
+            
+         end   
 
-        return [JSON.pretty_generate(data2), real_name]
+        # return [JSON.pretty_generate(data2), real_name]
+        return [data2, characters, real_name]
     end
 end

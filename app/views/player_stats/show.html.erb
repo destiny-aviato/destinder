@@ -30,9 +30,16 @@
 </div>
 
 <h1>Stats for <b><%= @player_stat.display_name %> </h1></b><br>   
+<b>Characters:</b>
+<ul>
+  <% @player_stat.characters.each do |x| %>
+    <li><%= x %></li>
+    <% end %>
+</ul>
+
 <pre>
     <code>
-        <%= (@player_stat.stats_data) %>
+        <%= JSON.pretty_generate(@player_stat.stats_data) %>
     </code>
 </pre>
 

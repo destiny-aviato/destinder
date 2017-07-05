@@ -12,7 +12,8 @@ class PlayerStatsController < ApplicationController
     if @player_stat.save
       resp = PlayerStat.collect_data(@player_stat.display_name,@player_stat.membership_type )
       @player_stat.stats_data = resp[0]
-      @player_stat.display_name = resp[1]     
+      @player_stat.characters = resp[1]
+      @player_stat.display_name = resp[2]     
       @player_stat.save
       redirect_to @player_stat
     else
