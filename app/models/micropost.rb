@@ -6,7 +6,7 @@ class Micropost < ApplicationRecord
 
 
     def self.get_elo(membership_id)
-    elo = "1200"
+    elo = 1200
     
     begin 
       response = RestClient.get(
