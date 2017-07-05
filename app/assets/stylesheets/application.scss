@@ -90,13 +90,6 @@
     
 }
 
-.white-background{
-    background-color: white;
-    width: 100%;
-}
-
-
-
 .center {margin-left: auto; margin-right: auto;}
 
 .gamertag{color: white; font-size: 38px; font-weight: bold; text-shadow:
@@ -119,6 +112,9 @@ color: #28BDA4;
 font-weight: bold;
 position: relative;
 background-color: white;
+-webkit-box-shadow: 6px 9px 39px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 9px 39px -10px rgba(0,0,0,0.75);
+box-shadow: 6px 9px 39px -10px rgba(0,0,0,0.75);
 
 
 }
@@ -139,6 +135,7 @@ background-color: white;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+    margin-top: 5px;
 
 }
 
