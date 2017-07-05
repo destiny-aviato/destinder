@@ -7,19 +7,29 @@ class Micropost < ApplicationRecord
 
     def self.get_elo(membership_id)
     elo = ''
-    response = RestClient.get(
-            "https://api.guardian.gg/elo/#{membership_id}"
-        )
+    
+    begin 
+      response = RestClient.get(
+              "https://api.guardian.gg/elo/#{membership_id}"
+          )
+        
+      data = JSON.parse(response.body)
 
-    data = JSON.parse(response.body)
-
-    data.each do |x| 
-      if x["mode"] == 14
-        elo = x["elo"]
-        break
+      data.each do |x| 
+        if x["mode"] == 14
+          elo = x["elo"]
+          break
+        end
       end
+    rescue StandardError => e
+      puts e 
     end
 
-    return elo.round
+    if !elo.nil?
+     return elo.round
+    else 
+      return "-"
+    end
+    
   end
 end
