@@ -23,7 +23,7 @@ class PlayerStat < ApplicationRecord
         real_name =  data["Response"][0]["displayName"]
 
         response2 = RestClient.get(
-            "http://www.bungie.net/Platform/Destiny/1/Account/#{membership_id}",
+            "http://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}",
              headers={"x-api-key" => ENV['API_TOKEN']}
         )
 
