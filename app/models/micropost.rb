@@ -6,7 +6,7 @@ class Micropost < ApplicationRecord
 
 
     def self.get_elo(membership_id)
-    elo = ''
+    elo = "1200"
     
     begin 
       response = RestClient.get(
@@ -25,11 +25,7 @@ class Micropost < ApplicationRecord
       puts e 
     end
 
-    if !elo.nil?
-     return elo.round
-    else 
-      return "-"
-    end
+    elo.round
     
   end
 end
