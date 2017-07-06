@@ -1,10 +1,10 @@
 jQuery(document).on 'turbolinks:load', ->
   $('.scroller').slick({
     dots: true,
-  infinite: false,
+  infinite: true,
   speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   responsive: [
     {
       breakpoint: 1024,
