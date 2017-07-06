@@ -689,7 +689,7 @@
 
     <!-- Trigger/Open The Modal -->
     <!-- Trigger/Open The Modal -->
-
+<script src=”jquery.mobile.custom.min.js”></script> 
     <script>
         var modals = document.getElementsByClassName('modal');
         // Get the button that opens the modal
@@ -705,6 +705,25 @@
                 modals[i].style.display = "none";
             }
         }
+
+
+        $(document).ready(function() {  
+   $("#myCarousel").swiperight(function() {  
+      $("#myCarousel").carousel('Previous');  
+    });  
+   $("#myCarousel").swipeleft(function() {  
+      $("#myCarousel").carousel('Next');  
+   });  
+
+
+    $(document).ready(function() {  
+   $("#myCarousel2").swiperight(function() {  
+      $("#myCarousel2").carousel('Previous');  
+    });  
+   $("#myCarousel2").swipeleft(function() {  
+      $("#myCarousel2").carousel('Next');  
+   });  
+}); 
     </script>
 
 
