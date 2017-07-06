@@ -2,103 +2,108 @@
   <% @display = micropost.user["xbox_display_name"] %>
   <% @message = "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{@display}" %>
 <% elsif !micropost.user["psn_display_name"].nil? %>
-   <% @display = micropost.user["psn_display_name"] %>
+  <% @display = micropost.user["psn_display_name"] %>
 <% else  %>
-   <% @display = micropost.user["display_name"] %>
+  <% @display = micropost.user["display_name"] %>
 <% end %>
 
-  <div class="box" id="<%= micropost.id %>">
-    <article class="media">
+<div class="box" id="<%= micropost.id %>">
+  <article class="media">
 
-<!--Profile Image-->
-      <div class="media-left">
-        <figure class="image is-64x64">
-          <%= image_tag( micropost.user["profile_picture"] ) %>
-        </figure>
-      </div>
-
-<!--Post Content -->
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong><%= link_to @display, "/profile" %></strong>
-
-            <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
-            <br>
-            <%= micropost.content %>
-            <br>
-            
-          </p>
-        </div>
-      </div>
-
-<!--Badges and Contact-->
-      <div class="media-right">
-        <nav class="level is-mobile">
-          <div class="level-right">
-
-            <% if micropost.user["xbox_display_name"] == "Luminusss" %>
-              <a class="level-item">
-                <span class="tag is-info">Top 100</span>
-              </a>
-            <% elsif micropost.user["xbox_display_name"] == "ii WALZ ii" %>
-              <a class="level-item"> 
-                <span class="tag is-danger">Waste of Time</span>
-              </a>
-            <% end %>
-
-      <div class="field is-grouped">
-        <p class="control">
-          <%= link_to @message,  class: "button", target: "_blank" do %>
-                <span class="icon">
-                  <i class="fa fa-envelope"></i>
-                </span>
-                <span>Message</span>
-          <% end %>          
-        </p>
-          </div>
-        </nav>
-      </div>
-    </article>
-
-<!--Stats-->
-    <nav class="level is-mobile">
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">ELO</p>
-          <p><%= micropost.user["elo"] %></p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Weekly K/D</p>
-          <p>1.96</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Yearly K/D</p>
-          <p>1.87</p>
-        </div>
-      </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Flawless</p>
-          <p>87x</p>
-        </div>
-      </div>
-    </nav>
-
-<!--Mod buttons-->
-<% if current_user == micropost.user %>
+    <!--Profile Image-->
     <div class="media-left">
-      <p class="control">
-        <%=  link_to  micropost, method: :delete, data: { confirm: "You sure?" }, remote: true do %>
-              <span class="icon">
-                <i class="fa fa-trash"></i>
-              </span>
-        <% end %>          
-      </p>
+      <figure class="image is-64x64">
+        <%= image_tag( micropost.user["profile_picture"] ) %>
+      </figure>
     </div>
- <% end %>
-  </div>
+
+    <!--Post Content -->
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= link_to @display, "/profile" %></strong>
+
+          <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+          <br><br>
+          <%= micropost.content %>
+          <br><br><br>
+        </p>
+      </div>
+    </div>
+
+    <!--Badges and Contact-->
+    <div class="media-right">
+      <nav class="level is-mobile">
+        <div class="level-right">
+          <% if micropost.user["xbox_display_name"] =~ /\A(?:Luminusss|ii WALZ ii|KURTO13|Putin Pudding)\z/ %>
+            <a class="level-item">
+             <span class="tag is-dark">Architect</span>
+            </a>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+  </article>
+
+  <!--Stats-->
+  <nav class="level is-mobile">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">ELO</p>
+        <p>
+          <%= micropost.user["elo"] %>
+        </p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Weekly K/D</p>
+        <p>1.96</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Yearly K/D</p>
+        <p>1.87</p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Flawless</p>
+        <p>87x</p>
+      </div>
+    </div>
+  </nav>
+
+  <!--Mod buttons-->
+  <nav class="level is-mobile">
+ 
+    <div class="level-left">
+      <div class="level-item">
+        <% if current_user == micropost.user %>
+          <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+            <span class="icon">
+              <i class="fa fa-trash"></i>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="level-right">
+      <div class="level-item">        
+          <div class="media-left">
+            <%= link_to @message, target: "_blank" do %>
+              <span class="icon">
+                <i class="fa fa-envelope"></i>
+              </span>
+            <% end %>
+          </div>
+      </div>
+    </div>
+
+</nav>
+
+</div>
+
+
