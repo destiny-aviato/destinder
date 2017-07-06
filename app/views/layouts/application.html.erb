@@ -8,7 +8,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
-
+  <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
+</head>
 <body class="<%= params[:controller] %> <%= params[:action] %>">
     <%= render 'layouts/header' %>
     <%= flash_messages %>

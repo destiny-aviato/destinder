@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :users, only: [:show] 
   get 'profile', to: 'users#show'
+  get 'test', to: 'home#index2'
   resources :microposts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
