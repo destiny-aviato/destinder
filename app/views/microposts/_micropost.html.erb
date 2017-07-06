@@ -28,6 +28,8 @@
             <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
             <br>
             <%= micropost.content %>
+            <br>
+            
           </p>
         </div>
       </div>
@@ -88,6 +90,16 @@
         </div>
       </div>
     </nav>
-  </div>
 
+<!--Mod buttons-->
+    <div class="media-left">
+      <p class="control">
+        <%=  link_to  micropost, method: :delete, data: { confirm: "You sure?" } do %>
+              <span class="icon">
+                <i class="fa fa-trash"></i>
+              </span>
+        <% end %>          
+      </p>
+    </div>
+  </div>
 </body>
