@@ -1,0 +1,193 @@
+<% if !current_user %>
+
+    <body style='background-image: none !important;'>
+        <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+
+            <% else %>
+
+
+                <div class="columns is-mobile">
+                    <div class="column is-half is-offset-one-quarter">
+                        <p class="title gamertag"> Welcome,
+                            <% if !current_user["xbox_display_name"].nil? %>
+                                <strong><%= current_user["xbox_display_name"] %></strong>!
+                                <% elsif !current_user["psn_display_name"].nil? %>
+                                    <%= current_user["psn_display_name"] %>
+                                        <% end %>
+                        </p>
+                        <hr/>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="columns is-mobile">
+                    <div class="column is-half is-offset-one-quarter title">
+
+                        <h2>Destiny PVP</h2>
+                    </div>
+                </div>
+                <hr/>
+                <br/>
+                <div class="columns">
+                    <div class="column">
+
+                        <div class="info-card background-image-trials">
+                            <h2 class="info-card-title">Trials</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>ELO:</p>
+                                <p>ELO +/-:</p>
+                                <p>Week K/D:</p>
+                                <p>Week K+A/D:</p>
+                                <p>Flawless Runs:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="column">
+
+
+                        <div class="info-card background-image-control">
+                            <h2 class="info-card-title">Control</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Zones Captured</p>
+                                <p>Zones Defended</p>
+                                <p>Week K/D:</p>
+                                <p>Week K+A/D:</p>
+                                <p>Flawless Runs:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <div class="info-card background-image-skirmish">
+                            <h2 class="info-card-title">Skirmish</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Week K/D:</p>
+                                <p>Week K+A/D:</p>
+                                <p>Flawless Runs:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <div class="info-card background-image-clash">
+                            <h2 class="info-card-title">Clash</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Week K/D:</p>
+                                <p>Week K+A/D:</p>
+                                <p>Flawless Runs:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="columns is-mobile">
+                    <div class="column is-12 title">
+
+                        <h2>Raid Progress</h2>
+                    </div>
+                </div>
+
+                <br/>
+
+                <hr/>
+                <div class="columns">
+
+                    <div class="column">
+
+                        <div class="info-card background-image-vog">
+                            <h2 class="info-card-title">Vault of Glass</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Warlock Completion:</p>
+                                <p>Hunter Completion:</p>
+                                <p>Titan Completion:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="column">
+
+
+                        <div class="info-card background-image-ce">
+                            <h2 class="info-card-title">Crotas End</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Warlock Completion:</p>
+                                <p>Hunter Completion:</p>
+                                <p>Titan Completion:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <div class="info-card background-image-kf">
+                            <h2 class="info-card-title">Kings Fall</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Warlock Completion:</p>
+                                <p>Hunter Completion:</p>
+                                <p>Titan Completion:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="column">
+
+                        <div class="info-card background-image-wom">
+                            <h2 class="info-card-title">Wrath of the Machine</h2>
+                            <hr/>
+                            <div class="info-card-stat">
+                                <p>Warlock Completion:</p>
+                                <p>Hunter Completion:</p>
+                                <p>Titan Completion:</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                </div>
+
+                <div>
+
+
+
+
+
+
+
+
+                    <% end %>

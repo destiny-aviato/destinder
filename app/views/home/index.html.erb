@@ -1,186 +1,531 @@
-    <% if !current_user %>
-        <body style='background-image: none !important;' >
-         <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+<% if !current_user %>
 
-    <% else %>
-           
+    <body style='background-image: none !important;'>
+        <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+
+            <% else %>
+
 
                 <div class="columns is-mobile">
-                            <div class="column is-half is-offset-one-quarter">
-                                <p class="title gamertag"> Welcome,
-                                    <% if !current_user["xbox_display_name"].nil? %>
-                                        <strong><%= current_user["xbox_display_name"] %></strong>!
-                                    <% elsif !current_user["psn_display_name"].nil? %>
-                                        <%= current_user["psn_display_name"] %>
-                                    <% end %>
-                                </p>
-                                <hr/>
+                    <div class="column is-half is-offset-one-quarter">
+                        <p class="title gamertag center"> Welcome,
+                            <% if !current_user["xbox_display_name"].nil? %>
+                                <strong><%= current_user["xbox_display_name"] %></strong>!
+                                <% elsif !current_user["psn_display_name"].nil? %>
+                                    <%= current_user["psn_display_name"] %>
+                                        <% end %>
+                        </p>
+                        <hr/>
+                    </div>
+                </div>
+
+
+
+
+                <section class="hero is-primary center">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title">Destiny PVP</h1>
+                            <h2 class="subtitle">Crucible Playlists Stats</h2>
+                        </div>
+                    </div>
+
+                </section>
+                <br/>
+
+
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608110_bf3ab3890d6f80ee23ca8373ac6dd400.jpg" alt="Image">
+                                </figure>
                             </div>
-                </div>
-            
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Trials of Osiris</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
 
-         
+                                <div class="content">
+                                    <p>ELO:</p>
+
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+                                    <p>Flawless Victories:</p>
 
 
-   <div class="columns is-mobile">
-                        <div class="column is-half is-offset-one-quarter title">
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
 
-                            <h2>Destiny PVP</h2>
+                            </footer>
                         </div>
-            </div>
-            <hr/>
-            <br/>
-            <div class="columns">
+                    </div>
                     <div class="column">
-                        
-                        <div class="info-card background-image-trials">
-                        <h2 class="info-card-title">Trials</h2>
-                        <hr/>
-                        <div class="info-card-stat">
-                        <p>ELO:</p>
-                        <p>ELO +/-:</p>
-                        <p>Week K/D:</p>
-                        <p>Week K+A/D:</p>
-                        <p>Flawless Runs:</p>
-                        </div>
-                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608060_90735357125467ced4bf92050b837bdb.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Skirmish</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
 
+                                <div class="content">
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608040_0345930d810aad789428e1db40b76607.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Clash</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608030_4fc0099ad9cb09c370cac6f2c23e70e5.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Control</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <p>Zones Controlled</p>
+                                    <p>Zones Defended</p>
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <br/>
+                <br/>
+
+
+
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608050_53b8fe302c37c0cae8547365808eefbc.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Rumble</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <p>ELO:</p>
+
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+                                    <p>Flawless Victories:</p>
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/608070_5d63e19efa4de0eec7fe04d33fcec26c.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Salvage</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/701670_70682eb13abe4d6ef559d8fdf57938cb.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Rift</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/609012_9be94f7df388334196c5710cbfa381ef.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Doubles</p>
+                                        <p class="subtitle is-6">Crucible</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <p>Zones Controlled</p>
+                                    <p>Zones Defended</p>
+                                    <p>Week KD:</p>
+                                    <p>Year KD:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+                <br/>
+
+
+
+
+                <section class="hero is-primary center">
+                    <div class="hero-body">
+                        <div class="container">
+                            <h1 class="title">Destiny Raids</h1>
+                            <h2 class="subtitle">Raid Playlists Stats</h2>
+                        </div>
                     </div>
 
+                </section>
+                <br/>
 
 
+
+                <div class="columns">
                     <div class="column">
-                        
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603020_48f6873d1f28fe3ff5cd4456cbfa4317.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Vault of Glass</p>
+                                        <p class="subtitle is-6">Raid</p>
+                                    </div>
+                                </div>
 
-                        <div class="info-card background-image-control">
-                        <h2 class="info-card-title">Control</h2>
-                        <hr/>
-                        <div class="info-card-stat">
-                        <p>Zones Captured</p>
-                        <p>Zones Defended</p>
-                        <p>Week K/D:</p>
-                        <p>Week K+A/D:</p>
-                        <p>Flawless Runs:</p>
-                        </div>
-                        </div>
+                                <div class="content">
 
+                                    <br/>
+                                    <p>Hunter Progress:</p>
+                                    <p>Warlock Progress:</p>
+                                    <p>Titan Progress:</p>
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
                     </div>
-
-
                     <div class="column">
-                        
-                        <div class="info-card background-image-skirmish">
-                        <h2 class="info-card-title">Skirmish</h2>
-                        <hr/>
-                        <div class="info-card-stat">
-                        <p>Week K/D:</p>
-                        <p>Week K+A/D:</p>
-                        <p>Flawless Runs:</p>
-                        </div>
-                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603035_fb80c081ae7a6e6896dd16e4ae4b36a6.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Crota's End</p>
+                                        <p class="subtitle is-6">Raid</p>
+                                    </div>
+                                </div>
 
+                                <div class="content">
+                                    <br/>
+                                    <p>Hunter Progress:</p>
+                                    <p>Warlock Progress:</p>
+                                    <p>Titan Progress:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
                     </div>
-
-
                     <div class="column">
-                        
-                        <div class="info-card background-image-clash">
-                        <h2 class="info-card-title">Clash</h2>
-                        <hr/>
-                        <div class="info-card-stat">
-                        <p>Week K/D:</p>
-                        <p>Week K+A/D:</p>
-                        <p>Flawless Runs:</p>
-                        </div>
-                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/701660_fa0208b0ee741963365484a9cf4b3923.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">King's Fall</p>
+                                        <p class="subtitle is-6">Raid</p>
+                                    </div>
+                                </div>
 
+                                <div class="content">
+                                    <br/>
+                                    <p>Hunter Progress:</p>
+                                    <p>Warlock Progress:</p>
+                                    <p>Titan Progress:</p>
+
+
+
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
+
+                            </footer>
+                        </div>
                     </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/800443_93a4a02f080f47e680c2b0a5fc1aba6f.jpg" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <p class="title is-4">Wrath of the Machine</p>
+                                        <p class="subtitle is-6">Raid</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <br/>
+                                    <p>Hunter Progress:</p>
+                                    <p>Warlock Progress:</p>
+                                    <p>Titan Progress:</p>
 
 
-     </div>
 
-<br/>
-<br/>
-<br/>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Share Stats</a>
+                                <a class="card-footer-item">Post LFG Ad</a>
 
-           <div class="columns is-mobile">
-                        <div class="column is-12 title">
-
-                            <h2>Raid Progress</h2>
+                            </footer>
                         </div>
-            </div>
-
-<br/>
-
-            <hr/>
-            <div class="columns">
-
-            <div class="column">
-                
-                <div class="info-card background-image-vog">
-                <h2 class="info-card-title">Vault of Glass</h2>
-                <hr/>
-                <div class="info-card-stat">
-                <p>Warlock Completion:</p>
-                <p>Hunter Completion:</p>
-                <p>Titan Completion:</p>
-                </div>               
+                    </div>
                 </div>
 
-            </div>
 
 
 
-            <div class="column">
-                
 
-                <div class="info-card background-image-ce">
-                <h2 class="info-card-title">Crotas End</h2>
-                <hr/>
-                <div class="info-card-stat">
-                <p>Warlock Completion:</p>
-                <p>Hunter Completion:</p>
-                <p>Titan Completion:</p>
-                </div>
+
                 </div>
 
-            </div>
 
 
-            <div class="column">
-                
-                <div class="info-card background-image-kf">
-                <h2 class="info-card-title">Kings Fall</h2>
-                <hr/>
-                <div class="info-card-stat">
-                <p>Warlock Completion:</p>
-                <p>Hunter Completion:</p>
-                <p>Titan Completion:</p>
-                </div>
-                </div>
-
-            </div>
 
 
-            <div class="column">
-                
-                <div class="info-card background-image-wom">
-                <h2 class="info-card-title">Wrath of the Machine</h2>
-                <hr/>
-                <div class="info-card-stat">
-                <p>Warlock Completion:</p>
-                <p>Hunter Completion:</p>
-                <p>Titan Completion:</p>
-                </div>
-                </div>
-                
-            </div>
 
 
-            </div>
-</div>
 
 
-<div>
 
-<% end %>
+
+
+
+                <% end %>

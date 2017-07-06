@@ -3,6 +3,8 @@
   <% @message = "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{@display}" %>
 <% elsif !micropost.user["psn_display_name"].nil? %>
    <% @display = micropost.user["psn_display_name"] %>
+<% else  %>
+   <% @display = micropost.user["display_name"] %>
 <% end %>
 
 <body style='background-image: none !important;'>
