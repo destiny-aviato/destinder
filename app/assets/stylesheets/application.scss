@@ -11,9 +11,29 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap-sprockets";
-@import "bootstrap-custom";
 @import "bulma";
+@import 'slick';
+@import 'slick-theme';
+
+// Slick custom CSS
+.scroller {
+  div {
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+.slick-next {
+  right: -5px;
+}
+
+.slick-prev {
+  left: -5px;
+}
 
 
 /* wrapper */
@@ -262,4 +282,18 @@
 
 .myBtn:hover {
     color: black;
+}
+
+.video{
+margin-top: 20px;
+  margin-bottom: 30px;
+
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+
+  -moz-box-shadow: 4px 4px 14px #000;
+  -webkit-box-shadow: 4px 4px 14px #000;
+  box-shadow: 4px 4px 14px #000;
+
 }
