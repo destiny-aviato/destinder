@@ -247,7 +247,7 @@
     box-shadow: none;
 }
 
-#myBtn {
+.myBtn {
     color: #00d1b2;
     text-decoration: none;
     background-color: white;
@@ -255,4 +255,9 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    border-color: none;
+}
+
+.myBtn:hover {
+    color: black;
 }
