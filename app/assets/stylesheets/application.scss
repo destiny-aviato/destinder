@@ -18,8 +18,9 @@
 // Slick custom CSS
 .scroller {
   div {
-    text-align: center;
-    font-size: 30px;
+    padding-right: 5px;
+    padding-left: 5px;
+
   }
 }
 
@@ -28,11 +29,11 @@
 }
 
 .slick-next {
-  right: -5px;
+  right: -25px;
 }
 
 .slick-prev {
-  left: -5px;
+  left: -25px;
 }
 
 
@@ -225,6 +226,8 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 
