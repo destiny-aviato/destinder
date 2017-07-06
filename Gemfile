@@ -42,7 +42,8 @@ gem 'bulma-rails'
 gem 'sidekiq'
 gem 'rest-client'
 gem 'will_paginate'
-gem 'bootstrap-sass'
+gem "jquery-slick-rails"
+gem 'jquery-rails'
 
 
 group :development, :test do
