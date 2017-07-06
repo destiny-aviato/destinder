@@ -80,23 +80,21 @@
     background-size: cover;
 }
 
-#new-background {
-    background-image: url("http://ps4daily.com/wp-content/uploads/2014/07/destiny-wallpaper-65.jpg");
+#background-header {
+    background-image: url("http://www.geeksandcom.com/wp-content/uploads/2015/09/destiny-cover.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     width: 100%;
     z-index: 98;
     background-position: center center;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-bottom: 5.7%;
+  
 }
 
-#new-background-2 {
-    background-image: url("http://ps4daily.com/wp-content/uploads/2014/07/destiny-wallpaper-65.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    width: 100%;
-    z-index: 98;
-    background-position: center center;
-}
 
 .center {
     margin-left: auto;
@@ -108,6 +106,8 @@
     color: #28BDA4;
     font-size: 38px;
     font-weight: bold;
+    padding-top: 1%;
+    
 }
 
 .info-card {
@@ -157,62 +157,7 @@
     min-height: 40%;
 }
 
-.background-image-trials {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/5977b8f663e72562c7993b43ea429b8b.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
 
-.background-image-skirmish {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/c5bb061278f5d2c67368e2033da3702d.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
-
-.background-image-control {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/51bfee9018337b37f05e5707bec862e1.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-    position: relative;
-}
-
-.background-image-clash {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/cfb63b37fb5ac8121fe3fc8a858fa3a3.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
-
-.background-image-vog {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/c5bb061278f5d2c67368e2033da3702d.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
-
-.background-image-ce {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/cfb63b37fb5ac8121fe3fc8a858fa3a3.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
-
-.background-image-kf {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/d6ed6cea7cdb3345ab8b5eafd263238d.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
-
-.background-image-wom {
-    background-image: url("https://www.bungie.net/common/destiny_content/icons/51bfee9018337b37f05e5707bec862e1.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    width: 100%;
-}
 
 .card {
     max-height: 550px;
@@ -300,3 +245,9 @@ margin-top: 20px;
   box-shadow: 4px 4px 14px #000;
 
 }
+
+
+
+
+
+
