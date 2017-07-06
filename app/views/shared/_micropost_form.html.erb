@@ -1,4 +1,4 @@
-<%= form_for(@micropost) do |f| %>
+<%= form_for Micropost.new, remote: true do |f| %>
   <div class="field">
     <p class="control">
      <%= f.text_area :content, class: "textarea", placeholder: "Create new post..." %>

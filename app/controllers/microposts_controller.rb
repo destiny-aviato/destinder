@@ -11,7 +11,13 @@ class MicropostsController < ApplicationController
         @micropost.user.save!
         if @micropost.save
             flash[:success] = "Post created!"
-            redirect_to microposts_path
+            respond_to do |format|
+                # if the response fomat is html, redirect as usual
+                format.html { redirect_to microposts_path }
+
+                # if the response format is javascript, do something else...
+                format.js { }
+            end
         else
          render microposts_path
         end
@@ -19,8 +25,12 @@ class MicropostsController < ApplicationController
 
     def destroy
         @micropost.destroy
-        flash[:success] = "Micropost deleted"
-        redirect_to request.referrer || root_url
+        
+        respond_to do |format|
+            format.html { request.referrer || root_url }
+            format.js { }
+        end
+        
   end
 
     private
