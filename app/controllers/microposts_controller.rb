@@ -10,7 +10,6 @@ class MicropostsController < ApplicationController
         @micropost.user.elo = Micropost.get_elo(@micropost.user.api_membership_id )
         @micropost.user.save!
         if @micropost.save
-            flash[:success] = "Post created!"
             respond_to do |format|
                 # if the response fomat is html, redirect as usual
                 format.html { redirect_to microposts_path }

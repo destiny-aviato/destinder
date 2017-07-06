@@ -76,33 +76,29 @@
   </nav>
 
   <!--Mod buttons-->
-  <% if current_user == micropost.user %>
-  <% end %>
-
   <nav class="level is-mobile">
  
     <div class="level-left">
       <div class="level-item">
+        <% if current_user == micropost.user %>
           <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
             <span class="icon">
               <i class="fa fa-trash"></i>
             </span>
           <% end %>
+        <% end %>
       </div>
     </div>
 
     <div class="level-right">
-      <div class="level-item">
-        <% if current_user == micropost.user %>
+      <div class="level-item">        
           <div class="media-left">
             <%= link_to @message, target: "_blank" do %>
               <span class="icon">
                 <i class="fa fa-envelope"></i>
               </span>
             <% end %>
-
           </div>
-        <% end %>
       </div>
     </div>
 
