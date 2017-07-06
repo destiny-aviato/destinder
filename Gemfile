@@ -42,6 +42,7 @@ gem 'bulma-rails'
 gem 'sidekiq'
 gem 'rest-client'
 gem 'will_paginate'
+gem 'bootstrap-sass'
 
 
 group :development, :test do
