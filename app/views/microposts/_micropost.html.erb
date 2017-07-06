@@ -92,6 +92,7 @@
     </nav>
 
 <!--Mod buttons-->
+<% if current_user == micropost.user %>
     <div class="media-left">
       <p class="control">
         <%=  link_to  micropost, method: :delete, data: { confirm: "You sure?" } do %>
@@ -101,5 +102,6 @@
         <% end %>          
       </p>
     </div>
+ <% end %>
   </div>
 </body>
