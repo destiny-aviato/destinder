@@ -1,0 +1,12 @@
+<%= form_for(Micropost.create) do |f| %>
+  <div class="field">
+    <p class="control">
+     <%= f.text_area :content, class: "textarea", placeholder: "Looking for 2..." %>
+    </p>
+  </div>
+  <p class="control">
+      <%= f.submit "Post", class: "button is-primary" %>
+  </p>
+<% end %>
+
+<hr>    
