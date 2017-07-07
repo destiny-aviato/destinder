@@ -4,7 +4,7 @@
 <% else %>
     <body data-gr-c-s-loaded="true">
   
-  <div class="container profile">
+  <div class="container profile center">
 
     <div class="section profile-heading">
       <div class="columns">
@@ -28,8 +28,36 @@
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-item is-tab'  %>
     <% end %></span>
           </p>
+          <hr/>
           <br/>
-          <p class="tagline"><%= current_user["about"] %></p>
+          <div class="columns">
+  <div class="column center">
+    Gun Game<br/>
+    <span class="tag is-primary">Sniper</span><br/>
+            <span class="tag is-info">Marksman</span> <br/>
+            
+  </div>
+  <div class="column center">
+    Play Style<br/>
+            <span class="tag is-primary">Camper</span><br/>
+            <span class="tag is-info">Sticky Nades</span> <br/>
+            <span class="tag is-success">Clutch</span><br/>
+            
+  </div>
+  <div class="column center">
+    Trials<br/>
+            <span class="tag is-primary"> Sherpa </span><br/>
+            <span class="tag is-success">Card Resets</span><br/>
+            <span class="tag is-warning"> Top 100 </span>
+  </div>
+
+  <div class="column center">
+    Raids<br/>
+            <span class="tag is-primary">Experienced</span><br/>
+            <span class="tag is-success">Sherpa</span><br/>
+            
+  </div>
+</div>
         </div>
         <div class="column is-2 followers has-text-centered">
           <p class="stat-val">129</p>
@@ -39,12 +67,10 @@
           <p class="stat-val">17</p>
           <p class="stat-key">following</p>
         </div>
+        <hr/>
         <div class="column is-2 likes has-text-centered">
           <p class="stat-val">
-          <span class="tag is-primary"> Sherpa </span><br/>
-            <span class="tag is-info">Architect</span> <br/>
-            <span class="tag is-success">Trials God</span><br/>
-            <span class="tag is-warning"> Top 100 </span>
+          
           </p>
           <p class="stat-key"></p>
         </div>
