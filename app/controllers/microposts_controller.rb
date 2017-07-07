@@ -30,7 +30,18 @@ class MicropostsController < ApplicationController
             format.js { }
         end
         
-  end
+    end
+
+    def get_stats
+        if  !@micropost.user.psn_display_name.nil? 
+            display_name = @micropost.user.psn_display_name
+        elsif !@micropost.user.xbox_display_name.nil? 
+            display_name = @micropost.user.xbox_display_name
+        end
+        PlayerStat.get_stats(display_name, @micropost.user.api_membership_type )
+    end
+    helper_method :get_stats
+
 
     private
 

@@ -55,24 +55,16 @@
         </p>
       </div>
     </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Weekly K/D</p>
-        <p>1.96</p>
+
+
+    <% get_stats.each do |k,v| %>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading"><%= k %></p>
+          <p><%= v %></p>
+        </div>
       </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Yearly K/D</p>
-        <p>1.87</p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Flawless</p>
-        <p>87x</p>
-      </div>
-    </div>
+    <% end %>
   </nav>
 
   <!--Mod buttons-->

@@ -40,7 +40,7 @@ class PlayerStat < ApplicationRecord
 
 
     def self.get_stats(user, membership_type)
-           user.downcase!
+        user.downcase!
         
         if user.include? " "
             user.gsub!(/\s/,'%20')
@@ -84,7 +84,7 @@ class PlayerStat < ApplicationRecord
             "Deaths" => deaths.round,
             "Assists" => assists.round,
             "K/D Ratio" => kd,
-            "KA/D Ratio" => kad
+            "KA/D Ratio" => kad 
         }
 
 
