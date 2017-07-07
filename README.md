@@ -30,4 +30,4 @@
 
 ## Contributing
 
-For all contributions, please fork the repository and make a pull request with detailed information outlining your changes. Follow [this guide](https://help.github.com/articles/fork-a-repo/) to do so. 
+For all contributions, please fork the repository and make a pull request with detailed information outlining your changes. Follow [this guide](https://help.github.com/articles/fork-a-repo/) to do so. Thanks!
