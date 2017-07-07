@@ -21,6 +21,12 @@ class PlayerStatsController < ApplicationController
     end
   end
 
+  def get_stats
+    PlayerStat.get_stats(@player_stat.display_name,@player_stat.membership_type)
+  end
+  helper_method :get_stats
+  
+
   private
   def player_stat_params
       params.require(:player_stat).permit(:display_name, :membership_type, :stats_data)
