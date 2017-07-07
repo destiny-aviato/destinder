@@ -29,6 +29,25 @@
   </ul>
 </div>
 
+<%case @player_stat.characters[0] 
+  when 0
+    @character_race = "Titan"
+  when 1
+    @character_race = "Hunter"
+  when 2 
+    @character_race = "Warlock"
+  end%>
+
+
+<h1 class="is-title">Trials stats for <b><%= @player_stat.display_name %></b> on <%=  @character_race  %>
+<hr>  
+<ul>
+  <% get_stats.each do |k,v| %>
+    <li><b><%= k %></b>: <%= v %></li>
+  <% end %>
+</ul>
+
+<!--
 <h1>Stats for <b><%= @player_stat.display_name %> </h1></b><br>   
 <b>Characters:</b>
 <ul>
@@ -45,4 +64,4 @@
 
 
 
-</body>
+</body>-->
