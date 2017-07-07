@@ -11,29 +11,29 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
 @import "bulma";
 @import 'slick';
 @import 'slick-theme';
-
 // Slick custom CSS
 .scroller {
-  div {
-    padding-right: 5px;
-    padding-left: 5px;
-
-  }
+    div {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
 }
 
-.slick-prev::before, .slick-next::before {
-  color: #000;
+.slick-prev::before,
+.slick-next::before {
+    color: #000;
 }
 
 .slick-next {
-  right: -25px;
+    right: -25px;
 }
 
 .slick-prev {
-  left: -25px;
+    left: -25px;
 }
 
 
@@ -88,13 +88,11 @@
     z-index: 98;
     background-position: center center;
     -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  padding-bottom: 5.7%;
-  
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-bottom: 5.7%;
 }
-
 
 .center {
     margin-left: auto;
@@ -107,7 +105,6 @@
     font-size: 38px;
     font-weight: bold;
     padding-top: 1%;
-    
 }
 
 .info-card {
@@ -157,22 +154,27 @@
     min-height: 40%;
 }
 
-
-
 .card {
-    max-height: 550px;
-    min-height: 550px;
-    -webkit-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
+    max-height: 600px;
+    min-height: 600px;
+    -webkit-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
 }
 
 .card-footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    padding-right: 5px;
-    padding-left: 5px;
+    width: 60%;
+    /* margin-left: -8%; */
+    /* margin-right: auto; */
+    font-size: 10px;
+    text-align: left;
+    left: 0;
+}
+
+.card-footer-item {
+    float: left;
 }
 
 
@@ -221,7 +223,7 @@
     color: #00d1b2;
     text-decoration: none;
     background-color: white;
-    font-size: 15px;
+    font-size: 10px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -232,22 +234,17 @@
     color: black;
 }
 
-.video{
-margin-top: 20px;
-  margin-bottom: 30px;
-
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-
-  -moz-box-shadow: 4px 4px 14px #000;
-  -webkit-box-shadow: 4px 4px 14px #000;
-  box-shadow: 4px 4px 14px #000;
-
+.video {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
 }
 
-
-
-
-
-
+.round-image {
+    border-radius: 999px;
+}
