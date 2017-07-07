@@ -8,5 +8,10 @@ class UsersController < ApplicationController
     end 
     @microposts = @user.microposts.paginate(page: params[:page])
   end
+
+  def get_stats
+    PlayerStat.get_stats(@user.display_name,@user.membership_type)
+  end
+  helper_method :get_stats
  
 end
