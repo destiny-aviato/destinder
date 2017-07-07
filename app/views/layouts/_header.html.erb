@@ -16,6 +16,7 @@
 
   <!-- This "nav-menu" is hidden on mobile -->
   <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav">
   <div id='nav-menu' class="nav-right nav-menu">
     <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
     <% if user_signed_in? %> 
@@ -34,7 +35,7 @@
       <% else %> 
           <%= link_to "Login", new_user_session_path, :class => 'nav-item is-tab'  %>
       <% end %>
-
+</div>
   </div>
 </nav>
 
