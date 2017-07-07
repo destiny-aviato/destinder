@@ -2,38 +2,110 @@
 <% if !current_user %>
     <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
-    <div class="content">
-        <h1 class="title gamertag center"> Welcome,
+    <body data-gr-c-s-loaded="true">
+  
+  <div class="container profile">
+
+    <div class="section profile-heading">
+      <div class="columns">
+        <div class="column is-2">
+          <div class="image is-128x128 avatar">
+            <%= image_tag( current_user["profile_picture"] ) %>
+          </div>
+        </div>
+        <div class="column is-4 name">
+          <p>
+            <span class="title is-bold">
             <% if !current_user["xbox_display_name"].nil? %>
                 <strong><%= current_user["xbox_display_name"] %></strong>!
                 <% elsif !current_user["psn_display_name"].nil? %>
                     <%= current_user["psn_display_name"] %>
                         <% end %>
-
-        </h1>
-    </div>
-
-
-       <div class="columns">
-        <div class="column is-half is-offset-one-quarter center">
-            <hr/>
-            <br/>
-            <h1 class="is-medium center is-danger">This Week's Featured Video</h1>
-            <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/_S0_oTPDER0" frameborder="0" allowfullscreen></iframe>
+                        </span>
+            <span class="button is-primary is-outlined follow"><% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-item is-tab'  %>
+    <% end %></span>
+          </p>
+          <p class="tagline">The users profile bio will go here, of course. It could be two lines</p>
         </div>
+        <div class="column is-2 followers has-text-centered">
+          <p class="stat-val">129</p>
+          <p class="stat-key">followers</p>
+        </div>
+        <div class="column is-2 following has-text-centered">
+          <p class="stat-val">17</p>
+          <p class="stat-key">following</p>
+        </div>
+        <div class="column is-2 likes has-text-centered">
+          <p class="stat-val"></p>
+          <p class="stat-key"></p>
+        </div>
+      </div>
+    </div>
+    <div class="profile-options">
+      <div class="tabs is-fullwidth">
+        <ul>
+          <li class="link is-active"><%= link_to "Home",    root_path, class: "nav-item is-tab" %></li>
+          <li class="link"><%= link_to "Trials Team Look-up",    new_player_stat_path, class: "nav-item is-tab" %></li>
+          <li class="link"><%= link_to "LFG",    microposts_path, class: "nav-item is-tab" %></li>
+          
+          
+
+          
+        </ul>
+      </div>
     </div>
 
+    <div class="box">
+      <!-- Main container -->
+      <nav class="level">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              <strong>Quick LFG Post</strong>
+            </p>
+          </div>
+          <div class="level-item">
+            <p class="control has-addons">
+              <input class="input" type="text" placeholder="Looking For...">
+              <button class="button">
+                Post
+              </button>
+            </p>
+          </div>
+        </div>
+
+        <!-- Right side -->
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              <strong>Quick Guardian Lookup</strong>
+            </p>
+          </div>
+          <div class="level-item">
+            <p class="control has-addons">
+              <input class="input" type="text" placeholder="Guardian Name">
+              <button class="button">
+                Search
+              </button>
+            </p>
+          </div>
+          </div>
+          </div>
+        
+
+    <div class="spacer"></div>
     <section class="hero is-primary center">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">Destiny PVP</h1>
-                <h2 class="subtitle">Crucible Playlists Stats</h2>
+                <h2 class="subtitle">Crucible Playlist Stats</h2>
             </div>
         </div>
 
     </section>
     <br/>
-
 
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
@@ -61,11 +133,9 @@
                     </div>
 
                     <div class="content">
-                        <p>ELO:</p>
-
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-                        <p>Flawless Victories:</p>
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -112,9 +182,9 @@
                     </div>
 
                     <div class="content">
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -161,9 +231,9 @@
 
                     <div class="content">
 
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -209,11 +279,9 @@
                     </div>
 
                     <div class="content">
-                        <p>Zones Controlled</p>
-                        <p>Zones Defended</p>
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -259,11 +327,10 @@
                     </div>
 
                     <div class="content">
-                        <p>ELO:</p>
 
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-                        <p>Flawless Victories:</p>
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -310,9 +377,9 @@
                     </div>
 
                     <div class="content">
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -358,10 +425,9 @@
                     </div>
 
                     <div class="content">
-
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+<small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -407,11 +473,9 @@
                     </div>
 
                     <div class="content">
-                        <p>Zones Controlled</p>
-                        <p>Zones Defended</p>
-                        <p>Week KD:</p>
-                        <p>Year KD:</p>
-
+                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
+      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
+      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
 
 
                     </div>
@@ -659,6 +723,36 @@
                 </footer>
             </div></div>
 </div>  
+
+
+
+
+
+    <!-- Trigger/Open The Modal -->
+    <!-- Trigger/Open The Modal -->
+    <script>
+        var modals = document.getElementsByClassName('modal');
+        // Get the button that opens the modal
+        var btns = document.getElementsByClassName("openmodal");
+        var spans = document.getElementsByClassName("close");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                modals[i].style.display = "block";
+            }
+        }
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].onclick = function () {
+                modals[i].style.display = "none";
+            }
+        }
+
+    </script>
+
+
+    
+</body>
+
+ 
 
 
 
