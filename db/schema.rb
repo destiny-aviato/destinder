@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170704145734) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "membership_type"
-    t.text     "stats_data"
+    t.string   "stats_data"
     t.text     "characters"
   end
 
