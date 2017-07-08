@@ -80,18 +80,16 @@
     background-size: cover;
 }
 
-#background-header {
-    background-image: url("http://www.geeksandcom.com/wp-content/uploads/2015/09/destiny-cover.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    width: 100%;
-    z-index: 98;
-    background-position: center center;
+html {
+    background: url("http://cdn.wallpapersafari.com/18/37/HQp9dn.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    padding-bottom: 5.7%;
+}
+
+* {
+    margin: 0;
 }
 
 .center {
@@ -155,11 +153,11 @@
 }
 
 .card {
-    max-height: 600px;
-    min-height: 600px;
-    -webkit-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
-    box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
+    max-height: 650px;
+    min-height: 650px;
+    padding-top: 15px;
+    background-color: black;
+    opacity: 0.85;
 }
 
 .card-footer {
@@ -194,44 +192,6 @@
     box-shadow: none;
 }
 
-
-/* The Close Button */
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.myBtn {
-    color: #00d1b2;
-    text-decoration: none;
-    background-color: white;
-    font-size: 10px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-color: none;
-}
-
-.myBtn:hover {
-    color: black;
-}
-
 .video {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -243,27 +203,67 @@
     box-shadow: 4px 4px 14px #000;
 }
 
-.nav {
-    background-color: #848484;
-    color: white;
-}
-
-.nav-white {
-    color: white;
-}
-
-.nav-white a {
-    color: white;
-}
-
-.nav-white:hover {
-    color: #28BDA4;
-}
-
 .avatar {
     border-radius: 999px;
 }
 
-.nav a {
+.card-info {
+    background-color: grey;
+    padding-top: 50px;
+    opacity: 0.2;
+    height: 30%;
+}
+
+.section {
+    background-color: transparent;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.title {
     color: white;
+    font-weight: bold;
+}
+
+.card-image-fix {
+    margin-top: -15px;
+}
+
+.box-fix {
+    width: 106% !important;
+    margin-left: -2%;
+}
+
+.subtitle {
+    color: white;
+    font-weight: bold;
+}
+
+small {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-item a:not(.button).is-tab,
+a.nav-item:not(.button).is-tab {
+    color: white;
+}
+
+.nav-item a:not(.button).is-tab,
+a.nav-item:not(.button).is-tab:hover {
+    color: #28BDA4;
+}
+
+.nav {
+    background: none;
+}
+
+.min-card-size {
+    min-width: 445px;
+}
+
+.transparent-background {
+    opacity: 0.9;
 }

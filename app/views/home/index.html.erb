@@ -1,10 +1,16 @@
 <body>
 <% if !current_user %>
     <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+
+    
 <% else %>
     <body data-gr-c-s-loaded="true">
-  
-  <div class="container profile center">
+
+
+
+
+
+<div class="container profile center">
 
     <div class="section profile-heading">
       <div class="columns">
@@ -15,7 +21,7 @@
             
           </div>
         </div>
-        <div class="column is-4 name">
+        <div class="column is-4 name white-text">
           <p>
             <span class="title is-bold">
             <% if !current_user["xbox_display_name"].nil? %>
@@ -31,27 +37,27 @@
           <hr/>
           <br/>
           <div class="columns">
-  <div class="column center">
+  <div class="column center white-text">
     Gun Game<br/>
     <span class="tag is-primary">Sniper</span><br/>
             <span class="tag is-info">Marksman</span> <br/>
             
   </div>
-  <div class="column center">
+  <div class="column center white-text">
     Play Style<br/>
             <span class="tag is-primary">Camper</span><br/>
             <span class="tag is-info">Sticky Nades</span> <br/>
             <span class="tag is-success">Clutch</span><br/>
             
   </div>
-  <div class="column center">
+  <div class="column center white-text">
     Trials<br/>
             <span class="tag is-primary"> Sherpa </span><br/>
             <span class="tag is-success">Card Resets</span><br/>
             <span class="tag is-warning"> Top 100 </span>
   </div>
 
-  <div class="column center">
+  <div class="column center white-text">
     Raids<br/>
             <span class="tag is-primary">Experienced</span><br/>
             <span class="tag is-success">Sherpa</span><br/>
@@ -59,16 +65,16 @@
   </div>
 </div>
         </div>
-        <div class="column is-2 followers has-text-centered">
+        <div class="column is-2 followers has-text-centered white-text">
           <p class="stat-val">129</p>
           <p class="stat-key">followers</p>
         </div>
-        <div class="column is-2 following has-text-centered">
+        <div class="column is-2 following has-text-centered white-text">
           <p class="stat-val">17</p>
           <p class="stat-key">following</p>
         </div>
         <hr/>
-        <div class="column is-2 likes has-text-centered">
+        <div class="column is-2 likes has-text-centered white-text">
           <p class="stat-val">
           
           </p>
@@ -77,7 +83,7 @@
       </div>
     </div>
     <div class="profile-options">
-      <div class="tabs is-fullwidth">
+      <div class="tabs is-fullwidth white-text">
         <ul>
           <li class="link is-active"><%= link_to "Home",    root_path, class: "nav-item is-tab" %></li>
           <li class="link"><%= link_to "Trials Team Look-up",    new_player_stat_path, class: "nav-item is-tab" %></li>
@@ -90,14 +96,43 @@
       </div>
     </div>
 
-    <div class="box">
+
+
+
+
+
+
+
+
+
+  
+
+<div class="columns">
+  <div class="column min-card-size">
+      <br/>
+<br/>
+      
+      <div class="card">
+  <div class="card-image card-image-fix">
+    <figure class="image is-4by3">
+      <img src="http://cdn.images.express.co.uk/img/dynamic/143/590x/Destiny-Update-637995.jpg" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+   
+      
+      
+
+    <div class="content">
+      <div class="box box-fix">
+      <strong>Quick PVP LFG Post</strong>
       <!-- Main container -->
       <nav class="level">
         <!-- Left side -->
         <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
-              <strong>Quick LFG Post</strong>
+              
             </p>
           </div>
           <div class="level-item">
@@ -120,15 +155,17 @@
           <a href="" class="button is-primary">Post</a>
         </p>
       </div>
-    </div>
-          </div>
-        </div>
+      </div>
+      </div>
+      </div>
+      </div>
 
-        <!-- Right side -->
-        <div class="level-left">
+      <div class="box box-fix">
+      <strong>Quick Guardian Lookup</strong>
+      <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
-              <strong>Quick Guardian Lookup</strong>
+              
             </p>
           </div>
           <div class="level-item">
@@ -144,32 +181,46 @@
                         <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
                     </p>
                     <p class="control">
-                        <%= f.submit "Find player", class: "button is-primary" %>
+                        <%= f.submit "Search", class: "button is-primary" %>
                     </p>
                     </div>
                 <% end %>
             </div>
         </div>
-    </div>
-</div>
-        
-
-    <div class="spacer"></div>
-    <section class="hero is-primary center">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">Destiny PVP</h1>
-                <h2 class="subtitle">Crucible Playlist Stats</h2>
-            </div>
+        </div
         </div>
+        </div>
+    
 
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+<br/>
+<br/>
+<br/>
+
+
+
+    <div class="column is-two-thirds">
+
     <br/>
+<br/>
 
-<% content_for :head do %>
-  <meta name="turbolinks-cache-control" content="no-cache">
-<% end %>
-
+    
 <div class="scroller">
   <div><div class="card">
                 <div class="card-image">
@@ -562,24 +613,136 @@
 </div>  
 
 
+  </div>
+</div>
+
+
+
+
+
+
+
+<hr/>
 <br/>
 
 
- <section class="hero is-primary center">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">Destiny Raids</h1>
-                <h2 class="subtitle">Raids Playlist Stats</h2>
+
+
+
+<div class="columns">
+  <div class="column min-card-size">
+      <br/>
+<br/>
+      
+      <div class="card">
+  <div class="card-image card-image-fix">
+    <figure class="image is-4by3">
+      <img src="http://cdn.ipetitions.com/user-images/petitions/destiny-matchmaking-for-raids/DdZIbBi2TnqN0tgj4qMP_destiny___raid_icon_by_overwatchgraphics-d7og5cu-1024x1024.png" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+   
+      
+      
+
+    <div class="content">
+      <div class="box box-fix">
+      <strong>Quick Raid LFG Post</strong>
+      <!-- Main container -->
+      <nav class="level">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              
+            </p>
+          </div>
+          <div class="level-item">
+            
+    <div class="block">
+      <div class="field has-addons">
+        <p class="control">
+          <span class="select">
+            <select>
+              <option>Hunter</option>
+              <option>Warlock</option>
+              <option>Titan</option>
+            </select>
+          </span>
+        </p>
+        <p class="control">
+          <input type="text" class="input" placeholder="Looking for...">
+        </p>
+        <p class="control">
+          <a href="" class="button is-primary">Post</a>
+        </p>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      <div class="box box-fix">
+      <strong>Quick Guardian Lookup</strong>
+      <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              
+            </p>
+          </div>
+          <div class="level-item">
+            <div class="block">
+                <%= form_for(PlayerStat.new) do |f| %>
+                    <div class="field has-addons">
+                    <p class="control">
+                        <span class="select">
+                            <%= f.select :membership_type, [["PS4", "2"], ["XB1", "1"]]%>
+                        </span>
+                    </p>
+                    <p class="control">
+                        <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
+                    </p>
+                    <p class="control">
+                        <%= f.submit "Search", class: "button is-primary" %>
+                    </p>
+                    </div>
+                <% end %>
             </div>
         </div>
+        </div
+        </div>
+        </div>
+    
 
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+<br/>
+<br/>
+<br/>
+
+
+
+    <div class="column is-two-thirds">
+
     <br/>
+<br/>
 
-
-
-
-
+    
 <div class="scroller">
   <div><div class="card">
                 <div class="card-image">
@@ -779,38 +942,21 @@
 </div>  
 
 
+  </div>
+</div>
+
+  
+  
+  
 
 
 
-    <!-- Trigger/Open The Modal -->
-    <!-- Trigger/Open The Modal -->
-    <script>
-        var modals = document.getElementsByClassName('modal');
-        // Get the button that opens the modal
-        var btns = document.getElementsByClassName("openmodal");
-        var spans = document.getElementsByClassName("close");
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].onclick = function () {
-                modals[i].style.display = "block";
-            }
-        }
-        for (let i = 0; i < spans.length; i++) {
-            spans[i].onclick = function () {
-                modals[i].style.display = "none";
-            }
-        }
-
-    </script>
 
 
-    
-</body>
 
- 
+
 
 
 
 
 <% end %>
-
-
