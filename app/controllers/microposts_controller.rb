@@ -38,7 +38,14 @@ class MicropostsController < ApplicationController
         elsif !@micropost.user.xbox_display_name.nil? 
             display_name = @micropost.user.xbox_display_name
         end
-        PlayerStat.get_stats(display_name, @micropost.user.api_membership_type )
+
+        begin
+            PlayerStat.get_stats(display_name, @micropost.user.api_membership_type )
+        rescue NoMethodError => e 
+            # redirect_to request.referrer || root_url
+            redirect_to root_url
+            flash[:error] = "Error: #{e}"
+        end
     end
     helper_method :get_stats
 

@@ -29,23 +29,23 @@
   </ul>
 </div>
 
-<%case @player_stat.characters[0] 
-  when 0
-    @character_race = "Titan"
-  when 1
-    @character_race = "Hunter"
-  when 2 
-    @character_race = "Warlock"
-  end%>
+
+<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 
 
-<h1 class="is-title">Trials stats for <b><%= @player_stat.display_name %></b> on <%=  @character_race  %>
+<h1 class="is-title">Trials stats for <b><%= @player_stat.display_name %></b> 
 <hr>  
-<ul>
-  <% get_stats.each do |k,v| %>
-    <li><b><%= k %></b>: <%= v %></li>
-  <% end %>
-</ul>
+
+    <% get_stats.each do |x| %>
+      <h3 class="is-title"><u> Stats for <%= @character_races[x["Character Type"]] %></u></h3>
+      <% x["Character Stats"].each do |k,v| %>       
+        <ul>
+          <li><b><%= k %></b>: <%= v %></li>
+        </ul>        
+      <% end %>
+      <br>
+    <% end %>
+
 
 <!--
 <h1>Stats for <b><%= @player_stat.display_name %> </h1></b><br>   
