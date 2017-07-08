@@ -1,6 +1,8 @@
 <body>
 <% if !current_user %>
     <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+
+    
 <% else %>
     <body data-gr-c-s-loaded="true">
 
@@ -106,7 +108,7 @@
   
 
 <div class="columns">
-  <div class="column auto">
+  <div class="column min-card-size">
       <br/>
 <br/>
       
@@ -628,7 +630,7 @@
 
 
 <div class="columns">
-  <div class="column auto">
+  <div class="column min-card-size">
       <br/>
 <br/>
       
