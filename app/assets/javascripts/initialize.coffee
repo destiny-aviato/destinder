@@ -16,7 +16,7 @@ jQuery(document).on 'turbolinks:load', ->
       }
     },
     {
-      breakpoint: 850,
+      breakpoint: 1000,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2
