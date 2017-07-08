@@ -1,0 +1,195 @@
+<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+
+
+<h1 class="is-title">Trials stats for <b><%= @player_stat.display_name %></b> 
+<hr>  
+
+    <% get_stats.each do |x| %>
+      <h3 class="is-title"><u> Stats for <%= @character_races[x["Character Type"]] %></u></h3>
+      <% x["Character Stats"].each do |k,v| %>       
+        <ul>
+          <li><b><%= k %></b>: <%= v %></li>
+        </ul>        
+      <% end %>
+      <br>
+    <% end %>
+
+
+
+
+
+
+
+
+<div class="columns is-mobile">
+  <div class="column">
+
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="https://assets.tentonhammer.com/guides/attached_images/000/000/188/medium/destiny-titan-hero-image.jpg?1468380213" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://www.bungie.net/common/destiny_content/icons/2cf39a104d882ce05160fa7dd8627eb6.jpg" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><h1 class="is-title"><%=  @character_race  %><hr></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <ul>
+  <% get_stats.each do |k,v| %>
+    <li><b><%= k %></b>: <%= v %></li>
+  <% end %>
+</ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="column">
+
+
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/2/2a/Hunter.jpg/468px-Hunter.jpg" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://www.bungie.net/common/destiny_content/icons/9932af41b65584f657d83022a5d5e8e0.jpg" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><h1 class="is-title"><%=  @character_race  %><hr></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <ul>
+  <% get_stats.each do |k,v| %>
+    <li><b><%= k %></b>: <%= v %></li>
+  <% end %>
+</ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+  <div class="column">
+
+
+<div class="card">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src="http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/6/6b/Warlock.jpg/468px-Warlock.jpg" alt="Image">
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://www.bungie.net/common/destiny_content/icons/18de4d9a91d824bc67ea6941d4d18cc0.jpg" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><h1 class="is-title"><%=  @character_race  %><hr></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <ul>
+  <% get_stats.each do |k,v| %>
+    <li><b><%= k %></b>: <%= v %></li>
+  <% end %>
+</ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<h1>Stats for <b><%= @player_stat.display_name %> </h1></b><br>   
+<b>Characters:</b>
+<ul>
+  <% @player_stat.characters.each do |x| %>
+    <li><%= x %></li>
+    <% end %>
+</ul>
+
+<pre>
+    <code>
+        <%= JSON.pretty_generate(@player_stat.stats_data) %>
+    </code>
+</pre>
+
+
+
+</body>-->
