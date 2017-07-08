@@ -57,14 +57,21 @@
     </div>
 
 
-    <% get_stats.each do |k,v| %>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading"><%= k %></p>
-          <p><%= v %></p>
+<% character_races = {"0" => "Titan", "1" => "Hunter", "2" => "Warlock"} %>
+    
+    
+      <% get_stats[0]["Character Stats"].each do |k,v| %>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading"><%= k %></p>
+            <p><%= v %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+
+
+
   </nav>
 
   <!--Mod buttons-->

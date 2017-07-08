@@ -64,31 +64,44 @@ class PlayerStat < ApplicationRecord
 
         character_data = JSON.parse(get_characters.body)
         last_character = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
+        characters = []
+        characters_stats = []
+        character_data["Response"]["data"]["characters"].each do |x|
+            characters << x
+        end
+        
+        characters.each do |x| 
+            character_id =  x["characterBase"]["characterId"]
+            character_type = x["characterBase"]["classType"]
 
-        get_trials_stats = RestClient.get(
-            "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{last_character}/?modes=14",
-             headers={"x-api-key" => ENV['API_TOKEN']}
-        )
-         
-        stat_data = JSON.parse(get_trials_stats.body)
+            get_trials_stats = RestClient.get(
+                        "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
+                        headers={"x-api-key" => ENV['API_TOKEN']}
+                    )
+                    
+            stat_data = JSON.parse(get_trials_stats.body)
 
-        kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
-        deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
-        assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+            kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
+            deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
+            assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
 
-        kd = (kills / deaths).round(2)
-        kad = ((kills + assists) / deaths).round(2)
+            kd = (kills / deaths).round(2)
+            kad = ((kills + assists) / deaths).round(2)
 
-        stats = {
-            "Kills" => kills.round, 
-            "Deaths" => deaths.round,
-            "Assists" => assists.round,
-            "K/D Ratio" => kd,
-            "KA/D Ratio" => kad 
-        }
+            stats = {
+                "Kills" => kills.round, 
+                "Deaths" => deaths.round,
+                "Assists" => assists.round,
+                "K/D Ratio" => kd,
+                "KA/D Ratio" => kad 
+            }
 
+            characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
+        end
+        
+        characters_stats
 
-        stats
+        # stats
         # return [JSON.pretty_generate(data2), real_name]
         # return [data2, characters, real_name]
 
