@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def bulma_class_for flash_type
-        { success: "notification is-success", error: "notification is-error", alert: "notification is-alert", notice: "notification is-info" }[flash_type.to_sym] || flash_type.to_s
+        { success: "notification is-success", error: "notification is-danger", alert: "notification is-info", notice: "notification is-warning" }[flash_type.to_sym] || flash_type.to_s
     end
 
     def flash_messages(opts = {})

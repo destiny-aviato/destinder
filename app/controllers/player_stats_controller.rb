@@ -10,19 +10,37 @@ class PlayerStatsController < ApplicationController
   def create
     @player_stat = PlayerStat.new(player_stat_params)
     if @player_stat.save
-      resp = PlayerStat.collect_data(@player_stat.display_name,@player_stat.membership_type )
-      @player_stat.stats_data = resp[0]
-      @player_stat.characters = resp[1]
-      @player_stat.display_name = resp[2]     
-      @player_stat.save
-      redirect_to @player_stat
+      begin
+        resp = PlayerStat.collect_data(@player_stat.display_name,@player_stat.membership_type )
+        @player_stat.stats_data = resp[0]
+        @player_stat.characters = resp[1]
+        @player_stat.display_name = resp[2]     
+        @player_stat.save
+        redirect_to @player_stat
+      rescue NoMethodError
+        redirect_to request.referrer || root_url
+        # redirect_to root_url
+        flash[:error] = "Error: Player Not Found!"
+      rescue StandardError => e
+        redirect_to root_url
+        flash[:error] = "Error: #{e}"
+      end
     else
       render 'new'
     end
   end
 
   def get_stats
-    PlayerStat.get_stats(@player_stat.display_name,@player_stat.membership_type)
+    begin
+      PlayerStat.get_stats(@player_stat.display_name,@player_stat.membership_type)
+    rescue NoMethodError
+        redirect_to request.referrer || root_url
+        flash[:error] = "Error: Player Not Found!"
+      rescue StandardError => e
+        redirect_to root_url
+        flash[:error] = "Error: #{e}"
+      end
+    
   end
   helper_method :get_stats
   
