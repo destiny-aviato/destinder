@@ -7,6 +7,40 @@
   %>
 
 
+<div class="box transparent-background">
+      <strong>Quick Guardian Lookup</strong>
+      <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              
+            </p>
+          </div>
+          <div class="level-item">
+            <div class="block">
+                <%= form_for(PlayerStat.new) do |f| %>
+                    <div class="field has-addons">
+                    <p class="control">
+                        <span class="select">
+                            <%= f.select :membership_type, [["PS4", "2"], ["XB1", "1"]]%>
+                        </span>
+                    </p>
+                    <p class="control">
+                        <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
+                    </p>
+                    <p class="control">
+                        <%= f.submit "Search", class: "button is-primary" %>
+                    </p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        </div
+        </div>
+        </div>
+
+
+        
+
 <div class="columns is-mobile">
 <% get_stats.each do |x| %>
 
@@ -24,22 +58,107 @@
           <div class="card-content">
             <div class="media">
               <div class="media-left">
-                <figure class="image is-48x48 subclass-image-fix">
+                <figure class="image is-48x48 subclass-image-fix round-image">
                   <img src="http://www.bungie.net/common/destiny_content/icons/2cf39a104d882ce05160fa7dd8627eb6.jpg" alt="Image">
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4"><h1 class="is-title title"><%=  @character_races[x["Character Type"]]  %><hr></p>
+                <p class="title is-4"><h1 class="is-title title"><%=  @character_races[x["Character Type"]]  %> <span class="weekly-kd">1.35</span><span style="color: red;"> KD</span><hr></p>
+                
               </div>
             </div>
+            <table class="center full-width">
+            <tbody class="center">
+            <tr class="center red-text">
+              <th>ELO</th>
+              <th>Week KD</th>
+              <th>Flawless</th>
+              <th>Streak</th>
+            </tr>   
+            <tr class="center">
+              <td>1775</td>
+              <td>1.45</td>
+              <td>53x</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+        <hr/>
 
-            <div class="content player-stats-list stat-text">
+
+<div class="columns">
+  <div class="column">
+
+
+
+
+  
+    <div class="content player-stats-list stat-text">
               <% x["Character Stats"].each do |k,v| %>       
               <ul>
                 <li><b><%= k %></b>: <%= v %></li>
-              </ul>        
+              </ul> 
+              
+                     
             <% end %>
             </div>
+  </div>
+  <div class="column">
+        <small class="red-text">Discipline</small>
+          <progress class="progress is-info" value="80" max="100"></progress>
+          <small class="red-text">Strength</small>
+      <progress class="progress is-info" value="100" max="100"></progress>
+      <small class="red-text">Intellect</small>
+      <progress class="progress is-info" value="20" max="100"></progress>
+  </div>
+  
+</div>
+
+<div class="columns">
+  <div class="column">
+    <div class="gun-display-name">Parthian Shot</div>
+  </div>
+  <div class="column">
+    <figure class="image is-64x64 round-image">
+  <img src="https://www.bungie.net/common/destiny_content/icons/96a49484b513930a01d18441870beddf.jpg">
+</figure>
+  </div>
+  <div class="column">
+    <div class="gun-display-name">Ice Breaker</div>
+  </div>
+  <div class="column">
+    <figure class="image is-64x64 round-image">
+  <img src="https://www.bungie.net/common/destiny_content/icons/39d0a26b64d5de3c12c728542205f156.jpg">
+</figure>
+  </div>
+</div>
+
+
+
+<div class="columns">
+  <div class="column">
+    <div class="gun-display-name">Hunger of Crota</div>
+  </div>
+  <div class="column">
+    <figure class="image is-64x64 round-image">
+  <img src="https://www.bungie.net/common/destiny_content/icons/ab097307de908f2c0a623185cb633347.jpg">
+</figure>
+  </div>
+  <div class="column">
+    <div class="gun-display-name">Deidris's Fist</div>
+  </div>
+  <div class="column">
+    <figure class="image is-64x64 round-image">
+  <img src="https://www.bungie.net/common/destiny_content/icons/9ea4ac58576b86a808a60e0df2af9a9b.jpg">
+</figure>
+  </div>
+</div>
+
+
+
+
+
+            
           </div>
         </div>
 

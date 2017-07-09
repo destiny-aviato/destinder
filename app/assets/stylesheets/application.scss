@@ -113,56 +113,9 @@ body:before {
     padding-top: 1%;
 }
 
-.info-card {
-    border-left: 1px solid #DBDBDB;
-    border-right: 1px solid #DBDBDB;
-    border-bottom: 1px solid #DBDBDB;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    height: 350px;
-    color: #28BDA4;
-    font-weight: bold;
-    position: relative;
-    background-color: white;
-    -webkit-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-}
-
-.info-card p {
-    padding-left: 10px;
-    display: block;
-}
-
-.info-card hr {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.info-card-title {
-    color: #28BDA4;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 5px;
-}
-
-.info-card-stat {
-    width: 100%;
-    background-color: white;
-    position: absolute;
-    bottom: 0;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    min-height: 40%;
-}
-
 .card {
-    max-height: 660px;
-    min-height: 660px;
+    /*max-height: 660px;
+    min-height: 660px;*/
     padding-top: 15px;
     background-color: black;
     opacity: 0.85;
@@ -281,6 +234,7 @@ a.nav-item:not(.button).is-tab:hover {
     text-decoration: none;
     list-style: none;
     color: white;
+    display: inline;
 }
 
 .subclass-image-fix {
@@ -290,4 +244,40 @@ a.nav-item:not(.button).is-tab:hover {
 .stat-text {
     margin-top: -7%;
     margin-left: 8%;
+}
+
+.stat-progress-bar {
+    width: 80%;
+}
+
+.card-extender {
+    max-height: 680px;
+    min-height: 680px;
+}
+
+.gun-display-name {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.round-image {
+    border-radius: 999px;
+}
+
+.round-image img {
+    border-radius: 999px;
+}
+
+.weekly-kd {
+    margin-left: 10%;
+}
+
+.red-text {
+    color: red;
 }
