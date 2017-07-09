@@ -80,7 +80,8 @@
     background-size: cover;
 }
 
-body {
+body:before {
+    content: "";
     display: block;
     position: fixed;
     left: 0;
