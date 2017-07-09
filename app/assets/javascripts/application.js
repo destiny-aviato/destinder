@@ -27,8 +27,8 @@ $(document).on('click', '.notification > button.delete', function() {
 //Handle hamburger menu 
 jQuery(document).ready(function($) {
 
-    var $toggle = $('#nav-toggle');
-    var $menu = $('#nav-menu');
+    var $toggle = $('#navbar-burger');
+    var $menu = $('#navbar-menu');
 
     $toggle.click(function() {
         $(this).toggleClass('is-active');

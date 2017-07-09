@@ -32,9 +32,12 @@ class MicropostsController < ApplicationController
         
     end
 
-    def get_stats
+    def get_stats(mode)
         begin
-            PlayerStat.get_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
+            case mode
+            when "too"  
+                PlayerStat.get_trials_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
+            end
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
