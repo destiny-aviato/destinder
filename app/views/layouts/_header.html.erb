@@ -20,12 +20,6 @@
   <div id='nav-menu' class="nav-right nav-menu">
     <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
     <% if user_signed_in? %> 
-    <%= link_to "microposts",    root_path, class: "nav-item is-tab" %>
-    <% if user_signed_in? %> 
-    <%= link_to "player_stats",    root_path, class: "nav-item is-tab" %>
-    <% if user_signed_in? %> 
-
-
       
        <a href="/profile" class="nav-item is-tab">
         <figure class="image is-16x16" style="margin-right: 8px;">
