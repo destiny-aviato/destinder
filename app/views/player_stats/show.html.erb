@@ -9,10 +9,14 @@
 
 <div class="columns is-mobile">
 <% get_stats.each do |x| %>
+
+
+
+
       <div class="column">
 
         <div class="card">
-          <div class="card-image">
+          <div class="card-image card-image-fix">
             <figure class="image is-4by3">
               <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
             </figure>
@@ -20,16 +24,16 @@
           <div class="card-content">
             <div class="media">
               <div class="media-left">
-                <figure class="image is-48x48">
+                <figure class="image is-48x48 subclass-image-fix">
                   <img src="http://www.bungie.net/common/destiny_content/icons/2cf39a104d882ce05160fa7dd8627eb6.jpg" alt="Image">
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4"><h1 class="is-title"><%=  @character_races[x["Character Type"]]  %><hr></p>
+                <p class="title is-4"><h1 class="is-title title"><%=  @character_races[x["Character Type"]]  %><hr></p>
               </div>
             </div>
 
-            <div class="content">
+            <div class="content player-stats-list stat-text">
               <% x["Character Stats"].each do |k,v| %>       
               <ul>
                 <li><b><%= k %></b>: <%= v %></li>
@@ -43,10 +47,11 @@
 
 
 
-  </div>
-
+  
+</div>
 
       
    <% end %>   
+
 </div>
 

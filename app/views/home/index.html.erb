@@ -30,7 +30,7 @@
                     <%= current_user["psn_display_name"] %>
                         <% end %>
                         </span>
-            <span class="button is-primary is-outlined follow"><% if user_signed_in? %>
+            <span class="button is-primary follow"><% if user_signed_in? %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-item is-tab'  %>
     <% end %></span>
           </p>
@@ -623,7 +623,7 @@
 
 
 <hr/>
-<br/>
+
 
 
 
@@ -732,8 +732,7 @@
   </div>
 
 <br/>
-<br/>
-<br/>
+
 
 
 
