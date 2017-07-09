@@ -26,3 +26,5 @@ dump.rdb
 *.DS_Store
 .AppleDouble
 .LSOverride
+
+erd.pdf

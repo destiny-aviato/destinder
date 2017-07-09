@@ -24,12 +24,8 @@
         <div class="column is-4 name white-text">
           <p>
             <span class="title is-bold">
-            <% if !current_user["xbox_display_name"].nil? %>
-                <strong><%= current_user["xbox_display_name"] %></strong>
-                <% elsif !current_user["psn_display_name"].nil? %>
-                    <%= current_user["psn_display_name"] %>
-                        <% end %>
-                        </span>
+                <strong><%= current_user["display_name"] %></strong>
+            </span>
             <span class="button is-primary follow"><% if user_signed_in? %>
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-item is-tab'  %>
     <% end %></span>

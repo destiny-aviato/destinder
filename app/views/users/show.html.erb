@@ -1,19 +1,64 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= image_tag( current_user["profile_picture"] ) %>
+<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+<% @character_images = {
+  0 => "https://assets.tentonhammer.com/guides/attached_images/000/000/188/medium/destiny-titan-hero-image.jpg?1468380213", 
+  1 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/2/2a/Hunter.jpg/468px-Hunter.jpg", 
+  2 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/6/6b/Warlock.jpg/468px-Warlock.jpg"
+  }
+  %>
+
+<section class="hero is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
         <%= @user.display_name %>
       </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
+      <h2 class="subtitle">
+        <%= @user.about %>
+      </h2>
+    </div>
+  </div>
+</section>
+
+<br>  <br>
+
+<div class="container is-fluid">
+  <div class="columns is-mobile">
+  <% get_stats.each do |x| %>
+
+        <div class="column">
+
+          <div class="card">
+            <div class="card-image card-image-fix">
+              <figure class="image is-4by3">
+                <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48 subclass-image-fix">
+                    <img src="http://www.bungie.net/common/destiny_content/icons/2cf39a104d882ce05160fa7dd8627eb6.jpg" alt="Image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4"><h1 class="is-title title"><%=  @character_races[x["Character Type"]]  %><hr></p>
+                </div>
+              </div>
+
+              <div class="content player-stats-list stat-text">
+                <% x["Character Stats"].each do |k,v| %>       
+                <ul>
+                  <li><b><%= k %></b>: <%= v %></li>
+                </ul>        
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+    <% end %>   
+
   </div>
 </div>
+
