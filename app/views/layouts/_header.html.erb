@@ -25,11 +25,7 @@
         <figure class="image is-16x16" style="margin-right: 8px;">
           <%= image_tag( current_user["profile_picture"] ) %>
         </figure>
-        <% if !current_user["xbox_display_name"].nil? %>
-          <%= current_user["xbox_display_name"] %>
-        <% elsif !current_user["psn_display_name"].nil? %>
-          <%= current_user["psn_display_name"] %>
-        <% end %>
+          <%= current_user["display_name"] %>
       </a>
 
       <% else %> 

@@ -11,14 +11,14 @@ class UsersController < ApplicationController
 
   def get_stats
     begin
-      PlayerStat.get_stats(@user.display_name, @user.membership_type)
+      @user.get_stats(@user.display_name, @user.api_membership_type)
      rescue NoMethodError
         redirect_to request.referrer || root_url
         flash[:error] = "Error: Player Not Found!"
-      rescue StandardError => e
+    rescue StandardError => e
         redirect_to root_url
         flash[:error] = "Error: #{e}"
-      end
+    end
   end
   helper_method :get_stats
  

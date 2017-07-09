@@ -33,14 +33,8 @@ class MicropostsController < ApplicationController
     end
 
     def get_stats
-        if  !@micropost.user.psn_display_name.nil? 
-            display_name = @micropost.user.psn_display_name
-        elsif !@micropost.user.xbox_display_name.nil? 
-            display_name = @micropost.user.xbox_display_name
-        end
-
         begin
-            PlayerStat.get_stats(display_name, @micropost.user.api_membership_type )
+            PlayerStat.get_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
