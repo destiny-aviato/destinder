@@ -7,38 +7,8 @@
           
             <div class="box transparent-background">
             <label class="label center"><%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br /></label>
-            <hr/>
-            <label class="label center">Or Create New Account</label>
-              <label class="label">Name</label>
-              <p class="control">
-                <input class="input" type="text" placeholder="John Smith">
-              </p>
-              <label class="label">Username</label>
-              <p class="control">
-                <input class="input" type="text" placeholder="jsmith">
-              </p>
-              <label class="label">Email</label>
-              <p class="control">
-                <input class="input" type="text" placeholder="jsmith@example.org">
-              </p>
-              <hr>
-              <label class="label">Password</label>
-              <p class="control">
-                <input class="input" type="password" placeholder="●●●●●●●">
-              </p>
-              <label class="label">Confirm Password</label>
-              <p class="control">
-                <input class="input" type="password" placeholder="●●●●●●●">
-              </p>
-              <hr>
-              <p class="control">
-                <button class="button is-primary">Register</button>
-                <button class="button is-default">Cancel</button>
-              </p>
-            </div>
-            <p class="has-text-centered">
-            
-              | 
+            <hr/>          
+            <p class="has-text-centered">            
               <a href="#">Need help?</a>
             </p>
           </div>
