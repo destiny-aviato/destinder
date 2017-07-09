@@ -38,6 +38,29 @@ class PlayerStat < ApplicationRecord
         return [data2, characters, real_name]
     end
 
+    def self.get_elo(membership_id)
+        elo = 1200
+        
+        begin 
+        response = RestClient.get(
+                "https://api.guardian.gg/elo/#{membership_id}"
+            )
+            
+        data = JSON.parse(response.body)
+
+        data.each do |x| 
+            if x["mode"] == 14
+            elo = x["elo"]
+            break
+            end
+        end
+        rescue StandardError => e
+        puts e 
+        end
+
+        elo.round
+        
+    end
 
     def self.get_trials_stats(user, membership_type)
         user.downcase!
@@ -99,7 +122,8 @@ class PlayerStat < ApplicationRecord
                 "KA/D Ratio" => kad,
                 "Intellect" => stat_intellect,
                 "Discipline" => stat_dicipline,
-                "Strength" => stat_strength
+                "Strength" => stat_strength,
+                "ELO" => get_elo(membership_id)
             }
 
             characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
