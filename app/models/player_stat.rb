@@ -39,7 +39,7 @@ class PlayerStat < ApplicationRecord
     end
 
 
-    def self.get_stats(user, membership_type)
+    def self.get_trials_stats(user, membership_type)
         user.downcase!
         
         if user.include? " "
@@ -73,11 +73,14 @@ class PlayerStat < ApplicationRecord
         characters.each do |x| 
             character_id =  x["characterBase"]["characterId"]
             character_type = x["characterBase"]["classType"]
+            stat_dicipline = x["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
+            stat_intellect = x["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
+            stat_strength = x["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
 
             get_trials_stats = RestClient.get(
                         "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
                         headers={"x-api-key" => ENV['API_TOKEN']}
-                    )
+                    )   
                     
             stat_data = JSON.parse(get_trials_stats.body)
 
@@ -93,7 +96,10 @@ class PlayerStat < ApplicationRecord
                 "Deaths" => deaths.round,
                 "Assists" => assists.round,
                 "K/D Ratio" => kd,
-                "KA/D Ratio" => kad 
+                "KA/D Ratio" => kad,
+                "Intellect" => stat_intellect,
+                "Discipline" => stat_dicipline,
+                "Strength" => stat_strength
             }
 
             characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
@@ -101,10 +107,8 @@ class PlayerStat < ApplicationRecord
         
         characters_stats
 
-        # stats
-        # return [JSON.pretty_generate(data2), real_name]
-        # return [data2, characters, real_name]
-
     end
+
+
     
 end
