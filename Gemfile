@@ -43,9 +43,8 @@ gem 'sidekiq'
 gem 'rest-client'
 gem 'will_paginate'
 gem "jquery-slick-rails"
-gem 'jquery-rails'
-gem "rails-erd"
 gem 'annotate'
+gem "tabs_on_rails"
 
 
 group :development, :test do
