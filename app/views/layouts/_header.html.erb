@@ -1,39 +1,48 @@
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item">
-      <!--<img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">-->
-      
-    </a>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <!--<a class="navbar-item" href="http://bulma.io">
+      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    </a>-->
+
+    <!--<a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
+      <span class="icon" style="color: #333;">
+        <i class="fa fa-github"></i>
+      </span>
+    </a>-->
+
+    <!--<a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
+      <span class="icon" style="color: #55acee;">
+        <i class="fa fa-twitter"></i>
+      </span>
+    </a>-->
+
+    <div id="navbar-burger" class="navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 
-  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-  <span id="nav-toggle" class="nav-toggle">
-    <span></span>
-  <span></span>
-  <span></span>
-  </span>
-
-  <!-- This "nav-menu" is hidden on mobile -->
-  <!-- Add the modifier "is-active" to display it on mobile -->
-  <div class="nav">
-  <div id='nav-menu' class="nav-right nav-menu">
-    <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
-    <% if user_signed_in? %> 
+  <div id='navbar-menu' class="navbar-menu">
+    <div class="navbar-start">
       
-       <a href="/profile" class="nav-item is-tab">
-        <figure class="image is-16x16" style="margin-right: 8px;">
-          <%= image_tag( current_user["profile_picture"] ) %>
-        </figure>
-          <%= current_user["display_name"] %>
-      </a>
+    </div>
 
+    <div class="navbar-end">
+      <% if user_signed_in? %> 
+        <%= link_to "Home",    root_path, class: "navbar-item" %>
+
+        <a href="/profile" class="navbar-item">
+          <figure class="image is-16x16" style="margin-right: 8px;">
+            <%= image_tag( current_user["profile_picture"] ) %>
+          </figure>
+            <%= current_user["display_name"] %>
+        </a>
+
+        <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
       <% else %> 
-          <%= link_to "Login", new_user_session_path, :class => 'nav-item is-tab'  %>
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
       <% end %>
-</div>
+    </div>
   </div>
 </nav>
-
-
-
