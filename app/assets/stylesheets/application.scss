@@ -12,9 +12,11 @@
  *
  */
 
-@import "bulma";
+@import 'jquery-ui';
 @import 'slick';
 @import 'slick-theme';
+@import "bulma";
+
 // Slick custom CSS
 .scroller {
     div {
@@ -232,7 +234,7 @@ a.nav-item:not(.button).is-tab:hover {
     color: #28BDA4;
 }
 
-.nav {
+.navbar {
     background: none;
 }
 
@@ -294,4 +296,19 @@ a.nav-item:not(.button).is-tab:hover {
 
 .red-text {
     color: red;
+}
+
+.tabs.is-toggle ul {
+    border-bottom: none;
+    background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.tabs a {
+    color: #fbf9f9;
+    font-weight: 700;
+}
+
+a.navbar-item {
+    font-weight: 700;
 }

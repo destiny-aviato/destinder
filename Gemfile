@@ -42,9 +42,8 @@ gem 'bulma-rails'
 gem 'sidekiq'
 gem 'rest-client'
 gem 'will_paginate'
+gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
-gem 'jquery-rails'
-gem "rails-erd"
 gem 'annotate'
 
 
