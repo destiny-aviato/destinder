@@ -14,31 +14,7 @@ class User < ApplicationRecord
     false
   end
 
-  def get_elo(membership_id)
-      elo = 1200
-      
-      begin 
-      response = RestClient.get(
-              "https://api.guardian.gg/elo/#{membership_id}"
-          )
-        
-      data = JSON.parse(response.body)
-
-      data.each do |x| 
-        if x["mode"] == 14
-          elo = x["elo"]
-          break
-        end
-      end
-    rescue StandardError => e
-      puts e 
-    end
-
-    elo.round
-    
-  end
-
-  def get_trials_stats(user, membership_type)
+  def get_stats(user, membership_type)
         user.downcase!
         
         if user.include? " "
@@ -72,14 +48,11 @@ class User < ApplicationRecord
         characters.each do |x| 
             character_id =  x["characterBase"]["characterId"]
             character_type = x["characterBase"]["classType"]
-            stat_dicipline = x["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
-            stat_intellect = x["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
-            stat_strength = x["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
 
             get_trials_stats = RestClient.get(
                         "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
                         headers={"x-api-key" => ENV['API_TOKEN']}
-                    )   
+                    )
                     
             stat_data = JSON.parse(get_trials_stats.body)
 
@@ -95,11 +68,7 @@ class User < ApplicationRecord
                 "Deaths" => deaths.round,
                 "Assists" => assists.round,
                 "K/D Ratio" => kd,
-                "KA/D Ratio" => kad,
-                "Intellect" => stat_intellect,
-                "Discipline" => stat_dicipline,
-                "Strength" => stat_strength,
-                "ELO" => get_elo(membership_id)
+                "KA/D Ratio" => kad 
             }
 
             characters_stats << {"Character Type" => character_type, "Character Stats" => stats}

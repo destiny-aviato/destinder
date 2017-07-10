@@ -30,19 +30,17 @@ class PlayerStatsController < ApplicationController
     end
   end
 
-  def get_stats(mode)
+  def get_stats
     begin
-      case mode
-      when "too"  
-        PlayerStat.get_trials_stats(@player_stat.display_name,@player_stat.membership_type)
-      end
+      PlayerStat.get_stats(@player_stat.display_name,@player_stat.membership_type)
     rescue NoMethodError
         redirect_to request.referrer || root_url
         flash[:error] = "Error: Player Not Found!"
       rescue StandardError => e
         redirect_to root_url
         flash[:error] = "Error: #{e}"
-      end    
+      end
+    
   end
   helper_method :get_stats
   

@@ -9,12 +9,9 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
-  def get_stats(mode)
+  def get_stats
     begin
-      case mode
-      when "too"
-        @user.get_trials_stats(@user.display_name, @user.api_membership_type)
-      end
+      @user.get_stats(@user.display_name, @user.api_membership_type)
      rescue NoMethodError
         redirect_to request.referrer || root_url
         flash[:error] = "Error: Player Not Found!"
