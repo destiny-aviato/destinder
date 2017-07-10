@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     begin
       case mode
       when "too"
-        set_tab :trials
         @user.get_trials_stats(@user.display_name, @user.api_membership_type)
       end
      rescue NoMethodError
