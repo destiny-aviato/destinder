@@ -6,9 +6,9 @@ class Micropost < ApplicationRecord
 
 
     def self.get_elo(membership_id)
-    elo = 1200
-    
-    begin 
+      elo = 1200
+      
+      begin 
       response = RestClient.get(
               "https://api.guardian.gg/elo/#{membership_id}"
           )
