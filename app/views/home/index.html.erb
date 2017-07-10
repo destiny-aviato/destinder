@@ -1,7 +1,7 @@
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="Kota was here">
-</head>
+<% content_for :head do %>
+  <meta charset="UTF-8">
+  <meta name="description" content="Kota was here">
+<% end %>
 
 <body>
 <% if !current_user %>
@@ -159,7 +159,7 @@
       <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
-              
+              <strong>Quick Player Lookup</strong>
             </p>
           </div>
           <div class="level-item">
