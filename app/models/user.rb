@@ -75,6 +75,9 @@ class User < ApplicationRecord
             stat_dicipline = x["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
             stat_intellect = x["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
             stat_strength = x["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
+            stat_armor = x["characterBase"]["stats"]["STAT_ARMOR"]["value"]
+            stat_agility = x["characterBase"]["stats"]["STAT_AGILITY"]["value"]
+            stat_recovery = x["characterBase"]["stats"]["STAT_RECOVERY"]["value"]
 
             get_trials_stats = RestClient.get(
                         "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
@@ -99,7 +102,10 @@ class User < ApplicationRecord
                 "Intellect" => stat_intellect,
                 "Discipline" => stat_dicipline,
                 "Strength" => stat_strength,
-                "ELO" => get_elo(membership_id)
+                "ELO" => get_elo(membership_id),
+                "Armor" => stat_armor,
+                "Agility" => stat_agility,
+                "Recovery" => stat_recovery
             }
 
             characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
