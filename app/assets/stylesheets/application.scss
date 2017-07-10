@@ -207,9 +207,9 @@ body:before {
     margin-top: -15px;
 }
 
-.box-fix {
-    width: 106% !important;
-    margin-left: -2%;
+.content-fix {
+    width: 110%;
+    margin-left: -5%;
 }
 
 .subtitle {
@@ -265,8 +265,8 @@ a.nav-item:not(.button).is-tab:hover {
 }
 
 .card-extender {
-    max-height: 680px;
-    min-height: 680px;
+    max-height: 780px;
+    min-height: 780px;
 }
 
 .gun-display-name {
