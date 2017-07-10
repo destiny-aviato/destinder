@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <meta charset="UTF-8">
+  <meta name="description" content="Kota was here">
+<% end %>
+
 <body>
 <% if !current_user %>
     <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
@@ -112,9 +117,9 @@
       
       
 
-    <div class="content">
+    <div class="content content-fix">
       <div class="box box-fix">
-      <strong>Quick PVP LFG Post</strong>
+      <strong>PVP LFG Post</strong>
       <!-- Main container -->
       <nav class="level">
         <!-- Left side -->
@@ -150,11 +155,11 @@
       </div>
 
       <div class="box box-fix">
-      <strong>Quick Guardian Lookup</strong>
+      <strong>Guardian Lookup</strong>
       <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
-              
+              <strong>Quick Player Lookup</strong>
             </p>
           </div>
           <div class="level-item">
@@ -232,9 +237,48 @@
                     </div>
 
                     <div class="content">
-                        <small>ELO:<progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+
+                                <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
+
+
+                        
+
+
+
+
+
 
 
                     </div>
@@ -282,9 +326,39 @@
                     </div>
 
                     <div class="content">
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
 
                     </div>
@@ -331,11 +405,39 @@
 
                     <div class="content">
 
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
-
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
                     </div>
                 </div>
                 <footer class="card-footer">
@@ -379,10 +481,39 @@
                     </div>
 
                     <div class="content">
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                       <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
                     </div>
                 </div>
@@ -428,11 +559,39 @@
 
                     <div class="content">
 
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
-
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
                     </div>
                 </div>
                 <footer class="card-footer">
@@ -477,10 +636,39 @@
                     </div>
 
                     <div class="content">
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
                     </div>
                 </div>
@@ -525,9 +713,39 @@
                     </div>
 
                     <div class="content">
-<small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+<hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
 
                     </div>
@@ -573,10 +791,39 @@
                     </div>
 
                     <div class="content">
-                        <small>ELO: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Week K/D: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
                     </div>
                 </div>
@@ -635,9 +882,9 @@
       
       
 
-    <div class="content">
+    <div class="content content-fix">
       <div class="box box-fix">
-      <strong>Quick Raid LFG Post</strong>
+      <strong>Raid LFG Post</strong>
       <!-- Main container -->
       <nav class="level">
         <!-- Left side -->
@@ -673,7 +920,7 @@
       </div>
 
       <div class="box box-fix">
-      <strong>Quick Guardian Lookup</strong>
+      <strong>Guardian Lookup</strong>
       <div class="level-left">
           <div class="level-item">
             <p class="subtitle is-5">
@@ -753,10 +1000,39 @@
                     </div>
 
                     <div class="content">
-                        <small>Hunter: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Warlock: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Titan: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
                     </div>
                 </div>
@@ -800,10 +1076,39 @@
                     </div>
 
                     <div class="content">
-                        <small>Hunter: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Warlock: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Titan: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                        <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
 
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
 
                     </div>
@@ -848,9 +1153,39 @@
                     </div>
 
                     <div class="content">
-                       <small>Hunter: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Warlock: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Titan: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                       <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
 
 
@@ -901,9 +1236,39 @@
                     </div>
 
                     <div class="content">
-                       <small>Hunter: <progress class="progress is-primary" value="30" max="100">30%</progress></small>
-      <small>Warlock: <progress class="progress is-warning" value="75" max="100">75%</progress></small>
-      <small>Titan: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                       <hr>
+                                    <table class="center full-width">
+                                    <tbody class="center">
+                                    <tr class="center red-text">
+                                        <th class="center">ELO</th>
+                                        <th class="center">Week KD</th>
+                                        <th class="center">Flawless</th>
+                                        <th class="center">Streak</th>
+                                    </tr>   
+                                    <tr class="center">
+                                        <td class="center">N/A</td>
+                                        <td class="center">1.45</td>
+                                        <td class="center">2x</td>
+                                        <td class="center">4</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    <hr/>
+
+                            <div class="columns">
+                                <div class="column">
+                                    <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
+                                    <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
+                                    <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
+                                </div>
+                                <div class="column">
+                                    <small>ELO:<progress class="progress is-info" value="30" max="100">30%</progress></small>
+                                    <small>Week K/D: <progress class="progress is-info" value="75" max="100">75%</progress></small>
+                                    <small>Year K/D: <progress class="progress is-info" value="45" max="100">45%</progress></small>
+                                </div>
+                            
+                                
+                            </div>
 
 
 
