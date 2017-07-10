@@ -37,6 +37,20 @@
 }
 
 
+/* the slides */
+
+.slick-slide {
+    margin: 0 10px;
+}
+
+
+/* the parent */
+
+.slick-list {
+    margin: 0 -10px;
+}
+
+
 /* wrapper */
 
 .has-dropdown input[type="checkbox"] {
@@ -80,18 +94,24 @@
     background-size: cover;
 }
 
-#background-header {
-    background-image: url("http://www.geeksandcom.com/wp-content/uploads/2015/09/destiny-cover.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
-    z-index: 98;
-    background-position: center center;
+    height: 100%;
+    z-index: -10;
+    background: url("http://sm.ign.com/ign_it/screenshot/default/tumblr-static-4acdgsc1h7cwscs8c04kkckks_d9h8.jpg") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    padding-bottom: 5.7%;
+}
+
+* {
+    margin: 0;
 }
 
 .center {
@@ -107,59 +127,13 @@
     padding-top: 1%;
 }
 
-.info-card {
-    border-left: 1px solid #DBDBDB;
-    border-right: 1px solid #DBDBDB;
-    border-bottom: 1px solid #DBDBDB;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    height: 350px;
-    color: #28BDA4;
-    font-weight: bold;
-    position: relative;
-    background-color: white;
-    -webkit-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: 6px 9px 39px -10px rgba(0, 0, 0, 0.75);
-}
-
-.info-card p {
-    padding-left: 10px;
-    display: block;
-}
-
-.info-card hr {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.info-card-title {
-    color: #28BDA4;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 5px;
-}
-
-.info-card-stat {
-    width: 100%;
-    background-color: white;
-    position: absolute;
-    bottom: 0;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    min-height: 40%;
-}
-
 .card {
-    max-height: 600px;
-    min-height: 600px;
-    -webkit-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
-    box-shadow: 4px 6px 10px -1px rgba(0, 0, 0, 0.75);
+    /*max-height: 660px;
+    min-height: 660px;*/
+    padding-top: 15px;
+    background-color: black;
+    opacity: 0.85;
+    border: 6px solid white;
 }
 
 .card-footer {
@@ -194,44 +168,6 @@
     box-shadow: none;
 }
 
-
-/* The Close Button */
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.myBtn {
-    color: #00d1b2;
-    text-decoration: none;
-    background-color: white;
-    font-size: 10px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-color: none;
-}
-
-.myBtn:hover {
-    color: black;
-}
-
 .video {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -243,27 +179,119 @@
     box-shadow: 4px 4px 14px #000;
 }
 
-.nav {
-    background-color: #848484;
-    color: white;
-}
-
-.nav-white {
-    color: white;
-}
-
-.nav-white a {
-    color: white;
-}
-
-.nav-white:hover {
-    color: #28BDA4;
-}
-
 .avatar {
     border-radius: 999px;
 }
 
-.nav a {
+.card-info {
+    background-color: grey;
+    padding-top: 50px;
+    opacity: 0.2;
+    height: 30%;
+}
+
+.section {
+    background-color: transparent;
+}
+
+.white-text {
+    color: white !important;
+}
+
+.title {
     color: white;
+    font-weight: bold;
+}
+
+.card-image-fix {
+    margin-top: -15px;
+}
+
+.content-fix {
+    width: 110%;
+    margin-left: -5%;
+}
+
+.subtitle {
+    color: white;
+    font-weight: bold;
+}
+
+small {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-item a:not(.button).is-tab,
+a.nav-item:not(.button).is-tab {
+    color: white;
+}
+
+.nav-item a:not(.button).is-tab,
+a.nav-item:not(.button).is-tab:hover {
+    color: #28BDA4;
+}
+
+.nav {
+    background: none;
+}
+
+.min-card-size {
+    min-width: 445px;
+}
+
+.transparent-background {
+    opacity: 0.9;
+}
+
+.player-stats-list ul {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    display: inline;
+}
+
+.subclass-image-fix {
+    margin-top: 42%;
+}
+
+.stat-text {
+    margin-top: -7%;
+    margin-left: 8%;
+}
+
+.stat-progress-bar {
+    width: 80%;
+}
+
+.card-extender {
+    max-height: 780px;
+    min-height: 780px;
+}
+
+.gun-display-name {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.round-image {
+    border-radius: 999px;
+}
+
+.round-image img {
+    border-radius: 999px;
+}
+
+.weekly-kd {
+    margin-left: 4%;
+}
+
+.red-text {
+    color: red;
 }

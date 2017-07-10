@@ -30,7 +30,22 @@ class MicropostsController < ApplicationController
             format.js { }
         end
         
-  end
+    end
+
+    def get_stats(mode)
+        begin
+            case mode
+            when "too"  
+                PlayerStat.get_trials_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
+            end
+        rescue NoMethodError => e 
+            # redirect_to request.referrer || root_url
+            redirect_to root_url
+            flash[:error] = "Error: #{e}"
+        end
+    end
+    helper_method :get_stats
+
 
     private
 

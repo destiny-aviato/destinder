@@ -1,12 +1,3 @@
-<% if !micropost.user["xbox_display_name"].nil? %>
-  <% @display = micropost.user["xbox_display_name"] %>
-  <% @message = "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{@display}" %>
-<% elsif !micropost.user["psn_display_name"].nil? %>
-  <% @display = micropost.user["psn_display_name"] %>
-<% else  %>
-  <% @display = micropost.user["display_name"] %>
-<% end %>
-
 <div class="box" id="<%= micropost.id %>">
   <article class="media">
 
@@ -21,8 +12,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= link_to @display, "/profile" %></strong>
-
+          <strong><%= link_to micropost.user["display_name"], user_path(micropost.user["id"]) %></strong>
           <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
           <br><br>
           <%= micropost.content %>
@@ -35,7 +25,7 @@
     <div class="media-right">
       <nav class="level is-mobile">
         <div class="level-right">
-          <% if micropost.user["xbox_display_name"] =~ /\A(?:Luminusss|ii WALZ ii|KURTO13|Putin Pudding)\z/ %>
+          <% if micropost.user["display_name"] =~ /\A(?:Luminusss|ii WALZ ii|KURTO13|Putin Pudding)\z/ %>
             <a class="level-item">
              <span class="tag is-dark">Architect</span>
             </a>
@@ -55,24 +45,23 @@
         </p>
       </div>
     </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Weekly K/D</p>
-        <p>1.96</p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Yearly K/D</p>
-        <p>1.87</p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Flawless</p>
-        <p>87x</p>
-      </div>
-    </div>
+
+
+<% character_races = {"0" => "Titan", "1" => "Hunter", "2" => "Warlock"} %>
+    
+    
+      <% get_stats("too")[0]["Character Stats"].each do |k,v| %>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading"><%= k %></p>
+            <p><%= v %></p>
+          </div>
+        </div>
+      <% end %>
+
+
+
+
   </nav>
 
   <!--Mod buttons-->
