@@ -16,6 +16,7 @@
 @import 'slick';
 @import 'slick-theme';
 @import "bulma";
+
 // Slick custom CSS
 .scroller {
     div {
@@ -266,7 +267,6 @@ a.nav-item:not(.button).is-tab:hover {
 }
 
 .card-extender {
-    max-height: 780px;
     min-height: 780px;
 }
 
