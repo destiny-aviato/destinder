@@ -267,7 +267,7 @@ a.nav-item:not(.button).is-tab:hover {
 }
 
 .card-extender {
-    min-height: 780px;
+    min-height: 630px;
 }
 
 .gun-display-name {
@@ -310,4 +310,22 @@ a.nav-item:not(.button).is-tab:hover {
 
 a.navbar-item {
     font-weight: 700;
+}
+
+.card-image2 {
+    display: block;
+    position: relative;
+    width: 45%;
+    height: 45%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-image3 {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
