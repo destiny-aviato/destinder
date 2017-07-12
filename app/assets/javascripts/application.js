@@ -11,13 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.slick
 //= require initialize
 //= require turbolinks
 //= require_tree .
-
 
 //allow close out functionality for notifications 
 $(document).on('click', '.notification > button.delete', function() {
