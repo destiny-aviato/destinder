@@ -39,8 +39,7 @@ class User < ApplicationRecord
   end
 
   def get_trials_stats(user, membership_type)
-        user.downcase!
-        
+
         if user.include? " "
             user.gsub!(/\s/,'%20')
         end
@@ -54,7 +53,7 @@ class User < ApplicationRecord
         player_data = JSON.parse(get_player.body)
 
         membership_id = player_data["Response"][0]["membershipId"]
-        real_name =  player_data["Response"][0]["displayName"]
+        # real_name =  player_data["Response"][0]["displayName"]
 
         get_characters = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}",
@@ -124,13 +123,8 @@ class User < ApplicationRecord
       user.about = auth.extra.bungieNetUser["about"]
       user.api_membership_id = auth.extra.destinyMemberships[0]["membershipId"]
       user.api_membership_type = auth.extra.destinyMemberships[0]["membershipType"]
+      user.display_name = auth.extra.destinyMemberships[0]['displayName']
 
-      if auth.extra.bungieNetUser.key?("psnDisplayName")
-        user.display_name = auth.extra.bungieNetUser["psnDisplayName"]
-      elsif auth.extra.bungieNetUser.key?("xboxDisplayName")
-        user.display_name = auth.extra.bungieNetUser["xboxDisplayName"]
-
-      end
       
   end
 end
