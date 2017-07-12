@@ -10,23 +10,38 @@
         </figure>
       </div>
 
+      
+
       <div class="card-content">
             <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48 subclass-image-fix round-image">
+
+
+
+
+<div class="columns">
+  <div class="column is-2">
+    <figure class="image is-48x48 subclass-image-fix round-image">
                   <img src="http://www.bungie.net/common/destiny_content/icons/2cf39a104d882ce05160fa7dd8627eb6.jpg" alt="Image">
                 </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-4">
-                  <h1 class="is-title title">
-                    <%=  @character_races[x["Character Type"]]  %> 
-                    <small>
-                    <span class="weekly-kd"><%= x["Character Stats"]["K/D Ratio"] %></span>
-                    <span style="color: red;"> KD</span></small>
-                  </h1>
-                </p>                
-              </div>
+  </div>
+  <div class="column is-7 center">
+   <h1 class="title stat-name-fix center"><%=  @character_races[x["Character Type"]]%></h1>
+  </div>
+  <div class="column is-3 center stat-numbers">
+    <span class="stat-numbers"><%= x["Character Stats"]["K/D Ratio"] %></span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+            
+             
             </div>
             <hr>
             <table class="center full-width">

@@ -1,4 +1,4 @@
-/*
+        /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -11,304 +11,325 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
-@import 'jquery-ui';
-@import 'slick';
-@import 'slick-theme';
-@import "bulma";
-
-// Slick custom CSS
-.scroller {
-    div {
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-}
-
-.slick-prev::before,
-.slick-next::before {
-    color: #000;
-}
-
-.slick-next {
-    right: -25px;
-}
-
-.slick-prev {
-    left: -25px;
-}
-
-
-/* the slides */
-
-.slick-slide {
-    margin: 0 10px;
-}
-
-
-/* the parent */
-
-.slick-list {
-    margin: 0 -10px;
-}
-
-
-/* wrapper */
-
-.has-dropdown input[type="checkbox"] {
-    display: none;
-}
-
-.has-dropdown input[type="checkbox"]:checked~.dropdown {
-    display: block;
-}
-
-
-/* dropdown basic */
-
-.dropdown {
-    display: none;
-    position: absolute;
-    z-index: 9999;
-}
-
-
-/* dropdown optional styling */
-
-.dropdown li:hover {
-    background-color: #eee;
-    cursor: pointer;
-}
-
-.image.is-square img,
-.image.is-1by1 img,
-.image.is-4by3 img,
-.image.is-3by2 img,
-.image.is-16by9 img,
-.image.is-2by1 img {
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-}
-
-body:before {
-    content: "";
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    background: url("http://sm.ign.com/ign_it/screenshot/default/tumblr-static-4acdgsc1h7cwscs8c04kkckks_d9h8.jpg") no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-* {
-    margin: 0;
-}
-
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.gamertag {
-    color: #28BDA4;
-    font-size: 38px;
-    font-weight: bold;
-    padding-top: 1%;
-}
-
-.card {
-    /*max-height: 660px;
+        
+        @import 'jquery-ui';
+        @import 'slick';
+        @import 'slick-theme';
+        @import "bulma";
+        // Slick custom CSS
+        .scroller {
+            div {
+                padding-right: 5px;
+                padding-left: 5px;
+            }
+        }
+        
+        .slick-prev::before,
+        .slick-next::before {
+            color: #000;
+        }
+        
+        .slick-next {
+            right: -25px;
+        }
+        
+        .slick-prev {
+            left: -25px;
+        }
+        /* the slides */
+        
+        .slick-slide {
+            margin: 0 10px;
+        }
+        /* the parent */
+        
+        .slick-list {
+            margin: 0 -10px;
+        }
+        /* wrapper */
+        
+        .has-dropdown input[type="checkbox"] {
+            display: none;
+        }
+        
+        .has-dropdown input[type="checkbox"]:checked~.dropdown {
+            display: block;
+        }
+        /* dropdown basic */
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            z-index: 9999;
+        }
+        /* dropdown optional styling */
+        
+        .dropdown li:hover {
+            background-color: #eee;
+            cursor: pointer;
+        }
+        
+        .image.is-square img,
+        .image.is-1by1 img,
+        .image.is-4by3 img,
+        .image.is-3by2 img,
+        .image.is-16by9 img,
+        .image.is-2by1 img {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+        }
+        
+        body:before {
+            content: "";
+            display: block;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: url("http://blogs-images.forbes.com/insertcoin/files/2017/03/destiny-2-new.jpg") no-repeat center center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            opacity: 0.9;
+        }
+        
+        * {
+            margin: 0;
+        }
+        
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .gamertag {
+            color: #28BDA4;
+            font-size: 38px;
+            font-weight: bold;
+            padding-top: 1%;
+        }
+        
+        .card {
+            /*max-height: 660px;
     min-height: 660px;*/
-    padding-top: 15px;
-    background-color: black;
-    opacity: 0.85;
-    border: 6px solid white;
-}
-
-.card-footer {
-    position: absolute;
-    bottom: 0;
-    width: 98.5%;
-    /* margin-left: -8%; */
-    /* margin-right: auto; */
-    text-align: left;
-}
-
-.card-footer-item {
-    float: left;
-}
-
-
-/* The Modal (background) */
-
-
-/* Modal Content/Box */
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    /* Could be more or less, depending on screen size */
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
-
-.video {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-}
-
-.avatar {
-    border-radius: 999px;
-}
-
-.card-info {
-    background-color: grey;
-    padding-top: 50px;
-    opacity: 0.2;
-    height: 30%;
-}
-
-.section {
-    background-color: transparent;
-}
-
-.white-text {
-    color: white !important;
-}
-
-.title {
-    color: white;
-    font-weight: bold;
-}
-
-.card-image-fix {
-    margin-top: -15px;
-}
-
-.content-fix {
-    width: 110%;
-    margin-left: -5%;
-}
-
-.subtitle {
-    color: white;
-    font-weight: bold;
-}
-
-small {
-    color: white;
-    font-weight: bold;
-}
-
-.nav-item a:not(.button).is-tab,
-a.nav-item:not(.button).is-tab {
-    color: white;
-}
-
-.nav-item a:not(.button).is-tab,
-a.nav-item:not(.button).is-tab:hover {
-    color: #28BDA4;
-}
-
-.navbar {
-    background: none;
-}
-
-.min-card-size {
-    min-width: 445px;
-}
-
-.transparent-background {
-    opacity: 0.9;
-}
-
-.player-stats-list ul {
-    text-decoration: none;
-    list-style: none;
-    color: white;
-    display: inline;
-}
-
-.subclass-image-fix {
-    margin-top: 42%;
-}
-
-.stat-text {
-    margin-top: -7%;
-    margin-left: 8%;
-}
-
-.stat-progress-bar {
-    width: 80%;
-}
-
-.card-extender {
-    max-height: 780px;
-    min-height: 780px;
-}
-
-.gun-display-name {
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.full-width {
-    width: 100%;
-}
-
-.round-image {
-    border-radius: 999px;
-}
-
-.round-image img {
-    border-radius: 999px;
-}
-
-.weekly-kd {
-    margin-left: 4%;
-}
-
-.red-text {
-    color: red;
-}
-
-.tabs.is-toggle ul {
-    border-bottom: none;
-    background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
-    border-radius: 0px 0px 10px 10px;
-}
-
-.tabs a {
-    color: #fbf9f9;
-    font-weight: 700;
-}
-
-a.navbar-item {
-    font-weight: 700;
-}
+            padding-top: 15px;
+            background-color: black;
+            border: 6px solid white;
+        }
+        
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            width: 98.5%;
+            /* margin-left: -8%; */
+            /* margin-right: auto; */
+            text-align: left;
+        }
+        
+        .card-footer-item {
+            float: left;
+        }
+        /* The Modal (background) */
+        /* Modal Content/Box */
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        
+        .video {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            -moz-border-radius: 12px;
+            -webkit-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 4px 4px 14px #000;
+            -webkit-box-shadow: 4px 4px 14px #000;
+            box-shadow: 4px 4px 14px #000;
+        }
+        
+        .avatar {
+            border-radius: 999px;
+        }
+        
+        .card-info {
+            background-color: grey;
+            padding-top: 50px;
+            opacity: 0.2;
+            height: 30%;
+        }
+        
+        .section {
+            background-color: transparent;
+        }
+        
+        .white-text {
+            color: white !important;
+        }
+        
+        .title {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .card-image-fix {
+            margin-top: -15px;
+        }
+        
+        .content-fix {
+            width: 110%;
+            margin-left: -5%;
+        }
+        
+        .subtitle {
+            color: white;
+            font-weight: bold;
+        }
+        
+        small {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .nav-item a:not(.button).is-tab,
+        a.nav-item:not(.button).is-tab {
+            color: white;
+        }
+        
+        .nav-item a:not(.button).is-tab,
+        a.nav-item:not(.button).is-tab:hover {
+            color: #28BDA4;
+        }
+        
+        .navbar {
+            background: none;
+        }
+        
+        .min-card-size {
+            min-width: 445px;
+        }
+        
+        .transparent-background {
+            opacity: 0.9;
+        }
+        
+        .player-stats-list ul {
+            text-decoration: none;
+            list-style: none;
+            color: white;
+            display: inline;
+        }
+        
+        .subclass-image-fix {
+            margin-top: 25%;
+        }
+        
+        .stat-text {
+            margin-top: -7%;
+            margin-left: 8%;
+        }
+        
+        .stat-progress-bar {
+            width: 80%;
+        }
+        
+        .card-extender {
+            min-height: 630px;
+        }
+        
+        .gun-display-name {
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .full-width {
+            width: 100%;
+        }
+        
+        .round-image {
+            border-radius: 999px;
+        }
+        
+        .round-image img {
+            border-radius: 999px;
+        }
+        
+        .weekly-kd {
+            margin-left: 4%;
+            font-weight: bold;
+        }
+        
+        .red-text {
+            color: red;
+        }
+        
+        .tabs.is-toggle ul {
+            border-bottom: none;
+            background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+            border-radius: 0px 0px 10px 10px;
+        }
+        
+        .tabs a {
+            color: #fbf9f9;
+            font-weight: 700;
+        }
+        
+        a.navbar-item {
+            font-weight: 700;
+        }
+        
+        .card-image2 {
+            display: block;
+            position: relative;
+            width: 45%;
+            height: 45%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .card-image3 {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .character-title-fix {
+            margin-top: 8%;
+        }
+        
+        .stat-numbers {
+            font-size: 35px;
+            color: red;
+            margin-top: 2%;
+        }
+        
+        .stat-name-fix {
+            margin-top: 8%;
+        }
+        
+        .columns {
+            width: 100%;
+        }
