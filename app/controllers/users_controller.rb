@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
+
   def get_stats(mode)
     begin
       case mode

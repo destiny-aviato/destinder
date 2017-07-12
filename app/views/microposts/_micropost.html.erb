@@ -1,3 +1,5 @@
+<% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
+
 <div class="box" id="<%= micropost.id %>">
   <article class="media">
 
@@ -12,15 +14,15 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= link_to micropost.user["display_name"], user_path(micropost.user["id"]) %></strong>
-          <small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+          <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong>
+          <small style="color: #4a4a4a;"><%= time_ago_in_words(micropost.created_at) %> ago</small>
           <br><br>
           <%= micropost.content %>
           <br><br><br>
         </p>
       </div>
     </div>
-
+    
     <!--Badges and Contact-->
     <div class="media-right">
       <nav class="level is-mobile">
