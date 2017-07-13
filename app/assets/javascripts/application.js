@@ -11,12 +11,27 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.slick
 //= require initialize
+//= require_self
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    if ($("#tabs").length) {
+        $("#tabs").tabs();
+      }
+  });
+
+//handle page tabs
+// $(document).ready(function() {
+//     if ($("#tabs").length) {
+//       $("#tabs").tabs();
+//     }
+//   });
 
 
 //allow close out functionality for notifications 
@@ -74,3 +89,4 @@ function closeNav() {
     document.getElementById("sideNavigation").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
+

@@ -1,12 +1,3 @@
-  <% content_for :head do %>
-       <script>
-          $( function() {
-            $( "#tabs" ).tabs();
-          } );
-        </script>
-  <% end %>
-
-
 
 <% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 <% @character_images = {
@@ -70,25 +61,24 @@
         <div id="tabs">
           <div class="tabs is-toggle is-fullwidth">
           <ul>
-            <li><a href="#tabs-1">Trials</a></li>
-            <li><a href="#tabs-2">Raids</a></li>
-            <li><a href="#tabs-3">PVP</a></li>
-            <li><a href="#tabs-4">Profile</a></li>
+            <li><a href="#trials">Trials</a></li>
+            <li><a href="#raids">Raids</a></li>
+            <li><a href="#pvp">PVP</a></li>
+            <li><a href="#profile">Profile</a></li>
           </ul>
            </div>
-           <div id="tabs-1">
+           <div id="profile">
+            <%= render 'shared/profile' %>
+          </div>
+           <div id="trials">
             <%= render 'shared/trials_stats' %>
           </div>
-          <div id="tabs-2">
-            <p>Raids</p>
+          <div id="raids">
+            <%= render 'shared/raids_stats' %>
           </div>
-          <div id="tabs-3">
-            <p>PVP</p>
-          </div>
-          <div id="tabs-4">
-            <%= render 'shared/profile' %>
+          <div id="pvp">
+              <%= render 'shared/pvp_stats' %>
           </div>
       </div>
     <br> <br>
 
- 
