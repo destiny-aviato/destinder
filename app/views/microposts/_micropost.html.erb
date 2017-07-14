@@ -5,7 +5,7 @@
 
     <!--Profile Image-->
     <div class="media-left">
-      <figure class="image is-64x64">
+      <figure class="image is-64x64 round-image">
         <%= image_tag( micropost.user["profile_picture"] ) %>
       </figure>
     </div>
@@ -46,6 +46,7 @@
           <%= micropost.user["elo"] %>
         </p>
       </div>
+      
     </div>
 
 
@@ -55,10 +56,21 @@
       <% get_stats("too")[0]["Character Stats"].each do |k,v| %>
         <div class="level-item has-text-centered">
           <div>
-            <p class="heading"><%= k %></p>
-            <p><%= v %></p>
+            
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="heading">KD</p>
+                  <p>
+                    <%= micropost.user["K/D Ratio"] %>
+                  </p>
+                </div> 
+              </div>
+
+
+            
           </div>
         </div>
+        
       <% end %>
 
 
