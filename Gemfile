@@ -47,6 +47,8 @@ gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
 gem 'annotate'
 gem "tabs_on_rails"
+gem 'materialize-sass'
+gem 'jquery-rails'
 
 
 group :development, :test do
