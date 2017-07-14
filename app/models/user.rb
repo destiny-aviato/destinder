@@ -14,6 +14,11 @@ class User < ApplicationRecord
     false
   end
 
+  def self.search(search)
+    search.downcase!
+    where("LOWER(display_name) LIKE ?", "%#{search}%") 
+  end
+
   def get_elo(membership_id)
       elo = 1200
       
