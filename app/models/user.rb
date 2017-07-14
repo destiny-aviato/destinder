@@ -68,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def get_trials_stats(user, membership_type)
-        search.strip!
+        user.strip!
         if user.include? " "
             user.gsub!(/\s/,'%20')
         end

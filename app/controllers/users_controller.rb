@@ -16,7 +16,6 @@ class UsersController < ApplicationController
         @users = User.search(params[:search])
         redirect_to user_path(@users.first.id)
       rescue NoMethodError
-        # redirect_to create_player_path(params[:search])
         membership_type = User.get_membership_id(params[:search])
         @users = PlayerStat.create(:display_name => params[:search], :membership_type => membership_type)
         redirect_to player_stat_path(@users)
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
       case mode
       when "too"
         begin
-          @user.get_trials_stats(@user.display_name, @user.api_membership_type)
+          return @user.get_trials_stats(@user.display_name, @user.api_membership_type)
         rescue NoMethodError
           return nil
         rescue StandardError => e
