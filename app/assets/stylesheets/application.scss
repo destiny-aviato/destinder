@@ -221,6 +221,7 @@ a.nav-item:not(.button).is-tab:hover {
 
 .navbar {
     background: none;
+    margin-bottom: 10px;
 }
 
 .min-card-size {
@@ -279,8 +280,8 @@ a.nav-item:not(.button).is-tab:hover {
     font-weight: bold;
 }
 
-.red-text {
-    color: red;
+.ability-text {
+    color: #fbf1e6;
 }
 
 .tabs.is-toggle ul {
@@ -300,6 +301,7 @@ li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-act
 
 a.navbar-item {
     font-weight: 700;
+    color: white;
 }
 
 .card-image2 {
@@ -326,7 +328,7 @@ a.navbar-item {
 
 .stat-numbers {
     font-size: 35px;
-    color: red;
+    color: #eb9735;
     margin-top: 2%;
 }
 

@@ -1,31 +1,3 @@
-<div class="box transparent-background">
-  <strong>Quick Guardian Lookup</strong>
-  <div class="level-left">
-      <div class="level-item">
-        <p class="subtitle is-5"></p>
-      </div>
-      <div class="level-item">
-        <div class="block">
-            <%= form_for(PlayerStat.new) do |f| %>
-                <div class="field has-addons">
-                  <p class="control">
-                      <span class="select">
-                          <%= f.select :membership_type, [["PS4", "2"], ["XB1", "1"]]%>
-                      </span>
-                  </p>
-                  <p class="control">
-                      <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
-                  </p>
-                  <p class="control">
-                      <%= f.submit "Search", class: "button is-primary" %>
-                  </p>
-                </div>
-            <% end %>
-        </div>
-      </div>
-  </div>
-</div>
-
 <% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 <% @character_images = {
   0 => "https://assets.tentonhammer.com/guides/attached_images/000/000/188/medium/destiny-titan-hero-image.jpg?1468380213", 

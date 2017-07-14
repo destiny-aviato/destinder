@@ -24,16 +24,37 @@
   </div>
 
   <div id='navbar-menu' class="navbar-menu">
-    <div class="navbar-start">
-      
-    </div>
+    <% if user_signed_in? %>
+      <div class="navbar-start">
+
+
+
+        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+         <div class="field has-addons has-addons-right" style="position: absolute; top: 15%; left: 1%;">
+            <p class="control">
+                <span class="select">
+                  </span>
+            </p>
+            <p class="control is-expanded has-icons-left">
+                <span class="icon is-small is-left">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  <%= text_field_tag :search, params[:search], placeholder: "Find a player", class: "input" %>
+                </p>
+              <p class="control">
+                  <%= submit_tag "Search", :name => nil, class: "button is-primary" %>
+                </p> 
+         </div>
+      <% end %>
+      </div>
+      <% end %> 
 
     <div class="navbar-end">
       <% if user_signed_in? %> 
         <%= link_to "Home",    root_path, class: "navbar-item" %>
 
         <a href="/profile" class="navbar-item">
-          <figure class="image is-16x16" style="margin-right: 8px;">
+          <figure class="image is-16x16 is-hidden-mobile" style="margin-right: 8px;">
             <%= image_tag( current_user["profile_picture"] ) %>
           </figure>
             <%= current_user["display_name"] %>
