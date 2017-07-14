@@ -14,7 +14,31 @@ class User < ApplicationRecord
     false
   end
 
+  def self.get_membership_id(user)
+    begin
+        if user.include? " "
+            user.gsub!(/\s/,'%20')
+        end
+        response = RestClient.get(
+            "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
+            headers={"x-api-key" => ENV['API_TOKEN']}
+        )
+      
+        data = JSON.parse(response.body)
+
+        if data["Response"][0].nil?
+            "1"
+        else 
+            "2"
+        end
+
+
+    rescue
+    end
+  end
+
   def self.search(search)
+    search.strip!
     search.downcase!
     where("LOWER(display_name) LIKE ?", "%#{search}%") 
   end
@@ -44,7 +68,7 @@ class User < ApplicationRecord
   end
 
   def get_trials_stats(user, membership_type)
-
+        search.strip!
         if user.include? " "
             user.gsub!(/\s/,'%20')
         end
