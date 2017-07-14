@@ -54,7 +54,7 @@
         <%= link_to "Home",    root_path, class: "navbar-item" %>
 
         <a href="/profile" class="navbar-item">
-          <figure class="image is-16x16" style="margin-right: 8px;">
+          <figure class="image is-16x16 is-hidden-mobile" style="margin-right: 8px;">
             <%= image_tag( current_user["profile_picture"] ) %>
           </figure>
             <%= current_user["display_name"] %>
