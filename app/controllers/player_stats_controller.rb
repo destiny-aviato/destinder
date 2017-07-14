@@ -34,7 +34,13 @@ class PlayerStatsController < ApplicationController
     begin
       case mode
       when "too"  
-        PlayerStat.get_trials_stats(@player_stat.display_name,@player_stat.membership_type)
+        begin
+          PlayerStat.get_trials_stats(@player_stat.display_name,@player_stat.membership_type)
+        rescue NoMethodError
+          return nil
+        rescue StandardError => e
+          return nil
+        end
       end
     rescue NoMethodError
         redirect_to request.referrer || root_url
