@@ -22,16 +22,31 @@
 
 $(document).on('turbolinks:load', function() {
     if ($("#tabs").length) {
-        $("#tabs").tabs();
+        $("#tabs").tabs({
+            beforeActivate: function (event, ui) {
+                var div = ui.newPanel.attr('id');
+                var title = '';
+                switch (div) { 
+                    case 'trials': 
+                        title = "Trials of Osiris"
+                        break;
+                    case 'raids': 
+                        title = "Raids"                    
+                        break;
+                    case 'pvp': 
+                        title = "PVP"                    
+                        break;		
+                    case 'profile': 
+                        title = "Profile"   
+                        break;
+                }
+            
+                $('h2.subtitle.profile').text(title);
+            }
+          });
       }
   });
 
-//handle page tabs
-// $(document).ready(function() {
-//     if ($("#tabs").length) {
-//       $("#tabs").tabs();
-//     }
-//   });
 
 
 //allow close out functionality for notifications 
