@@ -7,7 +7,7 @@ jQuery(document).on 'turbolinks:load', ->
   slidesToScroll: 1,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1390,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
