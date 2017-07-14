@@ -16,8 +16,11 @@ class UsersController < ApplicationController
         @users = User.search(params[:search])
         redirect_to user_path(@users.first.id)
       rescue NoMethodError
-        redirect_to request.referrer || root_url
-        flash[:error] = "Player not found. They probably don't have an account in our system."
+        # redirect_to create_player_path(params[:search])
+        membership_type = User.get_membership_id(params[:search])
+        @users = PlayerStat.create(:display_name => params[:search], :membership_type => membership_type)
+        redirect_to player_stat_path(@users)
+        flash[:notice] = "Player profile not found in our system. Here are trials stats for that user."
       rescue StandardError => e
         redirect_to request.referrer || root_url
         flash[:error] = "Error: #{e}"
