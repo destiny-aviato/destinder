@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require materialize
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.slick
