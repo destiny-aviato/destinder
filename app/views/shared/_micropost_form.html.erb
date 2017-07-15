@@ -1,6 +1,14 @@
 <%= form_for Micropost.new, remote: true do |f| %>
   <div class="field">
     <p class="control">
+        <span class="select">
+            <%= f.select :game_type, ["Trials of Osiris"]%>
+        </span>
+    </p>
+  </div>  
+
+  <div class="field">
+    <p class="control">
      <%= f.text_area :content, class: "textarea", placeholder: "Create new post..." %>
     </p>
   </div>
