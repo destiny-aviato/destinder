@@ -14,8 +14,8 @@
               <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
             </figure>
           </div>
-          <div class="card-content">
-            <div class="media">
+          <div class="card-content" style="padding: 0;">
+            <div class="media" style="padding: 5% 5% 0% 5%">
               <div class="columns">
                 <div class="column is-2">
                   <figure class="image is-48x48 subclass-image-fix round-image center">
@@ -54,7 +54,7 @@
                     </table></div>
                 </li>
                 <li>
-                  <div class="collapsible-header"><i class="fa fa-superpowers" aria-hidden="true"></i>Abilities</div>
+                  <div class="collapsible-header active"><i class="fa fa-superpowers" aria-hidden="true"></i>Abilities</div>
                   <div class="collapsible-body"><div class="columns is-mobile">
                       <div class="column">
                         <small class="ability-text">Armor</small>
@@ -76,46 +76,46 @@
                     </div></div>
                 </li>
                 <li>
-                  <div class="collapsible-header"><i class="fa fa-shield" aria-hidden="true"></i>Equipment</div>
+                  <div class="collapsible-header active"><i class="fa fa-shield" aria-hidden="true"></i>Equipment</div>
                   <div class="collapsible-body"><div class="columns is-mobile">
-                      <div class="column">
+                      <div class="column gear">
                         <figure class="image is-64x64 round-image">
                           <img src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %>>
                         </figure>
                       </div>
-                      <div class="column">
+                      <div class="column gear">
                         <figure class="image is-64x64 round-image">
                           <img src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %>>
                         </figure>
                       </div>
-                      <div class="column">
+                      <div class="column gear">
                           <figure class="image is-64x64 round-image">
                             <img src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %>>
                           </figure>
                       </div>
-                      <div class="column">
+                      <div class="column gear">
                           <figure class="image is-64x64 round-image">
                             <img src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
                           </figure>
                       </div>
                     </div>
                     <div class="columns is-mobile">
-                        <div class="column">
+                        <div class="column gear">
                           <figure class="image is-64x64 round-image">
                             <img src=<%= x["Character Items"]["Helmet"]["Item Icon"] %>>
                           </figure>
                         </div>
-                        <div class="column">
+                        <div class="column gear">
                           <figure class="image is-64x64 round-image">
                             <img src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %>>
                           </figure>
                         </div>
-                        <div class="column">
+                        <div class="column gear">
                             <figure class="image is-64x64 round-image">
                               <img src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %>>
                             </figure>
                         </div>
-                        <div class="column">
+                        <div class="column gear">
                             <figure class="image is-64x64 round-image">
                               <img src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %>>
                             </figure>
