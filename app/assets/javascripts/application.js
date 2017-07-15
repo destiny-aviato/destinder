@@ -24,39 +24,30 @@
 $(document).on('turbolinks:load', function() {
     if ($("#tabs").length) {
         $("#tabs").tabs({
-            beforeActivate: function(event, ui) {
+            beforeActivate: function (event, ui) {
                 var div = ui.newPanel.attr('id');
                 var title = '';
-                switch (div) {
-                    case 'trials':
+                switch (div) { 
+                    case 'trials': 
                         title = "Trials of Osiris"
                         break;
-                    case 'raids':
-                        title = "Raids"
+                    case 'raids': 
+                        title = "Raids"                    
                         break;
-                    case 'pvp':
-                        title = "PVP"
-                        break;
-                    case 'profile':
-                        title = "Profile"
+                    case 'pvp': 
+                        title = "PVP"                    
+                        break;		
+                    case 'profile': 
+                        title = "Profile"   
                         break;
                 }
-
+            
                 $('h2.subtitle.profile').text(title);
             }
-
-        });
-    }
-});
-
           });
       }
       $('.collapsible').collapsible();
   });
-
-
-
-  
 
 //   $(document).on('turbolinks:load', function(){
 //     $('.collapsible').collapsible();
