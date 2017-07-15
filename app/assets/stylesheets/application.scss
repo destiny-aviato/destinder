@@ -412,7 +412,7 @@ min-height: 660px;*/
         
         .collapsible-body {
             display: none;
-            border-bottom: 1px solid $collapsible-border-color;
+            // border-bottom: 1px solid $collapsible-border-color;
             box-sizing: border-box;
             padding: 2rem;
         }
@@ -514,4 +514,9 @@ min-height: 660px;*/
                 opacity: 1;
                 -webkit-transform: translateX(0)
             }
+        }
+
+
+        .column.gear {
+            padding: 5% 5% 5% 1%;
         }
