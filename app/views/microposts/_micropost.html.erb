@@ -1,5 +1,11 @@
 <% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
 
+<% stats =[] %>
+<% case micropost.game_type 
+   when "Trials of Osiris"
+    stats = get_stats("too")[0]
+   end %>
+
 <div class="box" id="<%= micropost.id %>">
   <article class="media">
 
@@ -10,12 +16,14 @@
       </figure>
     </div>
 
+    <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+
     <!--Post Content -->
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong>
-          <small style="color: #4a4a4a;"><%= time_ago_in_words(micropost.created_at) %> ago</small>
+          <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> - <%= character_races[stats["Character Type"]] %> - 
+          <%= micropost.game_type %> -<small style="color: #4a4a4a;"><%= time_ago_in_words(micropost.created_at) %> ago</small> 
           <br><br>
           <%= micropost.content %>
           <br><br><br>
@@ -39,35 +47,19 @@
 
   <!--Stats-->
   <nav class="level is-mobile">
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">ELO</p>
-        <p>
-          <%= micropost.user["elo"] %>
-        </p>
-      </div>
-      
-    </div>
-
-
-<% character_races = {"0" => "Titan", "1" => "Hunter", "2" => "Warlock"} %>
     
-    
-      <% get_stats("too")[0]["Character Stats"].each do |k,v| %>
+      <% stats["Character Stats"].each do |k,v| %>
         <div class="level-item has-text-centered">
           <div>
             
               <div class="level-item has-text-centered">
                 <div>
-                  <p class="heading">KD</p>
+                  <p class="heading"><%= k %></p>
                   <p>
-                    <%= micropost.user["K/D Ratio"] %>
+                    <%= v %>
                   </p>
                 </div> 
               </div>
-
-
-            
           </div>
         </div>
         

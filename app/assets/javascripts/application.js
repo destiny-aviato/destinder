@@ -46,8 +46,16 @@ $(document).on('turbolinks:load', function() {
             }
           });
       }
+      $('.collapsible').collapsible();
   });
 
+
+  
+
+//   $(document).on('turbolinks:load', function(){
+//     $('.collapsible').collapsible();
+//   });
+       
 
 
 //allow close out functionality for notifications 
