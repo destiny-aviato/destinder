@@ -3,6 +3,11 @@
     <p class="control">
      <%= f.text_area :content, class: "textarea", placeholder: "Looking for 2..." %>
     </p>
+    <p class="control">
+        <span class="select">
+            <%= f.select :game_type, ["Trials of Osiris", "Raid", "General PVP", "Nightfall"]%>
+        </span>
+    </p>
   </div>
   <p class="control">
       <%= f.submit "Post", class: "button is-primary" %>

@@ -44,10 +44,24 @@ $(document).on('turbolinks:load', function() {
 
                 $('h2.subtitle.profile').text(title);
             }
+
         });
     }
 });
 
+          });
+      }
+      $('.collapsible').collapsible();
+  });
+
+
+
+  
+
+//   $(document).on('turbolinks:load', function(){
+//     $('.collapsible').collapsible();
+//   });
+       
 
 
 //allow close out functionality for notifications 
