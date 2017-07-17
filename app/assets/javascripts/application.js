@@ -49,6 +49,10 @@ $(document).on('turbolinks:load', function() {
         });
     }
     $('.collapsible').collapsible();
+    $(".button-collapse").sideNav();
+
+    $('.carousel').carousel();
+    $('ul.tabs').tabs();
 });
 
 //   $(document).on('turbolinks:load', function(){
