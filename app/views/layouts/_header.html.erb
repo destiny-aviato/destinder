@@ -1,29 +1,6 @@
-<nav class="navbar">
-  <div class="navbar-brand">
-    <!--<a class="navbar-item" href="http://bulma.io">
-      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-    </a>-->
 
-    <!--<a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-      <span class="icon" style="color: #333;">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>-->
-
-    <!--<a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
-      <span class="icon" style="color: #55acee;">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>-->
-
-    <div id="navbar-burger" class="navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div id='navbar-menu' class="navbar-menu">
+<!--OLD NAV BAR >
+  <!--<div id='navbar-menu' class="navbar-menu">
     <% if user_signed_in? %>
       <div class="navbar-start">
 
@@ -66,4 +43,52 @@
       <% end %>
     </div>
   </div>
-</nav>
+</nav>-->
+<nav>
+    <div  style="background-color: #F44336;" class="nav-wrapper">
+      <a href="#" class="brand-logo center">Destinder</a>
+    </div>
+  </nav>
+
+
+
+        <ul id="slide-out" class="side-nav">
+        <% if user_signed_in? %> 
+          <li class="center-align round-image">
+            <%= image_tag( current_user["profile_picture"], class:"round-image" ) %>
+          </li>
+          <li class="center-align gamertag-name">
+            <%= current_user["display_name"] %>
+          </li>
+          <li>
+          <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+
+        
+          <input id="search" type="search" required placeholder="Guardian Lookup">
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+          </li>
+          <li>
+            <div class="divider"></div>
+          </li>
+          <li>
+            <%= link_to "Home",    root_path, class: "navbar-item" %>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
+          </li>
+
+        </ul>
+
+        <% else %> 
+        <li>
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
+          </li>
+          
+      <% end %>
+        <a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons slide-fix">menu</i></a>
