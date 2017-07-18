@@ -19,7 +19,7 @@ class User < ApplicationRecord
         # if user.include? " "
         #     user.gsub!(/\s/,'%20')
         # end
-        user = username.include? " " ? username.gsub(/\s/,'%20') : username
+        user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
         response = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
             headers={"x-api-key" => ENV['API_TOKEN']}

@@ -75,6 +75,9 @@
       <%= link_to "Home",    root_path, class: "navbar-item" %>
     </li>
     <li>
+      <%= link_to "Posts",   microposts_path, class: "navbar-item" %>
+    </li>
+    <li>
       <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
     </li>
     <% else %>
