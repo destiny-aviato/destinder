@@ -33,8 +33,8 @@ class Micropost < ApplicationRecord
 
 
   def self.get_trials_stats(username, membership_type)
-    user.strip!
-    user = username.include? " " ? username.gsub(/\s/,'%20') : username
+    username.strip!
+    user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
 
     get_player = RestClient.get(
         "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}",
