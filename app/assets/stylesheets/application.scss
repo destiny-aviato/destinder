@@ -51,6 +51,11 @@
                     bottom: 100px;
                 }
                 
+                .transparent {
+                    background: transparent;
+                    border: none;
+                }
+                
                 .card {
                     width: 125%;
                 }
@@ -66,4 +71,12 @@
                 [class^="socicon-"],
                 [class*=" socicon-"] {
                     font-size: 30px;
+                }
+                
+                .action-button-fix {
+                    margin-bottom: 60px;
+                }
+                
+                .modal-overlay {
+                    background-color: white;
                 }
