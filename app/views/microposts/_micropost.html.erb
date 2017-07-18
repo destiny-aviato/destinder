@@ -1,104 +1,113 @@
 <% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
-
+<% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 <% stats =[] %>
 <% case micropost.game_type 
-   when "Trials of Osiris"
-    stats = get_stats("too")[0]
-   end %>
+when "Trials of Osiris" 
+    stats = get_stats("too")[0] 
+        end %>
 
-<div class="box" id="<%= micropost.id %>">
-  <article class="media">
-
-    <!--Profile Image-->
-    <div class="media-left">
-      <figure class="image is-64x64 round-image">
-        <%= image_tag( micropost.user["profile_picture"] ) %>
-      </figure>
-    </div>
-
-    <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-
-    <!--Post Content -->
-    <div class="media-content">
-      <div class="content">
-        <p>
-          <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> - <%= character_races[stats["Character Type"]] %> - 
-          <%= micropost.game_type %> -<small style="color: #4a4a4a;"><%= time_ago_in_words(micropost.created_at) %> ago</small> 
-          <br><br>
-          <%= micropost.content %>
-          <br><br><br>
-        </p>
-      </div>
-    </div>
-    
-    <!--Badges and Contact-->
-    <div class="media-right">
-      <nav class="level is-mobile">
-        <div class="level-right">
-          <% if micropost.user["display_name"] =~ /\A(?:Luminusss|ii WALZ ii|KURTO13|Putin Pudding)\z/ %>
-            <a class="level-item">
-             <span class="tag is-dark">Architect</span>
-            </a>
-          <% end %>
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+    <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="card-content">
+            <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
+            <%= character_races[stats["Character Type"]] %> -
+            <%= micropost.game_type %> <small> <%= time_ago_in_words(micropost.created_at) %> ago</small>
         </div>
-      </nav>
-    </div>
-  </article>
-
-  <!--Stats-->
-  <nav class="level is-mobile">
-    
-      <% stats["Character Stats"].each do |k,v| %>
-        <div class="level-item has-text-centered">
-          <div>
-            
-              <div class="level-item has-text-centered">
-                <div>
-                  <p class="heading"><%= k %></p>
-                  <p>
-                    <%= v %>
-                  </p>
-                </div> 
-              </div>
-          </div>
+        <br>    
+        <div class="row valign-wrapper">
+            <div class="col s2">
+                <%= image_tag micropost.user["profile_picture"] , class: "circle responsive-img" %>
+            </div>
+            <div class="col s10">
+                <span class="black-text">
+                    <%= micropost.content %>
+                </span>
+            </div>
         </div>
-        
-      <% end %>
 
+        <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+                <li class="tab"><a href="#test4">Yearly</a></li>
+                <li class="tab"><a href="#test5">Weekly</a></li>
+                <li class="tab"><a href="#test6">This Map</a></li>
+            </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+            <div id="test4">
 
+                <div class="row">
 
+                    <% stats["Character Stats"].each do |k,v| %>
+                        <div class="col s3">
+                            <p><b><%= k %></b></p> 
+                            <p> <%= v %> </p>
+                        </div> 
+                    <% end %>
+                </div>
+            </div>
 
-  </nav>
-
-  <!--Mod buttons-->
-  <nav class="level is-mobile">
- 
-    <div class="level-left">
-      <div class="level-item">
-        <% if current_user == micropost.user %>
-          <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
-            <span class="icon">
-              <i class="fa fa-trash"></i>
-            </span>
-          <% end %>
-        <% end %>
-      </div>
+            <div id="test5">Test 2</div>
+            <div id="test6">Test 3</div>
+        </div>
+        <br>    
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="fa fa-shield fa-lg"></i>Titan</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="fa fa-ravelry fa-lg"></i>Warlock</div>
+                <div class="collapsible-body">
+                        
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="fa fa-superpowers fa-lg"></i>Hunter</div>
+                <div class="collapsible-body">
+                    <span>
+                        
+                    </span>
+                </div>
+            </li>
+        </ul>
+        <div class="row">
+                <div class="col s12 m4 l2">
+                    <%= link_to @message, target: "_blank" do %>
+                    <span class="icon">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                <% end %>
+            </div>
+            <div class="col s12 m4 l8">
+                <p></p>
+            </div>
+            <div class="col s12 m4 l2  right-align">
+                <% if current_user == micropost.user %>
+                    <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                        <span class="icon">
+                        <i class="fa fa-trash"></i>
+                        </span>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
-
-    <div class="level-right">
-      <div class="level-item">        
-          <div class="media-left">
-            <%= link_to @message, target: "_blank" do %>
-              <span class="icon">
-                <i class="fa fa-envelope"></i>
-              </span>
-            <% end %>
-          </div>
-      </div>
-    </div>
-
-</nav>
-
 </div>
-
-
+                <!-- <div class="col s12 m8 offset-m2 l6 offset-l3">
+  <div class="card">
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#test4">Test 1</a></li>
+            <li class="tab"><a class="active" href="#test5">Test 2</a></li>
+            <li class="tab"><a href="#test6">Test 3</a></li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="test4">Test 1</div>
+          <div id="test5">Test 2</div>
+          <div id="test6">Test 3</div>
+        </div>
+      </div>
+  </div> -->
