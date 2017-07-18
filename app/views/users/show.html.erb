@@ -36,28 +36,37 @@
         
 </section>
 
-      
-        <div id="tabs">
-          <div class="tabs is-toggle is-fullwidth">
-          <ul>
-            <li><a href="#trials">Trials of Osiris</a></li>
-            <li><a href="#raids">Raids</a></li>
-            <li><a href="#pvp">PVP</a></li>
-            <li><a href="#profile">Profile</a></li>
-          </ul>
-           </div>
-           <div id="profile">
-            <%= render 'shared/profile' %>
-          </div>
-           <div id="trials">
-            <%= render 'shared/trials_stats' %>
-          </div>
-          <div id="raids">
-            <%= render 'shared/raids_stats' %>
-          </div>
-          <div id="pvp">
-              <%= render 'shared/pvp_stats' %>
-          </div>
-      </div>
-    <br> <br>
 
+
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#trials">Trials of Osiris</a></li>
+      <li class="tab col s3"><a href="#raids">Raids</a></li>
+      <li class="tab col s3"><a href="#pvp">PVP</a></li>
+      <li class="tab col s3"><a href="#profile">Profile</a></li>
+    </ul>
+  </div>
+  <div id="profile" class="col s12">
+    <%= render 'shared/profile' %>
+  </div>
+   <div id="trials" class="col s12">
+    <%= render 'shared/trials_stats' %>
+  </div>
+  <div id="raids" class="col s12">
+    <%= render 'shared/raids_stats' %>
+  </div>
+  <div id="pvp" class="col s12">
+      <%= render 'shared/pvp_stats' %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+      
+       

@@ -14,11 +14,12 @@ class User < ApplicationRecord
     false
   end
 
-  def self.get_membership_id(user)
+  def self.get_membership_id(username)
     begin
-        if user.include? " "
-            user.gsub!(/\s/,'%20')
-        end
+        # if user.include? " "
+        #     user.gsub!(/\s/,'%20')
+        # end
+        user = username.include? " " ? username.gsub(/\s/,'%20') : username
         response = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
             headers={"x-api-key" => ENV['API_TOKEN']}
@@ -84,12 +85,15 @@ class User < ApplicationRecord
     item
   end
 
-  def get_trials_stats(user, membership_type)
-        user.strip!
-        if user.include? " "
-            user.gsub!(/\s/,'%20')
-        end
+  def get_trials_stats(username, membership_type)
+        username.strip!
+        # if username.include? " "
+        #    user = username.gsub(/\s/,'%20')
+        # else 
+        #     user = username
+        # end
 
+        user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
 
         get_player = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}",
