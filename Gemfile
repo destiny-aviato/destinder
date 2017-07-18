@@ -48,7 +48,6 @@ gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
 gem 'annotate'
 gem "tabs_on_rails"
-gem 'jquery-rails'
 gem 'material_icons'
 gem 'shareable'
 

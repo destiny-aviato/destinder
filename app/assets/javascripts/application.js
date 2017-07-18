@@ -53,11 +53,11 @@ $(document).on('turbolinks:load', function() {
 
     $('.carousel').carousel();
     $('ul.tabs').tabs();
+    
+    Materialize.updateTextFields();
 });
 
-//   $(document).on('turbolinks:load', function(){
-//     $('.collapsible').collapsible();
-//   });
+
 
 
 

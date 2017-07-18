@@ -1,20 +1,35 @@
-<%= form_for Micropost.new, remote: true do |f| %>
-  <div class="field">
-    <p class="control">
-        <span class="select">
-            <%= f.select :game_type, ["Trials of Osiris"]%>
-        </span>
-    </p>
-  </div>  
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <form class="col s12">
 
-  <div class="field">
-    <p class="control">
-     <%= f.text_area :content, class: "textarea", placeholder: "Create new post..." %>
-    </p>
-  </div>
-  <p class="control">
-      <%= f.submit "Post", class: "button is-primary" %>
-  </p>
-<% end %>
 
-<hr>    
+      </form>
+    </div>
+
+</div>
+
+
+<div class="row">
+  <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+
+    <div class="input-field col s12">
+        <%= f.select :game_type, ["Trials of Osiris"]%>
+      <label>Gametype</label>
+    </div>
+
+    <div class="row">
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.text_area :content, class: "materialize-textarea", id: "icon_prefix2", placeholder: "Create new post..." %>
+              <label for="icon_prefix2">First Name</label>
+          </div>
+        </div>
+
+    </div>
+
+      <%= f.submit "Post", class: "btn waves-effect waves-light" %>
+    <% end %>
+</div>
+<hr>
