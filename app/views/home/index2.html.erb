@@ -12,936 +12,653 @@
 
 <body>
 <% if !current_user %>
-  <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
-
-  
+<%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
-  <body data-gr-c-s-loaded="true">
+<body data-gr-c-s-loaded="true">
 
 
 
+<div class="row">
 
 
-<div class="container profile center">
-  <div class="profile-options">
-    <div class="tabs is-fullwidth white-text">
-      <ul>
-        <li class="link is-active"><%= link_to "Home",    root_path, class: "nav-item is-tab" %></li>
-        <li class="link"><%= link_to "Trials Team Look-up",    new_player_stat_path, class: "nav-item is-tab" %></li>
-        <li class="link"><%= link_to "LFG",    microposts_path, class: "nav-item is-tab" %></li>
-        
-        
+      <div class="col s6"><div class="carousel"><!--PVP PLAYLIST CAROUSEL-->
 
-        
-      </ul>
+<!--Card item 1  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_trialsofosiris.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Trials of Osiris<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 1  -->
+
+<!--Card item 2  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag 'crucible_clash.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Clash<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 2  -->
+
+<!--Card item 3  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag 'crucible_control.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Control<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 3  -->
+
+<!--Card item 4  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_elimination.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Elimination<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 4  -->
+
+<!--Card item 5  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_rift.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Rift<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 5  -->
+
+<!--Card item 6  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_salvage.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Salvage<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 6  -->
+
+<!--Card item 7  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_skirmish.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Skirmish<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 7  -->
+
+<!--Card item 8  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag 'crucible_rumble.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Rumble<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 8  -->
+
+
+</div><!--PVP PLAYLIST CAROUSEL END-->
+
+</div>
+
+
+      <div class="col s6"><div class="carousel"><!--RAID PLAYLIST CAROUSEL START-->
+
+<!--Card item 1  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image2 waves-effect waves-block waves-light">
+            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Vault of Glass<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 1  -->
+
+<!--Card item 2  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image2 waves-effect waves-block waves-light">
+          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Clash<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 2  -->
+
+<!--Card item 3  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image2 waves-effect waves-block waves-light">
+          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Control<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 3  -->
+
+<!--Card item 4  -->
+<div class="carousel-item">
+    <div class="card">
+        <div class="card-image2 waves-effect waves-block waves-light">
+            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Elimination<i class="material-icons right">more_vert</i></span>
+          <div class="row">
+            <!--footer columns-->
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+            </div>
+            <div class="col s4 center-align">
+              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+            </div>
+          </div>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+          <table>
+            <tr>
+              <th>Year KD</th>
+              <th>1.9</th>
+            </tr>
+
+            <tbody>
+              <tr>
+                <td>Week KD</td>
+                <td>1.45</td>
+
+              </tr>
+              <tr>
+                <td>ELO</td>
+                <td>1750</td>
+
+              </tr>
+              <tr>
+                <td>Streak</td>
+                <td>+5</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</div>
+<!--End card item 4  -->
+
+
+</div>
+</div><!--RAID PLAYLIST CAROUSEL END-->
     </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="columns">
-
-
-<br/>
-<br/>
-<br/>
-
-
-
-  <div class="column is-10 is-offset-1">
-
-  <br/>
-<br/>
-
-  
-<div class="scroller">
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_trialsofosiris.png', alt: 'Trials of Osiris'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Trials of Osiris</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-
-                              <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Wk KD</th>
-                                      <th class="center">Yr KD</th>
-                                      <th class="center">Flawless</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">1800</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">1.2</td>
-                                      <td class="center">52x</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Yearly Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Yearly Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Yearly Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-
-
-                      
-
-
-
-
-
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                 
-
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-              </footer>
-          </div>
-          </div>
-          
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_skirmish.png', alt: 'Skirmish'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Skirmish</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">Wk KD</th>
-                                      <th class="center">Wk KAD</th>
-                                      <th class="center">Wk Rev</th>
-                                      <th class="center">Wk Win %</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">1.45</td>
-                                      <td class="center">1.65</td>
-                                      <td class="center">37</td>
-                                      <td class="center">40%</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Yearly Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Yearly Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Yearly Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <<a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_clash.png', alt: 'Clash'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Clash</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">Kills</th>
-                                      <th class="center">Deaths</th>
-                                      <th class="center">KD</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">212</td>
-                                      <td class="center">89</td>
-                                      <td class="center">2.3</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <<a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_control.png', alt: 'Control'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Control</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                     <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">KD</th>
-                                      <th class="center">Protected</th>
-                                      <th class="center">Captured</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">1.6</td>
-                                      <td class="center">21</td>
-                                      <td class="center">4</td>
-                                      <td class="center">8</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_rumble.png', alt: 'Rubmle'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Rumble</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                          
-                              
-                          </div>
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div>
-          </div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_salvage.png', alt: 'Salvage'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Salvage</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                            
-                          
-                              
-                          </div>
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_rift.png', alt: 'Rift'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Rift</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-<hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                            
-                          
-                              
-                          </div>
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <%= image_tag 'crucible_doubles.png', alt: 'Doubles'%>
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="http://media.services.zam.com/v1/media/byName/common/destiny_content/icons/361235bb0cd9ae75ba98e77c1971db0f.jpg"
-                                  alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Doubles</p>
-                          <p class="subtitle is-6">Crucible</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter K/D<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock K/D: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan K/D: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                             
-                          
-                              
-                          </div>
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-</div>  
-
-
-</div>
-</div>
-
-
-
-
-
-
-
-<hr/>
-
-
-
-
-
-
-<div class="columns">
-
-
-
-
-  <div class="column is-10 is-offset-1">
-
-  <br/>
-<br/>
-
-  
-<div class="scroller">
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603020_48f6873d1f28fe3ff5cd4456cbfa4317.jpg" alt="Image">
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Vault of Glass</p>
-                          <p class="subtitle is-6">Raid</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                               <div class="column">
-                                  <small>Hunter Progress<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock Progress: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan Progress: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                          
-                              
-                          </div>
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                 <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603035_fb80c081ae7a6e6896dd16e4ae4b36a6.jpg" alt="Image">
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Crota's End</p>
-                          <p class="subtitle is-6">Raid</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                      <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                               <div class="column">
-                                  <small>Hunter Progress<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock Progress: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan Progress: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/701660_fa0208b0ee741963365484a9cf4b3923.jpg" alt="Image">
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">King's Fall</p>
-                          <p class="subtitle is-6">Raid</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                     <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter Progress<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock Progress: <progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan Progress: <progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                             
-                              
-                          </div>
-
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-
-
-
-
-                 <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-
-
-              </footer>
-          </div></div>
-<div><div class="card card-extender">
-              <div class="card-image2">
-                  <figure class="image is-1by1">
-                      <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/800443_93a4a02f080f47e680c2b0a5fc1aba6f.jpg" alt="Image">
-                  </figure>
-              </div>
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-left">
-                          <figure class="image is-48x48">
-                              <img src="https://www.bungie.net/common/destiny_content/grimoire/hr_images/603010_882a18b213fd28804f5637349b57323a.jpg" alt="Image">
-                          </figure>
-                      </div>
-                      <div class="media-content">
-                          <p class="title is-4">Wrath of the Machine</p>
-                          <p class="subtitle is-6">Raid</p>
-                      </div>
-                  </div>
-
-                  <div class="content">
-                     <hr>
-                                  <table class="center full-width">
-                                  <tbody class="center">
-                                  <tr class="center red-text">
-                                      <th class="center">ELO</th>
-                                      <th class="center">Week KD</th>
-                                      <th class="center">Flawless</th>
-                                      <th class="center">Streak</th>
-                                  </tr>   
-                                  <tr class="center">
-                                      <td class="center">N/A</td>
-                                      <td class="center">1.45</td>
-                                      <td class="center">2x</td>
-                                      <td class="center">4</td>
-                                  </tr>
-                                  </tbody>
-                                  </table>
-                                  <hr/>
-
-                          <div class="columns">
-                              <div class="column">
-                                  <small>Hunter Progress<progress class="progress is-danger" value="30" max="100">30%</progress></small>
-                                  <small>Warlock Progress<progress class="progress is-danger" value="75" max="100">75%</progress></small>
-                                  <small>Titan Progress<progress class="progress is-danger" value="45" max="100">45%</progress></small>
-                              </div>
-                              
-                          
-                              
-                          </div>
-
-
-
-                  </div>
-              </div>
-              <footer class="card-footer">
-                  <a class="card-footer-item">Share Stats</a>
-                  <a class="call_modal card-footer-item" style="cursor:pointer;">Post to LFG</a>
-                      <div class="modal">
-                      <div class="modal_close close"></div>
-                      <div class="modal_main">
-                      <p><%= render 'shared/modal_micropost_form' %></p>
-                      </div>
-                      </div>
-
-
-              </footer>
-          </div></div>
-</div>  
-
-
-</div>
-</div>
-
-
-
-
-
-
-
-<script>
-$(document).ready(function(){
-$(".call_modal").click(function(){
-$(".modal").fadeIn();
-$(".modal_main").show();
-  });
-});
-$(document).ready(function(){
-$(".close").click(function(){
-$(".modal").fadeOut();
-$(".modal_main").fadeOut();
-  });
-});
-</script>
 
 
 
