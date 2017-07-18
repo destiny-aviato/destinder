@@ -1,4 +1,4 @@
-        /*
+                /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -11,31 +11,72 @@
  * It is generally better to create a new file per style scope.
  *
  */
-        
-        @import "materialize/components/color";
-        $primary-color: color("blue", "lighten-2") !default;
-        $secondary-color: color("yellow", "base") !default;
-        @import 'materialize';
-        @import 'jquery-ui';
-        @import "materialize/extras/nouislider";
-        @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-        .card-image img {
-            height: 250px;
-            width: 250px;
-            background: #F44336;
-        }
-        
-        .slide-fix {
-            margin-left: 20px;
-            font-size: 35px;
-            margin-top: 10px;
-        }
-        
-        .round-image {
-            border-radius: 999px;
-        }
-        
-        .gamertag-name {
-            color: #F44336;
-            font-size: 25px;
-        }
+                
+                @import "materialize/components/color";
+                $primary-color: color("blue", "lighten-2") !default;
+                $secondary-color: color("yellow", "base") !default;
+                @import 'materialize';
+                @import 'jquery-ui';
+                @import "materialize/extras/nouislider";
+                @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+                .card-image img {
+                    height: 250px;
+                    width: 250px;
+                    background: #F44336;
+                }
+                
+                .card-image2 img {
+                    height: 250px;
+                    width: 250px;
+                    background: #0d47a1;
+                }
+                
+                .slide-fix {
+                    margin-left: 20px;
+                    font-size: 35px;
+                    margin-top: 10px;
+                }
+                
+                .round-image {
+                    border-radius: 999px;
+                }
+                
+                .gamertag-name {
+                    color: #F44336;
+                    font-size: 25px;
+                }
+                
+                .carousel {
+                    height: 610px;
+                    bottom: 100px;
+                }
+                
+                .transparent {
+                    background: transparent;
+                    border: none;
+                }
+                
+                .card {
+                    width: 125%;
+                }
+                
+                html {
+                    background: url("http://wallpapersin4k.net/wp-content/uploads/2016/12/Destiny-Wallpapers-9.jpg") no-repeat center center fixed;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                }
+                
+                [class^="socicon-"],
+                [class*=" socicon-"] {
+                    font-size: 30px;
+                }
+                
+                .action-button-fix {
+                    margin-bottom: 60px;
+                }
+                
+                .modal-overlay {
+                    background-color: white;
+                }

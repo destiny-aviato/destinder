@@ -93,7 +93,7 @@ class User < ApplicationRecord
         #     user = username
         # end
 
-        user = username.include? " " ? username.gsub(/\s/,'%20') : username
+        user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
 
         get_player = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}",
