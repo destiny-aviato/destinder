@@ -154,3 +154,7 @@ $('#modal3').modal('close');
 $('#modal4').modal('open');
 
 $('#modal4').modal('close');
+
+$('#modal5').modal('open');
+
+$('#modal5').modal('close');
