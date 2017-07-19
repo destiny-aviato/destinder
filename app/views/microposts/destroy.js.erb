@@ -1,2 +1,4 @@
 $("div#<%= @micropost.id %>").slideUp();
 $('ul.tabs').tabs();
+Materialize.toast('Post Removed', 4000)
+$('.tooltipped').tooltip({delay: 50});

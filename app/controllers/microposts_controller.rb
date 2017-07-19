@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-    before_action :correct_user,   only: :destroy
+    before_action :correct_user, only: :destroy
     def index
         @microposts = Micropost.all.paginate(page: params[:page], per_page: 10)
         @micropost = current_user.microposts.build 
@@ -9,14 +9,9 @@ class MicropostsController < ApplicationController
         @micropost = current_user.microposts.build(micropost_params)
         case @micropost.game_type
         when "Trials of Osiris" 
-            @micropost.user_stats = get_stats("too")
+            @micropost.user_stats = get_stats(current_user, "too")
         end
 
-        # switch on game type
-        # point to specifc get_stats method
-        # save stats to user_stats column of DB
-        # @micropost.user.elo = Micropost.get_elo(@micropost.user.api_membership_id )
-        @micropost.user.save!
         if @micropost.save
             respond_to do |format|
                 # if the response fomat is html, redirect as usual
@@ -32,7 +27,7 @@ class MicropostsController < ApplicationController
 
     def destroy
         @micropost.destroy
-        
+
         respond_to do |format|
             format.html { request.referrer || root_url }
             format.js { }
@@ -40,11 +35,11 @@ class MicropostsController < ApplicationController
         
     end
 
-    def get_stats(mode)
+    def get_stats(user, mode)
         begin
             case mode
             when "too"  
-                Micropost.get_trials_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
+                Micropost.get_trials_stats(current_user)
             end
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url

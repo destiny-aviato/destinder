@@ -1,18 +1,24 @@
 
-<div class="container">
-        <h3 class="title is-3">Post an Ad</h3>
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">mode_edit</i>Post an ad</div>
+                <div class="collapsible-body">
+                    <%= render 'shared/micropost_form' %>
+                </div>
+            </li>                
+        </ul>
         
-         <%= render 'shared/micropost_form' %>
-        
-        <h3 class="title is-3">Recent Posts</h3>
+        <h3>Recent Posts</h3>
         <ol class="microposts">
-            <%= render @microposts %>
+            <div class="row posts">
+                <% @microposts.each_with_index do |post,index| %>
+                    <%= render post %>
+                <% end %>
+            </div>
         </ol>
         
         <br>    
-        <%= bulma_will_paginate @microposts, :page_links => false %>
-</div>
-
+        <center><%= will_paginate @microposts, renderer: MaterializePagination::Rails,  :page_links => false  %></center>
 
 
 

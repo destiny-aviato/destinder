@@ -23,6 +23,15 @@
 //= require materialize/extras/nouislider
 //= require_tree .
 
+
+$(document).on("turbolinks:click", function(){
+    $('.preloader-wrapper.big.active').show();
+  });
+  
+  $(document).on("turbolinks:load", function(){
+      $('.preloader-wrapper.big.active').hide();
+  });
+
 $(document).on('turbolinks:load', function() {
     if ($("#tabs").length) {
         $("#tabs").tabs({
@@ -49,7 +58,10 @@ $(document).on('turbolinks:load', function() {
         });
     }
     $('.collapsible').collapsible();
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+        closeOnClick: true,
+        draggable: true
+    });
 
     $('.carousel').carousel();
     $('ul.tabs').tabs();
@@ -72,6 +84,7 @@ $(document).on('turbolinks:load', function() {
     Materialize.scrollFire(options);
 
     $('.parallax').parallax();
+    $('.tooltipped').tooltip({delay: 50});
 });
 
 
@@ -176,11 +189,11 @@ $('#modal5').modal('open');
 
 $('#modal5').modal('close');
 
-('#modal6').modal('open');
+$('#modal6').modal('open');
 
 $('#modal6').modal('close');
 
-('#modal7').modal('open');
+$('#modal7').modal('open');
 
 $('#modal7').modal('close');
 

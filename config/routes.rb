@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] 
   get 'profile', to: 'users#show'
   get 'test', to: 'home#index2'
+  get 'faq', to: 'home#faq'
+  get 'kota', to: 'home#kota'
+  get 'kurt', to: 'home#kurt'
   resources :microposts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
