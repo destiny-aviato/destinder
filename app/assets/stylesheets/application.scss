@@ -12,130 +12,147 @@
  *
  */
                                 
-                                @import "materialize/components/color";
-                                $primary-color: color("blue", "lighten-2") !default;
-                                $secondary-color: color("yellow", "base") !default;
-                                @import 'materialize';
-                                @import 'jquery-ui';
-                                @import "materialize/extras/nouislider";
-                                @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-                                .card-image img {
-                                    height: 250px;
-                                    width: 250px;
-                                    background: #F44336;
-                                }
-                                
-                                .card-image2 img {
-                                    height: 250px;
-                                    width: 250px;
-                                    background: #0d47a1;
-                                }
-                                
-                                .slide-fix {
-                                    margin-left: 20px;
-                                    font-size: 35px;
-                                    margin-top: 10px;
-                                    z-index: 1;
-                                }
-                                
-                                .round-image {
-                                    border-radius: 999px;
-                                }
-                                
-                                .gamertag-name {
-                                    color: #F44336;
-                                    font-size: 25px;
-                                }
-                                
-                                .carousel {
-                                    height: 610px;
-                                    bottom: 100px;
-                                }
-                                
-                                .transparent {
-                                    background: transparent;
-                                    border: none;
-                                }
-                                
-                                .card {
-                                    width: 125%;
-                                }
-                                
-                                [class^="socicon-"],
-                                [class*=" socicon-"] {
-                                    font-size: 30px;
-                                }
-                                
-                                .action-button-fix {
-                                    margin-bottom: 60px;
-                                }
-                                
-                                .modal-overlay {
-                                    background-color: white;
-                                }
-                                
-                                .custom-card {
-                                    max-width: 250px;
-                                    margin-left: auto;
-                                    margin-right: auto;
-                                }
-                                
-                                .featured-video-fix {
-                                    margin-top: 10%;
-                                }
-                                
-                                .parralax-1 {
-                                    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-47-1024x640.png");
-                                    min-height: 100%;
-                                }
-                                
-                                .parralax-2 {
-                                    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-3-1024x640.jpg");
-                                    min-height: 100%;
-                                }
-                                
-                                .parralax-3 {
-                                    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-1-1024x576.jpg");
-                                    min-height: 100%;
-                                }
-                                
-                                .parralax-3 {
-                                    position: relative;
-                                    background-attachment: fixed;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-                                    height: 400px;
-                                    margin-left: -33.33%;
-                                    margin-right: -33.33%;
-                                }
-                                
-                                .parralax-2 {
-                                    position: relative;
-                                    background-attachment: fixed;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-                                    height: 400px;
-                                    margin-left: -33.33%;
-                                    margin-right: -33.33%;
-                                }
-                                
-                                .parralax-1 {
-                                    position: relative;
-                                    background-attachment: fixed;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-                                    height: 350px;
-                                    margin-left: -33.33%;
-                                    margin-right: -33.33%;
-                                }
-                                
-                                body {
-                                    background-color: white;
-                                }
-                                
-                                .white-space {
-                                    height: 400px;
-                                }
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import 'materialize';
+@import 'jquery-ui';
+@import "materialize/extras/nouislider";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+.card-image img {
+    height: 250px;
+    width: 250px;
+    background: #F44336;
+}
+
+.card-image2 img {
+    height: 250px;
+    width: 250px;
+    background: #0d47a1;
+}
+
+.slide-fix {
+    margin-left: 20px;
+    font-size: 35px;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+.round-image {
+    border-radius: 999px;
+}
+
+.gamertag-name {
+    color: #F44336;
+    font-size: 25px;
+}
+
+.carousel {
+    height: 610px;
+    bottom: 100px;
+    z-index: -1;
+}
+
+.transparent {
+    background: transparent;
+    border: none;
+}
+
+.card {
+    width: 125%;
+}
+
+[class^="socicon-"],
+[class*=" socicon-"] {
+    font-size: 30px;
+}
+
+.action-button-fix {
+    margin-bottom: 60px;
+}
+
+.modal-overlay {
+    background-color: white;
+}
+
+.custom-card {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-video-fix {
+    margin-top: 10%;
+}
+
+.parralax-1 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-47-1024x640.png");
+    min-height: 100%;
+}
+
+.parralax-2 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-3-1024x640.jpg");
+    min-height: 100%;
+}
+
+.parralax-3 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-1-1024x576.jpg");
+    min-height: 100%;
+}
+
+.parralax-3 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -33.33%;
+}
+
+.parralax-2 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -33.33%;
+}
+
+.parralax-1 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    margin-left: -33.33%;
+    margin-right: -33.33%;
+}
+
+body {
+    background-color: white;
+}
+
+.white-space {
+    height: 400px;
+}
+
+.dropdown-content li > span {
+    font-size: 16px;
+    color: #424242;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #2bbbad;
+}
+
+.btn, .btn-large {
+    background-color: #26a69a;
+}
