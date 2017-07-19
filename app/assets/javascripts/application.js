@@ -53,7 +53,7 @@ $(document).on('turbolinks:load', function() {
 
     $('.carousel').carousel();
     $('ul.tabs').tabs();
-    
+
     Materialize.updateTextFields();
 });
 
@@ -158,3 +158,24 @@ $('#modal4').modal('close');
 $('#modal5').modal('open');
 
 $('#modal5').modal('close');
+
+
+$('.tap-target').tapTarget('open');
+$('.tap-target').tapTarget('close');
+
+
+var options = [{
+
+        selector: '#staggered-test',
+        offset: 255,
+        callback: function(el) {
+            Materialize.showStaggeredList($(el));
+        }
+    },
+
+];
+Materialize.scrollFire(options);
+
+$(document).ready(function() {
+    $('.parallax').parallax();
+});
