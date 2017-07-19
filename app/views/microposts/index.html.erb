@@ -1,13 +1,25 @@
-<h3 class="title is-3">Post an Ad (Trials of Osiris)</h3>
 
- <%= render 'shared/micropost_form' %>
+        <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">mode_edit</i>Post an ad</div>
+                <div class="collapsible-body">
+                    <%= render 'shared/micropost_form' %>
+                </div>
+            </li>                
+        </ul>
+        
+        <h3>Recent Posts</h3>
+        <ol class="microposts">
+            <div class="row posts">
+                <% @microposts.each_with_index do |post,index| %>
+                    <div class="col s6"><%= render post, cached: true %></div>
+                <% end %>
+            </div>
+        </ol>
+        
+        <br>    
+        <center><%= will_paginate @microposts, renderer: MaterializePagination::Rails,  :page_links => false  %></center>
 
-<h3 class="title is-3">Recent Ads (<%= @microposts.count %>)</h3>
-<ol class="microposts">
-    <%= render @microposts %>
-</ol>
 
-<br>    
-<%= bulma_will_paginate @microposts, :page_links => false %>
 
 

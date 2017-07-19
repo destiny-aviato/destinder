@@ -3,13 +3,11 @@ class PlayerStat < ApplicationRecord
     serialize :characters
     validates :display_name, presence: true
 
-    def self.collect_data(user, membership_type)
+    def self.collect_data(username, membership_type)
         
         user.downcase!
         
-        if user.include? " "
-            user.gsub!(/\s/,'%20')
-        end
+        user = username.include? " " ? username.gsub(/\s/,'%20') : username
 
 
         response = RestClient.get(
@@ -38,6 +36,23 @@ class PlayerStat < ApplicationRecord
         return [data2, characters, real_name]
     end
 
+    def self.get_item(item_hash)
+        response = RestClient.get(
+            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
+             headers={"x-api-key" => ENV['API_TOKEN']}
+        )
+    
+        data = JSON.parse(response.body)
+        icon = "https://www.bungie.net#{data["Response"]["data"]["inventoryItem"]["icon"]}"
+        name = data["Response"]["data"]["inventoryItem"]["itemName"]
+        item = {
+            "Item Icon" => icon,
+            "Item Name" => name
+    
+        }
+        item
+      end
+
     def self.get_elo(membership_id)
         elo = 1200
         
@@ -62,12 +77,9 @@ class PlayerStat < ApplicationRecord
         
     end
 
-    def self.get_trials_stats(user, membership_type)
-        user.downcase!
-        
-        if user.include? " "
-            user.gsub!(/\s/,'%20')
-        end
+    def self.get_trials_stats(username, membership_type)
+        user.strip!
+        user = username.include? " " ? username.gsub(/\s/,'%20') : username
 
 
         get_player = RestClient.get(
@@ -78,7 +90,7 @@ class PlayerStat < ApplicationRecord
         player_data = JSON.parse(get_player.body)
 
         membership_id = player_data["Response"][0]["membershipId"]
-        real_name =  player_data["Response"][0]["displayName"]
+        # real_name =  player_data["Response"][0]["displayName"]
 
         get_characters = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}",
@@ -99,6 +111,38 @@ class PlayerStat < ApplicationRecord
             stat_dicipline = x["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
             stat_intellect = x["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
             stat_strength = x["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
+            stat_armor = x["characterBase"]["stats"]["STAT_ARMOR"]["value"]
+            stat_agility = x["characterBase"]["stats"]["STAT_AGILITY"]["value"]
+            stat_recovery = x["characterBase"]["stats"]["STAT_RECOVERY"]["value"]
+            inventory = x["characterBase"]["peerView"]["equipment"]
+            items = Hash.new
+
+            item_type = {
+                0 => "Subclass",
+                1 => "Helmet",
+                2 => "Gauntlets",
+                3 => "Chest Armor",
+                4 => "Leg Armor",
+                5 => "Class Item",
+                6 => "Primary Weapon",
+                7 => "Secondary Weapon",
+                8 => "Heavy Weapon",
+                9 => "Ship",
+                10 => "Sparrow",
+                11 => "Ghost",
+                12 => "Emblem",
+                13 => "Shader",
+                14 => "Emote",
+                15 => "Horn",
+                16 => "Artifact"
+            }
+            
+            inventory.each_with_index do |item, index|
+                items[item_type[index]] = get_item(item["itemHash"])
+            end
+
+
+
 
             get_trials_stats = RestClient.get(
                         "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
@@ -123,10 +167,14 @@ class PlayerStat < ApplicationRecord
                 "Intellect" => stat_intellect,
                 "Discipline" => stat_dicipline,
                 "Strength" => stat_strength,
-                "ELO" => get_elo(membership_id)
+                "ELO" => get_elo(membership_id),
+                "Armor" => stat_armor,
+                "Agility" => stat_agility,
+                "Recovery" => stat_recovery
             }
 
-            characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
+
+            characters_stats << {"Character Type" => character_type, "Character Stats" => stats, "Character Items" => items}
         end
         
         characters_stats

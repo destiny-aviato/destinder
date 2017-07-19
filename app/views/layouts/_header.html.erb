@@ -1,39 +1,105 @@
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item">
-      <!--<img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">-->
-      
-    </a>
-  </div>
 
-  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-  <span id="nav-toggle" class="nav-toggle">
-    <span></span>
-  <span></span>
-  <span></span>
-  </span>
-
-  <!-- This "nav-menu" is hidden on mobile -->
-  <!-- Add the modifier "is-active" to display it on mobile -->
-  <div class="nav">
-  <div id='nav-menu' class="nav-right nav-menu">
-    <%= link_to "Home",    root_path, class: "nav-item is-tab" %>
-    <% if user_signed_in? %> 
-      
-       <a href="/profile" class="nav-item is-tab">
-        <figure class="image is-16x16" style="margin-right: 8px;">
-          <%= image_tag( current_user["profile_picture"] ) %>
-        </figure>
-          <%= current_user["display_name"] %>
-      </a>
-
-      <% else %> 
-          <%= link_to "Login", new_user_session_path, :class => 'nav-item is-tab'  %>
+<ul id="slide-out" class="side-nav">
+  <% if user_signed_in? %>
+    <li class="center-align round-image">
+      <%= image_tag( current_user["profile_picture"], class:"round-image" ) %>
+    </li>
+    <li class="center-align gamertag-name">
+      <%=link_to current_user["display_name"], profile_path %>
+    </li>
+    <li>
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Guardian Lookup">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+      </div>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li>
+      <%= link_to "Home",    root_path, class: "navbar-item" %>
+    </li>
+    <li>
+      <%= link_to "Posts",   microposts_path, class: "navbar-item" %>
+    </li>
+    <li>
+      <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
+    </li>
+    <% else %>
+      <li>
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
+      </li>
+    
       <% end %>
-</div>
+</ul>
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?rd5re8">
+
+
+
+<div class="fixed-action-btn toolbar">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">info</i>
+    </a>
+
+    
+    <ul>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-imdb"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-facebook"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-github"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
+    </ul>
   </div>
-</nav>
 
 
+  <div class="fixed-action-btn toolbar action-button-fix">
+    <a class="btn-floating btn-large red" href="#modal5">
+      <i class="large material-icons">search</i>
+    </a>
 
+</div>
+
+
+    
+  
+
+  <!-- Modal Structure -->
+  <div id="modal5" class="modal bottom-sheet">
+    <div class="modal-content">
+      <p>Guardian PVP Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+        <p>Guardian Raid Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+  
+
+ 
+
+  
+
+
+<a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons slide-fix">menu</i></a>

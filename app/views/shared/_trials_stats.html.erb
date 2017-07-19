@@ -1,0 +1,16 @@
+<% info = get_stats("too") %>
+
+<% if info.nil? %> 
+  <div class="container games">
+    ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
+  </div>
+<% else %> 
+<br>    <br>    
+  <div class="container">      
+    <div class=stat-scroller>
+        <pre>
+            <code><%= JSON.pretty_generate(info) %></code>
+        </pre>
+    </div>    
+  </div>
+<% end %>

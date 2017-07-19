@@ -7,7 +7,15 @@ class MicropostsController < ApplicationController
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
-        @micropost.user.elo = Micropost.get_elo(@micropost.user.api_membership_id )
+        case @micropost.game_type
+        when "Trials of Osiris" 
+            @micropost.user_stats = get_stats("too")
+        end
+
+        # switch on game type
+        # point to specifc get_stats method
+        # save stats to user_stats column of DB
+        # @micropost.user.elo = Micropost.get_elo(@micropost.user.api_membership_id )
         @micropost.user.save!
         if @micropost.save
             respond_to do |format|
@@ -24,7 +32,7 @@ class MicropostsController < ApplicationController
 
     def destroy
         @micropost.destroy
-        
+
         respond_to do |format|
             format.html { request.referrer || root_url }
             format.js { }
@@ -36,7 +44,7 @@ class MicropostsController < ApplicationController
         begin
             case mode
             when "too"  
-                PlayerStat.get_trials_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
+                Micropost.get_trials_stats(@micropost.user.display_name, @micropost.user.api_membership_type )
             end
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
@@ -50,7 +58,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :game_type, :user_stats)
     end
     
     def correct_user

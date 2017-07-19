@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -36,16 +37,20 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'materialize-sass'
 gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
 gem 'sidekiq'
 gem 'rest-client'
 gem 'will_paginate'
+gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
-gem 'jquery-rails'
-gem "rails-erd"
 gem 'annotate'
+gem "tabs_on_rails"
+gem 'material_icons'
+gem 'shareable'
+gem 'will_paginate-materialize'
 
 
 group :development, :test do
