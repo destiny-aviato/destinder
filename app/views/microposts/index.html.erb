@@ -10,22 +10,15 @@
         
         <h3>Recent Posts</h3>
         <ol class="microposts">
-            <% @microposts.each_with_index do |post,index| %>
-                
-                <% if index % 2 == 0 %>
-                    <div class="row">
-                        <div class="col s6"><%= render post %></div>
-                <% else %>
-                        <div class="col s6"><%= render post %></div>
-                    </div>
+            <div class="row posts">
+                <% @microposts.each_with_index do |post,index| %>
+                    <div class="col s6"><%= render post, cached: true %></div>
                 <% end %>
-            
-            <% end %>
+            </div>
         </ol>
         
         <br>    
-        <%= will_paginate @microposts, :page_links => false %>
-
+        <center><%= will_paginate @microposts, renderer: MaterializePagination::Rails,  :page_links => false  %></center>
 
 
 

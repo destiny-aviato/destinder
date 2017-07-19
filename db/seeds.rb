@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 users = User.order(:created_at).take(6)
 50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
+  content = Faker::Lorem.sentence(2)
+  users.each { |user| user.microposts.create!(content: content, game_type: "Trials of Osiris") }
 end

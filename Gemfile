@@ -50,6 +50,7 @@ gem 'annotate'
 gem "tabs_on_rails"
 gem 'material_icons'
 gem 'shareable'
+gem 'will_paginate-materialize'
 
 
 group :development, :test do
