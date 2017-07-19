@@ -32,7 +32,7 @@ class MicropostsController < ApplicationController
 
     def destroy
         @micropost.destroy
-        
+
         respond_to do |format|
             format.html { request.referrer || root_url }
             format.js { }

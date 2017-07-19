@@ -58,7 +58,10 @@ $(document).on('turbolinks:load', function() {
         });
     }
     $('.collapsible').collapsible();
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+        closeOnClick: true,
+        draggable: true
+    });
 
     $('.carousel').carousel();
     $('ul.tabs').tabs();
