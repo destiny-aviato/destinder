@@ -18,7 +18,6 @@ $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 @import 'jquery-ui';
 @import "materialize/extras/nouislider";
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 .card-image img {
     height: 250px;
     width: 250px;
@@ -175,4 +174,26 @@ body {
 
 .btn, .btn-large {
     background-color: #26a69a;
+}
+
+.collapsible.popout {
+    position: relative;
+    padding: 5%;
+}
+
+.preloader-wrapper.big.active {
+    position: relative !important;
+}
+
+.pagination a li.active {
+    color: #fff;
+  }
+
+table.centered thead tr th, table.centered tbody tr td {
+    text-align: center;
+    font-size: 11px;
+}
+
+td, th {
+    padding: 10px 5px;
 }

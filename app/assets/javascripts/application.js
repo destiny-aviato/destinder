@@ -84,6 +84,7 @@ $(document).on('turbolinks:load', function() {
     Materialize.scrollFire(options);
 
     $('.parallax').parallax();
+    $('.tooltipped').tooltip({delay: 50});
 });
 
 
