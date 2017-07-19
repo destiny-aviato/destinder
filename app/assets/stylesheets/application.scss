@@ -107,7 +107,8 @@
                                     background-size: cover;
                                     height: 400px;
                                     margin-left: -33.33%;
-                                    margin-right: -33.33%;
+                                    margin-right: -22%;
+                                    max-width: 155%;
                                 }
                                 
                                 .parralax-2 {
@@ -118,7 +119,8 @@
                                     background-size: cover;
                                     height: 400px;
                                     margin-left: -33.33%;
-                                    margin-right: -33.33%;
+                                    margin-right: -22%;
+                                    max-width: 155%;
                                 }
                                 
                                 .parralax-1 {
@@ -129,7 +131,8 @@
                                     background-size: cover;
                                     height: 350px;
                                     margin-left: -33.33%;
-                                    margin-right: -33.33%;
+                                    margin-right: -22%;
+                                    max-width: 155%;
                                 }
                                 
                                 body {
@@ -138,4 +141,21 @@
                                 
                                 .white-space {
                                     height: 400px;
+                                }
+                                
+                                .logo-name {
+                                    color: white;
+                                    font-size: 71px;
+                                    position: relative;
+                                    padding-top: 100px;
+                                    padding-right: 100px;
+                                }
+                                
+                                .nav-logo {
+                                    height: 100px;
+                                    width: 100px;
+                                }
+                                
+                                .header-fix {
+                                    margin-top: 30%;
                                 }
