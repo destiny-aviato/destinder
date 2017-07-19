@@ -13,14 +13,14 @@
 <div class="row">
   <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
 
-    <div class="input-field col s12">
+    <div class="input-field col s6">
         <%= f.select :game_type, ["Trials of Osiris"]%>
       <label>Gametype</label>
     </div>
 
     <div class="row">
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <i class="material-icons prefix">mode_edit</i>
             <%= f.text_area :content, class: "materialize-textarea", id: "icon_prefix2", placeholder: "Create new post..." %>
               <label for="icon_prefix2">First Name</label>
