@@ -12,7 +12,7 @@
         <ol class="microposts">
             <div class="row posts">
                 <% @microposts.each_with_index do |post,index| %>
-                    <div class="col s6"><%= render post, cached: true %></div>
+                    <%= render post %>
                 <% end %>
             </div>
         </ol>
