@@ -55,6 +55,23 @@ $(document).on('turbolinks:load', function() {
     $('ul.tabs').tabs();
 
     Materialize.updateTextFields();
+
+    $('.tap-target').tapTarget('open');
+    $('.tap-target').tapTarget('close');
+
+    var options = [{
+        
+                selector: '#staggered-test',
+                offset: 255,
+                callback: function(el) {
+                    Materialize.showStaggeredList($(el));
+                }
+            },
+        
+        ];
+    Materialize.scrollFire(options);
+
+    $('.parallax').parallax();
 });
 
 
@@ -168,22 +185,23 @@ $('#modal6').modal('close');
 $('#modal7').modal('close');
 
 
-$('.tap-target').tapTarget('open');
-$('.tap-target').tapTarget('close');
+
+// $('.tap-target').tapTarget('open');
+// $('.tap-target').tapTarget('close');
 
 
-var options = [{
+// var options = [{
 
-        selector: '#staggered-test',
-        offset: 255,
-        callback: function(el) {
-            Materialize.showStaggeredList($(el));
-        }
-    },
+//         selector: '#staggered-test',
+//         offset: 255,
+//         callback: function(el) {
+//             Materialize.showStaggeredList($(el));
+//         }
+//     },
 
-];
-Materialize.scrollFire(options);
+// ];
+// Materialize.scrollFire(options);
 
-$(document).ready(function() {
-    $('.parallax').parallax();
-});
+// $(document).ready(function() {
+//     $('.parallax').parallax();
+// });

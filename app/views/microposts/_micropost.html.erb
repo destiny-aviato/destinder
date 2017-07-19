@@ -6,7 +6,7 @@ when "Trials of Osiris"
     stats = get_stats("too")[0] 
         end %>
 
-<div class="col s12 m8 offset-m2 l6 offset-l3">
+<div class="col s12 m8 offset-m2 l6 offset-l3" id="<%= micropost.id %>">
     <div class="card-panel grey lighten-5 z-depth-1">
         <div class="card-content">
             <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
