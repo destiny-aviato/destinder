@@ -21,14 +21,15 @@ $secondary-color: color("yellow", "base") !default;
 .card-image img {
     height: 250px;
     width: 250px;
-    background: #F44336;
+    background: #b2dfdb;
 }
 
 .card-image2 img {
     height: 250px;
     width: 250px;
-    background: #0d47a1;
+    background: #bdbdbd;
 }
+
 
 .slide-fix {
     margin-left: 20px;
@@ -196,4 +197,9 @@ table.centered thead tr th, table.centered tbody tr td {
 
 td, th {
     padding: 10px 5px;
+}
+
+.centered{
+    margin-left: auto;
+    margin-right: auto;
 }
