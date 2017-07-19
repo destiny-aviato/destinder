@@ -176,6 +176,14 @@ $('#modal5').modal('open');
 
 $('#modal5').modal('close');
 
+('#modal6').modal('open');
+
+$('#modal6').modal('close');
+
+('#modal7').modal('open');
+
+$('#modal7').modal('close');
+
 
 
 // $('.tap-target').tapTarget('open');
