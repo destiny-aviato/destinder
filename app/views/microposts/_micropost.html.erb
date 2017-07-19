@@ -6,7 +6,7 @@ when "Trials of Osiris"
     stats = get_stats("too")[0] 
         end %>
 
-<div class="col s12 m8 offset-m2 l6 offset-l3" id="<%= micropost.id %>">
+<div id="<%= micropost.id %>">
     <div class="card-panel grey lighten-5 z-depth-1">
         <div class="card-content">
             <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
@@ -27,13 +27,13 @@ when "Trials of Osiris"
 
         <div class="card-tabs">
             <ul class="tabs tabs-fixed-width">
-                <li class="tab"><a href="#test4">Yearly</a></li>
-                <li class="tab"><a href="#test5">Weekly</a></li>
-                <li class="tab"><a href="#test6">This Map</a></li>
+                <li class="tab"><a href="#<%= micropost.id %>-yearly">Yearly</a></li>
+                <li class="tab"><a href="#<%= micropost.id %>-weekly">Weekly</a></li>
+                <li class="tab"><a href="#<%= micropost.id %>-map">This Map</a></li>
             </ul>
         </div>
         <div class="card-content grey lighten-4">
-            <div id="test4">
+            <div id="<%= micropost.id %>-yearly">
 
                 <div class="row">
 
@@ -46,8 +46,8 @@ when "Trials of Osiris"
                 </div>
             </div>
 
-            <div id="test5">Test 2</div>
-            <div id="test6">Test 3</div>
+            <div id="<%= micropost.id %>-weekly">Test 2</div>
+            <div id="<%= micropost.id %>-map">Test 3</div>
         </div>
         <br>    
         <div class="row">
