@@ -23,6 +23,15 @@
 //= require materialize/extras/nouislider
 //= require_tree .
 
+
+$(document).on("turbolinks:click", function(){
+    $('.preloader-wrapper.big.active').show();
+  });
+  
+  $(document).on("turbolinks:load", function(){
+      $('.preloader-wrapper.big.active').hide();
+  });
+
 $(document).on('turbolinks:load', function() {
     if ($("#tabs").length) {
         $("#tabs").tabs({
