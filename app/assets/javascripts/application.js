@@ -147,55 +147,101 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
-$(document).ready(function() {
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+$(document).on("turbolinks:load", function(){
+    // $('.modal').modal();
+
+    $('.modal').modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            alert("Ready");
+            console.log(modal, trigger);
+        },
+        complete: function() { alert('Closed'); } // Callback for Modal close
+    });
+
+    $('#modal1').modal('open');
+    
+    $('#modal1').modal('close');
+    
+    $('#modal2').modal('open');
+    
+    $('#modal2').modal('close');
+    
+    $('#modal3').modal('open');
+    
+    $('#modal3').modal('close');
+    
+    $('#modal4').modal('open');
+    
+    $('#modal4').modal('close');
+    
+    $('#modal5').modal('open');
+    
+    $('#modal5').modal('close');
+    
+    $('#modal6').modal('open');
+    
+    $('#modal6').modal('close');
+    
+    $('#modal7').modal('open');
+    
+    $('#modal7').modal('close');
 });
 
+// $(document).ready(function() {
+//     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+//     // $('.modal').modal();
+// });
 
 
 
-$('.modal').modal({
-    dismissible: true, // Modal can be dismissed by clicking outside of the modal
-    opacity: .5, // Opacity of modal background
-    inDuration: 300, // Transition in duration
-    outDuration: 200, // Transition out duration
-    startingTop: '4%', // Starting top style attribute
-    endingTop: '10%', // Ending top style attribute
-    ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-        alert("Ready");
-        console.log(modal, trigger);
-    },
-    complete: function() { alert('Closed'); } // Callback for Modal close
-});
 
-$('#modal1').modal('open');
+// $('.modal').modal({
+//     dismissible: true, // Modal can be dismissed by clicking outside of the modal
+//     opacity: .5, // Opacity of modal background
+//     inDuration: 300, // Transition in duration
+//     outDuration: 200, // Transition out duration
+//     startingTop: '4%', // Starting top style attribute
+//     endingTop: '10%', // Ending top style attribute
+//     ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+//         alert("Ready");
+//         console.log(modal, trigger);
+//     },
+//     complete: function() { alert('Closed'); } // Callback for Modal close
+// });
 
-$('#modal1').modal('close');
+// $('#modal1').modal('open');
 
-$('#modal2').modal('open');
+// $('#modal1').modal('close');
 
-$('#modal2').modal('close');
+// $('#modal2').modal('open');
 
-$('#modal3').modal('open');
+// $('#modal2').modal('close');
 
-$('#modal3').modal('close');
+// $('#modal3').modal('open');
 
-$('#modal4').modal('open');
+// $('#modal3').modal('close');
 
-$('#modal4').modal('close');
+// $('#modal4').modal('open');
 
-$('#modal5').modal('open');
+// $('#modal4').modal('close');
 
-$('#modal5').modal('close');
+// $('#modal5').modal('open');
 
-$('#modal6').modal('open');
+// $('#modal5').modal('close');
 
-$('#modal6').modal('close');
+// $('#modal6').modal('open');
 
-$('#modal7').modal('open');
+// $('#modal6').modal('close');
 
-$('#modal7').modal('close');
+// $('#modal7').modal('open');
+
+// $('#modal7').modal('close');
 
 
 
