@@ -68,7 +68,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
-    faker (1.8.0)
+    faker (1.8.4)
       i18n (~> 0.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
@@ -77,7 +77,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    hashie (3.5.5)
+    hashie (3.5.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
@@ -103,6 +103,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
+    material_icons (2.2.1)
+      railties (>= 3.2)
     materialize-sass (0.99.0)
       sass (~> 3.3)
     method_source (0.8.2)
@@ -181,13 +183,20 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     ruby-graphviz (1.2.3)
-    sass (3.4.25)
+    sass (3.5.1)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    shareable (1.1.4)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     sidekiq (5.0.4)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -230,6 +239,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
     will_paginate (3.1.6)
+    will_paginate-materialize (0.1.0)
 
 PLATFORMS
   ruby
@@ -248,6 +258,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   listen (~> 3.0.5)
+  material_icons
   materialize-sass
   omniauth-bungie-oauth2
   pg (~> 0.18)
@@ -256,6 +267,7 @@ DEPENDENCIES
   rails-erd
   rest-client
   sass-rails (~> 5.0)
+  shareable
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -265,6 +277,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   will_paginate
+  will_paginate-materialize
 
 BUNDLED WITH
-   1.15.1
+   1.15.2

@@ -1,69 +1,105 @@
-<nav class="navbar">
-  <div class="navbar-brand">
-    <!--<a class="navbar-item" href="http://bulma.io">
-      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-    </a>-->
 
-    <!--<a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
-      <span class="icon" style="color: #333;">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>-->
-
-    <!--<a class="navbar-item is-hidden-desktop" href="https://twitter.com/jgthms" target="_blank">
-      <span class="icon" style="color: #55acee;">
-        <i class="fa fa-twitter"></i>
-      </span>
-    </a>-->
-
-    <div id="navbar-burger" class="navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div id='navbar-menu' class="navbar-menu">
-    <% if user_signed_in? %>
-      <div class="navbar-start">
-
-
-
-        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-         <div class="field has-addons has-addons-right" style="position: absolute; top: 15%; left: 1%;">
-            <p class="control">
-                <span class="select">
-                  </span>
-            </p>
-            <p class="control is-expanded has-icons-left">
-                <span class="icon is-small is-left">
-                    <i class="fa fa-search"></i>
-                  </span>
-                  <%= text_field_tag :search, params[:search], placeholder: "Find a player", class: "input" %>
-                </p>
-              <p class="control">
-                  <%= submit_tag "Search", :name => nil, class: "button is-primary" %>
-                </p> 
-         </div>
-      <% end %>
+<ul id="slide-out" class="side-nav">
+  <% if user_signed_in? %>
+    <li class="center-align round-image">
+      <%= image_tag( current_user["profile_picture"], class:"round-image" ) %>
+    </li>
+    <li class="center-align gamertag-name">
+      <%=link_to current_user["display_name"], profile_path %>
+    </li>
+    <li>
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Guardian Lookup">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
       </div>
-      <% end %> 
-
-    <div class="navbar-end">
-      <% if user_signed_in? %> 
-        <%= link_to "Home",    root_path, class: "navbar-item" %>
-
-        <a href="/profile" class="navbar-item">
-          <figure class="image is-16x16 is-hidden-mobile" style="margin-right: 8px;">
-            <%= image_tag( current_user["profile_picture"] ) %>
-          </figure>
-            <%= current_user["display_name"] %>
-        </a>
-
-        <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
-      <% else %> 
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
+    </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li>
+      <%= link_to "Home",    root_path, class: "navbar-item" %>
+    </li>
+    <li>
+      <%= link_to "Posts",   microposts_path, class: "navbar-item" %>
+    </li>
+    <li>
+      <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
+    </li>
+    <% else %>
+      <li>
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
+      </li>
+    
       <% end %>
+</ul>
+
+<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?rd5re8">
+
+
+
+<div class="fixed-action-btn toolbar">
+    <a class="btn-floating btn-large teal lighten-1">
+      <i class="large material-icons">info</i>
+    </a>
+
+    
+    <ul>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-imdb"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-facebook"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-github"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
+    </ul>
+  </div>
+
+
+  <div class="fixed-action-btn toolbar action-button-fix">
+    <a class="btn-floating btn-large teal lighten-1" href="#modal5">
+      <i class="large material-icons">search</i>
+    </a>
+
+</div>
+
+
+    
+  
+
+  <!-- Modal Structure -->
+  <div id="modal5" class="modal bottom-sheet">
+    <div class="modal-content">
+      <p>Guardian PVP Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+        <p>Guardian Raid Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
   </div>
-</nav>
+
+  
+
+ 
+
+  
+
+
+<a href="" data-activates="slide-out" class="button-collapse"><i class="material-icons slide-fix">menu</i></a>

@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'materialize-sass'
 gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
@@ -47,8 +48,9 @@ gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
 gem 'annotate'
 gem "tabs_on_rails"
-gem 'materialize-sass'
-gem 'jquery-rails'
+gem 'material_icons'
+gem 'shareable'
+gem 'will_paginate-materialize'
 
 
 group :development, :test do

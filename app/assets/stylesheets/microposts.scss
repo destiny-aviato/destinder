@@ -1,3 +1,11 @@
 // Place all the styles related to the Microposts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dropdown-content li > span {
+    font-size: 16px;
+    color: #424242;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}

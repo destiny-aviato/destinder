@@ -1,4 +1,4 @@
-        /*
+                                /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -11,512 +11,195 @@
  * It is generally better to create a new file per style scope.
  *
  */
-        
-        @import 'jquery-ui';
-        @import 'slick';
-        @import 'slick-theme';
-        @import "bulma";
-        // Slick custom CSS
-        .scroller {
-            div {
-                padding-right: 5px;
-                padding-left: 5px;
-            }
-        }
-        
-        .slick-prev::before,
-        .slick-next::before {
-            color: #000;
-        }
-        
-        .slick-next {
-            right: -25px;
-        }
-        
-        .slick-prev {
-            left: -25px;
-        }
-        /* the slides */
-        
-        .slick-slide {
-            margin: 0 10px;
-        }
-        /* the parent */
-        
-        .slick-list {
-            margin: 0 -10px;
-        }
-        /* wrapper */
-        
-        .has-dropdown input[type="checkbox"] {
-            display: none;
-        }
-        
-        .has-dropdown input[type="checkbox"]:checked~.dropdown {
-            display: block;
-        }
-        /* dropdown basic */
-        
-        .dropdown {
-            display: none;
-            position: absolute;
-            z-index: 9999;
-        }
-        /* dropdown optional styling */
-        
-        .dropdown li:hover {
-            background-color: #eee;
-            cursor: pointer;
-        }
-        
-        .image.is-square img,
-        .image.is-1by1 img,
-        .image.is-4by3 img,
-        .image.is-3by2 img,
-        .image.is-16by9 img,
-        .image.is-2by1 img {
-            text-align: center;
-            margin-top: auto;
-            margin-bottom: auto;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-        }
-        
-        body:before {
-            content: "";
-            display: block;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -10;
-            background: url("http://blogs-images.forbes.com/insertcoin/files/2017/03/destiny-2-new.jpg") no-repeat center center;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            opacity: 0.9;
-        }
-        
-        * {
-            margin: 0;
-        }
-        
-        .center {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-        
-        .gamertag {
-            color: #28BDA4;
-            font-size: 38px;
-            font-weight: bold;
-            padding-top: 1%;
-        }
-        
-        .card {
-            /*max-height: 660px;
-min-height: 660px;*/
-            padding-top: 15px;
-            background-color: black;
-            border: 6px solid white;
-        }
-        
-        .card-footer {
-            position: absolute;
-            bottom: 0;
-            width: 98.5%;
-            /* margin-left: -8%; */
-            /* margin-right: auto; */
-            text-align: left;
-        }
-        
-        .card-footer-item {
-            float: left;
-        }
-        /* The Modal (background) */
-        /* Modal Content/Box */
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            /* Could be more or less, depending on screen size */
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-        }
-        
-        .video {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            -moz-border-radius: 12px;
-            -webkit-border-radius: 12px;
-            border-radius: 12px;
-            -moz-box-shadow: 4px 4px 14px #000;
-            -webkit-box-shadow: 4px 4px 14px #000;
-            box-shadow: 4px 4px 14px #000;
-        }
-        
-        .avatar {
-            border-radius: 999px;
-        }
-        
-        .card-info {
-            background-color: grey;
-            padding-top: 50px;
-            opacity: 0.2;
-            height: 30%;
-        }
-        
-        .section {
-            background-color: transparent;
-        }
-        
-        .white-text {
-            color: white !important;
-        }
-        
-        .title {
-            color: white;
-            font-weight: bold;
-        }
-        
-        .card-image-fix {
-            margin-top: -15px;
-        }
-        
-        .content-fix {
-            width: 110%;
-            margin-left: -5%;
-        }
-        
-        .subtitle {
-            color: white;
-            font-weight: bold;
-        }
-        
-        small {
-            color: white;
-            font-weight: bold;
-        }
-        
-        .nav-item a:not(.button).is-tab,
-        a.nav-item:not(.button).is-tab {
-            color: white;
-        }
-        
-        .nav-item a:not(.button).is-tab,
-        a.nav-item:not(.button).is-tab:hover {
-            color: #28BDA4;
-        }
-        
-        .navbar {
-            background: none;
-            margin-bottom: 10px;
-        }
-        
-        .min-card-size {
-            min-width: 445px;
-        }
-        
-        .transparent-background {
-            opacity: 0.9;
-        }
-        
-        .player-stats-list ul {
-            text-decoration: none;
-            list-style: none;
-            color: white;
-            display: inline;
-        }
-        
-        .subclass-image-fix {
-            margin-top: 25%;
-        }
-        
-        .stat-text {
-            margin-top: -7%;
-            margin-left: 8%;
-        }
-        
-        .stat-progress-bar {
-            width: 80%;
-        }
-        
-        .card-extender {
-            min-height: 630px;
-        }
-        
-        .gun-display-name {
-            color: white;
-            font-weight: bold;
-            text-align: center;
-            vertical-align: middle;
-        }
-        
-        .full-width {
-            width: 100%;
-        }
-        
-        .round-image {
-            border-radius: 999px;
-        }
-        
-        .round-image img {
-            border-radius: 999px;
-        }
-        
-        .weekly-kd {
-            margin-left: 4%;
-            font-weight: bold;
-        }
-        
-        .ability-text {
-            color: #fbf1e6;
-        }
-        
-        .tabs.is-toggle ul {
-            border-bottom: none;
-            background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
-            border-radius: 0px 0px 10px 10px;
-        }
-        
-        .tabs a {
-            color: #fbf9f9;
-            font-weight: 700;
-        }
-        
-        li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active {
-            background: #00d1b2;
-        }
-        
-        a.navbar-item {
-            font-weight: 700;
-            color: white;
-        }
-        
-        .card-image2 {
-            display: block;
-            position: relative;
-            width: 45%;
-            height: 45%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .card-image3 {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .character-title-fix {
-            margin-top: 8%;
-        }
-        
-        .stat-numbers {
-            font-size: 35px;
-            color: #eb9735;
-            margin-top: 2%;
-        }
-        
-        .stat-name-fix {
-            margin-top: 8%;
-        }
-        
-        .columns {
-            width: 100%;
-        }
-        
-        .container.games {
-            background: white;
-            opacity: 0.9;
-            border-radius: 6px;
-            padding: 20px;
-        }
-        
-        .container.profile-page {
-            background: black;
-            opacity: 0.9;
-            border-radius: 6px;
-            padding: 20px;
-        }
-        
-        // Materialize stuff
-        //Grid
-        // ==========================================================================
-        $num-cols: 12 !default;
-        $gutter-width: 1.5rem !default;
-        $element-top-margin: $gutter-width/3 !default;
-        $element-bottom-margin: ($gutter-width*2)/3 !default;
-        // 14. Side Navigation
-        // ==========================================================================
-        $sidenav-font-size: 14px !default;
-        $sidenav-font-color: rgba(0,
-        0,
-        0,
-        .87) !default;
-        $sidenav-bg-color: #fff !default;
-        $sidenav-padding: 16px !default;
-        $sidenav-item-height: 48px !default;
-        $sidenav-line-height: $sidenav-item-height !default;
-        .z-depth-1 {
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        }
-        
-        // Collapsible
-        // ==========================================================================
-        $collapsible-height: 3rem !default;
-        $collapsible-line-height: $collapsible-height !default;
-        $collapsible-header-color: #fff !default;
-        $collapsible-border-color: #ddd !default;
-        .collapsible {
-            border-top: 1px solid $collapsible-border-color;
-            border-right: 1px solid $collapsible-border-color;
-            border-left: 1px solid $collapsible-border-color;
-            margin: $element-top-margin 0 $element-bottom-margin 0;
-            @extend .z-depth-1;
-        }
-        
-        .collapsible-header {
-            display: block;
-            cursor: pointer;
-            -webkit-tap-highlight-color: transparent;
-            min-height: $collapsible-height;
-            line-height: $collapsible-line-height;
-            padding: 0 1rem;
-            background-color: $collapsible-header-color;
-            border-bottom: 1px solid $collapsible-border-color;
-            i {
-                width: 2rem;
-                font-size: 1.6rem;
-                line-height: $collapsible-line-height;
-                display: block;
-                float: left;
-                text-align: center;
-                margin-right: 1rem;
-            }
-        }
-        
-        .collapsible-body {
-            display: none;
-            // border-bottom: 1px solid $collapsible-border-color;
-            box-sizing: border-box;
-            padding: 2rem;
-        }
-        
-        // sideNav collapsible styling
-        .side-nav,
-        .side-nav.fixed {
-            .collapsible {
-                border: none;
-                box-shadow: none;
-                li {
-                    padding: 0;
-                }
-            }
-            .collapsible-header {
-                background-color: transparent;
-                border: none;
-                line-height: inherit;
-                height: inherit;
-                padding: 0 $sidenav-padding;
-                &:hover {
-                    background-color: rgba(0, 0, 0, .05);
-                }
-                i {
-                    line-height: inherit;
-                }
-            }
-            .collapsible-body {
-                border: 0;
-                background-color: $collapsible-header-color;
-                li a {
-                    padding: 0 (7.5px + $sidenav-padding) 0 (15px + $sidenav-padding);
-                }
-            }
-        }
-        
-        // Popout Collapsible
-        .collapsible.popout {
-            border: none;
-            box-shadow: none;
-            >li {
-                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-                // transform: scaleX(.92);
-                margin: 0 24px;
-                transition: margin .35s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-            }
-            >li.active {
-                box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-                margin: 16px 0;
-                // transform: scaleX(1);
-            }
-        }
-        
-        .modal {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            display: none;
-        }
-        
-        .modal_close {
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .8);
-            position: fixed;
-            top: 0;
-        }
-        
-        .close {
-            cursor: pointer;
-        }
-        
-        .modal_main {
-            width: 50%;
-            height: 400px;
-            background: #fff;
-            z-index: 4;
-            position: fixed;
-            top: 16%;
-            border-radius: 4px;
-            left: 24%;
-            display: none;
-            -webkit-animation-duration: .5s;
-            -webkit-animation-delay: .0s;
-            -webkit-animation-fill-mode: both;
-            -moz-animation-fill-mode: both;
-            -o-animation-fill-mode: both;
-            -webkit-backface-visibility: visible!important;
-            -webkit-animation-name: fadeInRight;
-        }
-        
-        @-webkit-keyframes fadeInRight {
-            0% {
-                opacity: 0;
-                -webkit-transform: translateX(20px)
-            }
-            100% {
-                opacity: 1;
-                -webkit-transform: translateX(0)
-            }
-        }
+
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import 'materialize';
+@import 'jquery-ui';
+@import "materialize/extras/nouislider";
+.card-image img {
+    height: 250px;
+    width: 250px;
+    background: #b2dfdb;
+}
+
+.card-image2 img {
+    height: 250px;
+    width: 250px;
+    background: #bdbdbd;
+}
 
 
-        .column.gear {
-            padding: 5% 5% 5% 1%;
-        }
+.slide-fix {
+    margin-left: 20px;
+    font-size: 35px;
+    margin-top: 10px;
+    z-index: 1;
+    position: fixed;
+}
+
+.round-image {
+    border-radius: 999px;
+}
+
+.gamertag-name {
+    color: #F44336;
+    font-size: 25px;
+}
+
+.carousel {
+    height: 610px;
+    bottom: 100px;
+}
+
+.transparent {
+    background: transparent;
+    border: none;
+}
+
+.card {
+    width: 125%;
+}
+
+[class^="socicon-"],
+[class*=" socicon-"] {
+    font-size: 30px;
+}
+
+.action-button-fix {
+    margin-bottom: 60px;
+}
+
+.modal-overlay {
+    background-color: white;
+}
+
+.custom-card {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.featured-video-fix {
+    margin-top: 10%;
+}
+
+.parralax-1 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-47-1024x640.png");
+    min-height: 100%;
+}
+
+.parralax-2 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-3-1024x640.jpg");
+    min-height: 100%;
+}
+
+.parralax-3 {
+    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-1-1024x576.jpg");
+    min-height: 100%;
+}
+
+.parralax-3 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -22%;
+    max-width: 155%;
+}
+
+.parralax-2 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -22%;
+    max-width: 155%;
+}
+
+.parralax-1 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 350px;
+    margin-left: -33.33%;
+    margin-right: -22%;
+    max-width: 155%;
+}
+
+body {
+    background-color: white;
+}
+
+.white-space {
+    height: 400px;
+}
+
+.logo-name {
+    color: white;
+    font-size: 71px;
+    position: relative;
+    padding-top: 100px;
+    padding-right: 100px;
+}
+
+.nav-logo {
+    height: 100px;
+    width: 100px;
+}
+
+.header-fix {
+    margin-top: 30%;
+}
+
+.dropdown-content li > span {
+    font-size: 16px;
+    color: #424242;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #2bbbad;
+}
+
+.btn, .btn-large {
+    background-color: #26a69a;
+}
+
+.collapsible.popout {
+    position: relative;
+    padding: 5%;
+}
+
+.preloader-wrapper.big.active {
+    position: relative !important;
+}
+
+.pagination a li.active {
+    color: #fff;
+  }
+
+table.centered thead tr th, table.centered tbody tr td {
+    text-align: center;
+    font-size: 11px;
+}
+
+td, th {
+    padding: 10px 5px;
+}
+
+.centered{
+    margin-left: auto;
+    margin-right: auto;
+}
