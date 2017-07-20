@@ -1,11 +1,15 @@
 
     <% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
     <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-    <% stats =[] %>
-    <% case micropost.game_type 
-    when "Trials of Osiris" 
-        stats = get_stats(micropost.user, "too")[0] 
-            end %>
+    <% if micropost.user_stats.nil? %>
+        <% case micropost.game_type 
+           when "Trials of Osiris" %>
+            <% stats = get_stats(micropost.user, "too")[0] %>
+        <% end %>
+    <% else %>
+        <% stats = micropost.user_stats %>
+    <% end %>
+
     <div class="col s6">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable">
