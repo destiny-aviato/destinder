@@ -10,7 +10,7 @@
         <% stats = micropost.user_stats %>
     <% end %>
 
-    <div class="col s6">
+    <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable">
                 <div class="card-content">
@@ -32,10 +32,10 @@
                 </div>
 
                 <div class="card-tabs">
-                    <ul class="tabs tabs-fixed-width">
-                        <li class="tab"><a href="#<%= micropost.id %>-yearly">Yearly</a></li>
-                        <li class="tab"><a href="#<%= micropost.id %>-weekly">Weekly</a></li>
-                        <li class="tab"><a href="#<%= micropost.id %>-map">This Map</a></li>
+                    <ul class="tabs">
+                        <li class="tab"><a href="#<%= micropost.id %>-yearly">Year</a></li>
+                        <li class="tab"><a href="#<%= micropost.id %>-weekly">Week</a></li>
+                        <li class="tab"><a href="#<%= micropost.id %>-map">Map</a></li>
                     </ul>
                 </div>
                 <div class="card-content grey lighten-4">

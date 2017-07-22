@@ -23,13 +23,21 @@
 //= require materialize/extras/nouislider
 //= require_tree .
 
+// $(window).load(function() {
+//     // Animate loader off screen
+//     $(".se-pre-con").fadeOut("slow");
+// });
 
 $(document).on("turbolinks:click", function(){
-    $('.preloader-wrapper.big.active').show();
+    // $('.preloader-wrapper.big.active').show();
+    $(".se-pre-con").show();
+    $('.turbolinks-progress-bar').show();
+    
   });
   
   $(document).on("turbolinks:load", function(){
-      $('.preloader-wrapper.big.active').hide();
+    //   $('.preloader-wrapper.big.active').hide();
+    $(".se-pre-con").fadeOut("slow");
   });
 
 $(document).on('turbolinks:load', function() {
