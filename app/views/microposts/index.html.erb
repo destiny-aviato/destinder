@@ -11,7 +11,7 @@
         <h3>Recent Posts</h3>
         <ol class="microposts">
             <div class="row posts">
-                <% @microposts.each_with_index do |post,index| %>
+                <% @microposts.each do |post| %>
                     <%= render post %>
                 <% end %>
             </div>
