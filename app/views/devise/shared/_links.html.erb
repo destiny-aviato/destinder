@@ -9,7 +9,7 @@
             <label class="label center"><%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br /></label>
             <hr/>          
             <p class="has-text-centered">            
-              <a href="#">Need help?</a>
+              <%= link_to "Need Help?", faq_path %>
             </p>
           </div>
 
