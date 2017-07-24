@@ -39,7 +39,7 @@ class MicropostsController < ApplicationController
         begin
             case mode
             when "too"  
-                Micropost.get_trials_stats(current_user)
+                Micropost.get_trials_stats(user)
             end
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url

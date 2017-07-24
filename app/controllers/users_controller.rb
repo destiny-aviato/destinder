@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     if params[:search]
+      params[:search] = params[:search][0]
       begin
         @users = User.search(params[:search])
         redirect_to user_path(@users.first.id)
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
       case mode
       when "too"
         begin
-          return @user.get_trials_stats(@user.display_name, @user.api_membership_type)
+          return @user.get_trials_stats(@user)
         rescue NoMethodError
           return nil
         rescue StandardError => e

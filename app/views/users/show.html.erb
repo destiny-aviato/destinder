@@ -7,35 +7,18 @@
   }
 %>
 
-<section class="hero is-dark is-bold">
-  <!-- Hero header: will stick at the top -->
-  <div class="hero-head"> 
-
-  </div>
-
-  <!-- Hero content: will be in the middle -->
+<section class="hero is-medium is-dark is-bold">
   <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-            <%= @user.display_name %>
-          </h1>
-          <h2 class="subtitle profile">
-            Trials of Osiris
-          </h2>
+    <div class="container" style="position:relative; right: 10%;">
+      <h1 class="title hero">
+        <%= @user.display_name %>
+      </h1>
+      <h2 class="subtitle profile">
+        Trials of Osiris
+      </h2>
     </div>
   </div>
-
-  <!-- Hero footer: will stick at the bottom -->
-  <div class="hero-foot">
-    <nav class="tabs is-boxed is-fullwidth">
-      <div class="container">
-        
-      </div>
-    </nav>
-  </div>
-        
 </section>
-
 
 
 <div class="row">
@@ -47,16 +30,16 @@
       <li class="tab col s3"><a href="#profile">Profile</a></li>
     </ul>
   </div>
-  <div id="profile" class="col s12">
+  <div id="profile">
     <%= render 'shared/profile' %>
   </div>
-   <div id="trials" class="col s12">
+   <div id="trials" >
     <%= render 'shared/trials_stats' %>
   </div>
-  <div id="raids" class="col s12">
+  <div id="raids" >
     <%= render 'shared/raids_stats' %>
   </div>
-  <div id="pvp" class="col s12">
+  <div id="pvp" >
       <%= render 'shared/pvp_stats' %>
   </div>
 </div>

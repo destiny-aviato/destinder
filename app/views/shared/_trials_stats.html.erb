@@ -4,13 +4,76 @@
   <div class="container games">
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
-<% else %> 
-<br>    <br>    
-  <div class="container">      
-    <div class=stat-scroller>
-        <pre>
-            <code><%= JSON.pretty_generate(info) %></code>
-        </pre>
-    </div>    
-  </div>
+<% else %>    
+    <div class="row">  
+      <% info.each do |x| %>
+      <div class="col s4">
+        <div class="card" style="width:100%;"><!--Crucbile Card-->
+            <div class="card-image waves-effect waves-block waves-light card-image">
+              <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><h1 class="title stat-name-fix center" style="font-size: 3vmax;"><%=  @character_races[x["Character Type"]]%></h1><span class="stat-numbers"><%= x["Character Stats"]["K/D Ratio"] %></span><i class="material-icons right">more_vert</i></span>
+              <br>
+              <div class="row"><!--footer columns-->
+                <div class="col s4 center-align">
+                <img src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="Image">
+                </div>
+                <div class="col s4 center-align">
+                <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
+                </div>
+                <div class="col s4 center-align">
+                <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
+                </div>
+              </div><!--End of Footer Columns-->
+              
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
+              <p>
+              <table>
+                
+                  <tr>
+                      <th>Year KD</th>
+                      <th><%= x["Character Stats"]["K/D Ratio"] %></th>
+                  
+                  </tr>
+                
+
+                <tbody>
+                  <tr>
+                    <td>Week KD</td>
+                    <td>1.45</td>
+                    
+                  </tr>
+                  <tr>
+                    <td>ELO</td>
+                    <td><%= x["Character Stats"]["ELO"] %></td>
+                    
+                  </tr>
+                  <tr>
+                    <td>Streak</td>
+                    <td>+5</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              </p>
+            </div>
+          </div><!--END OF CARD-->
+      </div>
+
+
+    <%end%> 
+  </div>    
+
+  <div class="container">
+      
+      <pre>
+          <code><%= JSON.pretty_generate(info) %></code>
+      </pre>   
+    </div>
 <% end %>
+
