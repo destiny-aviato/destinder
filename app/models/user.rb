@@ -90,15 +90,6 @@ class User < ApplicationRecord
         user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
         cache_key = "postsUserStats|#{username.id}|#{username.updated_at}"
         Rails.cache.fetch("#{cache_key}/user_trials_stats", expires_in: 2.minutes) do
-            # get_player = RestClient.get(
-            #     "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{user.api_membership_type}/#{user}",
-            #     headers={"x-api-key" => ENV['API_TOKEN']}
-            # )
-
-            # player_data = JSON  .parse(get_player.body)
-
-            # membership_id = player_data["Response"][0]["membershipId"]
-            # # real_name =  player_data["Response"][0]["displayName"]
 
             get_characters = RestClient.get(
                 "http://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}",
