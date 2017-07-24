@@ -98,7 +98,6 @@ $(document).on('turbolinks:load', function() {
 
 
 
-
 //allow close out functionality for notifications 
 $(document).on('click', '.notification > button.delete', function() {
     $(this).parent().addClass('is-hidden');
@@ -166,10 +165,9 @@ $(document).on("turbolinks:load", function(){
         startingTop: '4%', // Starting top style attribute
         endingTop: '10%', // Ending top style attribute
         ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-            alert("Ready");
             console.log(modal, trigger);
         },
-        complete: function() { alert('Closed'); } // Callback for Modal close
+        complete: function() {  } // Callback for Modal close
     });
 
     $('#modal1').modal('open');

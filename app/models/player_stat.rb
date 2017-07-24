@@ -5,9 +5,9 @@ class PlayerStat < ApplicationRecord
 
     def self.collect_data(username, membership_type)
         
-        user.downcase!
+        username.downcase!
         
-        user = username.include? " " ? username.gsub(/\s/,'%20') : username
+        user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
 
 
         response = RestClient.get(
@@ -78,8 +78,8 @@ class PlayerStat < ApplicationRecord
     end
 
     def self.get_trials_stats(username, membership_type)
-        user.strip!
-        user = username.include? " " ? username.gsub(/\s/,'%20') : username
+        username.strip!
+        user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
 
 
         get_player = RestClient.get(
@@ -92,6 +92,8 @@ class PlayerStat < ApplicationRecord
         membership_id = player_data["Response"][0]["membershipId"]
         # real_name =  player_data["Response"][0]["displayName"]
 
+
+        elo = get_elo(membership_id)
         get_characters = RestClient.get(
             "http://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}",
              headers={"x-api-key" => ENV['API_TOKEN']}
@@ -167,7 +169,7 @@ class PlayerStat < ApplicationRecord
                 "Intellect" => stat_intellect,
                 "Discipline" => stat_dicipline,
                 "Strength" => stat_strength,
-                "ELO" => get_elo(membership_id),
+                "ELO" => elo,
                 "Armor" => stat_armor,
                 "Agility" => stat_agility,
                 "Recovery" => stat_recovery
@@ -180,7 +182,4 @@ class PlayerStat < ApplicationRecord
         characters_stats
 
     end
-
-
-    
 end

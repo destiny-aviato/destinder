@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     if params[:search]
+      params[:search] = params[:search][0]
       begin
         @users = User.search(params[:search])
         redirect_to user_path(@users.first.id)
