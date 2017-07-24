@@ -219,7 +219,7 @@ td, th {
 
 span.black-text {
     word-wrap: break-word;
-    font-size: 2.8vmin;
+    font-size: 12px;
 }
 
 section {
@@ -385,4 +385,20 @@ section {
 
 .is-hidden {
     display: none !important;
+}
+
+.card-panel.grey.lighten-5.z-depth-1.hoverable {
+    max-height: 350px;
+}
+
+li.tab.card {
+    background: transparent;
+}
+
+li.tab.post {
+    width: 33.3%;
+}
+
+a.gamertag-name {
+    text-transform: uppercase;
 }

@@ -37,7 +37,7 @@ class Micropost < ApplicationRecord
   def self.get_trials_stats(user)
     cache_key = "postsStats|#{user.id}|#{user.updated_at}"
     Rails.cache.fetch("#{cache_key}/trials_stats", expires_in: 2.minutes) do
-        
+      elo = get_elo(user.api_membership_id)
       get_characters = RestClient.get(
           "http://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}",
           headers={"x-api-key" => ENV['API_TOKEN']}
@@ -73,7 +73,7 @@ class Micropost < ApplicationRecord
           stats = {
               "K/D Ratio" => kd,
               "KA/D Ratio" => kad,
-              "ELO" => get_elo(user.api_membership_id),
+              "ELO" => elo,
               "Win Rate" => win_rate
           }
         rescue StandardError => e 
