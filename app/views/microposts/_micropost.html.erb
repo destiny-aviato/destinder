@@ -15,33 +15,39 @@
             <div class="card-panel grey lighten-5 z-depth-1 hoverable">
                 <div class="card-content">
                     <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
-                    <%= character_races[stats["Character Type"]] %> -
+                    <%= character_races[stats["Character Type"]] %><br>
                     <%= micropost.game_type %>
                     <br><small> <%= time_ago_in_words(micropost.created_at) %> ago</small>
-                </div>
-                <br>    
+                
+                <br><br>    
                 <div class="row valign-wrapper">
                     <div class="col s2">
                         <%= image_tag micropost.user["profile_picture"] , class: "circle responsive-img" %>
                     </div>
                     <div class="col s10">
-                        <span class="black-text">
-                            <%= micropost.content %>
-                        </span>
+                        <% if micropost.content.length > 34 %>
+                            <span class="black-text tooltipped truncate" data-position="top" data-delay="50" data-tooltip="<%= micropost.content %>">
+                                <%= micropost.content %>
+                            </span>
+                        <% else %>
+                            <span class="black-text truncate">
+                                <%= micropost.content %>
+                            </span>
+                        <% end %> 
                     </div>
                 </div>
 
                 <div class="card-tabs">
-                    <ul class="tabs">
-                        <li class="tab"><a href="#<%= micropost.id %>-yearly">Year</a></li>
-                        <li class="tab"><a href="#<%= micropost.id %>-weekly">Week</a></li>
-                        <li class="tab"><a href="#<%= micropost.id %>-map">Map</a></li>
+                    <ul class="tabs post">
+                        <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Year</a></li>
+                        <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 9px;">Week</a></li>
+                        <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 9px;">Map</a></li>
                     </ul>
                 </div>
                 <div class="card-content grey lighten-4">
                     <div id="<%= micropost.id %>-yearly">
 
-                            <table class="responsive-table centered highlight">
+                            <table class="table centered highlight">
                                 <thead>
                                     <tr>
                                         <th>K/D</th>
@@ -67,7 +73,7 @@
                     </div>
 
                     <div id="<%= micropost.id %>-weekly">
-                            <table class="responsive-table centered highlight">
+                            <table class="table centered highlight">
                                 <thead>
                                     <tr>
                                         <th>K/D</th>
@@ -90,7 +96,7 @@
                             </table>
                     </div>
                     <div id="<%= micropost.id %>-map">
-                            <table class="responsive-table centered highlight">
+                            <table class="table centered highlight">
                                 <thead>
                                     <tr>
                                         <th>K/D</th>
@@ -137,4 +143,5 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>

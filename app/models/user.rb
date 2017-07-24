@@ -90,7 +90,8 @@ class User < ApplicationRecord
         user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
         cache_key = "postsUserStats|#{username.id}|#{username.updated_at}"
         Rails.cache.fetch("#{cache_key}/user_trials_stats", expires_in: 2.minutes) do
-
+            elo = get_elo(username.api_membership_id)
+            
             get_characters = RestClient.get(
                 "http://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}",
                 headers={"x-api-key" => ENV['API_TOKEN']}
@@ -166,7 +167,7 @@ class User < ApplicationRecord
                     "Intellect" => stat_intellect,
                     "Discipline" => stat_dicipline,
                     "Strength" => stat_strength,
-                    "ELO" => get_elo(username.api_membership_id),
+                    "ELO" => elo,
                     "Armor" => stat_armor,
                     "Agility" => stat_agility,
                     "Recovery" => stat_recovery

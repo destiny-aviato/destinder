@@ -5,7 +5,7 @@
       <%= image_tag( current_user["profile_picture"], class:"round-image" ) %>
     </li>
     <li class="center-align gamertag-name">
-      <%=link_to current_user["display_name"], profile_path %>
+      <%=link_to current_user["display_name"], profile_path, class: "gamertag-name" %>
     </li>
     <li>
       <div class="nav-wrapper">
