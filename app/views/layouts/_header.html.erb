@@ -9,13 +9,13 @@
     </li>
     <li>
       <div class="nav-wrapper">
-        <form>
+        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
           <div class="input-field">
-            <input id="search" type="search" required placeholder="Guardian Lookup">
+            <%= search_field :search, params[:search], placeholder: "Guardian Lookup", class: "input" %>
             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
-        </form>
+        <% end %>
       </div>
     </li>
     <li>
@@ -49,18 +49,19 @@
 
     
     <ul>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-imdb"></i></a></li>
+      <li class="waves-effect waves-light"><a href="#faq-modal"><i class="fa fa-question-circle fa-3x"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-facebook"></i></a></li>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-github"></i></a></li>
+      <li class="waves-effect waves-light"><a href="https://github.com/destiny-aviato/destinder"><i class="socicon-github"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
     </ul>
   </div>
 
-
-  <div class="fixed-action-btn toolbar action-button-fix">
-    <a class="btn-floating btn-large teal lighten-1" href="#modal5">
-      <i class="large material-icons">search</i>
-    </a>
+  <% if user_signed_in? %>
+    <div class="fixed-action-btn toolbar action-button-fix">
+      <a class="btn-floating btn-large teal lighten-1" href="#modal5">
+        <i class="large material-icons">search</i>
+      </a>
+  <% end %>
 
 </div>
 
@@ -71,7 +72,7 @@
   <!-- Modal Structure -->
   <div id="modal5" class="modal bottom-sheet">
     <div class="modal-content">
-      <p>Guardian PVP Lookup</p>
+      <p>Trials Team Lookup</p>
       <form>
           <div class="input-field">
             <input id="search" type="search" required placeholder="Enter Gamertag">
@@ -80,7 +81,7 @@
           </div>
         </form>
 
-        <p>Guardian Raid Lookup</p>
+        <p>PVP Team Lookup</p>
       <form>
           <div class="input-field">
             <input id="search" type="search" required placeholder="Enter Gamertag">
@@ -90,8 +91,12 @@
         </form>
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+
+  <!-- FAQ Modal -->
+  <div id="faq-modal" class="modal">
+    <div class="modal-content">
+      <%= render 'home/faq'%>
     </div>
   </div>
 
