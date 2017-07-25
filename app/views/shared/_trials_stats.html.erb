@@ -11,184 +11,326 @@
 <div class="scroller">
 <% info.each_with_index do |x, index| %>
   <div>
-      <div class="card"><!--Crucbile Card-->
-      <div class="card-image waves-effect waves-block waves-light card-image">
-        <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
-      </div>
-      <div class="card-content">
-        <div class="row valign-wrapper">
+      
+<div><!--OPEN FIRST CHARACTER--> 
 
-          <div class="col s2">
-            <img class="round-image" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="Image">
-          </div><!--End of COL-->
+    
 
-          <div class="col s8 valign-wrapper center-align">
-           <span class="card-title activator grey-text text-darken-4 valign-wrapper center-align"><h1 class="title stat-name-fix center-align" style="font-size: 28px;"><%= username.upcase %></h1></span>
-          </div><!--End of COL-->
+          <div class="row"><!--open first row-->
+                
+              <div class="col s2 valign-wrapper"><!--open first column-->
+                  <img class="subclass-icon" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="">
+              
+              </div><!--Close first column-->
 
-          <div class="col s2">
-           <span class="card-title activator grey-text text-darken-4 valign-wrapper"><i class="material-icons right">more_vert</i></span>
-          </div><!--End of COL-->
-        
-        </div><!--End of Row-->
-        
-        <div class="row"><!--footer columns-->
-          <div class="col s4">
-            <span class="stat-numbers valign-wrapper center-align"><%= x["Character Stats"]["K/D Ratio"] %></span>
-          </div><!--End of COL-->
-          
-          <div class="col s4 center-align">
-            <a class="btn tooltipped btn-floating pulse grey darken-2 modal-trigger" data-target=<%= "gear-modal-#{index}" %> data-position="bottom" data-tooltip="Show Gear"><i class="material-icons">zoom_out_map</i></a>
-
-          </div>
-
-          <div class="col s4 center-align">
-            <a href="" class="btn tooltipped btn-floating pulse grey darken-2" data-position="bottom" data-tooltip="Send A Message"><i class="material-icons">chat_bubble</i></a>
-          </div>
-        </div><!--End of Footer Columns-->
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"><%= username.upcase %><i class="material-icons right">close</i></span>
-        <p>
-          <table class="bordered striped centered ">
-              <tr class="center-align">
-                  <th class="center-align stat-table-headers"></th>
-                  <th class="center-align stat-table-headers">Week</th>
-                  <th class="center-align stat-table-headers">Year</th>
-                  <th class="center-align stat-table-headers">Map</th>
-              </tr>
-              <tbody>
-                <tr>
-                  <td class="stat-table-headers">KD</td>
-                  <td>1.6</td>
-                  <td><%= x["Character Stats"]["K/D Ratio"] %></td>
-                  <td>1.6</td>
-                </tr>
-                <tr>
-                  <td class="stat-table-headers">ELO</td>
-                  <td>+45</td>
-                  <td><%= x["Character Stats"]["ELO"] %></td>
-                  <td>N/A</td>
-                </tr>
-                <tr>
-                  <td class="stat-table-headers">Streak</td>
-                  <td>+5</td>
-                  <td>+15</td>
-                  <td>+3</td>
-                </tr>
-              </tbody>  
-          </table>
-        </p>
-
-        <div class="row">
-          <div class="col s12 m6"> 
-            <table class="bordered highlight ">
-              <tr>
-                <td>Intellect</td>
-                <td><%= x["Character Stats"]["Intellect"] %></td>
-              </tr>
-              <tr>
-                <td>Discipline</td>
-                <td><%= x["Character Stats"]["Discipline"] %></td>
-              </tr>
-              <tr>
-                <td>Strength</td>
-                <td><%= x["Character Stats"]["Strength"] %></td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="col s12 m6"> 
-            <table class="bordered highlight ">
-              <tr>
-                <td>Armor</td>
-                <td><%= x["Character Stats"]["Armor"] %></td>
-              </tr>
-
-              <tr>
-                <td>Agility</td>
-                <td><%= x["Character Stats"]["Agility"] %></td>
-              </tr>
-
-              <tr>
-                <td>Recovery</td>
-                <td><%= x["Character Stats"]["Recovery"] %></td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-                  <!-- Modal Structure -->
-                  <div id=<%= "gear-modal-#{index}2" %> class="modal bottom-sheet">
-                    <div class="modal-content left">
+              <div class="col s8 valign-wrapper center-align"><!--open Second column-->
                       <div class="row">
-                        <div class="col s12 m6">
-                          <h4>Guardian Weapons</h4>
-                          <div class="row">
-                            <div class="col s6 m3">
-                              <figure class="image is-64x64 round-image">
-                                <img class="gear-icons" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %>>
-                                <p><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></p>
-                              </figure>
-                            </div>
-                            <div class="col s6 m3">
-                              <figure class="image is-64x64 round-image">
-                                <img class="gear-icons" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %>>
-                                <p><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></p>
-                              </figure>
-                            </div>
-                            <div class="col s6 m3">
-                                <figure class="image is-64x64 round-image">
-                                  <img class="gear-icons" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %>>
-                                  <p><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></p>
-                                </figure>
-                            </div>
-                            <div class="col s6 m3">
-                                <figure class="image is-64x64 round-image">
-                                  <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
-                                  <p><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
-                                </figure>
-                            </div><!--END OF COLUMN-->
-                          </div><!--END OF ROW-->
-                        </div><!--END OF COL-->
-      
-                        <div class="col s12 m6">
-                          <h4>Guardian Gear</h4>
-      
-                          <div class="row">
-                            <div class="col s6 m3">
-                              <figure class="image is-64x64 round-image">
-                                <img class="gear-icons" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %>>
-                                <p class="center-align"><%= x["Character Items"]["Helmet"]["Item Name"] %></p>
-                              </figure>
-                            </div>
-                            <div class="col s6 m3">
-                              <figure class="image is-64x64 round-image">
-                                <img class="gear-icons" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %>>
-                                <p class="center-align"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></p>
-                              </figure>
-                            </div>
-                            <div class="col s6 m3">
-                                <figure class="image is-64x64 round-image">
-                                  <img class="gear-icons" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %>>
-                                  <p class="center-align"><%= x["Character Items"]["Leg Armor"]["Item Name"] %></p>
-                                </figure>
-                            </div>
-                            <div class="col s6 m3">
-                                <figure class="image is-64x64 round-image">
-                                  <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
-                                  <p class="center-align"><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
-                                </figure>
-                            </div>
-                          </div>
-                        </div>
+                          <div class="col s12 gamertag-title center-align valign-wrapper">ii WALZ ii</div>
+                          <div class="col s12 class-title center-align valign-wrapper"><%=  @character_races[x["Character Type"]]%></div>
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-                    </div>
-                  </div>
-    </div><!--END OF CARD-->
+             <div class="col s2 valign-wrapper"><!--open Second column-->
+                      
+                          <div class="kd-title"><%= x["Character Stats"]["K/D Ratio"] %></div>
+                      </div>
+                
+        
+              
+              </div><!--Close Second column-->
+
+        
+
+          
+          </div><!--Close first row-->
+
+          <div class="row"><!--open tabs row-->
+    <div class="col s12"><!--open tabs column-->
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active" href=<%= "#stat-tab-#{index}" %> >Stats</a></li>
+        <li class="tab col s6"><a href=<%= "#gear-tab-#{index}" %>>Gear</a></li> 
+      </ul>
+    </div><!--close tabs column-->
+
+
+
+
+
+    <div id=<%= "stat-tab-#{index}" %> class="col s12"><!--open tab 1 content-->
+
+          <div class="row"><!--open First row-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Strength"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Strength</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Discipline"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Discipline</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Intellect"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Intellect</span>
+                </div><!--Column Close-->
+                  
+          </div><!--Close First row-->
+
+          <div class="row"><!--open Second row-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Recovery</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Agility"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Agility</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Armor"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Armor</span>
+                </div><!--Column Close-->
+                  
+          </div><!--Close Second row-->
+
+          <div class="row"><!--Open Third Row-->
+                <div class="col s12">
+
+                    <div class="card"><!--OPEN KD CARD-->
+                        <div class="card-content">
+                        <p class="center-align card-title">KD STATS</p>
+                        </div><!--CLOSE CARD CONTENT-->
+                        <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a href=<%= "#week-tab-#{index}" %>>WEEK</a></li>
+                            <li class="tab"><a class="active" href=<%= "#year-tab-#{index}" %>>YEAR</a></li>
+                            <li class="tab"><a href=<%= "#map-tab-#{index}" %>>MAP</a></li>
+                        </ul>
+                        </div><!--CLOSE CARD TABS-->
+                        <div class="card-content grey lighten-4">
+                        <div id=<%= "week-tab-#{index}" %>>
+                            <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </div><!--CLOSE WEEK TAB CONTENT-->
+                        <div id=<%= "year-tab-#{index}" %>>
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td><%= x["Character Stats"]["K/D Ratio"] %></td>
+                                        <td><%= x["Character Stats"]["KA/D Ratio"] %></td>
+                                        <td>56%</td>
+                                        <td>
+                                            <%= x["Character Stats"]["ELO"] %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        
+                        </div><!--CLOSE YEAR TAB CONTENT-->
+                        <div id=<%= "map-tab-#{index}" %>>
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td><%= x["Character Stats"]["K/D Ratio"] %></td>
+                                        <td><%= x["Character Stats"]["KA/D Ratio"] %></td>
+                                        <td>56%</td>
+                                        <td><%= x["Character Stats"]["ELO"] %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div><!--CLOSE MAP TAB CONTENT-->
+                        </div><!--CLOSE CARD CONTENT-->
+                    </div><!--CLOSE KD CARD-->
+                    
+                </div><!--close column-->
+                
+          </div><!--Close Third Row-->
+
+    </div><!--Close tab 1 content-->
+
+
+    <div id=<%= "gear-tab-#{index}" %> class="col s12"><!--open tab 2 content-->
+
+        <div class="row"><!--Open first row-->
+            <div class="col s12 center-align card-title">Gun Game</div><!--Close Column-->
+        </div><!--Close First Row-->
+        <div class="row"><!--Open Second row-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Primary Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+        </div><!--Close Second Row-->
+         <div class="row"><!--Open Third row-->
+            <div class="col s12 center-align card-title">Gear</div><!--Close Column-->
+        </div><!--Close Third Row-->
+        <div class="row"><!--Open Fourth row-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Helmet"]["Item Name"] %> src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Gauntlets"]["Item Name"] %> src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Chest Armor"]["Item Name"] %> src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Leg Armor"]["Item Name"] %> src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
+        </div><!--Close Fourth Row-->
+
+        
+        <div class="row"><!--Open Fifth Row-->
+                <div class="col s12">
+
+                    <div class="card"><!--OPEN KD CARD-->
+                        <div class="card-content">
+                        <p class="center-align card-title">Gun STATS</p>
+                        </div><!--CLOSE CARD CONTENT-->
+                        <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a class="active" href=<%= "#gun-week-tab-#{index}" %>>WEEK</a></li>
+                            <li class="tab"><a href=<%= "#gun-year-tab-#{index}" %>>YEAR</a></li>
+                            <li class="tab"><a href=<%= "#gun-map-tab-#{index}" %>>MAP</a></li>
+                        </ul>
+                        </div><!--CLOSE CARD TABS-->
+                        <div class="card-content grey lighten-4">
+                        <div id=<%= "gun-week-tab-#{index}" %>>
+                            <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>Primary</th>
+                                        <th>Secondary</th>
+                                        <th>Heavy</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Super Kills + Grenade Kills" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            Ability  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </div><!--CLOSE WEEK TAB CONTENT-->
+                        <div id=<%= "gun-year-tab-#{index}" %>>
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>Primary</th>
+                                        <th>Secondary</th>
+                                        <th>Heavy</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Super Kills + Grenade Kills" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            Ability  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        
+                        </div><!--CLOSE YEAR TAB CONTENT-->
+                        <div id=<%= "gun-map-tab-#{index}" %>>
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>Primary</th>
+                                        <th>Secondary</th>
+                                        <th>Heavy</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Super Kills + Grenade Kills" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            Ability  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div><!--CLOSE MAP TAB CONTENT-->
+                        </div><!--CLOSE CARD CONTENT-->
+                    </div><!--CLOSE KD CARD-->
+                    
+                </div><!--close column-->
+                
+          </div><!--Close Fifth Row-->
+    
+    
+    </div><!--Close tab 2 content-->
+    
+  </div><!--Close tabs row-->
+          
+          
+
+
+</div><!--CLOSE FIRST CHARACTER--> 
   </div>
 <% end %>
 </div>
@@ -269,108 +411,6 @@
       </div>
       </div>
     <%end%> 
-<<<<<<< HEAD
-  </div> 
-
-  <div class="parralax-4 hide-on-small-only">
-
-
-
-</div>    
-
-  <div class="container">
-  <h2 class="center-align">Last Match</h2>
-<table class="bordered">
-<tr>
-<th><h4>ALPHA</h4></th>
-<th></th>
-<th>Kills</th>
-<th>Deaths</th>
-<th>Ratio</th>
-<tr/>
-<tr>
-<td style="background-color: blue;"></td>
-<td style="background-color: blue;"></td>
-<td style="background-color: blue;"></td>
-<td style="background-color: blue;"></td>
-<td style="background-color: blue;"></td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">4</td>
-<td style="width: 15%;">3</td>
-<td style="width: 15%;">1.33</td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">8</td>
-<td style="width: 15%;">2</td>
-<td style="width: 15%;">4.0</td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">6</td>
-<td style="width: 15%;">7</td>
-<td style="width: 15%;">0.88</td>
-</tr>
-</table>
-
-<br/>
-
-<table class="bordered">
-<tr>
-<th><h4>BRAVO</h4></th>
-<th></th>
-<th>Kills</th>
-<th>Deaths</th>
-<th>Ratio</th>
-<tr/>
-<tr>
-<td style="background-color: red;"></td>
-<td style="background-color: red;"></td>
-<td style="background-color: red;"></td>
-<td style="background-color: red;"></td>
-<td style="background-color: red;"></td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">4</td>
-<td style="width: 15%;">3</td>
-<td style="width: 15%;">1.33</td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">8</td>
-<td style="width: 15%;">2</td>
-<td style="width: 15%;">4.0</td>
-</tr>
-<tr>
-<td style="width:15%;"></td>
-<td style="width: 40%;"><%= @user.display_name %></td>
-<td style="width: 15%;">6</td>
-<td style="width: 15%;">7</td>
-<td style="width: 15%;">0.88</td>
-</tr>
-</table>
-
-
-</div> 
-</div>
-
-
-
-
-
- <div class="parralax-5 hide-on-small-only">
-
-</div>
-
-=======
     </div> 
 
     <div class="parralax-4 hide-on-small-only">
@@ -415,7 +455,6 @@
           <td style="width: 15%;">0.88</td>
         </tr>
       </table>
->>>>>>> f5577d4af4b7bbc0783e5bdcdc00b23734ae7cf2
 
       <br/>
 
@@ -460,7 +499,9 @@
   </div>
   
 
-  <div class="parralax-5 hide-on-small-only">
+  <div class="parralax-5 hide-on-small-only"></div>
+
+  <div class="container">
     <pre>
         <code><%= JSON.pretty_generate(info) %></code>
     </pre>   
