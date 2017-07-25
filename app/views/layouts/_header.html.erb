@@ -1,8 +1,8 @@
 
 <ul id="slide-out" class="side-nav">
   <% if user_signed_in? %>
-    <li class="center-align round-image">
-      <%= image_tag( current_user["profile_picture"], class:"round-image" ) %>
+    <li class="center-align round-image" style="width: 100%;">
+    <%= image_tag( current_user["profile_picture"], class:"round-image2" ) %>
     </li>
     <li class="center-align gamertag-name">
       <%=link_to current_user["display_name"], profile_path, class: "gamertag-name" %>

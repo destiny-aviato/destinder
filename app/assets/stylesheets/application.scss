@@ -1,4 +1,4 @@
-                                /*
+                            /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -11,13 +11,15 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
+                            
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 @import 'jquery-ui';
 @import "materialize/extras/nouislider";
+@import 'slick';
+@import 'slick-theme';
 
 .card-image img {
     height: 250px;
@@ -30,7 +32,6 @@ $secondary-color: color("yellow", "base") !default;
     width: 250px;
     background: #bdbdbd;
 }
-
 
 .slide-fix {
     margin-left: 20px;
@@ -60,7 +61,7 @@ $secondary-color: color("yellow", "base") !default;
 }
 
 .card {
-    width: 125%;
+    width: 100%;
 }
 
 [class^="socicon-"],
@@ -101,6 +102,16 @@ $secondary-color: color("yellow", "base") !default;
     min-height: 100%;
 }
 
+.parralax-4 {
+    background-image: url("https://images4.alphacoders.com/666/thumb-1920-666407.png");
+    min-height: 100%;
+}
+
+.parralax-5 {
+    background-image: url("https://images3.alphacoders.com/716/thumb-1920-716777.jpg");
+    min-height: 100%;
+}
+
 .parralax-3 {
     position: relative;
     background-attachment: fixed;
@@ -137,6 +148,30 @@ $secondary-color: color("yellow", "base") !default;
     max-width: 155%;
 }
 
+.parralax-4 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -22%;
+    max-width: 155%;
+}
+
+.parralax-5 {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-left: -33.33%;
+    margin-right: -22%;
+    max-width: 155%;
+}
+
 body {
     background-color: white;
 }
@@ -162,7 +197,7 @@ body {
     margin-top: 30%;
 }
 
-.dropdown-content li > span {
+.dropdown-content li>span {
     font-size: 16px;
     color: #424242;
     display: block;
@@ -170,11 +205,13 @@ body {
     padding: 14px 16px;
 }
 
-.btn:hover, .btn-large:hover {
+.btn:hover,
+.btn-large:hover {
     background-color: #2bbbad;
 }
 
-.btn, .btn-large {
+.btn,
+.btn-large {
     background-color: #26a69a;
 }
 
@@ -187,28 +224,39 @@ body {
     position: relative !important;
 }
 
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
 .se-pre-con {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: image-url("Preloader_3.gif") center no-repeat #fff;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: image-url("Preloader_3.gif") center no-repeat #fff;
 }
 
 .pagination a li.active {
     color: #fff;
-  }
+}
 
-table.centered thead tr th, table.centered tbody tr td {
+table.centered thead tr th,
+table.centered tbody tr td {
     text-align: center;
     font-size: 11px;
 }
 
-td, th {
+td,
+th {
     padding: 10px 5px;
 }
 
@@ -243,6 +291,10 @@ section {
     padding-bottom: 2rem;
 }
 
+ul.tabs {
+    z-index: 1;
+}
+
 .tabs {
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
     margin-bottom: 4%;
@@ -256,13 +308,12 @@ section {
     color: #f5f5f5;
 }
 
-.title.hero{
+.title.hero {
     color: #f5f5f5;
     font-size: 2rem;
     font-weight: 300;
     line-height: 1.125;
 }
-
 
 .subtitle {
     font-size: 1.25rem;
@@ -270,7 +321,8 @@ section {
     line-height: 1.25;
 }
 
-.title, .subtitle {
+.title,
+.subtitle {
     word-break: break-word;
 }
 
@@ -278,7 +330,7 @@ section {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.title:not(.is-spaced) + .subtitle {
+.title:not(.is-spaced)+.subtitle {
     margin-top: -1.5rem;
 }
 
@@ -359,7 +411,8 @@ section {
     width: 2px;
 }
 
-.delete:before, .delete:after {
+.delete:before,
+.delete:after {
     background-color: white;
     content: "";
     display: block;
@@ -372,12 +425,13 @@ section {
     transform-origin: center center;
 }
 
-
-*:before, *:after {
+*:before,
+*:after {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
 }
-.notification > .delete {
+
+.notification>.delete {
     position: absolute;
     right: 0.5em;
     top: 0.5em;
@@ -401,4 +455,79 @@ li.tab.post {
 
 a.gamertag-name {
     text-transform: uppercase;
+}
+
+.round-image {
+    border-radius: 999px;
+    width: 140%;
+}
+
+.stat-numbers {
+    color: #2bbbad;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.stat-table-headers {
+    font-size: 20px;
+    color: #2bbbad;
+    font-weight: bold;
+}
+
+.gear-icons {
+    border-radius: 999px;
+    width: 60px;
+}
+
+.title {
+    font-size: 30px;
+    color: #616161;
+    font-weight: bold;
+}
+
+.round-image2 {
+    border-radius: 999px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal .modal-content {
+    padding: 5px;
+    width: 85%;
+}
+
+
+// Slick custom CSS
+.scroller {
+    div {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
+
+.slick-prev::before,
+.slick-next::before {
+    color: #000;
+}
+
+.slick-next {
+    right: -25px;
+}
+
+.slick-prev {
+    left: -25px;
+}
+/* the slides */
+
+.slick-slide {
+    margin: 0 10px;
+}
+/* the parent */
+
+.slick-list {
+    margin: 0 -10px;
+}
+
+.container {
+    width: 80%;
 }

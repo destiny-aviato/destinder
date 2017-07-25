@@ -1,79 +1,366 @@
 <% info = get_stats("too") %>
 
+<% username = @user.nil? ? @player_stat.display_name : @user.display_name %>
+
 <% if info.nil? %> 
   <div class="container games">
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
-<% else %>    
-    <div class="row">  
-      <% info.each do |x| %>
-      <div class="col s4">
-        <div class="card" style="width:100%;"><!--Crucbile Card-->
-            <div class="card-image waves-effect waves-block waves-light card-image">
-              <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><h1 class="title stat-name-fix center" style="font-size: 3vmax;"><%=  @character_races[x["Character Type"]]%></h1><span class="stat-numbers"><%= x["Character Stats"]["K/D Ratio"] %></span><i class="material-icons right">more_vert</i></span>
-              <br>
-              <div class="row"><!--footer columns-->
-                <div class="col s4 center-align">
-                <img src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="Image">
-                </div>
-                <div class="col s4 center-align">
-                <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-                </div>
-                <div class="col s4 center-align">
-                <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-                </div>
-              </div><!--End of Footer Columns-->
-              
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-              <p>
-              <table>
-                
-                  <tr>
-                      <th>Year KD</th>
-                      <th><%= x["Character Stats"]["K/D Ratio"] %></th>
-                  
-                  </tr>
-                
-
-                <tbody>
-                  <tr>
-                    <td>Week KD</td>
-                    <td>1.45</td>
-                    
-                  </tr>
-                  <tr>
-                    <td>ELO</td>
-                    <td><%= x["Character Stats"]["ELO"] %></td>
-                    
-                  </tr>
-                  <tr>
-                    <td>Streak</td>
-                    <td>+5</td>
-                    
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              </p>
-            </div>
-          </div><!--END OF CARD-->
+<% else %>  
+ 
+<div class="scroller">
+<% info.each_with_index do |x, index| %>
+  <div>
+      <div class="card"><!--Crucbile Card-->
+      <div class="card-image waves-effect waves-block waves-light card-image">
+        <img src=<%= @character_images[x["Character Type"]] %> alt="Image">
       </div>
+      <div class="card-content">
+        <div class="row valign-wrapper">
 
+          <div class="col s2">
+            <img class="round-image" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="Image">
+          </div><!--End of COL-->
 
-    <%end%> 
-  </div>    
+          <div class="col s8 valign-wrapper center-align">
+           <span class="card-title activator grey-text text-darken-4 valign-wrapper center-align"><h1 class="title stat-name-fix center-align" style="font-size: 28px;"><%= username.upcase %></h1></span>
+          </div><!--End of COL-->
 
-  <div class="container">
+          <div class="col s2">
+           <span class="card-title activator grey-text text-darken-4 valign-wrapper"><i class="material-icons right">more_vert</i></span>
+          </div><!--End of COL-->
+        
+        </div><!--End of Row-->
+        
+        <div class="row"><!--footer columns-->
+          <div class="col s4">
+            <span class="stat-numbers valign-wrapper center-align"><%= x["Character Stats"]["K/D Ratio"] %></span>
+          </div><!--End of COL-->
+          
+          <div class="col s4 center-align">
+            <a class="btn tooltipped btn-floating pulse grey darken-2 modal-trigger" data-target=<%= "gear-modal-#{index}" %> data-position="bottom" data-tooltip="Show Gear"><i class="material-icons">zoom_out_map</i></a>
+
+          </div>
+
+          <div class="col s4 center-align">
+            <a href="" class="btn tooltipped btn-floating pulse grey darken-2" data-position="bottom" data-tooltip="Send A Message"><i class="material-icons">chat_bubble</i></a>
+          </div>
+        </div><!--End of Footer Columns-->
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= username.upcase %><i class="material-icons right">close</i></span>
+        <p>
+          <table class="bordered striped centered ">
+              <tr class="center-align">
+                  <th class="center-align stat-table-headers"></th>
+                  <th class="center-align stat-table-headers">Week</th>
+                  <th class="center-align stat-table-headers">Year</th>
+                  <th class="center-align stat-table-headers">Map</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td class="stat-table-headers">KD</td>
+                  <td>1.6</td>
+                  <td><%= x["Character Stats"]["K/D Ratio"] %></td>
+                  <td>1.6</td>
+                </tr>
+                <tr>
+                  <td class="stat-table-headers">ELO</td>
+                  <td>+45</td>
+                  <td><%= x["Character Stats"]["ELO"] %></td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td class="stat-table-headers">Streak</td>
+                  <td>+5</td>
+                  <td>+15</td>
+                  <td>+3</td>
+                </tr>
+              </tbody>  
+          </table>
+        </p>
+
+        <div class="row">
+          <div class="col s12 m6"> 
+            <table class="bordered highlight ">
+              <tr>
+                <td>Intellect</td>
+                <td><%= x["Character Stats"]["Intellect"] %></td>
+              </tr>
+              <tr>
+                <td>Discipline</td>
+                <td><%= x["Character Stats"]["Discipline"] %></td>
+              </tr>
+              <tr>
+                <td>Strength</td>
+                <td><%= x["Character Stats"]["Strength"] %></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col s12 m6"> 
+            <table class="bordered highlight ">
+              <tr>
+                <td>Armor</td>
+                <td><%= x["Character Stats"]["Armor"] %></td>
+              </tr>
+
+              <tr>
+                <td>Agility</td>
+                <td><%= x["Character Stats"]["Agility"] %></td>
+              </tr>
+
+              <tr>
+                <td>Recovery</td>
+                <td><%= x["Character Stats"]["Recovery"] %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+                  <!-- Modal Structure -->
+                  <div id=<%= "gear-modal-#{index}2" %> class="modal bottom-sheet">
+                    <div class="modal-content left">
+                      <div class="row">
+                        <div class="col s12 m6">
+                          <h4>Guardian Weapons</h4>
+                          <div class="row">
+                            <div class="col s6 m3">
+                              <figure class="image is-64x64 round-image">
+                                <img class="gear-icons" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %>>
+                                <p><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></p>
+                              </figure>
+                            </div>
+                            <div class="col s6 m3">
+                              <figure class="image is-64x64 round-image">
+                                <img class="gear-icons" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %>>
+                                <p><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></p>
+                              </figure>
+                            </div>
+                            <div class="col s6 m3">
+                                <figure class="image is-64x64 round-image">
+                                  <img class="gear-icons" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %>>
+                                  <p><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></p>
+                                </figure>
+                            </div>
+                            <div class="col s6 m3">
+                                <figure class="image is-64x64 round-image">
+                                  <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
+                                  <p><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
+                                </figure>
+                            </div><!--END OF COLUMN-->
+                          </div><!--END OF ROW-->
+                        </div><!--END OF COL-->
       
-      <pre>
-          <code><%= JSON.pretty_generate(info) %></code>
-      </pre>   
-    </div>
+                        <div class="col s12 m6">
+                          <h4>Guardian Gear</h4>
+      
+                          <div class="row">
+                            <div class="col s6 m3">
+                              <figure class="image is-64x64 round-image">
+                                <img class="gear-icons" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %>>
+                                <p class="center-align"><%= x["Character Items"]["Helmet"]["Item Name"] %></p>
+                              </figure>
+                            </div>
+                            <div class="col s6 m3">
+                              <figure class="image is-64x64 round-image">
+                                <img class="gear-icons" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %>>
+                                <p class="center-align"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></p>
+                              </figure>
+                            </div>
+                            <div class="col s6 m3">
+                                <figure class="image is-64x64 round-image">
+                                  <img class="gear-icons" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %>>
+                                  <p class="center-align"><%= x["Character Items"]["Leg Armor"]["Item Name"] %></p>
+                                </figure>
+                            </div>
+                            <div class="col s6 m3">
+                                <figure class="image is-64x64 round-image">
+                                  <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
+                                  <p class="center-align"><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
+                                </figure>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                    </div>
+                  </div>
+    </div><!--END OF CARD-->
+  </div>
+<% end %>
+</div>
+
+
+      <% info.each_with_index do |x, index| %>
+      
+
+      <div class="col s4 center-align">
+        <div id=<%= "gear-modal-#{index}" %> class="modal bottom-sheet">
+        <div class="modal-content left">
+          <div class="row">
+            <div class="col s12 m6">  
+              <h4>Guardian Weapons</h4>
+              <div class="row">
+                <div class="col s6 m3">
+                  <figure class="image is-64x64 round-image">
+                    <img class="gear-icons" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %>>
+                    <p><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></p>
+                  </figure>
+                </div>
+                <div class="col s6 m3">
+                  <figure class="image is-64x64 round-image">
+                    <img class="gear-icons" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %>>
+                    <p><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></p>
+                  </figure>
+                </div>
+                <div class="col s6 m3">
+                    <figure class="image is-64x64 round-image">
+                      <img class="gear-icons" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %>>
+                      <p><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></p>
+                    </figure>
+                </div>
+                <div class="col s6 m3">
+                    <figure class="image is-64x64 round-image">
+                      <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
+                      <p><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
+                    </figure>
+                </div><!--END OF COLUMN-->
+              </div><!--END OF ROW-->
+            </div><!--END OF COL-->
+
+            <div class="col s12 m6">
+              <h4>Guardian Gear</h4>
+
+              <div class="row">
+                <div class="col s6 m3">
+                  <figure class="image is-64x64 round-image">
+                    <img class="gear-icons" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %>>
+                    <p class="center-align"><%= x["Character Items"]["Helmet"]["Item Name"] %></p>
+                  </figure>
+                </div>
+                <div class="col s6 m3">
+                  <figure class="image is-64x64 round-image">
+                    <img class="gear-icons" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %>>
+                    <p class="center-align"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></p>
+                  </figure>
+                </div>
+                <div class="col s6 m3">
+                    <figure class="image is-64x64 round-image">
+                      <img class="gear-icons" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %>>
+                      <p class="center-align"><%= x["Character Items"]["Leg Armor"]["Item Name"] %></p>
+                    </figure>
+                </div>
+                <div class="col s6 m3">
+                    <figure class="image is-64x64 round-image">
+                      <img class="gear-icons" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %>>
+                      <p class="center-align"><%= x["Character Items"]["Artifact"]["Item Name"] %></p>
+                    </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
+      </div>
+    <%end%> 
+    </div> 
+
+    <div class="parralax-4 hide-on-small-only">
+    </div>    
+
+    <div class="container">
+      <h2 class="center-align">Last Match</h2>
+      <table class="bordered">
+        <tr>
+          <th><h4>ALPHA</h4></th>
+          <th></th>
+          <th>Kills</th>
+          <th>Deaths</th>
+          <th>Ratio</th>
+        <tr/>
+        <tr>
+          <td style="background-color: blue;"></td>
+          <td style="background-color: blue;"></td>
+          <td style="background-color: blue;"></td>
+          <td style="background-color: blue;"></td>
+          <td style="background-color: blue;"></td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">8</td>
+          <td style="width: 15%;">2</td>
+          <td style="width: 15%;">4.0</td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">6</td>
+          <td style="width: 15%;">7</td>
+          <td style="width: 15%;">0.88</td>
+        </tr>
+      </table>
+
+      <br/>
+
+      <table class="bordered">
+        <tr>
+          <th><h4>BRAVO</h4></th>
+          <th></th>
+          <th>Kills</th>
+          <th>Deaths</th>
+          <th>Ratio</th>
+        <tr/>
+        <tr>
+          <td style="background-color: red;"></td>
+          <td style="background-color: red;"></td>
+          <td style="background-color: red;"></td>
+          <td style="background-color: red;"></td>
+          <td style="background-color: red;"></td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">8</td>
+          <td style="width: 15%;">2</td>
+          <td style="width: 15%;">4.0</td>
+        </tr>
+        <tr>
+          <td style="width:15%;"></td>
+          <td style="width: 40%;"><%= username.upcase %></td>
+          <td style="width: 15%;">6</td>
+          <td style="width: 15%;">7</td>
+          <td style="width: 15%;">0.88</td>
+        </tr>
+      </table>
+    </div> 
+  </div>
+  
+
+  <div class="parralax-5 hide-on-small-only">
+    <pre>
+        <code><%= JSON.pretty_generate(info) %></code>
+    </pre>   
+  </div>
 <% end %>
 

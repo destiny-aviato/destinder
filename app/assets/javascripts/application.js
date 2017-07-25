@@ -38,6 +38,7 @@ $(document).on("turbolinks:click", function(){
   $(document).on("turbolinks:load", function(){
     //   $('.preloader-wrapper.big.active').hide();
     $(".se-pre-con").fadeOut("slow");
+    
   });
 
 $(document).on('turbolinks:load', function() {
@@ -93,6 +94,21 @@ $(document).on('turbolinks:load', function() {
 
     $('.parallax').parallax();
     $('.tooltipped').tooltip({delay: 50});
+
+    $('#gear-modal').modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+          alert("Ready");
+        //   console.log(modal, trigger);
+        },
+        complete: function() { alert('Closed'); } // Callback for Modal close
+      });
+
 });
 
 
@@ -197,6 +213,18 @@ $(document).on("turbolinks:load", function(){
     $('#modal7').modal('open');
     
     $('#modal7').modal('close');
+
+    $('#gear-modal-0').modal('open');
+    
+    $('#gear-modal-0').modal('close');
+
+    $('#gear-modal-1').modal('open');
+    
+    $('#gear-modal-1').modal('close');
+
+    $('#gear-modal-2').modal('open');
+    
+    $('#gear-modal-2').modal('close');
 });
 
 // $(document).ready(function() {
