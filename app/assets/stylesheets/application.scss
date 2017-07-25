@@ -474,10 +474,6 @@ a.gamertag-name {
     font-weight: bold;
 }
 
-.gear-icons {
-    border-radius: 999px;
-    width: 60px;
-}
 
 .title {
     font-size: 30px;
@@ -548,6 +544,8 @@ a.gamertag-name {
                                 font-size: 20px;
                                 font-weight: bold;
                                 color: #616161;
+                                margin-left: auto;
+                                margin-rigth: auto;
                             }
                             
                             .class-title {
@@ -566,9 +564,23 @@ a.gamertag-name {
                             .gun-icons{
                                 width: 75px;
                                 height: 75px;
+                                border-radius: 10px;
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+-moz-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
                             }
 
                             .gear-icons{
                                 width: 75px;
                                 height: 75px;
+                                border-radius: 10px;
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+-moz-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+                            }
+
+                            .kd-title{
+                                color: #2bbbad;
+                                font-weight: bold;
+                                font-size: 30px;
                             }
