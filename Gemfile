@@ -51,6 +51,7 @@ gem "tabs_on_rails"
 gem 'material_icons'
 gem 'shareable'
 gem 'will_paginate-materialize'
+gem "typhoeus"
 
 
 group :development, :test do
