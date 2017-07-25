@@ -14,5 +14,11 @@ class HomeController < ApplicationController
     def kurt
     end
     
+    def brian
+    end
+
+    def alex
+    end
+    
     
 end
