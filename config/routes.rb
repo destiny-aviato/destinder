@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'faq', to: 'home#faq'
   get 'kota', to: 'home#kota'
   get 'kurt', to: 'home#kurt'
+  get 'brian', to: 'home#brian'
+  get 'alex', to: 'home#alex'
   resources :microposts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

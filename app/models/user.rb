@@ -88,8 +88,7 @@ class User < ApplicationRecord
         username.display_name.strip!
 
         user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
-        cache_key = "postsUserStats|#{username.id}|#{username.updated_at}"
-        Rails.cache.fetch("#{cache_key}/user_trials_stats", expires_in: 2.minutes) do
+    
             elo = get_elo(username.api_membership_id)
             
             get_characters = RestClient.get(
@@ -178,7 +177,7 @@ class User < ApplicationRecord
             end
             
             characters_stats
-        end
+        
     end
 
 
