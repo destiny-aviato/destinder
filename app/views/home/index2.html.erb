@@ -7,995 +7,336 @@
 <% if !current_user %>
 <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
+
+
+
 <body data-gr-c-s-loaded="true">
 
 <div class="parralax-1"></div>
+<br/>
 
-<div class="row ">
+<div class="row"><!--OPEN CHARACTER ROW-->
 
 
-      <div class="col s6"><div class="carousel"><!--PVP PLAYLIST CAROUSEL-->
+<div class="col s12 m4"><!--OPEN FIRST CHARACTER--> 
 
-<!--Card item 1  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_trialsofosiris.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Trials of Osiris<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
+    
 
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
+          <div class="row"><!--open first row-->
+                
+              <div class="col s4 valign-wrapper"><!--open first column-->
+                  <img class="subclass-icon" src="https://www.bungie.net/common/destiny_content/icons/21bb9c76faa1a77c282311d9776292dd.jpg" alt="">
+              
+              </div><!--Close first column-->
 
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 1  -->
-
-<!--Card item 2  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= image_tag 'crucible_clash.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Clash<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 2  -->
-
-<!--Card item 3  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= image_tag 'crucible_control.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Control<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 3  -->
-
-<!--Card item 4  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_elimination.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Elimination<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 4  -->
-
-<!--Card item 5  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_rift.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Rift<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 5  -->
-
-<!--Card item 6  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_salvage.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Salvage<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 6  -->
-
-<!--Card item 7  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_skirmish.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Skirmish<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 7  -->
-
-<!--Card item 8  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag 'crucible_rumble.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Rumble<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse red" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 8  -->
-
-
-</div><!--PVP PLAYLIST CAROUSEL END-->
-
-</div>
-
-
-      <div class="col s6">
-      <div class="carousel"><!--RAID PLAYLIST CAROUSEL START-->
-
-<!--Card item 1  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Vault of Glass<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 1  -->
-
-<!--Card item 2  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Clash<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 2  -->
-
-<!--Card item 3  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Control<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 3  -->
-
-<!--Card item 4  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Elimination<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 4  -->
-
-
-</div>
-</div><!--RAID PLAYLIST CAROUSEL END-->
-    </div><!--End of Row 1  -->
-
-
-    <div class="parralax-2"></div>
-
-
-
-<div class="row"><!--START OF SECOND ROW-->
-      
-      <div class="col s6">
-
-<!--Featured Videos Section-->
-<ul class="collection with-header align-center center-align transparent featured-video-fix">
-        <li class="collection-header transparent featured-video-fix"><h4>Featured Videos</h4></li>
-
-
-        <li class="collection-item transparent"><!--First Featured Video Start-->
+              <div class="col s8 valign-wrapper"><!--open Second column-->
+                      <div class="row">
+                          <div class="col s12 gamertag-title center-align valign-wrapper">ii WALZ ii</div>
+                          <div class="col s12 class-title center-align valign-wrapper">Hunter</div>
+                      </div>
+                
         
-               
-                        <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn blue darken-4 pulse" href="#modal1">Wave ༄ A Destiny Montage</a>
+              
+              </div><!--Close Second column-->
 
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
-                            <div class="modal-content">
+            <hr/>
 
-                            <div class="video-container">
-                                <iframe width="853" height="480" src="https://www.youtube.com/embed/CavtlFdMNog" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            
-                            </div>
-                            <div class="modal-footer">
-                            
-                            </div>
-                        </div>
-                                
-                                    
-                                
+          
+          </div><!--Close first row-->
 
-                    
+          <div class="row"><!--open tabs row-->
+    <div class="col s12"><!--open tabs column-->
+      <ul class="tabs">
+        <li class="tab col s6"><a class="active" href="#test1">Stats</a></li>
+        <li class="tab col s6"><a href="#test2">Gear</a></li> 
+      </ul>
+    </div><!--close tabs column-->
+
+
+
+
+
+    <div id="test1" class="col s12"><!--open tab 1 content-->
+
+<div class="row"><div class="col s12 center-align"><h5>Ability<h5></div></div>
+
+          <div class="row"><!--open Second row-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text">T5</span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Strength</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text">T5</span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Discipline</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text">T1</span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Intellect</span>
+                </div><!--Column Close-->
                   
-        
-        </li> <!--First Featured Video End-->
+          </div><!--Close Second row-->
 
+          <div class="row"><!--Open Third Row-->
+                <div class="col s12">
 
-       <li class="collection-item transparent"><!--Second Featured Video Start-->
-        
-               <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn blue darken-4 pulse" href="#modal2">Skyfall ༄ A Destiny Montage</a>
-
-                        <!-- Modal Structure -->
-                        <div id="modal2" class="modal">
-                            <div class="modal-content">
-
-                            <div class="video-container">
-                                <iframe width="853" height="480" src="https://www.youtube.com/embed/Opz9KXwwUdE" frameborder="0" allowfullscreen></iframe>
-                            </div>
+                    <div class="card"><!--OPEN KD CARD-->
+                        <div class="card-content">
+                        <p class="center-align card-title">KD STATS</p>
+                        </div><!--CLOSE CARD CONTENT-->
+                        <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a href="#test4">WEEK</a></li>
+                            <li class="tab"><a class="active" href="#test5">YEAR</a></li>
+                            <li class="tab"><a href="#test6">MAP</a></li>
+                        </ul>
+                        </div><!--CLOSE CARD TABS-->
+                        <div class="card-content grey lighten-4">
+                        <div id="test4">
+                            <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </div><!--CLOSE WEEK TAB CONTENT-->
+                        <div id="test5">
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        
+                        </div><!--CLOSE YEAR TAB CONTENT-->
+                        <div id="test6">
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             
-                            </div>
-                            <div class="modal-footer">
-                            
-                            </div>
-                        </div>
+                        </div><!--CLOSE MAP TAB CONTENT-->
+                        </div><!--CLOSE CARD CONTENT-->
+                    </div><!--CLOSE KD CARD-->
+                    
+                </div><!--close column-->
+                
+          </div><!--Close Third Row-->
+
+    </div><!--Close tab 1 content-->
+
+
+    <div id="test2" class="col s12"><!--open tab 2 content-->
+
+        <div class="row"><!--Open first row-->
+            <div class="col s12 center-align card-title">Gun Game</div><!--Close Column-->
+        </div><!--Close First Row-->
+        <div class="row"><!--Open Second row-->
+            <div class="col s4 center-align"><img class="gun-icons" src="https://www.bungie.net/common/destiny_content/icons/ba90cc208f95a84c7df6f62ef4a43dc3.jpg" alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons" src="https://www.bungie.net/common/destiny_content/icons/39d0a26b64d5de3c12c728542205f156.jpg" alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons" src="https://www.bungie.net/common/destiny_content/icons/7fbed59a97d5cf8f6e9649d9b60ad2b1.jpg" alt=""></div><!--Close Column-->
+        </div><!--Close Second Row-->
+         <div class="row"><!--Open Third row-->
+            <div class="col s12 center-align card-title">Gear</div><!--Close Column-->
+        </div><!--Close Third Row-->
+        <div class="row"><!--Open Fourth row-->
+            <div class="col s3 center-align"><img class="gear-icons" src="https://www.bungie.net/common/destiny_content/icons/95e8fab478591aa89c88182817f740ea.jpg" alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons" src="https://www.bungie.net/common/destiny_content/icons/db00e23344a772a8a16d453220420d12.jpg" alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons" src="https://www.bungie.net/common/destiny_content/icons/af2b3c9cf05ed286fd2e03f9cec97d46.jpg" alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons" src="https://www.bungie.net/common/destiny_content/icons/fa949fc17ff2212d3f6d2b6fc0cda253.jpg" alt=""></div><!--Close Column-->
+        </div><!--Close Fourth Row-->
+
         
-        </li> <!--Second Featured Video End-->
+        <div class="row"><!--Open Fifth Row-->
+                <div class="col s12">
 
-
-        <li class="collection-item transparent"><!--Third Featured Video Start-->
-        
-                <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn blue darken-4 pulse" href="#modal3">LIES II - Destiny PvP Montage</a>
-
-                        <!-- Modal Structure -->
-                        <div id="modal3" class="modal">
-                            <div class="modal-content">
-
-                            <div class="video-container">
-                                <iframe width="853" height="480" src="https://www.youtube.com/embed/Hg1DDUxRQAc" frameborder="0" allowfullscreen></iframe>
-                            </div>
+                    <div class="card"><!--OPEN KD CARD-->
+                        <div class="card-content">
+                        <p class="center-align card-title">KD STATS</p>
+                        </div><!--CLOSE CARD CONTENT-->
+                        <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a class="active" href="#test7">WEEK</a></li>
+                            <li class="tab"><a href="#test8">YEAR</a></li>
+                            <li class="tab"><a href="#test9">MAP</a></li>
+                        </ul>
+                        </div><!--CLOSE CARD TABS-->
+                        <div class="card-content grey lighten-4">
+                        <div id="test7">
+                            <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                        </div><!--CLOSE WEEK TAB CONTENT-->
+                        <div id="test8">
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        
+                        </div><!--CLOSE YEAR TAB CONTENT-->
+                        <div id="test9">
+                        <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>K/D</th>
+                                        <th>KA/D</th>
+                                        <th>Win Rate</th>
+                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
+                                            ELO  <i class="fa fa-question-circle"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td>1.14</td>
+                                        <td>1.49</td>
+                                        <td>56%</td>
+                                        <td>
+                                            1749
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             
-                            </div>
-                            <div class="modal-footer">
-                            
-                            </div>
-                        </div>
-        
-        </li> <!--Third Featured Video End-->
+                        </div><!--CLOSE MAP TAB CONTENT-->
+                        </div><!--CLOSE CARD CONTENT-->
+                    </div><!--CLOSE KD CARD-->
+                    
+                </div><!--close column-->
+                
+          </div><!--Close Fifth Row-->
+    
+    
+    </div><!--Close tab 2 content-->
+    
+  </div><!--Close tabs row-->
+          
+          
 
 
-        <li class="collection-item transparent"><!--Fourth Featured Video Start-->
-        
-                <!-- Modal Trigger -->
-                        <a class="waves-effect waves-light btn blue darken-4 pulse" href="#modal4">Say it (A Destiny Montage)</a>
-
-                        <!-- Modal Structure -->
-                        <div id="modal4" class="modal">
-                            <div class="modal-content">
-
-                            <div class="video-container">
-                                <iframe width="853" height="480" src="https://www.youtube.com/embed/OHHkOK5TnQM" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                            
-                            </div>
-                            <div class="modal-footer">
-                            
-                            </div>
-                        </div>
-        
-        </li> <!--Fourth Featured Video End-->
-      </ul><!--END OF FEATURED VIDEOS-->
-
-      
-      </div><!--END OF COLUMN-->
-
-
-      <div class="col s6"><!--Start of 2nd Column-->
-
-            
-                <div class="carousel"><!--RAID PLAYLIST CAROUSEL START-->
-
-<!--Card item 1  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Daily PVP<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 1  -->
-
-<!--Card item 2  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Featured Raid<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 2  -->
-
-<!--Card item 3  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-          <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Daily Story<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 3  -->
-
-<!--Card item 4  -->
-<div class="carousel-item">
-    <div class="card">
-        <div class="card-image2 waves-effect waves-block waves-light">
-            <%= image_tag 'Raid_Emblem.png', class:"activator" %>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Featured Strike<i class="material-icons right">more_vert</i></span>
-          <div class="row">
-            <!--footer columns-->
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="LFG POST"><i class="material-icons">search</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">chat_bubble_outline</i></a>
-            </div>
-            <div class="col s4 center-align">
-              <a href="" class="btn tooltipped btn-floating pulse blue darken-4" data-position="bottom" data-tooltip="Some Other Crap"><i class="material-icons">view_carousel</i></a>
-            </div>
-          </div>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Player Stats<i class="material-icons right">close</i></span>
-          <table>
-            <tr>
-              <th>Year KD</th>
-              <th>1.9</th>
-            </tr>
-
-            <tbody>
-              <tr>
-                <td>Week KD</td>
-                <td>1.45</td>
-
-              </tr>
-              <tr>
-                <td>ELO</td>
-                <td>1750</td>
-
-              </tr>
-              <tr>
-                <td>Streak</td>
-                <td>+5</td>
-
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-</div>
-<!--End card item 4  -->
-
-
-</div>
-</div><!--RAID PLAYLIST CAROUSEL END-->
-           
+</div><!--CLOSE FIRST CHARACTER--> 
 
 
 
 
-      </div><!--END OF COLUMN-->
-      
-       </div> <!--END OF SECOND ROW-->
 
-       <div class="parralax-3"></div>
+<div class="col s12 m4"><!--OPEN SECOND CHARACTER--> 
 
 
-    <div class="white-space"></div>
+
+</div><!--CLOSE SECOND CHARACTER--> 
+
+
+
+
+<div class="col s12 m4"><!--OPEN THIRD CHARACTER--> 
+
+
+
+</div><!--CLOSE THIRD CHARACTER--> 
+
+
+</div><!--CLOSE CHARACTER ROW-->
 
 
 
