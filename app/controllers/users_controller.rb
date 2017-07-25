@@ -36,7 +36,9 @@ class UsersController < ApplicationController
       case mode
       when "too"
         begin
-          return @user.get_trials_stats(@user)
+          Rails.cache.fetch("user_trials_stats", expires_in: 2.minutes) do
+            return @user.get_trials_stats(@user)
+          end
         rescue NoMethodError
           return nil
         rescue StandardError => e
