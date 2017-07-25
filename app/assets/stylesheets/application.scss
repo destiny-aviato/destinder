@@ -99,6 +99,16 @@
                                 min-height: 100%;
                             }
                             
+                            .parralax-4 {
+                                background-image: url("https://images4.alphacoders.com/666/thumb-1920-666407.png");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-5 {
+                                background-image: url("https://images3.alphacoders.com/716/thumb-1920-716777.jpg");
+                                min-height: 100%;
+                            }
+                            
                             .parralax-3 {
                                 position: relative;
                                 background-attachment: fixed;
@@ -130,6 +140,30 @@
                                 background-repeat: no-repeat;
                                 background-size: cover;
                                 height: 350px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-4 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-5 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
                                 margin-left: -33.33%;
                                 margin-right: -22%;
                                 max-width: 155%;
@@ -439,11 +473,18 @@
                             }
                             
                             .title {
-                                font-size: 40px;
+                                font-size: 30px;
+                                color: #616161;
+                                font-weight: bold;
                             }
                             
                             .round-image2 {
                                 border-radius: 999px;
                                 margin-left: auto;
                                 margin-right: auto;
+                            }
+                            
+                            .modal .modal-content {
+                                padding: 5px;
+                                width: 85%;
                             }
