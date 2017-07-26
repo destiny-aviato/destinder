@@ -20,9 +20,9 @@ class User < ApplicationRecord
         #     user.gsub!(/\s/,'%20')
         # end
         user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
-        response = RestClient.get(
-            "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
-            headers={"x-api-key" => ENV['API_TOKEN']}
+        response = Typhoeus.get(
+            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
+            headers: {"x-api-key" => ENV['API_TOKEN']}
         )
       
         data = JSON.parse(response.body)
@@ -48,7 +48,7 @@ class User < ApplicationRecord
       elo = 1200
       
       begin 
-      response = RestClient.get(
+      response = Typhoeus.get(
               "https://api.guardian.gg/elo/#{membership_id}"
           )
         
@@ -69,9 +69,9 @@ class User < ApplicationRecord
   end
 
   def get_item(item_hash)
-    response = RestClient.get(
+    response = Typhoeus.get(
         "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
-         headers={"x-api-key" => ENV['API_TOKEN']}
+         headers: {"x-api-key" => ENV['API_TOKEN']}
     )
 
     data = JSON.parse(response.body)
@@ -91,10 +91,11 @@ class User < ApplicationRecord
     
             elo = get_elo(username.api_membership_id)
             
-            get_characters = RestClient.get(
-                "http://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}",
-                headers={"x-api-key" => ENV['API_TOKEN']}
+            get_characters = Typhoeus.get(
+                "https://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+                headers: {"x-api-key" => ENV['API_TOKEN']}
             )
+
 
             character_data = JSON.parse(get_characters.body)
             last_character = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
@@ -143,9 +144,9 @@ class User < ApplicationRecord
 
 
 
-                get_trials_stats = RestClient.get(
+                get_trials_stats = Typhoeus.get(
                             "https://www.bungie.net/Platform/Destiny/Stats/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?modes=14",
-                            headers={"x-api-key" => ENV['API_TOKEN']}
+                            headers: {"x-api-key" => ENV['API_TOKEN']}
                         )   
                         
                 stat_data = JSON.parse(get_trials_stats.body)

@@ -12,7 +12,7 @@ class Micropost < ApplicationRecord
       elo = 1200
       
       begin 
-      response = RestClient.get(
+      response = Typhoeus.get(
               "https://api.guardian.gg/elo/#{membership_id}"
           )
         
@@ -38,9 +38,9 @@ class Micropost < ApplicationRecord
     cache_key = "postsStats|#{user.id}|#{user.updated_at}"
     Rails.cache.fetch("#{cache_key}/trials_stats", expires_in: 2.minutes) do
       elo = get_elo(user.api_membership_id)
-      get_characters = RestClient.get(
-          "http://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}",
-          headers={"x-api-key" => ENV['API_TOKEN']}
+      get_characters = Typhoeus.get(
+          "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+          headers: {"x-api-key" => ENV['API_TOKEN']}
       )
 
       character_data = JSON.parse(get_characters.body)
@@ -51,9 +51,9 @@ class Micropost < ApplicationRecord
         character_id =  last_character["characterBase"]["characterId"]
         character_type = last_character["characterBase"]["classType"]
         begin 
-          get_trials_stats = RestClient.get(
+          get_trials_stats = Typhoeus.get(
                       "https://www.bungie.net/Platform/Destiny/Stats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/?modes=14",
-                      headers={"x-api-key" => ENV['API_TOKEN']}
+                      headers: {"x-api-key" => ENV['API_TOKEN']}
                   )   
                   
           stat_data = JSON.parse(get_trials_stats.body)
