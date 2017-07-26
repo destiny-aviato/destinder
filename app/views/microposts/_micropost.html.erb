@@ -5,6 +5,17 @@
         <% case micropost.game_type 
            when "Trials of Osiris" %>
             <% stats = get_stats(micropost.user, "too")[0] %>
+        <% when "Wrath of the Machine" %>
+            <% puts "wrath" %>
+            <% stats = get_stats(micropost.user, "wrath")[0] %>
+        <% when "King's Fall" %>
+            <% stats = get_stats(micropost.user, "kings")[0] %>
+        <% when "Crota's End" %>
+            <% stats = get_stats(micropost.user, "Crota's End")[0] %>
+        <% when "Vault of Glass" %>
+            <% stats = get_stats(micropost.user, "vog")[0] %>
+        <% when "Nightfall" %>
+            <% stats = get_stats(micropost.user, "night")[0] %>
         <% end %>
     <% else %>
         <% stats = micropost.user_stats %>
@@ -36,89 +47,90 @@
                         <% end %> 
                     </div>
                 </div>
-
-                <div class="card-tabs">
-                    <ul class="tabs post">
-                        <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Year</a></li>
-                        <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 9px;">Week</a></li>
-                        <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 9px;">Map</a></li>
-                    </ul>
-                </div>
-                <div class="card-content grey lighten-4">
-                    <div id="<%= micropost.id %>-yearly">
-
-                            <table class="table centered highlight">
-                                <thead>
-                                    <tr>
-                                        <th>K/D</th>
-                                        <th>KA/D</th>
-                                        <th>Win Rate</th>
-                                        <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                            ELO  <i class="fa fa-question-circle"></i>
-                                        </th>
-                                    </tr>
-                                </thead>
-                        
-                                <tbody>
-                                    <tr>
-                                        <td><%= stats["Character Stats"]["K/D Ratio"] %></td>
-                                        <td><%= stats["Character Stats"]["KA/D Ratio"] %></td>
-                                        <td><%= stats["Character Stats"]["Win Rate"] %>%</td>
-                                        <td >
-                                            <%= stats["Character Stats"]["ELO"] %>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <% if micropost.game_type == "Trials of Osiris" %>
+                    <div class="card-tabs">
+                        <ul class="tabs post">
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Year</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 9px;">Week</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 9px;">Map</a></li>
+                        </ul>
                     </div>
+                    <div class="card-content grey lighten-4">
+                        <div id="<%= micropost.id %>-yearly">
 
-                    <div id="<%= micropost.id %>-weekly">
-                            <table class="table centered highlight">
-                                <thead>
-                                    <tr>
-                                        <th>K/D</th>
-                                        <th>KA/D</th>
-                                        <th>Win Rate</th>
-                                        <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                            ELO  <i class="fa fa-question-circle"></i>
-                                        </th>
-                                    </tr>
-                                </thead>
-                        
-                                <tbody>
-                                    <tr>
-                                    <td><%= stats["Character Stats"]["K/D Ratio"] %> W</td>
-                                    <td><%= stats["Character Stats"]["KA/D Ratio"] %> W</td>
-                                    <td><%= stats["Character Stats"]["Win Rate"] %>% W</td>
-                                    <td><%= stats["Character Stats"]["ELO"] %> W</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <table class="table centered highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>K/D</th>
+                                            <th>KA/D</th>
+                                            <th>Win Rate</th>
+                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
+                                                ELO  <i class="fa fa-question-circle"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr>
+                                            <td><%= stats["Character Stats"]["K/D Ratio"] %></td>
+                                            <td><%= stats["Character Stats"]["KA/D Ratio"] %></td>
+                                            <td><%= stats["Character Stats"]["Win Rate"] %>%</td>
+                                            <td >
+                                                <%= stats["Character Stats"]["ELO"] %>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+
+                        <div id="<%= micropost.id %>-weekly">
+                                <table class="table centered highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>K/D</th>
+                                            <th>KA/D</th>
+                                            <th>Win Rate</th>
+                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
+                                                ELO  <i class="fa fa-question-circle"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr>
+                                        <td><%= stats["Character Stats"]["K/D Ratio"] %> W</td>
+                                        <td><%= stats["Character Stats"]["KA/D Ratio"] %> W</td>
+                                        <td><%= stats["Character Stats"]["Win Rate"] %>% W</td>
+                                        <td><%= stats["Character Stats"]["ELO"] %> W</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                        <div id="<%= micropost.id %>-map">
+                                <table class="table centered highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>K/D</th>
+                                            <th>KA/D</th>
+                                            <th>Win Rate</th>
+                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
+                                                ELO  <i class="fa fa-question-circle"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr>
+                                        <td><%= stats["Character Stats"]["K/D Ratio"] %> M</td>
+                                        <td><%= stats["Character Stats"]["KA/D Ratio"] %> M</td>
+                                        <td><%= stats["Character Stats"]["Win Rate"] %>% M</td>
+                                        <td><%= stats["Character Stats"]["ELO"] %> M</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>
                     </div>
-                    <div id="<%= micropost.id %>-map">
-                            <table class="table centered highlight">
-                                <thead>
-                                    <tr>
-                                        <th>K/D</th>
-                                        <th>KA/D</th>
-                                        <th>Win Rate</th>
-                                        <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                            ELO  <i class="fa fa-question-circle"></i>
-                                        </th>
-                                    </tr>
-                                </thead>
-                        
-                                <tbody>
-                                    <tr>
-                                    <td><%= stats["Character Stats"]["K/D Ratio"] %> M</td>
-                                    <td><%= stats["Character Stats"]["KA/D Ratio"] %> M</td>
-                                    <td><%= stats["Character Stats"]["Win Rate"] %>% M</td>
-                                    <td><%= stats["Character Stats"]["ELO"] %> M</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    </div>
-                </div>
+                <% end %>
                 <br>    
                 <div class="row">
                         <div class="col s12 m4 l2">

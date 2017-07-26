@@ -10,6 +10,14 @@ class MicropostsController < ApplicationController
         case @micropost.game_type
         when "Trials of Osiris" 
             @micropost.user_stats = get_stats(current_user, "too")
+        when "Wrath of the Machine"
+            @micropost.user_stats = get_stats(current_user, "wrath")
+        when "King's Fall"
+            @micropost.user_stats = get_stats(current_user, "kings")
+        when "Crota's End"
+            @micropost.user_stats = get_stats(current_user, "crota")
+        when "Vault of Glass"
+            @micropost.user_stats = get_stats(current_user, "vog")
         end
 
         if @micropost.save
@@ -42,7 +50,16 @@ class MicropostsController < ApplicationController
             case mode
             when "too"  
                 Micropost.get_trials_stats(user)
+            when "wrath"
+                Micropost.get_raid_stats(user, "wrath")
+            when "kings"
+                Micropost.get_raid_stats(user, "kings")
+            when "crota"
+                Micropost.get_raid_stats(user, "crota")
+            when "vog"
+                Micropost.get_raid_stats(user, "vog")
             end
+
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
