@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
     def index
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 10)
+        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build 
     end
 
@@ -21,7 +21,9 @@ class MicropostsController < ApplicationController
                 format.js { }
             end
         else
-         render microposts_path
+            respond_to do |format|
+                format.js { render :js => "Materialize.toast('Whoops! Your post is too long.', 4000); " }
+              end
         end
     end
 
