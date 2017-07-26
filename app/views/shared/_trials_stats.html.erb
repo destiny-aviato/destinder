@@ -19,13 +19,13 @@
           <div class="row"><!--open first row-->
                 
               <div class="col s2 valign-wrapper"><!--open first column-->
-                  <img class="subclass-icon" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="">
+                  <img class="subclass-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="">
               
               </div><!--Close first column-->
 
               <div class="col s8 valign-wrapper center-align"><!--open Second column-->
                       <div class="row">
-                          <div class="col s12 gamertag-title center-align valign-wrapper">ii WALZ ii</div>
+                          <div class="col s12 gamertag-title center-align valign-wrapper"><%= username %></div>
                           <div class="col s12 class-title center-align valign-wrapper"><%=  @character_races[x["Character Type"]]%></div>
                       </div>
              <div class="col s2 valign-wrapper"><!--open Second column-->
@@ -56,7 +56,7 @@
 
     <div id=<%= "stat-tab-#{index}" %> class="col s12"><!--open tab 1 content-->
 
-          <div class="row"><!--open First row-->
+          <div class="row center-align"><!--open First row-->
               <div class="col s4">
                   <div class="card-panel teal"><!--Ability card open-->
                         <span class="white-text"><%= x["Character Stats"]["Strength"] %></span>
@@ -78,7 +78,7 @@
                   
           </div><!--Close First row-->
 
-          <div class="row"><!--open Second row-->
+          <div class="row center-align"><!--open Second row-->
               <div class="col s4">
                   <div class="card-panel red"><!--Ability card open-->
                         <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
@@ -103,7 +103,7 @@
           <div class="row"><!--Open Third Row-->
                 <div class="col s12">
 
-                    <div class="card"><!--OPEN KD CARD-->
+                    <div class="card  card-width-fix"><!--OPEN KD CARD-->
                         <div class="card-content">
                         <p class="center-align card-title">KD STATS</p>
                         </div><!--CLOSE CARD CONTENT-->
@@ -207,25 +207,25 @@
             <div class="col s12 center-align card-title">Gun Game</div><!--Close Column-->
         </div><!--Close First Row-->
         <div class="row"><!--Open Second row-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Primary Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %> src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
         </div><!--Close Second Row-->
          <div class="row"><!--Open Third row-->
             <div class="col s12 center-align card-title">Gear</div><!--Close Column-->
         </div><!--Close Third Row-->
         <div class="row"><!--Open Fourth row-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Helmet"]["Item Name"] %> src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Gauntlets"]["Item Name"] %> src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Chest Armor"]["Item Name"] %> src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip=<%= x["Character Items"]["Leg Armor"]["Item Name"] %> src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
         </div><!--Close Fourth Row-->
 
         
         <div class="row"><!--Open Fifth Row-->
                 <div class="col s12">
 
-                    <div class="card"><!--OPEN KD CARD-->
+                    <div class="card  card-width-fix"><!--OPEN KD CARD-->
                         <div class="card-content">
                         <p class="center-align card-title">Gun STATS</p>
                         </div><!--CLOSE CARD CONTENT-->
@@ -497,14 +497,86 @@
       </table>
     </div> 
   </div>
-  
+  <br/>
+  <br/>
 
   <div class="parralax-5 hide-on-small-only"></div>
 
   <div class="container">
-    <pre>
-        <code><%= JSON.pretty_generate(info) %></code>
-    </pre>   
-  </div>
+
+    <div class="row"><col class="s12"><h4>Previous Matches</h4></div></div>
+
+        <table class="bordered">
+        <tr>
+          <th>Played></th>
+          <th>Map</th>
+          <th></th>
+          <th>K</th>
+          <th>D</th>
+          <th>K/D</th>
+        <tr/>
+        <tr>
+          <td style="background-color: #2bbbad;"></td>
+          <td style="background-color: #2bbbad;"></td>
+          <td style="background-color: #2bbbad;"></td>
+          <td style="background-color: #2bbbad;"></td>
+          <td style="background-color: #2bbbad;"></td>
+          <td style="background-color: #2bbbad;"></td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+        <tr>
+          <td style="width:15%;">2 Days Ago</td>
+          <td style="width: 40%;">Cauldron</td>
+          <td></td>
+          <td style="width: 15%;">4</td>
+          <td style="width: 15%;">3</td>
+          <td style="width: 15%;">1.33</td>
+        </tr>
+      </table>
+      <br/>
+      <br/>
+      <br/>
+  </div><!--END OF CONTAINER-->
+  <div class="parralax-1 hide-on-small-only">
+    </div>
 <% end %>
 

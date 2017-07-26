@@ -12,523 +12,524 @@
  *
  */
                             
-@import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
-@import 'materialize';
-@import 'jquery-ui';
-@import "materialize/extras/nouislider";
-@import 'slick';
-@import 'slick-theme';
-
-.card-image img {
-    height: 250px;
-    width: 250px;
-    background: #b2dfdb;
-}
-
-.card-image2 img {
-    height: 250px;
-    width: 250px;
-    background: #bdbdbd;
-}
-
-.slide-fix {
-    margin-left: 20px;
-    font-size: 35px;
-    margin-top: 10px;
-    z-index: 1;
-    position: fixed;
-}
-
-.round-image {
-    border-radius: 999px;
-}
-
-.gamertag-name {
-    color: #F44336;
-    font-size: 25px;
-}
-
-.carousel {
-    height: 610px;
-    bottom: 100px;
-}
-
-.transparent {
-    background: transparent;
-    border: none;
-}
-
-.card {
-    width: 100%;
-}
-
-[class^="socicon-"],
-[class*=" socicon-"] {
-    font-size: 30px;
-}
-
-.action-button-fix {
-    margin-bottom: 60px;
-}
-
-.modal-overlay {
-    background-color: white;
-}
-
-.custom-card {
-    max-width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.featured-video-fix {
-    margin-top: 10%;
-}
-
-.parralax-1 {
-    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-47-1024x640.png");
-    min-height: 100%;
-}
-
-.parralax-2 {
-    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-3-1024x640.jpg");
-    min-height: 100%;
-}
-
-.parralax-3 {
-    background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-1-1024x576.jpg");
-    min-height: 100%;
-}
-
-.parralax-4 {
-    background-image: url("https://images4.alphacoders.com/666/thumb-1920-666407.png");
-    min-height: 100%;
-}
-
-.parralax-5 {
-    background-image: url("https://images3.alphacoders.com/716/thumb-1920-716777.jpg");
-    min-height: 100%;
-}
-
-.parralax-3 {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
-    margin-left: -33.33%;
-    margin-right: -22%;
-    max-width: 155%;
-}
-
-.parralax-2 {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
-    margin-left: -33.33%;
-    margin-right: -22%;
-    max-width: 155%;
-}
-
-.parralax-1 {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 350px;
-    margin-left: -33.33%;
-    margin-right: -22%;
-    max-width: 155%;
-}
-
-.parralax-4 {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
-    margin-left: -33.33%;
-    margin-right: -22%;
-    max-width: 155%;
-}
-
-.parralax-5 {
-    position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 400px;
-    margin-left: -33.33%;
-    margin-right: -22%;
-    max-width: 155%;
-}
-
-body {
-    background-color: white;
-}
-
-.white-space {
-    height: 400px;
-}
-
-.logo-name {
-    color: white;
-    font-size: 71px;
-    position: relative;
-    padding-top: 100px;
-    padding-right: 100px;
-}
-
-.nav-logo {
-    height: 100px;
-    width: 100px;
-}
-
-.header-fix {
-    margin-top: 30%;
-}
-
-.dropdown-content li>span {
-    font-size: 16px;
-    color: #424242;
-    display: block;
-    line-height: 22px;
-    padding: 14px 16px;
-}
-
-.btn:hover,
-.btn-large:hover {
-    background-color: #2bbbad;
-}
-
-.btn,
-.btn-large {
-    background-color: #26a69a;
-}
-
-.collapsible.popout {
-    position: relative;
-    padding: 5%;
-}
-
-.preloader-wrapper.big.active {
-    position: relative !important;
-}
-
-.no-js #loader {
-    display: none;
-}
-
-.js #loader {
-    display: block;
-    position: absolute;
-    left: 100px;
-    top: 0;
-}
-
-.se-pre-con {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: image-url("Preloader_3.gif") center no-repeat #fff;
-}
-
-.pagination a li.active {
-    color: #fff;
-}
-
-table.centered thead tr th,
-table.centered tbody tr td {
-    text-align: center;
-    font-size: 11px;
-}
-
-td,
-th {
-    padding: 10px 5px;
-}
-
-.centered {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-span.black-text {
-    word-wrap: break-word;
-    font-size: 12px;
-}
-
-section {
-    display: block;
-}
-
-.hero {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.hero.is-dark {
-    margin-top: 5%;
-    color: #f5f5f5;
-    background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
-}
-
-.hero.is-medium .hero-body {
-    padding-bottom: 2rem;
-}
-
-ul.tabs {
-    z-index: 1;
-}
-
-.tabs {
-    background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
-    margin-bottom: 4%;
-}
-
-.tabs .tab a.active {
-    color: #f5f5f5;
-}
-
-.tabs .tab a {
-    color: #f5f5f5;
-}
-
-.title.hero {
-    color: #f5f5f5;
-    font-size: 2rem;
-    font-weight: 300;
-    line-height: 1.125;
-}
-
-.subtitle {
-    font-size: 1.25rem;
-    font-weight: 300;
-    line-height: 1.25;
-}
-
-.title,
-.subtitle {
-    word-break: break-word;
-}
-
-.hero.is-primary .subtitle {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.title:not(.is-spaced)+.subtitle {
-    margin-top: -1.5rem;
-}
-
-.notification {
-    background-color: #f5f5f5;
-    border-radius: 3px;
-    padding: 1.25rem 2.5rem 1.25rem 1.5rem;
-    position: relative;
-    z-index: 1;
-}
-
-.notification.is-primary {
-    background-color: #00d1b2;
-    color: #fff;
-}
-
-.notification.is-warning {
-    background-color: #ffdd57;
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.notification.is-info {
-    background-color: #3273dc;
-    color: #fff;
-}
-
-.notification.is-success {
-    background-color: #23d160;
-    color: #fff;
-}
-
-.notification.is-danger {
-    background-color: #ff3860;
-    color: #fff;
-}
-
-.notification:not(:last-child) {
-    margin-bottom: 1.5rem;
-}
-
-.delete {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    background-color: rgba(10, 10, 10, 0.2);
-    border: none;
-    border-radius: 290486px;
-    cursor: pointer;
-    display: inline-block;
-    -webkit-box-flex: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    font-size: 1rem;
-    height: 20px;
-    max-height: 20px;
-    max-width: 20px;
-    min-height: 20px;
-    min-width: 20px;
-    outline: none;
-    position: relative;
-    vertical-align: top;
-    width: 20px;
-}
-
-.delete:before {
-    height: 2px;
-    width: 50%;
-}
-
-.delete:after {
-    height: 50%;
-    width: 2px;
-}
-
-.delete:before,
-.delete:after {
-    background-color: white;
-    content: "";
-    display: block;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-    transform: translateX(-50%) translateY(-50%) rotate(45deg);
-    -webkit-transform-origin: center center;
-    transform-origin: center center;
-}
-
-*:before,
-*:after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-.notification>.delete {
-    position: absolute;
-    right: 0.5em;
-    top: 0.5em;
-}
-
-.is-hidden {
-    display: none !important;
-}
-
-.card-panel.grey.lighten-5.z-depth-1.hoverable {
-    max-height: 350px;
-}
-
-li.tab.card {
-    background: transparent;
-}
-
-li.tab.post {
-    width: 33.3%;
-}
-
-a.gamertag-name {
-    text-transform: uppercase;
-}
-
-.round-image {
-    border-radius: 999px;
-    width: 140%;
-}
-
-.stat-numbers {
-    color: #2bbbad;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.stat-table-headers {
-    font-size: 20px;
-    color: #2bbbad;
-    font-weight: bold;
-}
-
-
-.title {
-    font-size: 30px;
-    color: #616161;
-    font-weight: bold;
-}
-
-.round-image2 {
-    border-radius: 999px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.modal .modal-content {
-    padding: 5px;
-    width: 85%;
-}
-
-
-// Slick custom CSS
-.scroller {
-    div {
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-}
-
-.slick-prev::before,
-.slick-next::before {
-    color: #000;
-}
-
-.slick-next {
-    right: -25px;
-}
-
-.slick-prev {
-    left: -25px;
-}
-/* the slides */
-
-.slick-slide {
-    margin: 0 10px;
-}
-/* the parent */
-
-.slick-list {
-    margin: 0 -10px;
-}
-
-.container {
-    width: 80%;
-}
-
-.emblem-icon {
+                            @import "materialize/components/color";
+                            $primary-color: color("blue", "lighten-2") !default;
+                            $secondary-color: color("yellow", "base") !default;
+                            @import 'materialize';
+                            @import 'jquery-ui';
+                            @import "materialize/extras/nouislider";
+                            @import 'slick';
+                            @import 'slick-theme';
+                            .card-image img {
+                                height: 250px;
+                                width: 250px;
+                                background: #b2dfdb;
+                            }
+                            
+                            .card-image2 img {
+                                height: 250px;
+                                width: 250px;
+                                background: #bdbdbd;
+                            }
+                            
+                            .slide-fix {
+                                margin-left: 20px;
+                                font-size: 35px;
+                                margin-top: 10px;
+                                z-index: 1;
+                                position: fixed;
+                            }
+                            
+                            .round-image {
+                                border-radius: 999px;
+                            }
+                            
+                            .gamertag-name {
+                                color: #F44336;
+                                font-size: 25px;
+                            }
+                            
+                            .carousel {
+                                height: 610px;
+                                bottom: 100px;
+                            }
+                            
+                            .transparent {
+                                background: transparent;
+                                border: none;
+                            }
+                            
+                            .card {
+                                width: 120%;
+                            }
+                            
+                            .card-width-fix {
+                                width: 100%!important;
+                            }
+                            
+                            [class^="socicon-"],
+                            [class*=" socicon-"] {
+                                font-size: 30px;
+                            }
+                            
+                            .action-button-fix {
+                                margin-bottom: 60px;
+                            }
+                            
+                            .modal-overlay {
+                                background-color: white;
+                            }
+                            
+                            .custom-card {
+                                max-width: 250px;
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+                            
+                            .featured-video-fix {
+                                margin-top: 10%;
+                            }
+                            
+                            .parralax-1 {
+                                background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-47-1024x640.png");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-2 {
+                                background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-3-1024x640.jpg");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-3 {
+                                background-image: url("http://www.biglittlegeek.com/wp-content/uploads/2015/09/destiny-wallpapers-hd-1-1024x576.jpg");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-4 {
+                                background-image: url("https://images4.alphacoders.com/666/thumb-1920-666407.png");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-5 {
+                                background-image: url("https://images3.alphacoders.com/716/thumb-1920-716777.jpg");
+                                min-height: 100%;
+                            }
+                            
+                            .parralax-3 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-2 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-1 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 350px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-4 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            .parralax-5 {
+                                position: relative;
+                                background-attachment: fixed;
+                                background-position: center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                height: 400px;
+                                margin-left: -33.33%;
+                                margin-right: -22%;
+                                max-width: 155%;
+                            }
+                            
+                            body {
+                                background-color: white;
+                            }
+                            
+                            .white-space {
+                                height: 400px;
+                            }
+                            
+                            .logo-name {
+                                color: white;
+                                font-size: 71px;
+                                position: relative;
+                                padding-top: 100px;
+                                padding-right: 100px;
+                            }
+                            
+                            .nav-logo {
+                                height: 100px;
+                                width: 100px;
+                            }
+                            
+                            .header-fix {
+                                margin-top: 30%;
+                            }
+                            
+                            .dropdown-content li>span {
+                                font-size: 16px;
+                                color: #424242;
+                                display: block;
+                                line-height: 22px;
+                                padding: 14px 16px;
+                            }
+                            
+                            .btn:hover,
+                            .btn-large:hover {
+                                background-color: #2bbbad;
+                            }
+                            
+                            .btn,
+                            .btn-large {
+                                background-color: #26a69a;
+                            }
+                            
+                            .collapsible.popout {
+                                position: relative;
+                                padding: 5%;
+                            }
+                            
+                            .preloader-wrapper.big.active {
+                                position: relative !important;
+                            }
+                            
+                            .no-js #loader {
+                                display: none;
+                            }
+                            
+                            .js #loader {
+                                display: block;
+                                position: absolute;
+                                left: 100px;
+                                top: 0;
+                            }
+                            
+                            .se-pre-con {
+                                position: fixed;
+                                left: 0px;
+                                top: 0px;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 9999;
+                                background: image-url("Preloader_3.gif") center no-repeat #fff;
+                            }
+                            
+                            .pagination a li.active {
+                                color: #fff;
+                            }
+                            
+                            table.centered thead tr th,
+                            table.centered tbody tr td {
+                                text-align: center;
+                                font-size: 11px;
+                            }
+                            
+                            td,
+                            th {
+                                padding: 10px 5px;
+                            }
+                            
+                            .centered {
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+                            
+                            span.black-text {
+                                word-wrap: break-word;
+                                font-size: 12px;
+                            }
+                            
+                            section {
+                                display: block;
+                            }
+                            
+                            .hero {
+                                align-items: stretch;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                            }
+                            
+                            .hero.is-dark {
+                                margin-top: 5%;
+                                color: #f5f5f5;
+                                background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+                            }
+                            
+                            .hero.is-medium .hero-body {
+                                padding-bottom: 2rem;
+                            }
+                            
+                            ul.tabs {
+                                z-index: 1;
+                            }
+                            
+                            .tabs {
+                                background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
+                                margin-bottom: 4%;
+                            }
+                            
+                            .tabs .tab a.active {
+                                color: #f5f5f5;
+                            }
+                            
+                            .tabs .tab a {
+                                color: #f5f5f5;
+                            }
+                            
+                            .title.hero {
+                                color: #f5f5f5;
+                                font-size: 2rem;
+                                font-weight: 300;
+                                line-height: 1.125;
+                            }
+                            
+                            .subtitle {
+                                font-size: 1.25rem;
+                                font-weight: 300;
+                                line-height: 1.25;
+                            }
+                            
+                            .title,
+                            .subtitle {
+                                word-break: break-word;
+                            }
+                            
+                            .hero.is-primary .subtitle {
+                                color: rgba(255, 255, 255, 0.9);
+                            }
+                            
+                            .title:not(.is-spaced)+.subtitle {
+                                margin-top: -1.5rem;
+                            }
+                            
+                            .notification {
+                                background-color: #f5f5f5;
+                                border-radius: 3px;
+                                padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+                                position: relative;
+                                z-index: 1;
+                            }
+                            
+                            .notification.is-primary {
+                                background-color: #00d1b2;
+                                color: #fff;
+                            }
+                            
+                            .notification.is-warning {
+                                background-color: #ffdd57;
+                                color: rgba(0, 0, 0, 0.7);
+                            }
+                            
+                            .notification.is-info {
+                                background-color: #3273dc;
+                                color: #fff;
+                            }
+                            
+                            .notification.is-success {
+                                background-color: #23d160;
+                                color: #fff;
+                            }
+                            
+                            .notification.is-danger {
+                                background-color: #ff3860;
+                                color: #fff;
+                            }
+                            
+                            .notification:not(:last-child) {
+                                margin-bottom: 1.5rem;
+                            }
+                            
+                            .delete {
+                                -webkit-touch-callout: none;
+                                -webkit-user-select: none;
+                                -moz-user-select: none;
+                                -ms-user-select: none;
+                                user-select: none;
+                                -moz-appearance: none;
+                                -webkit-appearance: none;
+                                background-color: rgba(10, 10, 10, 0.2);
+                                border: none;
+                                border-radius: 290486px;
+                                cursor: pointer;
+                                display: inline-block;
+                                -webkit-box-flex: 0;
+                                -ms-flex-positive: 0;
+                                flex-grow: 0;
+                                -ms-flex-negative: 0;
+                                flex-shrink: 0;
+                                font-size: 1rem;
+                                height: 20px;
+                                max-height: 20px;
+                                max-width: 20px;
+                                min-height: 20px;
+                                min-width: 20px;
+                                outline: none;
+                                position: relative;
+                                vertical-align: top;
+                                width: 20px;
+                            }
+                            
+                            .delete:before {
+                                height: 2px;
+                                width: 50%;
+                            }
+                            
+                            .delete:after {
+                                height: 50%;
+                                width: 2px;
+                            }
+                            
+                            .delete:before,
+                            .delete:after {
+                                background-color: white;
+                                content: "";
+                                display: block;
+                                left: 50%;
+                                position: absolute;
+                                top: 50%;
+                                -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+                                transform: translateX(-50%) translateY(-50%) rotate(45deg);
+                                -webkit-transform-origin: center center;
+                                transform-origin: center center;
+                            }
+                            
+                            *:before,
+                            *:after {
+                                -webkit-box-sizing: inherit;
+                                box-sizing: inherit;
+                            }
+                            
+                            .notification>.delete {
+                                position: absolute;
+                                right: 0.5em;
+                                top: 0.5em;
+                            }
+                            
+                            .is-hidden {
+                                display: none !important;
+                            }
+                            
+                            .card-panel.grey.lighten-5.z-depth-1.hoverable {
+                                max-height: 350px;
+                            }
+                            
+                            li.tab.card {
+                                background: transparent;
+                            }
+                            
+                            li.tab.post {
+                                width: 33.3%;
+                            }
+                            
+                            a.gamertag-name {
+                                text-transform: uppercase;
+                            }
+                            
+                            .round-image {
+                                border-radius: 999px;
+                                width: 140%;
+                            }
+                            
+                            .stat-numbers {
+                                color: #2bbbad;
+                                font-weight: bold;
+                                font-size: 40px;
+                            }
+                            
+                            .stat-table-headers {
+                                font-size: 20px;
+                                color: #2bbbad;
+                                font-weight: bold;
+                            }
+                            
+                            .title {
+                                font-size: 30px;
+                                color: #616161;
+                                font-weight: bold;
+                            }
+                            
+                            .round-image2 {
+                                border-radius: 999px;
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+                            
+                            .modal .modal-content {
+                                padding: 5px;
+                                width: 85%;
+                            }
+                            
+                            // Slick custom CSS
+                            .scroller {
+                                div {
+                                    padding-right: 5px;
+                                    padding-left: 5px;
+                                }
+                            }
+                            
+                            .slick-prev::before,
+                            .slick-next::before {
+                                color: #000;
+                            }
+                            
+                            .slick-next {
+                                right: -25px;
+                            }
+                            
+                            .slick-prev {
+                                left: -25px;
+                            }
+                            /* the slides */
+                            
+                            .slick-slide {
+                                margin: 0 10px;
+                            }
+                            /* the parent */
+                            
+                            .slick-list {
+                                margin: 0 -10px;
+                            }
+                            
+                            .container {
+                                width: 80%;
+                            }
+                            
+                            .emblem-icon {
                                 height: 50px;
                                 width: 50px;
                                 border-radius: 999px;
@@ -552,34 +553,34 @@ a.gamertag-name {
                                 font-size: 15px;
                                 color: #2bbbad;
                             }
-
-                            .card-title{
+                            
+                            .card-title {
                                 color: #2bbbad;
                                 font-weight: bold;
                                 margin-left: auto;
                                 margin-right: auto;
                                 font-size: 25px;
                             }
-
-                            .gun-icons{
+                            
+                            .gun-icons {
                                 width: 75px;
                                 height: 75px;
                                 border-radius: 10px;
-                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
--moz-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
                             }
-
-                            .gear-icons{
-                                width: 75px;
-                                height: 75px;
+                            
+                            .gear-icons {
+                                width: 65px;
+                                height: 65px;
                                 border-radius: 10px;
-                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
--moz-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
-box-shadow: 4px 6px 5px 0px rgba(189,183,189,1);
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
                             }
-
-                            .kd-title{
+                            
+                            .kd-title {
                                 color: #2bbbad;
                                 font-weight: bold;
                                 font-size: 30px;
