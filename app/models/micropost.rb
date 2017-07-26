@@ -32,6 +32,55 @@ class Micropost < ApplicationRecord
     
   end
 
+  def self.get_raid_stats(user, raid)
+    get_characters = Typhoeus.get(
+      "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+    last_character = character_data["Response"]["data"]["characters"][0]
+    characters_stats = []
+    
+
+    character_id =  last_character["characterBase"]["characterId"]
+    character_type = last_character["characterBase"]["classType"]
+   
+  
+    stats = {
+      "Completions" => "-",
+      "Kills" => "-",
+      "Deaths" => "-"
+    }
+    characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
+    characters_stats = Hash[*characters_stats]
+    characters_stats
+  end
+
+  def self.get_nightfall_stats(user)
+    get_characters = Typhoeus.get(
+      "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+    last_character = character_data["Response"]["data"]["characters"][0]
+    characters_stats = []
+    
+
+    character_id =  last_character["characterBase"]["characterId"]
+    character_type = last_character["characterBase"]["classType"]
+   
+  
+    stats = {
+      "Completions" => "-",
+      "Kills" => "-",
+      "Deaths" => "-"
+    }
+    characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
+    characters_stats = Hash[*characters_stats]
+    characters_stats
+  end
 
 
   def self.get_trials_stats(user)
