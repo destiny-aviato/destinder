@@ -42,6 +42,19 @@ $(document).on("turbolinks:click", function(){
   });
 
 $(document).on('turbolinks:load', function() {
+    $('#difficulty').hide(); 
+    $('#micropost_raid_difficulty').val('Normal'); 
+
+    $( "#micropost_raid_difficulty" ).click(function() {
+        if ($('#micropost_raid_difficulty').prop('checked')) { 
+          $('#micropost_raid_difficulty').val('Hard'); 
+          console.log('hard'); 
+      } else {
+       $('#micropost_raid_difficulty').val('Normal'); 
+          console.log('normal'); }
+      });
+
+
     if ($("#tabs").length) {
         $("#tabs").tabs({
             beforeActivate: function(event, ui) {
@@ -108,6 +121,19 @@ $(document).on('turbolinks:load', function() {
         },
         complete: function() { alert('Closed'); } // Callback for Modal close
       });
+
+      $('#game-select').change(function(){
+        selection = $(this).val(); 
+        
+        if (selection != 'Trials of Osiris') {
+            $('#difficulty').show();
+            console.log("show");
+        } else {
+            $('#difficulty').hide();
+            console.log("hide");
+        }
+
+     });
 
 });
 

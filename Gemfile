@@ -42,7 +42,6 @@ gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
 gem 'sidekiq'
-gem 'rest-client'
 gem 'will_paginate'
 gem 'jquery-ui-rails'
 gem "jquery-slick-rails"

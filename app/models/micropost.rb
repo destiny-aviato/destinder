@@ -2,6 +2,9 @@ class Micropost < ApplicationRecord
   
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
+  scope :game_type, -> (game_type) { where game_type: game_type }
+  scope :platform, -> (platform) { where platform: platform }
+  scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 50 }
   validates :game_type, presence: true
