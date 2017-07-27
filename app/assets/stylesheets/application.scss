@@ -188,7 +188,7 @@
                                 font-size: 71px;
                                 position: relative;
                                 padding-top: 100px;
-                                padding-right: 100px;
+                                padding-right: 180px;
                             }
                             
                             .nav-logo {
@@ -584,4 +584,24 @@
                                 color: #2bbbad;
                                 font-weight: bold;
                                 font-size: 30px;
+                            }
+
+                            .homepage-images{
+                                width: 100%;
+                                border-radius: 10px;
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                            }
+                            .top-break{
+                                height: 100px;
+                            }
+
+                            .center-icons{
+                                margin-left: auto;
+                                margin-right: auto;
+                            }
+
+                            .button-width-fix{
+                                width: 263px;
                             }
