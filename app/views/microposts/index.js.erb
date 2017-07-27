@@ -1,0 +1,6 @@
+$('.row.posts').html("<%= j(render 'microposts', microposts: @microposts )%>")
+// $('.row.posts').html("<%= j render 'microposts': 'micropost', locals: {micropost: @micropost} %>");
+$('ul.tabs').tabs();
+$('.collapsible').collapsible('close', 0);
+Materialize.toast('Filtered', 4000)
+$('.tooltipped').tooltip({delay: 50});
