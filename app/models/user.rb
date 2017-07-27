@@ -16,13 +16,10 @@ class User < ApplicationRecord
 
   def self.get_membership_id(username)
     begin
-        # if user.include? " "
-        #     user.gsub!(/\s/,'%20')
-        # end
         user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
-        response = RestClient.get(
-            "http://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
-            headers={"x-api-key" => ENV['API_TOKEN']}
+        response = Typhoeus.get(
+            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
+            headers: {"x-api-key" => ENV['API_TOKEN']}
         )
       
         data = JSON.parse(response.body)
@@ -32,8 +29,6 @@ class User < ApplicationRecord
         else 
             "2"
         end
-
-
     rescue
     end
   end
@@ -48,7 +43,7 @@ class User < ApplicationRecord
       elo = 1200
       
       begin 
-      response = RestClient.get(
+      response = Typhoeus.get(
               "https://api.guardian.gg/elo/#{membership_id}"
           )
         
@@ -68,42 +63,47 @@ class User < ApplicationRecord
     
   end
 
-  def get_item(item_hash)
-    response = RestClient.get(
-        "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
-         headers={"x-api-key" => ENV['API_TOKEN']}
-    )
+#   def get_item(item_hash)
+#     response = Typhoeus.get(
+#         "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
+#          headers: {"x-api-key" => ENV['API_TOKEN']}
+#     )
 
-    data = JSON.parse(response.body)
-    icon = "https://www.bungie.net#{data["Response"]["data"]["inventoryItem"]["icon"]}"
-    name = data["Response"]["data"]["inventoryItem"]["itemName"]
-    item = {
-        "Item Icon" => icon,
-        "Item Name" => name
-    }
-    item
-  end
+#     data = JSON.parse(response.body)
+#     icon = "https://www.bungie.net#{data["Response"]["data"]["inventoryItem"]["icon"]}"
+#     name = data["Response"]["data"]["inventoryItem"]["itemName"]
+#     item = {
+#         "Item Icon" => icon,
+#         "Item Name" => name
+#     }
+#     item
+#   end
 
   def get_trials_stats(username)
         username.display_name.strip!
 
         user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
     
-            elo = get_elo(username.api_membership_id)
+        hydra = Typhoeus::Hydra.hydra
+        
+        elo = get_elo(username.api_membership_id)
             
-            get_characters = RestClient.get(
-                "http://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}",
-                headers={"x-api-key" => ENV['API_TOKEN']}
-            )
+        get_characters = Typhoeus::Request.new(
+            "https://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+            method: :get,
+            headers: {"x-api-key" => ENV['API_TOKEN']}
+        )
+    
 
-            character_data = JSON.parse(get_characters.body)
+        get_characters.on_complete do |character_response|  
+            character_data = JSON.parse(character_response.body)
             last_character = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
             characters = []
-            characters_stats = []
+            @characters_stats = []
             character_data["Response"]["data"]["characters"].each do |x|
                 characters << x
             end
-            
+
             characters.each do |x| 
                 character_id =  x["characterBase"]["characterId"]
                 character_type = x["characterBase"]["classType"]
@@ -115,7 +115,7 @@ class User < ApplicationRecord
                 stat_recovery = x["characterBase"]["stats"]["STAT_RECOVERY"]["value"]
                 inventory = x["characterBase"]["peerView"]["equipment"]
                 items = Hash.new
-
+    
                 item_type = {
                     0 => "Subclass",
                     1 => "Helmet",
@@ -137,46 +137,74 @@ class User < ApplicationRecord
                 }
                 
                 inventory.each_with_index do |item, index|
-                    items[item_type[index]] = get_item(item["itemHash"])
+    
+                    get_items = Typhoeus::Request.new(
+                        "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
+                        method: :get,
+                        headers: {"x-api-key" => ENV['API_TOKEN']}
+                        )
+                
+    
+                    get_items.on_complete do |item_response|                     
+                        item_data = JSON.parse(item_response.body)
+                        icon = "https://www.bungie.net#{item_data["Response"]["data"]["inventoryItem"]["icon"]}"
+                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+                        item = {
+                            "Item Icon" => icon,
+                            "Item Name" => name
+                        }
+                        items[item_type[index]] = item
+                    end
+                    
+                    hydra.queue(get_items)
+                    
                 end
+                
+    
+                get_trials_stats = Typhoeus::Request.new(
+                    "https://www.bungie.net/Platform/Destiny/Stats/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?modes=14",
+                    method: :get,
+                    headers: {"x-api-key" => ENV['API_TOKEN']}
+                    )
+    
+                get_trials_stats.on_complete do |stat_response|                     
+                    stat_data = JSON.parse(stat_response.body)
+                    
+                    kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
+                    deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
+                    assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+    
+                    kd = (kills / deaths).round(2)
+                    kad = ((kills + assists) / deaths).round(2)
+    
+                    @stats = {
+                        "Kills" => kills.round, 
+                        "Deaths" => deaths.round,
+                        "Assists" => assists.round,
+                        "K/D Ratio" => kd,
+                        "KA/D Ratio" => kad,
+                        "Intellect" => stat_intellect,
+                        "Discipline" => stat_dicipline,
+                        "Strength" => stat_strength,
+                        "ELO" => elo,
+                        "Armor" => stat_armor,
+                        "Agility" => stat_agility,
+                        "Recovery" => stat_recovery
+                    }
 
-
-
-
-                get_trials_stats = RestClient.get(
-                            "https://www.bungie.net/Platform/Destiny/Stats/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?modes=14",
-                            headers={"x-api-key" => ENV['API_TOKEN']}
-                        )   
-                        
-                stat_data = JSON.parse(get_trials_stats.body)
-
-                kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
-                deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
-                assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
-
-                kd = (kills / deaths).round(2)
-                kad = ((kills + assists) / deaths).round(2)
-
-                stats = {
-                    "Kills" => kills.round, 
-                    "Deaths" => deaths.round,
-                    "Assists" => assists.round,
-                    "K/D Ratio" => kd,
-                    "KA/D Ratio" => kad,
-                    "Intellect" => stat_intellect,
-                    "Discipline" => stat_dicipline,
-                    "Strength" => stat_strength,
-                    "ELO" => elo,
-                    "Armor" => stat_armor,
-                    "Agility" => stat_agility,
-                    "Recovery" => stat_recovery
-                }
-
-
-                characters_stats << {"Character Type" => character_type, "Character Stats" => stats, "Character Items" => items}
+                    @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items}
+                    
+                end
+                    
+                hydra.queue(get_trials_stats)
+                
             end
-            
-            characters_stats
+        end
+
+        
+        hydra.queue(get_characters)
+        hydra.run
+        @characters_stats
         
     end
 
