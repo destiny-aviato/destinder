@@ -141,8 +141,11 @@ class PlayerStat < ApplicationRecord
                     13 => "Shader",
                     14 => "Emote",
                     15 => "Horn",
-                    16 => "Artifact"
+                    16 => "Artifact",
+                    17 => "Emblem Background"
                 }
+                
+                items["Emblem Background"] = "https://www.bungie.net#{x['backgroundPath']}" #emblem background
                 
                 inventory.each_with_index do |item, index|
     
