@@ -32,7 +32,6 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "vog")
         end
 
-        # @micropost.platform = @micropost.user.api_membership_type == "1" ? "Xbox" : "Playstation"
         if @micropost.save
             respond_to do |format|
                 # if the response fomat is html, redirect as usual
