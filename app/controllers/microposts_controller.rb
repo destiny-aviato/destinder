@@ -1,7 +1,7 @@
 class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
     def index
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 10)
+        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build 
     end
 
@@ -10,6 +10,14 @@ class MicropostsController < ApplicationController
         case @micropost.game_type
         when "Trials of Osiris" 
             @micropost.user_stats = get_stats(current_user, "too")
+        when "Wrath of the Machine"
+            @micropost.user_stats = get_stats(current_user, "wrath")
+        when "King's Fall"
+            @micropost.user_stats = get_stats(current_user, "kings")
+        when "Crota's End"
+            @micropost.user_stats = get_stats(current_user, "crota")
+        when "Vault of Glass"
+            @micropost.user_stats = get_stats(current_user, "vog")
         end
 
         if @micropost.save
@@ -21,7 +29,9 @@ class MicropostsController < ApplicationController
                 format.js { }
             end
         else
-         render microposts_path
+            respond_to do |format|
+                format.js { render :js => "Materialize.toast('Whoops! Your post is too long.', 4000); " }
+              end
         end
     end
 
@@ -40,7 +50,16 @@ class MicropostsController < ApplicationController
             case mode
             when "too"  
                 Micropost.get_trials_stats(user)
+            when "wrath"
+                Micropost.get_raid_stats(user, "wrath")
+            when "kings"
+                Micropost.get_raid_stats(user, "kings")
+            when "crota"
+                Micropost.get_raid_stats(user, "crota")
+            when "vog"
+                Micropost.get_raid_stats(user, "vog")
             end
+
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
