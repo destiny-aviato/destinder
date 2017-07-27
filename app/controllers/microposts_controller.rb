@@ -1,11 +1,23 @@
 class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
+
     def index
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 12)
+        filtering_params(params).each do |key, value|
+          @microposts = @microposts.public_send(key, value) if value.present?
+        end
+        # @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build 
+
+        respond_to do |format|
+            format.html { request.referrer || root_url }
+            format.js { }
+        end
+        
     end
 
     def create
+
         @micropost = current_user.microposts.build(micropost_params)
         case @micropost.game_type
         when "Trials of Osiris" 
@@ -20,6 +32,7 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "vog")
         end
 
+        @micropost.platform = @micropost.user.api_membership_type == "1" ? "Xbox" : "Playstation"
         if @micropost.save
             respond_to do |format|
                 # if the response fomat is html, redirect as usual
@@ -72,11 +85,15 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty)
     end
     
     def correct_user
       @micropost = current_user.microposts.find_by(id: params[:id])
       redirect_to root_url if @micropost.nil?
     end
+
+    def filtering_params(params)
+        params.slice(:game_type, :raid_difficulty, :platform)
+      end
 end

@@ -27,7 +27,7 @@
                 <div class="card-content">
                     <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
                     <%= character_races[stats["Character Type"]] %><br>
-                    <%= micropost.game_type %>
+                    <%= micropost.game_type %> <%= micropost.raid_difficulty %>
                     <br><small> <%= time_ago_in_words(micropost.created_at) %> ago</small>
                 
                 <br><br>    
@@ -130,6 +130,33 @@
                                 </table>
                         </div>
                     </div>
+                <% else %>
+                    <div class="card-tabs">
+                        <ul class="tabs post tabs-fixed-width">
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Stats</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-content grey lighten-4">
+                        <div id="<%= micropost.id %>-yearly">
+                            <table class="table centered highlight">
+                                <thead>
+                                    <tr>
+                                        <th>Completions</th>
+                                        <th>Kills</th>
+                                        <th>Deaths</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr>
+                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!" ><%= stats["Character Stats"]["Completions"] %></td>
+                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!"><%= stats["Character Stats"]["Kills"] %></td>
+                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!"><%= stats["Character Stats"]["Deaths"] %></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
                 <% end %>
                 <br>    
                 <div class="row">
