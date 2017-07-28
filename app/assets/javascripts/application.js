@@ -28,31 +28,32 @@
 //     $(".se-pre-con").fadeOut("slow");
 // });
 
-$(document).on("turbolinks:click", function(){
+$(document).on("turbolinks:click", function() {
     // $('.preloader-wrapper.big.active').show();
     $(".se-pre-con").show();
     $('.turbolinks-progress-bar').show();
-    
-  });
-  
-  $(document).on("turbolinks:load", function(){
+
+});
+
+$(document).on("turbolinks:load", function() {
     //   $('.preloader-wrapper.big.active').hide();
     $(".se-pre-con").fadeOut("slow");
-    
-  });
+
+});
 
 $(document).on('turbolinks:load', function() {
-    $('#difficulty').hide(); 
-    $('#micropost_raid_difficulty').val('Normal'); 
+    $('#difficulty').hide();
+    $('#micropost_raid_difficulty').val('Normal');
 
-    $( "#micropost_raid_difficulty" ).click(function() {
-        if ($('#micropost_raid_difficulty').prop('checked')) { 
-          $('#micropost_raid_difficulty').val('Hard'); 
-          console.log('hard'); 
-      } else {
-       $('#micropost_raid_difficulty').val('Normal'); 
-          console.log('normal'); }
-      });
+    $("#micropost_raid_difficulty").click(function() {
+        if ($('#micropost_raid_difficulty').prop('checked')) {
+            $('#micropost_raid_difficulty').val('Hard');
+            console.log('hard');
+        } else {
+            $('#micropost_raid_difficulty').val('Normal');
+            console.log('normal');
+        }
+    });
 
 
     if ($("#tabs").length) {
@@ -94,19 +95,19 @@ $(document).on('turbolinks:load', function() {
     $('.tap-target').tapTarget('close');
 
     var options = [{
-        
-                selector: '#staggered-test',
-                offset: 255,
-                callback: function(el) {
-                    Materialize.showStaggeredList($(el));
-                }
-            },
-        
-        ];
+
+            selector: '#staggered-test',
+            offset: 255,
+            callback: function(el) {
+                Materialize.showStaggeredList($(el));
+            }
+        },
+
+    ];
     Materialize.scrollFire(options);
 
     $('.parallax').parallax();
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip({ delay: 50 });
 
     $('#gear-modal').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -116,15 +117,15 @@ $(document).on('turbolinks:load', function() {
         startingTop: '4%', // Starting top style attribute
         endingTop: '10%', // Ending top style attribute
         ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-          alert("Ready");
-        //   console.log(modal, trigger);
+            alert("Ready");
+            //   console.log(modal, trigger);
         },
         complete: function() { alert('Closed'); } // Callback for Modal close
-      });
+    });
 
-      $('#game-select').change(function(){
-        selection = $(this).val(); 
-        
+    $('#game-select').change(function() {
+        selection = $(this).val();
+
         if (selection != 'Trials of Osiris') {
             $('#difficulty').show();
             console.log("show");
@@ -133,7 +134,7 @@ $(document).on('turbolinks:load', function() {
             console.log("hide");
         }
 
-     });
+    });
 
 });
 
@@ -196,7 +197,7 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
-$(document).on("turbolinks:load", function(){
+$(document).on("turbolinks:load", function() {
     // $('.modal').modal();
 
     $('.modal').modal({
@@ -209,47 +210,47 @@ $(document).on("turbolinks:load", function(){
         ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
             console.log(modal, trigger);
         },
-        complete: function() {  } // Callback for Modal close
+        complete: function() {} // Callback for Modal close
     });
 
     $('#modal1').modal('open');
-    
+
     $('#modal1').modal('close');
-    
+
     $('#modal2').modal('open');
-    
+
     $('#modal2').modal('close');
-    
+
     $('#modal3').modal('open');
-    
+
     $('#modal3').modal('close');
-    
+
     $('#modal4').modal('open');
-    
+
     $('#modal4').modal('close');
-    
+
     $('#modal5').modal('open');
-    
+
     $('#modal5').modal('close');
-    
+
     $('#modal6').modal('open');
-    
+
     $('#modal6').modal('close');
-    
+
     $('#modal7').modal('open');
-    
+
     $('#modal7').modal('close');
 
     $('#gear-modal-0').modal('open');
-    
+
     $('#gear-modal-0').modal('close');
 
     $('#gear-modal-1').modal('open');
-    
+
     $('#gear-modal-1').modal('close');
 
     $('#gear-modal-2').modal('open');
-    
+
     $('#gear-modal-2').modal('close');
 });
 
