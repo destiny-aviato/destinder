@@ -157,87 +157,37 @@
                 
           </div><!--Close Third Row-->
           <hr/>
+          
 
 
-          <div class="row center-align"><!--open First row-->
-              <div class="col s4">
-                  <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Strength"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Strength</span>  
-            </div><!--Column Close-->
-              <div class="col s4">
-                <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Discipline"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Discipline</span>      
-            </div><!--Column Close-->
-              <div class="col s4">
-                  <div class="card-panel red"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Intellect"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Intellect</span>
-                </div><!--Column Close-->
-                  
-          </div><!--Close First row-->
+<div class="row">
+
+<div class="row">
+<div class="col s4"><div class="progress-circle" data-progress="32"></div></div>
+<div class="col s4"><div class="progress-circle" data-progress="40"></div></div>
+<div class="col s4"><div class="progress-circle" data-progress="28"></div></div>
+</div>
+<div class="row">
+<div class="col s4">Primary Kills</div>
+<div class="col s4">Special Kills</div>
+<div class="col s4">Ability Kills</div>
+</div>
+
+
+</div>
 
 
 
 
-          <div class="row center-align"><!--open Second row-->
-              <div class="col s4">
-                  <div class="card-panel red"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Recovery</span>  
-            </div><!--Column Close-->
-              <div class="col s4">
-                <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Agility"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Agility</span>      
-            </div><!--Column Close-->
-              <div class="col s4">
-                  <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Armor"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Armor</span>
-                </div><!--Column Close-->
-                  
-          </div><!--Close Second row-->
           <hr/>
+          
 
-    </div><!--Close tab 1 content-->
-
-
-    <div id=<%= "gear-tab-#{index}" %> class="col s12"><!--open tab 2 content-->
-
-        <div class="row"><!--Open first row-->
-            <div class="col s12 center-align card-title">Gun Game</div><!--Close Column-->
-        </div><!--Close First Row-->
-        <div class="row"><!--Open Second row-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-        </div><!--Close Second Row-->
-        <hr/>
-         <div class="row"><!--Open Third row-->
-            <div class="col s12 center-align card-title">Gear</div><!--Close Column-->
-        </div><!--Close Third Row-->
-        <div class="row"><!--Open Fourth row-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
-        </div><!--Close Fourth Row-->
-
-        <hr/>
-        <div class="row"><!--Open Fifth Row-->
+          <div class="row"><!--Open Fifth Row-->
                 <div class="col s12">
 
                     <div class="card  card-width-fix"><!--OPEN KD CARD-->
                         <div class="card-content">
-                        <p class="center-align card-title">Gun STATS</p>
+                        <p class="center-align card-title">GUN STATS</p>
                         </div><!--CLOSE CARD CONTENT-->
                         <div class="card-tabs">
                         <ul class="tabs tabs-fixed-width">
@@ -252,22 +202,51 @@
                                 <thead>
                                     <tr>
                                         <th>Primary</th>
+                                        <th></th>
                                         <th>Secondary</th>
+                                         <th></th>
                                         <th>Heavy</th>
-                                        <th class="tooltipped" data-position="top" data-delay="50" data-tooltip="Super Kills + Grenade Kills" data-tooltip-id="74af225b-0e95-edaa-1353-0cdf11361180">
-                                            Ability  <i class="fa fa-question-circle"></i>
-                                        </th>
+                                         <th></th>
+                                        
                                     </tr>
                                 </thead>
                         
                                 <tbody>
                                     <tr>
-                                        <td>1.14</td>
-                                        <td>1.49</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette3.wikia.nocookie.net/destinypedia/images/6/68/Hand_Cannon_Loader_icon.png/revision/latest?cb=20150909081128" alt=""></td>
+                                        <td>32%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt=""></td>
                                         <td>56%</td>
-                                        <td>
-                                            1749
-                                        </td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette1.wikia.nocookie.net/destinypedia/images/3/37/Rocket_Launcher_Loader_perk_icon.png/revision/latest?cb=20160802080411" alt=""></td>
+                                        <td>1749</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><img class="mini-weapon-icons" src="https://vignette2.wikia.nocookie.net/destinypedia/images/3/30/Auto_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002614" alt=""></td>
+                                        <td>32%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette2.wikia.nocookie.net/destinypedia/images/3/31/Shotgun_Loader_perk_icon.png/revision/latest?cb=20160730002729" alt=""></td>
+                                        <td>56%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette2.wikia.nocookie.net/destinypedia/images/2/22/Fastball_icon.png/revision/latest?cb=20150909081131" alt=""></td>
+                                        <td>1749</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><img class="mini-weapon-icons" src="https://vignette4.wikia.nocookie.net/destinypedia/images/0/07/Pulse_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002615" alt=""></td>
+                                        <td>32%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette3.wikia.nocookie.net/destinypedia/images/a/ab/Sidearm_Loader_perk_icon.png/revision/latest?cb=20160730002729" alt=""></td>
+                                        <td>56%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette1.wikia.nocookie.net/destinypedia/images/3/37/Rocket_Launcher_Loader_perk_icon.png/revision/latest?cb=20160802080411" alt=""></td>
+                                        <td>1749</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><img class="mini-weapon-icons" src="https://vignette3.wikia.nocookie.net/destinypedia/images/3/35/Scout_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002616" alt=""></td>
+                                        <td>32%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette1.wikia.nocookie.net/destinypedia/images/9/96/Fusion_Rifle_Loader_icon.png/revision/latest?cb=20150909114341" alt=""></td>
+                                        <td>56%</td>
+                                        <td><img class="mini-weapon-icons" src="https://vignette1.wikia.nocookie.net/destinypedia/images/3/37/Rocket_Launcher_Loader_perk_icon.png/revision/latest?cb=20160802080411" alt=""></td>
+                                        <td>1749</td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
@@ -331,6 +310,93 @@
                 </div><!--close column-->
                 
           </div><!--Close Fifth Row-->
+
+
+          
+          <hr/>
+
+    </div><!--Close tab 1 content-->
+
+
+    <div id=<%= "gear-tab-#{index}" %> class="col s12"><!--open tab 2 content-->
+
+        <div class="row center-align"><!--Open first row-->
+            <div class="col s12 center-align card-title">Loadout</div><!--Close Column-->
+        </div><!--Close First Row-->
+        <div class="row"><!--Open Second row-->
+            <div class="col s3 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Subclass"]["Item Name"] %></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Helmet"]["Item Name"] %></div><!--Close Column-->
+        </div><!--Close Second Row-->
+        
+         
+        <div class="row center-align"><!--Open Fourth row-->
+            <div class="col s3 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Gauntlets"]["Item Name"] %></div><!--Close Column-->
+       </div><!--Close Fourth Row-->
+
+        <div class="row center-align"><!--Open Fifth row-->
+        <div class="col s3 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+        <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></div><!--Close Column-->
+        <div class="col s3 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
+        <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Leg Armor"]["Item Name"] %></div><!--Close Column-->
+        </div><!--Close Fifth Row-->
+
+        <div class="row center-align"><!--Open Sixth row-->
+            <div class="col s3 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Artifact"]["Item Name"] %>" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %> alt=""></div><!--Close Column-->
+            <div class="col s3 center-align valign-wrapper"><%= x["Character Items"]["Artifact"]["Item Name"] %></div><!--Close Column-->
+        </div><!--Close Sixth Row-->
+
+        <hr/>
+        <div class="grey-background">
+         <div class="row center-align "><!--open First row-->
+              <div class="col s4">
+                  <!--Ability card open-->
+                  <img class="center-align ability-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Strength" src="https://www.bungie.net/common/destiny_content/icons/4788d263e763f66f7bb7d2133734b498.png" alt="">
+                    <span class="center-align"><%= x["Character Stats"]["Strength"] %></span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <img class="center-align ability-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Discipline" src="https://www.bungie.net/common/destiny_content/icons/659c225302584cc99cc2379e777dd1dc.png" alt="">
+                    <span class="center-align"><%= x["Character Stats"]["Discipline"] %></span>       
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <img class="center-align ability-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Intellect" src="https://www.bungie.net/common/destiny_content/icons/bd07170f45b047946b08b89fa752c2bd.png" alt="">
+                    <span class="center-align"><%= x["Character Stats"]["Intellect"] %></span>  
+                </div><!--Column Close-->
+                  
+          </div><!--Close First row-->
+          
+
+
+
+          <div class="row center-align"><!--open Second row-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Recovery</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Agility"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Agility</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Armor"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Armor</span>
+                </div><!--Column Close-->
+                  
+          </div><!--Close Second row-->
+                  
+          </div><!--close grey background-->
     
     
     </div><!--Close tab 2 content-->
