@@ -6,11 +6,10 @@ class MicropostsController < ApplicationController
         filtering_params(params).each do |key, value|
           @microposts = @microposts.public_send(key, value) if value.present?
         end
-        # @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build 
 
         respond_to do |format|
-            format.html { request.referrer || root_url }
+            format.html { }
             format.js { }
         end
         
@@ -48,6 +47,7 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
+        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost.destroy
 
         respond_to do |format|
