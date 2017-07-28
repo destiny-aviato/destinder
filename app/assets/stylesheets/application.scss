@@ -489,11 +489,10 @@
                                 margin-right: auto;
                             }
                             
-                           // .modal .modal-content {
+                            // .modal .modal-content {
                             //     padding: 5px;
                             //     width: 85%;
                             // }
-                            
                             // Slick custom CSS
                             .scroller {
                                 div {
@@ -539,6 +538,7 @@
                                 height: 50px;
                                 width: 50px;
                                 border-radius: 999px;
+                                margin-top: 25px;
                             }
                             
                             .gamertag-title {
@@ -546,7 +546,8 @@
                                 font-weight: bold;
                                 color: #616161;
                                 margin-left: auto;
-                                margin-rigth: auto;
+                                margin-right: auto;
+                                margin-top: 25px;
                             }
                             
                             .class-title {
@@ -585,23 +586,47 @@
                                 font-weight: bold;
                                 font-size: 30px;
                             }
-
-                            .homepage-images{
+                            
+                            .homepage-images {
                                 width: 100%;
                                 border-radius: 10px;
                                 -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
                                 -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
                                 box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
                             }
-                            .top-break{
+                            
+                            .top-break {
                                 height: 100px;
                             }
-
-                            .center-icons{
+                            
+                            .center-icons {
                                 margin-left: auto;
                                 margin-right: auto;
                             }
-
-                            .button-width-fix{
+                            
+                            .button-width-fix {
                                 width: 263px;
                             }
+                            
+                            .emblem-background {
+                                margin-top: 20px;
+                                position: fixed;
+                                z-index: 1;
+                            }
+                            
+                            .emblem-background-size {
+                                background-size: cover;
+                                background-position: 0 top;
+                                background-repeat: no-repeat;
+                                border-top-right-radius: 1em;
+                            }
+                            
+                            .shadow-effect {
+                                border-radius: 10px;
+                                -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
+                                border-left: 1px solid #E8E6E8;
+                            }
+                            
+                            //////PROGRESS BARS///////

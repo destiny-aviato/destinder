@@ -10,15 +10,17 @@
  
 <div class="scroller">
 <% info.each_with_index do |x, index| %>
-  <div>
+  <div class="shadow-effect">
       
 <div><!--OPEN FIRST CHARACTER--> 
 
     
 
           <div class="row"><!--open first row-->
-                
+                <div class="col s12"> </div>
+            
               <div class="col s2 valign-wrapper"><!--open first column-->
+
                   <img class="subclass-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt="">
               
               </div><!--Close first column-->
@@ -33,7 +35,6 @@
                           <div class="kd-title"><%= x["Character Stats"]["K/D Ratio"] %></div>
                       </div>
                 
-        
               
               </div><!--Close Second column-->
 
@@ -49,6 +50,7 @@
         <li class="tab col s6"><a href=<%= "#gear-tab-#{index}" %>>Gear</a></li> 
       </ul>
     </div><!--close tabs column-->
+    <hr/>
 
 
 
@@ -56,49 +58,6 @@
 
     <div id=<%= "stat-tab-#{index}" %> class="col s12"><!--open tab 1 content-->
 
-          <div class="row center-align"><!--open First row-->
-              <div class="col s4">
-                  <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Strength"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Strength</span>  
-            </div><!--Column Close-->
-              <div class="col s4">
-                <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Discipline"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Discipline</span>      
-            </div><!--Column Close-->
-              <div class="col s4">
-                  <div class="card-panel red"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Intellect"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Intellect</span>
-                </div><!--Column Close-->
-                  
-          </div><!--Close First row-->
-
-          <div class="row center-align"><!--open Second row-->
-              <div class="col s4">
-                  <div class="card-panel red"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Recovery</span>  
-            </div><!--Column Close-->
-              <div class="col s4">
-                <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Agility"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Agility</span>      
-            </div><!--Column Close-->
-              <div class="col s4">
-                  <div class="card-panel teal"><!--Ability card open-->
-                        <span class="white-text"><%= x["Character Stats"]["Armor"] %></span>
-                  </div><!--Ability card close-->
-                    <span class="center-align">Armor</span>
-                </div><!--Column Close-->
-                  
-          </div><!--Close Second row-->
 
           <div class="row"><!--Open Third Row-->
                 <div class="col s12">
@@ -197,6 +156,56 @@
                 </div><!--close column-->
                 
           </div><!--Close Third Row-->
+          <hr/>
+
+
+          <div class="row center-align"><!--open First row-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Strength"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Strength</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Discipline"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Discipline</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Intellect"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Intellect</span>
+                </div><!--Column Close-->
+                  
+          </div><!--Close First row-->
+
+
+
+
+          <div class="row center-align"><!--open Second row-->
+              <div class="col s4">
+                  <div class="card-panel red"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Recovery"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Recovery</span>  
+            </div><!--Column Close-->
+              <div class="col s4">
+                <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Agility"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Agility</span>      
+            </div><!--Column Close-->
+              <div class="col s4">
+                  <div class="card-panel teal"><!--Ability card open-->
+                        <span class="white-text"><%= x["Character Stats"]["Armor"] %></span>
+                  </div><!--Ability card close-->
+                    <span class="center-align">Armor</span>
+                </div><!--Column Close-->
+                  
+          </div><!--Close Second row-->
+          <hr/>
 
     </div><!--Close tab 1 content-->
 
@@ -211,6 +220,7 @@
             <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
             <div class="col s4 center-align"><img class="gun-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
         </div><!--Close Second Row-->
+        <hr/>
          <div class="row"><!--Open Third row-->
             <div class="col s12 center-align card-title">Gear</div><!--Close Column-->
         </div><!--Close Third Row-->
@@ -221,7 +231,7 @@
             <div class="col s3 center-align"><img class="gear-icons tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
         </div><!--Close Fourth Row-->
 
-        
+        <hr/>
         <div class="row"><!--Open Fifth Row-->
                 <div class="col s12">
 
@@ -329,11 +339,13 @@
           
           
 
-
+<br>
 </div><!--CLOSE FIRST CHARACTER--> 
   </div>
 <% end %>
+
 </div>
+
 
 
       <% info.each_with_index do |x, index| %>
