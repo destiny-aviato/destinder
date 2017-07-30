@@ -22,8 +22,6 @@
 
 
         <label>Game Mode</label><br>
-
-
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
             <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), class: 'game_type_select' %>
         <% end %>
