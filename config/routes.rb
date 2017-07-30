@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :player_stats
+  resources :team_stats
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
