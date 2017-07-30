@@ -43,6 +43,7 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on('turbolinks:load', function() {
 
+    $('#game-select').material_select();
     $('.game_type_select').change(function() {    
     $("#filter_game_form").submit();
     });
