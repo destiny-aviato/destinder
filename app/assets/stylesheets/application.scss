@@ -14,7 +14,6 @@
                             
                             @import "materialize/components/color";
                             $primary-color: color("blue", "lighten-2") !default;
-                            $secondary-color: color("yellow", "base") !default;
                             @import 'materialize';
                             @import 'jquery-ui';
                             @import "materialize/extras/nouislider";
@@ -609,7 +608,7 @@
                             }
                             
                             .button-width-fix {
-                                width: 263px;
+                                width: 100%;
                             }
                             
                             .emblem-background {
@@ -1208,3 +1207,21 @@
                                 background-image: -webkit-linear-gradient(left, #0083ff 50%, transparent 50%, transparent), -webkit-linear-gradient(right, #0083ff 50%, #ddd 50%, #ddd);
                                 background-image: linear-gradient(90deg, #0083ff 50%, transparent 50%, transparent), linear-gradient(270deg, #0083ff 50%, #ddd 50%, #ddd);
                             }
+
+                            #player-container{
+                                    height: 100%;
+                                    position: relative;
+                                    background-color: black;
+                                    width: 100%;
+                                    height: 850px;
+                                }
+
+                                #twitter-feed{
+                                    height: 600px;
+                                }
+
+                                .row-fix{
+
+                                    padding-left: 15px;
+                                }
+                            
