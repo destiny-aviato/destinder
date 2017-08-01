@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  membership_type: MyString
+  stats_data: MyText
+  characters: MyText
+  display_name: MyText
+
+two:
+  membership_type: MyString
+  stats_data: MyText
+  characters: MyText
+  display_name: MyText

@@ -1,0 +1,21 @@
+<h1>Find a player</h1>
+
+<div class="row">
+    <%= form_for(@team_stat) do |f| %>
+        <div class="field has-addons">
+        <p class="control">
+            <span class="select">
+                <%= f.select :membership_type, [["Playstation", "2"], ["Xbox", "1"]]%>
+            </span>
+        </p>
+        <p class="control">
+            <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
+        </p>
+        <p class="control">
+            <%= f.submit "Find player" %>
+        </p>
+        </div>
+
+    <% end %>
+  </div>
+</div>

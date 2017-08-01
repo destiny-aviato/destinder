@@ -11,9 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
-//= require materialize
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery.slick
 //= require initialize
@@ -42,6 +41,11 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on('turbolinks:load', function() {
+    
+    $('#game-select').material_select();
+        $('.game_type_select').change(function() {    
+        $("#filter_game_form").submit();
+    });
     $('#difficulty').hide();
     $('#micropost_raid_difficulty').val('Normal');
 

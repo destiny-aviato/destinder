@@ -1,0 +1,13 @@
+<% info = get_stats("too") %>
+
+<% username = @user.nil? ? @team_stat.display_name : @user.display_name %>
+
+<% if info.nil? %> 
+  <div class="container games">
+    ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
+  </div>
+<% else %> 
+    <pre>
+        <code><%= JSON.pretty_generate(info) %></code>
+    </pre>     
+<% end %> 
