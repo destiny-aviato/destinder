@@ -17,14 +17,13 @@
 <div class="logo-name align-right right-align">Destinder<br/><%= image_tag 'destiny-logo.png', class:"nav-logo" %></div>
 </div>
 
+<% info = @stats %>
+
+<% username = current_user.display_name %>
+<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+
 
 <div class="row"><!--open of main row-->
-
-
-
-
-
-
 
 
 
@@ -584,6 +583,8 @@
 
 
 
-
+<pre>
+    <code><%= JSON.pretty_generate(info) %></code>
+</pre> 
 
 <% end %>
