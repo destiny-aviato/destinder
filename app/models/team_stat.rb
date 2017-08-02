@@ -45,7 +45,7 @@ class TeamStat < ApplicationRecord
                 get_recent.on_complete do |recent_response|
                     recent_data = JSON.parse(recent_response.body)
                     recent_game = recent_data["Response"]["data"]["activities"][0]["activityDetails"]["instanceId"]
-
+                    searched_team = recent_data["Response"]["data"]["activities"][0]["values"]["team"]["basic"]["value"]
                     get_pgcr = Typhoeus::Request.new(
                         "https://www.bungie.net/Platform/Destiny/Stats/PostGameCarnageReport/#{recent_game}/?lc=en",
                         method: :get,
@@ -53,10 +53,14 @@ class TeamStat < ApplicationRecord
                     )
                     get_pgcr.on_complete do |pgcr_response|
                         pgcr_data = JSON.parse(pgcr_response.body)
-                        team = pgcr_data["Response"]["data"]["entries"]
-                        team.each_with_index do |player, index|
-                            if index > 2
-                                break
+                        teams = pgcr_data["Response"]["data"]["entries"] # all players in both teams
+                        teams.each_with_index do |player, index|
+                            # if index > 2
+                            #     break
+                            # end
+                            team = player["values"]["team"]["basic"]["value"]
+                            if team != searched_team
+                                next
                             end
                             player_name = player["player"]["destinyUserInfo"]["displayName"]
                             player_membership_id = player["player"]["destinyUserInfo"]["membershipId"]
