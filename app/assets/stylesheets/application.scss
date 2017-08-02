@@ -120,7 +120,7 @@
                                 background-position: center;
                                 background-repeat: no-repeat;
                                 background-size: cover;
-                                height: 400px;
+                                height: 280px;
                                 margin-left: -33.33%;
                                 margin-right: -28%;
                                 max-width: 162%;
@@ -135,7 +135,7 @@
                                 height: 400px;
                                 margin-left: -33.33%;
                                 margin-right: -28%;
-                                max-width: 162%;
+                                max-width: 134%;
                             }
                             
                             .parralax-1 {
@@ -144,7 +144,7 @@
                                 background-position: center;
                                 background-repeat: no-repeat;
                                 background-size: cover;
-                                height: 350px;
+                                height: 280px;
                                 margin-left: -33.33%;
                                 margin-right: -28%;
                                 max-width: 162%;
@@ -524,7 +524,8 @@
                             }
                             
                             .container {
-                                width: 80%;
+                                    width: 89%;
+                                    margin-left: 0;
                             }
                             
                             .emblem-icon {
@@ -1224,4 +1225,17 @@
 
                                     padding-left: 15px;
                                 }
+
+                                .sub-title{
+                                    color: #2bbbad;
+                                    font-weight: bold;
+                                }
+
+                                .image-margin-fix{
+                                    margin-left: 25%!important;
+                                }
+
+                            
+
+
                             
