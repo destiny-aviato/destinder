@@ -77,14 +77,14 @@
           <%= form_for(TeamStat.new) do |f| %>
               <div class="input-field">
                 <div class="row">
-                  <div class="input-field col s2">
+                  <div class="input-field col s3">
                     <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
                   </div>
-                  <div class="input-field col s10">
+                  <div class="input-field col s9">
                       <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
                     </div>
-                  <div style="display:none;">
-                    <%= f.submit "" %>
+                  <div class="hide-on-large-only">
+                    <%= f.submit "Search" %>
                   </div>
                 </div>
               </div>

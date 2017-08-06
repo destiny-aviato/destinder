@@ -46,6 +46,7 @@ class TeamStat < ApplicationRecord
                     recent_data = JSON.parse(recent_response.body)
                     recent_game = recent_data["Response"]["data"]["activities"][0]["activityDetails"]["instanceId"]
                     searched_team = recent_data["Response"]["data"]["activities"][0]["values"]["team"]["basic"]["value"]
+                   
                     get_pgcr = Typhoeus::Request.new(
                         "https://www.bungie.net/Platform/Destiny/Stats/PostGameCarnageReport/#{recent_game}/?lc=en",
                         method: :get,
@@ -55,9 +56,7 @@ class TeamStat < ApplicationRecord
                         pgcr_data = JSON.parse(pgcr_response.body)
                         teams = pgcr_data["Response"]["data"]["entries"] # all players in both teams
                         teams.each_with_index do |player, index|
-                            # if index > 2
-                            #     break
-                            # end
+
                             team = player["values"]["team"]["basic"]["value"]
                             if team != searched_team
                                 next
@@ -158,17 +157,19 @@ class TeamStat < ApplicationRecord
                                                 "Item Name" => name
                                             }
                                             @items[@item_type[index]] = item
-                                            puts "test"
+                                            puts username.display_name   
+                                            puts player_name                   
                                         end
                                         
                                         hydra.queue(get_items)
+                                        
                                         
                                     end
 
 
                                    
 
-                                    @team << {"Player Name" => player_name, "Character Type" => player_character, "Character Stats" => @stats, "Character Items" => @items}
+                                    @team << {"Player Name" => player_name, "Character Type" => player_character, "Character Stats" => @stats, "Character Items" => @items}                
                                     
                                 end 
                                 hydra.queue(get_character)
