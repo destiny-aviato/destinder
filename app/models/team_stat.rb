@@ -114,6 +114,8 @@ class TeamStat < ApplicationRecord
                     
                     character_id =  last_character["characterBase"]["characterId"]
                     character_type = last_character["characterBase"]["classType"]
+                    light_level = last_character["characterBase"]["powerLevel"]
+                    grimoire = last_character["characterBase"]["grimoireScore"]
                     stat_dicipline = last_character["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
                     stat_intellect = last_character["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
                     stat_strength = last_character["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
@@ -198,10 +200,12 @@ class TeamStat < ApplicationRecord
                             "ELO" => elo,
                             "Armor" => stat_armor,
                             "Agility" => stat_agility,
-                            "Recovery" => stat_recovery
+                            "Recovery" => stat_recovery,
+                            "Light Level" => light_level,
+                            "Grimoire" => grimoire
                         }
                        
-                        @team << {"Player Name" => player_name, "Character Type" => player_character, "Character Stats" => @stats, "Character Items" => @items} 
+                        @team << {"Player Name" => player_name, "Character Type" => character_type, "Character Stats" => @stats, "Character Items" => @items} 
                     end
                     hydra.queue(get_trials_stats)
 

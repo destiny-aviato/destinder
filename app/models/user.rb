@@ -107,6 +107,8 @@ class User < ApplicationRecord
             characters.each do |x| 
                 character_id =  x["characterBase"]["characterId"]
                 character_type = x["characterBase"]["classType"]
+                light_level = x["characterBase"]["powerLevel"]
+                grimoire = x["characterBase"]["grimoireScore"]
                 stat_dicipline = x["characterBase"]["stats"]["STAT_DISCIPLINE"]["value"]
                 stat_intellect = x["characterBase"]["stats"]["STAT_INTELLECT"]["value"]
                 stat_strength = x["characterBase"]["stats"]["STAT_STRENGTH"]["value"]
@@ -192,7 +194,9 @@ class User < ApplicationRecord
                         "ELO" => elo,
                         "Armor" => stat_armor,
                         "Agility" => stat_agility,
-                        "Recovery" => stat_recovery
+                        "Recovery" => stat_recovery,
+                        "Light Level" => light_level,
+                        "Grimoire" => grimoire
                     }
 
                     @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items}
