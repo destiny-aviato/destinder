@@ -48,12 +48,16 @@ class Micropost < ApplicationRecord
 
     character_id =  last_character["characterBase"]["characterId"]
     character_type = last_character["characterBase"]["classType"]
+    light_level = last_character["characterBase"]["powerLevel"]
+    grimoire = last_character["characterBase"]["grimoireScore"]
    
   
     stats = {
       "Completions" => "-",
       "Kills" => "-",
-      "Deaths" => "-"
+      "Deaths" => "-",
+      "Light Level" => light_level,
+      "Grimoire" => grimoire
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -73,12 +77,15 @@ class Micropost < ApplicationRecord
 
     character_id =  last_character["characterBase"]["characterId"]
     character_type = last_character["characterBase"]["classType"]
-   
+    light_level = last_character["characterBase"]["powerLevel"]
+    grimoire = last_character["characterBase"]["grimoireScore"]
   
     stats = {
       "Completions" => "-",
       "Kills" => "-",
-      "Deaths" => "-"
+      "Deaths" => "-",
+      "Light Level" => light_level,
+      "Grimoire" => grimoire
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -102,6 +109,8 @@ class Micropost < ApplicationRecord
 
         character_id =  last_character["characterBase"]["characterId"]
         character_type = last_character["characterBase"]["classType"]
+        light_level = last_character["characterBase"]["powerLevel"]
+        grimoire = last_character["characterBase"]["grimoireScore"]
         begin 
           get_trials_stats = Typhoeus.get(
                       "https://www.bungie.net/Platform/Destiny/Stats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/?modes=14",
@@ -126,14 +135,18 @@ class Micropost < ApplicationRecord
               "K/D Ratio" => kd,
               "KA/D Ratio" => kad,
               "ELO" => elo,
-              "Win Rate" => win_rate
+              "Win Rate" => win_rate,
+              "Light Level" => light_level,
+              "Grimoire" => grimoire
           }
         rescue StandardError => e 
           stats = {
             "K/D Ratio" => "-",
             "KA/D Ratio" => "-",
             "ELO" => "-",
-            "Win Rate" => "-"
+            "Win Rate" => "-",
+            "Light Level" => light_level,
+            "Grimoire" => grimoire
         }
         end
 
