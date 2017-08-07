@@ -211,7 +211,10 @@ class TeamStat < ApplicationRecord
             end
             hydra.run
         end
-
+        index = @team.index{|x| x["Player Name"].downcase == username.display_name.downcase}
+        if index != 0
+            @team[0], @team[index] = @team[index], @team[0]
+        end
        @team
     end
 
