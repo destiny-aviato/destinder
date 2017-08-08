@@ -73,13 +73,23 @@
   <div id="modal5" class="modal bottom-sheet">
     <div class="modal-content">
       <p>Trials Team Lookup</p>
-      <form>
-          <div class="input-field">
-            <input id="search" type="search" required placeholder="Enter Gamertag">
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form>
+      <div class="row">
+          <%= form_for(TeamStat.new) do |f| %>
+              <div class="input-field">
+                <div class="row">
+                  <div class="input-field col s3">
+                    <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+                  </div>
+                  <div class="input-field col s9">
+                      <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
+                    </div>
+                  <div class="hide-on-large-only">
+                    <%= f.submit "Search" %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
 
         <p>PVP Team Lookup</p>
       <form>

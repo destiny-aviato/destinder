@@ -1,48 +1,51 @@
 
-<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-<% @character_images = {
-    0 => "https://assets.tentonhammer.com/guides/attached_images/000/000/188/medium/destiny-titan-hero-image.jpg?1468380213", 
-    1 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/2/2a/Hunter.jpg/468px-Hunter.jpg", 
-    2 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/6/6b/Warlock.jpg/468px-Warlock.jpg"
-  }
-%>
+  <% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+  <% @character_images = {
+      0 => "https://assets.tentonhammer.com/guides/attached_images/000/000/188/medium/destiny-titan-hero-image.jpg?1468380213", 
+      1 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/2/2a/Hunter.jpg/468px-Hunter.jpg", 
+      2 => "http://oyster.ignimgs.com/mediawiki/apis.ign.com/destiny/thumb/6/6b/Warlock.jpg/468px-Warlock.jpg"
+    }
+  %>
+  <div class="container" style="width: 90%">
+    <section class="hero is-medium is-dark is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title hero">
+            <%= @user.display_name %>
+          </h1>
+          <h2 class="subtitle profile">
+            Trials of Osiris
+          </h2>
+        </div>
+      </div>
+    </section>
 
-<section class="hero is-medium is-dark is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title hero">
-        <%= @user.display_name %>
-      </h1>
-      <h2 class="subtitle profile">
-        Trials of Osiris
-      </h2>
+
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#trials">Trials of Osiris</a></li>
+        <li class="tab col s3"><a href="#raids">Raids</a></li>
+        <li class="tab col s3"><a href="#pvp">PVP</a></li>
+        <li class="tab col s3"><a href="#profile">Profile</a></li>
+      </ul>
     </div>
   </div>
-</section>
-
-
-<div class="row">
-  <div class="col s12">
-    <ul class="tabs">
-      <li class="tab col s3"><a href="#trials">Trials of Osiris</a></li>
-      <li class="tab col s3"><a href="#raids">Raids</a></li>
-      <li class="tab col s3"><a href="#pvp">PVP</a></li>
-      <li class="tab col s3"><a href="#profile">Profile</a></li>
-    </ul>
   </div>
-  <div id="profile">
-    <%= render 'shared/profile' %>
+  <div class="container" style="width: 85%">
+    <div id="profile">
+      <%= render 'shared/profile' %>
+    </div>
+    <div id="trials" >
+      <%= render 'shared/trials_stats' %>
+    </div>
+    <div id="raids" >
+      <%= render 'shared/raids_stats' %>
+    </div>
+    <div id="pvp" >
+        <%= render 'shared/pvp_stats' %>
+    </div>
   </div>
-   <div id="trials" >
-    <%= render 'shared/trials_stats' %>
-  </div>
-  <div id="raids" >
-    <%= render 'shared/raids_stats' %>
-  </div>
-  <div id="pvp" >
-      <%= render 'shared/pvp_stats' %>
-  </div>
-</div>
 
 
 
