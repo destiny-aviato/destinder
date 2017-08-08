@@ -5,9 +5,11 @@
             <%= image_tag( @user["profile_picture"])%>
             
           </div>
-          <div class="col s8">            
+          <div class="col s8">      
+            <% total = @user.votes_for + @user.votes_against %>      
+            <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
             <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
-            <p>Overall Ranking: <%= @user.plusminus %></p>
+            <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
             <p>Already voted: <%= current_user.voted_for?(@user) %></p>
 
             <% if current_user.voted_for?(@user) %>
