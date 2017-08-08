@@ -174,9 +174,8 @@ $primary-color: color("blue", "lighten-2") !default;
     max-width: 162%;
 }
 
-body {
-    background-color: white;
-}
+
+
 
 .white-space {
     height: 400px;
@@ -612,7 +611,8 @@ a.gamertag-name {
 }
 
 .button-width-fix {
-    width: 100%;
+       width: 95%;
+    margin-top: 12px;
 }
 
 .emblem-background {
@@ -634,6 +634,8 @@ a.gamertag-name {
     -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
     box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
     border-left: 1px solid #E8E6E8;
+    border-top: 1px solid #E8E6E8;
+    border-bottom: 1px solid #E8E6E8;
 }
 
 .ability-icons {
@@ -1226,7 +1228,7 @@ a.gamertag-name {
     position: relative;
     background-color: black;
     width: 100%;
-    height: 725px;
+    height: 735px;
     border-bottom-right-radius: 10px;
     margin-top: 89px;
 }
@@ -1250,5 +1252,8 @@ font-weight: bold;
 
     padding-right: 3%!important;
     padding-left: 3%!important;
+}
+.height-fix{
+    height: 704px;
 }
 
