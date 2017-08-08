@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(version: 20170808032638) do
     t.text     "characters"
   end
 
-  create_table "reputations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "comment"
-    t.string   "user_id"
-  end
-
   create_table "team_stats", force: :cascade do |t|
     t.string   "membership_type"
     t.text     "stats_data"
