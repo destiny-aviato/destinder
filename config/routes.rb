@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root to: 'home#index'
   resources :users, only: [:show, :index] 
+  post 'users/upvote'
+  post 'users/downvote'
+  post 'users/unvote'
   get 'profile', to: 'users#show'
   get 'test', to: 'home#index2'
   get 'faq', to: 'home#faq'

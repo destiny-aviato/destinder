@@ -2,6 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :microposts, dependent: :destroy
+  acts_as_voter    
+  acts_as_voteable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :timeoutable,
          :omniauthable, :omniauth_providers => [:bungie]
@@ -13,6 +15,7 @@ class User < ApplicationRecord
   def password_required?
     false
   end
+
 
   def self.get_membership_id(username)
     begin
