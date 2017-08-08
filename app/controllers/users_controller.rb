@@ -9,6 +9,48 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
+  def upvote
+    begin
+      if params[:voter]
+        voteable = User.find_by(:id => params[:voter])
+        current_user.vote_for(voteable)
+        redirect_to request.referrer || root_url
+        flash[:notice] = "Vote Cast"
+      end
+    rescue StandardError => e 
+      redirect_to request.referrer || root_url
+      flash[:notice] = "Sorry, there was an issue: #{e}"
+    end
+  end
+
+  def downvote
+    begin
+      if params[:voter]
+        voteable = User.find_by(:id => params[:voter])
+        current_user.vote_against(voteable)
+        redirect_to request.referrer || root_url
+        flash[:notice] = "Vote Cast"
+      end
+    rescue StandardError => e 
+      redirect_to request.referrer || root_url
+      flash[:notice] = "Sorry, there was an issue: #{e}"
+    end
+  end
+
+  def unvote
+    begin
+      if params[:voter]
+        voteable = User.find_by(:id => params[:voter])
+        current_user.unvote_for(voteable)
+        redirect_to request.referrer || root_url
+        flash[:notice] = "Vote Removed"
+      end
+    rescue StandardError => e 
+      redirect_to request.referrer || root_url
+      flash[:notice] = "Sorry, there was an issue: #{e}"
+    end
+  end
+
   def index
     @users = User.all
     if params[:search]
