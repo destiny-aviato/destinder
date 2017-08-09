@@ -4,11 +4,13 @@ class HomeController < ApplicationController
     def index
         puts "test"
         @stats = get_stats("too")
+        @trials_map = get_map
     end    
 
     def index2
         puts "test"
         @stats = get_stats("too")
+        @trials_map = get_map
     end
 
     def faq
@@ -49,5 +51,16 @@ class HomeController < ApplicationController
         end
       end
     
+      def get_map
+        begin        
+          hydra = Typhoeus::Hydra.hydra
+            return "the map!"
+            # goth = "4611686018428388122"
+            # jake = "4611686018433833539"
+
+        rescue StandardError => e
+          return nil
+        end
+      end
     
 end
