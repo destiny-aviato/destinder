@@ -31,64 +31,46 @@
   <div class="col s12 m3 hide-on-small-only"><!--Open of Character Column-->
 
     <div id="player-container">
-
-                        <div class="row">
-                          <div class="col s12"><img class="emblem-background" src=<%= info[0]["Character Items"]["Emblem Background"] %> alt=""></div>
-                        
-                        </div>
-                          
-                      
-
-                      <div class="row">
-                          <div class="col s12 gamertag-title center-align valign-wrapper"><%= username %></div>
-                          
-                      </div>
-
-                      <div class="row">
-                          <div class="col s12"><img class="emblem-icon2" src=<%= info[0]["Character Items"]["Emblem"]["Item Icon"] %> alt=""></div>
-                        
-                    </div>
-
-
-
-
-                      <div class="row"><!--Open Second row-->
-            <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Subclass"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Subclass"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            
-            <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Helmet"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            
-        </div><!--Close Second Row-->
-        
-         
-        <div class="row center-align"><!--Open Fourth row-->
-            <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-        
-            <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->
-        
-       </div><!--Close Fourth Row-->
-
-        <div class="row center-align"><!--Open Fifth row-->
-        <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-       
-        <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->
-       
-        </div><!--Close Fifth Row-->
-
-        <div class="row center-align"><!--Open Sixth row-->
-            <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            
-            <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= info[0]["Character Items"]["Artifact"]["Item Name"] %>" src=<%= info[0]["Character Items"]["Artifact"]["Item Icon"] %> alt=""></div><!--Close Column-->
-            
-        </div><!--Close Sixth Row-->
-
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs tabs-fixed-width">
+              <% info.each_with_index do |x, index| %>
+                <li class="tab col s3"><a href="#char<%= index %>"><%= @character_races[x["Character Type"]] %></a></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <% info.each_with_index do |x, index| %>
+          <div id="char<%= index %>" class="col s12">            
+            <div class="row">
+              <div class="col s12"><img class="emblem-background" src=<%= x["Character Items"]["Emblem Background"] %> alt=""></div>                
+            </div>
+            <div class="row">
+              <div class="col s12 gamertag-title center-align valign-wrapper"><%= username %></div>                          
+            </div>
+            <div class="row">
+              <div class="col s12"><img class="emblem-icon2" src=<%= x["Character Items"]["Emblem"]["Item Icon"] %> alt=""></div>              
+            </div>
+            <div class="row"><!--Open Second row-->
+              <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+              <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+            </div><!--Close Second Row-->
+            <div class="row center-align"><!--Open Fourth row-->
+              <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->          
+              <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->        
+            </div><!--Close Fourth Row-->
+            <div class="row center-align"><!--Open Fifth row-->
+              <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->             
+              <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->             
+            </div><!--Close Fifth Row-->
+            <div class="row center-align"><!--Open Sixth row-->
+              <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+              <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Artifact"]["Item Name"] %>" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+            </div><!--Close Sixth Row-->
+          </div>
+        <% end %>
         <hr/>
-                        
-
-
-
     </div>
-    
-  
   </div><!--close of character column-->
 
 
