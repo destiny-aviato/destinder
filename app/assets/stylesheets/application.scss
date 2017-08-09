@@ -307,7 +307,10 @@ ul.tabs {
 
 .tabs .tab a {
     color: #f5f5f5;
+    // font-size: 11px;
+    text-overflow: inherit;
 }
+
 
 .title.hero {
     color: #f5f5f5;
