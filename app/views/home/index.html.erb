@@ -114,10 +114,12 @@
               <a class="waves-effect waves-light btn modal-trigger button-width-fix" href="#trials1">Trials</a>
 
               <!-- Modal Structure -->
-              <div id="trials1" class="modal">
-                <div class="modal-content">
+              <% image = @trials_map['Image'] %>
+              <div id="trials1" class="modal" style='<%= "background-image: url(#{image}); background-size: cover; background-repeat: no-repeat;" %>'>
+
+                <div class="modal-content" style="min-height: 265px;">
                   <h4>Trials Map</h4>
-                   <%= @trials_map %>
+                  <h5><%= @trials_map["Name"] %></h5>
                 </div>
               </div>
                       
