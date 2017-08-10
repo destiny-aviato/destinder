@@ -174,9 +174,6 @@ $primary-color: color("blue", "lighten-2") !default;
     max-width: 162%;
 }
 
-
-
-
 .white-space {
     height: 400px;
 }
@@ -310,7 +307,6 @@ ul.tabs {
     // font-size: 11px;
     text-overflow: inherit;
 }
-
 
 .title.hero {
     color: #f5f5f5;
@@ -517,11 +513,15 @@ a.gamertag-name {
 .slick-prev {
     left: -25px;
 }
+
+
 /* the slides */
 
 .slick-slide {
     margin: 0 10px;
 }
+
+
 /* the parent */
 
 .slick-list {
@@ -529,8 +529,7 @@ a.gamertag-name {
 }
 
 .container {
-        width: 100%;
-    
+    width: 100%;
 }
 
 .emblem-icon {
@@ -554,14 +553,12 @@ a.gamertag-name {
     margin-left: 30%!important;
 }
 
-.gamertag-title2{
+.gamertag-title2 {}
 
-}
 .emblem-icon2 {
     position: absolute;
-    margin-top: -35%;
-    
-    width: 19%;
+    margin-top: -34%;
+    width: 18%;
 }
 
 .class-title {
@@ -580,7 +577,7 @@ a.gamertag-name {
 .gun-icons {
     width: 75px;
     height: 75px;
-    border-radius: 10px;
+    border-radius: 999px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
@@ -591,7 +588,7 @@ a.gamertag-name {
 .gear-icons {
     width: 75px;
     height: 75px;
-    border-radius: 10px;
+    border-radius: 999px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
@@ -623,7 +620,7 @@ a.gamertag-name {
 }
 
 .button-width-fix {
-       width: 95%;
+    width: 95%;
     margin-top: 12px;
 }
 
@@ -716,6 +713,8 @@ a.gamertag-name {
     -webkit-transform: scale(0.8);
     transform: scale(0.8);
 }
+
+
 /**
 * $step is set to 5 by default, meaning you can only use percentage classes in increments of five (e.g. 25, 30, 45, 50, and so on). This helps to reduce the size of the final CSS file. If you need a number that doesn't end in 0 or 5, you can change the text percentage while rounding the class up/down to the nearest 5.
 */
@@ -1225,8 +1224,7 @@ a.gamertag-name {
     background-image: linear-gradient(90deg, #0083ff 50%, transparent 50%, transparent), linear-gradient(270deg, #0083ff 50%, #ddd 50%, #ddd);
 }
 
-
-#player-container{
+#player-container {
     height: 100%;
     position: relative;
     width: 100%;
@@ -1235,27 +1233,40 @@ a.gamertag-name {
     margin-top: 122px;
 }
 
-#twitter-feed{
-height: 600px;
+#twitter-feed {
+    height: 600px;
 }
 
-.row-fix{
-
-padding-left: 15px;
+.row-fix {
+    padding-left: 15px;
 }
 
-.sub-title{
-color: #2bbbad;
-font-weight: bold;
+.sub-title {
+    color: #2bbbad;
+    font-weight: bold;
 }
 
-
-.home-page-padding{
-
+.home-page-padding {
     padding-right: 3%!important;
     padding-left: 3%!important;
 }
-.height-fix{
+
+.height-fix {
     height: 704px;
 }
 
+.tabs {
+    margin-bottom: 4%;
+    background-color: #757575!important;
+    background-image: none!important;
+}
+
+html {
+    background: rgba(255, 255, 255, 1);
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(47%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(237, 237, 237, 1)));
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+}
