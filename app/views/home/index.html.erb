@@ -53,6 +53,9 @@
             <div class="row">
               <div class="col s12"><img class="emblem-icon2" src=<%= x["Character Items"]["Emblem"]["Item Icon"] %> alt=""></div>              
             </div>
+             <div class="row">
+              <div class="col s12 light-level"><%= x["Character Stats"]["Light Level"] %><br><div class="grim"><%= x["Character Stats"]["Grimoire"] %></div></div>               
+            </div>
             <div class="row"><!--Open Second row-->
               <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></div><!--Close Column-->              
               <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->              
@@ -71,7 +74,8 @@
             </div><!--Close Sixth Row-->
           </div>
         <% end %>
-        <hr/>
+       
+       
     </div>
   </div><!--close of character column-->
 
@@ -103,6 +107,7 @@
       <div class="row">
           <div class="col s12 center-align">
             <h4 class="center-align grey-text text-darken-1"><strong>Weekly's</strong></h4>
+            <hr>
             <hr>
           </div>
           </div>
@@ -296,6 +301,7 @@
   <div class="row">
       <div class="col s12 center-align">
         <h4 class="center-align grey-text text-darken-1"><strong>Recent News</strong></h4>
+        <hr>
         <hr>
       </div>
 

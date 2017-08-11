@@ -625,8 +625,10 @@ a.gamertag-name {
 }
 
 .emblem-background {
-    width: 100%;
+    width: 107%;
     border-top-right-radius: 10px;
+    margin-left: -10px;
+    border-top-left-radius: 10px;
 }
 
 .emblem-background-size {
@@ -1269,4 +1271,42 @@ html {
     background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
     background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
     background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+}
+
+#char0 {
+    background-color: #DBDBDB;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#char1 {
+    background-color: #DBDBDB;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#char2 {
+    background-color: #DBDBDB;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.light-level {
+    margin-top: -40%;
+    margin-left: 73%!important;
+    color: #F5DC56;
+    z-index: 1;
+    font-size: 164%;
+}
+
+.grim {
+    font-size: 45%!important;
+    color: white!important;
+    margin-top: -3%;
 }
