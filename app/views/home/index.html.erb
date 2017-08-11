@@ -122,9 +122,9 @@
               <% image = @trials_map['Image'] %>
               <div id="trials1" class="modal" style='<%= "background-image: url(#{image}); background-size: cover; background-repeat: no-repeat;" %>'>
 
-                <div class="modal-content" style="min-height: 265px;">
-                  <h4>Trials Map</h4>
-                  <h5><%= @trials_map["Name"] %></h5>
+                <div class="modal-content" style="min-height: 344px;">
+                  <h4 class="trials-modal-name">Trials Map</h4>
+                  <h5 class="trials-map"><%= @trials_map["Name"] %></h5>
                 </div>
               </div>
                       
@@ -649,8 +649,6 @@
 
 
 
-<pre>
-    <code><%= JSON.pretty_generate(info) %></code>
-</pre> 
+
 
 <% end %>
