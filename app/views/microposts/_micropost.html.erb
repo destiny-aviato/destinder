@@ -25,8 +25,8 @@
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable">
                 <div class="card-content">
-                    <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> -
-                    <%= character_races[stats["Character Type"]] %><br>
+                    <strong><%= link_to micropost.user["display_name"], user_path(user_id) %></strong> - 
+                    <%= character_races[stats["Character Type"]] %> - <%= stats["Character Stats"]["Light Level"] %><br>
                     <%= micropost.game_type %> <%= micropost.raid_difficulty %>
                     <br><small> <%= time_ago_in_words(micropost.created_at) %> ago</small>
                 
@@ -49,10 +49,10 @@
                 </div>
                 <% if micropost.game_type == "Trials of Osiris" %>
                     <div class="card-tabs">
-                        <ul class="tabs post">
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Year</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 9px;">Week</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 9px;">Map</a></li>
+                        <ul class="tabs post black-gradient">
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 12px;">Year</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 12px;">Week</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 12px;">Map</a></li>
                         </ul>
                     </div>
                     <div class="card-content grey lighten-4">
@@ -132,8 +132,8 @@
                     </div>
                 <% else %>
                     <div class="card-tabs">
-                        <ul class="tabs post tabs-fixed-width">
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 9px;">Stats</a></li>
+                        <ul class="tabs post tabs-fixed-width black-gradient">
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 12px;">Stats</a></li>
                         </ul>
                     </div>
                     <div class="card-content grey lighten-4">
