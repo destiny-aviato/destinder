@@ -577,7 +577,7 @@ a.gamertag-name {
 .gun-icons {
     width: 75px;
     height: 75px;
-    border-radius: 999px;
+    border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
@@ -588,7 +588,7 @@ a.gamertag-name {
 .gear-icons {
     width: 75px;
     height: 75px;
-    border-radius: 999px;
+    border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
@@ -625,7 +625,7 @@ a.gamertag-name {
 }
 
 .emblem-background {
-    width: 107%;
+    width: 108%;
     border-top-right-radius: 10px;
     margin-left: -10px;
     border-top-left-radius: 10px;
@@ -643,9 +643,10 @@ a.gamertag-name {
     -webkit-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
     -moz-box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
     box-shadow: 4px 6px 5px 0px rgba(189, 183, 189, 1);
-    border-left: 1px solid #E8E6E8;
-    border-top: 1px solid #E8E6E8;
+    border-left: 2px solid #E8E6E8;
+    border-top: 2px solid #E8E6E8;
     border-bottom: 1px solid #E8E6E8;
+    background: white;
 }
 
 .ability-icons {
@@ -1264,25 +1265,33 @@ a.gamertag-name {
 }
 
 html {
-    background: rgba(255, 255, 255, 1);
-    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(47%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(237, 237, 237, 1)));
-    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
-    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
-    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
-    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+    background: url("https://ak8.picdn.net/shutterstock/videos/27209167/thumb/12.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #char0 {
-    background-color: #DBDBDB;
+    background: url("https://www.bungie.net/pubassets/98235/02_Preview.jpg?cv=3983621215&av=249268522") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    border-left: 2px solid #E8E6E8;
+    border-top: 2px solid #E8E6E8;
 }
 
 #char1 {
-    background-color: #DBDBDB;
+    background: url("http://hdqwalls.com/wallpapers/destiny-2-hunter-4k-2017-ru.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -1290,7 +1299,11 @@ html {
 }
 
 #char2 {
-    background-color: #DBDBDB;
+    background: url("https://www.bungie.net/pubassets/98235/04_Preview.jpg?cv=3983621215&av=2340079736") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -1309,4 +1322,16 @@ html {
     font-size: 45%!important;
     color: white!important;
     margin-top: -3%;
+}
+
+.trials-map {
+    color: white;
+    font-size: 320%;
+    margin-top: -1%;
+}
+
+.trials-modal-name {
+    color: white;
+    font-size: 380%;
+    margin-top: 5%!important;
 }
