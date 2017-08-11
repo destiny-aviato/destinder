@@ -5,13 +5,13 @@
 
 <body>
 <% if !current_user %>
-<%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+  <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
 
 
 <body data-gr-c-s-loaded="true">
 
-  <div class="container">
+  <div class="container" style="width: 100%;">
 
 <div class="parralax-1 hide-on-small-only">
 <div class="logo-name align-right right-align">Destinder<br/><%= image_tag 'destiny-logo.png', class:"nav-logo" %></div>
@@ -28,7 +28,7 @@
 <div class="row"><!--open of main row-->
 
 
-
+<div class="container" style="width: 95%;">
 
   <div class="col s12 m3 hide-on-small-only"><!--Open of Character Column-->
 
@@ -345,6 +345,8 @@
 </div><!--CLOSE COL-->
 
 </div><!--CLOSE ROW-->
+
+</div> <!-- end container -->
 
        <hr/>
  <hr/>
