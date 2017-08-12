@@ -41,9 +41,9 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on('turbolinks:load', function() {
-    
+
     $('#game-select').material_select();
-        $('.game_type_select').change(function() {    
+    $('.game_type_select').change(function() {
         $("#filter_game_form").submit();
     });
     $('#difficulty').hide();
@@ -240,6 +240,10 @@ $(document).on("turbolinks:load", function() {
 
     $('#modal5').modal('close');
 
+    $('#modal15').modal('open');
+
+    $('#modal15').modal('close');
+
     $('#modal6').modal('open');
 
     $('#modal6').modal('close');
@@ -259,6 +263,10 @@ $(document).on("turbolinks:load", function() {
     $('#gear-modal-2').modal('open');
 
     $('#gear-modal-2').modal('close');
+});
+
+$(document).ready(function() {
+    $('.parallax').parallax();
 });
 
 

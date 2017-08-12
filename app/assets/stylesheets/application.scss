@@ -120,7 +120,7 @@ $primary-color: color("blue", "lighten-2") !default;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 280px;
+    height: 100%;
     margin-left: -33.33%;
     margin-right: -28%;
     max-width: 162%;
@@ -284,7 +284,6 @@ section {
     color: #f5f5f5;
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
 }
-
 
 .hero.is-medium .hero-body {
     padding-bottom: 2rem;
@@ -530,7 +529,7 @@ a.gamertag-name {
 }
 
 .container {
-    // width: 100%;
+    width: 100%;
 }
 
 .emblem-icon {
@@ -547,19 +546,20 @@ a.gamertag-name {
 }
 
 .gamertag-title {
-    font-size: 165%;
+    font-size: 240%;
     color: white;
     position: absolute;
-    margin-top: -25%;
-    margin-left: 30%!important;
+    margin-top: -21%;
+    margin-left: 18% !important;
 }
 
 .gamertag-title2 {}
 
 .emblem-icon2 {
     position: absolute;
-    margin-top: -34%;
-    width: 18%;
+    margin-top: -29%;
+    width: 19%;
+    margin-left: -4%
 }
 
 .class-title {
@@ -626,9 +626,9 @@ a.gamertag-name {
 }
 
 .emblem-background {
-    width: 108%;
+    width: 111.5%;
     border-top-right-radius: 10px;
-    margin-left: -10px;
+    margin-left: -25px;
     border-top-left-radius: 10px;
 }
 
@@ -1256,30 +1256,25 @@ a.gamertag-name {
 }
 
 .height-fix {
-    height: 704px;
+    height: 790px;
 }
 
 .tabs {
     margin-bottom: 4%;
     background-color: #757575!important;
-    background-image: none;
-}
-
-
-.black-gradient {
-    background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%) !important;
+    background-image: none!important;
 }
 
 html {
-    background: url(greyzz.png);
-    // -webkit-background-size: cover;
-    // -moz-background-size: cover;
-    // -o-background-size: cover;
-    // background-size: cover;
+    background: url("https://dhallywoodworld.files.wordpress.com/2014/12/background-light-web-opera-blue-simple.jpg") no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #char0 {
-    background: url("https://www.bungie.net/pubassets/98235/02_Preview.jpg?cv=3983621215&av=249268522") no-repeat center center;
+    background: url("http://hdqwalls.com/wallpapers/destiny-2-titan-4k-2017-9f.jpg") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1288,8 +1283,6 @@ html {
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
-    border-left: 2px solid #E8E6E8;
-    border-top: 2px solid #E8E6E8;
 }
 
 #char1 {
@@ -1317,11 +1310,11 @@ html {
 }
 
 .light-level {
-    margin-top: -40%;
-    margin-left: 73%!important;
+    margin-top: -31%;
+    margin-left: 78% !important;
     color: #F5DC56;
     z-index: 1;
-    font-size: 164%;
+    font-size: 239%;
 }
 
 .grim {
@@ -1340,4 +1333,33 @@ html {
     color: white;
     font-size: 380%;
     margin-top: 5%!important;
+}
+
+.home-page-buttons {
+    margin-top: 19%;
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+hr {
+    height: 15px;
+    opacity: 0.5;
+    background-color: #757575;
+    border-radius: 999px;
+    width: 100%;
+}
+
+.home-page-button-custom {
+    width: 90%;
+    border-radius: 15px;
+}
+
+.container .row {
+    margin-left: 0.25rem!important;
+    margin-right: 0.25rem!important;
+}
+
+.video-margin-fix {
+    margin-top: 6.5%;
+    margin-left: 6.5%;
 }
