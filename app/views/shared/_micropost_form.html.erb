@@ -1,11 +1,27 @@
+<% wom_opts  = ["Full Raid", "Vosik", "Siege Engine", "Aksis P1", "Aksis P2"] %>
+<% kf_opts = ["Full Raid", "Totems", "Warpriest", "Golgoroth", "Daughters", "Oryx"] %>
+<% ce_opts = ["Full Raid", "Bridge", "Thrallway", "Deathsingers", "Crota"] %>
+<% vog_opts = ["Full Raid", "Confluxes", "Oracles", "Templar", "Gorgons", "Gatekeepers", "Atheon"] %>
+<% nf_opts = [""] %>
+<% too_opts = [""] %>
+
+
+<% opts = {
+  "Trials of Osiris" => too_opts, 
+  "Wrath of the Machine" => wom_opts, 
+  "King's Fall" => kf_opts, 
+  "Crota's End" => ce_opts, 
+  "Vault of Glass" => vog_opts, 
+  "Nightfall" => nf_opts } 
+  %>
+
 
 <div class="row">
   <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
 
     <div class="input-field col s4">
         <label class="gametype-label" style="top: -25px;">Gametype</label>
-        <%= f.select :game_type, ["Trials of Osiris", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Nightfall"], {}, { :class => 'browser-default', id: "game-select" } %>
-       
+        <%= f.select :game_type, options_for_select(opts), {}, { :class => 'browser-default', id: "game-select" } %>       
     </div>
 
     <div class="input-field col s4">
@@ -17,6 +33,12 @@
                 Hard        
               </label>
           </div>
+    </div>
+    <div class="input-field col s4">
+      <div id="checkpoint">
+        <label class="checkpoint-label" style="top: -25px;">Checkpoint</label>
+        <%= f.select :checkpoint, options_for_select(opts) , {}, { :class => 'browser-default', id: "checkpoint-select" } %>       
+      </div>
     </div>
 
     <div class="row">
