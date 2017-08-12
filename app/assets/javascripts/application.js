@@ -47,6 +47,7 @@ $(document).on('turbolinks:load', function() {
         $("#filter_game_form").submit();
     });
     $('#difficulty').hide();
+    $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
 
     $("#micropost_raid_difficulty").click(function() {
@@ -130,11 +131,13 @@ $(document).on('turbolinks:load', function() {
     $('#game-select').change(function() {
         selection = $(this).val();
 
-        if (selection != 'Trials of Osiris') {
+        if (selection != 'Trials of Osiris' && selection != "Nightfall") {
             $('#difficulty').show();
+            $('#checkpoint').show();
             console.log("show");
         } else {
             $('#difficulty').hide();
+            $('#checkpoint').hide();
             console.log("hide");
         }
 
