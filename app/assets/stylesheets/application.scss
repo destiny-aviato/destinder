@@ -828,7 +828,7 @@
                 }
                 
                 hr {
-                    height: 15px;
+                    height: 10px;
                     opacity: 0.5;
                     background-color: #757575;
                     border-radius: 999px;
@@ -979,7 +979,7 @@
                     -moz-box-sizing: border-box;
                     box-sizing: border-box;
                     border: none;
-                    font: normal 33px/normal "Warnes", Helvetica, sans-serif;
+                    font: normal 27px/normal "Warnes", Helvetica, sans-serif;
                     color: rgba(255, 255, 255, 1);
                     text-decoration: normal;
                     text-align: center;
@@ -994,12 +994,13 @@
                 }
                 
                 .subclass-fix-trials {
-                    margin-top: -17px;
+                    margin-top: -20px;
                     margin-left: -10px;
                 }
                 
                 .kd-align-fix-trials {
-                    margin-top: 2px;
+                    margin-top: 9px;
+                    margin-left: -13px!important;
                 }
                 
                 .character-type-trials {
@@ -1010,5 +1011,3 @@
                 .slider .indicators .indicator-item.active {
                     background-color: #2bbbad;
                 }
-                
-                .emblem-trials {}
