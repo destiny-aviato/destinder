@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808032638) do
+ActiveRecord::Schema.define(version: 20170812211046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170808032638) do
     t.text     "user_stats"
     t.string   "platform"
     t.string   "raid_difficulty"
+    t.string   "checkpoint"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end
