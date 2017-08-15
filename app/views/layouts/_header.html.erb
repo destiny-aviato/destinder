@@ -22,17 +22,17 @@
       <div class="divider"></div>
     </li>
     <li>
-      <%= link_to "Home",    root_path, class: "navbar-item" %>
+      <%= link_to "HOME",    root_path, class: "navbar-item" %>
     </li>
     <li>
-      <%= link_to "Posts",   microposts_path, class: "navbar-item" %>
+      <%= link_to "LFG POSTS",   microposts_path, class: "navbar-item" %>
     </li>
     <li>
-      <%= link_to "Logout", destroy_user_session_path, class: "navbar-item" %>
+      <%= link_to "LOGOUT", destroy_user_session_path, class: "navbar-item" %>
     </li>
     <% else %>
       <li>
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-item'  %>
+        <%= link_to "LOGIN", new_user_session_path, :class => 'navbar-item'  %>
       </li>
     
       <% end %>
@@ -43,13 +43,13 @@
 
 
 <div class="fixed-action-btn toolbar">
-    <a class="btn-floating btn-large teal lighten-1">
+    <a class="btn-floating btn-large lighten-1" style="background-color: #2AA8E8">
       <i class="large material-icons">info</i>
     </a>
 
     
     <ul>
-      <li class="waves-effect waves-light"><a href="#faq-modal"><i class="fa fa-question-circle fa-3x"></i></a></li>
+      <li class="waves-effect waves-light"><a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-3x"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-twitter"></i></a></li>
       <li class="waves-effect waves-light"><a href="https://github.com/destiny-aviato/destinder"><i class="socicon-github"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
@@ -58,7 +58,7 @@
 
   <% if user_signed_in? %>
     <div class="fixed-action-btn toolbar action-button-fix">
-      <a class="btn-floating btn-large teal lighten-1" href="#modal5">
+      <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#modal5">
         <i class="large material-icons">search</i>
       </a>
   <% end %>

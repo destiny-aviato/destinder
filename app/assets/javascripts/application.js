@@ -46,17 +46,17 @@ $(document).on('turbolinks:load', function() {
     $('.game_type_select').change(function() {
         $("#filter_game_form").submit();
     });
-    $('#difficulty').hide();
+    $('div#difficulty').hide();
     $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
 
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
             $('#micropost_raid_difficulty').val('Hard');
-            console.log('hard');
+            // console.log('hard');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
-            console.log('normal');
+            // console.log('normal');
         }
     });
 
@@ -132,13 +132,13 @@ $(document).on('turbolinks:load', function() {
         selection = $(this).val();
 
         if (selection != 'Trials of Osiris' && selection != "Nightfall") {
-            $('#difficulty').show();
+            $('div#difficulty').show();
             $('#checkpoint').show();
-            console.log("show");
+            // console.log("show");
         } else {
-            $('#difficulty').hide();
+            $('div#difficulty').hide();
             $('#checkpoint').hide();
-            console.log("hide");
+            // console.log("hide");
         }
 
     });
@@ -206,7 +206,6 @@ function closeNav() {
 
 $(document).on("turbolinks:load", function() {
     // $('.modal').modal();
-
     $('.modal').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .5, // Opacity of modal background
