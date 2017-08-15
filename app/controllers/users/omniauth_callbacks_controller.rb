@@ -31,6 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # GET|POST /users/auth/twitter/callback
   def failure
+    Rails.logger.info "Received OAUTH request, sending redirect_uri with value: #{ENV['REDIRECT_URL']}"
     redirect_to root_path
   end
 
