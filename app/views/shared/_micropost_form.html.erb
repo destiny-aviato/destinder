@@ -7,7 +7,7 @@
        
     </div>
 
-    <div class="input-field col s4">
+    <!-- <div class="input-field col s4">
         <div class="switch" id="difficulty">
             <label style="color: #212144;">
                 Normal
@@ -16,6 +16,12 @@
                 Hard        
               </label>
           </div>
+    </div> -->
+
+    <div class="input-field col s4" id="difficulty">
+        <label class="difficulty-label" style="top: -25px;">Difficulty</label>
+        <%= f.select :raid_difficulty, ["Normal", "Hard"], {}, {id: "difficulty" } %>
+       
     </div>
 
     <div class="row">
