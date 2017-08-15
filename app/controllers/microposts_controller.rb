@@ -84,7 +84,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint)
     end
     
     def correct_user
