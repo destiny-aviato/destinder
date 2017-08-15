@@ -240,7 +240,8 @@
                         <div class="col s12 player-reputation-trials center-align">Player Reputation</div>
 
 
-                        <div class="col s12 center-align">      
+                        <div class="col s12 center-align"> 
+                            <% if !@user.nil? %>     
                                 <% total = @user.votes_for + @user.votes_against %>      
                                 <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
                                 <% if current_user.voted_for?(@user) %>
@@ -268,7 +269,7 @@
                                     <i class="material-icons">thumb_down</i>
                                 <% end %>
                                 <% end %>
-                            
+                            <% end %>
                         </div><!--CLOSE COLUMN-->
                     
                     </div><!--CLOSE ROW-->
