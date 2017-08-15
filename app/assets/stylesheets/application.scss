@@ -32,11 +32,10 @@ $primary-color: color("blue", "lighten-2") !default;
 }
 
 .slide-fix {
-    margin-left: 20px;
-    font-size: 35px;
-    margin-top: 10px;
     z-index: 1;
     position: fixed;
+    margin-left: 10px;
+    top: 2%;
 }
 
 .round-image {
@@ -841,8 +840,8 @@ hr {
 }
 
 .container .row {
-    margin-left: 0.25rem!important;
-    margin-right: 0.25rem!important;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 }
 
 .video-margin-fix {
