@@ -21,6 +21,7 @@ class MicropostsController < ApplicationController
         case @micropost.game_type
         when "Trials of Osiris" 
             @micropost.user_stats = get_stats(current_user, "too")
+            @micropost.raid_difficulty = ""
         when "Wrath of the Machine"
             @micropost.user_stats = get_stats(current_user, "wrath")
         when "King's Fall"
@@ -29,6 +30,9 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "crota")
         when "Vault of Glass"
             @micropost.user_stats = get_stats(current_user, "vog")
+        when "Nightfall"
+            @micropost.user_stats = get_stats(current_user, "nf")
+            @micropost.raid_difficulty = ""
         end
 
         if @micropost.save
