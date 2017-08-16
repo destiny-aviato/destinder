@@ -50,6 +50,8 @@ class Micropost < ApplicationRecord
     character_type = last_character["characterBase"]["classType"]
     light_level = last_character["characterBase"]["powerLevel"]
     grimoire = last_character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
    
   
     stats = {
@@ -57,7 +59,9 @@ class Micropost < ApplicationRecord
       "Kills" => "-",
       "Deaths" => "-",
       "Light Level" => light_level,
-      "Grimoire" => grimoire
+      "Grimoire" => grimoire,
+      "Background" => background,
+      "Emblem" => emblem
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -77,6 +81,8 @@ class Micropost < ApplicationRecord
 
     character_id =  last_character["characterBase"]["characterId"]
     character_type = last_character["characterBase"]["classType"]
+    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
     light_level = last_character["characterBase"]["powerLevel"]
     grimoire = last_character["characterBase"]["grimoireScore"]
   
@@ -85,7 +91,9 @@ class Micropost < ApplicationRecord
       "Kills" => "-",
       "Deaths" => "-",
       "Light Level" => light_level,
-      "Grimoire" => grimoire
+      "Grimoire" => grimoire,
+      "Background" => background,
+      "Emblem" => emblem
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -108,6 +116,8 @@ class Micropost < ApplicationRecord
       
 
         character_id =  last_character["characterBase"]["characterId"]
+        background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+        emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
         character_type = last_character["characterBase"]["classType"]
         light_level = last_character["characterBase"]["powerLevel"]
         grimoire = last_character["characterBase"]["grimoireScore"]
@@ -137,7 +147,9 @@ class Micropost < ApplicationRecord
               "ELO" => elo,
               "Win Rate" => win_rate,
               "Light Level" => light_level,
-              "Grimoire" => grimoire
+              "Grimoire" => grimoire,
+              "Background" => background,
+              "Emblem" => emblem
           }
         rescue StandardError => e 
           stats = {
@@ -146,7 +158,9 @@ class Micropost < ApplicationRecord
             "ELO" => "-",
             "Win Rate" => "-",
             "Light Level" => light_level,
-            "Grimoire" => grimoire
+            "Grimoire" => grimoire,
+            "Background" => background,
+            "Emblem" => emblem
         }
         end
 
