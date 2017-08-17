@@ -51,7 +51,7 @@ gem 'material_icons'
 gem 'shareable'
 gem 'will_paginate-materialize'
 gem "typhoeus"
-
+gem 'thumbs_up'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -48,12 +48,39 @@ class Micropost < ApplicationRecord
 
     character_id =  last_character["characterBase"]["characterId"]
     character_type = last_character["characterBase"]["classType"]
+    light_level = last_character["characterBase"]["powerLevel"]
+    grimoire = last_character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
+
+    get_items = Typhoeus::Request.new(
+      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      method: :get,
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+      )
+
+
+    get_items.on_complete do |item_response|                     
+        item_data = JSON.parse(item_response.body)
+        @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+        @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+    end
+    
+    hydra = Typhoeus::Hydra.hydra
+    hydra.queue(get_items)
+    hydra.run
    
   
     stats = {
       "Completions" => "-",
       "Kills" => "-",
-      "Deaths" => "-"
+      "Deaths" => "-",
+      "Light Level" => light_level,
+      "Grimoire" => grimoire,
+      "Background" => background,
+      "Emblem" => emblem,
+      "Subclass Icon" => @subclass_icon,
+      "Subclass Name" => @subclass_name
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -73,12 +100,37 @@ class Micropost < ApplicationRecord
 
     character_id =  last_character["characterBase"]["characterId"]
     character_type = last_character["characterBase"]["classType"]
-   
+    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
+    light_level = last_character["characterBase"]["powerLevel"]
+    grimoire = last_character["characterBase"]["grimoireScore"]
+
+    get_items = Typhoeus::Request.new(
+      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      method: :get,
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+      )
+
+
+    get_items.on_complete do |item_response|                     
+        item_data = JSON.parse(item_response.body)
+        @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+        @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+    end
+    hydra = Typhoeus::Hydra.hydra
+    hydra.queue(get_items)
+    hydra.run
   
     stats = {
       "Completions" => "-",
       "Kills" => "-",
-      "Deaths" => "-"
+      "Deaths" => "-",
+      "Light Level" => light_level,
+      "Grimoire" => grimoire,
+      "Background" => background,
+      "Emblem" => emblem,
+      "Subclass Icon" => @subclass_icon,
+      "Subclass Name" => @subclass_name
     }
     characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
     characters_stats = Hash[*characters_stats]
@@ -101,8 +153,29 @@ class Micropost < ApplicationRecord
       
 
         character_id =  last_character["characterBase"]["characterId"]
+        background = "https://www.bungie.net/#{last_character['backgroundPath']}"
+        emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
         character_type = last_character["characterBase"]["classType"]
+        light_level = last_character["characterBase"]["powerLevel"]
+        grimoire = last_character["characterBase"]["grimoireScore"]
         begin 
+
+          get_items = Typhoeus::Request.new(
+            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+            method: :get,
+            headers: {"x-api-key" => ENV['API_TOKEN']}
+            )
+    
+
+          get_items.on_complete do |item_response|                     
+              item_data = JSON.parse(item_response.body)
+              @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+              @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+          end
+          hydra = Typhoeus::Hydra.hydra
+          hydra.queue(get_items)
+          hydra.run
+         
           get_trials_stats = Typhoeus.get(
                       "https://www.bungie.net/Platform/Destiny/Stats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/?modes=14",
                       headers: {"x-api-key" => ENV['API_TOKEN']}
@@ -126,14 +199,26 @@ class Micropost < ApplicationRecord
               "K/D Ratio" => kd,
               "KA/D Ratio" => kad,
               "ELO" => elo,
-              "Win Rate" => win_rate
+              "Win Rate" => win_rate,
+              "Light Level" => light_level,
+              "Grimoire" => grimoire,
+              "Background" => background,
+              "Emblem" => emblem,
+              "Subclass Icon" => @subclass_icon,
+              "Subclass Name" => @subclass_name
           }
         rescue StandardError => e 
           stats = {
             "K/D Ratio" => "-",
             "KA/D Ratio" => "-",
             "ELO" => "-",
-            "Win Rate" => "-"
+            "Win Rate" => "-",
+            "Light Level" => light_level,
+            "Grimoire" => grimoire,
+            "Background" => background,
+            "Emblem" => emblem,
+            "Subclass Icon" => @subclass_icon,
+            "Subclass Name" => @subclass_name
         }
         end
 

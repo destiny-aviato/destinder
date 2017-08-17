@@ -1,5 +1,3 @@
-
-
 <% content_for :head do %>
 <meta charset="UTF-8">
 <meta name="description" content="Kota was here">
@@ -7,589 +5,425 @@
 
 <body>
 <% if !current_user %>
-<%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
+  <%= link_to "Sign in with Bungie", user_bungie_omniauth_authorize_path %>
 <% else %>
 
 
-<div class="container">
 <body data-gr-c-s-loaded="true">
-   <div class="parralax-1 hide-on-small-only">
-<div class="logo-name align-right right-align">Destinder<br/><%= image_tag 'destiny-logo.png', class:"nav-logo" %></div>
+  
 
+<% info = @stats %>
+
+<% username = current_user.display_name %>
+<% @character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="http://www.destinywallpapers.com/web/wallpapers/destiny-2/1920x1080.jpg">
+    <div class="row home-page-buttons">
+        <div class="col s12 m3 offset-m2 center-align">
+        <hr class="hr-custom">
+        <a class="waves-effect waves-light btn-large home-page-button-custom modal-trigger" href="#modal5"><i class="material-icons left">brightness_7</i>Trials Report</a>
+        <hr class="hr-custom">
+        <!-- Modal Structure -->
+  <div id="modal5" class="modal bottom-sheet">
+    <div class="modal-content">
+      <p>Trials Team Lookup</p>
+      <div class="row">
+          <%= form_for(TeamStat.new) do |f| %>
+              <div class="input-field">
+                <div class="row">
+                  <div class="input-field col s3">
+                    <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+                  </div>
+                  <div class="input-field col s9">
+                      <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
+                    </div>
+                  <div class="hide-on-large-only">
+                    <%= f.submit "Search" %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+        <p>PVP Team Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+    </div>
+  </div>
+        </div>
+        <div class="col s12 m3 offset-m2 center-align">
+        <hr class="hr-custom">
+        <a class="waves-effect waves-light btn-large home-page-button-custom"><i class="material-icons left">accessibility</i>Team Finder</a>
+        <hr class="hr-custom">
+        </div>
+    </div><!--Close Row-->
+    </div><!--Close Parallax-->
+  </div><!--Close Parallax Container-->
+
+  <!-- Modal Structure -->
+  <div id="modal15" class="modal bottom-sheet">
+    <div class="modal-content">
+      <p>Trials Team Lookup</p>
+      <div class="row">
+          <%= form_for(TeamStat.new) do |f| %>
+              <div class="input-field">
+                <div class="row">
+                  <div class="input-field col s3">
+                    <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+                  </div>
+                  <div class="input-field col s9">
+                      <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
+                    </div>
+                  <div class="hide-on-large-only">
+                    <%= f.submit "Search" %>
+                  </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+        <p>PVP Team Lookup</p>
+      <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Enter Gamertag">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+    </div>
+  </div>
+
+
+
+  <div class="section">
+    <div class="row container">
+
+
+
+
+      <div class="col s12 m6">
+
+      <div class="row">
+          <div class="col s12 center-align">
+            <h4 class="center-align grey-text text-darken-1"><strong>Weekly's</strong></h4>
+            <hr class="hr-custom">
+          </div>
+          </div>
+          <div class="shadow-effect height-fix">
+            <div class="continer" style="padding: 5%;">
+          <div class="row center-align"> 
+              
+              <div class="col s6">
+                          <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger button-width-fix" href="#trials1">Trials</a>
+
+              <!-- Modal Structure -->
+              <% image = @trials_map['Image'] %>
+              <div id="trials1" class="modal" style='<%= "background-image: url(#{image}); background-size: cover; background-repeat: no-repeat;" %>'>
+
+                <div class="modal-content" style="min-height: 344px;">
+                  <h4 class="trials-modal-name">Trials Map</h4>
+                  <h5 class="trials-map"><%= @trials_map["Name"] %></h5>
+                </div>
+              </div>
+                      
+
+          </div>
+
+          <div class="col s6">
+                          <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger button-width-fix" href="#raid1">Raid</a>
+
+              <!-- Modal Structure -->
+              <div id="raid1" class="modal">
+                <div class="modal-content">
+                  <h4>Featured Raid</h4>
+                  
+                </div>
+              </div>
+                      
+
+          </div>
+
+          </div><!--END OF ROW-->
+
+
+
+
+          <div class="row center-align">
+
+          <div class="col s6">
+                          <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger button-width-fix" href="#nightfall1">Nightfall</a>
+
+              <!-- Modal Structure -->
+              <div id="nightfall1" class="modal">
+                <div class="modal-content">
+                  <h4>Nightfall Map</h4>
+                  
+                </div>
+              </div>
+                      
+
+          </div>
+
+          <div class="col s6">
+                          <!-- Modal Trigger -->
+              <a class="waves-effect waves-light btn modal-trigger button-width-fix" href="#crucible1">Crucible</a>
+
+              <!-- Modal Structure -->
+              <div id="crucible1" class="modal">
+                <div class="modal-content">
+                  <h4>Featured Playlist</h4>
+                  
+                </div>
+              </div>
+                      
+
+          </div>
 
 </div>
 
-<br>
-<br>
-
-<div class="row"><!--OPENING OF MAIN ROW-->
-
-<div class="col s12 m6"><!--OPENING OF FIRST COLUMN-->
-    <div class="row">
-      <div class="col s12">
-
-          <img src="https://static.wixstatic.com/media/e155d7_4e26763b873945a18112781a3a01a816.jpg/v1/fill/w_1600,h_900,al_c,q_85/e155d7_4e26763b873945a18112781a3a01a816.webp" alt="" class="homepage-images">
 
 
-      </div>
-    </div><!--CLOSE OF NESTED ROW 1-->
-    <div class="row center-align">
-    <div class="col s12">
-
-<a class="waves-effect waves-light btn-large button-width-fix blue-grey darken-2"><i class="material-icons left">search</i>Trials Team Search</a>  <a class="btn-floating teal lighten-1 modal-trigger hide-on-small-only" href="#modal1"><i class="material-icons">info</i></a>
-                     <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                        <h3 class="center-align">Trials Team Search</h3>
-                        <h6 class="Center-align">What Makes Us Different</h6>
-                        <p>A bunch of text Explaining why we are cooler than everyone else</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                        </div>
-                    </div><!--CLOSE MODAL-->
+   <div class="row">
+          <div class="col s12 center-align">
+            <h4 class="center-align teal-text text-lighten-1">Progress</h4>
+            <hr class="hr-custom">
+          </div>
+          </div>
 
 
-    </div>
-    </div><!--CLOSE OF NESTED ROW 2-->
-</div><!--CLOSE OF FIRST COLUMN-->
-
-
-
-
-<div class="col s12 m6"><!--OPENING OF FIRST COLUMN-->
-    <div class="row">
-      <div class="col s12">
-
-          <img src="http://www.criticalhit.net/images/2017/05/Destiny-2-PvP-1.jpg" alt="" class="homepage-images">
-
-
-      </div>
-    </div><!--CLOSE OF NESTED ROW 1-->
-    <div class="row center-align">
-    <div class="col s12">
-
-<a class="waves-effect waves-light btn-large button-width-fix blue-grey darken-2"><i class="material-icons left">search</i>Find a Team</a>  <a class="btn-floating teal lighten-1 modal-trigger hide-on-small-only" href="#modal2"><i class="material-icons">info</i></a>
-                     <!-- Modal Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                        <h3 class="center-align">Destiny LFG</h3>
-                        <h6 class="Center-align">What Makes Us Different</h6>
-                        <p>A bunch of text Explaining why we are cooler than everyone else</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                        </div>
-                    </div><!--CLOSE MODAL-->
-
-
-    </div>
-    </div><!--CLOSE OF NESTED ROW 2-->
-</div><!--CLOSE OF FIRST COLUMN-->
-
-
-
-  </div><!--CLOSE OF MAIN ROW-->
-
-
-
-
-
-
-    <!--TRIALS LEADERBOARD SECTION-->
-<br>
-<br>
 
 
 <div class="row">
-<div class="col s12 m6">
-
-      <h4 class="center-align align-center">Trials Leaderboards</h4>
-        <table class="table-fix center-align align-center">
-        <thead class="center-align align-center">
-          <tr class="center-align align-center">
-              <th class="center-align align-center">Gamertag</th>
-              <th class="center-align align-center">KD</th>
-              <th class="center-align align-center">ELO</th>
-          </tr>
-        </thead>
-
-        <tbody class="center-align align-center">
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn right" href="#modal7">Full List</a>
-
-  <!-- Modal Structure -->
-  <div id="modal7" class="modal">
-    <div class="modal-content">
-      <table class="table-fix center-align align-center">
-        <thead class="center-align align-center">
-          <tr class="center-align align-center">
-              <th class="center-align align-center">Gamertag</th>
-              <th class="center-align align-center">KD</th>
-              <th class="center-align align-center">ELO</th>
-          </tr>
-        </thead>
-
-        <tbody class="center-align align-center">
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">ii WALZ ii</td>
-            <td class="center-align align-center">2.4</td>
-            <td class="center-align align-center">2400</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Luminusss</td>
-            <td class="center-align align-center">2.3</td>
-            <td class="center-align align-center">2350</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Putin Pudding</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2375</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Kurto13</td>
-            <td class="center-align align-center">2.2</td>
-            <td class="center-align align-center">2360</td>
-          </tr>
-
-        </tbody>
-      </table>
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4"><a class="active" href="#hunter">Hunter</a></li>
+        <li class="tab col s4"><a href="#warlock">Warlock</a></li>
+        <li class="tab col s4"><a href="#titan">Titan</a></li>
+        
+      </ul>
     </div>
-    <div class="modal-footer">
+    <div id="hunter" class="col s12">
+<h5 class="center-align sub-title">PVP</h5>
+<hr class="hr-custom">
+      <table class="center-algin">
+        <tr class="center-algin">
+          <th style="width: 40%;" class="center-algin"></th>
+          <th style="width: 20%;" class="center-algin">K/D</th>
+          <th style="width: 20%;" class="center-algin">KA/D</th>
+          <th style="width: 20%;" class="center-algin">Flawless</th>
+        </tr>
+        <tr class="center-algin">
+          <td class="center-algin">TRIALS</td>
+          <td class="center-algin">1.45</td>
+          <td class="center-algin">1.79</td>
+          <td class="center-algin"><i class="material-icons">ciricle_check</i></td>
+        </tr>
+      </table>
+
+<h5 class="center-align sub-title">Raids</h5>
+<hr class="hr-custom">
+      <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#vault">Vault</a></li>
+        <li class="tab col s3"><a href="#crota">Crota</a></li>
+        <li class="tab col s3"><a href="#kf">Kings Fall</a></li>
+        <li class="tab col s3"><a href="#wom">WoM</a></li>
+      </ul>
+    </div>
+
+
+    <div id="vault" class="col s12">
+      <div class="row center-align">
+        <div class="col s6 center-align">Cleared?</div>
+        <div class="col s6"><i class="material-icons center-align">circle_check</i></div>
+      </div>
+
+      <div class="row center-align">
+        <div class="col s6 center-align">Progress</div>
+        <div class="col s6">
+        <div class="progress">
+              <div class="indeterminate"></div>
+          </div>
+
+        </div>
+      </div>
       
+
+    </div>
+
+
+    <div id="crota" class="col s12">
+
+
+    </div>
+
+
+    <div id="kf" class="col s12">
+
+
+    </div>
+
+    <div id="wom" class="col s12">
+
+
     </div>
   </div>
 
-      </div><!--END OF COLUMN-->
 
 
 
-<div class="col s12 m6">
-      <h4 class="center-align align-center">Raid Leaderboards</h4>
-<table class="table-fix center-align align-center">
-        <thead class="center-align align-center">
-          <tr class="center-align align-center">
-              <th class="center-align align-center">Clan</th>
-              <th class="center-align align-center">Raid</th>
-              <th class="center-align align-center">Total Time</th>
-          </tr>
-        </thead>
 
-        <tbody class="center-align align-center">
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn right" href="#modal6">Full List</a>
-
-  <!-- Modal Structure -->
-  <div id="modal6" class="modal">
-    <div class="modal-content">
-
-    <table class="table-fix center-align align-center">
-        <thead class="center-align align-center">
-          <tr class="center-align align-center">
-              <th class="center-align align-center">Clan</th>
-              <th class="center-align align-center">Raid</th>
-              <th class="center-align align-center">Total Time</th>
-          </tr>
-        </thead>
-
-        <tbody class="center-align align-center">
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-          <tr class="center-align align-center">
-            <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:45:37</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:48:27</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:50:31</td>
-          </tr>
-          <tr class="center-align align-center">
-             <td class="center-align align-center">Aviato</td>
-            <td class="center-align align-center">Vault of Glass</td>
-            <td class="center-align align-center">0:59:01</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      
     </div>
-    <div class="modal-footer">
-      
+
+    <div id="warlock" class="col s12">
+
+
+    </div>
+    <div id="titan" class="col s12">
+
+
     </div>
   </div>
-
-</div><!--End of Column-->
-
-
-      </div><!--END OF ROW-->
+          </div>
+  </div><!--Shadow-effect CLOSE-->
 
 
 
-    <!--END OF TRIALS LEADERBOARD SECTION-->
+
+          
+      
+      
+      </div><!--Close Column-->
+
+
+
+
+
+
+
+      <div class="col s12 m6">
+
+      <div class="row">
+      <div class="col s12 center-align">
+        <h4 class="center-align grey-text text-darken-1"><strong>Recent News</strong></h4>
+        <hr class="hr-custom">
+      </div>
+
+  </div>
+
+  <div class="row shadow-effect height-fix">
     
-         <br>                   
-
-
-
-
-
-
-<div class="row"><!--OPENING OF MAIN ROW-->
-
-<div class="col s12 m6"><!--OPENING OF FIRST COLUMN-->
-    <div class="row">
-      <div class="col s12">
-
-          <img src="https://images4.alphacoders.com/666/thumb-1920-666407.png" alt="" class="homepage-images">
-
-
-      </div>
-    </div><!--CLOSE OF NESTED ROW 1-->
-    <div class="row center-align">
     <div class="col s12">
-
-<a class="waves-effect waves-light btn-large button-width-fix blue-grey darken-2"><i class="material-icons left">search</i>Profile Search</a>  <a class="btn-floating teal lighten-1 modal-trigger hide-on-small-only" href="#modal3"><i class="material-icons">info</i></a>
-                     <!-- Modal Structure -->
-                    <div id="modal3" class="modal">
-                        <div class="modal-content">
-                        <h3 class="center-align">Guardian Profiles</h3>
-                        <h6 class="Center-align">What Makes Us Different</h6>
-                        <p>A bunch of text Explaining why we are cooler than everyone else</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                        </div>
-                    </div><!--CLOSE MODAL-->
-
-
-    </div>
-    </div><!--CLOSE OF NESTED ROW 2-->
-</div><!--CLOSE OF FIRST COLUMN-->
-
-
-
-
-<div class="col s12 m6"><!--OPENING OF FIRST COLUMN-->
-    <div class="row">
-      <div class="col s12">
-
-          <img src="http://gameranx.com/wp-content/uploads/2017/03/Destiny-2-1080P-Wallpaper-1024x576.jpg" alt="" class="homepage-images">
-
-
-      </div>
-    </div><!--CLOSE OF NESTED ROW 1-->
-    <div class="row center-align">
-    <div class="col s12">
-
-<a class="waves-effect waves-light btn-large button-width-fix blue-grey darken-2 disabled"><i class="material-icons left">search</i>Clan Recruitment</a>  <a class="btn-floating teal lighten-1 modal-trigger hide-on-small-only" href="#modal4"><i class="material-icons">info</i></a>
-                     <!-- Modal Structure -->
-                    <div id="modal4" class="modal">
-                        <div class="modal-content">
-                        <h3 class="center-align">Clan Recruitment</h3>
-                        <h6 class="Center-align">What Makes Us Different</h6>
-                        <p>A bunch of text Explaining why we are cooler than everyone else</p>
-                        </div>
-                        <div class="modal-footer">
-                        <a class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                        </div>
-                    </div><!--CLOSE MODAL-->
-
-
-    </div>
-    </div><!--CLOSE OF NESTED ROW 2-->
-</div><!--CLOSE OF FIRST COLUMN-->
-
-
-
-  </div><!--CLOSE OF MAIN ROW-->
-
-    </div>
-
-<br>
-<br>
 
 <div class="row">
-<div class="col s12 m3"><iframe src="https://www.youtube.com/embed/CavtlFdMNog" class="homepage-images" frameborder="0" allowfullscreen></iframe></div>
-<div class="col s12 m3"><iframe src="https://www.youtube.com/embed/Hg1DDUxRQAc" class="homepage-images" frameborder="0" allowfullscreen></iframe></div>
-<div class="col s12 m3"><iframe src="https://www.youtube.com/embed/OHHkOK5TnQM" class="homepage-images" frameborder="0" allowfullscreen></iframe></div>
-<div class="col s12 m3"><iframe src="https://www.youtube.com/embed/Opz9KXwwUdE" class="homepage-images" frameborder="0" allowfullscreen></iframe></div>
-</div><!--CLOSE ROW-->
+    <div class="col s12">
+      <ul class="tabs button-width-fix">
+        <li class="tab col s4"><a class="active" href="#twitter1">Bungie</a></li>
+        <li class="tab col s4"><a href="#twitter2">Destiny</a></li>
+         <li class="tab col s4"><a href="#twitter3">Destinder</a></li>
+        
+      </ul>
+    </div>
+    <div id="twitter1" class="col s12"><a class="twitter-timeline" data-height="600" data-width="100%" href="https://twitter.com/Bungie">Tweets by Bungie</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+    <div id="twitter2" class="col s12"><a class="twitter-timeline" data-height="600" data-theme="dark" href="https://twitter.com/DestinyTheGame">Tweets by DestinyTheGame</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+    <div id="twitter3" class="col s12"><a class="twitter-timeline" data-height="600" href="https://twitter.com/DestinyTheGame">Tweets by DestinyTheGame</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+    
+
+</div>
+    </div>
+</div>
+      
+      </div><!--Close Column-->
 
 
-<div class="parralax-2 hide-on-small-only"></div>
 
-<div class="white-space">   </div>
-</div><!--Container Close-->
+    </div><!--Close Row-->
+  </div><!--Close White Section-->
 
+
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="https://images7.alphacoders.com/854/854155.jpg"></div>
+  </div>
+
+
+  <div class="section">
+    <div class="row container">
+      <div class="col s12 m5"><!--Open of Character Column-->
+
+    <div id="player-container">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs tabs-fixed-width">
+              <% info.each_with_index do |x, index| %>
+                <li class="tab col s3"><a href="#char<%= index %>"><%= @character_races[x["Character Type"]] %></a></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <% info.each_with_index do |x, index| %>
+          <div id="char<%= index %>" class="col s12">            
+            <div class="row">
+              <div class="col s12"><img class="emblem-background" src=<%= x["Character Items"]["Emblem Background"] %> alt=""></div>                
+            </div>
+            <div class="row">
+              <div class="col s12 gamertag-title center-align valign-wrapper"><%= username %></div>                          
+            </div>
+            <div class="row">
+              <div class="col s12"><img class="emblem-icon2" src=<%= x["Character Items"]["Emblem"]["Item Icon"] %> alt=""></div>              
+            </div>
+             <div class="row">
+              <div class="col s12 light-level"><%= x["Character Stats"]["Light Level"] %><br><div class="grim"><%= x["Character Stats"]["Grimoire"] %></div></div>               
+            </div>
+            <div class="row">
+                  <div class="col s6">
+                <div class="row"><!--Open Second row-->
+                  <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+                  <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+                </div><!--Close Second Row-->
+                <div class="row center-align"><!--Open Fourth row-->
+                  <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->          
+                  <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div><!--Close Column-->        
+                </div><!--Close Fourth Row-->
+                <div class="row center-align"><!--Open Fifth row-->
+                  <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->             
+                  <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Leg Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Leg Armor"]["Item Icon"] %> alt=""></div><!--Close Column-->             
+                </div><!--Close Fifth Row-->
+                <div class="row center-align"><!--Open Sixth row-->
+                  <div class="col s6 center-align valign-wrapper"><img class="gun-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+                  <div class="col s6 center-align valign-wrapper"><img class="gear-icons tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Artifact"]["Item Name"] %>" src=<%= x["Character Items"]["Artifact"]["Item Icon"] %> alt=""></div><!--Close Column-->              
+                </div><!--Close Sixth Row-->
+                </div>
+                </div>
+              </div>
+        <% end %>
+       
+       
+    </div>
+  </div><!--close of character column-->
+
+
+  
+
+        <div class="col s12 m7"><!--Open of Character Column-->
+        </div>
+
+
+
+</div>
+       
+       
+    
 <% end %>

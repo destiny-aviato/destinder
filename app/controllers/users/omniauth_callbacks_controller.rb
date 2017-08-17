@@ -4,7 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def bungie
-
+    Rails.logger.info "----------------------------------------------------------------------"
+    Rails.logger.info "Received OAUTH request, sending redirect_uri with value: #{ENV['REDIRECT_URL']}"
+    Rails.logger.info "#{request.env["omniauth.auth"]}"
     @user = User.from_omniauth(request.env["omniauth.auth"])
     
     if @user.persisted?
@@ -31,6 +33,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # GET|POST /users/auth/twitter/callback
   def failure
+    Rails.logger.info "----------------------------------------------------------------------"
+    Rails.logger.info "Received OAUTH request, sending redirect_uri with value: #{ENV['REDIRECT_URL']}"
+    Rails.logger.info "#{request.env["omniauth.auth"]}"
     redirect_to root_path
   end
 

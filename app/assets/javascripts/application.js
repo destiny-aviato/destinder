@@ -41,21 +41,22 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on('turbolinks:load', function() {
-    
+
     $('#game-select').material_select();
-        $('.game_type_select').change(function() {    
+    $('.game_type_select').change(function() {
         $("#filter_game_form").submit();
     });
-    $('#difficulty').hide();
+    $('div#difficulty').hide();
+    $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
 
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
             $('#micropost_raid_difficulty').val('Hard');
-            console.log('hard');
+            // console.log('hard');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
-            console.log('normal');
+            // console.log('normal');
         }
     });
 
@@ -130,12 +131,14 @@ $(document).on('turbolinks:load', function() {
     $('#game-select').change(function() {
         selection = $(this).val();
 
-        if (selection != 'Trials of Osiris') {
-            $('#difficulty').show();
-            console.log("show");
+        if (selection != 'Trials of Osiris' && selection != "Nightfall") {
+            $('div#difficulty').show();
+            $('#checkpoint').show();
+            // console.log("show");
         } else {
-            $('#difficulty').hide();
-            console.log("hide");
+            $('div#difficulty').hide();
+            $('#checkpoint').hide();
+            // console.log("hide");
         }
 
     });
@@ -203,7 +206,6 @@ function closeNav() {
 
 $(document).on("turbolinks:load", function() {
     // $('.modal').modal();
-
     $('.modal').modal({
         dismissible: true, // Modal can be dismissed by clicking outside of the modal
         opacity: .5, // Opacity of modal background
@@ -237,6 +239,10 @@ $(document).on("turbolinks:load", function() {
 
     $('#modal5').modal('close');
 
+    $('#modal15').modal('open');
+
+    $('#modal15').modal('close');
+
     $('#modal6').modal('open');
 
     $('#modal6').modal('close');
@@ -257,6 +263,34 @@ $(document).on("turbolinks:load", function() {
 
     $('#gear-modal-2').modal('close');
 });
+
+
+
+
+$(document).on("turbolinks:load", function() {
+
+    $(document).ready(function() {
+        $('.parallax').parallax();
+    });
+
+    $(document).ready(function() {
+        $('.materialboxed').materialbox();
+    });
+
+    $(document).ready(function() {
+        $('.slider').slider();
+    });
+
+    $('.slider').slider('pause');
+    // Start slider
+    $('.slider').slider('start');
+    // Next slide
+    $('.slider').slider('next');
+    // Previous slide
+    $('.slider').slider('prev');
+
+});
+
 
 
 

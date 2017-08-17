@@ -30,7 +30,8 @@ class TeamStatsController < ApplicationController
       when "too"  
         begin
           # TeamStat.get_trials_stats(@team_stat.display_name,@team_stat.membership_type)
-          TeamStat.get_recent_activity(@team_stat)
+          # TeamStat.get_recent_activity(@team_stat)
+          TeamStat.get_activity(@team_stat)
         rescue StandardError => e
           return nil
         end

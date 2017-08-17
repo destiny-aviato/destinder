@@ -1,57 +1,50 @@
-<div class="container profile-page">
-  <div class="section profile-heading">
-    <div class="columns">
-      <div class="column is-2 is-hidden-mobile">
-        <div class="image is-128x128 avatar">
+<div class="container ">
+  <div class="row">
+    <h1 class="center" >REPUTATION</h1>
+    <hr>
+          <div class="col s4">
+            <%= image_tag( @user["profile_picture"])%>
+            
+          </div>
+          <div class="col s8">      
+            <% total = @user.votes_for + @user.votes_against %>      
+            <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
+            <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
+            <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
+            <p>Already voted: <%= current_user.voted_for?(@user) %></p>
 
-          <%= image_tag( @user["profile_picture"])%>
+            <% if current_user.voted_for?(@user) %>
+              <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                <i class="material-icons">thumb_up</i>
+              <% end %>
+
+              <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                <i class="material-icons">cancel</i>
+              <% end %>
+
+              <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                <i class="material-icons">thumb_down</i>
+              <% end %>
+            <% else %>
+              <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                <i class="material-icons">thumb_up</i>
+              <% end %>
+
+              <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                <i class="material-icons">cancel</i>
+              <% end %>
+
+              <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                <i class="material-icons">thumb_down</i>
+              <% end %>
+            <% end %>
+          </div>
 
         </div>
-      </div>
-      <div class="column is-4 name white-text">
-        <div class="columns is-flex-mobile">
-          <div class="column center white-text">
-            Gun Game<br/>
-            <span class="tag is-primary">Sniper</span><br/>
-            <span class="tag is-info">Marksman</span> <br/>
-
-          </div>
-          <div class="column center white-text">
-            Play Style<br/>
-            <span class="tag is-primary">Camper</span><br/>
-            <span class="tag is-info">Sticky Nades</span> <br/>
-            <span class="tag is-success">Clutch</span><br/>
-
-          </div>
-          <div class="column center white-text">
-            Trials<br/>
-            <span class="tag is-primary"> Sherpa </span><br/>
-            <span class="tag is-success">Card Resets</span><br/>
-            <span class="tag is-warning"> Top 100 </span>
-          </div>
-        </div>
-      </div>
-      <div class="column is-2 followers has-text-centered white-text">
-        <p class="stat-val">129</p>
-        <p class="stat-key">followers</p>
-      </div>
-      <div class="column is-2 following has-text-centered white-text">
-        <p class="stat-val">17</p>
-        <p class="stat-key">following</p>
-      </div>
-      <hr/>
-      <div class="column is-2 likes has-text-centered white-text">
-        <p class="stat-val">
-
-        </p>
-        <p class="stat-key"></p>
-      </div>
-    </div>
-  </div>
-
-
-
-  
-
 
 </div>
+
+
+
+
+
