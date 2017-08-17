@@ -21,6 +21,19 @@
         <% stats = micropost.user_stats %>
     <% end %>
 
+
+    <% case stats["Character Stats"]["Subclass Name"] 
+        when "Nightstalker", "Voidwalker", "Defender" %>
+        <% subclass =  "background-image: url(#{image_path "void.png"});" %>
+        <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
+    <% when "Sunsinger", "Gunslinger", "Sunbreaker" %>
+        <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
+        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+    <% when "Bladedancer", "Striker", "Stormcaller" %>
+        <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
+        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+    <% end %>
+
     <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
@@ -47,16 +60,16 @@
 
                 <br><br>    
                 <div class="row valign-wrapper">
-                    <div class="col s2">
-                        <%= image_tag stats["Character Stats"]["Subclass Icon"], class: "circle responsive-img", style: "margin-left: -50%;" %>
-                    </div>
-                    <div class="col s10">
-                        <% if micropost.content.length > 40 %>
-                            <span class="black-text tooltipped truncate" style="margin-left: -12%;" data-position="top" data-delay="50" data-tooltip="<%= micropost.content %>">
+                    <!-- <div class="col s2">
+                        <%= image_tag micropost.user.profile_picture, class: "circle responsive-img", style: "margin-left: -50%;" %>
+                    </div> -->
+                    <div class="col s12">
+                        <% if micropost.content.length > 34 %>
+                            <span class="black-text tooltipped" style="margin-left: -6%;white-space: nowrap; display: block;" data-position="top" data-delay="50" data-tooltip="<%= micropost.content %>">
                                 <%= micropost.content %>
                             </span>
                         <% else %>
-                            <span class="black-text truncate" style="margin-left: -12%;">
+                            <span class="black-text truncate" style="margin-left: -6%;">
                                 <%= micropost.content %>
                             </span>
                         <% end %> 
@@ -64,10 +77,10 @@
                 </div>
                 <% if micropost.game_type == "Trials of Osiris" %>
                     <div class="card-tabs">
-                        <ul class="tabs post black-gradient">
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 12px;">Year</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style="font-size: 12px; ">Week</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style="font-size: 12px; ">Map</a></li>
+                        <ul class="tabs post post-tabs" style='<%= subclass %>'>
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Year</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style='<%= text_color %>'>Week</a></li>
+                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style='<%= text_color %>'>Map</a></li>
                         </ul>
                     </div>
                     <div class="card-content grey lighten-4">
@@ -146,9 +159,9 @@
                         </div>
                     </div>
                 <% else %>
-                    <div class="card-tabs">
-                        <ul class="tabs post tabs-fixed-width black-gradient">
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 12px;">Stats</a></li>
+                    <div class="card-tabs" >
+                        <ul class="tabs post tabs-fixed-width post-tabs" style='<%= subclass %>'>
+                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style="font-size: 14px;">Stats</a></li>
                         </ul>
                     </div>
                     <div class="card-content grey lighten-4">
