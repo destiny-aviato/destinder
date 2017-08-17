@@ -315,13 +315,25 @@ li.tab.post {
 }
 
 .tabs .tab a.active {
-    color: #f5f5f5;
+    color: #535353;;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px #ffffff;
 }
 
 .tabs .tab a {
-    color: #f5f5f5;
+    color: #535353;;
     // font-size: 11px;
     text-overflow: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px #ffffff;
+    
+}
+
+.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+    color: rgba(110, 118, 124, 0.7);
+    cursor: default;
 }
 
 .title.hero {
@@ -1073,6 +1085,13 @@ html {
     margin: -9%;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.post-tabs {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 25%;
+    background-image: url(void.png);
 }
 
 // Mobile only branding
