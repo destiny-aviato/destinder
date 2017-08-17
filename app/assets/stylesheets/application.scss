@@ -786,6 +786,7 @@ a.gamertag-name {
 
 html {
     background: url(greyzz.png);
+    background-attachment: fixed;
 }
 
 #char0 {
@@ -1091,7 +1092,7 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 25%;
-    background-image: url(void.png);
+    // background-image: url(void.png);
 }
 
 // Mobile only branding
