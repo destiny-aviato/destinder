@@ -1,11 +1,27 @@
 
-<ul id="slide-out" class="side-nav">
+<ul id="slide-out" class="side-nav" style="background-color: #212121;">
   <% if user_signed_in? %>
     <li class="center-align round-image" style="width: 100%;">
     <%= image_tag( current_user["profile_picture"], class:"round-image2" ) %>
     </li>
     <li class="center-align gamertag-name">
-      <%=link_to current_user["display_name"], profile_path, class: "gamertag-name" %>
+      <%= current_user["display_name"] %>
+    </li>
+    <li>
+      <div class="row" style="width: 80%;">
+        <div class="col s3">
+            <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="#!"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="#!"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+      </div>
     </li>
     <li>
       <div class="nav-wrapper">
@@ -21,20 +37,33 @@
     <li>
       <div class="divider"></div>
     </li>
+    <br>
     <li>
-      <%= link_to "HOME",    root_path, class: "navbar-item" %>
+      <%= link_to root_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">home</i> HOME
+      <% end %>
     </li>
     <li>
-      <%= link_to "LFG POSTS",   microposts_path, class: "navbar-item" %>
+      <%= link_to microposts_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">message</i> LFG POSTS
+      <% end %>
     </li>
     <li>
-      <%= link_to "LOGOUT", destroy_user_session_path, class: "navbar-item" %>
+      <%= link_to profile_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">person</i> PROFILE
+      <% end %>
+    </li>
+    <li>
+        <%= link_to destroy_user_session_path, class: "navbar-item" do %>
+          <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGOUT
+        <% end %>
     </li>
     <% else %>
       <li>
-        <%= link_to "LOGIN", new_user_session_path, :class => 'navbar-item'  %>
+          <%= link_to new_user_session_path, class: "navbar-item" do %>
+            <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
+          <% end %>
       </li>
-    
       <% end %>
 </ul>
 
