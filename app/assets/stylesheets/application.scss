@@ -759,11 +759,11 @@ a.gamertag-name {
     height: 790px;
 }
 
-.tabs {
-    margin-bottom: 4%;
-    background-color: #757575!important;
-    background-image: none;
-}
+// .tabs {
+//     margin-bottom: 4%;
+//     background-color: #757575!important;
+//     background-image: none;
+// }
 
 html {
     background: url(greyzz.png);
@@ -837,7 +837,7 @@ html {
     border-radius: 15px;
 }
 
-hr {
+.hr-custom {
     height: 10px;
     opacity: 0.5;
     background-color: #757575;
