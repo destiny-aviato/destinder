@@ -53,7 +53,7 @@ body {
 }
 
 .gamertag-name {
-    color: #F44336;
+    color: #D1D1D1;
     font-size: 25px;
 }
 
@@ -1101,4 +1101,20 @@ html {
         margin-left: -20% !important;
         width: 125%;
     }
+}
+
+.navbar-item {
+    color: #D1D1D1;
+}
+
+.side-nav li > a {
+    color: #D1D1D1;
+}
+
+.teal-text {
+    color: #2AA8E8 !important;
+}
+
+.btn, .btn-large, .btn-large {
+    background-color: #2AA8E8;
 }
