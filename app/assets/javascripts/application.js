@@ -23,13 +23,22 @@
 //= require materialize/extras/nouislider
 //= require_tree .
 
+// $(window).load(function() {
+//     // Animate loader off screen
+//     $(".se-pre-con").fadeOut("slow");
+// });
+
 $(document).on("turbolinks:click", function() {
+    // $('.preloader-wrapper.big.active').show();
     $(".se-pre-con").show();
     $('.turbolinks-progress-bar').show();
+
 });
 
 $(document).on("turbolinks:load", function() {
+    //   $('.preloader-wrapper.big.active').hide();
     $(".se-pre-con").fadeOut("slow");
+
 });
 
 $(document).on('turbolinks:load', function() {
@@ -38,7 +47,6 @@ $(document).on('turbolinks:load', function() {
     $('.game_type_select').change(function() {
         $("#filter_game_form").submit();
     });
-
     $('div#difficulty').hide();
     $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
@@ -46,35 +54,38 @@ $(document).on('turbolinks:load', function() {
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
             $('#micropost_raid_difficulty').val('Hard');
+            // console.log('hard');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
+            // console.log('normal');
         }
     });
 
-    // if ($("#tabs").length) {
-    //     $("#tabs").tabs({
-    //         beforeActivate: function(event, ui) {
-    //             var div = ui.newPanel.attr('id');
-    //             var title = '';
-    //             switch (div) {
-    //                 case 'trials':
-    //                     title = "Trials of Osiris"
-    //                     break;
-    //                 case 'raids':
-    //                     title = "Raids"
-    //                     break;
-    //                 case 'pvp':
-    //                     title = "PVP"
-    //                     break;
-    //                 case 'profile':
-    //                     title = "Profile"
-    //                     break;
-    //             }
 
-    //             $('h2.subtitle.profile').text(title);
-    //         }
-    //     });
-    // }
+    if ($("#tabs").length) {
+        $("#tabs").tabs({
+            beforeActivate: function(event, ui) {
+                var div = ui.newPanel.attr('id');
+                var title = '';
+                switch (div) {
+                    case 'trials':
+                        title = "Trials of Osiris"
+                        break;
+                    case 'raids':
+                        title = "Raids"
+                        break;
+                    case 'pvp':
+                        title = "PVP"
+                        break;
+                    case 'profile':
+                        title = "Profile"
+                        break;
+                }
+
+                $('h2.subtitle.profile').text(title);
+            }
+        });
+    }
     $('.collapsible').collapsible();
     $(".button-collapse").sideNav({
         closeOnClick: true,
@@ -89,10 +100,34 @@ $(document).on('turbolinks:load', function() {
     $('.tap-target').tapTarget('open');
     $('.tap-target').tapTarget('close');
 
+    var options = [{
+
+            selector: '#staggered-test',
+            offset: 255,
+            callback: function(el) {
+                Materialize.showStaggeredList($(el));
+            }
+        },
+
+    ];
+    Materialize.scrollFire(options);
 
     $('.parallax').parallax();
     $('.tooltipped').tooltip({ delay: 50 });
 
+    $('#gear-modal').modal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            alert("Ready");
+            //   console.log(modal, trigger);
+        },
+        complete: function() { alert('Closed'); } // Callback for Modal close
+    });
 
     $('#game-select').change(function() {
         selection = $(this).val();
@@ -100,9 +135,11 @@ $(document).on('turbolinks:load', function() {
         if (selection != 'Trials of Osiris' && selection != "Nightfall") {
             $('div#difficulty').show();
             $('#checkpoint').show();
+            // console.log("show");
         } else {
             $('div#difficulty').hide();
             $('#checkpoint').hide();
+            // console.log("hide");
         }
 
     });
@@ -118,32 +155,117 @@ $(document).on('click', '.notification > button.delete', function() {
     return false;
 });
 
+//Handle hamburger menu 
+jQuery(document).ready(function($) {
 
-// function openNav() {
-//     document.getElementById("sideNavigation").style.width = "250px";
-//     document.getElementById("main").style.marginLeft = "250px";
+    var $toggle = $('#navbar-burger');
+    var $menu = $('#navbar-menu');
+
+    $toggle.click(function() {
+        $(this).toggleClass('is-active');
+        $menu.toggleClass('is-active');
+    });
+});
+
+
+// // Get the modal
+// var modal = document.getElementById('myModal');
+
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+
+// // Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close")[0];
+
+// // When the user clicks on the button, open the modal 
+// btn.onclick = function() {
+//     modal.style.display = "block";
 // }
 
-// function closeNav() {
-//     document.getElementById("sideNavigation").style.width = "0";
-//     document.getElementById("main").style.marginLeft = "0";
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//     modal.style.display = "none";
 // }
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
+
+
+function openNav() {
+    document.getElementById("sideNavigation").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("sideNavigation").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+}
 
 $(document).on("turbolinks:load", function() {
     // $('.modal').modal();
     $('.modal').modal({
-        dismissible: true,
-        opacity: .5, 
-        inDuration: 300, 
-        outDuration: 200, 
-        startingTop: '4%', 
-        endingTop: '10%'
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        inDuration: 300, // Transition in duration
+        outDuration: 200, // Transition out duration
+        startingTop: '4%', // Starting top style attribute
+        endingTop: '10%', // Ending top style attribute
+        ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+            console.log(modal, trigger);
+        },
+        complete: function() {} // Callback for Modal close
     });
 
-    $('#team-search-modal').modal('open');
+    $('#modal1').modal('open');
 
-    $('#team-search-modal').modal('close');
+    $('#modal1').modal('close');
+
+    $('#modal2').modal('open');
+
+    $('#modal2').modal('close');
+
+    $('#modal3').modal('open');
+
+    $('#modal3').modal('close');
+
+    $('#modal4').modal('open');
+
+    $('#modal4').modal('close');
+
+    $('#modal5').modal('open');
+
+    $('#modal5').modal('close');
+
+    $('#modal15').modal('open');
+
+    $('#modal15').modal('close');
+
+    $('#modal6').modal('open');
+
+    $('#modal6').modal('close');
+
+    $('#modal7').modal('open');
+
+    $('#modal7').modal('close');
+
+    $('#gear-modal-0').modal('open');
+
+    $('#gear-modal-0').modal('close');
+
+    $('#gear-modal-1').modal('open');
+
+    $('#gear-modal-1').modal('close');
+
+    $('#gear-modal-2').modal('open');
+
+    $('#gear-modal-2').modal('close');
 });
+
+
 
 
 $(document).on("turbolinks:load", function() {
@@ -170,3 +292,89 @@ $(document).on("turbolinks:load", function() {
 
     $("h1#home-header").hide().fadeIn(4000);
 });
+
+
+
+
+
+
+
+// PROGRESS BARS //
+
+
+
+
+
+
+
+// $(document).ready(function() {
+//     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+//     // $('.modal').modal();
+// });
+
+
+
+
+// $('.modal').modal({
+//     dismissible: true, // Modal can be dismissed by clicking outside of the modal
+//     opacity: .5, // Opacity of modal background
+//     inDuration: 300, // Transition in duration
+//     outDuration: 200, // Transition out duration
+//     startingTop: '4%', // Starting top style attribute
+//     endingTop: '10%', // Ending top style attribute
+//     ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+//         alert("Ready");
+//         console.log(modal, trigger);
+//     },
+//     complete: function() { alert('Closed'); } // Callback for Modal close
+// });
+
+// $('#modal1').modal('open');
+
+// $('#modal1').modal('close');
+
+// $('#modal2').modal('open');
+
+// $('#modal2').modal('close');
+
+// $('#modal3').modal('open');
+
+// $('#modal3').modal('close');
+
+// $('#modal4').modal('open');
+
+// $('#modal4').modal('close');
+
+// $('#modal5').modal('open');
+
+// $('#modal5').modal('close');
+
+// $('#modal6').modal('open');
+
+// $('#modal6').modal('close');
+
+// $('#modal7').modal('open');
+
+// $('#modal7').modal('close');
+
+
+
+// $('.tap-target').tapTarget('open');
+// $('.tap-target').tapTarget('close');
+
+
+// var options = [{
+
+//         selector: '#staggered-test',
+//         offset: 255,
+//         callback: function(el) {
+//             Materialize.showStaggeredList($(el));
+//         }
+//     },
+
+// ];
+// Materialize.scrollFire(options);
+
+// $(document).ready(function() {
+//     $('.parallax').parallax();
+// });
