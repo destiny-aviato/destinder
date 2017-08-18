@@ -19,11 +19,11 @@
 
             <div class="col s12 m3 center-align">
                 <div class="row">
-                <div class="card-panel grey lighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; min-width: 235px;">
+                <div class="card-panel grey  j hlighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; min-width: 235px;">
                 <% bg = "background-image: url(#{x["Character Items"]["Emblem Background"]});" %>
                     <div class="post-header" style="<%= bg %>">
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
-                            <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= x["Character Stats"]["Emblem Background"] %></div>
+                            <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
                             <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 10%"><%= username %></div>
                             <div class="col s12 m3 center-align" style="height: 65px; color: white;">
                                 <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 0.9em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
