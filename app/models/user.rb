@@ -139,12 +139,10 @@ class User < ApplicationRecord
                     14 => "Emote",
                     15 => "Horn",
                     16 => "Artifact",
-                    17 => "Emblem Background",
-                    18 => "Emblem"
+                    17 => "Emblem Background"
                 }
                 
                 items["Emblem Background"] = "https://www.bungie.net#{x['backgroundPath']}" #emblem background
-                items["Emblem"] = "https://www.bungie.net/#{x['emblemPath']}"
 
                 inventory.each_with_index do |item, index|
     
