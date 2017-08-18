@@ -9,169 +9,143 @@
 <% else %>  
 <br/>
  
-<div>
+<div style="margin-right: 10%;">
 <% info.each_with_index do |x, index| %>
 
 <br/>
+
+<% case x["Character Items"]["Subclass"]["Item Name"] 
+        when "Nightstalker", "Voidwalker", "Defender" %>
+        <% subclass =  "background-image: url(#{image_path "void.png"});" %>
+        <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
+    <% when "Sunsinger", "Gunslinger", "Sunbreaker" %>
+        <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
+        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+    <% when "Bladedancer", "Striker", "Stormcaller" %>
+        <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
+        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+    <% end %>
+
+
+
+
 <div ><!--OPEN FIRST CHARACTER--> 
+<br>
 
-        <div class="row white z-depth-2">
+<div class="row white z-depth-2" style="border-radius: 2px;"><!--OPEN FIRST ROW-->
 
-            <div class="col s12 m3 center-align">
-                <div class="row">
-                <div class="card-panel grey  j hlighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; min-width: 235px;">
-                <% bg = "background-image: url(#{x["Character Items"]["Emblem Background"]});" %>
-                    <div class="post-header" style="<%= bg %>">
-                        <div class="row" style="overflow: hidden; max-height: 65px; ">
+            <div class="col s12 m4" style="padding-top: 5%;"><!--OPEN FIRST COLUMN-->
+                <% bg = "background-image: url(#{x['Character Items']['Emblem Background']});" %>
+
+                <div style="<%= bg %>">
+                        <div class="row hoverable z-depth-2" style="overflow: hidden; max-height: 65px; ">
                             <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                            <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 10%"><%= username %></div>
-                            <div class="col s12 m3 center-align" style="height: 65px; color: white;">
-                                <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 0.9em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
-                                <span style ="font-weight: 300; font-size: 0.9em; margin-left: -50%;"><%= @character_races[x["Character Type"]] %></span>
+                            <div class="col s6 center-align" style="height: 65px; color: white; margin-top: 7%;"><%= username %></div>
+                            <div class="col s3 center-align" style="height: 65px; color: white;">
+                                <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
+                                <span style ="font-weight: 300; font-size: 0.9em;"><%= @character_races[x["Character Type"]] %></span>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["K/D Ratio"] %> <span style="color:#cc0000;">KD</span></div>
-                <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["ELO"] %> <span style="color:#cc0000;">ELO</span></div>
-            </div>
 
-            <div class="row"> <!--OPEN ROW-->
-                        <div class="col s12 player-reputation-trials center-align" style="color: grey;">Player Reputation</div>
-
-
-                        <div class="col s12 center-align"> 
-                            <% if !@user.nil? %>     
-                                <% total = @user.votes_for + @user.votes_against %>      
-                                <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
-                                <% if current_user.voted_for?(@user) %>
-                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                                    <i class="material-icons">thumb_up</i>
-                                <% end %>
-
-                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                                    <i class="material-icons ">thumb_down</i>
-                                <% end %>
-                                <% else %>
-                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                                    <i class="material-icons">thumb_up</i>
-                                <% end %>
-
-
-                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                                    <i class="material-icons">thumb_down</i>
-                                <% end %>
-                                <% end %>
-                            <% end %>
-                        </div><!--CLOSE COLUMN-->
-                    
-                    </div><!--CLOSE ROW-->
-
-
-                            
-            </div>
-
-            <div class="col s12 m9 center-align">
-                
-                
-                <div class="row">
                     <div class="col s12">
-                            <div class="row">
-                                <div class="col s12 m6 center-align">
-                                            <table style="color:grey;"> 
-                                                <tr> 
-                                                    <th></th>
-                                                    <th class="center-align table-header-trials">WK<hr></th>
-                                                    <th class="center-align table-header-trials">Map<hr></th>
-                                                </tr>
-                                                <tr> 
-                                                    <th class="center-align table-header-trials" style="color:#cc0000;">KD</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                </tr>
-                                                <tr> 
-                                                    <th class="center-align table-header-trials" style="color:#cc0000;">KA/D</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                </tr>
-                                                <tr> 
-                                                    <th class="center-align table-header-trials" style="color:#cc0000;">Kills</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                </tr>
-                                                <tr> 
-                                                    <th class="center-align table-header-trials" style="color:#cc0000;">Wins</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                </tr>
-                                                 <tr> 
-                                                    <th class="center-align table-header-trials" style="color:#cc0000;">Losses</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                    <th class="trials-table-stats center-align">?</th>
-                                                </tr>
-                                            
-
-                                                </table>
-
+                                <div class="card-panel post-tabs hoverable" style='<%= subclass %>; height: 65px; border-radius: 5px;'>
+                                    <div class="row">
+                                        <div class="col s6 flow-text tab-card-link" style="font-size: 18px;"><span class="tab-card-link" style="<%= text_color %>"><%= x["Character Stats"]["K/D Ratio"]%></span> <span style="font-size: 12px;<%= text_color %>;">KD</span></div>
+                                        <div class="col s6 flow-text tab-card-link" style="font-size: 18px;"><span class="tab-card-link" style="<%= text_color %>"><%= x["Character Stats"]["ELO"]%></span> <span style="font-size: 12px;<%= text_color %>;">ELO</span></div>
+                                    </div>
+                               
                                 </div>
-
-
-                                <div class="col s12 m6 center-align">
-                                            <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
-                         <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div>
-                         <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div>
-                         <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
-                         <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div>
-                         <div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div>
-                         <div class="col s12 center-align text-white">BADGES<hr></div><!--CLOSE COLUMN-->
-                         <div class="col s6 left-align flow-text">
-                                
-                                <div class="chip chip-trials flow-text">
-                                    <img class="mini-weapon-icons truncate flow-text" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Sniper">
-                                    Sniper
-                                </div>
-
-                                <div class="chip chip-trials flow-text">
-                                    <img class="mini-weapon-icons truncate flow-text" src="https://vignette3.wikia.nocookie.net/destinypedia/images/6/68/Hand_Cannon_Loader_icon.png/revision/latest?cb=20150909081128" alt="Contact Person">
-                                    Cannon
-                                </div>
-                            </div><!--CLOSE BADGES COLUMN-->
-                            <div class="col s6 left-align flow-text">
-
-                                <div class="chip chip-trials flow-text">
-                                    <img class="mini-weapon-icons truncate flow-text" src="https://vignette2.wikia.nocookie.net/destinypedia/images/2/22/Fastball_icon.png/revision/latest?cb=20150909081131" alt="Contact Person">
-                                    Grenades
-                                </div>
-
-                                <div class="chip chip-trials flow-text">
-                                    <img class="mini-weapon-icons truncate flow-text" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Marksman">
-                                    Marksman
-                                </div>
-                            
-
-                            </div>
-
-                                </div>
-                            
-                            </div>
-
 
                     </div>
-                </div>
-            
-            
-            </div>
+
+
+            </div><!--CLOSE FIRST (m3) COLUMN-->
 
 
 
 
 
-     
-        </div>
+            <div class="col s12 m4" style="margin-top: 0%;"><!--OPEN SECOND COLUMN-->
+
+
+                                    <div class="row">
+                                    <div class="col s12">
+                                        <div class="card-panel" style="background-color: #EAC47F; border-radius: 15px; margin-top: 26px;">
+                                        <span class="white-text">
+
+                                                <table style="font-size: 10px;" class="bordered"> 
+                                                <tr> 
+                                                    <th></th>
+                                                    <th class="center-align">WK</th>
+                                                    <th class="center-align">Map</th>
+                                                </tr>
+                                                <tr> 
+                                                    <th class="center-align">KD</th>
+                                                    <th class="center-align">?</th>
+                                                    <th class="center-align"><%= x["Character Stats"]["K/D Ratio"] %></th>
+                                                </tr>
+                                                <tr> 
+                                                    <th class="center-align">KA/D</th>
+                                                    <th class="center-align">?</th>
+                                                    <th class="center-align"><%= x["Character Stats"]["KA/D Ratio"] %></th>
+                                                </tr>
+                                                <tr> 
+                                                    <th class="center-align">Wins</th>
+                                                    <th class="center-align">?</th>
+                                                    <th class="center-align"><%= x["Character Stats"]["ELO"] %></th>
+                                                </tr>
+                                                <tr> 
+                                                    <th class="center-align">Losses</th>
+                                                    <th class="center-align">?</th>
+                                                    <th class="center-align"><%= x["Character Stats"]["ELO"] %></th>
+                                                </tr>
+
+                                                </table>
+                                        </span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                 
+
+            </div><!--CLOSE SECOND (m5) COLUMN-->
+
+
+
+
+                
+            <div class="col s12 m4"><!--OPEN THIRD COLUMN-->
+
+                            
+                                
+                                                                <div class="row"><!--OPEN NESTED ROW-->
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></div>
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Helmet"]["Item Name"] %></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Gauntlets"]["Item Name"] %></div>
+                                                                    <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></div>
+                                                                </div><!--CLOSE NESTED ROW-->
+                                                            
+
+            </div><!--CLOSE THIRD (m5) COLUMN-->
+
+</div><!--CLOSE FIRST ROW-->
+
+
+
+
 
 </div><!--CLOSE FIRST CHARACTER--> 
+
+
+
 
 
 
