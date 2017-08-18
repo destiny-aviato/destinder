@@ -17,6 +17,7 @@
 //= require jquery.slick
 //= require initialize
 //= require_self
+//= require typed
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
@@ -289,6 +290,7 @@ $(document).on("turbolinks:load", function() {
     // Previous slide
     $('.slider').slider('prev');
 
+    $("h1#home-header").hide().fadeIn(4000);
 });
 
 
