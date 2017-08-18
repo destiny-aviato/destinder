@@ -214,12 +214,12 @@ body {
 
 .btn:hover,
 .btn-large:hover {
-    background-color: #212121;;
+    background-color: #2bbbad;
 }
 
 .btn,
 .btn-large {
-    background-color: #212121;;
+    background-color: #26a69a;
 }
 
 .collapsible.popout {
@@ -597,7 +597,7 @@ a.gamertag-name {
 }
 
 .card-title {
-    color: #212121;
+    color: #2bbbad;
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
@@ -881,7 +881,7 @@ html {
 }
 
 .slider .indicators .indicator-item.active {
-    background-color: #212121;
+    background-color: #2bbbad;
 }
 
 .black-gradient {
@@ -893,7 +893,7 @@ html {
 }
 
 .btn-floating i {
-    background-color: #212121;
+    background-color: #2AA8E8;
 }
 
 .post-header-background {
@@ -937,7 +937,6 @@ html {
 }
 
 .btn, .btn-large, .btn-large {
-
     background-color: #2AA8E8;
 }
 
@@ -957,24 +956,6 @@ min-width: 230px;
 }
 .chip-trials{
 font-size: 53%;
-width: 109%;
+width: 121%;
 margin-left: -10.5%;
 }
-
-
-    background-color: #212121;
-}
-
-
-.tabs .indicator {
-    height: 4px;
-    background-color: #9694a9;
-
-}
-
-@media (min-height: 2000px) {
-    div#post-fire {
-      display: none !important;
-    }
-  }
-
