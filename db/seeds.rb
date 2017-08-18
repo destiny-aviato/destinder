@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(2)
+25.times do
+  content = Faker::Lorem.sentence(1)
   users.each { |user| user.microposts.create!(content: content, game_type: "Trials of Osiris") }
 end

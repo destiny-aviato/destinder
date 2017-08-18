@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     def index
-        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 25)
         filtering_params(params).each do |key, value|
           @microposts = @microposts.public_send(key, value) if value.present?
         end
@@ -31,7 +31,7 @@ class MicropostsController < ApplicationController
         when "Vault of Glass"
             @micropost.user_stats = get_stats(current_user, "vog")
         when "Nightfall"
-            @micropost.user_stats = get_stats(current_user, "nf")
+            @micropost.user_stats = get_stats(current_user, "night")
             @micropost.raid_difficulty = ""
         end
 
@@ -74,6 +74,8 @@ class MicropostsController < ApplicationController
                 Micropost.get_raid_stats(user, "crota")
             when "vog"
                 Micropost.get_raid_stats(user, "vog")
+            when "night"
+                Micropost.get_nightfall_stats(user)
             end
 
         rescue NoMethodError => e 

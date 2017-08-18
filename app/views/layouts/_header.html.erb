@@ -28,7 +28,7 @@
         <%= form_tag(users_path, :method => "get", id: "search-form") do %>
           <div class="input-field">
             <%= search_field :search, params[:search], placeholder: "Guardian Lookup", class: "input" %>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <label class="label-icon" for="search"><i class="material-icons" style="color: #D1D1D1;">search</i></label>
             <i class="material-icons">close</i>
           </div>
         <% end %>
@@ -67,32 +67,23 @@
       <% end %>
 </ul>
 
-<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?rd5re8">
 
-
-
-<div class="fixed-action-btn toolbar hide-on-small-only">
-    <a class="btn-floating btn-large lighten-1" style="background-color: #2AA8E8">
-      <i class="large material-icons">info</i>
-    </a>
-
-    
-    <ul>
+    <!-- <ul>
       <li class="waves-effect waves-light"><a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-3x"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-twitter"></i></a></li>
       <li class="waves-effect waves-light"><a href="https://github.com/destiny-aviato/destinder"><i class="socicon-github"></i></a></li>
       <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
-    </ul>
-  </div>
+    </ul> -->
 
   <% if user_signed_in? %>
-    <div class="fixed-action-btn toolbar action-button-fix">
+    <div class="fixed-action-btn toolbar">
       <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#modal5">
         <i class="large material-icons">search</i>
       </a>
+    </div>
   <% end %>
 
-</div>
+
 
 
     
@@ -147,5 +138,5 @@
 
 
   <a class="btn-floating teal button-collapse slide-fix" href="" data-activates="slide-out">
-    <i class="material-icons">menu</i>
+    <i class="material-icons" style="color: #D1D1D1;">menu</i>
   </a>
