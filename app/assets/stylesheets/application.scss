@@ -214,12 +214,12 @@ body {
 
 .btn:hover,
 .btn-large:hover {
-    background-color: #2bbbad;
+    background-color: #212121;;
 }
 
 .btn,
 .btn-large {
-    background-color: #26a69a;
+    background-color: #212121;;
 }
 
 .collapsible.popout {
@@ -597,7 +597,7 @@ a.gamertag-name {
 }
 
 .card-title {
-    color: #2bbbad;
+    color: #212121;
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
@@ -881,7 +881,7 @@ html {
 }
 
 .slider .indicators .indicator-item.active {
-    background-color: #2bbbad;
+    background-color: #212121;
 }
 
 .black-gradient {
@@ -893,7 +893,7 @@ html {
 }
 
 .btn-floating i {
-    background-color: #2AA8E8;
+    background-color: #212121;
 }
 
 .post-header-background {
@@ -937,6 +937,7 @@ html {
 }
 
 .btn, .btn-large, .btn-large {
+
     background-color: #2AA8E8;
 }
 
@@ -959,4 +960,21 @@ font-size: 53%;
 width: 109%;
 margin-left: -10.5%;
 }
+
+
+    background-color: #212121;
+}
+
+
+.tabs .indicator {
+    height: 4px;
+    background-color: #9694a9;
+
+}
+
+@media (min-height: 2000px) {
+    div#post-fire {
+      display: none !important;
+    }
+  }
 

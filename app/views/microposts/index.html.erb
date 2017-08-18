@@ -12,9 +12,6 @@
         </div>
     </section>
 
-    <!-- <section class="hero is-medium is-dark is-bold" style="background-size: 100%;background-repeat: no-repeat;  background-position-y: 53%; height: 200px;">
-
-    </section> -->
 </div>
     <div class="container" style="width: 80%">
             <ul class="collapsible popout" data-collapsible="accordion">
@@ -28,34 +25,18 @@
 
 
             <label>Game Mode</label><br>
-        <!-- | <%= link_to 'All Modes', {controller: 'microposts', action: 'index', :game_type => ''} %>  
-        | <%= link_to 'Trials of Osiris', {controller: 'microposts', action: 'index', :game_type => 'Trials of Osiris'} %> | 
-            <%= link_to 'Wrath of the Machine', {controller: 'microposts', action: 'index', :game_type => 'Wrath of the Machine'} %> | 
-            <%= link_to "King's Fall", {controller: 'microposts', action: 'index', :game_type => "King's Fall"} %> | 
-            <%= link_to "Crota's End", {controller: 'microposts', action: 'index', :game_type => "Crota's End"} %> | 
-            <%= link_to 'Vault of Glass', {controller: 'microposts', action: 'index', :game_type => 'Vault of Glass'} %> | 
-            <%= link_to 'Nightfall', {controller: 'microposts', action: 'index', :game_type => 'Nightfall'} %> | 
-        
-            <br> -->
+
             <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
                 <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), class: 'game_type_select' %>
             <% end %>
 
-    <!-- 
-            <%= form_tag microposts_path, method: :get, remote: true do %>
-                <%= select_tag :game_type, options_for_select([['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), onchange: 'this.form.submit()' %>
-            <% end %> -->
-    
+
             <ol class="microposts">
                     <div class="row posts" style="margin-left: -4%;">
                         <%= render @microposts %>
                     </div>
                 </ol>
-            
+            <div id="post-fire" style="display: none;"></div>
             <br>    
             <center><%= will_paginate @microposts, renderer: MaterializePagination::Rails,  :page_links => false  %></center>
-
-
-
-
 </div>
