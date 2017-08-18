@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function(){
     }
 
     var options = [
-        {selector: 'div#post-fire', offset: 0, callback: function(el) {
+        {selector: 'div#post-fire', offset: 100, callback: function(el) {
           Materialize.toast("Really? Is if that hard to find someone?", 4000 );
         } }
       ];
