@@ -1,4 +1,4 @@
-
+<!-- Slide out Nav -->
 <ul id="slide-out" class="side-nav" style="background-color: #212121;">
   <% if user_signed_in? %>
     <li class="center-align round-image" style="width: 100%;">
@@ -13,13 +13,13 @@
             <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
         </div>
         <div class="col s3">
-            <a href="#!"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+            <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
         </div>
         <div class="col s3">
             <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
         </div>
         <div class="col s3">
-            <a href="#!"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
         </div>
       </div>
     </li>
@@ -54,89 +54,94 @@
       <% end %>
     </li>
     <li>
-        <%= link_to destroy_user_session_path, class: "navbar-item" do %>
-          <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGOUT
-        <% end %>
+      <%= link_to "#rewards-modal", class: "navbar-item modal-trigger" do %>
+        <i class="material-icons" style="color: #D1D1D1;">card_giftcard</i> EARN STUFF!
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGOUT
+      <% end %>
     </li>
     <% else %>
       <li>
-          <%= link_to new_user_session_path, class: "navbar-item" do %>
-            <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
-          <% end %>
+        <%= link_to new_user_session_path, class: "navbar-item" do %>
+          <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
+        <% end %>
       </li>
-      <% end %>
+    <% end %>
 </ul>
 
-
-    <!-- <ul>
-      <li class="waves-effect waves-light"><a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-3x"></i></a></li>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-twitter"></i></a></li>
-      <li class="waves-effect waves-light"><a href="https://github.com/destiny-aviato/destinder"><i class="socicon-github"></i></a></li>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
-    </ul> -->
-
-  <% if user_signed_in? %>
-    <div class="fixed-action-btn toolbar">
-      <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#modal5">
-        <i class="large material-icons">search</i>
-      </a>
-    </div>
-  <% end %>
+<!-- Search bar icon -->
+<% if user_signed_in? %>
+  <div class="fixed-action-btn toolbar hide-on-mobile-only">
+    <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#team-search-modal">
+      <i class="large material-icons">search</i>
+    </a>
+  </div>
+<% end %>
 
 
-
-
-    
-  
-
-  <!-- Modal Structure -->
-  <div id="modal5" class="modal bottom-sheet">
-    <div class="modal-content">
-      <p>Trials Team Lookup</p>
-      <div class="row">
-          <%= form_for(TeamStat.new) do |f| %>
-              <div class="input-field">
-                <div class="row">
-                  <div class="input-field col s3">
-                    <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
-                  </div>
-                  <div class="input-field col s9">
-                      <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
-                    </div>
-                  <div class="hide-on-large-only">
-                    <%= f.submit "Search" %>
-                  </div>
-                </div>
+  <!-- Team lookup Modal Structure -->
+<div id="team-search-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <p>Trials Team Lookup</p>
+    <div class="row">
+      <%= form_for(TeamStat.new) do |f| %>
+        <div class="input-field">
+          <div class="row">
+            <div class="input-field col s3">
+              <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+            </div>
+            <div class="input-field col s9">
+                <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
               </div>
-          <% end %>
-        </div>
-
-        <p>PVP Team Lookup</p>
-      <form>
-          <div class="input-field">
-            <input id="search" type="search" required placeholder="Enter Gamertag">
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
+            <div class="hide-on-large-only">
+              <%= f.submit "Search" %>
+            </div>
           </div>
-        </form>
-
+        </div>
+      <% end %>
     </div>
   </div>
+</div>
 
-  <!-- FAQ Modal -->
-  <div id="faq-modal" class="modal">
-    <div class="modal-content">
-      <%= render 'home/faq'%>
-    </div>
+
+<!-- FAQ Modal -->
+<div id="faq-modal" class="modal">
+  <div class="modal-content">
+    <%= render 'home/faq'%>
   </div>
+</div>
 
-  
+<!-- Rewards Modal Structure -->
+<div id="rewards-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h3>Help improve the site by donating!</h3>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>Any Amount</h5>
+      <p>Get Stuff</p>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>More than just something</h5>
+      <p>Get Stuff and more</p>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>A lot!</h5>
+      <p>Get even more stuff!</p>
+    </div>
 
- 
 
-  
+  </div>
+  <div class="modal-footer">
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank" class="modal-action modal-close waves-effect btn-flat "><i class="fa fa-paypal fa-2x"></i> Donate</a>
+  </div>
+</div>
 
-
-  <a class="btn-floating teal button-collapse slide-fix" href="" data-activates="slide-out">
-    <i class="material-icons" style="color: #D1D1D1;">menu</i>
-  </a>
+<!-- menu icon -->
+<a class="btn-floating teal button-collapse slide-fix" href="" data-activates="slide-out">
+  <i class="material-icons" style="color: #D1D1D1;">menu</i>
+</a>

@@ -8,7 +8,8 @@ $(document).on('turbolinks:load', function(){
 
     var options = [
         {selector: 'div#post-fire', offset: 0, callback: function(el) {
-          Materialize.toast("Really? Is if that hard to find someone?", 4000 );
+        //   Materialize.toast("Really? Is if that hard to find someone?", 4000 );
+        console.log("I see you.");
         } }
       ];
       Materialize.scrollFire(options);
