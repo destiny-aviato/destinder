@@ -7,7 +7,7 @@
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
 <% else %>  
-<br/>
+
  
 <div style="margin-right: 10%;">
 <% info.each_with_index do |x, index| %>
@@ -70,7 +70,7 @@
                                     <i class="material-icons">thumb_up</i>
                                 <% end %>
 
-                                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn amber lighten-3" do %>
+                                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn grey darken-3" do %>
                                     <i class="material-icons">cancel</i>
                                 <% end %>
 
@@ -78,7 +78,7 @@
                                     <i class="material-icons">thumb_down</i>
                                 <% end %>
                                 <% else %>
-                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn amber lighten-3" do %>
+                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn grey darken-3" do %>
                                     <i class="material-icons">thumb_up</i>
                                 <% end %>
 
@@ -86,7 +86,7 @@
                                     <i class="material-icons">cancel</i>
                                 <% end %>
 
-                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn amber lighten-3" do %>
+                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn grey darken-3" do %>
                                     <i class="material-icons">thumb_down</i>
                                 <% end %>
                                 <% end %>
@@ -105,7 +105,7 @@
 
                                     <div class="row">
                                     <div class="col s12">
-                                        <div class="card-panel amber lighten-3" style="border-radius: 15px; margin-top: 26px;">
+                                        <div class="card-panel grey darken-3" style="border-radius: 15px; margin-top: 26px;">
                                         <span class="white-text">
 
                                                 <table style="font-size: 10px;" class="bordered"> 
