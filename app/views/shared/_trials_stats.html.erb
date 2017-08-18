@@ -32,9 +32,9 @@
 <div ><!--OPEN FIRST CHARACTER--> 
 <br>
 
-<div class="row white z-depth-2" style="border-radius: 2px;"><!--OPEN FIRST ROW-->
+<div class="row white z-depth-2"><!--OPEN FIRST ROW-->
 
-            <div class="col s12 m4" style="padding-top: 1.5%;"><!--OPEN FIRST COLUMN-->
+            <div class="col s12 m4" style="padding-top: 3.5%;"><!--OPEN FIRST COLUMN-->
                 <% bg = "background-image: url(#{x['Character Items']['Emblem Background']});" %>
 
                 <div style="<%= bg %>">
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="col s12">
-                                <div class="card-panel post-tabs hoverable" style='<%= subclass %>; height: 65px; border-radius: 5px;'>
+                                <div class="card-panel post-tabs hoverable" style='<%= subclass %>; height: 65px; border-radius: 5px; margin-top: -4%; width: 108%; margin-left: -5%;'>
                                     <div class="row">
                                         <div class="col s6 flow-text tab-card-link" style="font-size: 18px;"><span class="tab-card-link" style="<%= text_color %>"><%= x["Character Stats"]["K/D Ratio"]%></span> <span style="font-size: 12px;<%= text_color %>;">KD</span></div>
                                         <div class="col s6 flow-text tab-card-link" style="font-size: 18px;"><span class="tab-card-link" style="<%= text_color %>"><%= x["Character Stats"]["ELO"]%></span> <span style="font-size: 12px;<%= text_color %>;">ELO</span></div>
@@ -60,8 +60,8 @@
                     </div>
 
 
-                    <div class="col s12 center-align">
-                        <p class="center-align" style="color: grey;" >Player Reputation</p> 
+                    <div class="col s12 center-align" style="margin-top: -7%;">
+                        <p class="center-align" style="color: grey; margin-bottom: 1%;" >Player Reputation</p> 
                             <% if !@user.nil? %>     
                                 <% total = @user.votes_for + @user.votes_against %>      
                                 <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
