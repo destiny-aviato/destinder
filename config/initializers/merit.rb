@@ -31,3 +31,16 @@ end
 # }].each do |attrs|
 #   Merit::Badge.create! attrs
 # end
+
+Merit::Badge.create!(
+  id: 1,
+  name: "Donator",
+  description: "Donated at least $5!",
+)
+
+Merit::Badge.create!(
+  id: 2,
+  name: "Architect",
+  description: "Site Developer",
+)
+
