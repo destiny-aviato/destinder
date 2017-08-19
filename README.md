@@ -18,7 +18,7 @@
     CLIENT_ID: '<client_id>'
     CLIENT_SECRET: '<client_secret>'
     X_API_KEY: '<client api key>'
-    REDIRECT_URL: "https://glacial-savannah-28014.herokuapp.com/users/auth/bungie/callback" #for development
+    REDIRECT_URL: "https://arcane-peak-29389.herokuapp.com/users/auth/bungie/callback" #for development
     API_TOKEN: '<client api key>' #this can be the same as the one above, you'll need it for API requests (for now)
 ```
 
