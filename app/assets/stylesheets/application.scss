@@ -19,7 +19,6 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "materialize/extras/nouislider";
 @import 'slick';
 @import 'slick-theme';
-
 body {
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -214,12 +213,14 @@ body {
 
 .btn:hover,
 .btn-large:hover {
-    background-color: #6B7C8E;;
+    background-color: #6B7C8E;
+    ;
 }
 
 .btn,
 .btn-large {
-    background-color: #6B7C8E;;
+    background-color: #6B7C8E;
+    ;
 }
 
 .collapsible.popout {
@@ -306,32 +307,31 @@ li.tab.post {
     width: 32.3% !important;
 }
 
-
-
-
 .tabs {
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
     margin-bottom: 4%;
 }
 
 .tabs .tab a.active {
-    color: #535353;;
+    color: #535353;
+    ;
     font-size: 14px;
     font-weight: 600;
     text-shadow: 1px 1px 3px #ffffff;
 }
 
 .tabs .tab a {
-    color: #535353;;
+    color: #535353;
+    ;
     // font-size: 11px;
     text-overflow: inherit;
     font-size: 14px;
     font-weight: 600;
     text-shadow: 1px 1px 3px #ffffff;
-    
 }
 
-.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+.tabs .tab.disabled a,
+.tabs .tab.disabled a:hover {
     color: rgba(110, 118, 124, 0.7);
     cursor: default;
 }
@@ -342,7 +342,7 @@ li.tab.post {
     font-weight: 600;
     line-height: 1.125;
     margin-left: 9%;
-    text-transform: uppercase;    
+    text-transform: uppercase;
 }
 
 .subtitle {
@@ -783,7 +783,6 @@ a.gamertag-name {
 //     background-color: #757575!important;
 //     background-image: none;
 // }
-
 html {
     background: url(greyzz.png);
     background-attachment: fixed;
@@ -875,43 +874,6 @@ html {
     margin-right: 0.25rem;
 }
 
-.video-margin-fix {
-    margin-top: 6.5%;
-    margin-left: 6.5%;
-}
-
-.weapon-container {
-    height: 100px;
-    width: 75px;
-    background-color: transparent;
-}
-
-.gun-icons-trials {
-    width: 75px;
-    height: 75px;
-    border-radius: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
-    position: fixed;
-    margin-top: 25px;
-    border: 3px solid grey;
-}
-
-.emblem-background-trials {
-   
-    width: 103.3%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin-left: -1.6%;
-    margin-top: -3%;
-}
-
-.gun-name-trials {
-    color: #7F7F85;
-    font-size: 12px;
-}
-
 .trials-row-fix {
     margin-bottom: -10px;
 }
@@ -936,133 +898,6 @@ html {
     z-index: 1000;
 }
 
-.trials-section-fix {
-    margin-top: -210px;
-}
-
-.container-fix-trials {
-    margin-left: 0!important;
-    margin-right: 0!important;
-    padding-left: 0!important;
-    padding-right: 0!important;
-}
-
-.trials-table-stats {
-    font-size: 12px;
-    color: #2bbbad;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.table-header-trials {
-    font-size: 13px;
-    color: #7F7F85;
-}
-
-.row-alignment-trials {
-    position: fixed;
-    margin-top: 0
-}
-
-.gamertag-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 24px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    margin-top: 12px;
-}
-
-.gamertag-trials:hover {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
-}
-
-.subclass-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 12px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.kd-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 27px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.subclass-fix-trials {
-    margin-top: -20px;
-    margin-left: -10px;
-}
-
-.kd-align-fix-trials {
-    margin-top: 0px;
-    margin-left: -13px!important;
-}
-
-.character-type-trials {
-    color: white;
-    font-size: 12px;
-}
-
-.slider .indicators .indicator-item.active {
-    background-color: #2bbbad;
-}
-
-.player-reputation-trials {
-    font-size: 15px;
-    color: #757575;
-}
-
-.trials-card-background{
-   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3mIuJo_Xt9syjX5OpYf0Lu5p6hOvXrYCUGlZdr6hVtiM0BhvSxw");
-   background-size: cover;
-
-}
-
-.chip-trials {
-    background-color: white;
-}
-
 .black-gradient {
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%) !important;
 }
@@ -1072,7 +907,8 @@ html {
 }
 
 .btn-floating i {
-    background-color: #6B7C8E;;
+    background-color: #6B7C8E;
+    ;
 }
 
 .post-header-background {
@@ -1101,7 +937,6 @@ html {
         margin-left: -20% !important;
         width: 125%;
     }
-
     // #nav-icon {
     //     display: none !important;
     // }
@@ -1111,7 +946,7 @@ html {
     color: #D1D1D1;
 }
 
-.side-nav li > a {
+.side-nav li>a {
     color: #D1D1D1;
 }
 
@@ -1119,19 +954,30 @@ html {
     color: #2AA8E8 !important;
 }
 
-.btn, .btn-large, .btn-large {
+.btn,
+.btn-large,
+.btn-large {
     background-color: #212121;
 }
-
 
 .tabs .indicator {
     height: 4px;
     background-color: #9694a9;
-
 }
 
 @media (min-height: 2000px) {
     div#post-fire {
-      display: none !important;
+        display: none !important;
     }
-  }
+}
+
+.gun-icons-trials {
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
+    margin-top: 25px;
+    border: 3px solid grey;
+}
