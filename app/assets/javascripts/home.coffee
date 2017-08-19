@@ -4,7 +4,7 @@
 
 ready = -> 
     $('span#home-subtitle').typed
-        strings: ['elite', "winners", "salty", "complainers", "ragers", "try hards", "losers", "good looking", "ugly", "masses"]
+        strings: ['elite', "winners", "salty", "complainers", "ragers", "try hards", "losers", "good looking", "masses"]
         loop: true
         startDelay: 2000
         backDelay: 1000
