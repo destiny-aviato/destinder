@@ -188,7 +188,7 @@
                 <% end %>
                 <br> 
                 <div class="row" style="margin-bottom: 5px;">
-                    <% current_user.badges.each do |badge| %>                
+                    <% micropost.user.badges.each do |badge| %>                
                         <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                           <!-- <i class="material-icons" style="float: left; font-size: 16px; line-height: 32px; padding-right: 8px;">album</i>  -->
                           <%= badge.custom_fields[:icon].html_safe %>

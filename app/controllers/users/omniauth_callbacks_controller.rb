@@ -18,8 +18,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # set_flash_message(:notice, :success, :kind => 'Bungie') if is_navigational_format?
       else
         session["devise.bungie_data"] = request.env["omniauth.auth"]
-
         redirect_to root_path
+        flash.delete(:notice)
       end
     rescue StandardError => e
       redirect_to application_error_path

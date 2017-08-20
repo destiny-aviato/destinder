@@ -16,6 +16,18 @@ class HomeController < ApplicationController
     def faq
     end
 
+    def kota
+    end
+
+    def kurt
+    end
+    
+    def brian
+    end
+
+    def alex
+    end
+
     def application_error
     end
 
