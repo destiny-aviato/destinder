@@ -16,16 +16,7 @@ class HomeController < ApplicationController
     def faq
     end
 
-    def kota
-    end
-
-    def kurt
-    end
-    
-    def brian
-    end
-
-    def alex
+    def application_error
     end
 
     def get_stats(mode)
