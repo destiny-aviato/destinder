@@ -17,29 +17,29 @@
 
         <div class="row white z-depth-2">
 
-            <div class="col s12 m3 center-align">
-                <div class="row" style="margin-top:15%; margin-left:6%;">
-                <div class="hlighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; max-width: 255px;">
+            <div class="col s12 m3 center-align background-trials-1">
+                <div class="row" style="margin-top:-8.5%; margin-left:4%;">
+                <div class="hlighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; max-width: 228px;">
                 <% bg = "background-image: url(#{x["Character Items"]["Emblem Background"]});" %>
                     <div class="post-header" style="<%= bg %>">
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
                             <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
                             <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 8%"><%= username %></div>
                             <div class="col s12 m3 center-align" style="height: 65px; color: white;">
-                                <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.3em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
+                                <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.4em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
                                 <span style ="font-weight: 300; font-size: 0.9em; margin-left: -50%;"><%= @character_races[x["Character Type"]] %></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
-            <div class="row" style="margin-top: 15%;">
+            <div class="row" style="margin-top: 20%;">
                 <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["K/D Ratio"] %> <span style="color:#cc0000;">KD</span></div>
                 <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["ELO"] %> <span style="color:#cc0000;">ELO</span></div>
             </div>
 
             <div class="row"> <!--OPEN ROW-->
-                        <div class="col s12 player-reputation-trials center-align" style="color: grey; margin-top: -6%;">Player Reputation</div>
+                        <div class="col s12 player-reputation-trials center-align" style="color: grey; margin-top: 11%;">Player Reputation</div>
 
 
                         <div class="col s12 center-align"> 
