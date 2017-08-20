@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'kurt', to: 'home#kurt'
   get 'brian', to: 'home#brian'
   get 'alex', to: 'home#alex'
+  get 'application_error', to: 'home#application_error'
   resources :microposts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

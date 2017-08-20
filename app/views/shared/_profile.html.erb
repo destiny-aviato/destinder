@@ -48,7 +48,6 @@
                   <% @user.badges.each do |badge| %>                
                       <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                         <%= badge.name %>
-                        <!-- <i class="material-icons" style="float: left; font-size: 16px; line-height: 32px; padding-right: 8px;">album</i>  -->
                         <%= badge.custom_fields[:icon].html_safe %>
                       </div>                
                   <% end %>
