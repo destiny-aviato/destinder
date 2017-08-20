@@ -516,6 +516,7 @@ a.gamertag-name {
     border-radius: 999px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 15px;
 }
 
 // .modal .modal-content {
@@ -957,7 +958,7 @@ html {
 .btn,
 .btn-large,
 .btn-large {
-    background-color: #212121;
+    background-color: #21708E;
 }
 
 .tabs .indicator {
@@ -995,4 +996,49 @@ html {
     line-height: 22px;
     height: 22px;
     font-size: 11px;
+}
+
+.input-field .prefix.active {
+    color: #21708E;
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #21708E; 
+  box-shadow: 0 1px 0 0 #21708E;
+}
+/* line 61, /Users/bbolnick/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/materialize-sass-0.100.1/app/assets/stylesheets/materialize/components/forms/_input-fields.scss */
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #21708E;
+}
+
+.modal {
+    max-height: 85%;
+    max-width: 80%;
+}
+
+div#rewards-modal {
+    width: 80%;
 }

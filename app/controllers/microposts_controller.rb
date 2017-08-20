@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     def index
-        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 25)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         filtering_params(params).each do |key, value|
           @microposts = @microposts.public_send(key, value) if value.present?
         end
@@ -35,6 +35,7 @@ class MicropostsController < ApplicationController
             @micropost.raid_difficulty = ""
         end
 
+        @micropost.platform = current_user.api_membership_type
         if @micropost.save
             respond_to do |format|
                 # if the response fomat is html, redirect as usual
