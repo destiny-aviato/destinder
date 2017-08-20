@@ -36,7 +36,7 @@
 
     <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
-            <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
+            <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 425px;">
                 <% bg = "background-image: url(#{stats['Character Stats']['Background']});" %>
                     <div class="post-header" style="<%= bg %>">
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
@@ -186,7 +186,16 @@
                         </div>
                     </div> 
                 <% end %>
-                <br>    
+                <br> 
+                <div class="row" style="margin-bottom: 5px;">
+                    <% current_user.badges.each do |badge| %>                
+                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                          <!-- <i class="material-icons" style="float: left; font-size: 16px; line-height: 32px; padding-right: 8px;">album</i>  -->
+                          <%= badge.custom_fields[:icon].html_safe %>
+                        </div>                
+                    <% end %>
+                </div>
+                
                 <div class="row">
                         <div class="col s4 left-align">
                             <%= link_to @message, target: "_blank" do %>
