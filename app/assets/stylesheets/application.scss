@@ -980,3 +980,12 @@ html {
     -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
     border: 3px solid grey;
 }
+
+.background-trials-1 {
+    background: url("http://cdn.iphonehacks.com/wp-content/uploads/2013/09/parallax-wallpaper-5.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 2%;
+}
