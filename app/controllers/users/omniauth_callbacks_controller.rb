@@ -4,21 +4,25 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def bungie
-    Rails.logger.info "----------------------------------------------------------------------"
-    Rails.logger.info "Received OAUTH request, sending redirect_uri with value: #{ENV['REDIRECT_URL']}"
-    Rails.logger.info "#{request.env["omniauth.auth"]}"
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-    
-    if @user.persisted?
-      @user.remember_me = true
+    begin
+      Rails.logger.info "----------------------------------------------------------------------"
+      Rails.logger.info "Received OAUTH request, sending redirect_uri with value: #{ENV['REDIRECT_URL']}"
+      Rails.logger.info "#{request.env["omniauth.auth"]}"
+      @user = User.from_omniauth(request.env["omniauth.auth"])
+      
+      if @user.persisted?
+        @user.remember_me = true
 
-      sign_in_and_redirect @user, :event => :authentication
+        sign_in_and_redirect @user, :event => :authentication
 
-      # set_flash_message(:notice, :success, :kind => 'Bungie') if is_navigational_format?
-    else
-      session["devise.bungie_data"] = request.env["omniauth.auth"]
+        # set_flash_message(:notice, :success, :kind => 'Bungie') if is_navigational_format?
+      else
+        session["devise.bungie_data"] = request.env["omniauth.auth"]
 
-      redirect_to root_path
+        redirect_to root_path
+      end
+    rescue StandardError => e
+      redirect_to application_error_path
     end
   end
 
