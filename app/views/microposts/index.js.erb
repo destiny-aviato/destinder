@@ -1,5 +1,8 @@
 $(".row.posts").html("<%= j (render @microposts) %>");
 $('ul.tabs').tabs();
 $('.collapsible').collapsible('close', 0);
-$('.tooltipped').tooltip({delay: 50});
+$('.tooltipped').tooltip({ 
+    delay: 50,
+    html: true
+ });
 $('#game-select').material_select();

@@ -35,7 +35,18 @@ class Micropost < ApplicationRecord
     
   end
 
-  def self.get_raid_stats(user, raid)
+  def self.get_raid_stats(user, raid, diff)
+    case raid
+    when "wrath"
+      raid_hash = diff == "Normal" ? "260765522" : "1387993552"
+    when "kings"
+      raid_hash = diff == "Normal" ? "1733556769" : "3534581229"
+    when "crota"
+      raid_hash = diff == "Normal" ? "1836893116" : "1836893119"
+    when "vog"
+      raid_hash = diff == "Normal" ? "2659248071" : "2659248068"
+    end
+
     get_characters = Typhoeus.get(
       "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
       headers: {"x-api-key" => ENV['API_TOKEN']}
@@ -53,11 +64,41 @@ class Micropost < ApplicationRecord
     background = "https://www.bungie.net/#{last_character['backgroundPath']}"
     emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
 
+    get_raid_stats = Typhoeus.get(
+        "https://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/",        
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+    )   
+    
+    stat_data = JSON.parse(get_raid_stats.body)
+
+    vals = ""
+    stat_data["Response"]["data"]["activities"].each do |x|
+      if x["activityHash"] == raid_hash.to_i
+        vals = x["values"]
+        break
+      end
+    end
+
+
+    if vals != ''
+      completions = vals['activityCompletions']['basic']['displayValue']
+      kills = vals['activityKills']['basic']['displayValue']
+      deaths = vals['activityDeaths']['basic']['displayValue']
+      kd = vals['activityKillsDeathsRatio']['basic']['displayValue']
+      fastest_time = vals['fastestCompletionSecondsForActivity']['basic']['displayValue']
+    else
+      completions = 'N/A'
+      kills = 'N/A'
+      deaths = 'N/A'
+      kd = 'N/A'
+      fastest_time = 'N/A'
+    end
+
     get_items = Typhoeus::Request.new(
       "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
-      )
+    )
 
 
     get_items.on_complete do |item_response|                     
@@ -72,9 +113,11 @@ class Micropost < ApplicationRecord
    
   
     stats = {
-      "Completions" => "-",
-      "Kills" => "-",
-      "Deaths" => "-",
+      "Completions" => completions,
+      "Kills" => kills,
+      "Deaths" => deaths,
+      "K/D" => kd,
+      "Fastest" => fastest_time,
       "Light Level" => light_level,
       "Grimoire" => grimoire,
       "Background" => background,
@@ -127,6 +170,8 @@ class Micropost < ApplicationRecord
       "Completions" => "-",
       "Kills" => "-",
       "Deaths" => "-",
+      "K/D" => "-",
+      "Fastest" => "-",
       "Light Level" => light_level,
       "Grimoire" => grimoire,
       "Background" => background,

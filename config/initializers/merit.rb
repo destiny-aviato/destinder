@@ -45,10 +45,29 @@ Merit::Badge.create!(
 Merit::Badge.create!(
   id: 2,
   name: "Architect",
-  description: "Site Developer ",
+  description: "Site Developer",
   custom_fields: { 
     icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">album</i>',
     color: "color: #FAFAFA; background-color: #2f3337;"
+   }
+)
+Merit::Badge.create!(
+  id: 3,
+  name: "Donator",
+  description: "Donated at least $50!",
+  custom_fields: { 
+    icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">album</i>',
+    color: "color: #FAFAFA; background-color: #B4B8BC;"
+   }
+)
+
+Merit::Badge.create!(
+  id: 4,
+  name: "Donator",
+  description: "Donated at least $100!",
+  custom_fields: { 
+    icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">album</i>',
+    color: "color: #FAFAFA; background-color: #FFCC01;"
    }
 )
 

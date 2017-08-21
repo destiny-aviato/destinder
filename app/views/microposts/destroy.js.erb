@@ -2,4 +2,7 @@ $("div#<%= @micropost.id %>").slideUp();
 $('.row.posts').html("<%= j (render @microposts) %>");
 $('ul.tabs').tabs();
 Materialize.toast('Post Removed', 4000)
-$('.tooltipped').tooltip({delay: 50});
+$('.tooltipped').tooltip({ 
+    delay: 50,
+    html: true
+ });
