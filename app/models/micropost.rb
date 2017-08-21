@@ -53,7 +53,8 @@ class Micropost < ApplicationRecord
     )
 
     character_data = JSON.parse(get_characters.body)
-    last_character = character_data["Response"]["data"]["characters"][0]
+    characters = character_data["Response"]["data"]["characters"]
+    last_character = characters[0]
     characters_stats = []
     
 
@@ -63,36 +64,48 @@ class Micropost < ApplicationRecord
     grimoire = last_character["characterBase"]["grimoireScore"]
     background = "https://www.bungie.net/#{last_character['backgroundPath']}"
     emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
+    completions = 0
+    kills = 0
+    deaths = 0
+    kd = 0
+    fastest_time_val = 0
+    fastest_time = 'N/A'
 
-    get_raid_stats = Typhoeus.get(
-        "https://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/",        
+    characters.each do |c|
+      get_raid_stats = Typhoeus.get(
+        "https://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/#{user.api_membership_type}/#{user.api_membership_id}/#{c['characterBase']['characterId']}/",        
         headers: {"x-api-key" => ENV['API_TOKEN']}
-    )   
-    
-    stat_data = JSON.parse(get_raid_stats.body)
+      )   
+      
+      stat_data = JSON.parse(get_raid_stats.body)
 
-    vals = ""
-    stat_data["Response"]["data"]["activities"].each do |x|
-      if x["activityHash"] == raid_hash.to_i
-        vals = x["values"]
-        break
+      vals = ""
+      stat_data["Response"]["data"]["activities"].each do |x|
+        if x["activityHash"] == raid_hash.to_i
+          vals = x["values"]
+          break
+        end
       end
-    end
 
+      if vals != ''
+        completions += vals['activityCompletions']['basic']['displayValue'].to_i
+        kills += vals['activityKills']['basic']['displayValue'].to_i
+        deaths += vals['activityDeaths']['basic']['displayValue'].to_i
+        kd = vals['activityKillsDeathsRatio']['basic']['displayValue'].to_f
+        if fastest_time_val < vals['fastestCompletionSecondsForActivity']['basic']['value'] 
+          fastest_time_val = vals['fastestCompletionSecondsForActivity']['basic']['value']
+          fastest_time = vals['fastestCompletionSecondsForActivity']['basic']['displayValue']
+        end
+      else
+        next
+        completions = 'N/A'
+        kills = 'N/A'
+        deaths = 'N/A'
+        kd = 'N/A'
+        fastest_time = 'N/A'
+      end
+    end 
 
-    if vals != ''
-      completions = vals['activityCompletions']['basic']['displayValue']
-      kills = vals['activityKills']['basic']['displayValue']
-      deaths = vals['activityDeaths']['basic']['displayValue']
-      kd = vals['activityKillsDeathsRatio']['basic']['displayValue']
-      fastest_time = vals['fastestCompletionSecondsForActivity']['basic']['displayValue']
-    else
-      completions = 'N/A'
-      kills = 'N/A'
-      deaths = 'N/A'
-      kd = 'N/A'
-      fastest_time = 'N/A'
-    end
 
     get_items = Typhoeus::Request.new(
       "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
