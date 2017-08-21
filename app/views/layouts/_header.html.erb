@@ -64,11 +64,39 @@
       <% end %>
     </li>
     <% else %>
+      <li><div class="user-view">
+          <div class="background">
+            <img src="images/office.jpg">
+          </div>
+        <span class="name" style="color:#D1D1D1;">Please sign in to continue.</span>
+        </div></li>
+      <li>
       <li>
         <%= link_to new_user_session_path, class: "navbar-item" do %>
           <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
         <% end %>
       </li>
+      
+      <div>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader" style="color:#D1D1D1;">Social</a></li>
+
+        <div class="row" style="width: 80%;">
+            <div class="col s3">
+                <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+          </div>
+        </li>
+      </div>
     <% end %>
 </ul>
 

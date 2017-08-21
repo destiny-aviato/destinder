@@ -172,14 +172,16 @@
                                         <th>Completions</th>
                                         <th>Kills</th>
                                         <th>Deaths</th>
+                                        <th>Fastest</th>
                                     </tr>
                                 </thead>
                         
                                 <tbody>
                                     <tr>
-                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!" ><%= stats["Character Stats"]["Completions"] %></td>
-                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!"><%= stats["Character Stats"]["Kills"] %></td>
-                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Coming Soon!"><%= stats["Character Stats"]["Deaths"] %></td>
+                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="# Times beaten final boss" ><%= stats["Character Stats"]["Completions"] %></td>
+                                        <td><%= stats["Character Stats"]["Kills"] %></td>
+                                        <td><%= stats["Character Stats"]["Deaths"] %></td>
+                                        <td><%= stats["Character Stats"]["Fastest"] %></td>
                                     </tr>
                                 </tbody>
                             </table>
