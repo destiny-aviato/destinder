@@ -26,6 +26,26 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+  }
+    
+
+.page-footer {
+    padding-top: 0px;
+    background-color: transparent;
+}
+
+.page-footer .footer-copyright {
+    color: #5085A5;
+    background: none;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .card-image img {
@@ -913,7 +933,7 @@ html {
 }
 
 .post-header-background {
-    background-image: url("https://www.bungie.net/pubassets/26288/tower_pano.jpg") !important;
+    background-image: url(site-header.jpg) !important;
     background-position-y: 63%;
     background-size: cover;
 }

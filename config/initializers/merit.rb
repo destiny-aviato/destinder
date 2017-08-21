@@ -77,7 +77,7 @@ Merit::Badge.create!(
   description: "One of the first 250 users on the site!",
   custom_fields: { 
     icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">hot_tub</i>',
-    color: "color: #FAFAFA; background-color: #026670"
+    color: "color: #FAFAFA; background-color: #026670;"
    }
 )
 
