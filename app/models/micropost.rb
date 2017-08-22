@@ -35,7 +35,7 @@ class Micropost < ApplicationRecord
     
   end
 
-  def self.get_raid_stats(user, raid, diff)
+  def self.get_raid_stats(user, raid, diff, character_id)
     case raid
     when "wrath"
       raid_hash = diff == "Normal" ? "260765522" : "1387993552"
@@ -54,16 +54,22 @@ class Micropost < ApplicationRecord
 
     character_data = JSON.parse(get_characters.body)
     characters = character_data["Response"]["data"]["characters"]
-    last_character = characters[0]
+
+    characters.each do |char|
+      if char["characterBase"]["characterId"] == character_id
+        @character = char
+        break
+      end
+    end
     characters_stats = []
     
 
-    character_id =  last_character["characterBase"]["characterId"]
-    character_type = last_character["characterBase"]["classType"]
-    light_level = last_character["characterBase"]["powerLevel"]
-    grimoire = last_character["characterBase"]["grimoireScore"]
-    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
-    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
+    character_id =  @character["characterBase"]["characterId"]
+    character_type = @character["characterBase"]["classType"]
+    light_level = @character["characterBase"]["powerLevel"]
+    grimoire = @character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net/#{@character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{@character['emblemPath']}"
     completions = 0
     kills = 0
     deaths = 0
@@ -108,7 +114,7 @@ class Micropost < ApplicationRecord
 
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
@@ -143,26 +149,33 @@ class Micropost < ApplicationRecord
     characters_stats
   end
 
-  def self.get_nightfall_stats(user)
+  def self.get_nightfall_stats(user, character_id)
     get_characters = Typhoeus.get(
       "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
 
     character_data = JSON.parse(get_characters.body)
-    last_character = character_data["Response"]["data"]["characters"][0]
+
+    character_data["Response"]["data"]["characters"].each do |char|
+      if char["characterBase"]["characterId"] == character_id
+        @character = char
+        break
+      end
+    end
+
     characters_stats = []
     
 
-    character_id =  last_character["characterBase"]["characterId"]
-    character_type = last_character["characterBase"]["classType"]
-    light_level = last_character["characterBase"]["powerLevel"]
-    grimoire = last_character["characterBase"]["grimoireScore"]
-    background = "https://www.bungie.net/#{last_character['backgroundPath']}"
-    emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
+    character_id =  @character["characterBase"]["characterId"]
+    character_type = @character["characterBase"]["classType"]
+    light_level = @character["characterBase"]["powerLevel"]
+    grimoire = @character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net/#{@character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{@character['emblemPath']}"
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
       )
@@ -198,7 +211,7 @@ class Micropost < ApplicationRecord
   end
 
 
-  def self.get_trials_stats(user)
+  def self.get_trials_stats(user, character_id)
     cache_key = "postsStats|#{user.id}|#{user.updated_at}"
     Rails.cache.fetch("#{cache_key}/trials_stats", expires_in: 2.minutes) do
       elo = get_elo(user.api_membership_id)
@@ -208,20 +221,27 @@ class Micropost < ApplicationRecord
       )
 
       character_data = JSON.parse(get_characters.body)
-      last_character = character_data["Response"]["data"]["characters"][0]
-      characters_stats = []
-      
 
-        character_id =  last_character["characterBase"]["characterId"]
-        background = "https://www.bungie.net/#{last_character['backgroundPath']}"
-        emblem = "https://www.bungie.net/#{last_character['emblemPath']}"
-        character_type = last_character["characterBase"]["classType"]
-        light_level = last_character["characterBase"]["powerLevel"]
-        grimoire = last_character["characterBase"]["grimoireScore"]
+      character_data["Response"]["data"]["characters"].each do |char|
+        if char["characterBase"]["characterId"] == character_id
+          @character = char
+          break
+        end
+      end
+
+      # @character = character_data["Response"]["data"]["characters"][0]
+      characters_stats = []
+
+        character_id =  @character["characterBase"]["characterId"]
+        background = "https://www.bungie.net/#{@character['backgroundPath']}"
+        emblem = "https://www.bungie.net/#{@character['emblemPath']}"
+        character_type = @character["characterBase"]["classType"]
+        light_level = @character["characterBase"]["powerLevel"]
+        grimoire = @character["characterBase"]["grimoireScore"]
         begin 
 
           get_items = Typhoeus::Request.new(
-            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{last_character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
             )

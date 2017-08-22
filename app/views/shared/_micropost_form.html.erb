@@ -1,3 +1,5 @@
+<% characters = get_characters(current_user)%>
+
 <div class="row">
   <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
 
@@ -25,10 +27,14 @@
 
     <div class="row">
         <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">mode_edit</i>
-            <%= f.text_area :content, class: "materialize-textarea", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
-          </div>
+            <div class="input-field col s7">
+                <i class="material-icons prefix">mode_edit</i>
+                <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+            </div>
+
+            <div class="input-field col s5">
+                <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
+            </div>
         </div>
 
     </div>
