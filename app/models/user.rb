@@ -232,8 +232,6 @@ class User < ApplicationRecord
       user.api_membership_id = auth.extra.destinyMemberships[0]["membershipId"]
       user.api_membership_type = auth.extra.destinyMemberships[0]["membershipType"]
       user.display_name = auth.extra.destinyMemberships[0]['displayName']
-
-      
   end
 end
 

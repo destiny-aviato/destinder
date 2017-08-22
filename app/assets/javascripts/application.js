@@ -91,7 +91,10 @@ $(document).on('turbolinks:load', function() {
 
 
     $('.parallax').parallax();
-    $('.tooltipped').tooltip({ delay: 50 });
+    $('.tooltipped').tooltip({ 
+        delay: 50,
+        html: true
+     });
 
 
     $('#game-select').change(function() {
@@ -119,18 +122,7 @@ $(document).on('click', '.notification > button.delete', function() {
 });
 
 
-// function openNav() {
-//     document.getElementById("sideNavigation").style.width = "250px";
-//     document.getElementById("main").style.marginLeft = "250px";
-// }
-
-// function closeNav() {
-//     document.getElementById("sideNavigation").style.width = "0";
-//     document.getElementById("main").style.marginLeft = "0";
-// }
-
 $(document).on("turbolinks:load", function() {
-    // $('.modal').modal();
     $('.modal').modal({
         dismissible: true,
         opacity: .5, 

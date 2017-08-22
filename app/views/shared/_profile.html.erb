@@ -45,11 +45,12 @@
         <div class="row">
           <div class="col s12">
             <h4>Badges:</h4>
-              <ul>
-                  <% @user.badges.each do |badge| %>
-                    <li style="list-style-type: circle;"><%= badge.name %> (<i><%= badge.description %></i>)</li>                    
+                  <% @user.badges.each do |badge| %>                
+                      <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                        <%= badge.name %>
+                        <%= badge.custom_fields[:icon].html_safe %>
+                      </div>                
                   <% end %>
-                </ul>
           </div>
         </div>
 </div>

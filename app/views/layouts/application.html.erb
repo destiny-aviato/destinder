@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Destinder</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-  <%= csrf_meta_tags %>
-  <%= favicon_link_tag %>
-  <% if content_for?(:head) %>
-    <%= yield(:head) %>
-  <% end %>
-</head>
-<body class="<%= params[:controller] %> <%= params[:action] %>">
-    <%= render 'layouts/header' %>
-    <%= flash_messages %>
-    <div class="container" style="width: 100%">
-      
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
+  <head>
+    <title>Destinder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+    <% if content_for?(:head) %>
+      <%= yield(:head) %>
+    <% end %>
+  </head>
+  <body class="<%= params[:controller] %> <%= params[:action] %>">
+    <header>
+        <%= render 'layouts/header' %>
+        <%= flash_messages %>
+    </header>
+    <main>
+      <div class="container" style="width: 100%">
+        <%= yield %>
+      </div>
+    </main>
+    <footer class="page-footer">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
   <div class="se-pre-con"></div>
 </html> 

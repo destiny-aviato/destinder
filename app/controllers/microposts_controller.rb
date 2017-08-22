@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     def index
-        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 25)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         filtering_params(params).each do |key, value|
           @microposts = @microposts.public_send(key, value) if value.present?
         end
@@ -20,27 +20,25 @@ class MicropostsController < ApplicationController
         @micropost = current_user.microposts.build(micropost_params)
         case @micropost.game_type
         when "Trials of Osiris" 
-            @micropost.user_stats = get_stats(current_user, "too")
             @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "too", @micropost.raid_difficulty)            
         when "Wrath of the Machine"
-            @micropost.user_stats = get_stats(current_user, "wrath")
+            @micropost.user_stats = get_stats(current_user, "wrath", @micropost.raid_difficulty)
         when "King's Fall"
-            @micropost.user_stats = get_stats(current_user, "kings")
+            @micropost.user_stats = get_stats(current_user, "kings", @micropost.raid_difficulty)
         when "Crota's End"
-            @micropost.user_stats = get_stats(current_user, "crota")
+            @micropost.user_stats = get_stats(current_user, "crota", @micropost.raid_difficulty)
         when "Vault of Glass"
-            @micropost.user_stats = get_stats(current_user, "vog")
+            @micropost.user_stats = get_stats(current_user, "vog", @micropost.raid_difficulty)
         when "Nightfall"
-            @micropost.user_stats = get_stats(current_user, "night")
             @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty)            
         end
 
+        @micropost.platform = current_user.api_membership_type
         if @micropost.save
             respond_to do |format|
-                # if the response fomat is html, redirect as usual
                 format.html { redirect_to microposts_path }
-
-                # if the response format is javascript, do something else...
                 format.js { }
             end
         else
@@ -61,19 +59,19 @@ class MicropostsController < ApplicationController
         
     end
 
-    def get_stats(user, mode)
+    def get_stats(user, mode, diff)
         begin
             case mode
             when "too"  
                 Micropost.get_trials_stats(user)
             when "wrath"
-                Micropost.get_raid_stats(user, "wrath")
+                Micropost.get_raid_stats(user, "wrath", diff)
             when "kings"
-                Micropost.get_raid_stats(user, "kings")
+                Micropost.get_raid_stats(user, "kings", diff)
             when "crota"
-                Micropost.get_raid_stats(user, "crota")
+                Micropost.get_raid_stats(user, "crota", diff)
             when "vog"
-                Micropost.get_raid_stats(user, "vog")
+                Micropost.get_raid_stats(user, "vog", diff)
             when "night"
                 Micropost.get_nightfall_stats(user)
             end

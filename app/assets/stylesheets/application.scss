@@ -26,6 +26,26 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+  }
+    
+
+.page-footer {
+    padding-top: 0px;
+    background-color: transparent;
+}
+
+.page-footer .footer-copyright {
+    color: #5085A5;
+    background: none;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .card-image img {
@@ -213,13 +233,13 @@ body {
 
 .btn:hover,
 .btn-large:hover {
-    background-color: #6B7C8E;
+    background-color: #5085A5;
     ;
 }
 
 .btn,
 .btn-large {
-    background-color: #6B7C8E;
+    background-color: #5085A5;
     ;
 }
 
@@ -516,6 +536,7 @@ a.gamertag-name {
     border-radius: 999px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 15px;
 }
 
 // .modal .modal-content {
@@ -907,12 +928,12 @@ html {
 }
 
 .btn-floating i {
-    background-color: #6B7C8E;
+    background-color: #5085A5;
     ;
 }
 
 .post-header-background {
-    background-image: url("https://www.bungie.net/pubassets/26288/tower_pano.jpg") !important;
+    background-image: url(site-header.jpg) !important;
     background-position-y: 63%;
     background-size: cover;
 }
@@ -957,7 +978,7 @@ html {
 .btn,
 .btn-large,
 .btn-large {
-    background-color: #212121;
+    background-color: #21708E;
 }
 
 .tabs .indicator {
@@ -988,4 +1009,65 @@ html {
     -o-background-size: cover;
     background-size: cover;
     margin-top: 2%;
+}
+
+.chip {
+    border-radius: 3px;
+    line-height: 22px;
+    height: 22px;
+    font-size: 11px;
+}
+
+.input-field .prefix.active {
+    color: #21708E;
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #21708E; 
+  box-shadow: 0 1px 0 0 #21708E;
+}
+/* line 61, /Users/bbolnick/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/materialize-sass-0.100.1/app/assets/stylesheets/materialize/components/forms/_input-fields.scss */
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #21708E;
+}
+
+.modal {
+    max-height: 85%;
+    max-width: 80%;
+}
+
+div#rewards-modal {
+    width: 80%;
+}
+
+.material-tooltip > span {
+    // color: #212121;
+    // font-size: 14px;
+}
+
+.material-tooltip > .backdrop {
+    // background-color: #dbdada;
 }

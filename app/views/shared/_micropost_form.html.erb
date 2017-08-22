@@ -1,10 +1,9 @@
 <div class="row">
   <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
 
-    <div class="input-field col s6 m3">
+    <div class="input-field col s6 m6 l6">
         <label class="gametype-label" style="top: -25px;">Gametype</label>
-        <%= f.select :game_type, ["Trials of Osiris", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Nightfall"], {}, {id: "game-select" } %>
-       
+        <%= f.select :game_type, ["Trials of Osiris", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Nightfall"], {}, {id: "game-select" } %>       
     </div>
 
     <!-- <div class="input-field col s4">
@@ -18,7 +17,7 @@
           </div>
     </div> -->
 
-    <div class="input-field col s6 m3" id="difficulty">
+    <div class="input-field col s6 m6 l6" id="difficulty">
         <label class="difficulty-label" style="top: -25px;">Difficulty</label>
         <%= f.select :raid_difficulty, ["Normal", "Hard"], {}, {id: "difficulty" } %>
        
