@@ -182,12 +182,22 @@ class User < ApplicationRecord
                 get_trials_stats.on_complete do |stat_response|                     
                     stat_data = JSON.parse(stat_response.body)
                     
-                    kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
-                    deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
-                    assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
-    
-                    kd = (kills / deaths).round(2)
-                    kad = ((kills + assists) / deaths).round(2)
+
+                    if stat_data["Response"]["trialsOfOsiris"] != {}                     
+                        kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
+                        deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
+                        assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+        
+                        kd = (kills / deaths).round(2)
+                        kad = ((kills + assists) / deaths).round(2)
+                    else 
+                        kills = 0 
+                        deaths = 0
+                        assists = 0 
+        
+                        kd = 0 
+                        kad = 0 
+                    end
     
                     @stats = {
                         "Kills" => kills.round, 
