@@ -62,7 +62,7 @@ class HomeController < ApplicationController
           hydra = Typhoeus::Hydra.hydra
 
             get_characters = Typhoeus::Request.new(
-              "https://www.bungie.net/Platform/Destiny/2/Account/4611686018428388122/",
+              "https://www.bungie.net/d1/Platform/Destiny/2/Account/4611686018428388122/",
               method: :get,
               headers: {"x-api-key" => ENV['API_TOKEN']}
           )
@@ -72,7 +72,7 @@ class HomeController < ApplicationController
               character_data = JSON.parse(character_response.body)
               last_character = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
               get_last_activity = Typhoeus::Request.new(
-                "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/2/4611686018428388122/#{last_character}/?mode=14&count=1&lc=en&definitions=true",
+                "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/2/4611686018428388122/#{last_character}/?mode=14&count=1&lc=en&definitions=true",
                 method: :get,
                 headers: {"x-api-key" => ENV['API_TOKEN']}
               ) 

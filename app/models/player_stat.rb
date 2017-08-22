@@ -11,7 +11,7 @@ class PlayerStat < ApplicationRecord
 
 
         response = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}/",
+            "https://www.bungie.net/d1/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}/",
              headers: {"x-api-key" => ENV['API_TOKEN']}
         )
 
@@ -21,7 +21,7 @@ class PlayerStat < ApplicationRecord
         real_name =  data["Response"][0]["displayName"]
 
         response2 = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}/",
+            "https://www.bungie.net/d1/Platform/Destiny/#{membership_type}/Account/#{membership_id}/",
              headers: {"x-api-key" => ENV['API_TOKEN']}
         )
 
@@ -82,7 +82,7 @@ class PlayerStat < ApplicationRecord
         user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
         
         get_player = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}/",
+            "https://www.bungie.net/d1/Platform/Destiny/SearchDestinyPlayer/#{membership_type}/#{user}/",
              headers: {"x-api-key" => ENV['API_TOKEN']}
         )
 
@@ -97,7 +97,7 @@ class PlayerStat < ApplicationRecord
          
         
         get_characters = Typhoeus::Request.new(
-            "https://www.bungie.net/Platform/Destiny/#{membership_type}/Account/#{membership_id}/",
+            "https://www.bungie.net/d1/Platform/Destiny/#{membership_type}/Account/#{membership_id}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
@@ -175,7 +175,7 @@ class PlayerStat < ApplicationRecord
                 
     
                 get_trials_stats = Typhoeus::Request.new(
-                    "https://www.bungie.net/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
+                    "https://www.bungie.net/d1/Platform/Destiny/Stats/#{membership_type}/#{membership_id}/#{character_id}/?modes=14",
                     method: :get,
                     headers: {"x-api-key" => ENV['API_TOKEN']}
                     )
