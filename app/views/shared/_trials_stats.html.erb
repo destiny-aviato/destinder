@@ -19,7 +19,7 @@
                                     <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
                                     <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 8%"><%= username %></div>
                                     <div class="col s12 m3 center-align" style="height: 65px; color: white;">
-                                        <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.4em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
+                                        <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.6em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
                                         <span style ="font-weight: 300; font-size: 0.9em; margin-left: -50%;"><%= @character_races[x["Character Type"]] %></span>
                                     </div>
                                 </div>
@@ -27,12 +27,12 @@
                         </div>
                     </div>
                 <div class="row" style="margin-top: 20%;">
-                    <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["K/D Ratio"] %> <span style="color:#cc0000;">KD</span></div>
-                    <div class="col s6 center-align" style="color: grey; font-size: 17px;"><%= x["Character Stats"]["ELO"] %> <span style="color:#cc0000;">ELO</span></div>
+                    <div class="col s6 center-align" style="color: white; font-size: 22px;"><%= x["Character Stats"]["K/D Ratio"] %> <span style="color:#cc0000;">KD</span></div>
+                    <div class="col s6 center-align" style="color: white; font-size: 22px;"><%= x["Character Stats"]["ELO"] %> <span style="color:#cc0000;">ELO</span></div>
                 </div>
 
                 <div class="row">
-                            <div class="col s12 player-reputation-trials center-align" style="color: grey; margin-top: 11%;">Player Reputation</div>
+                            <div class="col s12 player-reputation-trials center-align" style="color: white; margin-top: 2%;">Player Reputation</div>
                             <div class="col s12 center-align"> 
                                 <% if !@user.nil? %>     
                                     <% total = @user.votes_for + @user.votes_against %>      
@@ -56,7 +56,7 @@
                                     <% end %>
                                 <% end %>
                             </div><!--CLOSE COLUMN-->
-                            <div class="col s12 center-align" style="color:#cc0000;"><%= x["Character Items"]["Subclass"]["Item Name"] %></div>
+                            <div class="col s12 center-align" style="color:#cc0000; font-size: 22px;"><%= x["Character Items"]["Subclass"]["Item Name"] %></div>
                         
                         </div><!--CLOSE ROW-->
 
@@ -67,7 +67,8 @@
                 <div class="col s12 m9 center-align">
                     <div class="row">
                         <div class="col s12 m4 center-align">
-                            <table class="bordered">
+                        
+                            <table>
                                 <tr>
                                     <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div></td>
                                     <td style="font-size: 12px;"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></td>

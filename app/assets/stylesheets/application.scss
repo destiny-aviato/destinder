@@ -33,8 +33,7 @@ body {
 
 main {
     flex: 1 0 auto;
-  }
-    
+}
 
 .page-footer {
     padding-top: 0px;
@@ -940,7 +939,7 @@ html {
 
 .post-header {
     height: 65px;
-    margin: -9%;
+    margin: -9.1%;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -1003,7 +1002,7 @@ html {
 }
 
 .background-trials-1 {
-    background: url("http://cdn.iphonehacks.com/wp-content/uploads/2013/09/parallax-wallpaper-5.jpg") no-repeat center center fixed;
+    background: url(site-header.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1021,6 +1020,7 @@ html {
 .input-field .prefix.active {
     color: #21708E;
 }
+
 input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
@@ -1034,24 +1034,27 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #21708E; 
-  box-shadow: 0 1px 0 0 #21708E;
+    border-bottom: 1px solid #21708E;
+    box-shadow: 0 1px 0 0 #21708E;
 }
+
+
 /* line 61, /Users/bbolnick/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/materialize-sass-0.100.1/app/assets/stylesheets/materialize/components/forms/_input-fields.scss */
-input:not([type]):focus:not([readonly]) + label,
-input[type=text]:not(.browser-default):focus:not([readonly]) + label,
-input[type=password]:not(.browser-default):focus:not([readonly]) + label,
-input[type=email]:not(.browser-default):focus:not([readonly]) + label,
-input[type=url]:not(.browser-default):focus:not([readonly]) + label,
-input[type=time]:not(.browser-default):focus:not([readonly]) + label,
-input[type=date]:not(.browser-default):focus:not([readonly]) + label,
-input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
-input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
-input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
-input[type=number]:not(.browser-default):focus:not([readonly]) + label,
-input[type=search]:not(.browser-default):focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
-  color: #21708E;
+
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #21708E;
 }
 
 .modal {
@@ -1063,15 +1066,14 @@ div#rewards-modal {
     width: 80%;
 }
 
-.material-tooltip > span {
+.material-tooltip>span {
     // color: #212121;
     // font-size: 14px;
 }
 
-.material-tooltip > .backdrop {
+.material-tooltip>.backdrop {
     // background-color: #dbdada;
 }
 
 .no-padding {
     padding: 0 !important;
-}
