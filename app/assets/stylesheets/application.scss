@@ -1,4 +1,4 @@
-/*
+    /*
 * This is a manifest file that'll be compiled into application.css, which will include all the files
 * listed below.
 *
@@ -19,7 +19,6 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "materialize/extras/nouislider";
 @import 'slick';
 @import 'slick-theme';
-
 body {
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -27,6 +26,25 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    padding-top: 0px;
+    background-color: transparent;
+}
+
+.page-footer .footer-copyright {
+    color: #5085A5;
+    background: none;
+    font-weight: 400;
+    font-size: 12px;
 }
 
 .card-image img {
@@ -53,7 +71,7 @@ body {
 }
 
 .gamertag-name {
-    color: #F44336;
+    color: #D1D1D1;
     font-size: 25px;
 }
 
@@ -214,12 +232,14 @@ body {
 
 .btn:hover,
 .btn-large:hover {
-    background-color: #2bbbad;
+    background-color: #5085A5;
+    ;
 }
 
 .btn,
 .btn-large {
-    background-color: #26a69a;
+    background-color: #5085A5;
+    ;
 }
 
 .collapsible.popout {
@@ -306,32 +326,31 @@ li.tab.post {
     width: 32.3% !important;
 }
 
-
-
-
 .tabs {
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%);
     margin-bottom: 4%;
 }
 
 .tabs .tab a.active {
-    color: #535353;;
+    color: #535353;
+    ;
     font-size: 14px;
     font-weight: 600;
     text-shadow: 1px 1px 3px #ffffff;
 }
 
 .tabs .tab a {
-    color: #535353;;
+    color: #535353;
+    ;
     // font-size: 11px;
     text-overflow: inherit;
     font-size: 14px;
     font-weight: 600;
     text-shadow: 1px 1px 3px #ffffff;
-    
 }
 
-.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+.tabs .tab.disabled a,
+.tabs .tab.disabled a:hover {
     color: rgba(110, 118, 124, 0.7);
     cursor: default;
 }
@@ -342,7 +361,7 @@ li.tab.post {
     font-weight: 600;
     line-height: 1.125;
     margin-left: 9%;
-    text-transform: uppercase;    
+    text-transform: uppercase;
 }
 
 .subtitle {
@@ -516,6 +535,7 @@ a.gamertag-name {
     border-radius: 999px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 15px;
 }
 
 // .modal .modal-content {
@@ -542,15 +562,11 @@ a.gamertag-name {
 .slick-prev {
     left: -25px;
 }
-
-
 /* the slides */
 
 .slick-slide {
     margin: 0 10px;
 }
-
-
 /* the parent */
 
 .slick-list {
@@ -783,7 +799,6 @@ a.gamertag-name {
 //     background-color: #757575!important;
 //     background-image: none;
 // }
-
 html {
     background: url(greyzz.png);
     background-attachment: fixed;
@@ -875,43 +890,6 @@ html {
     margin-right: 0.25rem;
 }
 
-.video-margin-fix {
-    margin-top: 6.5%;
-    margin-left: 6.5%;
-}
-
-.weapon-container {
-    height: 100px;
-    width: 75px;
-    background-color: transparent;
-}
-
-.gun-icons-trials {
-    width: 75px;
-    height: 75px;
-    border-radius: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
-    position: fixed;
-    margin-top: 25px;
-    border: 3px solid grey;
-}
-
-.emblem-background-trials {
-   
-    width: 103.3%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin-left: -1.6%;
-    margin-top: -3%;
-}
-
-.gun-name-trials {
-    color: #7F7F85;
-    font-size: 12px;
-}
-
 .trials-row-fix {
     margin-bottom: -10px;
 }
@@ -936,133 +914,6 @@ html {
     z-index: 1000;
 }
 
-.trials-section-fix {
-    margin-top: -210px;
-}
-
-.container-fix-trials {
-    margin-left: 0!important;
-    margin-right: 0!important;
-    padding-left: 0!important;
-    padding-right: 0!important;
-}
-
-.trials-table-stats {
-    font-size: 12px;
-    color: #2bbbad;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.table-header-trials {
-    font-size: 13px;
-    color: #7F7F85;
-}
-
-.row-alignment-trials {
-    position: fixed;
-    margin-top: 0
-}
-
-.gamertag-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 24px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    margin-top: 12px;
-}
-
-.gamertag-trials:hover {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
-}
-
-.subclass-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 12px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.kd-trials {
-    display: inline-block;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: none;
-    font: normal 27px/normal "Warnes", Helvetica, sans-serif;
-    color: rgba(255, 255, 255, 1);
-    text-decoration: normal;
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    white-space: pre;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-
-.subclass-fix-trials {
-    margin-top: -20px;
-    margin-left: -10px;
-}
-
-.kd-align-fix-trials {
-    margin-top: 0px;
-    margin-left: -13px!important;
-}
-
-.character-type-trials {
-    color: white;
-    font-size: 12px;
-}
-
-.slider .indicators .indicator-item.active {
-    background-color: #2bbbad;
-}
-
-.player-reputation-trials {
-    font-size: 15px;
-    color: #757575;
-}
-
-.trials-card-background{
-   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3mIuJo_Xt9syjX5OpYf0Lu5p6hOvXrYCUGlZdr6hVtiM0BhvSxw");
-   background-size: cover;
-
-}
-
-.chip-trials {
-    background-color: white;
-}
-
 .black-gradient {
     background-image: linear-gradient(141deg, #1f191a 0%, #363636 71%, #46403f 100%) !important;
 }
@@ -1072,18 +923,19 @@ html {
 }
 
 .btn-floating i {
-    background-color: #2AA8E8;
+    background-color: #5085A5;
+    ;
 }
 
 .post-header-background {
-    background-image: url("https://www.bungie.net/pubassets/26288/tower_pano.jpg") !important;
+    background-image: url(site-header.jpg) !important;
     background-position-y: 63%;
     background-size: cover;
 }
 
 .post-header {
     height: 65px;
-    margin: -9%;
+    margin: -9.1%;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -1101,4 +953,122 @@ html {
         margin-left: -20% !important;
         width: 125%;
     }
+    // #nav-icon {
+    //     display: none !important;
+    // }
+}
+
+.navbar-item {
+    color: #D1D1D1;
+}
+
+.side-nav li>a {
+    color: #D1D1D1;
+}
+
+.teal-text {
+    color: #2AA8E8 !important;
+}
+
+.btn,
+.btn-large,
+.btn-large {
+    background-color: #21708E;
+}
+
+.tabs .indicator {
+    height: 4px;
+    background-color: #9694a9;
+}
+
+@media (min-height: 2000px) {
+    div#post-fire {
+        display: none !important;
+    }
+}
+
+.gun-icons-trials {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
+    border: 3px solid grey;
+}
+
+.background-trials-1 {
+    background: url(site-header.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 2%;
+}
+
+.chip {
+    border-radius: 3px;
+    line-height: 22px;
+    height: 22px;
+    font-size: 11px;
+}
+
+.input-field .prefix.active {
+    color: #21708E;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #21708E;
+    box-shadow: 0 1px 0 0 #21708E;
+}
+/* line 61, /Users/bbolnick/.rbenv/versions/2.3.3/lib/ruby/gems/2.3.0/gems/materialize-sass-0.100.1/app/assets/stylesheets/materialize/components/forms/_input-fields.scss */
+
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #21708E;
+}
+
+.modal {
+    max-height: 85%;
+    max-width: 80%;
+}
+
+div#rewards-modal {
+    width: 80%;
+}
+
+.material-tooltip>span {
+    // color: #212121;
+    // font-size: 14px;
+}
+
+.material-tooltip>.backdrop {
+    // background-color: #dbdada;
+}
+
+.no-padding {
+    padding: 0 !important;
 }

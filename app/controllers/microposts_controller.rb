@@ -2,7 +2,7 @@ class MicropostsController < ApplicationController
     before_action :correct_user, only: :destroy
 
     def index
-        @microposts = Micropost.where(nil).paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         filtering_params(params).each do |key, value|
           @microposts = @microposts.public_send(key, value) if value.present?
         end
@@ -20,27 +20,25 @@ class MicropostsController < ApplicationController
         @micropost = current_user.microposts.build(micropost_params)
         case @micropost.game_type
         when "Trials of Osiris" 
-            @micropost.user_stats = get_stats(current_user, "too")
             @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "too", @micropost.raid_difficulty, @micropost.character_choice)            
         when "Wrath of the Machine"
-            @micropost.user_stats = get_stats(current_user, "wrath")
+            @micropost.user_stats = get_stats(current_user, "wrath", @micropost.raid_difficulty, @micropost.character_choice)
         when "King's Fall"
-            @micropost.user_stats = get_stats(current_user, "kings")
+            @micropost.user_stats = get_stats(current_user, "kings", @micropost.raid_difficulty, @micropost.character_choice)
         when "Crota's End"
-            @micropost.user_stats = get_stats(current_user, "crota")
+            @micropost.user_stats = get_stats(current_user, "crota", @micropost.raid_difficulty, @micropost.character_choice)
         when "Vault of Glass"
-            @micropost.user_stats = get_stats(current_user, "vog")
+            @micropost.user_stats = get_stats(current_user, "vog", @micropost.raid_difficulty, @micropost.character_choice)
         when "Nightfall"
-            @micropost.user_stats = get_stats(current_user, "nf")
             @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)            
         end
 
+        @micropost.platform = current_user.api_membership_type
         if @micropost.save
             respond_to do |format|
-                # if the response fomat is html, redirect as usual
                 format.html { redirect_to microposts_path }
-
-                # if the response format is javascript, do something else...
                 format.js { }
             end
         else
@@ -61,19 +59,21 @@ class MicropostsController < ApplicationController
         
     end
 
-    def get_stats(user, mode)
+    def get_stats(user, mode, diff, char_id)
         begin
             case mode
             when "too"  
-                Micropost.get_trials_stats(user)
+                Micropost.get_trials_stats(user, char_id)
             when "wrath"
-                Micropost.get_raid_stats(user, "wrath")
+                Micropost.get_raid_stats(user, "wrath", diff, char_id)
             when "kings"
-                Micropost.get_raid_stats(user, "kings")
+                Micropost.get_raid_stats(user, "kings", diff, char_id)
             when "crota"
-                Micropost.get_raid_stats(user, "crota")
+                Micropost.get_raid_stats(user, "crota", diff, char_id)
             when "vog"
-                Micropost.get_raid_stats(user, "vog")
+                Micropost.get_raid_stats(user, "vog", diff, char_id)
+            when "night"
+                Micropost.get_nightfall_stats(user, char_id)
             end
 
         rescue NoMethodError => e 
@@ -84,11 +84,34 @@ class MicropostsController < ApplicationController
     end
     helper_method :get_stats
 
+    def get_characters(user)
+        character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+        
+        get_characters = Typhoeus.get(
+            "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+            headers: {"x-api-key" => ENV['API_TOKEN']}
+        )
+  
+        character_data = JSON.parse(get_characters.body)
+
+        characters = []
+
+        character_data["Response"]["data"]["characters"].each do |x| 
+           id =  x['characterBase']['characterId']
+           subclass_val =  x['characterBase']['classType']
+           subclass = character_races[subclass_val]
+           characters << [subclass, id]
+        end
+
+        characters
+    end 
+    helper_method :get_characters
+
 
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice)
     end
     
     def correct_user

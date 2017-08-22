@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_merit
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :microposts, dependent: :destroy
@@ -139,10 +141,12 @@ class User < ApplicationRecord
                     14 => "Emote",
                     15 => "Horn",
                     16 => "Artifact",
-                    17 => "Emblem Background"
+                    17 => "Emblem Background",
+                    18 => "Emblem"
                 }
                 
                 items["Emblem Background"] = "https://www.bungie.net#{x['backgroundPath']}" #emblem background
+                items["Emblem"] = "https://www.bungie.net/#{x['emblemPath']}"
 
                 inventory.each_with_index do |item, index|
     
@@ -178,12 +182,22 @@ class User < ApplicationRecord
                 get_trials_stats.on_complete do |stat_response|                     
                     stat_data = JSON.parse(stat_response.body)
                     
-                    kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
-                    deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
-                    assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
-    
-                    kd = (kills / deaths).round(2)
-                    kad = ((kills + assists) / deaths).round(2)
+
+                    if stat_data["Response"]["trialsOfOsiris"] != {}                     
+                        kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
+                        deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
+                        assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+        
+                        kd = (kills / deaths).round(2)
+                        kad = ((kills + assists) / deaths).round(2)
+                    else 
+                        kills = 0 
+                        deaths = 0
+                        assists = 0 
+        
+                        kd = 0 
+                        kad = 0 
+                    end
     
                     @stats = {
                         "Kills" => kills.round, 
@@ -228,8 +242,6 @@ class User < ApplicationRecord
       user.api_membership_id = auth.extra.destinyMemberships[0]["membershipId"]
       user.api_membership_type = auth.extra.destinyMemberships[0]["membershipType"]
       user.display_name = auth.extra.destinyMemberships[0]['displayName']
-
-      
   end
 end
 

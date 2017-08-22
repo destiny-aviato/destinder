@@ -1,18 +1,34 @@
-
-<ul id="slide-out" class="side-nav">
+<!-- Slide out Nav -->
+<ul id="slide-out" class="side-nav" style="background-color: #21708E;">
   <% if user_signed_in? %>
     <li class="center-align round-image" style="width: 100%;">
     <%= image_tag( current_user["profile_picture"], class:"round-image2" ) %>
     </li>
     <li class="center-align gamertag-name">
-      <%=link_to current_user["display_name"], profile_path, class: "gamertag-name" %>
+      <%= current_user["display_name"] %>
+    </li>
+    <li>
+      <div class="row" style="width: 80%;">
+        <div class="col s3">
+            <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+        <div class="col s3">
+            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+        </div>
+      </div>
     </li>
     <li>
       <div class="nav-wrapper">
         <%= form_tag(users_path, :method => "get", id: "search-form") do %>
           <div class="input-field">
             <%= search_field :search, params[:search], placeholder: "Guardian Lookup", class: "input" %>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <label class="label-icon" for="search"><i class="material-icons" style="color: #D1D1D1;">search</i></label>
             <i class="material-icons">close</i>
           </div>
         <% end %>
@@ -21,102 +37,180 @@
     <li>
       <div class="divider"></div>
     </li>
+    <br>
     <li>
-      <%= link_to "HOME",    root_path, class: "navbar-item" %>
+      <%= link_to root_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">home</i> HOME
+      <% end %>
     </li>
     <li>
-      <%= link_to "LFG POSTS",   microposts_path, class: "navbar-item" %>
+      <%= link_to microposts_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">message</i> LFG POSTS
+      <% end %>
     </li>
     <li>
-      <%= link_to "LOGOUT", destroy_user_session_path, class: "navbar-item" %>
+      <%= link_to profile_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">person</i> PROFILE
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#rewards-modal", class: "navbar-item modal-trigger" do %>
+        <i class="material-icons" style="color: #D1D1D1;">card_giftcard</i> EARN STUFF!
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, class: "navbar-item" do %>
+        <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGOUT
+      <% end %>
     </li>
     <% else %>
+      <li><div class="user-view">
+          <div class="background">
+            <img src="images/office.jpg">
+          </div>
+        <span class="name" style="color:#D1D1D1;">Please sign in to continue.</span>
+        </div></li>
       <li>
-        <%= link_to "LOGIN", new_user_session_path, :class => 'navbar-item'  %>
+      <li>
+        <%= link_to new_user_session_path, class: "navbar-item" do %>
+          <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
+        <% end %>
       </li>
-    
-      <% end %>
+      
+      <div>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader" style="color:#D1D1D1;">Social</a></li>
+
+        <div class="row" style="width: 80%;">
+            <div class="col s3">
+                <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+            <div class="col s3">
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+            </div>
+          </div>
+        </li>
+      </div>
+    <% end %>
 </ul>
 
-<link rel="stylesheet" href="https://s3.amazonaws.com/icomoon.io/114779/Socicon/style.css?rd5re8">
-
-
-
-<div class="fixed-action-btn toolbar hide-on-small-only">
-    <a class="btn-floating btn-large lighten-1" style="background-color: #2AA8E8">
-      <i class="large material-icons">info</i>
+<!-- Search bar icon -->
+<% if user_signed_in? %>
+  <div class="fixed-action-btn toolbar hide-on-mobile-only">
+    <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#team-search-modal">
+      <i class="large material-icons">search</i>
     </a>
-
-    
-    <ul>
-      <li class="waves-effect waves-light"><a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-3x"></i></a></li>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-twitter"></i></a></li>
-      <li class="waves-effect waves-light"><a href="https://github.com/destiny-aviato/destinder"><i class="socicon-github"></i></a></li>
-      <li class="waves-effect waves-light"><a href="#!"><i class="socicon-paypal"></i></a></li>
-    </ul>
   </div>
+<% end %>
 
-  <% if user_signed_in? %>
-    <div class="fixed-action-btn toolbar action-button-fix">
-      <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#modal5">
-        <i class="large material-icons">search</i>
-      </a>
-  <% end %>
 
+  <!-- Team lookup Modal Structure -->
+<div id="team-search-modal" class="modal bottom-sheet" style="max-width: 100%;">
+  <div class="modal-content">
+    <p>Trials Team Lookup</p>
+    <div class="row">
+      <%= form_for(TeamStat.new) do |f| %>
+        <div class="input-field">
+          <div class="row">
+            <div class="input-field col s3">
+              <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+            </div>
+            <div class="input-field col s9">
+                <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
+              </div>
+            <div class="hide-on-large-only">
+              <%= f.submit "Search" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
-    
-  
+<!-- FAQ Modal -->
+<div id="faq-modal" class="modal">
+  <div class="modal-content">
+    <%= render 'home/faq'%>
+  </div>
+</div>
 
-  <!-- Modal Structure -->
-  <div id="modal5" class="modal bottom-sheet">
-    <div class="modal-content">
-      <p>Trials Team Lookup</p>
-      <div class="row">
-          <%= form_for(TeamStat.new) do |f| %>
-              <div class="input-field">
-                <div class="row">
-                  <div class="input-field col s3">
-                    <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
-                  </div>
-                  <div class="input-field col s9">
-                      <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
-                    </div>
-                  <div class="hide-on-large-only">
-                    <%= f.submit "Search" %>
-                  </div>
-                </div>
-              </div>
-          <% end %>
+<!-- Rewards Modal Structure -->
+<div id="rewards-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <h3>Help improve the site by donating!</h3>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>Any Amount</h5>
+      <p>If you donate any amount whatsoever, you get what is called "good feelings." Some cultures may call it good karma. Want to better understand this? Just watch "Trolls."</p>
+      <center><%= image_tag "trolls_dance.gif"%> </center>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>Donate $5 - $50</h5>
+      <p>Earn a donator badge! It looks pretty cool. We'll probably use the money to buy lunch or something.</p>
+      <p>Leave your gamertag in the notes so we can award you with the badge!</p>
+      <center>
+        <div class="chip tooltipped" style="color: #FAFAFA; background-color: #51de90;" data-position="top" data-delay="50" data-tooltip="Donated at least $100!" data-tooltip-id="ccd0e398-135b-166c-7afe-4f4934c65750">
+          Donator
+          <i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">attach_money</i>
         </div>
-
-        <p>PVP Team Lookup</p>
-      <form>
-          <div class="input-field">
-            <input id="search" type="search" required placeholder="Enter Gamertag">
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-          </div>
-        </form>
-
+      </center>
     </div>
-  </div>
-
-  <!-- FAQ Modal -->
-  <div id="faq-modal" class="modal">
-    <div class="modal-content">
-      <%= render 'home/faq'%>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>Donate $50 - $100</h5>
+      <p>In addition to the aforementioned items, we'll send you a t-shirt! Who knows what it will look like. But hey, it's from us!</p>
+      <p>Just be sure to leave your email address in the notes so we can contact you about shipping. You'll also earn a "Silver" donator badge</p>
+      <center>
+        <div class="chip tooltipped" style="color: #FAFAFA; background-color: #B4B8BC;" data-position="top" data-delay="50" data-tooltip="Donated at least $100!" data-tooltip-id="ccd0e398-135b-166c-7afe-4f4934c65750">
+          Donator
+          <i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">attach_money</i>
+        </div>
+      </center>
     </div>
+    <div class="divider"></div>
+    <div class="section">
+      <h5>Donate $100+</h5>
+      <p>In the words of Dwight Schrute, "You all owe me one." We'll do you a personal favor. Obviously, restrictions may apply.  </p>
+      <p>You'll also earn a "Gold" donator badge!</p>
+      <center>
+        <div class="chip tooltipped" style="color: #FAFAFA; background-color: #FFCC01;" data-position="top" data-delay="50" data-tooltip="Donated at least $100!" data-tooltip-id="ccd0e398-135b-166c-7afe-4f4934c65750">
+          Sponsor
+          <i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 3px; margin-left: -8px;">attach_money</i>
+        </div>
+      </center>
+    </div>
+
+
   </div>
+  <div class="modal-footer">
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank" class="modal-action modal-close waves-effect btn-flat "><i class="fa fa-paypal fa-2x"></i> Donate</a>
+  </div>
+</div>
 
-  
+<!-- menu icon -->
+<a id="nav-icon"class="btn-floating teal button-collapse slide-fix hide-on-small-only" href="" data-activates="slide-out">
+  <i class="material-icons" style="color: #D1D1D1;">menu</i>
+</a>
 
- 
-
-  
 
 
-  <a class="btn-floating teal button-collapse slide-fix" href="" data-activates="slide-out">
-    <i class="material-icons">menu</i>
-  </a>
+
+<div class="navbar-fixed hide-on-med-and-up" style="background-color: #21708E;">
+  <nav style="background-color: #21708E;">
+    <div class="nav-wrapper">
+    <!-- menu icon -->
+    <a id="mobile-nav-icon" class="button-collapse" style="border-radius: 0;" href="" data-activates="slide-out">
+        <i class="material-icons" style="color: #D1D1D1;">menu</i>
+    </a>
+    </div>
+  </nav>  
+</div>

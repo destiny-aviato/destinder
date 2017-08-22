@@ -28,6 +28,12 @@ class HomeController < ApplicationController
     def alex
     end
 
+    def application_error
+    end
+
+    def site_stats
+    end
+    
     def get_stats(mode)
         begin
           case mode

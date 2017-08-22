@@ -2,11 +2,11 @@
   <div class="row">
     <h1 class="center" >REPUTATION</h1>
     <hr>
-          <div class="col s4">
+          <div class="col s4 m6 l4">
             <%= image_tag( @user["profile_picture"])%>
             
           </div>
-          <div class="col s8">      
+          <div class="col s8 m6 l4">      
             <% total = @user.votes_for + @user.votes_against %>      
             <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
             <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
@@ -42,6 +42,17 @@
 
         </div>
 
+        <div class="row">
+          <div class="col s12">
+            <h4>Badges:</h4>
+                  <% @user.badges.each do |badge| %>                
+                      <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                        <%= badge.name %>
+                        <%= badge.custom_fields[:icon].html_safe %>
+                      </div>                
+                  <% end %>
+          </div>
+        </div>
 </div>
 
 

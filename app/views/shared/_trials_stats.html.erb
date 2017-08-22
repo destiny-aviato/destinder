@@ -1,308 +1,150 @@
 <% info = get_stats("too") %>
-
 <% username = @user.nil? ? @player_stat.display_name : @user.display_name %>
-
+<br>
 <% if info.nil? %> 
   <div class="container games">
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
 <% else %>  
- 
-<div class="scroller">
-<% info.each_with_index do |x, index| %>
-
-
-<div class="shadow-effect" style="padding-top: 10px;"><!--OPEN FIRST CHARACTER--> 
-
-
-        <!--OPEN GAMERTAG INFORMATION-->
-
-            <div class="row row-alignment-trials">
-                    <div class="col s3"><span class="valign-wrapper left-align subclass-fix-trials"><img class="subclass-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></span></div>
-                    <div class="col s7 valign-wrapper left-align"><span class="gamertag-trials flow-text"><%= username %></span></div>
-                    <div class="col s2 kd-align-fix-trials">
-                       <span class="kd-trials center-align flow-text"><%= x["Character Stats"]["K/D Ratio"] %></span><br>
-                       <span class="character-type-trials flow-text"><%=  @character_races[x["Character Type"]]%></span>
+    <% info.each_with_index do |x, index| %>
+        <br/>
+        <div ><!--OPEN FIRST CHARACTER--> 
+            <div class="row white z-depth-2">
+                <div class="col s12 m3 center-align background-trials-1">
+                    <div class="row" style="margin-top:-8.5%; margin-left:4%;">
+                        <div class="hlighten-5 z-depth-1 hoverable center-align" style="max-height: 400px; max-width: 228px;">
+                        <% bg = "background-image: url(#{x["Character Items"]["Emblem Background"]});" %>
+                            <div class="post-header" style="<%= bg %>">
+                                <div class="row" style="overflow: hidden; max-height: 65px; ">
+                                    <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
+                                    <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 8%"><%= username %></div>
+                                    <div class="col s12 m3 center-align" style="height: 65px; color: white;">
+                                        <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.6em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
+                                        <span style ="font-weight: 300; font-size: 0.9em; margin-left: -50%;"><%= @character_races[x["Character Type"]] %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-            </div>
+                <div class="row" style="margin-top: 20%;">
+                    <div class="col s6 center-align" style="color: white; font-size: 22px;"><%= x["Character Stats"]["K/D Ratio"] %> <span style="color:#cc0000;">KD</span></div>
+                    <div class="col s6 center-align" style="color: white; font-size: 22px;"><%= x["Character Stats"]["ELO"] %> <span style="color:#cc0000;">ELO</span></div>
+                </div>
 
+                <div class="row">
+                            <div class="col s12 player-reputation-trials center-align" style="color: white; margin-top: 2%;">Player Reputation</div>
+                            <div class="col s12 center-align"> 
+                                <% if !@user.nil? %>     
+                                    <% total = @user.votes_for + @user.votes_against %>      
+                                    <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
+                                    <% if current_user.voted_for?(@user) %>
+                                        <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                                            <i class="material-icons">thumb_up</i>
+                                        <% end %>
 
-        <!--CLOSE GAMERTAG INFORMATION-->
+                                        <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                                            <i class="material-icons ">thumb_down</i>
+                                        <% end %>
+                                    <% else %>
+                                        <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                                            <i class="material-icons">thumb_up</i>
+                                        <% end %>
 
-
-
-        <!--OPEN EMBLEM INFORMATION-->
-
-
-                <div class="row container-fix-trials"><!--OPEN PLAYER CARD ROW-->
-
-                    <div class="col s12 container-fix-trials"><img class="emblem-background-trials z-depth-4" src=<%= x["Character Items"]["Emblem Background"] %> alt=""></div><!--CLOSE EMBLEM CARD ROW-->
-                
-                </div><!--CLOSE PLAYER CARD ROW-->
-
-        <!--CLOSE EMBLEM INFORMATION-->
-
-
-
-
-
-                        <div class="slider">
-                            <ul class="slides">
-
-                            
-                            <li><!--OPEN GUN SLIDE-->
-                                
-
-                                        <!--OPEN GUNS INFORMATION-->
-
-                                <div class="row trials-row-fix"><!--OPEN GUN NAMES ROW-->
-                                    <div class="col s12"><!--OPEN FIRST COLUMN-->
-                                        <div class="row"><!--OPEN NESTED ROW-->
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></div>
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></div>
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></div>
-                                        </div><!--CLOSE NESTED ROW-->
-                                    </div><!--CLOSE FIRST COLUMN-->
-                                </div><!--CLOSE GUN NAMES ROW-->
-
-
-                                
-                                
-                                
-                                <div class="row"><!--OPEN GUN PICTURES ROW-->
-                                    <div class="col s12"><!--OPEN FIRST COLUMN-->
-                                        <div class="row"><!--OPEN NESTED ROW-->
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div>
-                                        </div><!--CLOSE NESTED ROW-->
-                                    </div><!--CLOSE FIRST COLUMN-->
-                                </div><!--CLOSE GUN PICTURES ROW-->
-
-
-                        <!--CLOSE GUNS INFORMATION-->
-                                
-                            </li><!--CLOSE GUN SLIDE-->
-
-
-
-
-                            <li><!--OPEN GEAR SLIDE-->
-
-
-                                     <!--OPEN GEAR INFORMATION-->
-
-                                <div class="row trials-row-fix"><!--OPEN GEAR NAMES ROW-->
-                                    <div class="col s12"><!--OPEN FIRST COLUMN-->
-                                        <div class="row"><!--OPEN NESTED ROW-->
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Helmet"]["Item Name"] %></div>
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Gauntlets"]["Item Name"] %></div>
-                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></div>
-                                        </div><!--CLOSE NESTED ROW-->
-                                    </div><!--CLOSE FIRST COLUMN-->
-                                </div><!--CLOSE GEAR NAMES ROW-->
-
-
-                                
-                                
-                                
-                                <div class="row"><!--OPEN GEAR PICTURES ROW-->
-                                    <div class="col s12"><!--OPEN FIRST COLUMN-->
-                                        <div class="row"><!--OPEN NESTED ROW-->
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div>
-                                        </div><!--CLOSE NESTED ROW-->
-                                    </div><!--CLOSE FIRST COLUMN-->
-                                </div><!--CLOSE GUN PICTURES ROW-->
-
-
-                        <!--CLOSE GEAR INFORMATION-->
-
-
-                                
-                            </li><!--CLOSE GEAR SLIDE-->
-
-
-                            </ul>
-                        </div><!--CLOSE SLIDER-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-        <!--OPEN SECTION INFORMATION-->
-
-
-
-                <div class="section trials-section-fix trials-card-background" style="width: 103%; margin-left: -1.5%;">
-
-
-                        <div class="row"><!--OPEN HEADER ROW-->
-                            <div class="col s6 center-align text-white">BADGES<hr style="height: 3px;"></div><!--CLOSE COLUMN-->
-                            <div class="col s6 center-align text-white">CALLOUTS<hr style="height: 3px;"></div><!--CLOSE COLUMN-->
-                        </div><!--CLOSE HEADER ROW-->
+                                        <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                                            <i class="material-icons">thumb_down</i>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            </div><!--CLOSE COLUMN-->
+                            <div class="col s12 center-align" style="color:#cc0000; font-size: 22px;"><%= x["Character Items"]["Subclass"]["Item Name"] %></div>
                         
+                        </div><!--CLOSE ROW-->
 
-                        <div class="row left-align"><!--OPEN CONTENT ROW-->
 
-                            <div class="col s6 left-align">
                                 
-                                <div class="chip chip-trials">
-                                    <img class="mini-weapon-icons truncate" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Sniper">
-                                    Sniper
-                                </div>
+                </div>
 
-                                <div class="chip chip-trials">
-                                    <img class="mini-weapon-icons truncate" src="https://vignette3.wikia.nocookie.net/destinypedia/images/6/68/Hand_Cannon_Loader_icon.png/revision/latest?cb=20150909081128" alt="Contact Person">
-                                    Cannon
-                                </div>
-
-                                <div class="chip chip-trials">
-                                    <img class="mini-weapon-icons truncate" src="https://vignette2.wikia.nocookie.net/destinypedia/images/2/22/Fastball_icon.png/revision/latest?cb=20150909081131" alt="Contact Person">
-                                    Grenades
-                                </div>
-
-                                <div class="chip chip-trials">
-                                    <img class="mini-weapon-icons truncate" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Marksman">
-                                    Marksman
-                                </div>
-                            
-                            </div><!--CLOSE BADGES COLUMN-->
-
-
-
-
-
-                            <div class="col s6 center-align">
-                            <table> 
-                            <tr> 
-                                <th></th>
-                                <th class="center-align table-header-trials">WK</th>
-                                <th class="center-align table-header-trials">YR</th>
-                            </tr>
-                            <tr> 
-                                <th class="center-align table-header-trials">KD</th>
-                                <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["K/D Ratio"] %></th>
-                            </tr>
-                            <tr> 
-                                <th class="center-align table-header-trials">KA/D</th>
-                                <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["KA/D Ratio"] %></th>
-                            </tr>
-                            <tr> 
-                                <th class="center-align table-header-trials">ELO</th>
-                                <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["ELO"] %></th>
-                            </tr>
-
-                            </table>
-
-
-                            </div><!--CLOSE CALLOUTS COLUMN-->
-
-
-                        </div><!--CLOSE CONTENT ROW-->
-
-
-                </div><!--CLOSE SECTION-->
-
-
-
-
-        <!--CLOSE SECTION INFORMATION-->
-
-
-
-
-
-         <!--OPEN SECOND SECTION INFORMATION-->
-
-
-
-            <div class="section white"> <!--OPEN SECOND SECTION-->
-            
-                    <div class="row"> <!--OPEN ROW-->
-                        <div class="col s12 player-reputation-trials center-align">Player Reputation</div>
-
-
-                        <div class="col s12 center-align"> 
-                            <% if !@user.nil? %>     
-                                <% total = @user.votes_for + @user.votes_against %>      
-                                <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
-                                <% if current_user.voted_for?(@user) %>
-                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                                    <i class="material-icons pulsse">thumb_up</i>
-                                <% end %>
-
-                                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn pulse" do %>
-                                    <i class="material-icons">cancel</i>
-                                <% end %>
-
-                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                                    <i class="material-icons pulse">thumb_down</i>
-                                <% end %>
-                                <% else %>
-                                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn pulse" do %>
-                                    <i class="material-icons">thumb_up</i>
-                                <% end %>
-
-                                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                                    <i class="material-icons">cancel</i>
-                                <% end %>
-
-                                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn pulse" do %>
-                                    <i class="material-icons">thumb_down</i>
-                                <% end %>
-                                <% end %>
-                            <% end %>
-                        </div><!--CLOSE COLUMN-->
-                    
-                    </div><!--CLOSE ROW-->
-
-            </div><!--CLOSE SECOND SECTION-->
-
-
-
-        <!--OPEN SECOND SECTION INFORMATION-->
-
-
-
-
-
-                <div class="section trials-card-background" style="background-color: #f6f6f6; width: 103%; margin-left: -1.5%;">
+                <div class="col s12 m9 center-align">
                     <div class="row">
-                        <div class="col s12">
+                        <div class="col s12 m4 center-align">
                         
-                        </div><!--CLOSE COLUMN-->
-                    
-                    </div><!--CLOSE ROW-->
+                            <table>
+                                <tr>
+                                    <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div></td>
+                                    <td style="font-size: 12px;"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></td>
+                                    <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div></td>
+                                    <td style="font-size: 12px;"><%= x["Character Items"]["Helmet"]["Item Name"] %></td>
+                                </tr>
+                                <tr>
+                                <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div></td>
+                                    <td  style="font-size: 12px;"><%= x["Character Items"]["Secondary Weapon"]["Item Name"]%></td>
+                                    <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div></td>
+                                    <td style="font-size: 12px;"><%= x["Character Items"]["Leg Armor"]["Item Name"] %></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div></td>
+                                    <td style="font-size: 12px;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></td>
+                                    <td><div class="col s4 m4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div></td>
+                                    <td style="font-size: 12px;"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></td>
+                                </tr>
+                            </table>
+                        </div>                                           
 
-                </div><!--CLOSE SECTION-->
+                        <div class="col s12 m4 offset-m1 center-align">
+                            <table style="color:grey;"> 
+                                <tr> 
+                                    <th></th>
+                                    <th  style="font-size: 12px; color:#cc0000;" class="center-align table-header-trials">Week<hr></th>
+                                    <th  style="font-size: 12px; color:#cc0000;" class="center-align table-header-trials">Map<hr></th>
+                                </tr>
+                                <tr> 
+                                    <th style="font-size: 12px;" class="center-align table-header-trials" style="color:#cc0000;">KD</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                </tr>
+                                <tr> 
+                                    <th style="font-size: 12px;" class="center-align table-header-trials" style="color:#cc0000;">KA/D</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                </tr>
+                                <tr> 
+                                    <th style="font-size: 12px;" class="center-align table-header-trials" style="color:#cc0000;">Wins</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                    <th style="font-size: 12px;" class="trials-table-stats center-align">?</th>
+                                </tr>
+                                <tr> 
+                                    <th style="font-size: 12px;"  class="center-align table-header-trials" style="color:#cc0000;">Losses</th>
+                                    <th style="font-size: 12px;"  class="trials-table-stats center-align">?</th>
+                                    <th style="font-size: 12px;"  class="trials-table-stats center-align">?</th>
+                                </tr>
+                            
 
+                                </table>
 
+                        </div>
 
-        <!--CLOSE SECTION INFORMATION-->
-
-
-</div><!--CLOSE FIRST CHARACTER--> 
-
-
-
-<% end %>
+                        <div class="col s12 m3 center-align">
+                            <h5 style="color:grey; font-size: 13px;">Badges<hr></h5>
+                            <ul>
+                                <!-- TODO: Add error handling for players who don't have an account with us -->
+                                <% if !@user.nil? %>   
+                                    <% @user.badges.each do |badge| %>                
+                                        <li>
+                                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                            <%= badge.name %>
+                                            <%= badge.custom_fields[:icon].html_safe %>
+                                            </div>  
+                                        </li>              
+                                    <% end %>
+                                <% else %>
+                                    N/A
+                                <% end %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--CLOSE FIRST CHARACTER--> 
+    <% end %>
 <% end %>
 
