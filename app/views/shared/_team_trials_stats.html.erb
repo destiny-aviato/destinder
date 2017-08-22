@@ -8,9 +8,9 @@
   </div>
 <% else %> 
 
-  <% info.each_with_index do |x, index| %>
+<% info.each_with_index do |x, index| %>
         
-  <br/>
+<br/>
  <div ><!--OPEN FIRST CHARACTER--> 
             <div class="row white z-depth-2">
                 <div class="col s12 m3 center-align background-trials-1">
@@ -20,7 +20,7 @@
                             <div class="post-header" style="<%= bg %>">
                                 <div class="row" style="overflow: hidden; max-height: 65px; ">
                                     <div class="col s12 m3 left-align" style="padding: 0; height: 65px;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                                    <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 8%"><%= username %></div>
+                                    <div class="col s12 m6 center-align" style="height: 65px; color: white; margin-top: 8%"><%= x["Player Name"] %></div>
                                     <div class="col s12 m3 center-align" style="height: 65px; color: white;">
                                         <span style="color: gold; position: relative; top: 15%; line-height: 0.5em; font-weight: 300; font-size: 1.6em; margin-left: -70%;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
                                         <span style ="font-weight: 300; font-size: 0.9em; margin-left: -50%;"><%= @character_races[x["Character Type"]] %></span>
@@ -107,13 +107,17 @@
                             <h5 style="color:grey; font-size: 13px;">Badges<hr></h5>
                             <ul>
                                 <!-- TODO: Add error handling for players who don't have an account with us -->
-                                <% @user.badges.each do |badge| %>                
-                                    <li>
-                                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                        <%= badge.name %>
-                                        <%= badge.custom_fields[:icon].html_safe %>
-                                        </div>  
-                                    </li>              
+                                <% if x["Badges"] != "N/A" %>
+                                    <% x["Badges"].each do |badge| %>                
+                                        <li>
+                                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                            <%= badge.name %>
+                                            <%= badge.custom_fields[:icon].html_safe %>
+                                            </div>  
+                                        </li>              
+                                    <% end %>
+                                <% else %>
+                                    <%= x["Badges"] %>
                                 <% end %>
                             </ul>
                         </div>

@@ -204,8 +204,11 @@ class TeamStat < ApplicationRecord
                             "Light Level" => light_level,
                             "Grimoire" => grimoire
                         }
+                        
+                        @profile = User.where('lower(display_name) = ?', player_name.downcase).first
+                        badges = @profile.nil? ? "N/A" : @profile.badges 
                        
-                        @team << {"Player Name" => player_name, "Character Type" => character_type, "Character Stats" => @stats, "Character Items" => @items} 
+                        @team << {"Player Name" => player_name, "Character Type" => character_type, "Character Stats" => @stats, "Character Items" => @items, "Badges" => badges} 
                     end
                     hydra.queue(get_trials_stats)
 

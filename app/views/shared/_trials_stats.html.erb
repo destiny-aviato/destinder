@@ -127,13 +127,17 @@
                             <h5 style="color:grey; font-size: 13px;">Badges<hr></h5>
                             <ul>
                                 <!-- TODO: Add error handling for players who don't have an account with us -->
-                                <% @user.badges.each do |badge| %>                
-                                    <li>
-                                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                        <%= badge.name %>
-                                        <%= badge.custom_fields[:icon].html_safe %>
-                                        </div>  
-                                    </li>              
+                                <% if !@user.nil? %>   
+                                    <% @user.badges.each do |badge| %>                
+                                        <li>
+                                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                            <%= badge.name %>
+                                            <%= badge.custom_fields[:icon].html_safe %>
+                                            </div>  
+                                        </li>              
+                                    <% end %>
+                                <% else %>
+                                    N/A
                                 <% end %>
                             </ul>
                         </div>
