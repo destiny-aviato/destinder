@@ -85,7 +85,6 @@ class MicropostsController < ApplicationController
     helper_method :get_stats
 
     def get_characters(user)
-
         character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
         
         get_characters = Typhoeus.get(
