@@ -16,33 +16,9 @@
     <div class="container" style="width: 80%">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">filter_list</i>Filter</div>
+                    <div class="collapsible-header"><i class="material-icons">message</i>New Post</div>
                     <div class="collapsible-body" style="background: white;">
-
-                        <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
-                            <div class="row">
-                                <div class="col s12 m6">
-                                    <label>Game Mode</label><br>   
-                                    <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), class: 'game_type_select' %>
-                                </div>
-                                <div class="col s12 m6">
-                                    <label>Mic Required?</label><br>   
-                                    <%= select_tag :mic_required, options_for_select([['No', ''], ['Yes', true]]), class: 'microphone_select' %>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 m6">
-                                    <label>Player Looking For</label><br>   
-                                    <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee']]), class: 'looking_for_select' %>
-                                </div>
-
-                            </div>
-                            <a  onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a>
-                        <% end %>
-                           
-                                        
-                       
-                    
+                        <%= render 'shared/micropost_form' %>                
                     </div>
                 </li>                
             </ul>
@@ -64,7 +40,7 @@
 <!-- New Post Icon -->
     <div class="fixed-action-btn hide-on-mobile-only">
         <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#new-post-modal">
-          <i class="large material-icons">message</i>
+            <i class="fa fa-filter" aria-hidden="true"></i>
         </a>
     </div>
       
@@ -72,6 +48,25 @@
 <!-- Post Modal Structure -->
 <div id="new-post-modal" class="modal" >
     <div class="modal-content">
-        <%= render 'shared/micropost_form' %>
+        <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>Game Mode</label><br>   
+                <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), class: 'game_type_select' %>
+            </div>
+            <div class="col s12 m6">
+                <label>Mic Required?</label><br>   
+                <%= select_tag :mic_required, options_for_select([['No', ''], ['Yes', true]]), class: 'microphone_select' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>Player Looking For</label><br>   
+                <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee']]), class: 'looking_for_select' %>
+            </div>
+
+        </div>
+        <a  onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a>
+    <% end %>
     </div>
 </div>
