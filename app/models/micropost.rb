@@ -6,7 +6,7 @@ class Micropost < ApplicationRecord
   scope :platform, -> (platform) { where platform: platform }
   scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
   scope :looking_for, -> (raid_difficulty) { where looking_for: raid_difficulty }
-  scope :mic_required, -> (raid_difficulty) { where mic_required: raid_difficulty }
+  scope :mic_required, -> (mic_required) { where mic_required: mic_required }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 50 }
   validates :game_type, presence: true
@@ -116,7 +116,7 @@ class Micropost < ApplicationRecord
 
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
@@ -177,7 +177,7 @@ class Micropost < ApplicationRecord
     emblem = "https://www.bungie.net/#{@character['emblemPath']}"
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
       )
@@ -243,7 +243,7 @@ class Micropost < ApplicationRecord
         begin 
 
           get_items = Typhoeus::Request.new(
-            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+            "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
             )
