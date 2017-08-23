@@ -166,6 +166,7 @@ $(document).on("turbolinks:load", function() {
 
     $("h1#home-header").hide().fadeIn(4000);
     $('.tooltip').tooltipster({
-        theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+        theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+        delay: 50
     });
 });
