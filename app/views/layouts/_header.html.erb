@@ -100,40 +100,6 @@
     <% end %>
 </ul>
 
-<!-- Search bar icon -->
-<% if user_signed_in? %>
-  <div class="fixed-action-btn toolbar hide-on-mobile-only">
-    <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#team-search-modal">
-      <i class="large material-icons">search</i>
-    </a>
-  </div>
-<% end %>
-
-
-  <!-- Team lookup Modal Structure -->
-<div id="team-search-modal" class="modal bottom-sheet" style="max-width: 100%;">
-  <div class="modal-content">
-    <p>Trials Team Lookup</p>
-    <div class="row">
-      <%= form_for(TeamStat.new) do |f| %>
-        <div class="input-field">
-          <div class="row">
-            <div class="input-field col s3">
-              <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
-            </div>
-            <div class="input-field col s9">
-                <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
-              </div>
-            <div class="hide-on-large-only">
-              <%= f.submit "Search" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 
 <!-- FAQ Modal -->
 <div id="faq-modal" class="modal">
