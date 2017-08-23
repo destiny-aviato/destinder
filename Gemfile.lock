@@ -228,6 +228,7 @@ GEM
       activerecord (> 4.2, < 6)
       statistics2
     tilt (2.0.8)
+    tooltipster-rails (4.2.3)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -285,6 +286,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   tabs_on_rails
   thumbs_up
+  tooltipster-rails
   turbolinks (~> 5)
   typedjq-rails
   typhoeus

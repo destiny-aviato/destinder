@@ -21,6 +21,7 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require tooltipster.bundle.min
 //= require react
 //= require react_ujs
 //= require components
@@ -164,4 +165,7 @@ $(document).on("turbolinks:load", function() {
     $('.slider').slider('prev');
 
     $("h1#home-header").hide().fadeIn(4000);
+    $('.tooltip').tooltipster({
+        theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+    });
 });

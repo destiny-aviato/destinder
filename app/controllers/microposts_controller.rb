@@ -88,7 +88,7 @@ class MicropostsController < ApplicationController
         character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
         
         get_characters = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+            "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
   

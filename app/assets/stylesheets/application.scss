@@ -19,6 +19,7 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "materialize/extras/nouislider";
 @import 'slick';
 @import 'slick-theme';
+@import  'tooltipster.bundle.min';
 body {
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -574,7 +575,7 @@ a.gamertag-name {
 }
 
 .container {
-    width: 100%;
+    // width: 100%;
 }
 
 .emblem-icon {
@@ -1071,4 +1072,18 @@ div#rewards-modal {
 
 .no-padding {
     padding: 0 !important;
+}
+
+.tooltip_templates { display: none; }
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+	background: #EFEFEF;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 3px 2px 7px 0 rgba(0,0,0,0.4);
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
+	color: #212121;
+	padding: 12px;
 }
