@@ -34,6 +34,23 @@
         <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
     <% end %>
 
+    <% case micropost.mic_required
+        when  true %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when false %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  end %> 
+
+    <% case micropost.looking_for
+        when  "Any" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when "Sherpa" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking for Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when "Sherpee" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking for Sherpee" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  end %> 
+    
+
     <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
@@ -57,8 +74,8 @@
                             <div class="row" style="overflow: hidden; max-height: 30px;">
                                 <div class="container" style="padding-top: 1%; width: 80%;">
                                     <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content="#badge_content" style="color: #f5f5f5;"></i></div>
-                                    <div class="col s4 center-align"><i class="fa fa-ambulance tooltip" title="Looking for Sherpa" style="color: #f5f5f5;"></i></div>
-                                    <div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>
+                                    <%= look_for %>
+                                    <%= mic %>
                                 </div>
                             </div>
                     </div>

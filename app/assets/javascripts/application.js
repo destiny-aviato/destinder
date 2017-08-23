@@ -43,6 +43,14 @@ $(document).on('turbolinks:load', function() {
         $("#filter_game_form").submit();
     });
 
+    $('.microphone_select').change(function() {
+        $("#filter_game_form").submit();
+    });
+
+    $('.looking_for_select').change(function() {
+        $("#filter_game_form").submit();
+    });
+
     $('div#difficulty').hide();
     $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
@@ -165,7 +173,7 @@ $(document).on("turbolinks:load", function() {
     $('.slider').slider('prev');
 
     $("h1#home-header").hide().fadeIn(4000);
-    $('.tooltip').tooltipster({
+    $('.tooltip').tooltipster({ 
         theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
         delay: 50
     });

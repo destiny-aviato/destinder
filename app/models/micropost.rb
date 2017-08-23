@@ -5,6 +5,8 @@ class Micropost < ApplicationRecord
   scope :game_type, -> (game_type) { where game_type: game_type }
   scope :platform, -> (platform) { where platform: platform }
   scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
+  scope :looking_for, -> (raid_difficulty) { where looking_for: raid_difficulty }
+  scope :mic_required, -> (raid_difficulty) { where mic_required: raid_difficulty }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 50 }
   validates :game_type, presence: true
