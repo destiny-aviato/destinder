@@ -58,7 +58,7 @@
                     <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
                             <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["Character Stats"]["Emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                            <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" %></div>
+                            <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: " white-space: nowrap;font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" %></div>
                             <div class="col s3 center-align" style="height: 65px; color: white;">
                                 <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["Character Stats"]["Light Level"] %> </span>
                                 <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["Character Type"]] %></span>
