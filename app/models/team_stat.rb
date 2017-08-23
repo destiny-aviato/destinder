@@ -152,7 +152,7 @@ class TeamStat < ApplicationRecord
                     inventory.each_with_index do |item, index|
         
                         get_items = Typhoeus::Request.new(
-                            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
+                            "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
                             method: :get,
                             headers: {"x-api-key" => ENV['API_TOKEN']}
                             )
