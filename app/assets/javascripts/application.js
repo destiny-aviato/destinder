@@ -38,7 +38,9 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on('turbolinks:load', function() {
 
-    $('#game-select').material_select();
+    $('#pve-game-select').material_select();
+    $('#pvp-game-select').material_select();
+    
     $('.game_type_select').change(function() {
         $('#new-post-modal').modal('close');
         $("#filter_game_form").submit();
@@ -54,7 +56,6 @@ $(document).on('turbolinks:load', function() {
         $("#filter_game_form").submit();
     });
 
-    $('div#difficulty').hide();
     $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
 
@@ -112,7 +113,7 @@ $(document).on('turbolinks:load', function() {
      });
 
 
-    $('#game-select').change(function() {
+    $('#pve-game-select').change(function() {
         selection = $(this).val();
 
         if (selection != 'Trials of Osiris' && selection != "Nightfall") {
