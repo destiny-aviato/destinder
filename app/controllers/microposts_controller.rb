@@ -33,7 +33,10 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "vog", @micropost.raid_difficulty, @micropost.character_choice)
         when "Nightfall"
             @micropost.raid_difficulty = ""
-            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)            
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)
+        else 
+            @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)         
         end
 
         @micropost.platform = current_user.api_membership_type
