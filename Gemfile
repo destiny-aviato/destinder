@@ -55,6 +55,8 @@ gem 'thumbs_up'
 gem 'typedjq-rails'
 gem 'merit'
 gem 'react-rails'
+gem 'tooltipster-rails'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

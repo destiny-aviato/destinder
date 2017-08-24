@@ -16,19 +16,13 @@
     <div class="container" style="width: 80%">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
-                    <div class="collapsible-header"><i class="material-icons">message</i>Post an ad</div>
+                    <div class="collapsible-header"><i class="material-icons">message</i>New Post</div>
                     <div class="collapsible-body" style="background: white;">
-                        <%= render 'shared/micropost_form' %>
+                        <%= render 'shared/micropost_form' %>                
                     </div>
                 </li>                
             </ul>
 
-
-            <label>Game Mode</label><br>
-
-            <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
-                <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall']]), class: 'game_type_select' %>
-            <% end %>
 
 
             <ol class="microposts">
@@ -39,4 +33,40 @@
             <div id="post-fire" style="display: none;"></div>
             <br>    
             <center><%= will_paginate @microposts, renderer: MaterializePagination::Rails,  :page_links => false  %></center>
+</div>
+
+
+
+<!-- New Post Icon -->
+    <div class="fixed-action-btn hide-on-mobile-only">
+        <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#new-post-modal">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+        </a>
+    </div>
+      
+      
+<!-- Post Modal Structure -->
+<div id="new-post-modal" class="modal" style=" height: 65%;">
+    <div class="modal-content">
+        <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>Game Mode</label><br> 
+                <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ["Iron Banner", "Iron Banner"], ["Crucible Playlist", "Crucible Playlist"], ["Other", "Other"], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall'], ["Challenge of the Elders", "Challenge of the Elders"], ["Heroic Strikes","Heroic Strikes"], ["Story","Story"],["Other","Other"] ]), class: 'game_type_select' %>
+            </div>
+            <div class="col s12 m6">
+                <label>Mic Required?</label><br>   
+                <%= select_tag :mic_required, options_for_select([['No', ''], ['Yes', true]]), class: 'microphone_select' %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>Player Looking For</label><br>   
+                <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee'],["Similar", "Similar"]]), class: 'looking_for_select' %>
+            </div>
+
+        </div>
+        <a  onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a>
+    <% end %>
+    </div>
 </div>

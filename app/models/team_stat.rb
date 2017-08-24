@@ -37,7 +37,7 @@ class TeamStat < ApplicationRecord
         @team = []
 
          get_membership = Typhoeus::Request.new(
-            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/#{username.membership_type}/#{user}/",
+            "https://www.bungie.net/d1/Platform/Destiny/SearchDestinyPlayer/#{username.membership_type}/#{user}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
@@ -49,7 +49,7 @@ class TeamStat < ApplicationRecord
             @real_name =  membership_data["Response"][0]["displayName"]
 
             get_characters = Typhoeus::Request.new(
-                "https://www.bungie.net/Platform/Destiny/#{username.membership_type}/Account/#{@membership_id}/",
+                "https://www.bungie.net/d1/Platform/Destiny/#{username.membership_type}/Account/#{@membership_id}/",
                 method: :get,
                 headers: {"x-api-key" => ENV['API_TOKEN']}
             )
@@ -61,7 +61,7 @@ class TeamStat < ApplicationRecord
                 @last_character = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
 
                 get_recent = Typhoeus::Request.new(
-                    "https://www.bungie.net/Platform/Destiny/Stats/ActivityHistory/#{username.membership_type}/#{@membership_id}/#{@last_character}/?mode=TrialsOfOsiris&count=1",
+                    "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{username.membership_type}/#{@membership_id}/#{@last_character}/?mode=TrialsOfOsiris&count=1",
                     method: :get,
                     headers: {"x-api-key" => ENV['API_TOKEN']}
                 )
@@ -82,7 +82,7 @@ class TeamStat < ApplicationRecord
 
         #get pgcr 
         get_pgcr = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/Stats/PostGameCarnageReport/#{@recent_game}/?lc=en",
+            "https://www.bungie.net/d1/Platform/Destiny/Stats/PostGameCarnageReport/#{@recent_game}/?lc=en",
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
         pgcr_data = JSON.parse(get_pgcr.body)
@@ -103,7 +103,7 @@ class TeamStat < ApplicationRecord
 
                 #get player characters 
                 get_player_characters = Typhoeus::Request.new(
-                    "https://www.bungie.net/Platform/Destiny/#{username.membership_type}/Account/#{player_membership_id}/",
+                    "https://www.bungie.net/d1/Platform/Destiny/#{username.membership_type}/Account/#{player_membership_id}/",
                     method: :get,
                     headers: {"x-api-key" => ENV['API_TOKEN']}
                 )
@@ -152,7 +152,7 @@ class TeamStat < ApplicationRecord
                     inventory.each_with_index do |item, index|
         
                         get_items = Typhoeus::Request.new(
-                            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
+                            "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
                             method: :get,
                             headers: {"x-api-key" => ENV['API_TOKEN']}
                             )
@@ -162,9 +162,13 @@ class TeamStat < ApplicationRecord
                             item_data = JSON.parse(item_response.body)
                             icon = "https://www.bungie.net#{item_data["Response"]["data"]["inventoryItem"]["icon"]}"
                             name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+                            tier = item_data["Response"]["data"]["inventoryItem"]["tierTypeName"]
+                            type = item_data["Response"]["data"]["inventoryItem"]["itemTypeName"]
                             item = {
                                 "Item Icon" => icon,
-                                "Item Name" => name
+                                "Item Name" => name,
+                                "Item Tier" => tier,
+                                "Item Type" => type
                             }
                             @items[item_type[index]] = item
                         end
@@ -173,7 +177,7 @@ class TeamStat < ApplicationRecord
                     end
 
                     get_trials_stats = Typhoeus::Request.new(
-                        "https://www.bungie.net/Platform/Destiny/Stats/#{username.membership_type}/#{player_membership_id}/#{character_id}/?modes=14",
+                        "https://www.bungie.net/d1/Platform/Destiny/Stats/#{username.membership_type}/#{player_membership_id}/#{character_id}/?modes=14",
                         method: :get,
                         headers: {"x-api-key" => ENV['API_TOKEN']}
                     )

@@ -23,7 +23,7 @@ class User < ApplicationRecord
     begin
         user = username.include?(" ") ? username.gsub(/\s/,'%20') : username
         response = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
+            "https://www.bungie.net/d1/Platform/Destiny/SearchDestinyPlayer/2/#{user}/",
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
       
@@ -70,7 +70,7 @@ class User < ApplicationRecord
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
-#         "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
+#         "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{item_hash}/",
 #          headers: {"x-api-key" => ENV['API_TOKEN']}
 #     )
 
@@ -94,7 +94,7 @@ class User < ApplicationRecord
         elo = get_elo(username.api_membership_id)
             
         get_characters = Typhoeus::Request.new(
-            "https://www.bungie.net/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+            "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
@@ -151,7 +151,7 @@ class User < ApplicationRecord
                 inventory.each_with_index do |item, index|
     
                     get_items = Typhoeus::Request.new(
-                        "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
+                        "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{item["itemHash"]}/",
                         method: :get,
                         headers: {"x-api-key" => ENV['API_TOKEN']}
                         )
@@ -160,10 +160,14 @@ class User < ApplicationRecord
                     get_items.on_complete do |item_response|                     
                         item_data = JSON.parse(item_response.body)
                         icon = "https://www.bungie.net#{item_data["Response"]["data"]["inventoryItem"]["icon"]}"
-                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]                    
+                        tier = item_data["Response"]["data"]["inventoryItem"]["tierTypeName"]
+                        type = item_data["Response"]["data"]["inventoryItem"]["itemTypeName"]
                         item = {
                             "Item Icon" => icon,
-                            "Item Name" => name
+                            "Item Name" => name,
+                            "Item Tier" => tier,
+                            "Item Type" => type
                         }
                         items[item_type[index]] = item
                     end
@@ -174,7 +178,7 @@ class User < ApplicationRecord
                 
     
                 get_trials_stats = Typhoeus::Request.new(
-                    "https://www.bungie.net/Platform/Destiny/Stats/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?modes=14",
+                    "https://www.bungie.net/d1/Platform/Destiny/Stats/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?modes=14",
                     method: :get,
                     headers: {"x-api-key" => ENV['API_TOKEN']}
                     )

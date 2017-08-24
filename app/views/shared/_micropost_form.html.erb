@@ -1,45 +1,109 @@
 <% characters = get_characters(current_user)%>
+<% pve_options = ["Nightfall", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Challenge of the Elders", "Heroic Strikes", "Story", "Other"] %>
+<% pvp_options = ["Trials of Osiris", "Iron Banner", "Crucible Playlist", "Other"] %>
 
-<div class="row">
-  <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+<div class="col s12">
+    <ul class="tabs tabs-fixed-width post-form-tabs" style="background-color: #5085a5; width: 107%; margin: -3.5%;" >
+        <li class="tab col s6"><a href="#pvp" class="post-form-tabs active">PVP</a></li>
+        <li class="tab col s6"><a href="#pve" class="post-form-tabs">PVE</a></li>
 
-    <div class="input-field col s6 m6 l6">
-        <label class="gametype-label" style="top: -25px;">Gametype</label>
-        <%= f.select :game_type, ["Trials of Osiris", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Nightfall"], {}, {id: "game-select" } %>       
-    </div>
-
-    <!-- <div class="input-field col s4">
-        <div class="switch" id="difficulty">
-            <label style="color: #212144;">
-                Normal
-                <input type="checkbox" class="checkbox" value="1" name="micropost[raid_difficulty]" id="micropost_raid_difficulty"> 
-                <span class="lever"></span>
-                Hard        
-              </label>
-          </div>
-    </div> -->
-
-    <div class="input-field col s6 m6 l6" id="difficulty">
-        <label class="difficulty-label" style="top: -25px;">Difficulty</label>
-        <%= f.select :raid_difficulty, ["Normal", "Hard"], {}, {id: "difficulty" } %>
-       
-    </div>
+    </ul>
+</div>
+<div id="pvp">
 
     <div class="row">
-        <div class="row">
-            <div class="input-field col s7">
-                <i class="material-icons prefix">mode_edit</i>
-                <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+        <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="gametype-label" style="top: -25px;">Gametype</label>
+                    <%= f.select :game_type, pvp_options, {}, {id: "pvp-game-select" } %>
+                </div>
             </div>
 
-            <div class="input-field col s5">
-                <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
-            </div>
-        </div>
+            <div class="row">
+                <div class="input-field col s12 m5">
+                    <label class="character-label" style="top: -25px;">Character</label>
+                    <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
+                </div>
+                                
+                <div class="input-field col s12 m5">
+                    <label class="looking_for_label" style="top: -25px;">Looking for...</label>
+                    <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
+                </div>
 
+                <div class="col s12 m2 center-align">               
+                    <label class="pvp-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
+                    <%= f.check_box :mic_required, id:"pvp_mic_required" %>
+                    <%= f.label " ", for:"pvp_mic_required", id:"pvp_mic_required" %>                         
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+                    </div>
+                </div>
+            </div>
+
+            <%= f.submit "Post", class: "btn waves-effect waves-light" %>
+        <% end %>
     </div>
-
-      <%= f.submit "Post", class: "btn waves-effect waves-light" %>
-    <% end %>
+    <hr>
 </div>
-<hr>
+<div id="pve">
+
+    <div class="row">
+        <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+            <div class="row">
+                <div class="input-field col s12" id="pve-gametype-select">
+                    <label class="gametype-label" style="top: -25px;">Gametype</label>
+                    <%= f.select :game_type, pve_options, {}, {id: "pve-game-select" } %>
+                </div>
+                <div class="col s12 m6 center-align">
+                    <label class="difficulty-label" style="top: -25px;">Difficulty</label>
+                    <div class="switch" id="difficulty">
+                        <label style="color: #212155;">
+                            Normal
+                            <input type="checkbox" class="checkbox" value="Normal" name="micropost[raid_difficulty]" id="micropost_raid_difficulty">
+                            <span class="lever"></span>
+                            Hard
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m5">
+                    <label class="character-label" style="top: -25px;">Character</label>
+                    <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
+                </div>
+                <div class="input-field col s12 m5">
+                    <label class="mic-label" style="top: -25px;">Looking for...</label>
+                    <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
+                </div>
+                <div class="col s12 m2 center-align">               
+                    <label class="pve-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
+                    <%= f.check_box :mic_required, id:"pve_mic_required" %>
+                    <%= f.label " ", for:"pve_mic_required", id:"pve_mic_required" %>                         
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+
+                    <div class="input-field col s12 m12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+                    </div>
+                </div>
+            </div>
+            <%= f.submit "Post", class: "btn waves-effect waves-light" %>
+        <% end %>
+    </div>
+    <hr>
+</div>

@@ -5,6 +5,8 @@ class Micropost < ApplicationRecord
   scope :game_type, -> (game_type) { where game_type: game_type }
   scope :platform, -> (platform) { where platform: platform }
   scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
+  scope :looking_for, -> (raid_difficulty) { where looking_for: raid_difficulty }
+  scope :mic_required, -> (mic_required) { where mic_required: mic_required }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 50 }
   validates :game_type, presence: true
@@ -48,7 +50,7 @@ class Micropost < ApplicationRecord
     end
 
     get_characters = Typhoeus.get(
-      "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
 
@@ -79,7 +81,7 @@ class Micropost < ApplicationRecord
 
     characters.each do |c|
       get_raid_stats = Typhoeus.get(
-        "https://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/#{user.api_membership_type}/#{user.api_membership_id}/#{c['characterBase']['characterId']}/",        
+        "https://www.bungie.net/d1/Platform/Destiny/Stats/AggregateActivityStats/#{user.api_membership_type}/#{user.api_membership_id}/#{c['characterBase']['characterId']}/",        
         headers: {"x-api-key" => ENV['API_TOKEN']}
       )   
       
@@ -114,7 +116,7 @@ class Micropost < ApplicationRecord
 
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
@@ -151,7 +153,7 @@ class Micropost < ApplicationRecord
 
   def self.get_nightfall_stats(user, character_id)
     get_characters = Typhoeus.get(
-      "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
       headers: {"x-api-key" => ENV['API_TOKEN']}
     )
 
@@ -175,7 +177,7 @@ class Micropost < ApplicationRecord
     emblem = "https://www.bungie.net/#{@character['emblemPath']}"
 
     get_items = Typhoeus::Request.new(
-      "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       method: :get,
       headers: {"x-api-key" => ENV['API_TOKEN']}
       )
@@ -216,7 +218,7 @@ class Micropost < ApplicationRecord
     Rails.cache.fetch("#{cache_key}/trials_stats", expires_in: 2.minutes) do
       elo = get_elo(user.api_membership_id)
       get_characters = Typhoeus.get(
-          "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+          "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
           headers: {"x-api-key" => ENV['API_TOKEN']}
       )
 
@@ -241,7 +243,7 @@ class Micropost < ApplicationRecord
         begin 
 
           get_items = Typhoeus::Request.new(
-            "https://www.bungie.net/platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+            "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}
             )
@@ -257,7 +259,7 @@ class Micropost < ApplicationRecord
           hydra.run
          
           get_trials_stats = Typhoeus.get(
-                      "https://www.bungie.net/Platform/Destiny/Stats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/?modes=14",
+                      "https://www.bungie.net/d1/Platform/Destiny/Stats/#{user.api_membership_type}/#{user.api_membership_id}/#{character_id}/?modes=14",
                       headers: {"x-api-key" => ENV['API_TOKEN']}
                   )   
                   
