@@ -21,6 +21,7 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+//= require tooltipster.bundle.min
 //= require react
 //= require react_ujs
 //= require components
@@ -37,12 +38,24 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on('turbolinks:load', function() {
 
-    $('#game-select').material_select();
+    $('#pve-game-select').material_select();
+    $('#pvp-game-select').material_select();
+    
     $('.game_type_select').change(function() {
+        $('#new-post-modal').modal('close');
         $("#filter_game_form").submit();
     });
 
-    $('div#difficulty').hide();
+    $('.microphone_select').change(function() {
+        $('#new-post-modal').modal('close');
+        $("#filter_game_form").submit();
+    });
+
+    $('.looking_for_select').change(function() {
+        $('#new-post-modal').modal('close');
+        $("#filter_game_form").submit();
+    });
+
     $('#checkpoint').hide();
     $('#micropost_raid_difficulty').val('Normal');
 
@@ -100,7 +113,7 @@ $(document).on('turbolinks:load', function() {
      });
 
 
-    $('#game-select').change(function() {
+    $('#pve-game-select').change(function() {
         selection = $(this).val();
 
         if (selection != 'Trials of Osiris' && selection != "Nightfall") {
@@ -164,4 +177,8 @@ $(document).on("turbolinks:load", function() {
     $('.slider').slider('prev');
 
     $("h1#home-header").hide().fadeIn(4000);
+    $('.tooltip').tooltipster({ 
+        theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+        delay: 50
+    });
 });

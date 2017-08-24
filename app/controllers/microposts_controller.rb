@@ -36,6 +36,8 @@ class MicropostsController < ApplicationController
         end
 
         @micropost.platform = current_user.api_membership_type
+
+        # TODO: Add logic to handle looking for similar
         if @micropost.save
             respond_to do |format|
                 format.html { redirect_to microposts_path }
@@ -88,7 +90,7 @@ class MicropostsController < ApplicationController
         character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
         
         get_characters = Typhoeus.get(
-            "https://www.bungie.net/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+            "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
             headers: {"x-api-key" => ENV['API_TOKEN']}
         )
   
@@ -111,7 +113,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for)
     end
     
     def correct_user
@@ -120,6 +122,6 @@ class MicropostsController < ApplicationController
     end
 
     def filtering_params(params)
-        params.slice(:game_type, :raid_difficulty, :platform)
+        params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required)
       end
 end

@@ -34,26 +34,72 @@
         <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
     <% end %>
 
+    <% case micropost.mic_required
+        when  true %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when false %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  end %> 
+
+    <% case micropost.looking_for
+        when  "Any" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when "Sherpa" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking for Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when "Sherpee" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking for Sherpee" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  end %> 
+    
+
     <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
                 <% bg = "background-image: url(#{stats['Character Stats']['Background']});" %>
-                    <div class="post-header" style="<%= bg %>">
+                    <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
                             <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["Character Stats"]["Emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                            <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" %></div>
+                            <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" %></div>
                             <div class="col s3 center-align" style="height: 65px; color: white;">
                                 <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["Character Stats"]["Light Level"] %> </span>
                                 <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["Character Type"]] %></span>
                             </div>
                         </div>
                     </div>
+
+                    <!-- <i class="fa fa-suitcase" aria-hidden="true"></i> -->
+                    <!-- <i class="fa fa-user-md" aria-hidden="true"></i> -->
+                    <!-- <i class="fa fa-compass" aria-hidden="true"></i> -->
+                    <!-- <i class="fa fa-life-ring" aria-hidden="true"></i> -->                    
+                    <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
+                            <div class="row" style="overflow: hidden; max-height: 30px;">
+                                <div class="container" style="padding-top: 1%; width: 80%;">
+                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content="#badge_content" style="color: #f5f5f5;"></i></div>
+                                    <%= look_for %>
+                                    <%= mic %>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="tooltip_templates">
+                            <span id="badge_content">
+                                <% micropost.user.badges.each do |badge| %>                
+                                    <div class="chip tooltiped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                      <%= badge.name %>
+                                      <%= badge.custom_fields[:icon].html_safe %>
+                                    </div>                
+                                <% end %>
+                            </span>
+                        </div>
+
                 <div class="card-content" style="padding-top: 25px;">
                     <br>
                      
                     <span>
-                        <b><%= micropost.game_type %> <%= micropost.raid_difficulty %></b>
-                        <br><small> <%= time_ago_in_words(micropost.created_at) %> ago</small>
+                        <b><%= micropost.game_type %></b>
+                        <% if micropost.raid_difficulty != "" %>
+                            <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
+                        <% else %>
+                            <br><small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+                        <% end %>
                     </span>
                 
 
