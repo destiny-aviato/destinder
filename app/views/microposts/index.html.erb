@@ -46,7 +46,7 @@
       
       
 <!-- Post Modal Structure -->
-<div id="new-post-modal" class="modal" >
+<div id="new-post-modal" class="modal" style=" height: 65%;">
     <div class="modal-content">
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
         <div class="row">
@@ -62,7 +62,7 @@
         <div class="row">
             <div class="col s12 m6">
                 <label>Player Looking For</label><br>   
-                <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee']]), class: 'looking_for_select' %>
+                <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee'],["Similar", "Similar"]]), class: 'looking_for_select' %>
             </div>
 
         </div>
