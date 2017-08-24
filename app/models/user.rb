@@ -160,10 +160,14 @@ class User < ApplicationRecord
                     get_items.on_complete do |item_response|                     
                         item_data = JSON.parse(item_response.body)
                         icon = "https://www.bungie.net#{item_data["Response"]["data"]["inventoryItem"]["icon"]}"
-                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]                    
+                        tier = item_data["Response"]["data"]["inventoryItem"]["tierTypeName"]
+                        type = item_data["Response"]["data"]["inventoryItem"]["itemTypeName"]
                         item = {
                             "Item Icon" => icon,
-                            "Item Name" => name
+                            "Item Name" => name,
+                            "Item Tier" => tier,
+                            "Item Type" => type
                         }
                         items[item_type[index]] = item
                     end
