@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
 
     $('#pve-game-select').material_select();
     $('#pvp-game-select').material_select();
-    
+
     $('.game_type_select').change(function() {
         $('#new-post-modal').modal('close');
         $("#filter_game_form").submit();
@@ -57,15 +57,28 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('#checkpoint').hide();
+    $('div#difficulty').hide();
+    $('label.difficulty-label').hide();
+    
     $('#micropost_raid_difficulty').val('Normal');
 
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
+            console.log("checked! setting to hard");
             $('#micropost_raid_difficulty').val('Hard');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
+            console.log("unchecked! setting to normal");
         }
     });
+
+    // $("#micropost_mic_required").click(function() {
+    //     if ($('#micropost_mic_required').prop('checked')) {
+    //         $('#micropost_mic_required').val(true);
+    //     } else {
+    //         $('#micropost_mic_required').val(false);
+    //     }
+    // });
 
     // if ($("#tabs").length) {
     //     $("#tabs").tabs({
@@ -117,10 +130,14 @@ $(document).on('turbolinks:load', function() {
         selection = $(this).val();
 
         if (selection != 'Trials of Osiris' && selection != "Nightfall") {
+            $('#pve-gametype-select').attr('class', 'input-field col s12 m6');
             $('div#difficulty').show();
+            $('label.difficulty-label').show();
             $('#checkpoint').show();
         } else {
+            $('#pve-gametype-select').attr('class', 'input-field col s12');
             $('div#difficulty').hide();
+            $('label.difficulty-label').hide();
             $('#checkpoint').hide();
         }
 

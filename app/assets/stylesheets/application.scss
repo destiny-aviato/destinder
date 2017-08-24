@@ -1109,3 +1109,16 @@ a.post-form-tabs {
     font-weight: 600;
     text-shadow: none !important;
 }
+
+[type="checkbox"]:checked + label:before {
+    border-right: 2px solid #5085a5;
+    border-bottom: 2px solid #5085a5;
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #5085a5;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: rgba(80, 133, 165, 0.63);
+}
