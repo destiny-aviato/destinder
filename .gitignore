@@ -27,4 +27,6 @@ dump.rdb
 .AppleDouble
 .LSOverride
 
-erd.pdf
+erd.pdf/public/packs
+/public/packs-test
+/node_modules
