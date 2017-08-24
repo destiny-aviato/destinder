@@ -16,6 +16,8 @@
             <% stats = get_stats(micropost.user, "vog")[0] %>
         <% when "Nightfall" %>
             <% stats = get_stats(micropost.user, "night")[0] %>
+        <% else %>
+            <% stats = get_stats(micropost.user, "night")[0] %>
         <% end %>
     <% else %>
         <% stats = micropost.user_stats %>
@@ -36,9 +38,9 @@
 
     <% case micropost.mic_required
         when  true %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  when false %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  end %> 
 
     <% case micropost.looking_for
@@ -67,11 +69,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <i class="fa fa-suitcase" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-user-md" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-compass" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-life-ring" aria-hidden="true"></i> -->                    
+                  
                     <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
                             <div class="row" style="overflow: hidden; max-height: 30px;">
                                 <div class="container" style="padding-top: 1%; width: 80%;">
@@ -83,11 +81,21 @@
                     </div>
                     <div class="tooltip_templates">
                             <span id="badge_content">
-                                <% micropost.user.badges.each do |badge| %>                
-                                    <div class="chip tooltiped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                      <%= badge.name %>
-                                      <%= badge.custom_fields[:icon].html_safe %>
-                                    </div>                
+                                <hr>
+                                <% micropost.user.badges.each do |badge| %>   
+                                <div class="row" style="margin-bottom: -5%">
+                                    <div class="col s2"></div>                                
+                                    <div class="col s8 center-align">                              
+                                        <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
+                                        <%= badge.name %>
+                                        <%= badge.custom_fields[:icon].html_safe %>
+                                        </div>
+                                    </div>  
+                                    <div class="col s2"></div>                                      
+                                </div>
+                                <p class="center-align"><small><%= badge.description %></small></p>
+                                <hr>
+                                    
                                 <% end %>
                             </span>
                         </div>

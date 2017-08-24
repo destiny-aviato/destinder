@@ -128,8 +128,9 @@ $(document).on('turbolinks:load', function() {
 
     $('#pve-game-select').change(function() {
         selection = $(this).val();
+        
 
-        if (selection != 'Trials of Osiris' && selection != "Nightfall") {
+        if ($.inArray(selection, ["Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass"]) >= 0) {
             $('#pve-gametype-select').attr('class', 'input-field col s12 m6');
             $('div#difficulty').show();
             $('label.difficulty-label').show();
