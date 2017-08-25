@@ -18,6 +18,7 @@ class MicropostsController < ApplicationController
     def create
 
         @micropost = current_user.microposts.build(micropost_params)
+        @micropost.raid_difficulty = "Normal" if @micropost.raid_difficulty.nil? 
         case @micropost.game_type
         when "Trials of Osiris" 
             @micropost.raid_difficulty = ""
@@ -32,7 +33,10 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "vog", @micropost.raid_difficulty, @micropost.character_choice)
         when "Nightfall"
             @micropost.raid_difficulty = ""
-            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)            
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)
+        else 
+            @micropost.raid_difficulty = ""
+            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)         
         end
 
         @micropost.platform = current_user.api_membership_type

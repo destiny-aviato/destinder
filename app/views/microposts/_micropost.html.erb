@@ -16,6 +16,8 @@
             <% stats = get_stats(micropost.user, "vog")[0] %>
         <% when "Nightfall" %>
             <% stats = get_stats(micropost.user, "night")[0] %>
+        <% else %>
+            <% stats = get_stats(micropost.user, "night")[0] %>
         <% end %>
     <% else %>
         <% stats = micropost.user_stats %>
@@ -36,18 +38,20 @@
 
     <% case micropost.mic_required
         when  true %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  when false %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="Microphone Required" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  end %> 
 
     <% case micropost.looking_for
         when  "Any" %>
             <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  when "Sherpa" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking for Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  when "Sherpee" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking for Sherpee" style="color: #f5f5f5;"></i></div>'.html_safe %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+    <%  when "Similar" %>
+            <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  end %> 
     
 
@@ -58,18 +62,18 @@
                     <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
                             <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["Character Stats"]["Emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                            <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" %></div>
+                            <% if micropost.user["display_name"].length >= 11 %>
+                                <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                            <% else %>
+                                <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                            <% end %>
                             <div class="col s3 center-align" style="height: 65px; color: white;">
                                 <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["Character Stats"]["Light Level"] %> </span>
                                 <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["Character Type"]] %></span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- <i class="fa fa-suitcase" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-user-md" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-compass" aria-hidden="true"></i> -->
-                    <!-- <i class="fa fa-life-ring" aria-hidden="true"></i> -->                    
+                  
                     <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
                             <div class="row" style="overflow: hidden; max-height: 30px;">
                                 <div class="container" style="padding-top: 1%; width: 80%;">
@@ -81,12 +85,63 @@
                     </div>
                     <div class="tooltip_templates">
                             <span id="badge_content">
-                                <% micropost.user.badges.each do |badge| %>                
-                                    <div class="chip tooltiped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                      <%= badge.name %>
-                                      <%= badge.custom_fields[:icon].html_safe %>
-                                    </div>                
+                                <hr>
+                                <% micropost.user.badges.each do |badge| %>   
+                                <div class="row" style="margin-bottom: -5%">
+                                    <div class="col s2"></div>                                
+                                    <div class="col s8 center-align">                              
+                                        <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
+                                        <%= badge.name %>
+                                        <%= badge.custom_fields[:icon].html_safe %>
+                                        </div>
+                                    </div>  
+                                    <div class="col s2"></div>                                      
+                                </div>
+                                <p class="center-align"><small><%= badge.description %></small></p>
+                                <hr>
+                                    
                                 <% end %>
+                            </span>
+
+                            <span id="diamond_elo_content">
+                                <div class="row center-align">
+                                    Diamond
+                                </div>
+                                <div class="row center-align">
+                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                </div>
+                            </span>
+                            <span id="platinum_elo_content">
+                                <div class="row center-align">
+                                    Platinum
+                                </div>
+                                <div class="row center-align">
+                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                </div>
+                            </span>
+                            <span id="gold_elo_content">
+                                <div class="row center-align">
+                                    Gold
+                                </div>
+                                <div class="row center-align">
+                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                </div>
+                            </span>
+                            <span id="silver_elo_content">
+                                <div class="row center-align">
+                                    Silver
+                                </div>
+                                <div class="row center-align">
+                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                </div>
+                            </span>
+                            <span id="bronze_elo_content">
+                                <div class="row center-align">
+                                    Bronze
+                                </div>
+                                <div class="row center-align">
+                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                </div>
                             </span>
                         </div>
 
@@ -109,16 +164,10 @@
                     <!-- <div class="col s2">
                         <%= image_tag micropost.user.profile_picture, class: "circle responsive-img", style: "margin-left: -50%;" %>
                     </div> -->
-                    <div class="col s12">
-                        <% if micropost.content.length > 34 %>
-                            <span class="black-text tooltipped" style="margin-left: -6%;white-space: nowrap; display: block;" data-position="top" data-delay="50" data-tooltip="<%= micropost.content %>">
+                    <div class="col s12" style="height: 32px; margin-top: -10px;">
+                            <span class="black-text truncate" style="margin-left: -7%; white-space: inherit;">
                                 <%= micropost.content %>
                             </span>
-                        <% else %>
-                            <span class="black-text truncate" style="margin-left: -6%;">
-                                <%= micropost.content %>
-                            </span>
-                        <% end %> 
                     </div>
                 </div>
                 <% if micropost.game_type == "Trials of Osiris" %>
@@ -139,7 +188,7 @@
                                             <th>KA/D</th>
                                             <th>Win Rate</th>
                                             <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                                ELO  <i class="fa fa-question-circle"></i>
+                                                 ELO  <i class="fa fa-question-circle"></i>
                                             </th>
                                         </tr>
                                     </thead>
@@ -150,7 +199,19 @@
                                             <td><%= stats["Character Stats"]["KA/D Ratio"] %></td>
                                             <td><%= stats["Character Stats"]["Win Rate"] %>%</td>
                                             <td >
-                                                <%= stats["Character Stats"]["ELO"] %>
+                                                <% if stats["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1700 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1500 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1300 %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1300 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1200 %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1200 %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                <% end %>
+                                                
+                                                <%= elo.html_safe %>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -175,7 +236,7 @@
                                         <td><%= stats["Character Stats"]["K/D Ratio"] %> W</td>
                                         <td><%= stats["Character Stats"]["KA/D Ratio"] %> W</td>
                                         <td><%= stats["Character Stats"]["Win Rate"] %>% W</td>
-                                        <td><%= stats["Character Stats"]["ELO"] %> W</td>
+                                        <td><%= stats["Character Stats"]["ELO"]["ELO"] %> W</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -198,7 +259,7 @@
                                         <td><%= stats["Character Stats"]["K/D Ratio"] %> M</td>
                                         <td><%= stats["Character Stats"]["KA/D Ratio"] %> M</td>
                                         <td><%= stats["Character Stats"]["Win Rate"] %>% M</td>
-                                        <td><%= stats["Character Stats"]["ELO"] %> M</td>
+                                        <td><%= stats["Character Stats"]["ELO"]["ELO"] %> M</td>
                                         </tr>
                                     </tbody>
                                 </table>

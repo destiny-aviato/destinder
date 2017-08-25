@@ -576,6 +576,7 @@ a.gamertag-name {
 
 .container {
     // width: 100%;
+    max-width: 100%;
 }
 
 .emblem-icon {
@@ -1077,7 +1078,7 @@ div#rewards-modal {
 .tooltip_templates { display: none; }
 
 .tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
-	background: #EFEFEF;
+	background: #fafafa;
 	border: none;
 	border-radius: 3px;
 	box-shadow: 3px 2px 7px 0 rgba(0,0,0,0.4);
@@ -1101,6 +1102,7 @@ a.post-form-tabs.active {
     font-size: 14px;
     font-weight: 600;
     text-shadow: none !important;
+    text-decoration: underline;
 }
 
 a.post-form-tabs {
@@ -1108,4 +1110,17 @@ a.post-form-tabs {
     font-size: 14px;
     font-weight: 600;
     text-shadow: none !important;
+}
+
+[type="checkbox"]:checked + label:before {
+    border-right: 2px solid #5085a5;
+    border-bottom: 2px solid #5085a5;
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #5085a5;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: rgba(80, 133, 165, 0.63);
 }

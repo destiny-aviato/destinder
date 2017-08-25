@@ -44,29 +44,31 @@ class User < ApplicationRecord
     where("LOWER(display_name) LIKE ?", "%#{search}%") 
   end
 
-  def get_elo(membership_id)
-      elo = 1200
-      
-      begin 
-      response = Typhoeus.get(
-              "https://api.guardian.gg/elo/#{membership_id}"
-          )
-        
-      data = JSON.parse(response.body)
-
-      data.each do |x| 
-        if x["mode"] == 14
-          elo = x["elo"]
-          break
-        end
-      end
-    rescue StandardError => e
-      puts e 
-    end
-
-    elo.round
+  def self.get_elo(membership_id)
+    elo = 1200
+    rank = 0
     
+    begin 
+    response = Typhoeus.get(
+            "https://api.guardian.gg/elo/#{membership_id}"
+        )
+      
+    data = JSON.parse(response.body)
+
+    data.each do |x| 
+      if x["mode"] == 14
+        elo = x["elo"]
+        rank = x["rank"]
+        break
+      end
+    end
+  rescue StandardError => e
+    puts e 
   end
+
+  {"ELO" => elo.round, "Rank" => rank.round}
+  
+end
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
@@ -160,10 +162,14 @@ class User < ApplicationRecord
                     get_items.on_complete do |item_response|                     
                         item_data = JSON.parse(item_response.body)
                         icon = "https://www.bungie.net#{item_data["Response"]["data"]["inventoryItem"]["icon"]}"
-                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+                        name = item_data["Response"]["data"]["inventoryItem"]["itemName"]                    
+                        tier = item_data["Response"]["data"]["inventoryItem"]["tierTypeName"]
+                        type = item_data["Response"]["data"]["inventoryItem"]["itemTypeName"]
                         item = {
                             "Item Icon" => icon,
-                            "Item Name" => name
+                            "Item Name" => name,
+                            "Item Tier" => tier,
+                            "Item Type" => type
                         }
                         items[item_type[index]] = item
                     end

@@ -2,7 +2,7 @@
 var Testing = React.createClass({
     render: function () {
       return (
-        <h4>This is a react test!</h4>
+        <h4>Welcome, {this.props.firstName}</h4>
         )
       }
     });
