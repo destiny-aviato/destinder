@@ -86,6 +86,11 @@ class UsersController < ApplicationController
         rescue StandardError => e
           return nil
         end
+      when "raids"
+        begin
+          return @user.get_raids_stats(@user)
+        rescue NoMethodError => e
+        end
       end
      rescue NoMethodError
         redirect_to request.referrer || root_url

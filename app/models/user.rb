@@ -83,7 +83,23 @@ class User < ApplicationRecord
 #     }
 #     item
 #   end
+  def get_raids_stats(username)
+    username.display_name.strip!
+    
+    user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
+        
+    hydra = Typhoeus::Hydra.hydra
 
+    get_characters = Typhoeus::Request.new(
+        "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+        method: :get,
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+    
+    hydra.queue(get_characters)
+    hydra.run
+    @characters_stats
+  end
   def get_trials_stats(username)
         username.display_name.strip!
 
