@@ -16,7 +16,14 @@ class MicropostsController < ApplicationController
     end
 
     def create
+        
+        if Rails.env.production?
+            if current_user.microposts.any?                 
+                current_user.microposts.destroy_all
+            end
+        end
 
+        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build(micropost_params)
         @micropost.raid_difficulty = "Normal" if @micropost.raid_difficulty.nil? 
         case @micropost.game_type
@@ -40,6 +47,8 @@ class MicropostsController < ApplicationController
         end
 
         @micropost.platform = current_user.api_membership_type
+
+        
 
         # TODO: Add logic to handle looking for similar
         if @micropost.save
