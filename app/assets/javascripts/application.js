@@ -46,10 +46,10 @@ $(document).on('turbolinks:load', function() {
         $("#filter_game_form").submit();
     });
 
-    $('.microphone_select').change(function() {
-        $('#new-post-modal').modal('close');
-        $("#filter_game_form").submit();
-    });
+    // $('.microphone_select').change(function() {
+    //     $('#new-post-modal').modal('close');
+    //     $("#filter_game_form").submit();
+    // });
 
     $('.looking_for_select').change(function() {
         $('#new-post-modal').modal('close');

@@ -576,6 +576,7 @@ a.gamertag-name {
 
 .container {
     // width: 100%;
+    max-width: 100%;
 }
 
 .emblem-icon {
@@ -989,8 +990,8 @@ html {
 }
 
 .gun-icons-trials {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;

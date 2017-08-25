@@ -4,13 +4,11 @@ class HomeController < ApplicationController
     def index
         puts "test"
         @stats = get_stats("too")
-        @trials_map = get_map
     end    
 
     def index2
         puts "test"
         @stats = get_stats("too")
-        @trials_map = get_map
     end
 
     def faq
@@ -23,9 +21,13 @@ class HomeController < ApplicationController
     end
     
     def brian
+      puts "test"
+      @stats = get_stats("too")
     end
 
     def alex
+      puts "test"
+      @stats = get_stats("too")
     end
 
     def application_error
@@ -42,7 +44,7 @@ class HomeController < ApplicationController
               Rails.cache.fetch("user_trials_stats", expires_in: 2.minutes) do
                 return current_user.get_trials_stats(current_user)
               end
-            rescue NoMethodError
+            rescue NoMethodError => e
               return nil
             rescue StandardError => e
               return nil

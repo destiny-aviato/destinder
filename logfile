@@ -11,3 +11,14 @@ LOG:  autovacuum launcher shutting down
 LOG:  received smart shutdown request
 LOG:  shutting down
 LOG:  database system is shut down
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 607) running in data directory "/usr/local/var/postgres"?
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 607) running in data directory "/usr/local/var/postgres"?
+LOG:  database system was interrupted; last known up at 2017-08-24 19:11:30 MDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/34992A0: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

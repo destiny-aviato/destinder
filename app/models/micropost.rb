@@ -15,6 +15,7 @@ class Micropost < ApplicationRecord
 
     def self.get_elo(membership_id)
       elo = 1200
+      rank = 0
       
       begin 
       response = Typhoeus.get(
@@ -26,6 +27,7 @@ class Micropost < ApplicationRecord
       data.each do |x| 
         if x["mode"] == 14
           elo = x["elo"]
+          rank = x["rank"]
           break
         end
       end
@@ -33,7 +35,7 @@ class Micropost < ApplicationRecord
       puts e 
     end
 
-    elo.round
+    {"ELO" => elo.round, "Rank" => rank.round}
     
   end
 
