@@ -86,6 +86,7 @@
                     <label class="mic-label" style="top: -25px;">Looking for...</label>
                     <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
                 </div>
+
                 <div class="col s12 m2 center-align">               
                     <label class="pve-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
                     <%= f.check_box :mic_required, id:"pve_mic_required" %>
