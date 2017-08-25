@@ -37,9 +37,9 @@
                                     </div>
                                 </div>
                                 <div class="post-subheader" style="position: relative;height: 18px;bottom: 20px;">
-                                    <div class="container">
+                                    <div class="">
                                         <div class="row">
-                                            <div class="col s4 left-align" style="white-space: nowrap;">
+                                            <div class="col s3 left-align" style="white-space: nowrap;">
                                                 <% if x["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
                                                     <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1700 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
@@ -53,10 +53,10 @@
                                                 <% end %>                                                    
                                                 <span class="white-text" style="font-size: 11px; vertical-align: text-top;">ELO: <%= elo.html_safe %></span>
                                             </div>
-                                            <div class="col s4 center-align" style="white-space: nowrap;">
+                                            <div class="col s5 center-align" style="white-space: nowrap;">
                                                 <span class="white-text" style="font-size: 11px; vertical-align: text-top;">KD: <%= x["Character Stats"]["K/D Ratio"] %></span>
                                             </div>
-                                            <div class="col s4 right-align" style="white-space: nowrap;">
+                                            <div class="col s3 left-align" style="white-space: nowrap;">
                                                 <span class="white-text" style="font-size: 11px; vertical-align: text-top;">W/L: <%= x["Character Stats"]["Win Rate"] %>%</span>
                                             </div>
                                         </div>
@@ -70,21 +70,25 @@
                         
                         
                         
-                                <div class="row"><!--OPEN GUN PICTURES ROW-->
-                                    <div class="col s12"><!--OPEN FIRST COLUMN-->
-                                        <div class="row"><!--OPEN NESTED ROW-->
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div>
-                                            <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div>
+                                <div class="row center-align" style="font-size: 10px;" ><!--OPEN GUN PICTURES ROW-->
+                                    
+                                            <div class="col s4 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
+                                            <div class="col s4 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""></div>
+                                            <div class="col s4 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""></div>
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></div>
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></div>
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></div>
                                             <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
                                             <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Gauntlets"]["Item Name"] %>" src=<%= x["Character Items"]["Gauntlets"]["Item Icon"] %> alt=""></div>
                                             <div class="col s4 weapon-container"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Chest Armor"]["Item Name"] %>" src=<%= x["Character Items"]["Chest Armor"]["Item Icon"] %> alt=""></div>
-                                        </div><!--CLOSE NESTED ROW-->
-                                    </div><!--CLOSE FIRST COLUMN-->
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Helmet"]["Item Name"] %></div>
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Gauntlets"]["Item Name"] %></div>
+                                            <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></div>
+                                       
                                 </div><!--CLOSE GUN PICTURES ROW-->
 
                         
-
+                                
     
                                 
                                     
@@ -105,8 +109,11 @@
 
                                     <div class="col s12 m5 center-align" style="margin-left: auto; margin-right: auto;">
                                     <div class="card z-depth-2 hoverable">
-                                    <h3 class="Center-align">Quick Callout</h3>
+                                    <h3 class="Center-align" style="color: grey; padding-top: 2.5%;">Quick Callout</h3>
                                         <table class="center-align striped" style="color: grey;">
+                                                                
+
+
                                             <tr style="border-bottom: 1px solid grey; color: black;"  class="center-align">
                                             <td class="center-align">Gamertag</td>
                                             <td class="center-align">Class</td>
@@ -115,17 +122,34 @@
                                             <td class="center-align">Heavy</td>
                                             </tr>
                                                 <% info.each do |x| %>
+                                                <% if x["Character Items"]["Primary Weapon"]["Item Tier"] == "Legendary" %>
+                                                <% weapon_color="color: #9F1CEB;" %>
+                                                <% elsif x["Character Items"]["Secondary Weapon"]["Item Tier"] == "Legendary" %>
+                                                <% weapon_color="color: #9F1CEB;" %>
+                                                 <% elsif x["Character Items"]["Heavy Weapon"]["Item Tier"] == "Legendary" %>
+                                                <% weapon_color="color: #9F1CEB;" %>
+                                                 <% elsif x["Character Items"]["Primary Weapon"]["Item Tier"] == "Exotic" %>
+                                                <% weapon_color="color: red;" %>
+                                                <% elsif x["Character Items"]["Secondary Weapon"]["Item Tier"] == "Exotic" %>
+                                                <% weapon_color="color: red;" %>
+                                                 <% elsif x["Character Items"]["Heavy Weapon"]["Item Tier"] == "Exotic" %>
+                                                <% weapon_color="color: red;" %>
+                                                <% end %>
+
                                             <tr class="center-align">
                                             <td class="center-align"><%= username %></td>
-                                            <td class="center-align"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
-                                            <td class="center-align"><%= x["Character Items"]["Primary Weapon"]["Item Type"]%></td>
-                                            <td class="center-align"><%= x["Character Items"]["Secondary Weapon"]["Item Type"]%></td>
-                                            <td class="center-align"><%= x["Character Items"]["Heavy Weapon"]["Item Type"]%></td>
+                                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= character_races[x["Character Type"]] %>"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
+                                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Primary Weapon"]["Item Type"]%></span></td>
+                                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Secondary Weapon"]["Item Type"]%></span></td>
+                                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Heavy Weapon"]["Item Type"]%></span></td>
                                             </tr>
                                             </div>
+                                            
                                             <% end %>
                                         
                                     </div>
+
+                                    
  </div>
 
 
