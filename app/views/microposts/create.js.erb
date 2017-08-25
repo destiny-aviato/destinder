@@ -1,4 +1,5 @@
-$('.row.posts').prepend("<%= j render partial: 'micropost', locals: {micropost: @micropost} %>");
+$('.row.posts').html("<%= j (render @microposts) %>");
+// $('.row.posts').prepend("<%= j render partial: 'micropost', locals: {micropost: @micropost} %>");
 $('ul.tabs').tabs();
 $('.collapsible').collapsible('close', 0);
 Materialize.toast('Post Created!', 4000)
