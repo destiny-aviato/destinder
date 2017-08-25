@@ -6,6 +6,7 @@ class TeamStat < ApplicationRecord
 
     def self.get_elo(membership_id)
         elo = 1200
+        rank = 0
         
         begin 
         response = Typhoeus.get(
@@ -17,6 +18,7 @@ class TeamStat < ApplicationRecord
         data.each do |x| 
           if x["mode"] == 14
             elo = x["elo"]
+            rank = x["rank"]
             break
           end
         end
@@ -24,7 +26,7 @@ class TeamStat < ApplicationRecord
         puts e 
       end
   
-      elo.round
+      {"ELO" => elo.round, "Rank" => rank.round}
       
     end
 
