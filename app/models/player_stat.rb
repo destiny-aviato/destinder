@@ -53,28 +53,30 @@ class PlayerStat < ApplicationRecord
         item
       end
 
-    def self.get_elo(membership_id)
+      def self.get_elo(membership_id)
         elo = 1200
+        rank = 0
         
         begin 
         response = Typhoeus.get(
                 "https://api.guardian.gg/elo/#{membership_id}"
             )
-            
+          
         data = JSON.parse(response.body)
-
+  
         data.each do |x| 
-            if x["mode"] == 14
+          if x["mode"] == 14
             elo = x["elo"]
+            rank = x["rank"]
             break
-            end
+          end
         end
-        rescue StandardError => e
+      rescue StandardError => e
         puts e 
-        end
-
-        elo.round
-        
+      end
+  
+      {"ELO" => elo.round, "Rank" => rank.round}
+      
     end
 
     def self.get_trials_stats(username, membership_type)

@@ -45,28 +45,30 @@ class User < ApplicationRecord
   end
 
   def get_elo(membership_id)
-      elo = 1200
-      
-      begin 
-      response = Typhoeus.get(
-              "https://api.guardian.gg/elo/#{membership_id}"
-          )
-        
-      data = JSON.parse(response.body)
-
-      data.each do |x| 
-        if x["mode"] == 14
-          elo = x["elo"]
-          break
-        end
-      end
-    rescue StandardError => e
-      puts e 
-    end
-
-    elo.round
+    elo = 1200
+    rank = 0
     
+    begin 
+    response = Typhoeus.get(
+            "https://api.guardian.gg/elo/#{membership_id}"
+        )
+      
+    data = JSON.parse(response.body)
+
+    data.each do |x| 
+      if x["mode"] == 14
+        elo = x["elo"]
+        rank = x["rank"]
+        break
+      end
+    end
+  rescue StandardError => e
+    puts e 
   end
+
+  {"ELO" => elo.round, "Rank" => rank.round}
+  
+end
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
@@ -191,6 +193,37 @@ class User < ApplicationRecord
                         kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
                         deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
                         assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+                        games_played = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesEntered"]["basic"]["value"] 
+                        games_won = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesWon"]["basic"]["value"]
+                        avg_life_span = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageLifespan"]["basic"]["displayValue"]
+                        auto_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsAutoRifle"]["basic"]["value"]
+                        fusion_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsFusionRifle"]["basic"]["value"]
+                        hand_cannon = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsHandCannon"]["basic"]["value"]
+                        machine_gun = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsMachinegun"]["basic"]["value"]
+                        pulse_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsPulseRifle"]["basic"]["value"]
+                        rocket_launcher = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsRocketLauncher"]["basic"]["value"]
+                        scout_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsScoutRifle"]["basic"]["value"]
+                        shotgun = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsShotgun"]["basic"]["value"]
+                        sniper = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsSniper"]["basic"]["value"]
+                        sub_machine_gun = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsSubmachinegun"]["basic"]["value"]
+                        side_arm = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsSideArm"]["basic"]["value"]
+                        sword = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsSword"]["basic"]["value"]
+                        melee = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsMelee"]["basic"]["value"]
+                        grenades = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsGrenade"]["basic"]["value"]
+                        super_kills =  stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsSuper"]["basic"]["value"]
+                        ability_kills =  stat_data["Response"]["trialsOfOsiris"]["allTime"]["abilityKills"]["basic"]["value"]
+                        longest_spree = stat_data["Response"]["trialsOfOsiris"]["allTime"]["longestKillSpree"]["basic"]["value"]
+                        weapon_best_type = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponBestType"]["basic"]["displayValue"]
+                        longest_life = stat_data["Response"]["trialsOfOsiris"]["allTime"]["longestSingleLife"]["basic"]["displayValue"]
+                        total_activity_time = stat_data["Response"]["trialsOfOsiris"]["allTime"]["totalActivityDurationSeconds"]["basic"]["displayValue"]
+                        orbs_dropped = stat_data["Response"]["trialsOfOsiris"]["allTime"]["orbsDropped"]["basic"]["displayValue"]
+                        res_received = stat_data["Response"]["trialsOfOsiris"]["allTime"]["resurrectionsReceived"]["basic"]["displayValue"]
+                        res_performed = stat_data["Response"]["trialsOfOsiris"]["allTime"]["resurrectionsPerformed"]["basic"]["displayValue"]
+                        precision_kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["precisionKills"]["basic"]["displayValue"]
+                        average_lifespan = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageLifespan"]["basic"]["displayValue"]                        
+                        avg_kill_distance = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageKillDistance"]["basic"]["displayValue"]                        
+                        avg_death_distance = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageDeathDistance"]["basic"]["value"]
+                        win_rate = (((games_won / games_played).round(2)) * 100).round
         
                         kd = (kills / deaths).round(2)
                         kad = ((kills + assists) / deaths).round(2)
@@ -198,10 +231,66 @@ class User < ApplicationRecord
                         kills = 0 
                         deaths = 0
                         assists = 0 
-        
+                        avg_life_span = 0
+                        auto_rifle = 0
+                        fusion_rifle = 0
+                        hand_cannon = 0
+                        machine_gun = 0
+                        pulse_rifle = 0
+                        rocket_launcher = 0
+                        scout_rifle = 0
+                        shotgun = 0
+                        sniper = 0
+                        sub_machine_gun = 0
+                        side_arm = 0
+                        sword = 0
+                        melee = 0
+                        grenades = 0
+                        super_kills =  0
+                        ability_kills =  0
+                        longest_spree = 0
+                        weapon_best_type = 0
+                        longest_life = 0
+                        orbs_dropped = 0
+                        res_received = 0
+                        res_performed = 0
+                        precision_kills = 0
+                        average_lifespan = 0
+                        avg_kill_distance = 0
+                        avg_death_distance = 0        
                         kd = 0 
                         kad = 0 
                     end
+
+                    kill_stats = {
+                        "Average Life Span" => avg_life_span,
+                        "Auto Rifle" => auto_rifle,
+                        "Fusion Rifle" => fusion_rifle, 
+                        "Hand Cannon" => hand_cannon,
+                        "Machine Gun" => machine_gun,
+                        "Pulse Rifle" => pulse_rifle,
+                        "Rocket Launcher" => rocket_launcher,
+                        "Scout Rifle" => scout_rifle,
+                        "Shotgun" => shotgun,
+                        "Sniper" => sniper,
+                        "Sub Machine Gun" => sub_machine_gun,
+                        "Side Arm" => side_arm,
+                        "Sword" => sword,
+                        "Melee" => melee,
+                        "Grenades" => grenades,
+                        "Super" => super_kills,
+                        "Ability" => ability_kills,
+                        "Longest Spree" => longest_spree,
+                        "Best Weapon Type" => weapon_best_type,
+                        "Longest Life" => longest_life,
+                        "Orbs Dropped" => orbs_dropped,
+                        "Revives Received" => res_received,
+                        "Revives Performed" => res_performed,
+                        "Precision Kills" => precision_kills,
+                        "Average Lifespan" => average_lifespan,
+                        "Average Kill Distance" => avg_kill_distance,
+                        "Average Death Distance" => avg_death_distance
+                    }
     
                     @stats = {
                         "Kills" => kills.round, 
@@ -213,11 +302,13 @@ class User < ApplicationRecord
                         "Discipline" => stat_dicipline,
                         "Strength" => stat_strength,
                         "ELO" => elo,
+                        "Win Rate" => win_rate,
                         "Armor" => stat_armor,
                         "Agility" => stat_agility,
                         "Recovery" => stat_recovery,
                         "Light Level" => light_level,
-                        "Grimoire" => grimoire
+                        "Grimoire" => grimoire,
+                        "Kill Stats" => kill_stats
                     }
 
                     @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items}
