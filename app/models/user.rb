@@ -44,7 +44,7 @@ class User < ApplicationRecord
     where("LOWER(display_name) LIKE ?", "%#{search}%") 
   end
 
-  def self.get_elo(membership_id)
+  def get_elo(membership_id)
     elo = 1200
     rank = 0
     
@@ -193,6 +193,11 @@ end
                         kills = stat_data["Response"]["trialsOfOsiris"]["allTime"]["kills"]["basic"]["value"] 
                         deaths = stat_data["Response"]["trialsOfOsiris"]["allTime"]["deaths"]["basic"]["value"] 
                         assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
+                        games_played = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesEntered"]["basic"]["value"] 
+                        games_won = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesWon"]["basic"]["value"]
+                        avg_life_span = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageLifespan"]["basic"]["displayValue"]
+              
+                        win_rate = (((games_won / games_played).round(2)) * 100).round
         
                         kd = (kills / deaths).round(2)
                         kad = ((kills + assists) / deaths).round(2)
@@ -215,6 +220,7 @@ end
                         "Discipline" => stat_dicipline,
                         "Strength" => stat_strength,
                         "ELO" => elo,
+                        "Win Rate" => win_rate,
                         "Armor" => stat_armor,
                         "Agility" => stat_agility,
                         "Recovery" => stat_recovery,
