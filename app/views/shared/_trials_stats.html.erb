@@ -25,7 +25,7 @@
                     <li>
                         <div class="collapsible-header" style="height: 104px;">
                             <% bg = "background-image: url(#{x['Character Items']['Emblem Background']});" %>
-                            <div class="post-header" style='<%= "#{bg} height: 100%; margin: -5.1%; height: 83px;" %>'>                            
+                            <div class="post-header" style='<%= "#{bg} margin: -5.1%; height: 83px;" %>'>                            
                                 <div class="row" style="overflow: hidden; max-height: 65px; margin-right: 2.25rem;">
                                     <div class="col s3 left-align" style="padding: 0; height: 65px;">
                                         <%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %>
@@ -82,6 +82,29 @@
                                     <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Gauntlets"]["Item Name"] %></div>
                                     <div class="col s4 weapon-name-trials center-align gun-name-trials truncate"><%= x["Character Items"]["Chest Armor"]["Item Name"] %></div>                            
                                 </div><!--CLOSE GUN PICTURES ROW-->
+                                <hr>
+                                <div class="row" style="font-size: 11px;">
+                                <div class="col s6">Average Lifespan</div>
+                                <div class="col s6 center-align"><%= x["Character Stats"]["Kill Stats"]["Average Life Span"]%></div>
+                                <div class="col s6">Average Kill Distance</div>
+                                <div class="col s6 center-align"><%= x["Character Stats"]["Kill Stats"]["Average Kill Distance"]%></div>
+                                <div class="col s6">Deadliest Weapon</div>
+                                <div class="col s6 center-align"><span style="color: red;"><%= x["Character Stats"]["Kill Stats"]["Best Weapon Type"]%></span></div>
+                                <div class="col s6">Precision Kills</div>
+                                <div class="col s6 center-align"><span style="color: red;"><%= ((x["Character Stats"]["Kill Stats"]["Precision Kills"].to_d/x["Character Stats"]["Kills"].to_d)*100).round(2)%>%</span></div>
+                                
+                                </div>
+                                <div class="row">
+                                
+                                <div class="col s4 center-align">Discipline</div>
+                                <div class="col s4 center-align">Strength</div>
+                                <div class="col s4 center-align">Intellect</div>
+                                <div class="col s4 center-align"><%= x["Character Stats"]["Discipline"]%></div>
+                                <div class="col s4 center-align"><%= x["Character Stats"]["Strength"]%></div>
+                                <div class="col s4 center-align"><%= x["Character Stats"]["Intellect"]%></div>
+                                
+                                
+                                </div>
                             </span>
                         </div>
                     </li>
@@ -89,9 +112,9 @@
             </ul>
         </div>
         <div class="col s12 m5 center-align" style="margin-left: auto; margin-right: auto;">
-            <div class="card z-depth-2 hoverable">
+            <div class="card z-depth-2 hoverable" style="width: 100%!important; height: 314px!important; margin-top: -3%;">
                 <h3 class="Center-align" style="color: grey; padding-top: 2.5%;">Quick Callout</h3>
-                <table class="center-align striped" style="color: grey;">
+                <table class="center-align striped responsive-table" style="color: grey;">
                     <tr style="border-bottom: 1px solid grey; color: black;"  class="center-align">
                         <td class="center-align">Gamertag</td>
                         <td class="center-align">Class</td>
@@ -115,8 +138,8 @@
                         <% end %>
 
                         <tr class="center-align">
-                            <td class="center-align"><%= username %></td>
-                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= character_races[x["Character Type"]] %>"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
+                            <td class="center-align" style="white-space: nowrap;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 10em); min-width: 30px; position: relative; right: 3%; height: auto; margin-left: auto; margin-right: auto;"%></td>
+                            <td id="ac" class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= character_races[x["Character Type"]] %>"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
                             <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Primary Weapon"]["Item Type"]%></span></td>
                             <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Secondary Weapon"]["Item Type"]%></span></td>
                             <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Heavy Weapon"]["Item Type"]%></span></td>
