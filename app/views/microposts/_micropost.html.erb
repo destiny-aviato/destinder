@@ -102,7 +102,7 @@
                                     
                                 <% end %>
                             </span>
-
+                        <% if micropost.game_type == "Trials of Osiris" %>
                             <span id="diamond_elo_content">
                                 <div class="row center-align">
                                     Diamond
@@ -143,7 +143,8 @@
                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
                                 </div>
                             </span>
-                        </div>
+                        <% end %>
+                    </div>
 
                 <div class="card-content" style="padding-top: 25px;">
                     <br>
