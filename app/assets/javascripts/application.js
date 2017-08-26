@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function() {
     $('#checkpoint').hide();
     $('div#difficulty').hide();
     $('label.difficulty-label').hide();
-    
+
     $('#micropost_raid_difficulty').val('Normal');
 
     $("#micropost_raid_difficulty").click(function() {
@@ -280,15 +280,15 @@ $(document).on('turbolinks:load', function() {
 
 
     $('.parallax').parallax();
-    $('.tooltipped').tooltip({ 
+    $('.tooltipped').tooltip({
         delay: 50,
         html: true
-     });
+    });
 
 
     $('#pve-game-select').change(function() {
         selection = $(this).val();
-        
+
 
         if ($.inArray(selection, ["Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass"]) >= 0) {
             $('#pve-gametype-select').attr('class', 'input-field col s12 m6');
@@ -319,10 +319,10 @@ $(document).on('click', '.notification > button.delete', function() {
 $(document).on("turbolinks:load", function() {
     $('.modal').modal({
         dismissible: true,
-        opacity: .5, 
-        inDuration: 300, 
-        outDuration: 200, 
-        startingTop: '4%', 
+        opacity: .5,
+        inDuration: 300,
+        outDuration: 200,
+        startingTop: '4%',
         endingTop: '10%'
     });
 
@@ -357,7 +357,7 @@ $(document).on("turbolinks:load", function() {
     $('.slider').slider('prev');
 
     $("h1#home-header").hide().fadeIn(4000);
-    $('.tooltip').tooltipster({ 
+    $('.tooltip').tooltipster({
         theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
         delay: 50
     });
