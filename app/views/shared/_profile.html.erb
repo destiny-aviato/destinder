@@ -1,12 +1,15 @@
+<% info = get_stats("too") %>
+<% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+
 <div class="container ">
   <div class="row">
-    <h1 class="center" >REPUTATION</h1>
+    <h4 class="center">PLAYER REPUTATION</h4>
     <hr>
-          <div class="col s4 m6 l4">
+          <div class="col s12 m6">
             <%= image_tag( @user["profile_picture"])%>
             
           </div>
-          <div class="col s8 m6 l4">      
+          <div class="col s12 m6">      
             <% total = @user.votes_for + @user.votes_against %>      
             <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
             <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
@@ -54,6 +57,35 @@
           </div>
         </div>
 </div>
+
+
+    
+<h4 class="center">PLAYER STATS</h4>
+<hr>
+  <ul class="collapsible" data-collapsible="accordion">
+      <% info.each_with_index do |character, index| %>
+          <li>
+            <div class="collapsible-header"><i class="material-icons">insert_chart</i><%= character_races[character["Character Type"]] %></div>
+            <div class="collapsible-body">
+              <div class="row">
+                      <div class="col s12 m6">
+                          <h4>Kill by Weapon Types</h4>
+                          <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
+                          <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 500px !important; max-height: 500px !important"></canvas></div>                    
+                      </div>
+                      <div class="col s12 m6">
+                              <div>
+                                  <h4>Player Ability Stats</h4>
+                                  <div><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 500px !important; max-height: 500px !important"></canvas></div>        
+                              </div>
+                          </div>
+                  </div>
+          </div>
+      </li>
+
+      <% end %>
+    </ul>
+
 
 
 
