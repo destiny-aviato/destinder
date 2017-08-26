@@ -67,9 +67,9 @@ main {
     top: 2%;
 }
 
-.round-image {
-    border-radius: 999px;
-}
+// .round-image {
+//     border-radius: 999px;
+// }
 
 .gamertag-name {
     color: #D1D1D1;
@@ -531,10 +531,11 @@ a.gamertag-name {
 }
 
 .round-image2 {
-    border-radius: 999px;
+    border-radius: 100px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 15px;
+    margin-top: 23px;
+    width: 60%;
 }
 
 // .modal .modal-content {
