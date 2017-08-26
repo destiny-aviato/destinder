@@ -15,30 +15,31 @@
             <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
             <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
             <p>Already voted: <%= current_user.voted_for?(@user) %></p>
+            <%if @user != current_user %>
+              <% if current_user.voted_for?(@user) %>
+                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                  <i class="material-icons">thumb_up</i>
+                <% end %>
 
-            <% if current_user.voted_for?(@user) %>
-              <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                <i class="material-icons">thumb_up</i>
-              <% end %>
+                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                  <i class="material-icons">cancel</i>
+                <% end %>
 
-              <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                <i class="material-icons">cancel</i>
-              <% end %>
+                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                  <i class="material-icons">thumb_down</i>
+                <% end %>
+              <% else %>
+                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                  <i class="material-icons">thumb_up</i>
+                <% end %>
 
-              <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                <i class="material-icons">thumb_down</i>
-              <% end %>
-            <% else %>
-              <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                <i class="material-icons">thumb_up</i>
-              <% end %>
+                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                  <i class="material-icons">cancel</i>
+                <% end %>
 
-              <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                <i class="material-icons">cancel</i>
-              <% end %>
-
-              <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                <i class="material-icons">thumb_down</i>
+                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                  <i class="material-icons">thumb_down</i>
+                <% end %>
               <% end %>
             <% end %>
           </div>
@@ -62,7 +63,9 @@
     
 <h4 class="center">PLAYER STATS</h4>
 <hr>
-  <ul class="collapsible" data-collapsible="accordion">
+<!-- <a id="expand-button" class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i></a>
+<a id="collapse-button" class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i></a> -->
+  <ul id="stat-collapse" class="collapsible" data-collapsible="expandable">
       <% info.each_with_index do |character, index| %>
           <li>
             <div class="collapsible-header"><i class="material-icons">insert_chart</i><%= character_races[character["Character Type"]] %></div>
