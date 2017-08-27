@@ -1,28 +1,16 @@
 <!-- Slide out Nav -->
 <ul id="slide-out" class="side-nav" style="background-color: #21708E;">
   <% if user_signed_in? %>
-    <li class="center-align round-image" style="width: 100%;">
-    <%= image_tag( current_user["profile_picture"], class:"round-image2" ) %>
+    <div class="center-align" style="width: 95%;">
+      <%= link_to profile_path do %>
+        <%= image_tag( current_user["profile_picture"], class:"round-image2" ) %>
+      <% end %>
+    </div>
     </li>
     <li class="center-align gamertag-name">
       <%= current_user["display_name"] %>
     </li>
-    <li>
-      <div class="row" style="width: 80%;">
-        <div class="col s3">
-            <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
-        </div>
-        <div class="col s3">
-            <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
-        </div>
-        <div class="col s3">
-            <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
-        </div>
-        <div class="col s3">
-            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
-        </div>
-      </div>
-    </li>
+
     <li>
       <div class="nav-wrapper">
         <%= form_tag(users_path, :method => "get", id: "search-form") do %>
@@ -49,8 +37,8 @@
       <% end %>
     </li>
     <li>
-      <%= link_to profile_path, class: "navbar-item" do %>
-        <i class="material-icons" style="color: #D1D1D1;">person</i> PROFILE
+      <%= link_to "#team-search-modal", class: "navbar-item modal-trigger" do %>
+        <i class="material-icons" style="color: #D1D1D1;">people</i> TRIALS TEAM LOOKUP
       <% end %>
     </li>
     <li>
@@ -63,6 +51,26 @@
         <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGOUT
       <% end %>
     </li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <br>
+    <li>
+        <div class="row" style="width: 100%; margin-bottom: 0;">
+          <div class="col s3 ">
+              <a class="modal-trigger" href="#faq-modal" data-turbolinks="false"><i class="fa fa-question-circle fa-2x" style="color: #D1D1D1;"></i></a>
+          </div>
+          <div class="col s3 left-align">
+              <a href="https://twitter.com/DestinyAviato" target="_blank"><i class="fa fa-twitter fa-2x" style="color: #D1D1D1;"></i></a>
+          </div>
+          <div class="col s3 left-align">
+              <a href="https://github.com/destiny-aviato/destinder"><i class="fa fa-github fa-2x" style="color: #D1D1D1;"></i></a>
+          </div>
+          <div class="col s3 left-align">
+              <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" target="_blank"><i class="fa fa-paypal fa-2x" style="color: #D1D1D1;"></i></a>
+          </div>
+        </div>
+      </li>
     <% else %>
       <li><div class="user-view">
           <div class="background">
@@ -180,3 +188,27 @@
     </div>
   </nav>  
 </div>
+
+ <!-- Team lookup Modal Structure -->
+ <div id="team-search-modal" class="modal bottom-sheet" style="max-width: 100%;">
+    <div class="modal-content">
+      <p>Trials Team Lookup</p>
+      <div class="row">
+        <%= form_for(TeamStat.new) do |f| %>
+          <div class="input-field">
+            <div class="row">
+              <div class="input-field col s3">
+                <%= f.select :membership_type, [["Xbox", "1"], ["Playstation", "2"]]%>
+              </div>
+              <div class="input-field col s9">
+                  <%= f.text_field :display_name, class: "input", placeholder: "Enter Gamertag" %>
+                </div>
+              <div class="hide-on-large-only">
+                <%= f.submit "Search" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -105,7 +105,214 @@ $(document).on('turbolinks:load', function() {
     //         }
     //     });
     // }
-    $('.collapsible').collapsible();
+    function onElementRendered(selector, cb, _attempts) {
+        var el = $(selector);
+        _attempts = ++_attempts || 1;
+        if (el.length) return cb(el);
+        if (_attempts == 60) return;
+        setTimeout(function() {
+          onElementRendered(selector, cb, _attempts);
+        }, 250);
+      }
+
+
+
+
+      function onElementRendered(selector, cb, _attempts) {
+        var el = $(selector);
+        _attempts = ++_attempts || 1;
+        if (el.length) return cb(el);
+        if (_attempts == 60) return;
+        setTimeout(function() {
+          onElementRendered(selector, cb, _attempts);
+        }, 250);
+      }
+      function openCharts() {
+        if ($(".chart-container1").length) {
+            //////// ABILITY CHARTS ////////////
+            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+            var abilityctx1 = document.getElementById("ability-chart-breakdown1").getContext('2d');
+            var abilityChart1 = new Chart(abilityctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ["Intellect", "Discipline", "Strength"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#34495e"
+                ],
+                data: [char_data1["Character Stats"]["Intellect"], char_data1["Character Stats"]["Discipline"], char_data1["Character Stats"]["Strength"]]
+                }]
+            }
+            });
+        }
+              
+        if ($(".chart-container2").length) {
+            //////// ABILITY CHARTS ////////////
+            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+            var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
+            var abilityChart2 = new Chart(abilityctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ["Intellect", "Discipline", "Strength"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#34495e"
+                ],
+                data: [char_data2["Character Stats"]["Intellect"], char_data2["Character Stats"]["Discipline"], char_data2["Character Stats"]["Strength"]]
+                }]
+            }
+            });
+        }
+            
+        if ($(".chart-container3").length) {
+            //////// ABILITY CHARTS ////////////
+            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
+            var abilityctx3 = document.getElementById("ability-chart-breakdown3").getContext('2d');
+            var abilityChart3 = new Chart(abilityctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ["Intellect", "Discipline", "Strength"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#34495e"
+                ],
+                data: [char_data3["Character Stats"]["Intellect"], char_data3["Character Stats"]["Discipline"], char_data3["Character Stats"]["Strength"]]
+                }]
+            }
+            });
+        }
+
+        
+        //////// WEAPON CHARTS ////////////
+        if ($(".chart-container1").length) {
+            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+            // var char_data = chart_data[0];
+            var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
+            var weaponChart1 = new Chart(weaponctx1, {
+            type: 'polarArea',
+            data: {
+                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#95a5a6",
+                    "#9b59b6",
+                    "#f1c40f",
+                    "#e74c3c",
+                    "#34495e"
+                ],
+                data: [char_data1["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data1["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data1["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data1["Character Stats"]["Kill Stats"]["Sniper"], char_data1["Character Stats"]["Kill Stats"]["Shotgun"]]
+                }]
+            }
+            });
+        }
+        
+        if ($(".chart-container2").length) {
+            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+            // var char_data = chart_data[0];
+            var weaponctx2 = document.getElementById("weapon-breakdown-chart2").getContext('2d');
+            var weaponChart2 = new Chart(weaponctx2, {
+            type: 'polarArea',
+            data: {
+                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#95a5a6",
+                    "#9b59b6",
+                    "#f1c40f",
+                    "#e74c3c",
+                    "#34495e"
+                ],
+                data: [char_data2["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data2["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data2["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data2["Character Stats"]["Kill Stats"]["Sniper"], char_data2["Character Stats"]["Kill Stats"]["Shotgun"]]
+                }]
+            }
+            });
+        }
+    
+        if ($(".chart-container3").length) {
+            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
+            var weaponctx3 = document.getElementById("weapon-breakdown-chart3").getContext('2d');
+            var weaponChart3 = new Chart(weaponctx3, {
+            type: 'polarArea',
+            options: {
+                layout: {
+                    padding: {
+                        top: 20
+                        }
+                    }
+                },
+            data: {
+                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#3498db",
+                    "#95a5a6",
+                    "#9b59b6",
+                    "#f1c40f",
+                    "#e74c3c",
+                    "#34495e"
+                ],
+                data: [char_data3["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data3["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data3["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data3["Character Stats"]["Kill Stats"]["Sniper"], char_data3["Character Stats"]["Kill Stats"]["Shotgun"]]
+                }]
+            }
+            });
+        }
+      }
+      
+      function collapseAll(){
+        $(".collapsible-header").removeClass(function(){
+          return "active";
+        });
+        $(".collapsible").collapsible({accordion: true});
+        $(".collapsible").collapsible({accordion: false});
+      }
+
+      function expandAll(){
+        $(".collapsible-header").addClass("active");
+        $(".collapsible").collapsible({accordion: false});
+      }
+      
+      $("#expand-button").click(function() {
+        expandAll();
+      });
+      $("#collapse-button").click(function() {
+        collapseAll();
+      });
+
+      onElementRendered('.collapsible', function(el) {
+        $('.collapsible').collapsible({
+            onOpen: function(el) {
+                openCharts();
+             }
+        });
+
+        expandAll();
+        collapseAll();
+      });
+
+
+        
+
+
+
+
+
+
+
+
+
+
+    
     $(".button-collapse").sideNav({
         closeOnClick: true,
         draggable: true
@@ -179,6 +386,8 @@ $(document).on("turbolinks:load", function() {
         $('.parallax').parallax();
     });
 
+
+
     $(document).ready(function() {
         $('.materialboxed').materialbox();
     });
@@ -201,132 +410,14 @@ $(document).on("turbolinks:load", function() {
         delay: 50
     });
 
-    //////// WEAPON CHARTS ////////////
-    if ($(".chart-container1").length) {
-        var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
-        // var char_data = chart_data[0];
-        var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
-        var weaponChart1 = new Chart(weaponctx1, {
-            type: 'polarArea',
-            data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#95a5a6",
-                        "#9b59b6",
-                        "#f1c40f",
-                        "#e74c3c",
-                        "#34495e"
-                    ],
-                    data: [char_data1["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data1["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data1["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data1["Character Stats"]["Kill Stats"]["Sniper"], char_data1["Character Stats"]["Kill Stats"]["Shotgun"]]
-                }]
-            }
-        });
 
-        var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
-        // var char_data = chart_data[0];
-        var weaponctx2 = document.getElementById("weapon-breakdown-chart2").getContext('2d');
-        var weaponChart2 = new Chart(weaponctx2, {
-            type: 'polarArea',
-            data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#95a5a6",
-                        "#9b59b6",
-                        "#f1c40f",
-                        "#e74c3c",
-                        "#34495e"
-                    ],
-                    data: [char_data2["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data2["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data2["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data2["Character Stats"]["Kill Stats"]["Sniper"], char_data2["Character Stats"]["Kill Stats"]["Shotgun"]]
-                }]
-            }
-        });
+    
 
-        var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
-        var weaponctx3 = document.getElementById("weapon-breakdown-chart3").getContext('2d');
-        var weaponChart3 = new Chart(weaponctx3, {
-            type: 'polarArea',
-            options: {
-                layout: {
-                    padding: {
-                        top: 20
-                    }
-                }
-            },
-            data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#95a5a6",
-                        "#9b59b6",
-                        "#f1c40f",
-                        "#e74c3c",
-                        "#34495e"
-                    ],
-                    data: [char_data3["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data3["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data3["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data3["Character Stats"]["Kill Stats"]["Sniper"], char_data3["Character Stats"]["Kill Stats"]["Shotgun"]]
-                }]
-            }
-        });
+    
+        
+    
 
-        //////// ABILITY CHARTS ////////////
-        // var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
-        var abilityctx1 = document.getElementById("ability-chart-breakdown1").getContext('2d');
-        var abilityChart1 = new Chart(abilityctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#34495e"
-                    ],
-                    data: [char_data1["Character Stats"]["Intellect"], char_data1["Character Stats"]["Discipline"], char_data1["Character Stats"]["Strength"]]
-                }]
-            }
-        });
 
-        // var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
-        var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
-        var abilityChart2 = new Chart(abilityctx2, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#34495e"
-                    ],
-                    data: [char_data2["Character Stats"]["Intellect"], char_data2["Character Stats"]["Discipline"], char_data2["Character Stats"]["Strength"]]
-                }]
-            }
-        });
-
-        // var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
-        var abilityctx3 = document.getElementById("ability-chart-breakdown3").getContext('2d');
-        var abilityChart3 = new Chart(abilityctx3, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                    backgroundColor: [
-                        "#2ecc71",
-                        "#3498db",
-                        "#34495e"
-                    ],
-                    data: [char_data3["Character Stats"]["Intellect"], char_data3["Character Stats"]["Discipline"], char_data3["Character Stats"]["Strength"]]
-                }]
-            }
-        });
-    }
 
 
 
