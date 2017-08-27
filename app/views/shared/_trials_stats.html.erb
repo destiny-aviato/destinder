@@ -3,12 +3,12 @@
 <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 <br><br>
 <% if info.nil? %> 
-  <div class="container games">
+  <div class="container games" style="width: 100%;">
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
 <% else %>  
     <div class="row" style="margin-left: -1.0rem;">
-        <div class="col s12 m6">
+        <div class="col s12 m4 offset-m1">
             <ul class="collapsible hoverable" data-collapsible="accordion" style="max-width: 170%; width: 337px; margin-left: auto; margin-right: auto;">
                 <% info.each do |x| %>
                     <% case x["Character Items"]["Subclass"]["Item Name"] 
@@ -67,6 +67,12 @@
                         </div>
     
                         <div class="collapsible-body">
+
+
+
+
+
+
                             <span>
                                 <div class="row center-align" style="font-size: 10px;" ><!--OPEN GUN PICTURES ROW-->                        
                                     <div class="col s4 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""></div>
@@ -103,15 +109,70 @@
                                 <div class="col s4 center-align"><%= x["Character Stats"]["Strength"]%></div>
                                 <div class="col s4 center-align"><%= x["Character Stats"]["Intellect"]%></div>
                                 
+                                <div class="col s12 center-align">
+                                
+                                <!-- Modal Trigger -->
+                                            <a class="waves-effect waves-light btn modal-trigger disabled tooltipped tooltipstered" data-position="right" data-delay="50" data-tooltip="Coming Soon!" style="width: 100%; margin-top: 2%;" href="#modal1">Gun Stats</a>
+
+                                            <!-- Modal Structure -->
+                                            <div id="modal1" class="modal">
+                                                <div class="modal-content">
+                                                <h4>Kills by Weapon</h4>
+
+
+                                                <table class="center-align striped responsive-table" style="color: grey;">
+                                                            <tr style="border-bottom: 1px solid grey; color: black;"  class="center-align">
+                                                                <td class="center-align">Weapon</td>
+                                                                <td class="center-align">Kills</td>
+                                                                <td class="center-align">Usage</td>
+                                                                
+                                                            </tr>
+                                                            <% info.first do |x| %>
+
+
+                                                            <% case x["Character Items"]["Primary Weapon"]["Item Tier"]
+                                                                when "Legendary" %>
+                                                                <% weapon_color =  "color: purple;" %>
+                                                            <% when "Exotic" %>
+                                                                <% weapon_color =  "color: green;" %>
+                                                            <% end %>
+
+
+                                                                <tr class="center-align">
+                                                                <td>Hand Cannon</td>
+                                                                <td><%= x["Character Stats"]["Kill Stats"]["Hand Cannon"]%></td>
+                                                                <td><%= ((x["Character Stats"]["Kill Stats"]["Hand Cannon"].to_d/x["Character Stats"]["Kills"].to_d)*100).round(2)%>%</td>
+                                                                    
+                                                                </tr>
+
+                                                            <% end %>
+                                                        </table>
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                                                </div>
+                                            </div>
+                                
+                                
+                                </div>
+                                
                                 
                                 </div>
                             </span>
+
+                           
                         </div>
                     </li>
                 <% end %>
+                
             </ul>
         </div>
-        <div class="col s12 m5 center-align" style="margin-left: auto; margin-right: auto;">
+
+
+
+        <div class="col s12 m6 center-align" style="margin-left: auto; margin-right: auto;">
             <div class="card z-depth-2 hoverable" style="width: 100%!important; height: 314px!important; margin-top: -3%;">
                 <h3 class="Center-align" style="color: grey; padding-top: 2.5%;">Quick Callout</h3>
                 <table class="center-align striped responsive-table" style="color: grey;">
@@ -123,31 +184,38 @@
                         <td class="center-align">Heavy</td>
                     </tr>
                     <% info.each do |x| %>
-                        <% if x["Character Items"]["Primary Weapon"]["Item Tier"] == "Legendary" %>
-                            <% weapon_color="color: #9F1CEB;" %>
-                        <% elsif x["Character Items"]["Secondary Weapon"]["Item Tier"] == "Legendary" %>
-                            <% weapon_color="color: #9F1CEB;" %>
-                        <% elsif x["Character Items"]["Heavy Weapon"]["Item Tier"] == "Legendary" %>
-                            <% weapon_color="color: #9F1CEB;" %>
-                        <% elsif x["Character Items"]["Primary Weapon"]["Item Tier"] == "Exotic" %>
-                            <% weapon_color="color: red;" %>
-                        <% elsif x["Character Items"]["Secondary Weapon"]["Item Tier"] == "Exotic" %>
-                            <% weapon_color="color: red;" %>
-                        <% elsif x["Character Items"]["Heavy Weapon"]["Item Tier"] == "Exotic" %>
-                            <% weapon_color="color: red;" %>
-                        <% end %>
+
+
+                     <% case x["Character Items"]["Primary Weapon"]["Item Tier"]
+                        when "Legendary" %>
+                        <% weapon_color =  "color: purple;" %>
+                    <% when "Exotic" %>
+                        <% weapon_color =  "color: green;" %>
+                    <% end %>
+
 
                         <tr class="center-align">
                             <td class="center-align" style="white-space: nowrap;"><%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 10em); min-width: 30px; position: relative; right: 3%; height: auto; margin-left: auto; margin-right: auto;"%></td>
-                            <td id="ac" class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= character_races[x["Character Type"]] %>"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
-                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Primary Weapon"]["Item Type"]%></span></td>
-                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Secondary Weapon"]["Item Type"]%></span></td>
-                            <td class="center-align tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Heavy Weapon"]["Item Type"]%></span></td>
+                            <td id="ac" class="center-align tooltipped tooltipstered" data-position="right" data-delay="50" data-tooltip="<%= character_races[x["Character Type"]] %>"><%= x["Character Items"]["Subclass"]["Item Name"] %></td>
+                            <td class="center-align tooltipped tooltipstered" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Primary Weapon"]["Item Type"]%></span></td>
+                            <td class="center-align tooltipped tooltipstered" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Secondary Weapon"]["Item Type"]%></span></td>
+                            <td class="center-align tooltipped tooltipstered" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>"><span style='<%= weapon_color %>'><%= x["Character Items"]["Heavy Weapon"]["Item Type"]%></span></td>
                         </tr>
                     <% end %>
                 </table>
             </div>
         </div>
+
+    
+    </div>
+
+
+
+    <div class="row">
+    <div class="col s12 m4">
+    <canvas id="winlosschart" width="400" height="400"></canvas>
+
+    </div>
     </div>
 <% end %>
 
