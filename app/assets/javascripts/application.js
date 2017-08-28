@@ -105,16 +105,6 @@ $(document).on('turbolinks:load', function() {
     //         }
     //     });
     // }
-    function onElementRendered(selector, cb, _attempts) {
-        var el = $(selector);
-        _attempts = ++_attempts || 1;
-        if (el.length) return cb(el);
-        if (_attempts == 60) return;
-        setTimeout(function() {
-          onElementRendered(selector, cb, _attempts);
-        }, 250);
-      }
-
 
 
 
@@ -128,74 +118,24 @@ $(document).on('turbolinks:load', function() {
         }, 250);
       }
       function openCharts() {
-        if ($(".chart-container1").length) {
-            //////// ABILITY CHARTS ////////////
-            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
-            var abilityctx1 = document.getElementById("ability-chart-breakdown1").getContext('2d');
-            var abilityChart1 = new Chart(abilityctx1, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#34495e"
-                ],
-                data: [char_data1["Character Stats"]["Intellect"], char_data1["Character Stats"]["Discipline"], char_data1["Character Stats"]["Strength"]]
-                }]
-            }
-            });
-        }
-              
-        if ($(".chart-container2").length) {
-            //////// ABILITY CHARTS ////////////
-            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
-            var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
-            var abilityChart2 = new Chart(abilityctx2, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#34495e"
-                ],
-                data: [char_data2["Character Stats"]["Intellect"], char_data2["Character Stats"]["Discipline"], char_data2["Character Stats"]["Strength"]]
-                }]
-            }
-            });
-        }
-            
-        if ($(".chart-container3").length) {
-            //////// ABILITY CHARTS ////////////
-            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
-            var abilityctx3 = document.getElementById("ability-chart-breakdown3").getContext('2d');
-            var abilityChart3 = new Chart(abilityctx3, {
-            type: 'doughnut',
-            data: {
-                labels: ["Intellect", "Discipline", "Strength"],
-                datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#34495e"
-                ],
-                data: [char_data3["Character Stats"]["Intellect"], char_data3["Character Stats"]["Discipline"], char_data3["Character Stats"]["Strength"]]
-                }]
-            }
-            });
-        }
 
         
         //////// WEAPON CHARTS ////////////
+
         if ($(".chart-container1").length) {
             var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
             // var char_data = chart_data[0];
             var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
+            var auto1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Auto Rifle"]);
+            var hand1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Hand Cannon"]);
+            var pulse1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
+            var scout1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"]);
+            var sniper1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Sniper"]);
+            var shotgun1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Shotgun"]);
+            var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1);
+
             var weaponChart1 = new Chart(weaponctx1, {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
                 datasets: [{
@@ -208,8 +148,20 @@ $(document).on('turbolinks:load', function() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [char_data1["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data1["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data1["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data1["Character Stats"]["Kill Stats"]["Sniper"], char_data1["Character Stats"]["Kill Stats"]["Shotgun"]]
+                data: [((auto1 / total_kills1) * 100).toFixed(0), ((hand1 / total_kills1) * 100).toFixed(0), ((pulse1 / total_kills1) * 100).toFixed(0), ((scout1 / total_kills1) * 100).toFixed(0), ((sniper1 / total_kills1) * 100).toFixed(0), ((shotgun1 / total_kills1) * 100).toFixed(0)]
                 }]
+            },
+            options: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15
+                    }
+                },
+                title: {
+                    display: true,
+                    text: '% Kills by Weapon Types'
+                }
             }
             });
         }
@@ -218,8 +170,15 @@ $(document).on('turbolinks:load', function() {
             var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
             // var char_data = chart_data[0];
             var weaponctx2 = document.getElementById("weapon-breakdown-chart2").getContext('2d');
+            var auto2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Auto Rifle"]);
+            var hand2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Hand Cannon"]);
+            var pulse2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
+            var scout2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"]);
+            var sniper2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Sniper"]);
+            var shotgun2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Shotgun"]);
+            var total_kills2 =  (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2);
             var weaponChart2 = new Chart(weaponctx2, {
-            type: 'polarArea',
+            type: 'pie',
             data: {
                 labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
                 datasets: [{
@@ -232,8 +191,20 @@ $(document).on('turbolinks:load', function() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [char_data2["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data2["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data2["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data2["Character Stats"]["Kill Stats"]["Sniper"], char_data2["Character Stats"]["Kill Stats"]["Shotgun"]]
-                }]
+                data: [((auto2 / total_kills2) * 100).toFixed(0), ((hand2 / total_kills2) * 100).toFixed(0), ((pulse2 / total_kills2) * 100).toFixed(0), ((scout2 / total_kills2) * 100).toFixed(0), ((sniper2 / total_kills2) * 100).toFixed(0), ((shotgun2 / total_kills2) * 100).toFixed(0)]
+            }]
+            },
+            options: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15
+                    }
+                },
+                title: {
+                    display: true,
+                    text: '% Kills by Weapon Types'
+                }
             }
             });
         }
@@ -241,15 +212,27 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var weaponctx3 = document.getElementById("weapon-breakdown-chart3").getContext('2d');
+            var auto3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Auto Rifle"]);
+            var hand3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Hand Cannon"]);
+            var pulse3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
+            var scout3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"]);
+            var sniper3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Sniper"]);
+            var shotgun3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Shotgun"]);
+            var total_kills3 =  (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3);
             var weaponChart3 = new Chart(weaponctx3, {
-            type: 'polarArea',
+            type: 'pie',
             options: {
-                layout: {
-                    padding: {
-                        top: 20
-                        }
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15
                     }
                 },
+                title: {
+                    display: true,
+                    text: '% Kills by Weapon Types'
+                }
+            },
             data: {
                 labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
                 datasets: [{
@@ -262,9 +245,388 @@ $(document).on('turbolinks:load', function() {
                     "#e74c3c",
                     "#34495e"
                 ],
-                data: [char_data3["Character Stats"]["Kill Stats"]["Auto Rifle"], char_data3["Character Stats"]["Kill Stats"]["Hand Cannon"], char_data3["Character Stats"]["Kill Stats"]["Pulse Rifle"], char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"], char_data3["Character Stats"]["Kill Stats"]["Sniper"], char_data3["Character Stats"]["Kill Stats"]["Shotgun"]]
-                }]
+                data: [((auto3 / total_kills3) * 100).toFixed(0), ((hand3 / total_kills3) * 100).toFixed(0), ((pulse3 / total_kills3) * 100).toFixed(0), ((scout3 / total_kills3) * 100).toFixed(0), ((sniper3 / total_kills3) * 100).toFixed(0), ((shotgun3 / total_kills3) * 100).toFixed(0)]
+            }]
             }
+            });
+        }
+
+        //////WINS CHARTS //////////
+        if ($(".chart-container1").length) {
+            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+            var abilityctx1 = document.getElementById("ability-chart-breakdown1").getContext('2d');
+            var win1 =  parseInt(char_data1["Character Stats"]["games_won"]);
+            var loss1 =  parseInt(char_data1["Character Stats"]["games_lost"]);
+            var total_games1 = parseInt(win1 + loss1);
+            var abilityChart1 = new Chart(abilityctx1, {
+            type: 'doughnut',
+            data: {
+                labels: ["Win", "Loss"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#e74c3c"
+                ],
+                data: [((win1 / total_games1) * 100).toFixed(0), ((loss1 / total_games1) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Win %'
+                }
+            }
+            });
+        }
+              
+        if ($(".chart-container2").length) {
+            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+            var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
+            var win2 =  parseInt(char_data2["Character Stats"]["games_won"]);
+            var loss2 =  parseInt(char_data2["Character Stats"]["games_lost"]);
+            var total_games2 = parseInt(win2 + loss2);
+            var abilityChart2 = new Chart(abilityctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ["Win", "Loss"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#e74c3c"
+                ],
+                data: [((win2 / total_games2) * 100).toFixed(0), ((loss2 / total_games2) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Win %'
+                }
+            }
+            });
+        }
+
+        if ($(".chart-container3").length) {
+            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
+            var abilityctx3 = document.getElementById("ability-chart-breakdown3").getContext('2d');
+            var win3 =  parseInt(char_data3["Character Stats"]["games_won"]);
+            var loss3 =  parseInt(char_data3["Character Stats"]["games_lost"]);
+            var total_games3 = parseInt(win3 + loss3);
+            var abilityChart3 = new Chart(abilityctx3, {
+            type: 'doughnut',
+            data: {
+                labels: ["Win", "Loss"],
+                datasets: [{
+                backgroundColor: [
+                    "#2ecc71",
+                    "#e74c3c"
+                ],
+                data: [((win3 / total_games3) * 100).toFixed(0), ((loss3 / total_games3) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Win %'
+                }
+            }
+            });
+        }
+
+        //////REVIVES CHARTS //////////
+        if ($(".chart-container1").length) {
+            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+            var revivectx1 = document.getElementById("revive-chart-breakdown1").getContext('2d');
+            var given1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Performed"]);
+            var received1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var total_revives1 = parseInt(given1 + received1);
+            console.log(char_data1["Character Stats"]["Kill Stats"]["Revives Performed"]);
+            console.log(char_data1["Character Stats"]["Kill Stats"]["Revives Received"]);
+            console.log(total_revives1);
+            console.log(given1 / total_revives1);
+            console.log(received1 / total_revives1);
+            
+
+            var reviveChart1 = new Chart(revivectx1, {
+            type: 'doughnut',
+            data: {
+                labels: ["Given", "Received"],
+                datasets: [{
+                backgroundColor: [
+                    "#3498db",
+                    "#95a5a6"
+                ],
+                data: [((given1 / total_revives1) * 100).toFixed(0), ((received1 / total_revives1) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Revives'
+                }
+            }
+            });
+        }
+
+        if ($(".chart-container2").length) {
+            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+            var revivectx2 = document.getElementById("revive-chart-breakdown2").getContext('2d');
+            var given2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Revives Performed"]);
+            var received2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var total_revives2 = parseInt(given2 + received2);
+            
+
+            var reviveChart2 = new Chart(revivectx2, {
+            type: 'doughnut',
+            data: {
+                labels: ["Given", "Received"],
+                datasets: [{
+                backgroundColor: [
+                    "#3498db",
+                    "#95a5a6"
+                ],
+                data: [((given2 / total_revives2) * 100).toFixed(0), ((received2 / total_revives2) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Revives'
+                }
+            }
+            });
+        }
+
+        if ($(".chart-container3").length) {
+            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
+            var revivectx3 = document.getElementById("revive-chart-breakdown3").getContext('2d');
+            var given3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Revives Performed"]);
+            var received3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var total_revives3 = parseInt(given3 + received3);
+
+            var reviveChart3 = new Chart(revivectx3, {
+            type: 'doughnut',
+            data: {
+                labels: ["Given", "Received"],
+                datasets: [{
+                backgroundColor: [
+                    "#3498db",
+                    "#95a5a6"
+                ],
+                data: [((given3 / total_revives3) * 100).toFixed(0), ((received3 / total_revives3) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Revives'
+                }
+            }
+            });
+        }
+                    
+
+        //////// KILL CHARTS//////
+        if ($(".chart-container1").length) {
+            var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+            var killctx1 = document.getElementById('kill-chart-breakdown1').getContext('2d');
+            var temp_data1 = []
+            var temp_wins1 = []
+            console.log(char_data1);
+        
+            $.each(char_data1["recent_games"].reverse(), function (index, value) {
+                temp_data1.push(value["kd_ratio"]);
+                temp_wins1.push(value["standing"]);
+                
+            });
+        
+            var pointBackgroundColors1 = [];
+            for (i = 0; i < temp_wins1.length; i++) {
+                if (temp_wins1[i] == 0) {
+                    pointBackgroundColors1.push("#2ecc71");
+                } else {
+                    pointBackgroundColors1.push("#e74c3c");
+                }
+            }
+        
+            var killChart1 = new Chart(killctx1, {
+                type: 'line',
+                data: {
+                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                    datasets: [{
+                        fill: false,
+                        label: 'KD',
+                        data: temp_data1,
+                        pointBackgroundColor: pointBackgroundColors1,
+                        borderColor: "#A5A5AF",
+                        pointBorderColor: "white",
+                        pointRadius: 5,
+                        borderWidth: 2
+                    },
+                    {
+                        fill: false,
+                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        backgroundColor: "#EEEEEE",
+                        label: "",
+                        borderColor: "black",
+                        pointRadius: 0,
+                        borderWidth: 1,
+                        pointHoverRadius: 0
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Recent Games'
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0
+                        }
+                    }
+                }
+            });
+        }
+
+        if ($(".chart-container2").length) {
+            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+            var killctx2 = document.getElementById('kill-chart-breakdown2').getContext('2d');
+            var temp_data2 = []
+            var temp_wins2 = []
+            console.log(char_data2);
+        
+            $.each(char_data2["recent_games"].reverse(), function (index, value) {
+                temp_data2.push(value["kd_ratio"]);
+                temp_wins2.push(value["standing"]);
+                
+            });
+        
+            var pointBackgroundColors2 = [];
+            for (i = 0; i < temp_wins2.length; i++) {
+                if (temp_wins2[i] == 0) {
+                    pointBackgroundColors2.push("#2ecc71");
+                } else {
+                    pointBackgroundColors2.push("#e74c3c");
+                }
+            }
+        
+            var killChart2 = new Chart(killctx2, {
+                type: 'line',
+                data: {
+                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                    datasets: [{
+                        fill: false,
+                        label: 'KD',
+                        data: temp_data2,
+                        pointBackgroundColor: pointBackgroundColors2,
+                        borderColor: "#A5A5AF",
+                        pointBorderColor: "white",
+                        pointRadius: 6,
+                        borderWidth: 2
+                    },
+                    {
+                        fill: false,
+                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        backgroundColor: "#EEEEEE",
+                        label: "",
+                        borderColor: "black",
+                        pointRadius: 0,
+                        borderWidth: 1,
+                        pointHoverRadius: 0
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Recent Games'
+                    }
+                }
+            });
+        }
+
+        if ($(".chart-container3").length) {
+            var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
+            var killctx3 = document.getElementById('kill-chart-breakdown3').getContext('2d');
+            var temp_data3 = []
+            var temp_wins3 = []
+            console.log(char_data3);
+        
+            $.each(char_data3["recent_games"].reverse(), function (index, value) {
+                temp_data3.push(value["kd_ratio"]);
+                temp_wins3.push(value["standing"]);
+                
+            });
+        
+            var pointBackgroundColors3 = [];
+            for (i = 0; i < temp_wins3.length; i++) {
+                if (temp_wins3[i] == 0) {
+                    pointBackgroundColors3.push("#2ecc71");
+                } else {
+                    pointBackgroundColors3.push("#e74c3c");
+                }
+            }
+        
+            var killChart3 = new Chart(killctx3, {
+                type: 'line',
+                data: {
+                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                    datasets: [{
+                        fill: false,
+                        label: 'KD',
+                        data: temp_data3,
+                        pointBackgroundColor: pointBackgroundColors3,
+                        borderColor: "#A5A5AF",
+                        pointBorderColor: "white",
+                        pointRadius: 5,
+                        borderWidth: 2
+                    },
+                    {
+                        fill: false,
+                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                        backgroundColor: "#EEEEEE",
+                        label: "",
+                        borderColor: "black",
+                        pointRadius: 0,
+                        borderWidth: 1,
+                        pointHoverRadius: 0
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Recent Games'
+                    }
+                }
             });
         }
       }
@@ -274,12 +636,12 @@ $(document).on('turbolinks:load', function() {
           return "active";
         });
         $(".collapsible").collapsible({accordion: true});
-        $(".collapsible").collapsible({accordion: false});
+        $(".collapsible").collapsible({accordion: false});    
       }
 
       function expandAll(){
         $(".collapsible-header").addClass("active");
-        $(".collapsible").collapsible({accordion: false});
+        $(".collapsible").collapsible({accordion: false});        
       }
       
       $("#expand-button").click(function() {
@@ -289,9 +651,9 @@ $(document).on('turbolinks:load', function() {
         collapseAll();
       });
 
-      onElementRendered('.collapsible', function(el) {
+      onElementRendered('#stat-graphs', function(el) {
         $('.collapsible').collapsible({
-            onOpen: function(el) {
+            onOpen: function(e) {
                 openCharts();
              }
         });
@@ -301,6 +663,10 @@ $(document).on('turbolinks:load', function() {
       });
 
 
+    $( ".collapsible-header" ).click(function() {
+        $(".more",this).toggle()
+        $(".less", this).toggle()
+    });
         
 
 

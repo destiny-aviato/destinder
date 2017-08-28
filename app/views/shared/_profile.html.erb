@@ -1,95 +1,71 @@
 <% info = get_stats("too") %>
-<% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+<% if info.nil? %>
+  Sorry! Something went wrong! 
+<% else %>
+  <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
 
-<div class="container ">
-  <div class="row">
-    <h4 class="center">PLAYER REPUTATION</h4>
-    <hr>
-          <div class="col s12 m6">
-            <%= image_tag( @user["profile_picture"])%>
-            
-          </div>
-          <div class="col s12 m6">      
-            <% total = @user.votes_for + @user.votes_against %>      
-            <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
-            <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
-            <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
-            <p>Already voted: <%= current_user.voted_for?(@user) %></p>
-            <%if @user != current_user %>
-              <% if current_user.voted_for?(@user) %>
-                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                  <i class="material-icons">thumb_up</i>
-                <% end %>
+  <div class="container ">
+    <div class="row">
+      <h4 class="center">PLAYER REPUTATION</h4>
+      <hr>
+            <div class="col s12 m6">
+              <%= image_tag( @user["profile_picture"])%>
+              
+            </div>
+            <div class="col s12 m6">      
+              <% total = @user.votes_for + @user.votes_against %>      
+              <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
+              <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
+              <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
+              <p>Already voted: <%= current_user.voted_for?(@user) %></p>
+              <%if @user != current_user %>
+                <% if current_user.voted_for?(@user) %>
+                  <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                    <i class="material-icons">thumb_up</i>
+                  <% end %>
 
-                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                  <i class="material-icons">cancel</i>
-                <% end %>
+                  <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                    <i class="material-icons">cancel</i>
+                  <% end %>
 
-                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                  <i class="material-icons">thumb_down</i>
-                <% end %>
-              <% else %>
-                <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                  <i class="material-icons">thumb_up</i>
-                <% end %>
+                  <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                    <i class="material-icons">thumb_down</i>
+                  <% end %>
+                <% else %>
+                  <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                    <i class="material-icons">thumb_up</i>
+                  <% end %>
 
-                <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                  <i class="material-icons">cancel</i>
-                <% end %>
+                  <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                    <i class="material-icons">cancel</i>
+                  <% end %>
 
-                <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                  <i class="material-icons">thumb_down</i>
+                  <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                    <i class="material-icons">thumb_down</i>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
+
           </div>
 
-        </div>
-
-        <div class="row">
-          <div class="col s12">
-            <h4>Badges:</h4>
-                  <% @user.badges.each do |badge| %>                
-                      <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                        <%= badge.name %>
-                        <%= badge.custom_fields[:icon].html_safe %>
-                      </div>                
-                  <% end %>
+          <div class="row">
+            <div class="col s12">
+              <h4>Badges:</h4>
+                    <% @user.badges.each do |badge| %>                
+                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                          <%= badge.name %>
+                          <%= badge.custom_fields[:icon].html_safe %>
+                        </div>                
+                    <% end %>
+            </div>
           </div>
-        </div>
-</div>
+  </div>
 
 
-    
-<h4 class="center">PLAYER STATS</h4>
-<hr>
-<!-- <a id="expand-button" class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i></a>
-<a id="collapse-button" class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i></a> -->
-  <ul id="stat-collapse" class="collapsible" data-collapsible="expandable">
-      <% info.each_with_index do |character, index| %>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">insert_chart</i><%= character_races[character["Character Type"]] %></div>
-            <div class="collapsible-body">
-              <div class="row">
-                      <div class="col s12 m6">
-                          <h4>Kill by Weapon Types</h4>
-                          <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
-                          <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 500px !important; max-height: 500px !important"></canvas></div>                    
-                      </div>
-                      <div class="col s12 m6">
-                              <div>
-                                  <h4>Player Ability Stats</h4>
-                                  <div><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 500px !important; max-height: 500px !important"></canvas></div>        
-                              </div>
-                          </div>
-                  </div>
-          </div>
-      </li>
-
-      <% end %>
-    </ul>
-
-
+      
+  
+<% end %>
 
 
 
