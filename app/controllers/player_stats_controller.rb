@@ -35,7 +35,7 @@ class PlayerStatsController < ApplicationController
       case mode
       when "too"  
         begin
-          PlayerStat.get_trials_stats(@player_stat.display_name,@player_stat.membership_type)
+          PlayerStat.get_trials_stats(@player_stat.display_name, @player_stat.membership_type)
         rescue StandardError => e
           return nil
         end
