@@ -108,13 +108,13 @@ $(document).on('turbolinks:load', function() {
 
 
 
-    function onElementRendered(selector, cb, _attempts) {
+      function onElementRendered(selector, cb, _attempts) {
         var el = $(selector);
         _attempts = ++_attempts || 1;
         if (el.length) return cb(el);
         if (_attempts == 60) return;
         setTimeout(function() {
-            onElementRendered(selector, cb, _attempts);
+          onElementRendered(selector, cb, _attempts);
         }, 250);
       }
       function openCharts() {
@@ -281,7 +281,7 @@ $(document).on('turbolinks:load', function() {
             }
             });
         }
-
+              
         if ($(".chart-container2").length) {
             var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
             var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
@@ -629,40 +629,38 @@ $(document).on('turbolinks:load', function() {
                 }
             });
         }
-    }
-
-    function collapseAll() {
-        $(".collapsible-header").removeClass(function() {
-            return "active";
+      }
+      
+      function collapseAll(){
+        $(".collapsible-header").removeClass(function(){
+          return "active";
         });
         $(".collapsible").collapsible({accordion: true});
         $(".collapsible").collapsible({accordion: false});    
       }
 
-    function expandAll() {
+      function expandAll(){
         $(".collapsible-header").addClass("active");
         $(".collapsible").collapsible({accordion: false});        
       }
       
       $("#expand-button").click(function() {
         expandAll();
-    });
-    $("#collapse-button").click(function() {
+      });
+      $("#collapse-button").click(function() {
         collapseAll();
-    });
+      });
 
       onElementRendered('#stat-graphs', function(el) {
         $('.collapsible').collapsible({
             onOpen: function(e) {
                 openCharts();
-            }
+             }
         });
 
         expandAll();
         collapseAll();
-    });
-
-
+      });
 
 
     $( ".collapsible-header" ).click(function() {
@@ -680,6 +678,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
+    
     $(".button-collapse").sideNav({
         closeOnClick: true,
         draggable: true
@@ -777,16 +776,4 @@ $(document).on("turbolinks:load", function() {
         delay: 50
     });
 
-});
-
-
-
-
-
-
-var ctx = document.getElementById("winlosschart").getContext('2d');
-var myLineChart = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: options
 });
