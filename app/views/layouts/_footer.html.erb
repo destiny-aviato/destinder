@@ -1,8 +1,10 @@
         <div class="footer-copyright">
           <div class="container" style="width: 80%;">
             <center>
+              <% if !current_user.nil? && (["Luminusss", "ii WALZ ii"].include?(current_user.display_name)) %>
                 <%= link_to "Site Statistics", site_stats_path %> -
-                <div style="display: inline;" id="testing"></div> 
+              <% end %>
+              <div style="display: inline;" id="testing"></div> 
                 <!-- <%= link_to "Terms of Use", "#" %> - -->
                 <!-- <%= link_to "Privacy Policy", "#" %> -->
             </center>

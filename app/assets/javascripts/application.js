@@ -348,13 +348,7 @@ $(document).on('turbolinks:load', function() {
             var revivectx1 = document.getElementById("revive-chart-breakdown1").getContext('2d');
             var given1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Performed"]);
             var received1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Received"]);
-            var total_revives1 = parseInt(given1 + received1);
-            console.log(char_data1["Character Stats"]["Kill Stats"]["Revives Performed"]);
-            console.log(char_data1["Character Stats"]["Kill Stats"]["Revives Received"]);
-            console.log(total_revives1);
-            console.log(given1 / total_revives1);
-            console.log(received1 / total_revives1);
-            
+            var total_revives1 = parseInt(given1 + received1);        
 
             var reviveChart1 = new Chart(revivectx1, {
             type: 'doughnut',
