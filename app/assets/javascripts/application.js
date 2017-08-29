@@ -43,9 +43,18 @@ $(document).on('turbolinks:load', function() {
     $('#pvp-game-select').material_select();
 
     $('.game_type_select').change(function() {
-        $('#new-post-modal').modal('close');
-        $("#filter_game_form").submit();
+        selection = $(this).val();
+
+        if (selection == "Trials of Osiris") {
+            $('#filter-sliders').show();
+        } else {
+            $('#filter-sliders').hide();
+        }
+        // $('#new-post-modal').modal('close');
+        // $("#filter_game_form").submit();
     });
+
+
 
     // $('.microphone_select').change(function() {
     //     $('#new-post-modal').modal('close');
@@ -55,14 +64,15 @@ $(document).on('turbolinks:load', function() {
 
 
     $('.looking_for_select').change(function() {
-        $('#new-post-modal').modal('close');
-        $("#filter_game_form").submit();
+        // $('#new-post-modal').modal('close');
+        // $("#filter_game_form").submit();
     });
 
     $('div#checkpoint').hide();
     $('div#difficulty').hide();
     $('label.difficulty-label').hide();
     $('div#checkpoint').hide();
+    $('#filter-sliders').hide();
 
     $('#micropost_raid_difficulty').val('Normal');
 
@@ -649,9 +659,13 @@ $(document).on('turbolinks:load', function() {
         collapseAll();
       });
       
-      $("#update-slider").click(function() {
+      $("#update-form").click(function() {
         $("#filter_game_form").submit();
         $('#post-filter-modal').modal('close');
+      });
+
+      $("#post-submit").click(function() {
+        $('.collapsible').collapsible('close', 0);
       });
 
       onElementRendered('#stat-graphs', function(el) {
@@ -667,14 +681,15 @@ $(document).on('turbolinks:load', function() {
 
       onElementRendered('#post-filter-modal', function(el) {
         if ($("#kd-slider").length) {
+
             var kdSlider = document.getElementById('kd-slider');
-            kdSlider.style.width = '400px';
+            kdSlider.style.width = '100%';
             kdSlider.style.margin = '0 auto 30px';
             noUiSlider.create(kdSlider, {
             start: [1.0, 2.0],
             connect: true,
             step: 0.1,
-            tooltips: [ wNumb({ decimals: 1 }), wNumb({ decimals: 1 }) ],
+            tooltips: [ true, true ],
             orientation: 'horizontal', // 'horizontal' or 'vertical'
             range: {
             'min': 0.0,
@@ -684,9 +699,23 @@ $(document).on('turbolinks:load', function() {
             decimals: 1
             })
             });
+            
+
+
+            var kdMin = document.getElementById('kd-field-min'),
+            kdMax = document.getElementById('kd-field-max');
+        
+            kdSlider.noUiSlider.on('update', function ( values, handle ) {
+                if ( handle ) {
+                    kdMax.innerHTML = values[handle];
+                } else {
+                    kdMin.innerHTML = values[handle];
+                }
+            });
+
         
             var eloSlider = document.getElementById('elo-slider');
-            eloSlider.style.width = '400px';
+            eloSlider.style.width = '100%';
             eloSlider.style.margin = '0 auto 30px';
             noUiSlider.create(eloSlider, {
             start: [1000, 2000],
@@ -701,8 +730,24 @@ $(document).on('turbolinks:load', function() {
             decimals: 0
             })
             });
+
+            var eloMin = document.getElementById('elo-field-min'),
+            eloMax = document.getElementById('elo-field-max');
+        
+            eloSlider.noUiSlider.on('update', function ( values, handle ) {
+                if ( handle ) {                                                         
+                    eloMax.innerHTML = parseInt(values[handle]).toFixed(0);
+                    $('input#elo_max').val(parseInt(values[handle]).toFixed(0));
+                } else {
+                    eloMin.innerHTML = parseInt(values[handle]).toFixed(0);
+                    $('input#elo_min').val(parseInt(values[handle]).toFixed(0));
+                    
+                }
+            });
         }
       });
+
+
 
 
     $( ".collapsible-header" ).click(function() {
@@ -743,7 +788,6 @@ $(document).on('turbolinks:load', function() {
             $('label.difficulty-label').show();
             // $('label.checkpoint-label').show();
             $('div#checkpoint').show();
-            console.log("raid chosen");
         } else {
             $('#pve-gametype-select').attr('class', 'input-field col s12');
             $('div#difficulty').hide();

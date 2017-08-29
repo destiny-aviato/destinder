@@ -246,7 +246,11 @@
                                          </div>
                                          <div class="col s12 m4 center-align">
                                             <p class="stat-heading">Best Weapon</p>
-                                            <p class="stat-title"><%= image_tag weapons[x["Character Stats"]["Kill Stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
+                                            <% if !x["Character Stats"]["Kill Stats"]["Best Weapon Type"].nil? %>
+                                                <p class="stat-title"><%= image_tag weapons[x["Character Stats"]["Kill Stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
+                                            <% else %>
+                                                <p class="stat-title"><%= image_tag weapons["Pulse Rifle"], style: "height: 35px;" %></p>
+                                            <% end %>
                                          </div>
                                          <div class="col s6 m2 center-align">
                                             <p class="stat-heading">Longest Spree</p>
