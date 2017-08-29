@@ -2,13 +2,13 @@
 
 ## Getting started:
 
-* Install Ruby, Rails, and Postgres on your machine ([guide](https://gorails.com/setup/osx/10.12-sierra))
+* Install Ruby, Rails, and Postgres on your machine ([guide for Mac OS](https://gorails.com/setup/osx/10.12-sierra))
 
 * Clone the git repository:
 
     - In a terminal session, change to the directory you want the files to live in and run `git clone https://github.com/destiny-aviato/intense-spire.git`
 
-    - Once that's done, change into the intense-spire directory
+    - Once that's done, change into the destinder directory
 
 * Run `bundle install` in terminal
 
@@ -30,4 +30,4 @@
 
 ## Contributing
 
-For all contributions, please fork the repository and make a pull request with detailed information outlining your changes. Follow [this guide](https://help.github.com/articles/fork-a-repo/) to do so. Thanks!
+We love and welcome all contribution requests! If you've either found a bug or have a feature you want added in, please create a pull request with a detailed comment outlining your changes (Follow [this guide](https://help.github.com/articles/fork-a-repo/)). Please also attach any screenshots of UI changes you may have made in the process as well. If you have any questions please file an issue on GitHub or send [send us an email](mailto:destinyaviato@gmail.com). We plan on reviewing all pull requests within 2 weeks of submission. Thanks!

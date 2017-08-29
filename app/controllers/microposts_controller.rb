@@ -30,6 +30,8 @@ class MicropostsController < ApplicationController
         when "Trials of Osiris" 
             @micropost.raid_difficulty = ""
             @micropost.user_stats = get_stats(current_user, "too", @micropost.raid_difficulty, @micropost.character_choice)            
+            @micropost.elo = @micropost.user_stats["Character Stats"]["ELO"]["ELO"].to_i
+            @micropost.kd = @micropost.user_stats["Character Stats"]["K/D Ratio"].to_f
         when "Wrath of the Machine"
             @micropost.user_stats = get_stats(current_user, "wrath", @micropost.raid_difficulty, @micropost.character_choice)
         when "King's Fall"
@@ -47,6 +49,7 @@ class MicropostsController < ApplicationController
         end
 
         @micropost.platform = current_user.api_membership_type
+        
 
         
 
@@ -126,7 +129,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for, :elo_min, :elo_max, :kd_min, :kd_max)
     end
     
     def correct_user
@@ -135,6 +138,6 @@ class MicropostsController < ApplicationController
     end
 
     def filtering_params(params)
-        params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required)
+        params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required, :elo_min, :elo_max, :kd_min, :kd_max)
       end
 end

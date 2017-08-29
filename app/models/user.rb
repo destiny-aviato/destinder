@@ -49,26 +49,55 @@ class User < ApplicationRecord
     rank = 0
     
     begin 
-    response = Typhoeus.get(
-            "https://api.guardian.gg/elo/#{membership_id}"
-        )
-      
-    data = JSON.parse(response.body)
+        response = Typhoeus.get(
+                "https://api.guardian.gg/elo/#{membership_id}"
+            )
+            
+        data = JSON.parse(response.body)
 
-    data.each do |x| 
-      if x["mode"] == 14
-        elo = x["elo"]
-        rank = x["rank"]
-        break
-      end
+        data.each do |x| 
+            if x["mode"] == 14
+                elo = x["elo"]
+                rank = x["rank"]
+                break
+            end
+        end
+    rescue StandardError => e
+        puts e 
     end
-  rescue StandardError => e
-    puts e 
-  end
-
+  
   {"ELO" => elo.round, "Rank" => rank.round}
   
 end
+
+def get_recent_games(username, character_id)
+    games = []
+    get_recent_games = Typhoeus.get(
+        "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?mode=14&count=15&lc=en",
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+        )
+        
+    game_data = JSON.parse(get_recent_games.body)
+    game_data["Response"]["data"]["activities"].each do |game|
+        game_kills = game["values"]["kills"]["basic"]["value"]
+        game_deaths = game["values"]["deaths"]["basic"]["value"]
+        game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
+        game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
+        game_standing = game["values"]["standing"]["basic"]["value"]
+        
+        game_info = {
+            "kills" => game_kills,
+            "deaths" => game_deaths,
+            "kd_ratio" => game_kd,
+            "kad_ratio" => game_kad,
+            "standing" => game_standing
+        }
+
+        games << game_info
+    end
+    games
+
+  end
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
@@ -102,6 +131,7 @@ end
     hydra.run
     @characters_stats
   end
+  
   def get_trials_stats(username)
         username.display_name.strip!
 
@@ -265,7 +295,7 @@ end
                         super_kills =  0
                         ability_kills =  0
                         longest_spree = 0
-                        weapon_best_type = 0
+                        weapon_best_type = "Rocket Launcher"
                         longest_life = 0
                         orbs_dropped = 0
                         res_received = 0
@@ -318,6 +348,8 @@ end
                         "Discipline" => stat_dicipline,
                         "Strength" => stat_strength,
                         "ELO" => elo,
+                        "games_won" => games_won,
+                        "games_lost" => (games_played - games_won),
                         "Win Rate" => win_rate,
                         "Armor" => stat_armor,
                         "Agility" => stat_agility,
@@ -327,7 +359,7 @@ end
                         "Kill Stats" => kill_stats
                     }
 
-                    @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items}
+                    @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items, "recent_games" => get_recent_games(username, character_id)}
                     
                 end
                     

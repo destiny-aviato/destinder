@@ -536,6 +536,7 @@ a.gamertag-name {
     margin-right: auto;
     margin-top: 23px;
     width: 60%;
+    border: #d1d1d1 solid 3px;
 }
 
 // .modal .modal-content {
@@ -918,9 +919,27 @@ html {
         margin-left: -20% !important;
         width: 125%;
     }
-    // #nav-icon {
-    //     display: none !important;
-    // }
+    .row.player-stats-collapse {
+        margin-left: -21% !important;
+        width: 140%;
+    }
+
+}
+
+.stat-heading {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.stat-title {
+    color: #212121;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.125;
+    margin-top: 0px;
 }
 
 .navbar-item {
@@ -953,8 +972,8 @@ html {
 }
 
 .gun-icons-trials {
-    width: 55px;
-    height: 55px;
+    width: 65px;
+    height: 65px;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -1090,12 +1109,10 @@ a.post-form-tabs {
     background-color: rgba(80, 133, 165, 0.63);
 }
 
-.jstest {
-    height: 250px!important;
-    position: relative;
-    bottom: 20px;
-    background-image: url(/assets/solar-9b9f4a0….png);
-    background-size: cover;
-    background-position-y: -50px;
-    opacity: 0.3!important;
+.noUi-target.noUi-horizontal .noUi-tooltip {
+    background-color: #21708e;
+}
+
+.noUi-connect {
+    background: #21708e;
 }

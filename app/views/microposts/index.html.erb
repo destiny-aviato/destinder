@@ -39,14 +39,14 @@
 
 <!-- New Post Icon -->
     <div class="fixed-action-btn hide-on-mobile-only">
-        <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#new-post-modal">
+        <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#post-filter-modal">
             <i class="fa fa-filter" aria-hidden="true"></i>
         </a>
     </div>
       
       
 <!-- Post Modal Structure -->
-<div id="new-post-modal" class="modal" style=" height: 65%;">
+<div id="post-filter-modal" class="modal" style=" height: 75%; width: 80%">
     <div class="modal-content">
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
         <div class="row">
@@ -64,9 +64,46 @@
                 <label>Player Looking For</label><br>   
                 <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee'],["Similar", "Similar"]]), class: 'looking_for_select' %>
             </div>
-
         </div>
-        <a  onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a>
+        <div id="filter-sliders">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="row">
+                        <div class="col s12"><label>ELO (Trials Only)</label><br><br></div>
+                        <div class="col s12"><div id="elo-slider"></div></div>
+                        <div class="col s6 left-align"><label>Min: <span id="elo-field-min">1000</span></label></div>                        
+                        <div class="col s6 right-align"><label>Max: <span id="elo-field-max">2000</span></label></div>
+                    </div>                
+                </div>
+                <div class="col s12 m6">
+                    <div class="row">
+                        <div class="col s12"><label>K/D (Trials Only)</label><br><br></div>
+                        <div class="col s12"><div id="kd-slider"></div></div>
+                        <div class="col s6 left-align"><label>Min: <span id="kd-field-min">1.0</span></label></div>                        
+                        <div class="col s6 right-align"><label>Max: <span id="kd-field-max">2.0</span></label></div>
+                    </div>                
+                </div>
+                <div class="col s12 m6" style="display:none !important;">
+                    <%= text_field_tag :elo_min, nil%>
+                </div>
+                <div class="col s12 m6" style="display:none !important;">
+                    <label>MAX ELO (Trials)</label><br>   
+                    <%= text_field_tag :elo_max, nil%>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6" style="display:none !important;">
+                <%= text_field_tag :kd_min, nil%>
+            </div>
+            <div class="col s12 m6" style="display:none !important;">
+                <%= text_field_tag :kd_max, nil %>
+            </div>
+            <div class="col s12 m6">                
+                <a class="waves-effect waves-light btn" id="update-form">Update</a>
+            </div>
+        </div>
+        <!-- <a onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a> -->
     <% end %>
     </div>
 </div>

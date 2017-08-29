@@ -6,10 +6,13 @@ module ApplicationHelper
 
     def flash_messages(opts = {})
         flash.each do |msg_type, message|
-            concat(content_tag(:div, message, class: "#{materialize_class_for(msg_type)}") do
-            concat content_tag(:button, '', class: "delete", data: { dismiss: 'alert' })
-            concat "     #{message}"
-            end) if message.length > 0
+            if message != true 
+                message.length > 0
+                concat(content_tag(:div, message, class: "#{materialize_class_for(msg_type)}") do
+                concat content_tag(:button, '', class: "delete", data: { dismiss: 'alert' })
+                concat "     #{message}"
+                end) if message.length > 0
+             end
         end
         nil
     end
