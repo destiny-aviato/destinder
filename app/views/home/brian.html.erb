@@ -24,6 +24,8 @@
     <h2 class="tooltip" title="This is my span's tooltip message!">Tooltip test</h2>
     <span class="tooltip" data-tooltip-content="#tooltip_content">This span has a tooltip with HTML when you hover over it!</span>
     
+    <div id="kd-slider"></div><br><br>
+    <div id="elo-slider"></div>
 
     
     </div>
@@ -276,18 +278,18 @@
                             </div>
                             <hr>
                             <div class="row">
-                                    <div class="col s12">
-                                        <h5>Account Badges</h5>
-                                        <% if !current_user.nil? %>
-                                            <% current_user.badges.each do |badge| %>                
-                                                <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                                    <%= badge.name %>
-                                                    <%= badge.custom_fields[:icon].html_safe %>
-                                                </div>                
-                                            <% end %>
+                                <div class="col s12">
+                                    <h5>Account Badges</h5>
+                                    <% if !current_user.nil? %>
+                                        <% current_user.badges.each do |badge| %>                
+                                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                                <%= badge.name %>
+                                                <%= badge.custom_fields[:icon].html_safe %>
+                                            </div>                
                                         <% end %>
-                                    </div>
+                                    <% end %>
                                 </div>
+                            </div>
                         </div>
                     </li>            
                 <% end %>

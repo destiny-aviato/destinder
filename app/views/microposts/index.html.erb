@@ -39,14 +39,14 @@
 
 <!-- New Post Icon -->
     <div class="fixed-action-btn hide-on-mobile-only">
-        <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#new-post-modal">
+        <a class="btn-floating btn-large teal lighten-1 modal-trigger"  href="#post-filter-modal">
             <i class="fa fa-filter" aria-hidden="true"></i>
         </a>
     </div>
       
       
 <!-- Post Modal Structure -->
-<div id="new-post-modal" class="modal" style=" height: 65%;">
+<div id="post-filter-modal" class="modal" style=" height: 65%;">
     <div class="modal-content">
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
         <div class="row">
@@ -64,9 +64,31 @@
                 <label>Player Looking For</label><br>   
                 <%= select_tag :looking_for, options_for_select([ ['Any', ''], ['Sherpa', 'Sherpa'],['Sherpee', 'Sherpee'],["Similar", "Similar"]]), class: 'looking_for_select' %>
             </div>
-
         </div>
-        <a  onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>MIN ELO</label><br>   
+                <%= text_field_tag :elo_min, nil, placeholder: '1200'%>
+            </div>
+            <div class="col s12 m6">
+                <label>MAX ELO</label><br>   
+                <%= text_field_tag :elo_max, nil ,placeholder: '2000'%>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <label>MIN KD</label><br>   
+                <%= text_field_tag :kd_min, nil, placeholder: '1.0'%>
+            </div>
+            <div class="col s12 m6">
+                <label>MAX KD</label><br>   
+                <%= text_field_tag :kd_max, nil ,placeholder: '2.0'%>
+            </div>
+            <div class="col s12 m6">                
+                <a class="waves-effect waves-light btn" id="update-slider">Update Range</a>
+            </div>
+        </div>
+        <!-- <a onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a> -->
     <% end %>
     </div>
 </div>

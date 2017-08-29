@@ -52,6 +52,8 @@ $(document).on('turbolinks:load', function() {
     //     $("#filter_game_form").submit();
     // });
 
+
+
     $('.looking_for_select').change(function() {
         $('#new-post-modal').modal('close');
         $("#filter_game_form").submit();
@@ -117,9 +119,8 @@ $(document).on('turbolinks:load', function() {
           onElementRendered(selector, cb, _attempts);
         }, 250);
       }
-      function openCharts() {
 
-        
+      function openCharts() {
         //////// WEAPON CHARTS ////////////
 
         if ($(".chart-container1").length) {
@@ -641,8 +642,15 @@ $(document).on('turbolinks:load', function() {
       $("#expand-button").click(function() {
         expandAll();
       });
+
+
       $("#collapse-button").click(function() {
         collapseAll();
+      });
+      
+      $("#update-slider").click(function() {
+        $("#filter_game_form").submit();
+        $('#post-filter-modal').modal('close');
       });
 
       onElementRendered('#stat-graphs', function(el) {
@@ -656,6 +664,45 @@ $(document).on('turbolinks:load', function() {
         collapseAll();
       });
 
+      onElementRendered('#post-filter-modal', function(el) {
+        if ($("#kd-slider").length) {
+            var kdSlider = document.getElementById('kd-slider');
+            kdSlider.style.width = '400px';
+            kdSlider.style.margin = '0 auto 30px';
+            noUiSlider.create(kdSlider, {
+            start: [1.0, 2.0],
+            connect: true,
+            step: 0.1,
+            tooltips: [ wNumb({ decimals: 1 }), wNumb({ decimals: 1 }) ],
+            orientation: 'horizontal', // 'horizontal' or 'vertical'
+            range: {
+            'min': 0.0,
+            'max': 3.0
+            },
+            format: wNumb({
+            decimals: 1
+            })
+            });
+        
+            var eloSlider = document.getElementById('elo-slider');
+            eloSlider.style.width = '400px';
+            eloSlider.style.margin = '0 auto 30px';
+            noUiSlider.create(eloSlider, {
+            start: [1000, 2000],
+            connect: true,
+            step: 100,
+            orientation: 'horizontal', // 'horizontal' or 'vertical'
+            range: {
+            'min': 0,
+            'max': 3000
+            },
+            format: wNumb({
+            decimals: 0
+            })
+            });
+        }
+      });
+
 
     $( ".collapsible-header" ).click(function() {
         $(".more",this).toggle()
@@ -664,15 +711,6 @@ $(document).on('turbolinks:load', function() {
         
 
 
-
-
-
-
-
-
-
-
-    
     $(".button-collapse").sideNav({
         closeOnClick: true,
         draggable: true
