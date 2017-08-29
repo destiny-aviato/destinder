@@ -295,7 +295,7 @@ def get_recent_games(username, character_id)
                         super_kills =  0
                         ability_kills =  0
                         longest_spree = 0
-                        weapon_best_type = 0
+                        weapon_best_type = "Rocket Launcher"
                         longest_life = 0
                         orbs_dropped = 0
                         res_received = 0
