@@ -7,6 +7,10 @@ class Micropost < ApplicationRecord
   scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
   scope :looking_for, -> (raid_difficulty) { where looking_for: raid_difficulty }
   scope :mic_required, -> (mic_required) { where mic_required: mic_required }
+  scope :elo_min, -> (elo_min) { where("elo >= ?", elo_min)}
+  scope :elo_max, -> (elo_max) { where("elo <= ?", elo_max)}
+  scope :kd_min, -> (kd_min) { where("kd >= ?", kd_min)}
+  scope :kd_max, -> (kd_max) { where("kd <= ?", kd_max)}
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 50 }
   validates :game_type, presence: true

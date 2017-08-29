@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823053744) do
+ActiveRecord::Schema.define(version: 20170829145715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(version: 20170823053744) do
     t.string   "character_choice"
     t.boolean  "mic_required"
     t.string   "looking_for"
+    t.string   "elo_min"
+    t.string   "elo_max"
+    t.string   "kd_min"
+    t.string   "kd_max"
+    t.integer  "elo"
+    t.float    "kd"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end
@@ -125,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170823053744) do
     t.string   "api_membership_id"
     t.string   "api_membership_type"
     t.string   "elo"
+    t.text     "badges"
     t.integer  "sash_id"
     t.integer  "level",                  default: 0
     t.index ["provider"], name: "index_users_on_provider", using: :btree
