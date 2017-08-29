@@ -12,7 +12,7 @@ class Micropost < ApplicationRecord
   scope :kd_min, -> (kd_min) { where("kd >= ?", kd_min)}
   scope :kd_max, -> (kd_max) { where("kd <= ?", kd_max)}
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 50 }
+  validates :content,  length: { maximum: 50}
   validates :game_type, presence: true
   serialize :user_stats
 

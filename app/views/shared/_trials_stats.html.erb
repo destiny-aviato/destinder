@@ -1,13 +1,16 @@
 <% info = get_stats("too") %>
 <% username = @user.nil? ? @player_stat.display_name : @user.display_name %>
 <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-<% weapons = {"Auto Rifle" => "auto-rifle.png", 
-            "Pulse Rifle" => "pulse-rifle.png", 
-            "Hand Cannon" => "hand-cannon.png",
-            "Sniper Rifle" => "sniper.png",
-            "Shotgun" => "shotgun.png",
-            "Scout Rifle" => "pulse-rifle.png",
-            } %>
+<% weapons = {"Auto Rifle" => "auto2.png", 
+        "Pulse Rifle" => "pulse-rifle.png", 
+        "Hand Cannon" => "handcannon2.png",
+        "Sniper Rifle" => "sniper2.png",
+        "Shotgun" => "shotgun2.png",
+        "Scout Rifle" => "pulse-rifle.png",
+        "Fusion Rifle" =>  "pulse-rifle.png",
+        "Sidearm" => "pulse-rifle.png",
+        "Rocket Launcher" => "heavy2.png"
+        } %>
 <br><br>
 <% if info.nil? %> 
   <div class="container games">
