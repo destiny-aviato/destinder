@@ -59,9 +59,10 @@ $(document).on('turbolinks:load', function() {
         $("#filter_game_form").submit();
     });
 
-    $('#checkpoint').hide();
+    $('div#checkpoint').hide();
     $('div#difficulty').hide();
     $('label.difficulty-label').hide();
+    $('div#checkpoint').hide();
 
     $('#micropost_raid_difficulty').val('Normal');
 
@@ -740,12 +741,15 @@ $(document).on('turbolinks:load', function() {
             $('#pve-gametype-select').attr('class', 'input-field col s12 m6');
             $('div#difficulty').show();
             $('label.difficulty-label').show();
-            $('#checkpoint').show();
+            // $('label.checkpoint-label').show();
+            $('div#checkpoint').show();
+            console.log("raid chosen");
         } else {
             $('#pve-gametype-select').attr('class', 'input-field col s12');
             $('div#difficulty').hide();
             $('label.difficulty-label').hide();
-            $('#checkpoint').hide();
+            // $('label.checkpoint-label').hide();
+            $('div#checkpoint').hide();
         }
 
     });
