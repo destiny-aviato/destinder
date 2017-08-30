@@ -63,7 +63,7 @@ module ApplicationHelper
 
          ### CHARACTER BADGES #######
          #weapon type badges
-         if (sniper_rifle_kills / total_kills).round(2) >= 0.40
+         if (sniper_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Sniper",
                 "badge_description" => "40%+ of total kills with a Sniper Rifle",
@@ -72,7 +72,7 @@ module ApplicationHelper
             }
          end
 
-         if (pulse_rifle_kills / total_kills).round(2) >= 0.30
+         if (pulse_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Pulse",
                 "badge_description" => "40%+ of total kills with a Pulse Rifle",
@@ -81,7 +81,7 @@ module ApplicationHelper
             }
          end
 
-         if (scout_rifle_kills / total_kills).round(2) >= 0.40
+         if (scout_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Scout",
                 "badge_description" => "40%+ of total kills with a Scout Rifle",
@@ -89,7 +89,7 @@ module ApplicationHelper
                 "badge_color" => 'color: #9b59b6; border: 1px #9b59b6 solid;'
             }
          end
-         if (hand_cannon_kills / total_kills).round(2) >= 0.40
+         if (hand_cannon_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Hand Cannon",
                 "badge_description" => "40%+ of total kills with a Hand Cannon",
@@ -97,7 +97,7 @@ module ApplicationHelper
                 "badge_color" => 'color: #3498db; border: 1px #3498db solid;'
             }
          end
-         if (fusion_rifle_kills / total_kills).round(2) >= 0.40
+         if (fusion_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Fusion",
                 "badge_description" => "40%+ of total kills with a Fusion Rifle",
@@ -106,7 +106,7 @@ module ApplicationHelper
             }
          end
 
-         if (auto_rifle_kills / total_kills).round(2) >= 0.40
+         if (auto_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Auto",
                 "badge_description" => "40%+ of total kills with an Auto Rifle",
@@ -115,7 +115,7 @@ module ApplicationHelper
             }
          end
 
-         if (sidearm_kills / total_kills).round(2) >= 0.40
+         if (sidearm_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Sidearm",
                 "badge_description" => "40%+ of total kills with a Sidearm",
@@ -124,7 +124,7 @@ module ApplicationHelper
             }
          end
 
-         if (shotgun_kills / total_kills).round(2) >= 0.40
+         if (shotgun_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Shotgun",
                 "badge_description" => "40%+ of total kills with a Shotgun",
