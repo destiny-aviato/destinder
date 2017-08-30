@@ -295,7 +295,7 @@ def get_recent_games(username, character_id)
                         super_kills =  0
                         ability_kills =  0
                         longest_spree = 0
-                        weapon_best_type = "Rocket Launcher"
+                        weapon_best_type = 0
                         longest_life = 0
                         orbs_dropped = 0
                         res_received = 0
@@ -303,9 +303,12 @@ def get_recent_games(username, character_id)
                         precision_kills = 0
                         average_lifespan = 0
                         avg_kill_distance = 0
-                        avg_death_distance = 0        
+                        avg_death_distance = 0     
+                        games_played = 0
+                        games_won = 0
                         kd = 0 
                         kad = 0 
+                        win_rate = 0                        
                     end
 
                     kill_stats = {
