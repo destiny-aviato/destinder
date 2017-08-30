@@ -70,10 +70,10 @@ class User < ApplicationRecord
   
 end
 
-def get_recent_games(membership_type, membership_id, character_id)
+def get_recent_games(username, character_id)
     games = []
     get_recent_games = Typhoeus.get(
-        "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{membership_type}/#{membership_id}/#{character_id}/?mode=14&count=15&lc=en",
+        "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?mode=14&count=15&lc=en",
         headers: {"x-api-key" => ENV['API_TOKEN']}
         )
         
