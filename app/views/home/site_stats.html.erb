@@ -1,62 +1,66 @@
-<h1 class="center">SITE STATISTICS</h1>
+<% if ["Luminusss", "ii WALZ ii"].include? current_user.display_name %>
+    <h1 class="center">SITE STATISTICS</h1>
 
-<table class="responsive-table centered">
-    <thead>
-        <tr>
-            <th>Active Users</th>
-            <th>Xbox Players</th>
-            <th>Playstation Players</th>
-        </tr>
-    </thead>
+    <table class="responsive-table centered">
+        <thead>
+            <tr>
+                <th>Active Users</th>
+                <th>Xbox Players</th>
+                <th>Playstation Players</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <tr>
-        <td><%= User.count %></td>
-        <td><%= User.where(:api_membership_type => "1").count %></td>
-        <td><%= User.where(:api_membership_type => "2").count %></td>
-        </tr>
-    </tbody>
-</table>
-<div class="container" style="width: 90%;">
-    <ul class="collapsible" data-collapsible="accordion">
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons">person</i>Site Users
-            </div>
-            <div class="collapsible-body" style="background: white;">
+        <tbody>
+            <tr>
+            <td><%= User.count %></td>
+            <td><%= User.where(:api_membership_type => "1").count %></td>
+            <td><%= User.where(:api_membership_type => "2").count %></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container" style="width: 90%;">
+        <ul class="collapsible" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">person</i>Site Users
+                </div>
+                <div class="collapsible-body" style="background: white;">
 
-                <table class="bordered responsive-table centered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Gamertag</th>
-                                <th>Platform</th>
-                                <th>Badges</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
+                    <table class="bordered centered highlight">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Gamertag</th>
+                                    <th>Platform</th>
+                                    <th>Badges</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
 
-                            <% User.find_each do |user| %>
-                            <tr>
-                                <td><%= user.id %></td>
-                                <td><%= link_to user.display_name, user_path(user.id) %></td>
-                                <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
-                                <td><%= platform %></td>
-                                <td>
-                                    <% user.badges.each do |badge| %>                
-                                    <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                    <%= badge.custom_fields[:icon].html_safe %>
-                                    </div>                
+                                <% User.find_each do |user| %>
+                                <tr>
+                                    <td><%= user.id %></td>
+                                    <td><%= link_to user.display_name, user_path(user.id) %></td>
+                                    <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
+                                    <td><%= platform %></td>
+                                    <td>
+                                        <% user.badges.each do |badge| %>                
+                                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                        <%= badge.custom_fields[:icon].html_safe %>
+                                        </div>                
+                                    <% end %>
+                                    </td>
+                                </tr>
                                 <% end %>
-                                </td>
-                            </tr>
-                            <% end %>
 
-                            
-                        </tbody>
-                    </table>
-            </div>
-        </li>
-    </ul>
-</div>
+                                
+                            </tbody>
+                        </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+<% else %>  
+    <h1 class="center-align">WHO DO YOU THINK YOU ARE!</h1>
+<% end %>
