@@ -924,10 +924,20 @@ html {
         width: 140%;
     }
 
-    .modal.filter-modal {
+    .modal {
         max-width: 100% !important;
-        height: 90% !important;
+        height: 85% !important;
         width: 100% !important;
+    }
+
+    canvas#weapon-breakdown-chart1 {
+        margin-left: 8%;
+    }
+    canvas#weapon-breakdown-chart2 {
+        margin-left: 8%;
+    }
+    canvas#weapon-breakdown-chart3 {
+        margin-left: 8%;
     }
 
 }
@@ -1009,7 +1019,7 @@ html {
     border-radius: 3px;
     line-height: 21px;
     height: 22px;
-    font-size: 13px;
+    font-size: 10px;
     text-transform: uppercase;
 }
 
