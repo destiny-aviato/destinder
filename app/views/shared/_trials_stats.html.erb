@@ -13,9 +13,7 @@
         } %>
 <br><br>
 <% if info.nil? %> 
-  <div class="container games">
-    SORRY! NO TRIALS STATS FOUND FOR THIS PLAYER
-  </div>
+    <%= render 'shared/no_data' %>
 <% else %>  
     <a id="expand-button" class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Open All</a>
     <a id="collapse-button" class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i>Close All</a>
