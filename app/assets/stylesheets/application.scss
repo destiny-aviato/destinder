@@ -890,7 +890,7 @@ html {
 
 .btn-floating i {
     background-color: #5085A5;
-    ;
+    
 }
 
 .post-header-background {
@@ -922,6 +922,12 @@ html {
     .row.player-stats-collapse {
         margin-left: -21% !important;
         width: 140%;
+    }
+
+    .modal.filter-modal {
+        max-width: 100% !important;
+        height: 90% !important;
+        width: 100% !important;
     }
 
 }
