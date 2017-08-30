@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 20170829145715) do
     t.string   "api_membership_id"
     t.string   "api_membership_type"
     t.string   "elo"
-    t.text     "badges"
     t.integer  "sash_id"
     t.integer  "level",                  default: 0
     t.index ["provider"], name: "index_users_on_provider", using: :btree
