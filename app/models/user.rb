@@ -70,34 +70,39 @@ class User < ApplicationRecord
   
 end
 
-def get_recent_games(username, character_id)
+def get_recent_games(membership_type, membership_id, character_id)
     games = []
     get_recent_games = Typhoeus.get(
-        "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{username.api_membership_type}/#{username.api_membership_id}/#{character_id}/?mode=14&count=15&lc=en",
+        "https://www.bungie.net/d1/Platform/Destiny/Stats/ActivityHistory/#{membership_type}/#{membership_id}/#{character_id}/?mode=14&count=15&lc=en",
         headers: {"x-api-key" => ENV['API_TOKEN']}
         )
         
     game_data = JSON.parse(get_recent_games.body)
-    game_data["Response"]["data"]["activities"].each do |game|
-        game_kills = game["values"]["kills"]["basic"]["value"]
-        game_deaths = game["values"]["deaths"]["basic"]["value"]
-        game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
-        game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
-        game_standing = game["values"]["standing"]["basic"]["value"]
-        
-        game_info = {
-            "kills" => game_kills,
-            "deaths" => game_deaths,
-            "kd_ratio" => game_kd,
-            "kad_ratio" => game_kad,
-            "standing" => game_standing
-        }
+    if game_data["Response"]["data"]["activities"].nil? 
+        games = nil
+    else
 
-        games << game_info
+        game_data["Response"]["data"]["activities"].each do |game|
+            game_kills = game["values"]["kills"]["basic"]["value"]
+            game_deaths = game["values"]["deaths"]["basic"]["value"]
+            game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
+            game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
+            game_standing = game["values"]["standing"]["basic"]["value"]
+            
+            game_info = {
+                "kills" => game_kills,
+                "deaths" => game_deaths,
+                "kd_ratio" => game_kd,
+                "kad_ratio" => game_kad,
+                "standing" => game_standing
+            }
+    
+            games << game_info
+        end
     end
     games
 
-  end
+end
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
