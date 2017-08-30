@@ -101,5 +101,10 @@ class UsersController < ApplicationController
     end
   end
   helper_method :get_stats
+
+  def calculate_badges(stats)
+    return "green"
+  end
+  helper_method :calculte_badges
  
 end

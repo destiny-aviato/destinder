@@ -144,23 +144,28 @@ $(document).on('turbolinks:load', function() {
             var scout1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"]);
             var sniper1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Sniper"]);
             var shotgun1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1);
+            var fusion1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
+            var sidearm1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Side Arm"]);
+            var heavy1 = parseInt(char_data1["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sword"]);
+            var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
 
             var weaponChart1 = new Chart(weaponctx1, {
             type: 'pie',
             data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
+                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Heavy"],
                 datasets: [{
                 backgroundColor: [
-                    "#2ecc71",
+                    "#FA8708",
                     "#3498db",
-                    "#95a5a6",
+                    "#2ecc71",
                     "#9b59b6",
                     "#f1c40f",
                     "#e74c3c",
-                    "#34495e"
+                    "#34495e",
+                    "#AA885F",
+                    "#95a5a6"
                 ],
-                data: [((auto1 / total_kills1) * 100).toFixed(0), ((hand1 / total_kills1) * 100).toFixed(0), ((pulse1 / total_kills1) * 100).toFixed(0), ((scout1 / total_kills1) * 100).toFixed(0), ((sniper1 / total_kills1) * 100).toFixed(0), ((shotgun1 / total_kills1) * 100).toFixed(0)]
+                data: [((auto1 / total_kills1) * 100).toFixed(0), ((hand1 / total_kills1) * 100).toFixed(0), ((pulse1 / total_kills1) * 100).toFixed(0), ((scout1 / total_kills1) * 100).toFixed(0), ((sniper1 / total_kills1) * 100).toFixed(0), ((shotgun1 / total_kills1) * 100).toFixed(0), ((fusion1 / total_kills1) * 100).toFixed(0), ((sidearm1 / total_kills1) * 100).toFixed(0), ((heavy1 / total_kills1) * 100).toFixed(0)]
                 }]
             },
             options: {
@@ -188,23 +193,29 @@ $(document).on('turbolinks:load', function() {
             var scout2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"]);
             var sniper2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Sniper"]);
             var shotgun2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var total_kills2 =  (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2);
+            var fusion2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
+            var sidearm2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Side Arm"]);
+            var heavy2 = parseInt(char_data2["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sword"]);
+            var total_kills2 =  (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2 + fusion2 + sidearm2 + heavy2);
+
             var weaponChart2 = new Chart(weaponctx2, {
             type: 'pie',
             data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
+                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Heavy"],
                 datasets: [{
                 backgroundColor: [
-                    "#2ecc71",
+                    "#FA8708",
                     "#3498db",
-                    "#95a5a6",
+                    "#2ecc71",
                     "#9b59b6",
                     "#f1c40f",
                     "#e74c3c",
-                    "#34495e"
+                    "#34495e",
+                    "#AA885F",
+                    "#95a5a6"
                 ],
-                data: [((auto2 / total_kills2) * 100).toFixed(0), ((hand2 / total_kills2) * 100).toFixed(0), ((pulse2 / total_kills2) * 100).toFixed(0), ((scout2 / total_kills2) * 100).toFixed(0), ((sniper2 / total_kills2) * 100).toFixed(0), ((shotgun2 / total_kills2) * 100).toFixed(0)]
-            }]
+                data: [((auto2 / total_kills2) * 100).toFixed(0), ((hand2 / total_kills2) * 100).toFixed(0), ((pulse2 / total_kills2) * 100).toFixed(0), ((scout2 / total_kills2) * 100).toFixed(0), ((sniper2 / total_kills2) * 100).toFixed(0), ((shotgun2 / total_kills2) * 100).toFixed(0), ((fusion2 / total_kills2) * 100).toFixed(0), ((sidearm2 / total_kills2) * 100).toFixed(0), ((heavy2 / total_kills2) * 100).toFixed(0)]
+                }]
             },
             options: {
                 legend: {
@@ -220,7 +231,7 @@ $(document).on('turbolinks:load', function() {
             }
             });
         }
-    
+
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var weaponctx3 = document.getElementById("weapon-breakdown-chart3").getContext('2d');
@@ -230,9 +241,30 @@ $(document).on('turbolinks:load', function() {
             var scout3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"]);
             var sniper3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Sniper"]);
             var shotgun3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var total_kills3 =  (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3);
+            var fusion3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
+            var sidearm3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Side Arm"]);
+            var heavy3 = parseInt(char_data3["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sword"]);
+            var total_kills3 =  (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3 + fusion3 + sidearm3 + heavy3);
+
             var weaponChart3 = new Chart(weaponctx3, {
             type: 'pie',
+            data: {
+                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Heavy"],
+                datasets: [{
+                backgroundColor: [
+                    "#FA8708",
+                    "#3498db",
+                    "#2ecc71",
+                    "#9b59b6",
+                    "#f1c40f",
+                    "#e74c3c",
+                    "#34495e",
+                    "#AA885F",
+                    "#95a5a6"
+                ],
+                data: [((auto3 / total_kills3) * 100).toFixed(0), ((hand3 / total_kills3) * 100).toFixed(0), ((pulse3 / total_kills3) * 100).toFixed(0), ((scout3 / total_kills3) * 100).toFixed(0), ((sniper3 / total_kills3) * 100).toFixed(0), ((shotgun3 / total_kills3) * 100).toFixed(0), ((fusion3 / total_kills3) * 100).toFixed(0), ((sidearm3 / total_kills3) * 100).toFixed(0), ((heavy3 / total_kills3) * 100).toFixed(0)]
+                }]
+            },
             options: {
                 legend: {
                     position: 'bottom',
@@ -244,21 +276,6 @@ $(document).on('turbolinks:load', function() {
                     display: true,
                     text: '% Kills by Weapon Types'
                 }
-            },
-            data: {
-                labels: ["Auto Rifle", "Hand Cannon", "Pulse Rifle", "Scout Rifle", "Sniper", "Shotgun"],
-                datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#95a5a6",
-                    "#9b59b6",
-                    "#f1c40f",
-                    "#e74c3c",
-                    "#34495e"
-                ],
-                data: [((auto3 / total_kills3) * 100).toFixed(0), ((hand3 / total_kills3) * 100).toFixed(0), ((pulse3 / total_kills3) * 100).toFixed(0), ((scout3 / total_kills3) * 100).toFixed(0), ((sniper3 / total_kills3) * 100).toFixed(0), ((shotgun3 / total_kills3) * 100).toFixed(0)]
-            }]
             }
             });
         }
