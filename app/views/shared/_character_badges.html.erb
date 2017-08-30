@@ -1,0 +1,10 @@
+<% badges = calculate_badges(info, user) %>
+
+<% if !badges.nil? %>
+    <% badges.each do |badge| %>
+        <div class="character-badge chip tooltipped" data-position="bottom" data-delay="50" data-tooltip='<%= badge["badge_description"] %>' style='<%= "#{badge['badge_color']} max-width: 100px;min-width: 80px;" %>' >
+            <%= badge["badge_name"] %>
+            <%= badge["badge_icon"].html_safe %>
+        </div>
+    <% end %>
+<% end %>

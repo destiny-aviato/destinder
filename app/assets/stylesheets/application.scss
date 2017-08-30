@@ -890,7 +890,7 @@ html {
 
 .btn-floating i {
     background-color: #5085A5;
-    ;
+    
 }
 
 .post-header-background {
@@ -922,6 +922,22 @@ html {
     .row.player-stats-collapse {
         margin-left: -21% !important;
         width: 140%;
+    }
+
+    .modal {
+        max-width: 100% !important;
+        height: 85% !important;
+        width: 100% !important;
+    }
+
+    canvas#weapon-breakdown-chart1 {
+        margin-left: 8%;
+    }
+    canvas#weapon-breakdown-chart2 {
+        margin-left: 8%;
+    }
+    canvas#weapon-breakdown-chart3 {
+        margin-left: 8%;
     }
 
 }
@@ -990,11 +1006,21 @@ html {
     margin-top: 2%;
 }
 
+.character-badge {
+    // color: #CEAE33;
+    border-color: transparent;
+    // border: 1px #CEAE33 solid;
+    text-transform: uppercase;
+    border-radius: 18px;
+    background-color: transparent;    
+}
+
 .chip {
     border-radius: 3px;
-    line-height: 22px;
+    line-height: 21px;
     height: 22px;
-    font-size: 11px;
+    font-size: 10px;
+    text-transform: uppercase;
 }
 
 .input-field .prefix.active {

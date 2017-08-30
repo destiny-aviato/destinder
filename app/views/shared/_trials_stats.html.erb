@@ -1,21 +1,19 @@
 <% info = get_stats("too") %>
 <% username = @user.nil? ? @player_stat.display_name : @user.display_name %>
 <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-<% weapons = {"Auto Rifle" => "auto2.png", 
-        "Pulse Rifle" => "pulse-rifle.png", 
+<% weapons = {"Auto Rifle" => "auto3.png", 
+        "Pulse Rifle" => "pulse2.png", 
         "Hand Cannon" => "handcannon2.png",
         "Sniper Rifle" => "sniper2.png",
         "Shotgun" => "shotgun2.png",
-        "Scout Rifle" => "pulse-rifle.png",
-        "Fusion Rifle" =>  "pulse-rifle.png",
-        "Sidearm" => "pulse-rifle.png",
+        "Scout Rifle" => "scout.png",
+        "Fusion Rifle" =>  "fusion2.png",
+        "Sidearm" => "sidearm.png",
         "Rocket Launcher" => "heavy2.png"
         } %>
 <br><br>
 <% if info.nil? %> 
-  <div class="container games">
-    SORRY! NO TRIALS STATS FOUND FOR THIS PLAYER
-  </div>
+    <%= render 'shared/no_data' %>
 <% else %>  
     <a id="expand-button" class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Open All</a>
     <a id="collapse-button" class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i>Close All</a>
@@ -146,7 +144,7 @@
                                                 <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""><br>
                                                 <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span> 
                                             </div>
-                                            <% x["Character Items"].each do |item| %>
+                                            <% x["Character Items"].each_with_index do |item| %>
                                                 <% next if ["Emblem Background", "Emblem"].include?(item[0])  %>
                                                 <% if item[1]["Item Tier"] == "Exotic" %>
                                                     <% if ["Chest Armor", "Gauntlets", "Helmet", "Leg Armor"].include? (item[0])  %>
@@ -157,12 +155,10 @@
                                                         <% break %>                                                                                                                     
                                                     <% end %>
                                                 <% end %>
-                                                <!-- <div class="col s2 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div> -->
+                                                <% if index == x["Character Items"].size - 1 %>                                                
+                                                    <div class="col s2 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
+                                                <% end %>
                                             <% end %>
-                                            <!-- <div class="col s3">PRIMARY</div>
-                                            <div class="col s3">SECONDARY</div>
-                                            <div class="col s3">HEAVY</div>
-                                            <div class="col s3">HELMET</div> -->
                                         </div><!--CLOSE GUN PICTURES ROW-->
                                     </div>
                                     <div class="col s12 m2 center-align hide-on-small-only" style='<%= "#{bg} height: 104px; color: #f5f5f5;border-bottom: 1px gray solid; padding-top: 1.5%; background-repeat: no-repeat; background-size: cover; background-position-x: 17%;" %>'>
@@ -190,95 +186,81 @@
                                 </div>
                             </div>            
                             <div class="collapsible-body" style="background: #fff;">
-                                    <div class="row">                                
-                                        <div class="col s12 m3 center-align">                                            
-                                            <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
-                                            <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 275px !important; max-height: 275px !important"></canvas></div>                    
+                                    <% if x['Character Stats']['Kill Stats'] == 0 %> 
+                                        Sorry, no data found for this character. 
+                                    <% else %>
+                                        <div class="row">                                
+                                            <div class="col s12 m3 center-align">                                            
+                                                <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
+                                                <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 275px !important; max-height: 275px !important"></canvas></div>                    
+                                            </div>
+                                            <hr class="hide-on-med-and-up">
+                                            <div class="col s12 m6 center-align">                                                                        
+                                                <div><canvas id='<%= "kill-chart-breakdown#{index + 1}" %>'></canvas></div>                    
+                                            </div>
+                                            <hr class="hide-on-med-and-up">
+                                            <div class="col s12 m3 center-align" >             
+                                                    <div class="col s6" style="margin-top: 2%;">
+                                                        <div style="margin-bottom: -30%;"><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div> 
+                                                        <br><p class="stat-heading"><%= "#{x["Character Stats"]["Win Rate"]}%" %></p>       
+                                                    </div>                                        
+                                                    <div class="col s6" style="margin-top: 2%;">
+                                                        <div style="margin-bottom: -30%;"><canvas id='<%= "revive-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>        
+                                                        <% total = x["Character Stats"]["Kill Stats"]["Revives Performed"].to_i + x["Character Stats"]["Kill Stats"]["Revives Received"].to_i %>
+                                                        
+                                                        <% res_percent =  total.to_i != 0  ? ((x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total.to_i) * 100.0) : 0 %>                                                        
+                                                        <br><p class="stat-heading"><%= "#{res_percent}%" %></p> 
+                                                    </div>                                        
+                                                    <div class="col s12">
+                                                        <p class="stat-heading">PLAYER ANALYSIS</p>
+                                                        <!-- TODO: add if else here -->
+                                                        <%= render partial:"shared/character_badges", locals: {info: x, user: current_user} %>
+                                                    </div>                                        
+                                            </div>                                    
                                         </div>
-                                        <hr class="hide-on-med-and-up">
-                                        <div class="col s12 m6 center-align">                                                                        
-                                            <div><canvas id='<%= "kill-chart-breakdown#{index + 1}" %>'></canvas></div>                    
-                                        </div>
-                                        <hr class="hide-on-med-and-up">
-                                        <div class="col s12 m3 center-align" >             
-                                                <div class="col s6" style="margin-top: 2%;">
-                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div> 
-                                                    <br><p class="stat-heading"><%= "#{x["Character Stats"]["Win Rate"]}%" %></p>       
-                                                </div>                                        
-                                                <div class="col s6" style="margin-top: 2%;">
-                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "revive-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>        
-                                                    <% total = x["Character Stats"]["Kill Stats"]["Revives Performed"].to_i + x["Character Stats"]["Kill Stats"]["Revives Received"].to_i %>
-                                                    <% res_percent = (x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total.to_i) * 100.0 %>
-                                                    <br><p class="stat-heading"><%= "#{x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total}%" %></p> 
-                                                </div>                                        
-                                                <div class="col s12">
-                                                    <!-- <table class="centered responsive-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Best Weapon</th>
-                                                                <th>Longest Spree</th>
-                                                                <th>Avg. Kill Distance</th>
-                                                            </tr>
-                                                        </thead>
-                                                
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><%= image_tag "primary-weapon.png", style: "height: 16px;"  %></td>
-                                                                <td style="font-size: 1.0em; font-weight: 600;">9</td>
-                                                                <td style="font-size: 1.0em; font-weight: 600;">17.6</td>
-                                                            </tr>                                                        
-                                                        </tbody>
-                                                    </table>     -->
-                                                    <p class="stat-heading">PLAYER ANALYSIS</p>
-                                                    <div class="col s6" style="color:red;">badge</div>
-                                                    <div class="col s6" style="color:red;">badge</div>
-                                                    <div class="col s6" style="color:red;">badge</div>
-                                                    <div class="col s6" style="color:red;">badge</div>
-                                                </div>                                        
-                                        </div>                                    
-                                    </div>
-                                    <hr>
-                                    <div class="row" style="padding-top: 1%;margin-bottom: 0%;">
-                                         <div class="col s6 m2 center-align">
-                                            <p class="stat-heading">KA/D Ratio</p>
-                                            <p class="stat-title"><%=x["Character Stats"]["KA/D Ratio"] %></p>
-                                         </div>
-                                         <div class="col s6 m2 center-align">
-                                            <p class="stat-heading">Games Played</p>
-                                            <p class="stat-title"><%= (x["Character Stats"]["games_won"] + x["Character Stats"]["games_lost"]).round %></p>
-                                         </div>
-                                         <div class="col s12 m4 center-align">
-                                            <p class="stat-heading">Best Weapon</p>
-                                            <% if !x["Character Stats"]["Kill Stats"]["Best Weapon Type"].nil? %>
-                                                <p class="stat-title"><%= image_tag weapons[x["Character Stats"]["Kill Stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
-                                            <% else %>
-                                                <p class="stat-title"><%= image_tag weapons["Pulse Rifle"], style: "height: 35px;" %></p>
-                                            <% end %>
-                                         </div>
-                                         <div class="col s6 m2 center-align">
-                                            <p class="stat-heading">Longest Spree</p>
-                                            <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Longest Spree"].round %></p>
-                                         </div>
-                                         <div class="col s6 m2 center-align">
-                                            <p class="stat-heading">Avg. Kill Distance</p>
-                                            <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Average Kill Distance"] %></p>
-                                         </div>  
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            <h5>Account Badges</h5>
-                                            <% if !@user.nil? %>
-                                                <% @user.badges.each do |badge| %>                
-                                                    <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                                        <%= badge.name %>
-                                                        <%= badge.custom_fields[:icon].html_safe %>
-                                                    </div>                
+                                        <hr>
+                                        <div class="row" style="padding-top: 1%;margin-bottom: 0%;">
+                                            <div class="col s6 m2 center-align">
+                                                <p class="stat-heading">KA/D Ratio</p>
+                                                <p class="stat-title"><%=x["Character Stats"]["KA/D Ratio"] %></p>
+                                            </div>
+                                            <div class="col s6 m2 center-align">
+                                                <p class="stat-heading">Games Played</p>
+                                                <p class="stat-title"><%= (x["Character Stats"]["games_won"] + x["Character Stats"]["games_lost"]).round %></p>
+                                            </div>
+                                            <div class="col s12 m4 center-align">
+                                                <p class="stat-heading">Best Weapon</p>
+                                                <% if (!x["Character Stats"]["Kill Stats"]["Best Weapon Type"].nil? &&  x["Character Stats"]["Kill Stats"]["Best Weapon Type"] != 0) %>
+                                                    <p class="stat-title tooltipped" data-position="bottom" data-delay="50" data-tooltip='<%= x["Character Stats"]["Kill Stats"]["Best Weapon Type"] %>'><%= image_tag weapons[x["Character Stats"]["Kill Stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
+                                                <% else %>
+                                                    <p class="stat-title tooltipped" data-position="bottom" data-delay="50" data-tooltip='Rocket Launcher...Yikes.'><%= image_tag weapons["Rocket Launcher"], style: "height: 35px;" %></p>
                                                 <% end %>
-                                            <% end %>
+                                            </div>
+                                            <div class="col s6 m2 center-align">
+                                                <p class="stat-heading">Longest Spree</p>
+                                                <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Longest Spree"].round %></p>
+                                            </div>
+                                            <div class="col s6 m2 center-align">
+                                                <p class="stat-heading">Avg. Kill Distance</p>
+                                                <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Average Kill Distance"] %></p>
+                                            </div>  
                                         </div>
-                                    </div>
-                                </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <h5>Account Badges</h5>
+                                                <% if !@user.nil? %>
+                                                    <% @user.badges.each do |badge| %>                
+                                                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                                            <%= badge.name %>
+                                                            <%= badge.custom_fields[:icon].html_safe %>
+                                                        </div>                
+                                                    <% end %>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                            </div>
                         </li>            
                     <% end %>
                 </ul>

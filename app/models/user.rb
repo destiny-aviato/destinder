@@ -78,26 +78,31 @@ def get_recent_games(username, character_id)
         )
         
     game_data = JSON.parse(get_recent_games.body)
-    game_data["Response"]["data"]["activities"].each do |game|
-        game_kills = game["values"]["kills"]["basic"]["value"]
-        game_deaths = game["values"]["deaths"]["basic"]["value"]
-        game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
-        game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
-        game_standing = game["values"]["standing"]["basic"]["value"]
-        
-        game_info = {
-            "kills" => game_kills,
-            "deaths" => game_deaths,
-            "kd_ratio" => game_kd,
-            "kad_ratio" => game_kad,
-            "standing" => game_standing
-        }
+    if game_data["Response"]["data"]["activities"].nil? 
+        games = nil
+    else
 
-        games << game_info
+        game_data["Response"]["data"]["activities"].each do |game|
+            game_kills = game["values"]["kills"]["basic"]["value"]
+            game_deaths = game["values"]["deaths"]["basic"]["value"]
+            game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
+            game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
+            game_standing = game["values"]["standing"]["basic"]["value"]
+            
+            game_info = {
+                "kills" => game_kills,
+                "deaths" => game_deaths,
+                "kd_ratio" => game_kd,
+                "kad_ratio" => game_kad,
+                "standing" => game_standing
+            }
+    
+            games << game_info
+        end
     end
     games
 
-  end
+end
 
 #   def get_item(item_hash)
 #     response = Typhoeus.get(
@@ -295,7 +300,7 @@ def get_recent_games(username, character_id)
                         super_kills =  0
                         ability_kills =  0
                         longest_spree = 0
-                        weapon_best_type = "Rocket Launcher"
+                        weapon_best_type = 0
                         longest_life = 0
                         orbs_dropped = 0
                         res_received = 0
@@ -303,9 +308,12 @@ def get_recent_games(username, character_id)
                         precision_kills = 0
                         average_lifespan = 0
                         avg_kill_distance = 0
-                        avg_death_distance = 0        
+                        avg_death_distance = 0     
+                        games_played = 0
+                        games_won = 0
                         kd = 0 
                         kad = 0 
+                        win_rate = 0                        
                     end
 
                     kill_stats = {

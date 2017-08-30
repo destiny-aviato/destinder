@@ -24,6 +24,11 @@ class HomeController < ApplicationController
       puts "test"
       @stats = get_stats("too")
     end
+    
+    def brock
+      puts "test"
+      @stats = get_stats("too")
+    end
 
     def alex
       puts "test"

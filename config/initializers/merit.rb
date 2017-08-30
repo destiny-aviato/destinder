@@ -38,7 +38,7 @@ Merit::Badge.create!(
   description: "Donated at least $5!",
   custom_fields: { 
     icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 4px; margin-left: -6px;">attach_money</i>',
-    color: "color: #FAFAFA; background-color: #51de90;"
+    color: "color: #FAFAFA; background-color: #2ecc71;"
   }
 )
 
@@ -83,7 +83,7 @@ Merit::Badge.create!(
 Merit::Badge.create!(
   id: 6,
   name: "Cake Boss",
-  description: "First donation ever. You're welcome.",
+  description: "Paid for half of our domain. Whoo..",
   custom_fields: { 
     icon: '<i class="fa fa-birthday-cake" style="float: left; font-size: 14px; line-height: 23px; padding-right: 4px; margin-left: -6px;"></i>',
     color: "color: #FAFAFA; background-color: #FF00A3;"

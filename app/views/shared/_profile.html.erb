@@ -1,9 +1,3 @@
-<% info = get_stats("too") %>
-<% if info.nil? %>
-  Sorry! Something went wrong! 
-<% else %>
-  <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-
   <div class="container ">
     <div class="row">
       <h4 class="center">PLAYER REPUTATION</h4>
@@ -17,7 +11,7 @@
               <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
               <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
               <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
-              <p>Already voted: <%= current_user.voted_for?(@user) %></p>
+              <p>Already voted for this user?: <%= current_user.voted_for?(@user) %></p>
               <%if @user != current_user %>
                 <% if current_user.voted_for?(@user) %>
                   <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
@@ -64,9 +58,3 @@
 
 
       
-  
-<% end %>
-
-
-
-
