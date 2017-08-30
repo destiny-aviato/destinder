@@ -144,7 +144,7 @@
                                                 <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""><br>
                                                 <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span> 
                                             </div>
-                                            <% x["Character Items"].each do |item| %>
+                                            <% x["Character Items"].each_with_index do |item| %>
                                                 <% next if ["Emblem Background", "Emblem"].include?(item[0])  %>
                                                 <% if item[1]["Item Tier"] == "Exotic" %>
                                                     <% if ["Chest Armor", "Gauntlets", "Helmet", "Leg Armor"].include? (item[0])  %>
@@ -155,12 +155,10 @@
                                                         <% break %>                                                                                                                     
                                                     <% end %>
                                                 <% end %>
-                                                <!-- <div class="col s2 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div> -->
+                                                <% if index == x["Character Items"].size - 1 %>                                                
+                                                    <div class="col s2 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
+                                                <% end %>
                                             <% end %>
-                                            <!-- <div class="col s3">PRIMARY</div>
-                                            <div class="col s3">SECONDARY</div>
-                                            <div class="col s3">HEAVY</div>
-                                            <div class="col s3">HELMET</div> -->
                                         </div><!--CLOSE GUN PICTURES ROW-->
                                     </div>
                                     <div class="col s12 m2 center-align hide-on-small-only" style='<%= "#{bg} height: 104px; color: #f5f5f5;border-bottom: 1px gray solid; padding-top: 1.5%; background-repeat: no-repeat; background-size: cover; background-position-x: 17%;" %>'>
@@ -214,28 +212,9 @@
                                                         <br><p class="stat-heading"><%= "#{res_percent}%" %></p> 
                                                     </div>                                        
                                                     <div class="col s12">
-                                                        <!-- <table class="centered responsive-table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Best Weapon</th>
-                                                                    <th>Longest Spree</th>
-                                                                    <th>Avg. Kill Distance</th>
-                                                                </tr>
-                                                            </thead>
-                                                    
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><%= image_tag "primary-weapon.png", style: "height: 16px;"  %></td>
-                                                                    <td style="font-size: 1.0em; font-weight: 600;">9</td>
-                                                                    <td style="font-size: 1.0em; font-weight: 600;">17.6</td>
-                                                                </tr>                                                        
-                                                            </tbody>
-                                                        </table>     -->
                                                         <p class="stat-heading">PLAYER ANALYSIS</p>
-                                                        <div class="col s6" style="color:red;">badge</div>
-                                                        <div class="col s6" style="color:red;">badge</div>
-                                                        <div class="col s6" style="color:red;">badge</div>
-                                                        <div class="col s6" style="color:red;">badge</div>
+                                                        <!-- TODO: add if else here -->
+                                                        <%= render partial:"shared/character_badges", locals: {info: x, user: current_user} %>
                                                     </div>                                        
                                             </div>                                    
                                         </div>

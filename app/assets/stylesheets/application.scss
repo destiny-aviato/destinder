@@ -996,11 +996,21 @@ html {
     margin-top: 2%;
 }
 
+.character-badge {
+    // color: #CEAE33;
+    border-color: transparent;
+    // border: 1px #CEAE33 solid;
+    text-transform: uppercase;
+    border-radius: 18px;
+    background-color: transparent;    
+}
+
 .chip {
     border-radius: 3px;
-    line-height: 22px;
+    line-height: 21px;
     height: 22px;
-    font-size: 11px;
+    font-size: 13px;
+    text-transform: uppercase;
 }
 
 .input-field .prefix.active {

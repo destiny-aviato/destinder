@@ -38,7 +38,7 @@ Merit::Badge.create!(
   description: "Donated at least $5!",
   custom_fields: { 
     icon: '<i class="material-icons" style="float: left; font-size: 14px; line-height: 23px; padding-right: 4px; margin-left: -6px;">attach_money</i>',
-    color: "color: #FAFAFA; background-color: #51de90;"
+    color: "color: #FAFAFA; background-color: #2ecc71;"
   }
 )
 
