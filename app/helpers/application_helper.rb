@@ -19,11 +19,8 @@ module ApplicationHelper
 
     def featured_users
         users = []
-        User.order("RANDOM()").find_each.with_index do |x, index| 
-            if index == 9
-                break
-            end
-            users << x                        
+        User.all.shuffle[0..9].each do |x| 
+            users << x 
         end
         users
     end
