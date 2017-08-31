@@ -17,6 +17,17 @@ module ApplicationHelper
         nil
     end
 
+    def featured_users
+        users = []
+        User.order("RANDOM()").find_each.with_index do |x, index| 
+            if index == 9
+                break
+            end
+            users << x                        
+        end
+        users
+    end
+
     def calculate_badges(stats, user)
          badges = []
 
