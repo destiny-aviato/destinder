@@ -74,7 +74,7 @@ Merit::Badge.create!(
 Merit::Badge.create!(
   id: 5,
   name: "Veteran",
-  description: "One of the first 250 users on the site!",
+  description: "One of the first 500 users on the site!",
   custom_fields: { 
     icon: '<i class="fa fa-first-order" style="float: left; font-size: 14px; line-height: 23px; padding-right: 4px; margin-left: -6px;"></i>',
     color: "color: #FAFAFA; background-color: #026670;"
