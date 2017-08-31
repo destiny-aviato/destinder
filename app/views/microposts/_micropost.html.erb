@@ -77,14 +77,14 @@
                     <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
                             <div class="row" style="overflow: hidden; max-height: 30px;">
                                 <div class="container" style="padding-top: 1%; width: 80%;">
-                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content="#badge_content" style="color: #f5f5f5;"></i></div>
+                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
                                     <%= look_for %>
                                     <%= mic %>
                                 </div>
                             </div>
                     </div>
                     <div class="tooltip_templates">
-                            <span id="badge_content">
+                            <span id='<%= "badge_content#{micropost.id}"%>'>
                                 <hr>
                                 <% micropost.user.badges.each do |badge| %>   
                                 <div class="row" style="margin-bottom: -5%">
