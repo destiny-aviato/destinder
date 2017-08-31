@@ -1,11 +1,11 @@
 <div class="footer-copyright">
     <div class="container" style="width: 80%;">
       <center>
-        <% if !current_user.nil? && (["Luminusss", "ii WALZ ii"].include?(current_user.display_name)) %>
+        <% if !current_user.nil? && (["Luminusss", "ii WALZ ii", "Putin Pudding"].include?(current_user.display_name)) %>
           <%= link_to "Site Statistics", site_stats_path %> -
         <% end %>
         <div style="display: inline;" id="testing"></div> - 
-          <%= link_to "Contact Us", "mailto:destinyaviato@gmail.com" %> -
+          <%= link_to "Contact Us", "mailto:help@destinder.com" %> -
           <%= link_to "About Badges", "#badge-modal", class: "modal-trigger" %> -
           <%= link_to "Donate!", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" %>
       </center>
