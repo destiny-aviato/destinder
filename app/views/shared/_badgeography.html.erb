@@ -1,0 +1,15 @@
+<h3>Account Badges</h3>
+<p>Badges specific to those who have an account with us: </p>
+
+<div class="character-badge chip tooltipped" data-position="bottom" data-delay="50" data-tooltip='<%= badge["badge_description"] %>' style='<%= "#{badge['badge_color']} max-width: 100px;min-width: 80px;" %>' >
+    <%= badge["badge_name"] %>
+    <%= badge["badge_icon"].html_safe %>
+</div>
+
+<h3>Character Badges</h3>
+<p>Badges earned per character for in-game accomplishments </p>
+
+<div class="character-badge chip tooltipped" data-position="bottom" data-delay="50" data-tooltip='<%= badge["badge_description"] %>' style='<%= "#{badge['badge_color']} max-width: 100px;min-width: 80px;" %>' >
+    <%= badge["badge_name"] %>
+    <%= badge["badge_icon"].html_safe %>
+</div>
