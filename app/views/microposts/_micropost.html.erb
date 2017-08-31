@@ -306,11 +306,13 @@
                 </div> -->
                 
                 <div class="row">
-                        <div class="col s4 left-align">
-                            <%= link_to @message, target: "_blank" do %>
-                            <span class="icon">
-                                <i class="fa fa-envelope"></i>
-                            </span>
+                    <div class="col s4 left-align">
+                        <% if micropost.user.api_membership_type == "1" %>
+                            <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
+                                <span class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            <% end %>
                         <% end %>
                     </div>
                     <% total = micropost.user.votes_for + micropost.user.votes_against %> 
