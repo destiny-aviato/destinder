@@ -101,7 +101,7 @@ Merit::Badge.create!(
 )
 
 Merit::Badge.create!(
-  id: 7,
+  id: 8,
   name: "Follower",
   description: "Follower of Destinder on social media",
   custom_fields: { 
