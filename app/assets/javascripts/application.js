@@ -78,11 +78,9 @@ $(document).on('turbolinks:load', function() {
 
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
-            console.log("checked! setting to hard");
-            $('#micropost_raid_difficulty').val('Hard');
+            $('#micropost_raid_difficulty').val('Heroic');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
-            console.log("unchecked! setting to normal");
         }
     });
 
@@ -854,7 +852,6 @@ $(document).on("turbolinks:load", function() {
     $(document).ready(function() {
         $('.parallax').parallax();
     });
-
 
 
     $(document).ready(function() {
