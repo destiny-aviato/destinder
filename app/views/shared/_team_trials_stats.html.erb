@@ -210,7 +210,7 @@
                                                     <% total = x["Character Stats"]["Kill Stats"]["Revives Performed"].to_i + x["Character Stats"]["Kill Stats"]["Revives Received"].to_i %>
                                                     
                                                     <% res_percent =  total.to_i != 0  ? ((x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total.to_i) * 100.0) : 0 %>                                                        
-                                                    <br><p class="stat-heading"><%= "#{res_percent}%" %></p> 
+                                                    <br><p class="stat-heading"><b><span style="color: #3498db"><%= x["Character Stats"]["Kill Stats"]["Revives Performed"] %></span> : <span style="color: #95a5a6"><%=  x["Character Stats"]["Kill Stats"]["Revives Received"] %></span></b></p>
                                                 </div>                                        
                                                 <div class="col s12">
                                                     <p class="stat-heading">PLAYER ANALYSIS</p>
@@ -249,7 +249,8 @@
                                     <div class="row">
                                         <div class="col s12 m6">
                                             <h5>Account Badges</h5>
-                                            <% if !@user.nil? %>
+                                            <% if !user_id.nil? %>
+                                                <% user_profile = User.find_by(id: user_id) %>  
                                                 <% user_profile.badges.each do |badge| %>                
                                                     <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                                                         <%= badge.name %>

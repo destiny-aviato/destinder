@@ -89,7 +89,7 @@
         </div>
         <div id="filter-sliders">
             <div class="row">
-                <div class="col s12 m6">
+                <div class="col s12 m6 hide-on-small-only" >
                     <div class="row">
                         <div class="col s12"><label>ELO</label><br><br></div>
                         <div class="col s12"><div id="elo-slider"></div></div>
@@ -97,7 +97,7 @@
                         <div class="col s6 right-align"><label>Max: <span id="elo-field-max">2000</span></label></div>
                     </div>                
                 </div>
-                <div class="col s12 m6">
+                <div class="col s12 m6 hide-on-small-only">
                     <div class="row">
                         <div class="col s12"><label>K/D</label><br><br></div>
                         <div class="col s12"><div id="kd-slider"></div></div>
@@ -105,27 +105,31 @@
                         <div class="col s6 right-align"><label>Max: <span id="kd-field-max">2.0</span></label></div>
                     </div>                
                 </div>
-                <div class="col s12 m6" style="display:none !important;">
+                <div class="col s12 m6 hide-on-med-and-up">
+                    <label>MIN ELO</label><br> 
                     <%= text_field_tag :elo_min, nil%>
                 </div>
-                <div class="col s12 m6" style="display:none !important;">
-                    <label>MAX ELO (Trials)</label><br>   
+                <div class="col s12 m6 hide-on-med-and-up">
+                    <label>MAX ELO</label><br>   
                     <%= text_field_tag :elo_max, nil%>
+                </div>
+            </div>       
+            <div class="row">
+                <div class="col s12 m6 hide-on-med-and-up" >
+                    <label>MIN K/D</label><br> 
+                    <%= text_field_tag :kd_min, nil%>
+                </div>
+                <div class="col s12 m6 hide-on-med-and-up">
+                    <label>MAX K/D</label><br> 
+                    <%= text_field_tag :kd_max, nil %>
+                </div>
+                <div class="col s12 m6">                
+                    <a class="waves-effect waves-light btn" id="update-form">Update</a>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 m6" style="display:none !important;">
-                <%= text_field_tag :kd_min, nil%>
-            </div>
-            <div class="col s12 m6" style="display:none !important;">
-                <%= text_field_tag :kd_max, nil %>
-            </div>
-            <div class="col s12 m6">                
-                <a class="waves-effect waves-light btn" id="update-form">Update</a>
-            </div>
-        </div>
-        <!-- <a onClick="location.reload();"class="waves-effect waves-light btn" id="clear-filter">Clear</a> -->
+
+        
     <% end %>
     </div>
 </div>
