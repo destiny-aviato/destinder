@@ -63,82 +63,82 @@ module ApplicationHelper
 
          ### CHARACTER BADGES #######
          #weapon type badges
-         if (sniper_rifle_kills / total_kills).round(2) >= 0.33
+         if (sniper_rifle_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Sniper",
-                "badge_description" => "40%+ of total kills with a Sniper Rifle",
+                "badge_description" => "More than 1/3 of total kills with a Sniper Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #f1c40f; border: 1px #f1c40f solid;'
             }
          end
 
-         if (pulse_rifle_kills / total_kills).round(2) >= 0.33
+         if (pulse_rifle_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Pulse",
-                "badge_description" => "40%+ of total kills with a Pulse Rifle",
+                "badge_description" => "More than 1/3 of total kills with a Pulse Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #2ecc71; border: 1px #2ecc71 solid;'
             }
          end
 
-         if (scout_rifle_kills / total_kills).round(2) >= 0.33
+         if (scout_rifle_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Scout",
-                "badge_description" => "40%+ of total kills with a Scout Rifle",
+                "badge_description" => "More than 1/3 of total kills with a Scout Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #9b59b6; border: 1px #9b59b6 solid;'
             }
          end
-         if (hand_cannon_kills / total_kills).round(2) >= 0.33
+         if (hand_cannon_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Hand Cannon",
-                "badge_description" => "40%+ of total kills with a Hand Cannon",
+                "badge_description" => "More than 1/3 of total kills with a Hand Cannon",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #3498db; border: 1px #3498db solid;'
             }
          end
-         if (fusion_rifle_kills / total_kills).round(2) >= 0.33
+         if (fusion_rifle_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Fusion",
-                "badge_description" => "40%+ of total kills with a Fusion Rifle",
+                "badge_description" => "More than 1/3 of total kills with a Fusion Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #34495e; border: 1px #34495e solid;'
             }
          end
 
-         if (auto_rifle_kills / total_kills).round(2) >= 0.33
+         if (auto_rifle_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Auto",
-                "badge_description" => "40%+ of total kills with an Auto Rifle",
+                "badge_description" => "More than 1/3 of total kills with an Auto Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #FA8708; border: 1px #FA8708 solid;'
             }
          end
 
-         if (sidearm_kills / total_kills).round(2) >= 0.33
+         if (sidearm_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Sidearm",
-                "badge_description" => "40%+ of total kills with a Sidearm",
+                "badge_description" => "More than 1/3 of total kills with a Sidearm",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #AA885F; border: 1px #AA885F solid;'
             }
          end
 
-         if (shotgun_kills / total_kills).round(2) >= 0.33
+         if (shotgun_kills / total_kills).round(2) >= 0.30
             badges << {
                 "badge_name" => "Shotgun",
-                "badge_description" => "40%+ of total kills with a Shotgun",
+                "badge_description" => "More than 1/3 of total kills with a Shotgun",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #e74c3c; border: 1px #e74c3c solid;'
             }
          end
 
 
-         #medic if revives performed is more than 2x received
-         if (revives_performed >= (revives_received * 2))
+         #medic if revives performed is More than 2x received
+         if ((revives_performed >= (revives_received * 2)) && revives_performed != 0)
             badges << {
                 "badge_name" => "Medic",
-                "badge_description" => "Performed more than 2x revives than received",
+                "badge_description" => "Performed More than 2x revives than received",
                 "badge_icon" => '<i class="fa fa-medkit" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #FF3B3F; border: 1px #FF3B3F solid;'
             }
@@ -147,7 +147,7 @@ module ApplicationHelper
          #survivor if average life span > 2mins
 
 
-         #ability kills more than 20% of total kills
+         #ability kills More than 20% of total kills
          if (ability_kills / total_kills).round(2) >= 0.20
             badges << {
                 "badge_name" => "Super Man",
@@ -157,13 +157,13 @@ module ApplicationHelper
             }
          end
 
-         #marksman if precicion kills are more than 35% of total kills
+         #marksman if precicion kills are More than 35% of total kills
          if (precision_kills / total_kills).round(2) >= 0.40
             badges << {
                 "badge_name" => "Marksman",
-                "badge_description" => "40%+ of total kills are precision kills",
-                "badge_icon" => '<i class="material-icons" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;">attach_money</i>',
-                "badge_color" => 'color: #CEAE33; border: 1px #CEAE33 solid;'
+                "badge_description" => "More than 40% of total kills are precision kills",
+                "badge_icon" => '<i class="fa fa-bullseye" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: #FF3B3D; border: 1px #FF3B3D solid;'
             }
          end
 
@@ -172,18 +172,18 @@ module ApplicationHelper
             badges << {
                 "badge_name" => "Camper",
                 "badge_description" => "Kill Distance is greater than 25m",
-                "badge_icon" => '<i class="material-icons" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;">attach_money</i>',
-                "badge_color" => 'color: #CEAE33; border: 1px #CEAE33 solid;'
+                "badge_icon" => '<i class="fa fa-free-code-camp" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: #AA885F; border: 1px #AA885F solid;'
             }
          end
 
          #rusher if kill distance < 20
-         if avg_kill_distance <= 20
+         if avg_kill_distance <= 20 && avg_kill_distance > 0
             badges << {
                 "badge_name" => "Rusher",
                 "badge_description" => "Kill Distance is less than 20m",
-                "badge_icon" => '<i class="material-icons" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;">attach_money</i>',
-                "badge_color" => 'color: #CEAE33; border: 1px #CEAE33 solid;'
+                "badge_icon" => '<i class="fa fa-fast-forward" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: #FF4500; border: 1px #FF4500 solid;'
             }
             
          end

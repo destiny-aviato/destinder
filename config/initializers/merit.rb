@@ -90,3 +90,13 @@ Merit::Badge.create!(
    }
 )
 
+Merit::Badge.create!(
+  id: 7,
+  name: "Little Helper",
+  description: "Feedback contributor on Reddit",
+  custom_fields: { 
+    icon: '<i class="fa fa-reddit-alien" style="float: left; font-size: 15px; line-height: 21px; padding-right: 7px; margin-left: -6px;"></i>',
+    color: "color: #FAFAFA; background-color: #FF4500;"
+   }
+)
+
