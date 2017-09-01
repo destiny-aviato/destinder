@@ -54,7 +54,8 @@ module ApplicationHelper
          avg_life_span = stats["Character Stats"]["Kill Stats"]["Average Life Span"].to_f
          super_kills = stats["Character Stats"]["Kill Stats"]["Super"].to_f
          grenade_kills = stats["Character Stats"]["Kill Stats"]["Grenades"].to_f
-         precision_kills = stats["Character Stats"]["Kill Stats"]["Precision Kills"].to_f        
+         precision_kills = stats["Character Stats"]["Kill Stats"]["Precision Kills"].to_f
+         killing_spree = stats["Character Stats"]["Kill Stats"]["Longest Spree"].to_f        
          total_kills = auto_rifle_kills + hand_cannon_kills + pulse_rifle_kills + scout_rifle_kills + sniper_rifle_kills + shotgun_kills + fusion_rifle_kills + sidearm_kills + rocket_launcher_kills + machine_gun_kills + sword_kills
 
          if !user.nil?
@@ -174,6 +175,39 @@ module ApplicationHelper
                 "badge_color" => 'color: #212121; border: 1px #212121 solid;'
             }
          end
+
+         #Fight Forever if avg Spree > 10
+         if (killing_spree) >= 10 && (killing_spree) < 15
+            badges << {
+                "badge_name" => "Fight Forever",
+                "badge_description" => "Kill Spree Greater than 10",
+                "badge_icon" => '<i class="fa fa-fire-extinguisher" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: red; border: 1px gold solid;'
+            }
+         end
+
+
+         #Army of One if avg Spree > 15
+         if (killing_spree) >= 15 && (killing_spree) < 20
+            badges << {
+                "badge_name" => "ArmyOfOne",
+                "badge_description" => "Kill Spree Greater than 15",
+                "badge_icon" => '<i class="fa fa-diamond " style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: red; border: 1px gold solid;'
+            }
+         end
+
+
+         #Trials God of One if avg Spree > 15
+         if (killing_spree) >= 20 
+            badges << {
+                "badge_name" => "Trials God",
+                "badge_description" => "Kill Spree Greater than 20",
+                "badge_icon" => '<i class="fa fa-star" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
+                "badge_color" => 'color: red; border: 1px gold solid;'
+            }
+         end
+
 
          #camper if avg kill distance > 25
          if (avg_kill_distance) >= 25
