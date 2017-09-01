@@ -166,10 +166,10 @@ module ApplicationHelper
          end
 
          #marksman if precicion kills are More than 35% of total weapon kills
-         if (precision_kills / total_kills).round(2) >= 0.40
+         if (precision_kills / total_kills).round(2) >= 0.60
             badges << {
                 "badge_name" => "Marksman",
-                "badge_description" => "More than 40% of total weapon kills are precision kills",
+                "badge_description" => "More than 60% of total weapon kills are precision kills",
                 "badge_icon" => '<i class="fa fa-bullseye" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px; color: #FF3B3D;"></i>',
                 "badge_color" => 'color: #212121; border: 1px #212121 solid;'
             }
