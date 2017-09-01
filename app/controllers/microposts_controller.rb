@@ -45,14 +45,13 @@ class MicropostsController < ApplicationController
             @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)
         else 
             @micropost.raid_difficulty = ""
-            @micropost.user_stats = get_stats(current_user, "night", @micropost.raid_difficulty, @micropost.character_choice)         
+            @micropost.user_stats = get_stats(current_user, "other", @micropost.raid_difficulty, @micropost.character_choice)         
         end
 
         @micropost.platform = current_user.api_membership_type
         
 
-        
-
+    
         # TODO: Add logic to handle looking for similar
         if @micropost.save
             respond_to do |format|
@@ -92,6 +91,8 @@ class MicropostsController < ApplicationController
                 Micropost.get_raid_stats(user, "vog", diff, char_id)
             when "night"
                 Micropost.get_nightfall_stats(user, char_id)
+            else
+                Micropost.get_other_stats(user, char_id)
             end
 
         rescue NoMethodError => e 

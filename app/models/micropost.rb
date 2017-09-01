@@ -218,6 +218,67 @@ class Micropost < ApplicationRecord
     characters_stats
   end
 
+  def self.get_other_stats(user, character_id)
+    get_characters = Typhoeus.get(
+      "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+
+    character_data["Response"]["data"]["characters"].each do |char|
+      if char["characterBase"]["characterId"] == character_id
+        @character = char
+        break
+      end
+    end
+
+    characters_stats = []
+    
+
+    character_id =  @character["characterBase"]["characterId"]
+    character_type = @character["characterBase"]["classType"]
+    light_level = @character["characterBase"]["powerLevel"]
+    grimoire = @character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net/#{@character['backgroundPath']}"
+    emblem = "https://www.bungie.net/#{@character['emblemPath']}"
+
+    get_items = Typhoeus::Request.new(
+      "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      method: :get,
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+      )
+
+
+    get_items.on_complete do |item_response|                     
+        item_data = JSON.parse(item_response.body)
+        @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+        @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+    end
+    
+    hydra = Typhoeus::Hydra.hydra
+    hydra.queue(get_items)
+    hydra.run
+   
+  
+    stats = {
+      "Completions" => "-",
+      "Kills" => "-",
+      "Deaths" => "-",
+      "K/D" => "-",
+      "Fastest" => "-",
+      "Light Level" => light_level,
+      "Grimoire" => grimoire,
+      "Background" => background,
+      "Emblem" => emblem,
+      "Subclass Icon" => @subclass_icon,
+      "Subclass Name" => @subclass_name
+    }
+    characters_stats << {"Character Type" => character_type, "Character Stats" => stats}
+    characters_stats = Hash[*characters_stats]
+    characters_stats
+  end
+
 
   def self.get_trials_stats(user, character_id)
     cache_key = "postsStats|#{user.id}|#{user.updated_at}"
