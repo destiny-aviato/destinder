@@ -44,13 +44,15 @@ class TeamStat < ApplicationRecord
             game_kd = game["values"]["killsDeathsRatio"]["basic"]["displayValue"]
             game_kad = game["values"]["killsDeathsAssists"]["basic"]["displayValue"]
             game_standing = game["values"]["standing"]["basic"]["value"]
+            game_date = game["period"]
             
             game_info = {
                 "kills" => game_kills,
                 "deaths" => game_deaths,
                 "kd_ratio" => game_kd,
                 "kad_ratio" => game_kad,
-                "standing" => game_standing
+                "standing" => game_standing,
+                "game_date" => game_date
             }
     
             games << game_info
