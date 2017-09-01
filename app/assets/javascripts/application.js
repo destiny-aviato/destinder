@@ -145,7 +145,7 @@ $(document).on('turbolinks:load', function() {
             var fusion1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
             var sidearm1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Side Arm"]);
             var heavy1 = parseInt(char_data1["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sword"]);
-            var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
+            var total_kills1 =  parseInt(char_data1["Character Stats"]["Kills"]);
 
             var weaponChart1 = new Chart(weaponctx1, {
             type: 'pie',
@@ -194,7 +194,7 @@ $(document).on('turbolinks:load', function() {
             var fusion2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
             var sidearm2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Side Arm"]);
             var heavy2 = parseInt(char_data2["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sword"]);
-            var total_kills2 =  (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2 + fusion2 + sidearm2 + heavy2);
+            var total_kills2 =  parseInt(char_data2["Character Stats"]["Kills"]);
 
             var weaponChart2 = new Chart(weaponctx2, {
             type: 'pie',
@@ -242,7 +242,7 @@ $(document).on('turbolinks:load', function() {
             var fusion3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
             var sidearm3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Side Arm"]);
             var heavy3 = parseInt(char_data3["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sword"]);
-            var total_kills3 =  (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3 + fusion3 + sidearm3 + heavy3);
+            var total_kills3 =  parseInt(char_data3["Character Stats"]["Kills"]);
 
             var weaponChart3 = new Chart(weaponctx3, {
             type: 'pie',
