@@ -13,9 +13,9 @@
 
     <li>
       <div class="nav-wrapper">
-        <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+        <%= form_tag(users_path, :method => "get", id: "search-form", :autocomplete => "off") do %>
           <div class="input-field">
-            <%= search_field :search, params[:search], placeholder: "Guardian Lookup", class: "input" %>
+            <%= search_field :search, params[:search], placeholder: "Guardian Lookup", class: "input", :options => {:autocomplete => 'off'} %>
             <label class="label-icon" for="search"><i class="material-icons" style="color: #D1D1D1;">search</i></label>
             <i class="material-icons">close</i>
           </div>
