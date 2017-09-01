@@ -3,7 +3,7 @@
 
     <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <%= form_for(@player_stat) do |f| %>
+        <%= form_for(@player_stat,  html: {:autocomplete => "off"}) do |f| %>
         <%= render 'shared/stats_error_messages' %>
         <div class="field has-addons">
         <p class="control">
@@ -12,10 +12,10 @@
             </span>
         </p>
         <p class="control">
-            <%= f.text_field :display_name, class: "input", placeholder: "Gamertag" %>
+            <%= f.text_field :display_name, class: "input", placeholder: "Gamertag"%>
         </p>
         <p class="control">
-            <%= f.submit "Find player", class: "button is-primary" %>
+            <%= f.submit "Find player", class: "btn" %>
         </p>
         </div>
 

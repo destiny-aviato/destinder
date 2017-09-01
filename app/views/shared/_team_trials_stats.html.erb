@@ -24,6 +24,7 @@
         <div id="stat-graphs"> 
             <ul id="test-collapse" class="collapsible popout" data-collapsible="expandable">
                 <% info.each_with_index do |character, index| %>
+                   
                     <div class="tooltip_templates">                                                      
                         <span id="diamond_elo_content">
                             <div class="row center-align">
@@ -68,6 +69,7 @@
                     </div>
                     <li>
                         <% x = character %>
+                        <% user_id = User.find_by(:display_name => x["Player Name"]).nil? ? nil :  User.find_by(:display_name => x["Player Name"]).id %>                                            
                         <% case x["Character Items"]["Subclass"]["Item Name"] 
                             when "Nightstalker", "Voidwalker", "Defender" %>
                             <% subclass =  "height: 20px; position: relative; bottom: 20px; background-image: url(#{image_path "void.png"}); background-size: cover;background-position-y: -50px;" %>
@@ -208,7 +210,7 @@
                                                     <% total = x["Character Stats"]["Kill Stats"]["Revives Performed"].to_i + x["Character Stats"]["Kill Stats"]["Revives Received"].to_i %>
                                                     
                                                     <% res_percent =  total.to_i != 0  ? ((x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total.to_i) * 100.0) : 0 %>                                                        
-                                                    <br><p class="stat-heading"><%= "#{res_percent}%" %></p> 
+                                                    <br><p class="stat-heading"><b><span style="color: #3498db"><%= x["Character Stats"]["Kill Stats"]["Revives Performed"] %></span> : <span style="color: #95a5a6"><%=  x["Character Stats"]["Kill Stats"]["Revives Received"] %></span></b></p>
                                                 </div>                                        
                                                 <div class="col s12">
                                                     <p class="stat-heading">PLAYER ANALYSIS</p>
@@ -245,16 +247,56 @@
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col s12">
+                                        <div class="col s12 m6">
                                             <h5>Account Badges</h5>
-                                            <% if !@user.nil? %>
-                                                <% @user.badges.each do |badge| %>                
+                                            <% if !user_id.nil? %>
+                                                <% user_profile = User.find_by(id: user_id) %>  
+                                                <% user_profile.badges.each do |badge| %>                
                                                     <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                                                         <%= badge.name %>
                                                         <%= badge.custom_fields[:icon].html_safe %>
                                                     </div>                
                                                 <% end %>
                                             <% end %>
+                                        </div>
+                                        <div class="col s12 m6">
+                                            <h5>Reputation</h5>
+                                            <div class="col s12 m6">  
+                                                <% if user_id.nil? %>
+                                                    Sorry, this player does not have a Destinder account.
+                                                <% else %>
+                                                    <% user_profile = User.find_by(id: user_id) %>    
+                                                    <% total = user_profile.votes_for + user_profile.votes_against %>      
+                                                    <% rep =  total != 0  ? ((user_profile.votes_for / total).round(1) * 100) : "0" %>
+                                                    
+                                                    <%if user_profile != current_user %>
+                                                      <% if current_user.voted_for?(user_profile) %>
+                                                        <div class="col s12 m6">
+                                                            <%= link_to users_unvote_path(:voter => user_profile), method: :post, class: "waves-effect waves-light btn" do %>
+                                                                <i class="material-icons">cancel</i>
+                                                            <% end %>
+                                                        </div>                         
+                                                        
+                                                      <% else %>
+                                                      <div class="col s12 m4">
+                                                        <%= link_to users_upvote_path(:voter => user_profile), method: :post, class: "btn", style: "background-color: transparent; box-shadow: none; color: #5085A5; padding: 0;" do %>
+                                                            <i class="material-icons">thumb_up</i>
+                                                          <% end %>
+                                                      </div>
+                                                        
+                                                      <div class="col s12 m4">
+                                                            <%= link_to users_downvote_path(:voter => user_profile), method: :post, class: "btn", style: "background-color: transparent; box-shadow: none; color: #5085A5; padding: 0;" do %>
+                                                            <i class="material-icons" >thumb_down</i>
+                                                          <% end %>
+                                                      </div>
+                                                      <% end %>
+                                                    <% end %>
+                                                    <% tip = "Player Reputation Score (#{total} votes)" %>    
+                                                    <p class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                                                                                                                            
+                                                            <p class="stat-title" style="line-height: 0.125;"><%= rep %>%</p>
+                                                    </p>
+                                                <% end %>
+                                            </div>
                                         </div>
                                     </div>
                                 <% end %>

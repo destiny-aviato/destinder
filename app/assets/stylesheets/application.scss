@@ -39,6 +39,7 @@ main {
 .page-footer {
     padding-top: 0px;
     background-color: transparent;
+    color: #212121;
 }
 
 .page-footer .footer-copyright {
@@ -47,6 +48,7 @@ main {
     font-weight: 400;
     font-size: 12px;
 }
+
 
 .card-image img {
     height: 250px;
@@ -334,7 +336,7 @@ li.tab.post {
 
 .tabs .tab a.active {
     color: #f5f5f5;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     // text-shadow: 1px 1px 3px #ffffff;
 }
@@ -344,7 +346,7 @@ li.tab.post {
     // font-size: 11px;
     text-overflow: inherit;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 100;
     // text-shadow: 1px 1px 3px #ffffff;
 }
 
@@ -973,11 +975,11 @@ html {
 .btn,
 .btn-large,
 .btn-large {
-    background-color: #21708E;
+    background-color: #1E80A3;
 }
 
 .tabs .indicator {
-    height: 4px;
+    height: 7px;
     background-color: #9694a9;
 }
 
@@ -1109,16 +1111,15 @@ ul.tabs.tabs-fixed-width.post-form-tabs {
 
 a.post-form-tabs.active {
     color: #f5f5f5 !important;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     text-shadow: none !important;
-    text-decoration: underline;
 }
 
 a.post-form-tabs {
     color: #f5f5f5 !important;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 100;
     text-shadow: none !important;
 }
 

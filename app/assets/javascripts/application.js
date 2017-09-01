@@ -78,11 +78,9 @@ $(document).on('turbolinks:load', function() {
 
     $("#micropost_raid_difficulty").click(function() {
         if ($('#micropost_raid_difficulty').prop('checked')) {
-            console.log("checked! setting to hard");
-            $('#micropost_raid_difficulty').val('Hard');
+            $('#micropost_raid_difficulty').val('Heroic');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
-            console.log("unchecked! setting to normal");
         }
     });
 
@@ -149,6 +147,7 @@ $(document).on('turbolinks:load', function() {
             var heavy1 = parseInt(char_data1["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sword"]);
             var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
 
+            // console.log(total_kills1);
             var weaponChart1 = new Chart(weaponctx1, {
             type: 'pie',
             data: {
@@ -474,124 +473,128 @@ $(document).on('turbolinks:load', function() {
             var temp_data1 = []
             var temp_wins1 = []
             console.log(char_data1);
-        
-            $.each(char_data1["recent_games"].reverse(), function (index, value) {
-                temp_data1.push(value["kd_ratio"]);
-                temp_wins1.push(value["standing"]);
-                
-            });
-        
-            var pointBackgroundColors1 = [];
-            for (i = 0; i < temp_wins1.length; i++) {
-                if (temp_wins1[i] == 0) {
-                    pointBackgroundColors1.push("#2ecc71");
-                } else {
-                    pointBackgroundColors1.push("#e74c3c");
-                }
-            }
-        
-            var killChart1 = new Chart(killctx1, {
-                type: 'line',
-                data: {
-                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-                    datasets: [{
-                        fill: false,
-                        label: 'KD',
-                        data: temp_data1,
-                        pointBackgroundColor: pointBackgroundColors1,
-                        borderColor: "#A5A5AF",
-                        pointBorderColor: "white",
-                        pointRadius: 5,
-                        borderWidth: 2
-                    },
-                    {
-                        fill: false,
-                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                        backgroundColor: "#EEEEEE",
-                        label: "",
-                        borderColor: "black",
-                        pointRadius: 0,
-                        borderWidth: 1,
-                        pointHoverRadius: 0
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Recent Games'
-                    },
-                    layout: {
-                        padding: {
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0
-                        }
+            
+            if (char_data1["recent_games"] != null) {
+                $.each(char_data1["recent_games"].reverse(), function (index, value) {
+                    temp_data1.push(value["kd_ratio"]);
+                    temp_wins1.push(value["standing"]);
+                    
+                });
+            
+                var pointBackgroundColors1 = [];
+                for (i = 0; i < temp_wins1.length; i++) {
+                    if (temp_wins1[i] == 0) {
+                        pointBackgroundColors1.push("#2ecc71");
+                    } else {
+                        pointBackgroundColors1.push("#e74c3c");
                     }
                 }
-            });
+            
+                var killChart1 = new Chart(killctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                        datasets: [{
+                            fill: false,
+                            label: 'KD',
+                            data: temp_data1,
+                            pointBackgroundColor: pointBackgroundColors1,
+                            borderColor: "#A5A5AF",
+                            pointBorderColor: "white",
+                            pointRadius: 5,
+                            borderWidth: 2
+                        },
+                        {
+                            fill: false,
+                            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            backgroundColor: "#EEEEEE",
+                            label: "",
+                            borderColor: "black",
+                            pointRadius: 0,
+                            borderWidth: 1,
+                            pointHoverRadius: 0
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Recent Games'
+                        },
+                        layout: {
+                            padding: {
+                                left: 0,
+                                right: 0,
+                                top: 0,
+                                bottom: 0
+                            }
+                        }
+                    }
+                });
+            }
         }
 
         if ($(".chart-container2").length) {
-            var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
-            var killctx2 = document.getElementById('kill-chart-breakdown2').getContext('2d');
-            var temp_data2 = []
-            var temp_wins2 = []
-            console.log(char_data2);
-        
-            $.each(char_data2["recent_games"].reverse(), function (index, value) {
-                temp_data2.push(value["kd_ratio"]);
-                temp_wins2.push(value["standing"]);
-                
-            });
-        
-            var pointBackgroundColors2 = [];
-            for (i = 0; i < temp_wins2.length; i++) {
-                if (temp_wins2[i] == 0) {
-                    pointBackgroundColors2.push("#2ecc71");
-                } else {
-                    pointBackgroundColors2.push("#e74c3c");
-                }
-            }
-        
-            var killChart2 = new Chart(killctx2, {
-                type: 'line',
-                data: {
-                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-                    datasets: [{
-                        fill: false,
-                        label: 'KD',
-                        data: temp_data2,
-                        pointBackgroundColor: pointBackgroundColors2,
-                        borderColor: "#A5A5AF",
-                        pointBorderColor: "white",
-                        pointRadius: 6,
-                        borderWidth: 2
-                    },
-                    {
-                        fill: false,
-                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                        backgroundColor: "#EEEEEE",
-                        label: "",
-                        borderColor: "black",
-                        pointRadius: 0,
-                        borderWidth: 1,
-                        pointHoverRadius: 0
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Recent Games'
+            if (char_data1["recent_games"] != null) {
+                var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
+                var killctx2 = document.getElementById('kill-chart-breakdown2').getContext('2d');
+                var temp_data2 = []
+                var temp_wins2 = []
+                console.log(char_data2);
+            
+                $.each(char_data2["recent_games"].reverse(), function (index, value) {
+                    temp_data2.push(value["kd_ratio"]);
+                    temp_wins2.push(value["standing"]);
+                    
+                });
+            
+                var pointBackgroundColors2 = [];
+                for (i = 0; i < temp_wins2.length; i++) {
+                    if (temp_wins2[i] == 0) {
+                        pointBackgroundColors2.push("#2ecc71");
+                    } else {
+                        pointBackgroundColors2.push("#e74c3c");
                     }
                 }
-            });
+            
+                var killChart2 = new Chart(killctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                        datasets: [{
+                            fill: false,
+                            label: 'KD',
+                            data: temp_data2,
+                            pointBackgroundColor: pointBackgroundColors2,
+                            borderColor: "#A5A5AF",
+                            pointBorderColor: "white",
+                            pointRadius: 6,
+                            borderWidth: 2
+                        },
+                        {
+                            fill: false,
+                            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            backgroundColor: "#EEEEEE",
+                            label: "",
+                            borderColor: "black",
+                            pointRadius: 0,
+                            borderWidth: 1,
+                            pointHoverRadius: 0
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Recent Games'
+                        }
+                    }
+                });
+            }
         }
 
         if ($(".chart-container3").length) {
@@ -601,56 +604,58 @@ $(document).on('turbolinks:load', function() {
             var temp_wins3 = []
             console.log(char_data3);
         
-            $.each(char_data3["recent_games"].reverse(), function (index, value) {
-                temp_data3.push(value["kd_ratio"]);
-                temp_wins3.push(value["standing"]);
-                
-            });
-        
-            var pointBackgroundColors3 = [];
-            for (i = 0; i < temp_wins3.length; i++) {
-                if (temp_wins3[i] == 0) {
-                    pointBackgroundColors3.push("#2ecc71");
-                } else {
-                    pointBackgroundColors3.push("#e74c3c");
-                }
-            }
-        
-            var killChart3 = new Chart(killctx3, {
-                type: 'line',
-                data: {
-                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
-                    datasets: [{
-                        fill: false,
-                        label: 'KD',
-                        data: temp_data3,
-                        pointBackgroundColor: pointBackgroundColors3,
-                        borderColor: "#A5A5AF",
-                        pointBorderColor: "white",
-                        pointRadius: 5,
-                        borderWidth: 2
-                    },
-                    {
-                        fill: false,
-                        data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                        backgroundColor: "#EEEEEE",
-                        label: "",
-                        borderColor: "black",
-                        pointRadius: 0,
-                        borderWidth: 1,
-                        pointHoverRadius: 0
-                    }]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: 'Recent Games'
+            if (char_data1["recent_games"] != null) {
+                $.each(char_data3["recent_games"].reverse(), function (index, value) {
+                    temp_data3.push(value["kd_ratio"]);
+                    temp_wins3.push(value["standing"]);
+                    
+                });
+            
+                var pointBackgroundColors3 = [];
+                for (i = 0; i < temp_wins3.length; i++) {
+                    if (temp_wins3[i] == 0) {
+                        pointBackgroundColors3.push("#2ecc71");
+                    } else {
+                        pointBackgroundColors3.push("#e74c3c");
                     }
                 }
-            });
+            
+                var killChart3 = new Chart(killctx3, {
+                    type: 'line',
+                    data: {
+                        labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                        datasets: [{
+                            fill: false,
+                            label: 'KD',
+                            data: temp_data3,
+                            pointBackgroundColor: pointBackgroundColors3,
+                            borderColor: "#A5A5AF",
+                            pointBorderColor: "white",
+                            pointRadius: 5,
+                            borderWidth: 2
+                        },
+                        {
+                            fill: false,
+                            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            backgroundColor: "#EEEEEE",
+                            label: "",
+                            borderColor: "black",
+                            pointRadius: 0,
+                            borderWidth: 1,
+                            pointHoverRadius: 0
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Recent Games'
+                        }
+                    }
+                });
+            }
         }
       }
       
@@ -848,7 +853,6 @@ $(document).on("turbolinks:load", function() {
     $(document).ready(function() {
         $('.parallax').parallax();
     });
-
 
 
     $(document).ready(function() {

@@ -7,16 +7,16 @@ var Testing = React.createClass({
       }
     });
   
-  //rendering element example
-  function tick() {
-      const element = (
-            <span>Local Time: {new Date().toLocaleTimeString()}</span>
-      );
-      ReactDOM.render(
-        element,
-        document.getElementById('testing')
-      );
-    }
+  // //rendering element example
+  // function tick() {
+  //     const element = (
+  //           <span>Local Time: {new Date().toLocaleTimeString()}</span>
+  //     );
+  //     ReactDOM.render(
+  //       element,
+  //       document.getElementById('testing')
+  //     );
+  //   }
   
-    setInterval(tick, 1000);
+  //   setInterval(tick, 1000);
   

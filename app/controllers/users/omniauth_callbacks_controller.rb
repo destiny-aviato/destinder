@@ -13,11 +13,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @user.persisted?
         @user.remember_me = true
 
+        if @user.badges == []
+          if @user.id <= 500
+            @user.add_badge(5)
+          end
+        end
+
         sign_in_and_redirect @user, :event => :authentication
 
         # set_flash_message(:notice, :success, :kind => 'Bungie') if is_navigational_format?
       else
         session["devise.bungie_data"] = request.env["omniauth.auth"]
+        puts "new user!"
         redirect_to root_path
         flash.delete(:notice)
       end

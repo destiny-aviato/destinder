@@ -77,14 +77,14 @@
                     <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
                             <div class="row" style="overflow: hidden; max-height: 30px;">
                                 <div class="container" style="padding-top: 1%; width: 80%;">
-                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content="#badge_content" style="color: #f5f5f5;"></i></div>
+                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
                                     <%= look_for %>
                                     <%= mic %>
                                 </div>
                             </div>
                     </div>
                     <div class="tooltip_templates">
-                            <span id="badge_content">
+                            <span id='<%= "badge_content#{micropost.id}"%>'>
                                 <hr>
                                 <% micropost.user.badges.each do |badge| %>   
                                 <div class="row" style="margin-bottom: -5%">
@@ -103,7 +103,7 @@
                                 <% end %>
                             </span>
                         <% if micropost.game_type == "Trials of Osiris" %>
-                            <span id="diamond_elo_content">
+                            <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Diamond
                                 </div>
@@ -111,7 +111,7 @@
                                     # <%= stats['Character Stats']['ELO']['Rank'] %>
                                 </div>
                             </span>
-                            <span id="platinum_elo_content">
+                            <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Platinum
                                 </div>
@@ -119,7 +119,7 @@
                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
                                 </div>
                             </span>
-                            <span id="gold_elo_content">
+                            <span id='<%= "gold_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Gold
                                 </div>
@@ -127,7 +127,7 @@
                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
                                 </div>
                             </span>
-                            <span id="silver_elo_content">
+                            <span id='<%= "silver_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Silver
                                 </div>
@@ -135,7 +135,7 @@
                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
                                 </div>
                             </span>
-                            <span id="bronze_elo_content">
+                            <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Bronze
                                 </div>
@@ -201,15 +201,15 @@
                                             <td><%= stats["Character Stats"]["Win Rate"] %>%</td>
                                             <td >
                                                 <% if stats["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content#{micropost.id}' style='color:#7198B7;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1700 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content#{micropost.id}' style='color:#58907E;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1500 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1300 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content#{micropost.id}' style='color:#CCAE50;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1300 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1200 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content#{micropost.id}'  style='color:#BFC4C2;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1200 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                    <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content#{micropost.id}' style='color:#AA885F;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
                                                 <% end %>
                                                 
                                                 <%= elo.html_safe %>
@@ -306,11 +306,13 @@
                 </div> -->
                 
                 <div class="row">
-                        <div class="col s4 left-align">
-                            <%= link_to @message, target: "_blank" do %>
-                            <span class="icon">
-                                <i class="fa fa-envelope"></i>
-                            </span>
+                    <div class="col s4 left-align">
+                        <% if micropost.user.api_membership_type == "1" %>
+                            <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
+                                <span class="icon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            <% end %>
                         <% end %>
                     </div>
                     <% total = micropost.user.votes_for + micropost.user.votes_against %> 
