@@ -177,7 +177,7 @@ module ApplicationHelper
          end
 
          #Fight Forever if avg Spree > 10
-         if (killing_spree) >= 10 && (killing_spree) < 15
+         if (killing_spree >= 10) && (killing_spree < 15)
             badges << {
                 "badge_name" => "Fight Forever",
                 "badge_description" => "Kill Spree Greater than 10",
@@ -188,7 +188,7 @@ module ApplicationHelper
 
 
          #Army of One if avg Spree > 15
-         if (killing_spree) >= 15 && (killing_spree) < 20
+         if (killing_spree >= 15) && (killing_spree < 20)
             badges << {
                 "badge_name" => "ArmyOfOne",
                 "badge_description" => "Kill Spree Greater than 15",
@@ -199,7 +199,7 @@ module ApplicationHelper
 
 
          #Trials God of One if avg Spree > 15
-         if (killing_spree) >= 20 
+         if killing_spree >= 20 
             badges << {
                 "badge_name" => "Trials God",
                 "badge_description" => "Kill Spree Greater than 20",
@@ -210,7 +210,7 @@ module ApplicationHelper
 
 
          #camper if avg kill distance > 25
-         if (avg_kill_distance) >= 25
+         if avg_kill_distance >= 25
             badges << {
                 "badge_name" => "Camper",
                 "badge_description" => "Kill Distance is greater than 25m",
@@ -220,7 +220,7 @@ module ApplicationHelper
          end
 
          #rusher if kill distance < 20
-         if avg_kill_distance <= 20 && avg_kill_distance > 0
+         if (avg_kill_distance <= 20) && (avg_kill_distance > 0)
             badges << {
                 "badge_name" => "Rusher",
                 "badge_description" => "Kill Distance is less than 20m",
