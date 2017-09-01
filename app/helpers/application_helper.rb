@@ -30,7 +30,6 @@ module ApplicationHelper
 
          #variables
          elo = stats["Character Stats"]["ELO"]["ELO"]
-         total_kills = stats["Character Stats"]["Kills"].to_f
          total_deaths = stats["Character Stats"]["Deaths"].to_f
          wins = stats["Character Stats"]["games_won"].to_f
          losses = stats["Character Stats"]["games_lost"].to_f
@@ -43,6 +42,7 @@ module ApplicationHelper
          sniper_rifle_kills = stats["Character Stats"]["Kill Stats"]["Sniper"].to_f
          rocket_launcher_kills = stats["Character Stats"]["Kill Stats"]["Rocket Launcher"].to_f
          machine_gun_kills = stats["Character Stats"]["Kill Stats"]["Machine Gun"].to_f
+         sword_kills = stats["Character Stats"]["Kill Stats"]["Sword"].to_f
          sidearm_kills = stats["Character Stats"]["Kill Stats"]["Side Arm"].to_f
          shotgun_kills = stats["Character Stats"]["Kill Stats"]["Shotgun"].to_f
          ability_kills =  stats["Character Stats"]["Kill Stats"]["Ability"].to_f
@@ -54,8 +54,8 @@ module ApplicationHelper
          avg_life_span = stats["Character Stats"]["Kill Stats"]["Average Life Span"].to_f
          super_kills = stats["Character Stats"]["Kill Stats"]["Super"].to_f
          grenade_kills = stats["Character Stats"]["Kill Stats"]["Grenades"].to_f
-         precision_kills = stats["Character Stats"]["Kill Stats"]["Precision Kills"].to_f
-        
+         precision_kills = stats["Character Stats"]["Kill Stats"]["Precision Kills"].to_f        
+         total_kills = auto_rifle_kills + hand_cannon_kills + pulse_rifle_kills + scout_rifle_kills + sniper_rifle_kills + shotgun_kills + fusion_rifle_kills + sidearm_kills + rocket_launcher_kills + machine_gun_kills + sword_kills
 
          if !user.nil?
             #streamer
@@ -71,71 +71,71 @@ module ApplicationHelper
 
          ### CHARACTER BADGES #######
          #weapon type badges
-         if (sniper_rifle_kills / total_kills).round(2) >= 0.30
+         if (sniper_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Sniper",
-                "badge_description" => "More than 1/3 of total kills with a Sniper Rifle",
+                "badge_description" => "More than 1/3 of total weapon kills with a Sniper Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #f1c40f; border: 1px #f1c40f solid;'
             }
          end
 
-         if (pulse_rifle_kills / total_kills).round(2) >= 0.30
+         if (pulse_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Pulse",
-                "badge_description" => "More than 1/3 of total kills with a Pulse Rifle",
+                "badge_description" => "More than 1/3 of total weapon kills with a Pulse Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #2ecc71; border: 1px #2ecc71 solid;'
             }
          end
 
-         if (scout_rifle_kills / total_kills).round(2) >= 0.30
+         if (scout_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Scout",
-                "badge_description" => "More than 1/3 of total kills with a Scout Rifle",
+                "badge_description" => "More than 1/3 of total weapon kills with a Scout Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #9b59b6; border: 1px #9b59b6 solid;'
             }
          end
-         if (hand_cannon_kills / total_kills).round(2) >= 0.30
+         if (hand_cannon_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Hand Cannon",
-                "badge_description" => "More than 1/3 of total kills with a Hand Cannon",
+                "badge_description" => "More than 1/3 of total weapon kills with a Hand Cannon",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #3498db; border: 1px #3498db solid;'
             }
          end
-         if (fusion_rifle_kills / total_kills).round(2) >= 0.30
+         if (fusion_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Fusion",
-                "badge_description" => "More than 1/3 of total kills with a Fusion Rifle",
+                "badge_description" => "More than 1/3 of total weapon kills with a Fusion Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #34495e; border: 1px #34495e solid;'
             }
          end
 
-         if (auto_rifle_kills / total_kills).round(2) >= 0.30
+         if (auto_rifle_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Auto",
-                "badge_description" => "More than 1/3 of total kills with an Auto Rifle",
+                "badge_description" => "More than 1/3 of total weapon kills with an Auto Rifle",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #FA8708; border: 1px #FA8708 solid;'
             }
          end
 
-         if (sidearm_kills / total_kills).round(2) >= 0.30
+         if (sidearm_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Sidearm",
-                "badge_description" => "More than 1/3 of total kills with a Sidearm",
+                "badge_description" => "More than 1/3 of total weapon kills with a Sidearm",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #AA885F; border: 1px #AA885F solid;'
             }
          end
 
-         if (shotgun_kills / total_kills).round(2) >= 0.30
+         if (shotgun_kills / total_kills).round(2) >= 0.33
             badges << {
                 "badge_name" => "Shotgun",
-                "badge_description" => "More than 1/3 of total kills with a Shotgun",
+                "badge_description" => "More than 1/3 of total weapon kills with a Shotgun",
                 "badge_icon" => '<i class="fa fa-crosshairs" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
                 "badge_color" => 'color: #e74c3c; border: 1px #e74c3c solid;'
             }
@@ -156,7 +156,7 @@ module ApplicationHelper
 
 
          #ability kills More than 20% of total kills
-         if (ability_kills / total_kills).round(2) >= 0.20
+         if (ability_kills / stats["Character Stats"]["Kills"]).round(2) >= 0.20
             badges << {
                 "badge_name" => "Super Man",
                 "badge_description" => "20%+ of total kills with abilities",
@@ -165,13 +165,13 @@ module ApplicationHelper
             }
          end
 
-         #marksman if precicion kills are More than 35% of total kills
+         #marksman if precicion kills are More than 35% of total weapon kills
          if (precision_kills / total_kills).round(2) >= 0.40
             badges << {
                 "badge_name" => "Marksman",
-                "badge_description" => "More than 40% of total kills are precision kills",
-                "badge_icon" => '<i class="fa fa-bullseye" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
-                "badge_color" => 'color: #FF3B3D; border: 1px #FF3B3D solid;'
+                "badge_description" => "More than 40% of total weapon kills are precision kills",
+                "badge_icon" => '<i class="fa fa-bullseye" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px; color: #FF3B3D;"></i>',
+                "badge_color" => 'color: #212121; border: 1px #212121 solid;'
             }
          end
 
