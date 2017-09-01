@@ -147,7 +147,7 @@ $(document).on('turbolinks:load', function() {
             var heavy1 = parseInt(char_data1["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sword"]);
             var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
 
-            console.log(total_kills1);
+            // console.log(total_kills1);
             var weaponChart1 = new Chart(weaponctx1, {
             type: 'pie',
             data: {
