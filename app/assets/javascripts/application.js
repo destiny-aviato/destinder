@@ -45,7 +45,8 @@ $(document).on('turbolinks:load', function() {
 
     $('.game_type_select').change(function() {
         selection = $(this).val();
-
+        // console.log(selection);
+        $("#game-type-filter").val(selection);
         if (selection == "Trials of Osiris") {
             $('#filter-sliders').show();
         } else {
@@ -53,6 +54,12 @@ $(document).on('turbolinks:load', function() {
         }
         // $('#new-post-modal').modal('close');
         // $("#filter_game_form").submit();
+    });
+    
+    $('.game_type_select2').change(function() {
+        selection = $(this).val();
+        // console.log(selection);
+        $("#game-type-filter").val(selection);
     });
 
 
@@ -82,6 +89,21 @@ $(document).on('turbolinks:load', function() {
             $('#micropost_raid_difficulty').val('Heroic');
         } else {
             $('#micropost_raid_difficulty').val('Normal');
+        }
+    });
+
+    $('#micropost_game_version').val('2');
+    $("#d1-options").hide();
+
+    $("#micropost_game_version").click(function() {
+        if ($('#micropost_game_version').prop('checked')) {
+            $('#micropost_game_version').val('2');
+            $("#d1-options").hide();
+            $("#d2-options").show();
+        } else {
+            $('#micropost_game_version').val('1');
+            $("#d2-options").hide();
+            $("#d1-options").show();
         }
     });
 
@@ -768,7 +790,7 @@ $(document).on('turbolinks:load', function() {
             orientation: 'horizontal', // 'horizontal' or 'vertical'
             range: {
             'min': 0.0,
-            'max': 3.0
+            'max': 4.0
             },
             format: wNumb({
             decimals: 1
@@ -781,7 +803,7 @@ $(document).on('turbolinks:load', function() {
             kdMax = document.getElementById('kd-field-max');
         
             kdSlider.noUiSlider.on('update', function ( values, handle ) {
-                if ( handle ) {
+                if ( handle ) {     
                     kdMax.innerHTML = values[handle];
                 } else {
                     kdMin.innerHTML = values[handle];

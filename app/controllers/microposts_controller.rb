@@ -23,9 +23,16 @@ class MicropostsController < ApplicationController
             end
         end
 
+
+
         @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
         @micropost = current_user.microposts.build(micropost_params)
         @micropost.raid_difficulty = "Normal" if @micropost.raid_difficulty.nil? 
+        if @micropost.game_type.include? "D2"    
+            @micropost.destiny_version = "2"         
+        else
+            @micropost.destiny_version = "1"  
+        end
         case @micropost.game_type
         when "Trials of Osiris" 
             @micropost.raid_difficulty = ""
@@ -51,16 +58,15 @@ class MicropostsController < ApplicationController
         @micropost.platform = current_user.api_membership_type
         
 
-    
         # TODO: Add logic to handle looking for similar
-        if @micropost.save
+            if @micropost.save
             respond_to do |format|
                 format.html { redirect_to microposts_path }
                 format.js { }
             end
         else
             respond_to do |format|
-                format.js { render :js => "Materialize.toast('Whoops! Your post is too long.', 4000); " }
+                format.js { render :js => "Materialize.toast('Sorry, something went wrong.', 4000); " }
               end
         end
     end
@@ -130,7 +136,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for, :elo_min, :elo_max, :kd_min, :kd_max)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for, :elo_min, :elo_max, :kd_min, :kd_max, :destiny_version)
     end
     
     def correct_user
@@ -139,6 +145,6 @@ class MicropostsController < ApplicationController
     end
 
     def filtering_params(params)
-        params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required, :elo_min, :elo_max, :kd_min, :kd_max)
-      end
+        params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required, :elo_min, :elo_max, :kd_min, :kd_max, :destiny_version)
+        end
 end

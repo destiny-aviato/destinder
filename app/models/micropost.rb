@@ -7,6 +7,7 @@ class Micropost < ApplicationRecord
   scope :raid_difficulty, -> (raid_difficulty) { where raid_difficulty: raid_difficulty }
   scope :looking_for, -> (raid_difficulty) { where looking_for: raid_difficulty }
   scope :mic_required, -> (mic_required) { where mic_required: mic_required }
+  scope :destiny_version, -> (destiny_version) { where destiny_version: destiny_version }
   scope :elo_min, -> (elo_min) { where("elo >= ?", elo_min)}
   scope :elo_max, -> (elo_max) { where("elo <= ?", elo_max)}
   scope :kd_min, -> (kd_min) { where("kd >= ?", kd_min)}
@@ -285,6 +286,7 @@ class Micropost < ApplicationRecord
     Rails.cache.fetch("#{cache_key}/trials_stats", expires_in: 2.minutes) do
       elo = get_elo(user.api_membership_id)
       get_characters = Typhoeus.get(
+        # "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/"
           "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
           headers: {"x-api-key" => ENV['API_TOKEN']}
       )
@@ -310,6 +312,7 @@ class Micropost < ApplicationRecord
         begin 
 
           get_items = Typhoeus::Request.new(
+            # "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/"
             "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
             method: :get,
             headers: {"x-api-key" => ENV['API_TOKEN']}

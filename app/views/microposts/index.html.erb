@@ -18,7 +18,7 @@
                 <li>
                     <div class="collapsible-header"><i class="material-icons">message</i>New Post</div>
                     <div class="collapsible-body" style="background: white;">
-                        <%= render 'shared/micropost_form' %>                
+                        <%= render 'shared/micropost_form1' %>                
                     </div>
                 </li>                
             </ul>
@@ -72,10 +72,34 @@
     <div class="modal-content">
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
         <div class="row">
-            <div class="col s12 m6">
-                <label>Game Mode</label><br> 
-                <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ["Iron Banner", "Iron Banner"], ["Crucible Playlist", "Crucible Playlist"], ["Other", "Other"], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall'], ["Challenge of the Elders", "Challenge of the Elders"], ["Heroic Strikes","Heroic Strikes"], ["Story","Story"],["Other","Other"] ]), class: 'game_type_select' %>
+            <div class="col s12 left-align">
+                <label class="version-label" style="top: -25px;">Version</label>
+                <div class="switch" id="version">
+                    <label style="color: #212155;">
+                        Destiny 1
+                        <input type="checkbox" class="checkbox" value='2' name="destiny_version" id="micropost_game_version" checked>
+                        <span class="lever"></span>
+                        Destiny 2
+                    </label>
+                </div>
             </div>
+        </div>
+        <div class="row">
+
+            
+            <div id="d2-options">
+                <div class="col s12 m6">
+                    <label>Game Mode</label><br> 
+                    <%= select_tag :game_type, options_for_select([['All Modes', ''], ["Any", "D2 - Any"], ["Crucible Playlist", "D2 - Crucible Playlist"], ["Story", "D2 - Story"], ["Strike Playlist", "D2 - Strikes"], ["Other" ,"D2 - Other"]]), class: 'game_type_select2' %>
+                </div>
+            </div>
+            <div id="d1-options">
+                <div class="col s12 m6">
+                    <label>Game Mode</label><br> 
+                    <%= select_tag :game_type, options_for_select([['All Modes', ''], ['Trials of Osiris', 'Trials of Osiris'], ["Iron Banner", "Iron Banner"], ["Crucible Playlist", "Crucible Playlist"], ["Other", "Other"], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall'], ["Challenge of the Elders", "Challenge of the Elders"], ["Heroic Strikes","Heroic Strikes"], ["Story","Story"],["Other","Other"] ]), class: 'game_type_select' %>
+                </div>
+            </div>
+
             <div class="col s12 m6">
                 <label>Mic Required?</label><br>   
                 <%= select_tag :mic_required, options_for_select([['No', ''], ['Yes', true]]), class: 'microphone_select' %>
@@ -123,9 +147,6 @@
                     <label>MAX K/D</label><br> 
                     <%= text_field_tag :kd_max, nil %>
                 </div>
-                <div class="col s12 m6">                
-                    <a class="waves-effect waves-light btn" id="update-form">Update</a>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -134,7 +155,7 @@
             </div>
         </div>
 
-        
+        <%= hidden_field_tag(:game_type, "" , :id => "game-type-filter") %>
     <% end %>
     </div>
 </div>
