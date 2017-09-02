@@ -16,6 +16,7 @@
 //= require jquery-ui
 //= require jquery.slick
 //= require initialize
+//= require timeago
 //= require_self
 //= require typed
 //= require turbolinks
@@ -470,14 +471,16 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container1").length) {
             var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
             var killctx1 = document.getElementById('kill-chart-breakdown1').getContext('2d');
-            var temp_data1 = []
-            var temp_wins1 = []
-            console.log(char_data1);
+            var temp_data1 = [];
+            var temp_wins1 = [];
+            var temp_dates1 = [];
+            // console.log(char_data1);
             
             if (char_data1["recent_games"] != null) {
                 $.each(char_data1["recent_games"].reverse(), function (index, value) {
                     temp_data1.push(value["kd_ratio"]);
                     temp_wins1.push(value["standing"]);
+                    temp_dates1.push(value["game_date"]);
                     
                 });
             
@@ -516,6 +519,14 @@ $(document).on('turbolinks:load', function() {
                         }]
                     },
                     options: {
+                        scales: {
+                            xAxes: [{                                
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Last 15 Games'
+                                  }
+                            }]
+                        },
                         legend: {
                             display: false
                         },
@@ -530,7 +541,15 @@ $(document).on('turbolinks:load', function() {
                                 top: 0,
                                 bottom: 0
                             }
-                        }
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    console.log(temp_dates1[tooltipItem.index]);
+                                    return "K/D: " + tooltipItem.yLabel + " (" + $.timeago(temp_dates1[tooltipItem.index] ) + ")";
+                                }
+                            }
+                        }   
                     }
                 });
             }
@@ -540,13 +559,15 @@ $(document).on('turbolinks:load', function() {
             if (char_data1["recent_games"] != null) {
                 var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
                 var killctx2 = document.getElementById('kill-chart-breakdown2').getContext('2d');
-                var temp_data2 = []
-                var temp_wins2 = []
-                console.log(char_data2);
+                var temp_data2 = [];
+                var temp_wins2 = [];
+                var temp_dates2 = [];
+                // console.log(char_data2);
             
                 $.each(char_data2["recent_games"].reverse(), function (index, value) {
                     temp_data2.push(value["kd_ratio"]);
                     temp_wins2.push(value["standing"]);
+                    temp_dates2.push(value["game_date"]);
                     
                 });
             
@@ -585,13 +606,28 @@ $(document).on('turbolinks:load', function() {
                         }]
                     },
                     options: {
+                        scales: {
+                            xAxes: [{                                
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Last 15 Games'
+                                  }
+                            }]
+                        },
                         legend: {
                             display: false
                         },
                         title: {
                             display: true,
                             text: 'Recent Games'
-                        }
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    return "K/D: " + tooltipItem.yLabel + " (" + $.timeago(temp_dates2[tooltipItem.index] ) + ")";
+                                }
+                            }
+                        } 
                     }
                 });
             }
@@ -600,14 +636,16 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var killctx3 = document.getElementById('kill-chart-breakdown3').getContext('2d');
-            var temp_data3 = []
-            var temp_wins3 = []
-            console.log(char_data3);
+            var temp_data3 = [];
+            var temp_wins3 = [];
+            var temp_dates3 = [];
+            // console.log(char_data3);
         
             if (char_data1["recent_games"] != null) {
                 $.each(char_data3["recent_games"].reverse(), function (index, value) {
                     temp_data3.push(value["kd_ratio"]);
                     temp_wins3.push(value["standing"]);
+                    temp_dates3.push(value["game_date"]);
                     
                 });
             
@@ -646,13 +684,28 @@ $(document).on('turbolinks:load', function() {
                         }]
                     },
                     options: {
+                        scales: {
+                            xAxes: [{                                
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Last 15 Games'
+                                  }
+                            }]
+                        },
                         legend: {
                             display: false
                         },
                         title: {
                             display: true,
                             text: 'Recent Games'
-                        }
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    return "K/D: " + tooltipItem.yLabel + " (" + $.timeago(temp_dates3[tooltipItem.index] ) + ")";
+                                }
+                            }
+                        } 
                     }
                 });
             }
