@@ -182,14 +182,70 @@
                                             <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left more" style="color: #f5f5f5; font-size: 48px;">keyboard_arrow_down</i></span> 
                                             <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left less" style="color: #f5f5f5; font-size: 48px; display: none">keyboard_arrow_up</i></span>                                                            
                                         </div>
-                                    </div>                                
+                                    </div>
+
+
+
+
                                 </div>
-                            </div>            
+                            </div>
+
+
+                           
+
+
                             <div class="collapsible-body" style="background: #fff;">
                                     <% if x['Character Stats']['Kill Stats'] == 0 %> 
                                         Sorry, no data found for this character. 
                                     <% else %>
-                                        <div class="row">                                
+                                        <div class="row"> 
+
+
+
+                                    <!-- MOBILE ONLY GEAR ROW-->
+
+                            
+                                        <div class="row center-align show-on-small hide-on-med-and-up"><!--OPEN GUN PICTURES ROW--> 
+                                            <div class="col s12 center-align" style="color: grey;"><h5>Player Loadout<h5></div>                                                                         
+                                            <div class="col s3 weapon-container center-align">
+                                                <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""><br>
+                                                <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></span> 
+                                            </div>
+                                            <div class="col s3 weapon-container center-align">
+                                                <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""><br>
+                                                <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></span> 
+                                            </div>
+                                            <div class="col s3 weapon-container center-align">
+                                                <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""><br>
+                                                <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span> 
+                                            </div>
+                                            <% x["Character Items"].each_with_index do |item| %>
+                                                <% next if ["Emblem Background", "Emblem"].include?(item[0])  %>
+                                                <% if item[1]["Item Tier"] == "Exotic" %>
+                                                    <% if ["Chest Armor", "Gauntlets", "Helmet", "Leg Armor"].include? (item[0])  %>
+                                                        <div class="col s2 weapon-container center-align">
+                                                            <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= item[1]["Item Name"] %>" src=<%= item[1]["Item Icon"] %> alt=""><br>
+                                                            <span class="truncate" style="font-size: 0.8em;"><%= item[1]["Item Name"] %></span> 
+                                                        </div>
+                                                        <% break %>                                                                                                                     
+                                                    <% end %>
+                                                <% end %>
+                                                <% if index == x["Character Items"].size - 1 %>                                                
+                                                    <div class="col s2 weapon-container center-align"><img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Helmet"]["Item Name"] %>" src=<%= x["Character Items"]["Helmet"]["Item Icon"] %> alt=""></div>
+                                                <% end %>
+                                            <% end %>
+                                        </div><!--CLOSE GUN PICTURES ROW-->
+
+                                        
+
+                                    <!--END MOBILE ONLY -->
+
+
+
+
+
+
+
                                             <div class="col s12 m3 center-align">                                            
                                                 <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
                                                 <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 275px !important; max-height: 275px !important"></canvas></div>                    
