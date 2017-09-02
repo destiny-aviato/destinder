@@ -1,19 +1,20 @@
 <% characters = get_characters(current_user)%>
-<% pve_options = ["D2 - Any", "D2 - Story", "D2 - Strikes", "Nightfall", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Challenge of the Elders", "Heroic Strikes", "Story", "Other"] %>
-<% pvp_options = ["D2 - Any", "Trials of Osiris", "Iron Banner", "Crucible Playlist", "Other"] %>
+<% pve_options = ["Any", "Story", "Strikes", "Other"] %>
+<% pvp_options = ["Any", "Crucible Playlist", "Other"] %>
 
+<br>
 <div class="col s12">
     <ul class="tabs tabs-fixed-width post-form-tabs" style="background-color: #5085a5; width: 107%; margin: -3.5%;" >
-        <li class="tab col s6"><a href="#pvp" class="post-form-tabs active">PVP</a></li>
-        <li class="tab col s6"><a href="#pve" class="post-form-tabs">PVE</a></li>
+        <li class="tab col s6"><a href="#pvp2" class="post-form-tabs active">PVP</a></li>
+        <li class="tab col s6"><a href="#pve2" class="post-form-tabs">PVE</a></li>
 
     </ul>
 </div>
-<div id="pvp">
+<div id="pvp2">
 
     <div class="row">
         <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
-
+            <%= f.hidden_field :destiny_version, :value => "2" %>
             <div class="row">
                 <div class="input-field col s12">
                     <label class="gametype-label" style="top: -25px;">Gametype</label>
@@ -54,10 +55,11 @@
     </div>
     <hr>
 </div>
-<div id="pve">
+<div id="pve2">
 
     <div class="row">
         <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+        <%= f.hidden_field :destiny_version, :value => "2" %>
             <div class="row">
                 <div class="input-field col s12" id="pve-gametype-select">
                     <label class="gametype-label" style="top: -25px;">Gametype</label>
