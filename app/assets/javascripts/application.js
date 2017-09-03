@@ -952,4 +952,7 @@ $(document).on("turbolinks:load", function() {
         delay: 50
     });
 
+    if (('#load-link').length) {
+            $('#load-link').click();
+    }
 });

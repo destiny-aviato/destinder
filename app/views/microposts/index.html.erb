@@ -14,7 +14,7 @@
 
 </div>
     <div class="container" style="width: 80%">
-            <ul class="collapsible popout" data-collapsible="accordion">
+            <ul class="collapsible popout mobile-fix" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">message</i>New Post</div>
                     <div class="collapsible-body" style="background: white;">
@@ -27,7 +27,17 @@
 
             <ol class="microposts">
                     <div class="row posts" style="margin-left: -4%;">
-                        <%= render @microposts %>
+
+                        <div id="posts-container" >
+                            <div style="display: none !important"> <%=  link_to "", microposts_path, remote: true, id: "load-link" %></div>
+                            <div id="posts-data">
+                                <div class="row">
+                                    <div class="col s12 center-align" style="margin-top: 10%;">
+                                        <%= image_tag  "ajax-loader.gif" %>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
                 </ol>
             <div id="post-fire" style="display: none;"></div>
