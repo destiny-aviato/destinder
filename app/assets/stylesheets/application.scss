@@ -932,6 +932,11 @@ html {
         width: 100% !important;
     }
 
+    .mobile-fix {
+        width: 135%;
+        margin-left: -18%;
+    }
+    
     canvas#weapon-breakdown-chart1 {
         margin-left: 8%;
     }
@@ -1143,3 +1148,4 @@ a.post-form-tabs {
 .noUi-connect {
     background: #21708e;
 }
+

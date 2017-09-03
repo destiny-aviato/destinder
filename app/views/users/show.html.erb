@@ -37,10 +37,27 @@
       <%= render 'shared/profile' %>
     </div>
     <div id="trials" >
-      <%= render 'shared/trials_stats' %>
+      <% if (@user == current_user) %>
+        <div style="display: none !important"> <%=  link_to "", profile_path, remote: true, id: "load-link" %></div>
+      <% else %>
+        <div style="display: none !important"> <%=  link_to "", user_path, remote: true, id: "load-link" %></div>
+      <% end %>
+      <div id="trials-data">
+          <div class="row">
+            <div class="col s12 center-align" style="margin-top: 10%;">
+                <%= image_tag  "ajax-loader.gif" %>
+            </div>
+          </div> 
+      </div>
     </div>
     <div id="raids" >
-      <%= render 'shared/raids_stats' %>
+        <div id="raid-data">
+            <div class="row">
+              <div class="col s12 center-align" style="margin-top: 10%;">
+                  <%= image_tag  "ajax-loader.gif" %>
+              </div>
+            </div> 
+        </div>
     </div>
     <div id="pvp" >
         <%= render 'shared/pvp_stats' %>

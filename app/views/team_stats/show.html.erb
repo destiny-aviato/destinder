@@ -6,8 +6,31 @@
   }
   %>
 
+  <section class="hero is-medium is-dark is-bold post-header-background hide-on-med-and-down" style="margin-bottom: 3%;">
+      <div class="hero-body">
+        <div class="container" style="margin: 0;">
+          <h1 class="title hero">
+            Trials of Osiris
+          </h1>
+          <h2 class="subtitle profile">
+            Team Lookup
+          </h2>
+        </div>
+      </div>
+    </section>
+  
+
 <div class="container" style="width: 90% !important;">
-  <%= render 'shared/team_trials_stats' %>
+  <div id="trials" >
+      <div style="display: none !important"> <%=  link_to "", team_stat_path, remote: true, id: "load-link" %></div>
+      <div id="trials-data">
+          <div class="row">
+            <div class="col s12 center-align" style="margin-top: 10%;">
+                <%= image_tag  "ajax-loader.gif" %>
+            </div>
+          </div> 
+      </div>
+    </div>
 </div>
 
 <!-- Search bar icon -->

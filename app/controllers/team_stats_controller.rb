@@ -5,6 +5,11 @@ class TeamStatsController < ApplicationController
 
   def show  
     @team_stat = TeamStat.find(params[:id])
+    
+      respond_to do |format|
+        format.html { }
+        format.js { }
+      end
   end
 
   def create

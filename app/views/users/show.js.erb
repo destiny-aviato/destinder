@@ -1,0 +1,35 @@
+ $('#trials-data').html("<%= escape_javascript render('shared/trials_stats', user: @user) %>");
+ $('#raid-data').html("<%= escape_javascript render('shared/raids_stats', user: @user) %>");
+
+$('.tooltipped').tooltip({ 
+    delay: 50,
+    html: true
+ });
+
+$('.tooltip').tooltipster({
+    theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+    delay: 50
+});
+
+
+function collapseAll(){
+    $(".collapsible-header").removeClass(function(){
+      return "active";
+    });
+    $(".collapsible").collapsible({accordion: true});
+    $(".collapsible").collapsible({accordion: false});    
+  }
+
+  function expandAll(){
+    $(".collapsible-header").addClass("active");
+    $(".collapsible").collapsible({accordion: false});        
+  }
+  
+$("#expand-button").click(function() {
+    expandAll();
+  });
+
+
+  $("#collapse-button").click(function() {
+    collapseAll();
+  });
