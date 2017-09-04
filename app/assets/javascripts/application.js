@@ -40,8 +40,9 @@ $(document).on("turbolinks:load", function() {
 
 $(document).on('turbolinks:load', function() {
 
-    $('#pve-game-select').material_select();
-    $('#pvp-game-select').material_select();
+    $('#d1-game-select').material_select();
+    $('#d2-game-select').material_select();
+    // $('#pvp-game-select').material_select();
 
     $('.game_type_select').change(function() {
         selection = $(this).val();
@@ -77,18 +78,31 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('div#checkpoint').hide();
-    $('div#difficulty').hide();
-    $('label.difficulty-label').hide();
-    $('div#checkpoint').hide();
+    $('div#difficulty-d1').hide();
+    $('div#difficulty-d2').hide();
+    $('label.difficulty-label-d1').hide();
+    $('label.difficulty-label-d2').hide();
+    $('div#checkpoint-d1').hide();
+    $('div#checkpoint-d2').hide();
     $('#filter-sliders').hide();
 
-    $('#micropost_raid_difficulty').val('Normal');
+    $('#micropost_raid_difficulty_d1').val('Normal');
+    $('#micropost_raid_difficulty_d2').val('Normal');
 
-    $("#micropost_raid_difficulty").click(function() {
-        if ($('#micropost_raid_difficulty').prop('checked')) {
-            $('#micropost_raid_difficulty').val('Heroic');
+    $("#micropost_raid_difficulty_d1").click(function() {
+        if ($('#micropost_raid_difficulty_d1').prop('checked')) {
+            $('#micropost_raid_difficulty_d1').val('Heroic');
         } else {
-            $('#micropost_raid_difficulty').val('Normal');
+            $('#micropost_raid_difficulty_d1').val('Normal');
+        }
+    });
+    $('#micropost_raid_difficulty_d2').val('Normal');
+
+    $("#micropost_raid_difficulty_d2").click(function() {
+        if ($('#micropost_raid_difficulty_d2').prop('checked')) {
+            $('#micropost_raid_difficulty_d2').val('Heroic');
+        } else {
+            $('#micropost_raid_difficulty_d2').val('Normal');
         }
     });
 
@@ -875,22 +889,42 @@ $(document).on('turbolinks:load', function() {
     });
 
 
-    $('#pve-game-select').change(function() {
+    $('#d1-game-select').change(function() {
+        selection = $(this).val();
+        console.log('clicked' + selection);
+
+        if ($.inArray(selection, ["7", "8", "9", "10"]) >= 0) {
+            $('#d1-gametype-select').attr('class', 'input-field col s12 m6');
+            $('div#difficulty-d1').show();
+            $('label.difficulty-label-d1').show();
+            // $('label.checkpoint-label').show();
+            $('div#checkpoint-d1').show();
+        } else {
+            $('#d1-gametype-select').attr('class', 'input-field col s12');
+            $('div#difficulty-d1').hide();
+            $('label.difficulty-label-d1').hide();
+            // $('label.checkpoint-label').hide();
+            $('div#checkpoint-d1').hide();
+        }
+
+    });
+
+    $('#d2-game-select').change(function() {
         selection = $(this).val();
 
 
-        if ($.inArray(selection, ["Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass"]) >= 0) {
-            $('#pve-gametype-select').attr('class', 'input-field col s12 m6');
-            $('div#difficulty').show();
-            $('label.difficulty-label').show();
+        if ($.inArray(selection, ["7", "8", "9", "10"]) >= 0) {
+            $('#d2-gametype-select').attr('class', 'input-field col s12 m6');
+            $('div#difficulty-d2').show();
+            $('label.difficulty-label-d2').show();
             // $('label.checkpoint-label').show();
-            $('div#checkpoint').show();
+            $('div#checkpoint-d2').show();
         } else {
-            $('#pve-gametype-select').attr('class', 'input-field col s12');
-            $('div#difficulty').hide();
-            $('label.difficulty-label').hide();
+            $('#d2-gametype-select').attr('class', 'input-field col s12');
+            $('div#difficulty-d2').hide();
+            $('label.difficulty-label-d2').hide();
             // $('label.checkpoint-label').hide();
-            $('div#checkpoint').hide();
+            $('div#checkpoint-d2').hide();
         }
 
     });
