@@ -1,76 +1,35 @@
-<% characters = get_characters(current_user)%>
-<% pve_options = ["Any", "Story", "Strikes", "Other"] %>
-<% pvp_options = ["Any", "Crucible Playlist", "Other"] %>
-
-<br>
-<div class="col s12">
-    <ul class="tabs tabs-fixed-width post-form-tabs" style="background-color: #5085a5; width: 107%; margin: -3.5%;" >
-        <li class="tab col s6"><a href="#pvp2" class="post-form-tabs active">PVP</a></li>
-        <li class="tab col s6"><a href="#pve2" class="post-form-tabs">PVE</a></li>
-
-    </ul>
-</div>
-<div id="pvp2">
-
-    <div class="row">
-        <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
-            <%= f.hidden_field :destiny_version, :value => "2" %>
-            <div class="row">
-                <div class="input-field col s12">
-                    <label class="gametype-label" style="top: -25px;">Gametype</label>
-                    <%= f.select :game_type, pvp_options, {}, {id: "pvp-game-select" } %>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s12 m5">
-                    <label class="character-label" style="top: -25px;">Character</label>
-                    <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
-                </div>
-                                
-                <div class="input-field col s12 m5">
-                    <label class="looking_for_label" style="top: -25px;">Looking for...</label>
-                    <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
-                </div>
-
-                <div class="col s12 m2 center-align">               
-                    <label class="pvp-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
-                    <%= f.check_box :mic_required, id:"pvp_mic_required" %>
-                    <%= f.label " ", for:"pvp_mic_required", id:"pvp_mic_required" %>                         
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="row">
-                
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">mode_edit</i>
-                        <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
-                    </div>
-                </div>
-            </div>
-
-            <%= f.submit "Post", {class: "btn waves-effect waves-light", id: "post-submit"}  %>
-        <% end %>
-    </div>
-    <hr>
-</div>
-<div id="pve2">
+<% characters = get_characters2(current_user)%>
+<% d2_options = { 
+    "PVE" => [["Story", 2], ["Nightfall", 4],  ["Strike Playlist", 3], ["Any", 0], ["Other", 1]],
+    "PVP" => [["Crucible Playlist", 5], ["Any", 0], ["Other", 1]]
+} %>
+<!-- =begin
+0 - any
+1 - other
+2 - story
+3 - strikes
+4 - nightfall
+5 - crucible playlist
+6 - trials of osiris
+7 - raid 1 
+8 - raid 2
+9 - raid 3
+10 - raid 4 
+=end -->
 
     <div class="row">
         <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
-        <%= f.hidden_field :destiny_version, :value => "2" %>
             <div class="row">
-                <div class="input-field col s12" id="pve-gametype-select">
+                <div class="input-field col s12" id="d2-gametype-select">
                     <label class="gametype-label" style="top: -25px;">Gametype</label>
-                    <%= f.select :game_type, pve_options, {}, {id: "pve-game-select" } %>
+                    <%= f.select :game_type,  grouped_options_for_select(d2_options), {}, {id: "d2-game-select" } %>
                 </div>
                 <div class="col s12 m6 center-align">
-                    <label class="difficulty-label" style="top: -25px;">Difficulty</label>
-                    <div class="switch" id="difficulty">
+                    <label class="difficulty-label-d2" style="top: -25px;">Difficulty</label>
+                    <div class="switch" id="difficulty-d2">
                         <label style="color: #212155;">
                             Normal
-                            <input type="checkbox" class="checkbox" value="Normal" name="micropost[raid_difficulty]" id="micropost_raid_difficulty">
+                            <input type="checkbox" class="checkbox" value="Normal" name="micropost[raid_difficulty]" id="micropost_raid_difficulty_d2">
                             <span class="lever"></span>
                             Heroic
                         </label>
@@ -79,7 +38,7 @@
 
             </div>
 
-            <div id="checkpoint">
+            <div id="checkpoint-d2">
                 <div class="row">
                     <div class="col s12 left-align">
                         <label style="top: -25px;">Checkpoint</label>
@@ -115,8 +74,9 @@
                     </div>
                 </div>
             </div>
+            <%= f.hidden_field :destiny_version, value: 2 %>
             <%= f.submit "Post", {class: "btn waves-effect waves-light", id: "post-submit"} %>
         <% end %>
     </div>
     <hr>
-</div>
+

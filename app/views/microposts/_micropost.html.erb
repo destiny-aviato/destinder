@@ -1,27 +1,92 @@
 
     <% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
     <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
+    <% if micropost.destiny_version == "1" %>
+        <% modes = {
+            0 => "Any (D1)",
+            1 => "Other (D1)",
+            2 => "Story (D1)",
+            3 => "Strike Playlist (D1)",
+            4 => "Nightfall (D1)",
+            5 => "Crucible Playlist (D1)",
+            6 => "Trials of Osiris (D1)",
+            7 => "Vault of Glass",
+            8 => "Crota's End",
+            9 => "King's Fall",
+            10 => "Wrath of the Machine",
+            11 => "Iron Banner (D1)"
+        }%>
+    <% else %>
+        <% modes = {
+            0 => "Any",
+            1 => "Other",
+            2 => "Story",
+            3 => "Strike Playlist",
+            4 => "Nightfall",
+            5 => "Crucible Playlist",
+            6 => "Trials of Osiris",
+            7 => "RAID",
+            8 => "RAID",
+            9 => "RAID",
+            10 => "RAID",
+            11 => "Iron Banner"
+        }%>
+        <% end %>
+<!-- =begin
+0 - any
+1 - other
+2 - story
+3 - strikes
+4 - nightfall
+5 - crucible playlist
+6 - trials of osiris
+7 - raid 1 
+8 - raid 2
+9 - raid 3
+10 - raid 4 
+11 - iron banner
+=end -->
     <% if micropost.user_stats.nil? %>
-        <% case micropost.game_type 
-           when "Trials of Osiris" %>
-            <% stats = get_stats(micropost.user, "too")[0] %>
-        <% when "Wrath of the Machine" %>
-            <% puts "wrath" %>
-            <% stats = get_stats(micropost.user, "wrath")[0] %>
-        <% when "King's Fall" %>
-            <% stats = get_stats(micropost.user, "kings")[0] %>
-        <% when "Crota's End" %>
-            <% stats = get_stats(micropost.user, "Crota's End")[0] %>
-        <% when "Vault of Glass" %>
-            <% stats = get_stats(micropost.user, "vog")[0] %>
-        <% when "Nightfall" %>
-            <% stats = get_stats(micropost.user, "night")[0] %>
+        <% if micropost.destiny_version == "1" %>
+            <% case micropost.game_type.to_i 
+            when 6 %>
+                <% stats = get_stats_d1(micropost.user, 6)[0] %>
+            <% when 10 %> 
+                <% stats = get_stats_d1(micropost.user, 10)[0] %>
+            <% when 9 %>
+                <% stats = get_stats_d1(micropost.user, 9)[0] %>
+            <% when 8 %>
+                <% stats = get_stats_d1(micropost.user, 8)[0] %>
+            <% when 7 %>
+                <% stats = get_stats_d1(micropost.user, 7)[0] %>
+            <% when 4 %>
+                <% stats = get_stats_d1(micropost.user, 4)[0] %>
+            <% else %>
+                <% stats = get_stats_d1(micropost.user, 1)[0] %>
+            <% end %>
         <% else %>
-            <% stats = get_stats(micropost.user, "night")[0] %>
+            <% case micropost.game_type.to_i 
+                when 2 %>
+                <% stats = get_stats_d2(micropost.user, 2)[0] %>
+            <% when 4 %> 
+                <% stats = get_stats_d2(micropost.user, 4)[0] %>
+            <% when 3 %>
+                <% stats = get_stats_d2(micropost.user, 3)[0] %>
+            <% when 0 %>
+                <% stats = get_stats_d2(micropost.user, 0)[0] %>
+            <% when 1 %>
+                <% stats = get_stats_d2(micropost.user, 0)[0] %>
+            <% when 5 %>
+                <% stats = get_stats_d2(micropost.user, 5)[0] %>
+            <% else %>
+                <% stats = get_stats_d2(micropost.user, 1)[0] %>
+            <% end %>
         <% end %>
     <% else %>
         <% stats = micropost.user_stats %>
     <% end %>
+
+    
 
 
     <% case micropost.mic_required
@@ -90,7 +155,7 @@
                                     
                                 <% end %>
                             </span>
-                        <% if micropost.game_type == "Trials of Osiris" %>
+                        <% if micropost.game_type.to_i == 6 %>
                             <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Diamond
@@ -138,7 +203,7 @@
                     <br>
                      
                     <span>
-                        <b><%= micropost.game_type %></b>
+                        <b><%= modes[micropost.game_type.to_i] %></b>
                         <% if micropost.raid_difficulty != "" %>
                             <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
                         <% else %>
@@ -159,9 +224,9 @@
                             </span>
                     </div>
                 </div>
-                <% if micropost.game_type == "Trials of Osiris" %>
+                <% if micropost.game_type.to_i == 6 %>
                     <%= render partial: 'trials_data', locals: {micropost: @micropost, stats: stats} %>
-                <% elsif ["Wrath of the Machine", "Crota's End", "King's Fall", "Vault of Glass"]. include? micropost.game_type %>
+                <% elsif ["7", "8", "9", "10"]. include? micropost.game_type %>
                     <%= render partial: 'raid_data', locals: {micropost: @micropost, stats: stats} %>
                 <% else %>
                     <%= render partial: 'other_data', locals: {micropost: @micropost, stats: stats} %>
