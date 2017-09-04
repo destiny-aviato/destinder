@@ -18,7 +18,7 @@ class Micropost < ApplicationRecord
   serialize :user_stats
 
 
-    def self.get_elo(membership_id)
+  def self.get_elo(membership_id)
       elo = 1200
       rank = 0
       
@@ -279,7 +279,6 @@ class Micropost < ApplicationRecord
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
-
 
   def self.get_trials_stats(user, character_id)
     cache_key = "postsStats|#{user.id}|#{user.updated_at}"

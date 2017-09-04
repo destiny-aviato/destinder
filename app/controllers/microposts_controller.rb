@@ -7,7 +7,7 @@ class MicropostsController < ApplicationController
           @microposts = @microposts.public_send(key, value) if value.present?
         end
         @micropost = current_user.microposts.build 
-
+        flash[:notice] = "Notice: We are in the process of updating things for D2. Your D1 characters will show until we have access to the D2 API. Stay Tuned!"
         respond_to do |format|
             format.html { }
             format.js { }
