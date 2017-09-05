@@ -47,7 +47,7 @@
                                 Diamond Tier
                             </div>
                             <div class="row center-align">
-                                # <%= character['Character Stats']['ELO']['Rank'] %>
+                                # <%= character["character_stats"]['ELO']['Rank'] %>
                             </div>
                         </span>
                         <span id="platinum_elo_content">
@@ -55,7 +55,7 @@
                                 Platinum Tier
                             </div>
                             <div class="row center-align">
-                                # <%= character['Character Stats']['ELO']['Rank'] %>
+                                # <%= character["character_stats"]['ELO']['Rank'] %>
                             </div>
                         </span>
                         <span id="gold_elo_content">
@@ -63,7 +63,7 @@
                                 Gold Tier
                             </div>
                             <div class="row center-align">
-                                # <%= character['Character Stats']['ELO']['Rank'] %>
+                                # <%= character["character_stats"]['ELO']['Rank'] %>
                             </div>
                         </span>
                         <span id="silver_elo_content">
@@ -71,7 +71,7 @@
                                 Silver Tier
                             </div>
                             <div class="row center-align">
-                                # <%= character['Character Stats']['ELO']['Rank'] %>
+                                # <%= character["character_stats"]['ELO']['Rank'] %>
                             </div>
                         </span>
                         <span id="bronze_elo_content">
@@ -79,7 +79,7 @@
                                 Bronze Tier
                             </div>
                             <div class="row center-align">
-                                # <%= character['Character Stats']['ELO']['Rank'] %>
+                                # <%= character["character_stats"]['ELO']['Rank'] %>
                             </div>
                         </span>
                     </div>
@@ -99,40 +99,40 @@
                         <div class="collapsible-header" id="collapse-header" style="height: 104px; padding: 0;">
                             <div class="row" style="margin-right: 0; margin-left: 0; width: 100%;">
                                 <div class="col s12 m4">
-                                    <% bg = "background-image: url(#{x['Character Items']['Emblem Background']});" %>
+                                    <% bg = "background-image: url(#{x['Character Items']['emblem_background']});" %>
                                     <div class="post-header" style='<%= "#{bg} margin: -3.3%; height: 83px; margin-top: 0;" %>'>                            
                                         <div class="row" style="overflow: hidden; max-height: 65px; margin-right: 0;">
                                             <div class="col s3 left-align" style="padding: 0; height: 65px;">
-                                                <%= image_tag x["Character Items"]["Emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %>
+                                                <%= image_tag x["Character Items"]["emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %>
                                             </div>
                                             <div class="col s6 center-align" style="height: 65px; color: white;"><span style="font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" ><%= current_user.display_name %></span></div>
                                             <div class="col s3 center-align" style="height: 65px; color: white;">
-                                                <span style="color: gold; position: relative; top: 10%; line-height: 2.4em; font-weight: 300; font-size: 1.3em;">✦ <%= x["Character Stats"]["Light Level"] %> </span>
-                                                <span style="font-weight: 300; font-size: 1.1em;"><%= character_races[x["Character Type"]] %></span>
+                                                <span style="color: gold; position: relative; top: 10%; line-height: 2.4em; font-weight: 300; font-size: 1.3em;">✦ <%= x["character_stats"]["light_level"] %> </span>
+                                                <span style="font-weight: 300; font-size: 1.1em;"><%= character_races[x["character_type"]] %></span>
                                             </div>
                                         </div>
                                         <div class="post-subheader" style="position: relative;height: 18px;bottom: 20px;">
                                             <div>
                                                 <div class="row hide-on-med-and-up">
                                                     <div class="col s4 center-align" style="white-space: nowrap;">
-                                                        <% if x["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
-                                                            <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                        <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1700 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
-                                                            <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                        <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1500 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1300 %>
-                                                            <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                        <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1300 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1200 %>
-                                                            <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                        <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1200 %>
-                                                            <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'> <b>#{x['Character Stats']['ELO']['ELO']}</b></span> " %>
+                                                        <% if x["character_stats"]["ELO"]["ELO"].to_i >= 1700 %>
+                                                            <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
+                                                        <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1700 && x["character_stats"]["ELO"]["ELO"].to_i >= 1500 %>
+                                                            <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
+                                                        <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1500 && x["character_stats"]["ELO"]["ELO"].to_i >= 1300 %>
+                                                            <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
+                                                        <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1300 && x["character_stats"]["ELO"]["ELO"].to_i >= 1200 %>
+                                                            <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
+                                                        <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1200 %>
+                                                            <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
                                                         <% end %>  
                                                         <span class="white-text" style="font-size: 13px; vertical-align: text-top;">ELO: <%= elo.html_safe %></span>
                                                     </div>
                                                     <div class="col s4 center-align" style="white-space: nowrap;">
-                                                        <span class="white-text" style="font-size: 13px; vertical-align: text-top;">KD: <%= x["Character Stats"]["K/D Ratio"] %></span>
+                                                        <span class="white-text" style="font-size: 13px; vertical-align: text-top;">KD: <%= x["character_stats"]["kd_ratio"] %></span>
                                                     </div>
                                                     <div class="col s4 center-align" style="white-space: nowrap;">
-                                                        <span class="white-text" style="font-size: 13px; vertical-align: text-top;">W/L: <%= x["Character Stats"]["Win Rate"] %>%</span>
+                                                        <span class="white-text" style="font-size: 13px; vertical-align: text-top;">W/L: <%= x["character_stats"]["win_rate"] %>%</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,7 +163,7 @@
                                             <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span> 
                                         </div>
                                         <% x["Character Items"].each do |item| %>
-                                            <% next if ["Emblem Background", "Emblem"].include?(item[0])  %>
+                                            <% next if ["emblem_background", "emblem"].include?(item[0])  %>
                                             <% if item[1]["Item Tier"] == "Exotic" %>
                                                 <% if ["Chest Armor", "Gauntlets", "Helmet", "Leg Armor"].include? (item[0])  %>
                                                     <div class="col s2 weapon-container center-align">
@@ -183,20 +183,20 @@
                                 </div>
                                 <div class="col s12 m2 center-align hide-on-small-only" style='<%= "#{bg} height: 104px; color: #f5f5f5;border-bottom: 1px gray solid; padding-top: 1.5%; background-repeat: no-repeat; background-size: cover; background-position-x: 17%;" %>'>
                                     <div class="col s12 m6 right-align hide-on-small-only" style="width: 65%">
-                                            <% if x["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
-                                                <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'><b>#{x['Character Stats']['ELO']['ELO']}</b></span>" %>
-                                            <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1700 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
-                                                <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'><b>#{x['Character Stats']['ELO']['ELO']}</b></span>" %>
-                                            <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1500 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1300 %>
-                                                <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'><b>#{x['Character Stats']['ELO']['ELO']}</b></span>" %>
-                                            <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1300 && x["Character Stats"]["ELO"]["ELO"].to_i >= 1200 %>
-                                                <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'><b>#{x['Character Stats']['ELO']['ELO']}</b></span>" %>
-                                            <% elsif x["Character Stats"]["ELO"]["ELO"].to_i < 1200 %>
-                                                <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'><b>#{x['Character Stats']['ELO']['ELO']}</b></span>" %>
+                                            <% if x["character_stats"]["ELO"]["ELO"].to_i >= 1700 %>
+                                                <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content' style='color:#7198B7;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
+                                            <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1700 && x["character_stats"]["ELO"]["ELO"].to_i >= 1500 %>
+                                                <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content' style='color:#58907E;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
+                                            <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1500 && x["character_stats"]["ELO"]["ELO"].to_i >= 1300 %>
+                                                <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content' style='color:#CCAE50;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
+                                            <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1300 && x["character_stats"]["ELO"]["ELO"].to_i >= 1200 %>
+                                                <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
+                                            <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1200 %>
+                                                <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
                                             <% end %> 
 
                                             <span  style="font-size: 16px;"><%= elo.html_safe %> ELO</span><br>
-                                            <span  style="font-size: 18px;"><b><%= x["Character Stats"]["K/D Ratio"] %> </b>K/D</span><br>                                                                                                   
+                                            <span  style="font-size: 18px;"><b><%= x["character_stats"]["kd_ratio"] %> </b>K/D</span><br>                                                                                                   
                                     </div>
                                     <div class="col s12 m6 right-align hide-on-small-only" style="width: 35%;">
                                         <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left more" style="color: #f5f5f5; font-size: 48px;">keyboard_arrow_down</i></span> 
@@ -219,13 +219,13 @@
                                 <div class="col s12 m3 center-align" >             
                                         <div class="col s6" style="margin-top: 2%;">
                                             <div style="margin-bottom: -30%;"><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div> 
-                                            <br><p class="stat-heading"><%= "#{x["Character Stats"]["Win Rate"]}%" %></p>       
+                                            <br><p class="stat-heading"><%= "#{x["character_stats"]["win_rate"]}%" %></p>       
                                         </div>                                        
                                         <div class="col s6" style="margin-top: 2%;">
                                             <div style="margin-bottom: -30%;"><canvas id='<%= "revive-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>        
-                                            <% total = x["Character Stats"]["Kill Stats"]["Revives Performed"].to_i + x["Character Stats"]["Kill Stats"]["Revives Received"].to_i %>
-                                            <% res_percent = (x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total.to_i) * 100.0 %>
-                                            <br><p class="stat-heading"><%= "#{x['Character Stats']['Kill Stats']['Revives Performed'].to_i / total}%" %></p> 
+                                            <% total = x["character_stats"]["kill_stats"]["revives_performed"].to_i + x["character_stats"]["kill_stats"]["revives_received"].to_i %>
+                                            <% res_percent = (x["character_stats"]["kill_stats"]['Revives Performed'].to_i / total.to_i) * 100.0 %>
+                                            <br><p class="stat-heading"><%= "#{x["character_stats"]["kill_stats"]['Revives Performed'].to_i / total}%" %></p> 
                                         </div>                                        
                                         <div class="col s12">
                                             <!-- <table class="centered responsive-table">
@@ -257,23 +257,23 @@
                             <div class="row" style="padding-top: 1%;margin-bottom: 0%;">
                                  <div class="col s6 m2 center-align">
                                     <p class="stat-heading">KA/D Ratio</p>
-                                    <p class="stat-title"><%=x["Character Stats"]["KA/D Ratio"] %></p>
+                                    <p class="stat-title"><%=x["character_stats"]["kad_ratio"] %></p>
                                  </div>
                                  <div class="col s6 m2 center-align">
                                     <p class="stat-heading">Games Played</p>
-                                    <p class="stat-title"><%= (x["Character Stats"]["games_won"] + x["Character Stats"]["games_lost"]).round %></p>
+                                    <p class="stat-title"><%= (x["character_stats"]["games_won"] + x["character_stats"]["games_lost"]).round %></p>
                                  </div>
                                  <div class="col s12 m4 center-align">
                                     <p class="stat-heading">Best Weapon</p>
-                                    <p class="stat-title"><%= image_tag weapons[x["Character Stats"]["Kill Stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
+                                    <p class="stat-title"><%= image_tag weapons[x["character_stats"]["kill_stats"]["Best Weapon Type"]], style: "height: 35px;"  %></p>
                                  </div>
                                  <div class="col s6 m2 center-align">
                                     <p class="stat-heading">Longest Spree</p>
-                                    <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Longest Spree"].round %></p>
+                                    <p class="stat-title"><%=x["character_stats"]["kill_stats"]["Longest Spree"].round %></p>
                                  </div>
                                  <div class="col s6 m2 center-align">
                                     <p class="stat-heading">Avg. Kill Distance</p>
-                                    <p class="stat-title"><%=x["Character Stats"]["Kill Stats"]["Average Kill Distance"] %></p>
+                                    <p class="stat-title"><%=x["character_stats"]["kill_stats"]["Average Kill Distance"] %></p>
                                  </div>  
                             </div>
                             <hr>
@@ -300,6 +300,125 @@
 
 
 
+<% characters = get_characters(current_user)%>
+<% pve_options = ["D2 - Any", "D2 - Story", "D2 - Strikes", "Nightfall", "Wrath of the Machine", "King's Fall", "Crota's End", "Vault of Glass", "Challenge of the Elders", "Heroic Strikes", "Story", "Other"] %>
+<% pvp_options = ["D2 - Any", "Trials of Osiris", "Iron Banner", "Crucible Playlist", "Other"] %>
+
+
+<div class="col s12">
+    <ul class="tabs tabs-fixed-width post-form-tabs" style="background-color: #5085a5; width: 107%; margin: -3.5%;" >
+        <li class="tab col s6"><a href="#pve" class="post-form-tabs active">PVE</a></li>
+        <li class="tab col s6"><a href="#pvp" class="post-form-tabs">PVP</a></li>
+    </ul>
+</div>
+<div id="pvp">
+
+    <div class="row">
+        <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+            <div class="row">
+                <div class="input-field col s12">
+                    <label class="gametype-label" style="top: -25px;">Gametype</label>
+                    <%= f.select :game_type, pvp_options, {}, {id: "pvp-game-select" } %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m5">
+                    <label class="character-label" style="top: -25px;">Character</label>
+                    <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
+                </div>
+                                
+                <div class="input-field col s12 m5">
+                    <label class="looking_for_label" style="top: -25px;">Looking for...</label>
+                    <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
+                </div>
+
+                <div class="col s12 m2 center-align">               
+                    <label class="pvp-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
+                    <%= f.check_box :mic_required, id:"pvp_mic_required" %>
+                    <%= f.label " ", for:"pvp_mic_required", id:"pvp_mic_required" %>                         
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+                
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+                    </div>
+                </div>
+            </div>
+
+            <%= f.submit "Post", {class: "btn waves-effect waves-light", id: "post-submit"}  %>
+        <% end %>
+    </div>
+    <hr>
+</div>
+<div id="pve">
+
+    <div class="row">
+        <%= form_for Micropost.new, :html => {:class => "col s12"}, remote: true do |f| %>
+            <div class="row">
+                <div class="input-field col s12" id="pve-gametype-select">
+                    <label class="gametype-label" style="top: -25px;">Gametype</label>
+                    <%= f.select :game_type, pve_options, {}, {id: "pve-game-select" } %>
+                </div>
+                <div class="col s12 m6 center-align">
+                    <label class="difficulty-label" style="top: -25px;">Difficulty</label>
+                    <div class="switch" id="difficulty">
+                        <label style="color: #212155;">
+                            Normal
+                            <input type="checkbox" class="checkbox" value="Normal" name="micropost[raid_difficulty]" id="micropost_raid_difficulty">
+                            <span class="lever"></span>
+                            Heroic
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="checkpoint">
+                <div class="row">
+                    <div class="col s12 left-align">
+                        <label style="top: -25px;">Checkpoint</label>
+                        <%= f.select :checkpoint, ["Coming Soon!"], {}, { disabled: true} %>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="input-field col s12 m5">
+                    <label class="character-label" style="top: -25px;">Character</label>
+                    <%= f.select :character_choice, characters, {}, {id: "character_choice" } %>
+                </div>
+                <div class="input-field col s12 m5">
+                    <label class="mic-label" style="top: -25px;">Looking for...</label>
+                    <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
+                </div>
+
+                <div class="col s12 m2 center-align">               
+                    <label class="pve-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
+                    <%= f.check_box :mic_required, id:"pve_mic_required" %>
+                    <%= f.label " ", for:"pve_mic_required", id:"pve_mic_required" %>                         
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+
+                    <div class="input-field col s12 m12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <%= f.text_area :content, class: "materialize-textarea no-padding", id: "icon_prefix2", placeholder: "Message...", "data-length" => '50' %>
+                    </div>
+                </div>
+            </div>
+            <%= f.submit "Post", {class: "btn waves-effect waves-light", id: "post-submit"} %>
+        <% end %>
+    </div>
+    <hr>
+</div>
 
 
     

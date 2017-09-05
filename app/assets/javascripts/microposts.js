@@ -8,10 +8,15 @@ $(document).on('turbolinks:load', function(){
 
     var options = [
         {selector: 'div#post-fire', offset: 0, callback: function(el) {
-        //   Materialize.toast("Really? Is if that hard to find someone?", 4000 );
+        // Materialize.toast("Hey! You can choose a game mode for Destiny 2, but your new characters won't pull in quite yet. Pardon our dust!", 5000 );
         console.log("I see you.");
         } }
       ];
       Materialize.scrollFire(options);
 
+
+      $('input#elo_min').val(null);
+      $('input#elo_max').val(null);
+      $('input#kd_min').val(null);
+      $('input#kd_max').val(null);
   });

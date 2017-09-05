@@ -389,9 +389,9 @@ li.tab.post {
 .notification {
     background-color: #f5f5f5;
     border-radius: 3px;
-    padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+    padding: 1.25rem 2.5rem 1.25rem 4.5rem;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
 }
 
 .notification.is-primary {
@@ -932,6 +932,19 @@ html {
         width: 100% !important;
     }
 
+    .mobile-fix {
+        width: 135%;
+        margin-left: -18%;
+    }
+
+    .notification {
+        background-color: #f5f5f5;
+        border-radius: 3px;
+        padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+    
     canvas#weapon-breakdown-chart1 {
         margin-left: 8%;
     }
@@ -1143,3 +1156,4 @@ a.post-form-tabs {
 .noUi-connect {
     background: #21708e;
 }
+

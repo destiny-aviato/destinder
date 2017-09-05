@@ -1,3 +1,14 @@
+<% d1_options = { 
+    "All" => [["All Modes", ""]],
+    "PVE" => [["Nightfall", 4], ["Wrath of the Machine", 10], ["King's Fall", 9], ["Crota's End", 8], ["Vault of Glass", 7], ["Challenge of the Elders", 1], ["Heroic Strikes", 3], ["Story", 2], ["Other", 1]],
+    "PVP" => [["Trials of Osiris", 6], ["Iron Banner", 11], ["Crucible Playlist", 5], ["Other", 1]]
+} %>
+<% d2_options = { 
+    "All" => [["All Modes", ""]],
+    "PVE" => [["Story", 2], ["Nightfall", 4],  ["Strike Playlist", 3], ["Any", 0], ["Other", 1]],
+    "PVP" => [["Crucible Playlist", 5], ["Other", 1]]
+} %>
+
 <div class="container" style="width: 100%">
     <section class="hero is-medium is-dark is-bold post-header-background hide-on-med-and-down" style="height: 150px;">
         <div class="hero-body">
@@ -14,11 +25,23 @@
 
 </div>
     <div class="container" style="width: 80%">
-            <ul class="collapsible popout" data-collapsible="accordion">
+            <ul class="collapsible popout mobile-fix" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">message</i>New Post</div>
                     <div class="collapsible-body" style="background: white;">
-                        <%= render 'shared/micropost_form' %>                
+                        <div class="col s12">
+                            <ul class="tabs tabs-fixed-width post-form-tabs" style="background-color: #5085a5; width: 107%; margin: -3.5%;" >
+                                <li class="tab col s6"><a href="#d2" class="post-form-tabs active">Destiny 2</a></li>
+                                <li class="tab col s6"><a href="#d1" class="post-form-tabs">Destiny 1</a></li>
+                            </ul>
+                        </div>
+                        <div id="d1">
+                            <%= render 'shared/micropost_form1' %>
+                        </div>
+                        <div id="d2">
+                            <%= render 'shared/micropost_form2' %>
+                        </div>
+                                        
                     </div>
                 </li>                
             </ul>
@@ -27,7 +50,17 @@
 
             <ol class="microposts">
                     <div class="row posts" style="margin-left: -4%;">
-                        <%= render @microposts %>
+
+                        <div id="posts-container" >
+                            <div style="display: none !important"> <%=  link_to "", microposts_path, remote: true, id: "load-link" %></div>
+                            <div id="posts-data">
+                                <div class="row">
+                                    <div class="col s12 center-align" style="margin-top: 10%;">
+                                        <%= image_tag  "ajax-loader.gif" %>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
                 </ol>
             <div id="post-fire" style="display: none;"></div>
@@ -72,10 +105,34 @@
     <div class="modal-content">
         <%= form_tag microposts_path, method: :get, remote: true, id: 'filter_game_form' do %>
         <div class="row">
-            <div class="col s12 m6">
-                <label>Game Mode</label><br> 
-                <%= select_tag :game_type, options_for_select([['All Modes', ''],['Trials of Osiris', 'Trials of Osiris'], ["Iron Banner", "Iron Banner"], ["Crucible Playlist", "Crucible Playlist"], ["Other", "Other"], ['Wrath of the Machine', 'Wrath of the Machine'], ["King's Fall", "King's Fall"], ["Crota's End", "Crota's End"], ['Vault of Glass', 'Vault of Glass'], ['Nightfall', 'Nightfall'], ["Challenge of the Elders", "Challenge of the Elders"], ["Heroic Strikes","Heroic Strikes"], ["Story","Story"],["Other","Other"] ]), class: 'game_type_select' %>
+            <div class="col s12 left-align">
+                <label class="version-label" style="top: -25px;">Version</label>
+                <div class="switch" id="version">
+                    <label style="color: #212155;">
+                        Destiny 1
+                        <input type="checkbox" class="checkbox" value='2' name="destiny_version" id="micropost_game_version" checked>
+                        <span class="lever"></span>
+                        Destiny 2
+                    </label>
+                </div>
             </div>
+        </div>
+        <div class="row">
+
+            
+            <div id="d2-options">
+                <div class="col s12 m6">
+                    <label>Game Mode</label><br> 
+                    <%= select_tag :game_type, grouped_options_for_select(d2_options), class: 'game_type_select2' %>
+                </div>
+            </div>
+            <div id="d1-options">
+                <div class="col s12 m6">
+                    <label>Game Mode</label><br> 
+                    <%= select_tag :game_type, grouped_options_for_select(d1_options), class: 'game_type_select' %>
+                </div>
+            </div>
+
             <div class="col s12 m6">
                 <label>Mic Required?</label><br>   
                 <%= select_tag :mic_required, options_for_select([['No', ''], ['Yes', true]]), class: 'microphone_select' %>
@@ -123,9 +180,6 @@
                     <label>MAX K/D</label><br> 
                     <%= text_field_tag :kd_max, nil %>
                 </div>
-                <div class="col s12 m6">                
-                    <a class="waves-effect waves-light btn" id="update-form">Update</a>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -134,7 +188,7 @@
             </div>
         </div>
 
-        
+        <%= hidden_field_tag(:game_type, "" , :id => "game-type-filter") %>
     <% end %>
     </div>
 </div>

@@ -1,40 +1,56 @@
 
     <% user_id = User.find_by(:display_name => micropost.user["display_name"]).id %>
     <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-    <% if micropost.user_stats.nil? %>
-        <% case micropost.game_type 
-           when "Trials of Osiris" %>
-            <% stats = get_stats(micropost.user, "too")[0] %>
-        <% when "Wrath of the Machine" %>
-            <% puts "wrath" %>
-            <% stats = get_stats(micropost.user, "wrath")[0] %>
-        <% when "King's Fall" %>
-            <% stats = get_stats(micropost.user, "kings")[0] %>
-        <% when "Crota's End" %>
-            <% stats = get_stats(micropost.user, "Crota's End")[0] %>
-        <% when "Vault of Glass" %>
-            <% stats = get_stats(micropost.user, "vog")[0] %>
-        <% when "Nightfall" %>
-            <% stats = get_stats(micropost.user, "night")[0] %>
-        <% else %>
-            <% stats = get_stats(micropost.user, "night")[0] %>
-        <% end %>
+    <% if micropost.destiny_version == "1" %>
+        <% modes = {
+            0 => "Any (D1)",
+            1 => "Other (D1)",
+            2 => "Story (D1)",
+            3 => "Strike Playlist (D1)",
+            4 => "Nightfall (D1)",
+            5 => "Crucible Playlist (D1)",
+            6 => "Trials of Osiris (D1)",
+            7 => "Vault of Glass",
+            8 => "Crota's End",
+            9 => "King's Fall",
+            10 => "Wrath of the Machine",
+            11 => "Iron Banner (D1)"
+        }%>
     <% else %>
-        <% stats = micropost.user_stats %>
-    <% end %>
+        <% modes = {
+            0 => "Any",
+            1 => "Other",
+            2 => "Story",
+            3 => "Strike Playlist",
+            4 => "Nightfall",
+            5 => "Crucible Playlist",
+            6 => "Trials of Osiris",
+            7 => "RAID",
+            8 => "RAID",
+            9 => "RAID",
+            10 => "RAID",
+            11 => "Iron Banner"
+        }%>
+        <% end %>
+<!-- =begin
+0 - any
+1 - other
+2 - story
+3 - strikes
+4 - nightfall
+5 - crucible playlist
+6 - trials of osiris
+7 - raid 1 
+8 - raid 2
+9 - raid 3
+10 - raid 4 
+11 - iron banner
+=end -->
+<% stats = micropost.user_stats %>
 
 
-    <% case stats["Character Stats"]["Subclass Name"] 
-        when "Nightstalker", "Voidwalker", "Defender" %>
-        <% subclass =  "background-image: url(#{image_path "void.png"});" %>
-        <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
-    <% when "Sunsinger", "Gunslinger", "Sunbreaker" %>
-        <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
-        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
-    <% when "Bladedancer", "Striker", "Stormcaller" %>
-        <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
-        <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
-    <% end %>
+    
+
 
     <% case micropost.mic_required
         when  true %>
@@ -53,23 +69,22 @@
     <%  when "Similar" %>
             <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
     <%  end %> 
-    
 
     <div class="col s12 m6 l4">
         <div id="<%= micropost.id %>">
             <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
-                <% bg = "background-image: url(#{stats['Character Stats']['Background']});" %>
+                <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
                     <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
                         <div class="row" style="overflow: hidden; max-height: 65px; ">
-                            <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["Character Stats"]["Emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
+                            <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
                             <% if micropost.user["display_name"].length >= 11 %>
                                 <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
                             <% else %>
                                 <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
                             <% end %>
                             <div class="col s3 center-align" style="height: 65px; color: white;">
-                                <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["Character Stats"]["Light Level"] %> </span>
-                                <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["Character Type"]] %></span>
+                                <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
+                                <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["character_type"]] %></span>
                             </div>
                         </div>
                     </div>
@@ -102,13 +117,13 @@
                                     
                                 <% end %>
                             </span>
-                        <% if micropost.game_type == "Trials of Osiris" %>
+                        <% if micropost.game_type.to_i == 6 %>
                             <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
                                 <div class="row center-align">
                                     Diamond
                                 </div>
                                 <div class="row center-align">
-                                    # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
                                 </div>
                             </span>
                             <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
@@ -116,7 +131,7 @@
                                     Platinum
                                 </div>
                                 <div class="row center-align">
-                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
                                 </div>
                             </span>
                             <span id='<%= "gold_elo_content#{micropost.id}"%>'>
@@ -124,7 +139,7 @@
                                     Gold
                                 </div>
                                 <div class="row center-align">
-                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
                                 </div>
                             </span>
                             <span id='<%= "silver_elo_content#{micropost.id}"%>'>
@@ -132,7 +147,7 @@
                                     Silver
                                 </div>
                                 <div class="row center-align">
-                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
                                 </div>
                             </span>
                             <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
@@ -140,7 +155,7 @@
                                     Bronze
                                 </div>
                                 <div class="row center-align">
-                                   # <%= stats['Character Stats']['ELO']['Rank'] %>
+                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
                                 </div>
                             </span>
                         <% end %>
@@ -150,7 +165,7 @@
                     <br>
                      
                     <span>
-                        <b><%= micropost.game_type %></b>
+                        <b><%= modes[micropost.game_type.to_i] %></b>
                         <% if micropost.raid_difficulty != "" %>
                             <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
                         <% else %>
@@ -171,130 +186,16 @@
                             </span>
                     </div>
                 </div>
-                <% if micropost.game_type == "Trials of Osiris" %>
-                    <div class="card-tabs">
-                        <ul class="tabs post post-tabs" style='<%= subclass %>'>
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Year</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-weekly" class="tab-card-link" style='<%= text_color %>'>Week</a></li>
-                            <li class="tab post disabled tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon!"><a href="#<%= micropost.id %>-map" class="tab-card-link" style='<%= text_color %>'>Map</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-content grey lighten-4">
-                        <div id="<%= micropost.id %>-yearly">
-
-                                <table class="table centered highlight">
-                                    <thead>
-                                        <tr>
-                                            <th>K/D</th>
-                                            <th>KA/D</th>
-                                            <th>Win Rate</th>
-                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                                 ELO  <i class="fa fa-question-circle"></i>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody>
-                                        <tr>
-                                            <td><%= stats["Character Stats"]["K/D Ratio"] %></td>
-                                            <td><%= stats["Character Stats"]["KA/D Ratio"] %></td>
-                                            <td><%= stats["Character Stats"]["Win Rate"] %>%</td>
-                                            <td >
-                                                <% if stats["Character Stats"]["ELO"]["ELO"].to_i >= 1700 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#diamond_elo_content#{micropost.id}' style='color:#7198B7;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1700 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1500 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#platinum_elo_content#{micropost.id}' style='color:#58907E;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1500 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1300 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#gold_elo_content#{micropost.id}' style='color:#CCAE50;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1300 && stats["Character Stats"]["ELO"]["ELO"].to_i >= 1200 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content#{micropost.id}'  style='color:#BFC4C2;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                <% elsif stats["Character Stats"]["ELO"]["ELO"].to_i < 1200 %>
-                                                    <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content#{micropost.id}' style='color:#AA885F;'> <b>#{stats['Character Stats']['ELO']['ELO']}</b></span> " %>
-                                                <% end %>
-                                                
-                                                <%= elo.html_safe %>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-
-                        <div id="<%= micropost.id %>-weekly">
-                                <table class="table centered highlight">
-                                    <thead>
-                                        <tr>
-                                            <th>K/D</th>
-                                            <th>KA/D</th>
-                                            <th>Win Rate</th>
-                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                                ELO  <i class="fa fa-question-circle"></i>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody>
-                                        <tr>
-                                        <td><%= stats["Character Stats"]["K/D Ratio"] %> W</td>
-                                        <td><%= stats["Character Stats"]["KA/D Ratio"] %> W</td>
-                                        <td><%= stats["Character Stats"]["Win Rate"] %>% W</td>
-                                        <td><%= stats["Character Stats"]["ELO"]["ELO"] %> W</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-                        <div id="<%= micropost.id %>-map">
-                                <table class="table centered highlight">
-                                    <thead>
-                                        <tr>
-                                            <th>K/D</th>
-                                            <th>KA/D</th>
-                                            <th>Win Rate</th>
-                                            <th class= "tooltipped" data-position="top" data-delay="50" data-tooltip="Based on guardian.gg's ELO ranking system" >
-                                                ELO  <i class="fa fa-question-circle"></i>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody>
-                                        <tr>
-                                        <td><%= stats["Character Stats"]["K/D Ratio"] %> M</td>
-                                        <td><%= stats["Character Stats"]["KA/D Ratio"] %> M</td>
-                                        <td><%= stats["Character Stats"]["Win Rate"] %>% M</td>
-                                        <td><%= stats["Character Stats"]["ELO"]["ELO"] %> M</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </div>
-                    </div>
+                <% if micropost.game_type.to_i == 6 %>
+                    <%= render partial: 'trials_data', locals: {micropost: micropost, stats: stats} %>
+                <% elsif ["7", "8", "9", "10"].include? micropost.game_type %>
+                    <%= render partial: 'raid_data', locals: {micropost: micropost, stats: stats} %>
+                <% elsif ["2", "3"].include? micropost.game_type %>
+                    <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
+                <% elsif ["5"].include? micropost.game_type %>
+                    <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
                 <% else %>
-                    <div class="card-tabs" >
-                        <ul class="tabs post tabs-fixed-width post-tabs" style='<%= subclass %>'>
-                            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Stats</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-content grey lighten-4">
-                        <div id="<%= micropost.id %>-yearly">
-                            <table class="table centered highlight">
-                                <thead>
-                                    <tr>
-                                        <th>Completions</th>
-                                        <th>Kills</th>
-                                        <th>Deaths</th>
-                                        <th>Fastest</th>
-                                    </tr>
-                                </thead>
-                        
-                                <tbody>
-                                    <tr>
-                                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="# Times beaten final boss" ><%= stats["Character Stats"]["Completions"] %></td>
-                                        <td><%= stats["Character Stats"]["Kills"] %></td>
-                                        <td><%= stats["Character Stats"]["Deaths"] %></td>
-                                        <td><%= stats["Character Stats"]["Fastest"] %></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> 
+                    <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
                 <% end %>
                 <br> 
                 <!-- <div class="row" style="margin-bottom: 5px;">
