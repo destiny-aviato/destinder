@@ -173,15 +173,15 @@ $(document).on('turbolinks:load', function() {
             var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
             // var char_data = chart_data[0];
             var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
-            var auto1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Auto Rifle"]);
-            var hand1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Hand Cannon"]);
-            var pulse1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
-            var scout1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Scout Rifle"]);
-            var sniper1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Sniper"]);
-            var shotgun1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var fusion1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
-            var sidearm1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Side Arm"]);
-            var heavy1 = parseInt(char_data1["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data1["Character Stats"]["Kill Stats"]["Sword"]);
+            var auto1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Auto Rifle"]);
+            var hand1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Hand Cannon"]);
+            var pulse1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Pulse Rifle"]);
+            var scout1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Scout Rifle"]);
+            var sniper1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Sniper"]);
+            var shotgun1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Shotgun"]);
+            var fusion1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var sidearm1 =  parseInt(char_data1["character_stats"]["kill_stats"]["Side Arm"]);
+            var heavy1 = parseInt(char_data1["character_stats"]["kill_stats"]["Rocket Launcher"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sword"]);
             var total_kills1 =  (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
 
             // console.log(total_kills1);
@@ -223,15 +223,15 @@ $(document).on('turbolinks:load', function() {
             var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
             // var char_data = chart_data[0];
             var weaponctx2 = document.getElementById("weapon-breakdown-chart2").getContext('2d');
-            var auto2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Auto Rifle"]);
-            var hand2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Hand Cannon"]);
-            var pulse2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
-            var scout2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Scout Rifle"]);
-            var sniper2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Sniper"]);
-            var shotgun2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var fusion2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
-            var sidearm2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Side Arm"]);
-            var heavy2 = parseInt(char_data2["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data2["Character Stats"]["Kill Stats"]["Sword"]);
+            var auto2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Auto Rifle"]);
+            var hand2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Hand Cannon"]);
+            var pulse2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Pulse Rifle"]);
+            var scout2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Scout Rifle"]);
+            var sniper2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Sniper"]);
+            var shotgun2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Shotgun"]);
+            var fusion2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var sidearm2 =  parseInt(char_data2["character_stats"]["kill_stats"]["Side Arm"]);
+            var heavy2 = parseInt(char_data2["character_stats"]["kill_stats"]["Rocket Launcher"]) + parseInt(char_data2["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data2["character_stats"]["kill_stats"]["Sword"]);
             var total_kills2 =  (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2 + fusion2 + sidearm2 + heavy2);
 
             var weaponChart2 = new Chart(weaponctx2, {
@@ -271,15 +271,15 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var weaponctx3 = document.getElementById("weapon-breakdown-chart3").getContext('2d');
-            var auto3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Auto Rifle"]);
-            var hand3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Hand Cannon"]);
-            var pulse3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Pulse Rifle"]);
-            var scout3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Scout Rifle"]);
-            var sniper3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Sniper"]);
-            var shotgun3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Shotgun"]);
-            var fusion3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Fusion Rifle"]);
-            var sidearm3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Side Arm"]);
-            var heavy3 = parseInt(char_data3["Character Stats"]["Kill Stats"]["Rocket Launcher"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sub Machine Gun"]) + parseInt(char_data3["Character Stats"]["Kill Stats"]["Sword"]);
+            var auto3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Auto Rifle"]);
+            var hand3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Hand Cannon"]);
+            var pulse3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Pulse Rifle"]);
+            var scout3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Scout Rifle"]);
+            var sniper3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Sniper"]);
+            var shotgun3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Shotgun"]);
+            var fusion3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var sidearm3 =  parseInt(char_data3["character_stats"]["kill_stats"]["Side Arm"]);
+            var heavy3 = parseInt(char_data3["character_stats"]["kill_stats"]["Rocket Launcher"]) + parseInt(char_data3["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data3["character_stats"]["kill_stats"]["Sword"]);
             var total_kills3 =  (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3 + fusion3 + sidearm3 + heavy3);
 
             var weaponChart3 = new Chart(weaponctx3, {
@@ -320,8 +320,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container1").length) {
             var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
             var abilityctx1 = document.getElementById("ability-chart-breakdown1").getContext('2d');
-            var win1 =  parseInt(char_data1["Character Stats"]["games_won"]);
-            var loss1 =  parseInt(char_data1["Character Stats"]["games_lost"]);
+            var win1 =  parseInt(char_data1["character_stats"]["games_won"]);
+            var loss1 =  parseInt(char_data1["character_stats"]["games_lost"]);
             var total_games1 = parseInt(win1 + loss1);
             var abilityChart1 = new Chart(abilityctx1, {
             type: 'doughnut',
@@ -350,8 +350,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container2").length) {
             var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
             var abilityctx2 = document.getElementById("ability-chart-breakdown2").getContext('2d');
-            var win2 =  parseInt(char_data2["Character Stats"]["games_won"]);
-            var loss2 =  parseInt(char_data2["Character Stats"]["games_lost"]);
+            var win2 =  parseInt(char_data2["character_stats"]["games_won"]);
+            var loss2 =  parseInt(char_data2["character_stats"]["games_lost"]);
             var total_games2 = parseInt(win2 + loss2);
             var abilityChart2 = new Chart(abilityctx2, {
             type: 'doughnut',
@@ -380,8 +380,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var abilityctx3 = document.getElementById("ability-chart-breakdown3").getContext('2d');
-            var win3 =  parseInt(char_data3["Character Stats"]["games_won"]);
-            var loss3 =  parseInt(char_data3["Character Stats"]["games_lost"]);
+            var win3 =  parseInt(char_data3["character_stats"]["games_won"]);
+            var loss3 =  parseInt(char_data3["character_stats"]["games_lost"]);
             var total_games3 = parseInt(win3 + loss3);
             var abilityChart3 = new Chart(abilityctx3, {
             type: 'doughnut',
@@ -411,8 +411,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container1").length) {
             var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
             var revivectx1 = document.getElementById("revive-chart-breakdown1").getContext('2d');
-            var given1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Performed"]);
-            var received1 =  parseInt(char_data1["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var given1 =  parseInt(char_data1["character_stats"]["kill_stats"]["revives_performed"]);
+            var received1 =  parseInt(char_data1["character_stats"]["kill_stats"]["revives_received"]);
             var total_revives1 = parseInt(given1 + received1);        
 
             var reviveChart1 = new Chart(revivectx1, {
@@ -442,8 +442,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container2").length) {
             var char_data2 = JSON.parse($(".chart-container2").attr("data-chart-data"));
             var revivectx2 = document.getElementById("revive-chart-breakdown2").getContext('2d');
-            var given2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Revives Performed"]);
-            var received2 =  parseInt(char_data2["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var given2 =  parseInt(char_data2["character_stats"]["kill_stats"]["revives_performed"]);
+            var received2 =  parseInt(char_data2["character_stats"]["kill_stats"]["revives_received"]);
             var total_revives2 = parseInt(given2 + received2);
             
 
@@ -474,8 +474,8 @@ $(document).on('turbolinks:load', function() {
         if ($(".chart-container3").length) {
             var char_data3 = JSON.parse($(".chart-container3").attr("data-chart-data"));
             var revivectx3 = document.getElementById("revive-chart-breakdown3").getContext('2d');
-            var given3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Revives Performed"]);
-            var received3 =  parseInt(char_data3["Character Stats"]["Kill Stats"]["Revives Received"]);
+            var given3 =  parseInt(char_data3["character_stats"]["kill_stats"]["revives_performed"]);
+            var received3 =  parseInt(char_data3["character_stats"]["kill_stats"]["revives_received"]);
             var total_revives3 = parseInt(given3 + received3);
 
             var reviveChart3 = new Chart(revivectx3, {

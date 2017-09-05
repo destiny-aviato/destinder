@@ -21,8 +21,8 @@
                     <div class="col s3"><span class="valign-wrapper left-align subclass-fix-trials"><img class="subclass-icon tooltipped" data-position="bottom" data-delay="50" data-tooltip="<%= x["Character Items"]["Subclass"]["Item Name"] %>" src=<%= x["Character Items"]["Subclass"]["Item Icon"] %> alt=""></span></div>
                     <div class="col s7 valign-wrapper left-align"><span class="gamertag-trials flow-text"><%= username %></span></div>
                     <div class="col s2 kd-align-fix-trials">
-                       <span class="kd-trials center-align flow-text"><%= x["Character Stats"]["K/D Ratio"] %></span><br>
-                       <span class="character-type-trials flow-text"><%=  @character_races[x["Character Type"]]%></span>
+                       <span class="kd-trials center-align flow-text"><%= x["character_stats"]["kd_ratio"] %></span><br>
+                       <span class="character-type-trials flow-text"><%=  @character_races[x["character_type"]]%></span>
                     </div>
             </div>
 
@@ -36,7 +36,7 @@
 
                 <div class="row container-fix-trials"><!--OPEN PLAYER CARD ROW-->
 
-                    <div class="col s12 container-fix-trials"><img class="emblem-background-trials z-depth-4" src=<%= x["Character Items"]["Emblem Background"] %> alt=""></div><!--CLOSE EMBLEM CARD ROW-->
+                    <div class="col s12 container-fix-trials"><img class="emblem-background-trials z-depth-4" src=<%= x["Character Items"]["emblem_background"] %> alt=""></div><!--CLOSE EMBLEM CARD ROW-->
                 
                 </div><!--CLOSE PLAYER CARD ROW-->
 
@@ -197,17 +197,17 @@
                             <tr> 
                                 <th class="center-align table-header-trials">KD</th>
                                 <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["K/D Ratio"] %></th>
+                                <th class="trials-table-stats center-align"><%= x["character_stats"]["kd_ratio"] %></th>
                             </tr>
                             <tr> 
                                 <th class="center-align table-header-trials">KA/D</th>
                                 <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["KA/D Ratio"] %></th>
+                                <th class="trials-table-stats center-align"><%= x["character_stats"]["kad_ratio"] %></th>
                             </tr>
                             <tr> 
                                 <th class="center-align table-header-trials">ELO</th>
                                 <th class="trials-table-stats center-align">?</th>
-                                <th class="trials-table-stats center-align"><%= x["Character Stats"]["ELO"]["ELO"] %></th>
+                                <th class="trials-table-stats center-align"><%= x["character_stats"]["ELO"]["ELO"] %></th>
                             </tr>
 
                             </table>

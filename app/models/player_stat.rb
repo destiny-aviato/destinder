@@ -174,17 +174,17 @@ class PlayerStat < ApplicationRecord
                     9 => "Ship",
                     10 => "Sparrow",
                     11 => "Ghost",
-                    12 => "Emblem",
+                    12 => "emblem",
                     13 => "Shader",
                     14 => "Emote",
                     15 => "Horn",
                     16 => "Artifact",
-                    17 => "Emblem Background",
-                    18 => "Emblem"
+                    17 => "emblem_background",
+                    18 => "emblem"
                 }
                 
-                items["Emblem Background"] = "https://www.bungie.net#{x['backgroundPath']}" #emblem background
-                items["Emblem"] = "https://www.bungie.net/#{x['emblemPath']}"
+                items["emblem_background"] = "https://www.bungie.net#{x['backgroundPath']}" #emblem background
+                items["emblem"] = "https://www.bungie.net/#{x['emblemPath']}"
 
 
                 inventory.each_with_index do |item, index|
@@ -325,8 +325,8 @@ class PlayerStat < ApplicationRecord
                         "Best Weapon Type" => weapon_best_type,
                         "Longest Life" => longest_life,
                         "Orbs Dropped" => orbs_dropped,
-                        "Revives Received" => res_received,
-                        "Revives Performed" => res_performed,
+                        "revives_received" => res_received,
+                        "revives_performed" => res_performed,
                         "Precision Kills" => precision_kills,
                         "Average Lifespan" => average_lifespan,
                         "Average Kill Distance" => avg_kill_distance,
@@ -334,27 +334,27 @@ class PlayerStat < ApplicationRecord
                     }
     
                     @stats = {
-                        "Kills" => kills.round, 
-                        "Deaths" => deaths.round,
+                        "kills" => kills.round, 
+                        "deaths" => deaths.round,
                         "Assists" => assists.round,
-                        "K/D Ratio" => kd,
-                        "KA/D Ratio" => kad,
+                        "kd_ratio" => kd,
+                        "kad_ratio" => kad,
                         "Intellect" => stat_intellect,
                         "Discipline" => stat_dicipline,
                         "Strength" => stat_strength,
                         "ELO" => elo,
                         "games_won" => games_won,
                         "games_lost" => (games_played - games_won),
-                        "Win Rate" => win_rate,
+                        "win_rate" => win_rate,
                         "Armor" => stat_armor,
                         "Agility" => stat_agility,
                         "Recovery" => stat_recovery,
-                        "Light Level" => light_level,
-                        "Grimoire" => grimoire,
-                        "Kill Stats" => kill_stats
+                        "light_level" => light_level,
+                        "grimoire" => grimoire,
+                        "kill_stats" => kill_stats
                     }
 
-                    @characters_stats << {"Character Type" => character_type, "Character Stats" => @stats, "Character Items" => items, "recent_games" => get_recent_games(membership_type, membership_id, character_id)}
+                    @characters_stats << {"character_type" => character_type, "character_stats" => @stats, "Character Items" => items, "recent_games" => get_recent_games(membership_type, membership_id, character_id)}
                     
                 end
                     
