@@ -1,4 +1,4 @@
-<% case stats["Character Stats"]["Subclass Name"] 
+<% case stats["character_stats"]["subclass_name"] 
    when "Nightstalker", "Voidwalker", "Defender" %>
     <% subclass =  "background-image: url(#{image_path "void.png"});" %>
     <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
@@ -29,10 +29,10 @@
         
                 <tbody>
                     <tr>
-                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="# Times beaten final boss" ><%= stats["Character Stats"]["Completions"] %></td>
-                        <td><%= stats["Character Stats"]["Kills"] %></td>
-                        <td><%= stats["Character Stats"]["Deaths"] %></td>
-                        <td><%= stats["Character Stats"]["Fastest"] %></td>
+                        <td class= "tooltipped" data-position="top" data-delay="50" data-tooltip="# Times beaten final boss" ><%= stats["character_stats"]["completions"] %></td>
+                        <td><%= stats["character_stats"]["kills"] %></td>
+                        <td><%= stats["character_stats"]["deaths"] %></td>
+                        <td><%= stats["character_stats"]["fastest"] %></td>
                     </tr>
                 </tbody>
             </table>

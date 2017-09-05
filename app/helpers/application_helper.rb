@@ -29,33 +29,33 @@ module ApplicationHelper
          badges = []
 
          #variables
-         elo = stats["Character Stats"]["ELO"]["ELO"]
-         total_deaths = stats["Character Stats"]["Deaths"].to_f
-         wins = stats["Character Stats"]["games_won"].to_f
-         losses = stats["Character Stats"]["games_lost"].to_f
-         win_rate = stats["Character Stats"]["Win Rate"].to_f
-         pulse_rifle_kills = stats["Character Stats"]["Kill Stats"]["Pulse Rifle"].to_f
-         hand_cannon_kills = stats["Character Stats"]["Kill Stats"]["Hand Cannon"].to_f
-         scout_rifle_kills = stats["Character Stats"]["Kill Stats"]["Scout Rifle"].to_f
-         auto_rifle_kills = stats["Character Stats"]["Kill Stats"]["Auto Rifle"].to_f
-         fusion_rifle_kills = stats["Character Stats"]["Kill Stats"]["Fusion Rifle"].to_f
-         sniper_rifle_kills = stats["Character Stats"]["Kill Stats"]["Sniper"].to_f
-         rocket_launcher_kills = stats["Character Stats"]["Kill Stats"]["Rocket Launcher"].to_f
-         machine_gun_kills = stats["Character Stats"]["Kill Stats"]["Machine Gun"].to_f
-         sword_kills = stats["Character Stats"]["Kill Stats"]["Sword"].to_f
-         sidearm_kills = stats["Character Stats"]["Kill Stats"]["Side Arm"].to_f
-         shotgun_kills = stats["Character Stats"]["Kill Stats"]["Shotgun"].to_f
-         ability_kills =  stats["Character Stats"]["Kill Stats"]["Ability"].to_f
-         melee_kills = stats["Character Stats"]["Kill Stats"]["Melee"].to_f
-         revives_performed = stats["Character Stats"]["Kill Stats"]["Revives Performed"].to_f
-         revives_received = stats["Character Stats"]["Kill Stats"]["Revives Received"].to_f
+         elo = stats["character_stats"]["ELO"]["ELO"]
+         total_deaths = stats["character_stats"]["deaths"].to_f
+         wins = stats["character_stats"]["games_won"].to_f
+         losses = stats["character_stats"]["games_lost"].to_f
+         win_rate = stats["character_stats"]["win_rate"].to_f
+         pulse_rifle_kills = stats["character_stats"]["kill_stats"]["Pulse Rifle"].to_f
+         hand_cannon_kills = stats["character_stats"]["kill_stats"]["Hand Cannon"].to_f
+         scout_rifle_kills = stats["character_stats"]["kill_stats"]["Scout Rifle"].to_f
+         auto_rifle_kills = stats["character_stats"]["kill_stats"]["Auto Rifle"].to_f
+         fusion_rifle_kills = stats["character_stats"]["kill_stats"]["Fusion Rifle"].to_f
+         sniper_rifle_kills = stats["character_stats"]["kill_stats"]["Sniper"].to_f
+         rocket_launcher_kills = stats["character_stats"]["kill_stats"]["Rocket Launcher"].to_f
+         machine_gun_kills = stats["character_stats"]["kill_stats"]["Machine Gun"].to_f
+         sword_kills = stats["character_stats"]["kill_stats"]["Sword"].to_f
+         sidearm_kills = stats["character_stats"]["kill_stats"]["Side Arm"].to_f
+         shotgun_kills = stats["character_stats"]["kill_stats"]["Shotgun"].to_f
+         ability_kills =  stats["character_stats"]["kill_stats"]["Ability"].to_f
+         melee_kills = stats["character_stats"]["kill_stats"]["Melee"].to_f
+         revives_performed = stats["character_stats"]["kill_stats"]["revives_performed"].to_f
+         revives_received = stats["character_stats"]["kill_stats"]["revives_received"].to_f
          total_revives = revives_performed + revives_received
-         avg_kill_distance = stats["Character Stats"]["Kill Stats"]["Average Kill Distance"].to_f
-         avg_life_span = stats["Character Stats"]["Kill Stats"]["Average Life Span"].to_f
-         super_kills = stats["Character Stats"]["Kill Stats"]["Super"].to_f
-         grenade_kills = stats["Character Stats"]["Kill Stats"]["Grenades"].to_f
-         precision_kills = stats["Character Stats"]["Kill Stats"]["Precision Kills"].to_f
-         killing_spree = stats["Character Stats"]["Kill Stats"]["Longest Spree"].to_f        
+         avg_kill_distance = stats["character_stats"]["kill_stats"]["Average Kill Distance"].to_f
+         avg_life_span = stats["character_stats"]["kill_stats"]["Average Life Span"].to_f
+         super_kills = stats["character_stats"]["kill_stats"]["Super"].to_f
+         grenade_kills = stats["character_stats"]["kill_stats"]["Grenades"].to_f
+         precision_kills = stats["character_stats"]["kill_stats"]["Precision Kills"].to_f
+         killing_spree = stats["character_stats"]["kill_stats"]["Longest Spree"].to_f        
          total_kills = auto_rifle_kills + hand_cannon_kills + pulse_rifle_kills + scout_rifle_kills + sniper_rifle_kills + shotgun_kills + fusion_rifle_kills + sidearm_kills + rocket_launcher_kills + machine_gun_kills + sword_kills
 
          if !user.nil?
@@ -157,7 +157,7 @@ module ApplicationHelper
 
 
          #ability kills More than 20% of total kills
-         if (ability_kills / stats["Character Stats"]["Kills"]).round(2) >= 0.20
+         if (ability_kills / stats["character_stats"]["kills"]).round(2) >= 0.20
             badges << {
                 "badge_name" => "Super Man",
                 "badge_description" => "20%+ of total kills with abilities",

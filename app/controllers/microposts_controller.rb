@@ -47,8 +47,8 @@ class MicropostsController < ApplicationController
             when 6 
                 @micropost.raid_difficulty = ""
                 @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
-                @micropost.elo = @micropost.user_stats["Character Stats"]["ELO"]["ELO"].to_i
-                @micropost.kd = @micropost.user_stats["Character Stats"]["K/D Ratio"].to_f
+                @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
             when 10
                 @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
             when 9
@@ -57,9 +57,18 @@ class MicropostsController < ApplicationController
                 @micropost.user_stats = get_stats_d1(current_user, 8, @micropost.raid_difficulty, @micropost.character_choice)
             when 7
                 @micropost.user_stats = get_stats_d1(current_user, 7, @micropost.raid_difficulty, @micropost.character_choice)
+            when 5
+                @micropost.raid_difficulty = ""
+                @micropost.user_stats = get_stats_d1(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
             when 4
                 @micropost.raid_difficulty = ""
                 @micropost.user_stats = get_stats_d1(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
+            when 3
+                @micropost.raid_difficulty = ""
+                @micropost.user_stats = get_stats_d1(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
+            when 2
+                @micropost.raid_difficulty = ""
+                @micropost.user_stats = get_stats_d1(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)
             else 
                 @micropost.raid_difficulty = ""
                 @micropost.user_stats = get_stats_d1(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
@@ -117,9 +126,7 @@ class MicropostsController < ApplicationController
 
     def get_stats_d1(user, mode, diff, char_id)
         begin
-            case mode
-            when 6 
-                Micropost.get_trials_stats(user, char_id)
+            case mode            
             when 10
                 Micropost.get_raid_stats(user, "wrath", diff, char_id)
             when 9
@@ -128,8 +135,16 @@ class MicropostsController < ApplicationController
                 Micropost.get_raid_stats(user, "crota", diff, char_id)
             when 7
                 Micropost.get_raid_stats(user, "vog", diff, char_id)
+            when 6 
+                Micropost.get_trials_stats(user, char_id)
+            when 5
+                Micropost.get_pvp_stats(user, char_id)
             when 4
                 Micropost.get_nightfall_stats(user, char_id)
+            when 3
+                Micropost.get_strikes_stats(user, char_id)
+            when 2
+               return Micropost.get_story_stats(user, char_id)
             else
                 Micropost.get_other_stats(user, char_id)
             end

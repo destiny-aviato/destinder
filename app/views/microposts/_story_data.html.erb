@@ -10,29 +10,35 @@ when "Nightstalker", "Voidwalker", "Defender" %>
  <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
 <% end %>
 
+
 <div class="card-tabs" >
      <ul class="tabs post tabs-fixed-width post-tabs" style='<%= subclass %>'>
          <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Stats</a></li>
      </ul>
- </div>
- <div class="card-content grey lighten-4 tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon! We're waiting for Bungie to give us this information.">
+</div>
+
+<% if micropost.destiny_version.to_i == 2 %>
+    <div class="card-content grey lighten-4 tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon! We're waiting for Bungie to give us this information.">
+<% else %>
+    <div class="card-content grey lighten-4"></div>
+<% end %>
      <div id="<%= micropost.id %>-yearly">
          <table class="table centered highlight">
              <thead>
                  <tr>
-                     <th>N/A</th>
-                     <th>N/A</th>
-                     <th>N/A</th>
-                     <th>N/A</th>
+                     <th>K/D</th>
+                     <th>Suicides</th>
+                     <th>Success Rate</th>
+                     <th>Fastest</th>
                  </tr>
              </thead>
      
              <tbody>
                  <tr>
-                     <td > - </td>
-                     <td> - </td>
-                     <td> - </td>
-                     <td> - </td>
+                     <td > <%= stats["character_stats"]["kd_ratio"] %> </td>
+                     <td> <%= stats["character_stats"]["suicides"] %> </td>
+                     <td> <%= (stats["character_stats"]["activity_completion_rate"].to_i * 100).round %> %</td>
+                     <td> <%= stats["character_stats"]["fastest_time"] %> </td>
                  </tr>
              </tbody>
          </table>
