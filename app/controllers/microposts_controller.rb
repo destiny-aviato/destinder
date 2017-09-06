@@ -159,12 +159,34 @@ class MicropostsController < ApplicationController
 
     def get_stats_d2(user, mode, diff, char_id)
         begin
-            Micropost.get_other_stats_d2(user, char_id)
+            case mode            
+            when 10
+                Micropost.get_other_stats_d2(user, char_id)
+            when 9
+                Micropost.get_other_stats_d2(user, char_id)
+            when 8
+                Micropost.get_other_stats_d2(user, char_id)
+            when 7
+                Micropost.get_other_stats_d2(user, char_id)
+            when 6 
+                Micropost.get_other_stats_d2(user, char_id)
+            when 5
+                Micropost.get_pvp_stats_d2(user, char_id)
+            when 4
+                Micropost.get_other_stats_d2(user, char_id)
+            when 3
+                Micropost.get_strikes_stats_d2(user, char_id)
+            when 2
+               Micropost.get_story_stats_d2(user, char_id)
+            else
+                Micropost.get_other_stats_d2(user, char_id)
+            end
+
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
             flash[:error] = "Error: #{e}"
-        end
+        end         
     end
     helper_method :get_stats_d2
 
