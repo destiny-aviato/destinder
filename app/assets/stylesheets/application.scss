@@ -996,9 +996,37 @@ html {
     background-color: #9694a9;
 }
 
+
+.post-subheader {
+    background: #2c2c2c;
+    height: 30px;
+    margin-bottom: -40px;
+    margin-left: -9.1%;
+    margin-right: -9.1%;
+}
+
 @media (min-height: 2000px) {
     div#post-fire {
         display: none !important;
+    }
+}
+
+@media only screen  and (min-width : 1824px) {
+    /* Styles */
+    .post-header {
+        height: 65px;
+        margin: -5.3%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 115%;
+    }
+
+    .post-subheader {
+        background: #2c2c2c;
+        height: 30px;
+        margin-bottom: -40px;
+        margin-left: -5.4%;
+        margin-right: -5.4%;
     }
 }
 
