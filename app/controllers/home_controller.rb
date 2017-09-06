@@ -23,6 +23,7 @@ class HomeController < ApplicationController
     def brian
       puts "test"
       @stats = get_stats("too")
+      
     end
     
     def brock
@@ -40,6 +41,87 @@ class HomeController < ApplicationController
 
     def site_stats
     end
+
+  def get_characters2(user)
+      character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+      
+      get_characters = Typhoeus.get(
+          # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+          "https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018428389623/?components=Characters",
+          headers: {"x-api-key" => ENV['API_TOKEN']}
+      )
+
+      character_data = JSON.parse(get_characters.body)
+
+      characters = []
+
+      character_data["Response"]["characters"]["data"].each do |x| 
+         id =  x[1]["characterId"]
+         subclass_val =  x[1]['classType']
+         subclass = character_races[subclass_val.to_i]
+         characters << [subclass, id]
+      end
+
+      characters  ###### STOP HERE FOR GETTING CHARACTERS
+
+  end 
+  helper_method :get_characters2
+
+  
+def test2(username)
+    username.display_name.strip!
+  
+    user = username.display_name.include?(" ") ? username.display_name.gsub(/\s/,'%20') : username.display_name
+
+    #returns characters for a given account  
+    characters_stats = []   
+    get_characters = Typhoeus::Request.get(
+        # "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+        "https://www.bungie.net/Platform/Destiny2/#{username.api_membership_type}/Profile/#{username.api_membership_id}/?components=Characters,205",
+        method: :get,
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+
+    character_data["Response"]["characters"]["data"].each_with_index do |character, index| 
+      if index == 0
+        last_character = character[0]
+      end 
+      character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+      character_id = character[0]
+      # characters = []
+      character_type = character[1]["classType"]
+      subclass_name = character_races[character_type.to_i]
+      light_level = character[1]["light"]
+      emblem = "https://www.bungie.net#{character[1]['emblemPath']}"
+      emblem_background = "https://www.bungie.net#{character[1]['emblemBackgroundPath']}"
+      # @items = Hash.new      
+
+      stats = {
+        "light_level" => light_level,
+        "grimoire" => 0,
+        "background" => emblem_background,
+        "emblem" => emblem,
+        "subclass_icon" => "",
+        "subclass_name" => subclass_name,
+        "kills" => 0,
+        "deaths" => 0,
+        "average_lifespan" => 0, 
+        "win_rate" => 0,
+        "kd_ratio" => 0,
+        "games_played" => 0
+      }
+
+        characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    end
+
+    # characters_stats = Hash[*characters_stats]
+    
+    puts "test"
+    characters_stats     
+  end
+  helper_method :test2
     
     def get_stats(mode)
         begin

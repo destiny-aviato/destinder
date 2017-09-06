@@ -794,16 +794,24 @@ class Micropost < ApplicationRecord
 
   def self.get_other_stats_d2(user, character_id)
    begin
-      get_characters = Typhoeus.get(
-        # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-        "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      # get_characters = Typhoeus.get(
+      #   # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      #   "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+      #   headers: {"x-api-key" => ENV['API_TOKEN']}
+      # )
+      character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+      get_characters = Typhoeus::Request.get(
+        # "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+        "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
+        method: :get,
         headers: {"x-api-key" => ENV['API_TOKEN']}
       )
 
       character_data = JSON.parse(get_characters.body)
 
-      character_data["Response"]["data"]["characters"].each do |char|
-        if char["characterBase"]["characterId"] == character_id
+      # character_data["Response"]["data"]["characters"].each do |char|
+        character_data["Response"]["characters"]["data"].each do |char|
+        if char[0] == character_id
           @character = char
           break
         end
@@ -812,30 +820,30 @@ class Micropost < ApplicationRecord
       characters_stats = []
       
 
-      character_id =  @character["characterBase"]["characterId"]
-      character_type = @character["characterBase"]["classType"]
-      light_level = @character["characterBase"]["powerLevel"]
-      grimoire = @character["characterBase"]["grimoireScore"]
-      background = "https://www.bungie.net/#{@character['backgroundPath']}"
-      emblem = "https://www.bungie.net/#{@character['emblemPath']}"
+      character_id = @character[0]
+      character_type = @character[1]["classType"]
+      light_level = @character[1]["light"]
+      # grimoire = @character["characterBase"]["grimoireScore"]
+      background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
+      emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
+      subclass_name = character_races[character_type.to_i]
+      # get_items = Typhoeus::Request.new(
+      #   # "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      #   "https://www.bungie.net/Platform/Destiny2/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+      #   method: :get,
+      #   headers: {"x-api-key" => ENV['API_TOKEN']}
+      #   )
 
-      get_items = Typhoeus::Request.new(
-        # "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
-        "https://www.bungie.net/Platform/Destiny2/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
-        method: :get,
-        headers: {"x-api-key" => ENV['API_TOKEN']}
-        )
 
-
-      get_items.on_complete do |item_response|                     
-          item_data = JSON.parse(item_response.body)
-          @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
-          @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
-      end
+      # get_items.on_complete do |item_response|                     
+      #     item_data = JSON.parse(item_response.body)
+      #     @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+      #     @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+      # end
       
-      hydra = Typhoeus::Hydra.hydra
-      hydra.queue(get_items)
-      hydra.run
+      # hydra = Typhoeus::Hydra.hydra
+      # hydra.queue(get_items)
+      # hydra.run
     
     
       stats = {
@@ -844,13 +852,14 @@ class Micropost < ApplicationRecord
         "deaths" => "-",
         "kd_ratio" => "-",
         "fastest" => "-",
-        "light_level" => "light_level",
-        "grimoire" => grimoire,
+        "light_level" => light_level,
+        "grimoire" => "-",
         "background" => background,
         "emblem" => emblem,
-        "subclass_icon" => @subclass_icon,
-        "subclass_name" => @subclass_name
+        "subclass_icon" => "",
+        "subclass_name" => character_races[character_type.to_i]
       }
+      characters_stats << {"character_type" => character_type, "character_stats" => stats}
     rescue StandardError => e
       characters_stats = []
       stats = {
@@ -864,9 +873,9 @@ class Micropost < ApplicationRecord
         "background" => "https://www.bungie.net/common/destiny_content/icons/4b7ec936d5acb61f37077d0783952573.jpg",
         "emblem" => "https://s3.amazonaws.com/destinder/temp.png",
         "subclass_icon" => @subclass_icon,
-        "subclass_name" => @subclass_name
+        "subclass_name" => character_races[character_type.to_i]
       }
-      characters_stats << {"character_type" => "character", "character_stats" => stats}
+      characters_stats << {"character_type" => character_races[character_type.to_i], "character_stats" => stats}
     end
     
     characters_stats = Hash[*characters_stats]
