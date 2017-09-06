@@ -193,24 +193,30 @@ class MicropostsController < ApplicationController
 
     def get_characters2(user)
         character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
-        
-        get_characters = Typhoeus.get(
-            "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-            headers: {"x-api-key" => ENV['API_TOKEN']}
-        )
-  
-        character_data = JSON.parse(get_characters.body)
-
-        characters = []
-
-        character_data["Response"]["data"]["characters"].each do |x| 
-           id =  x['characterBase']['characterId']
-           subclass_val =  x['characterBase']['classType']
-           subclass = character_races[subclass_val]
-           characters << [subclass, id]
+        begin
+            get_characters = Typhoeus.get(
+                # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+                "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters",
+                headers: {"x-api-key" => ENV['API_TOKEN']}
+            )
+    
+            character_data = JSON.parse(get_characters.body)
+    
+            characters = []
+    
+            character_data["Response"]["characters"]["data"].each do |x| 
+                id =  x[1]["characterId"]
+                subclass_val =  x[1]['classType']
+                subclass = character_races[subclass_val.to_i]
+                characters << [subclass, id]
+            end
+            characters
+        rescue StandardError => e
+            return get_characters(user)
         end
-
-        characters
+    
+              ###### STOP HERE FOR GETTING CHARACTERS
+  
     end 
     helper_method :get_characters2
 

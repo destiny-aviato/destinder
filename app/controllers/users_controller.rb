@@ -107,9 +107,30 @@ class UsersController < ApplicationController
   end
   helper_method :get_stats
 
-  def calculate_badges(stats)
-    return "green"
-  end
-  helper_method :calculte_badges
+  def get_characters2(user)
+    character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+    
+    get_characters = Typhoeus.get(
+        # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+        "https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018428389623/?components=Characters",
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+
+    characters = []
+
+    character_data["Response"]["characters"]["data"].each do |x| 
+       id =  x["characterId"]
+       subclass_val =  x['classType']
+       subclass = character_races[subclass_val]
+       characters << [subclass, id]
+    end
+
+    characters
+  end 
+  helper_method :get_characters2
+
+
  
 end
