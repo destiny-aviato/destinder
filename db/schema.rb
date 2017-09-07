@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901212219) do
+ActiveRecord::Schema.define(version: 20170907193533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20170901212219) do
     t.text     "badges"
     t.integer  "sash_id"
     t.integer  "level",                  default: 0
+    t.datetime "last_active_at"
     t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
