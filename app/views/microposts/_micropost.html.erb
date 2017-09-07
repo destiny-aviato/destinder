@@ -218,7 +218,7 @@
                     <% total = micropost.user.votes_for + micropost.user.votes_against %> 
                     <% tip = "Player Reputation Score (#{total} votes)" %>    
                     <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
-                        <% rep =  total != 0  ? ((micropost.user.votes_for / total).round(1) * 100) : "0" %>
+                        <% rep =  total != 0  ? ((micropost.user.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
                         <%= rep %>%
                     </div>
                     <div class="col s4 right-align">
