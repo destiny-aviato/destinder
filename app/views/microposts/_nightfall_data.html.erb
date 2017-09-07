@@ -1,0 +1,42 @@
+<% case stats["character_stats"]["subclass_name"] 
+when "Nightstalker", "Voidwalker", "Defender", "Sentinel" %>
+ <% subclass =  "background-image: url(#{image_path "void.png"});" %>
+ <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
+<% when "Sunsinger", "Gunslinger", "Sunbreaker", "Dawnbreaker" %>
+ <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
+ <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+<% when "Bladedancer", "Striker", "Stormcaller", "Arcstrider" %>
+ <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
+ <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+<% else  %>
+ <% subclass =  "background-image: url(#{image_path "lost.png"}); background-position-y: -10px;" %>
+ <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
+<% end %>
+<div class="card-tabs" >
+        <ul class="tabs post tabs-fixed-width post-tabs" style='<%= subclass %>'>
+            <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Stats</a></li>
+        </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+        <div id="<%= micropost.id %>-yearly">
+            <table class="table centered highlight">
+                <thead>
+                    <tr>
+                        <th>Completions</th>
+                        <th>Kills</th>
+                        <th>Deaths</th>
+                        <th>Fastest</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    <tr>
+                        <td><%= stats["character_stats"]["activities_cleared"] %></td>
+                        <td><%= stats["character_stats"]["kills"] %></td>
+                        <td><%= stats["character_stats"]["deaths"] %></td>
+                        <td><%= stats["character_stats"]["fastest_time"] %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 

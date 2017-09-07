@@ -173,7 +173,7 @@ class MicropostsController < ApplicationController
             when 5
                 Micropost.get_pvp_stats_d2(user, char_id)
             when 4
-                Micropost.get_other_stats_d2(user, char_id)
+                Micropost.get_nightfall_stats_d2(user, char_id)
             when 3
                 Micropost.get_strikes_stats_d2(user, char_id)
             when 2

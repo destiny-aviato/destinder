@@ -193,6 +193,8 @@
                     <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
                 <% elsif ["5"].include? micropost.game_type %>
                     <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
+                <% elsif ["4"].include? micropost.game_type %>
+                    <%= render partial: 'nightfall_data', locals: {micropost: micropost, stats: stats} %>
                 <% else %>
                     <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
                 <% end %>
