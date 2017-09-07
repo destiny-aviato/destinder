@@ -794,11 +794,20 @@ class Micropost < ApplicationRecord
 
   def self.get_other_stats_d2(user, character_id)
    begin
-      # get_characters = Typhoeus.get(
-      #   # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-      #   "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-      #   headers: {"x-api-key" => ENV['API_TOKEN']}
-      # )
+    subclasses = {
+      "3225959819" => "Nightstalker",
+      "3635991036" => "Gunslinger",
+      "1334959255" => "Arcstrider",            
+      "3887892656" => "Voidwalker",
+      "1751782730" => "Stormcaller",
+      "3481861797" => "Dawnblade",       
+      "2958378809" => "Striker",
+      "3105935002" => "Sunbreaker",
+      "3382391785" => "Sentinel",      
+      "2863201134" => "Lost Light",
+      "2934029575" => "Lost Light",
+      "1112909340" => "Lost Light"
+    }
       character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
       get_characters = Typhoeus::Request.get(
         # "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
@@ -817,6 +826,16 @@ class Micropost < ApplicationRecord
         end
       end
 
+      character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+        if item['bucketHash'] == "3284755031".to_i
+          @subclass_name = subclasses[item["itemHash"].to_s]
+          break
+        else
+          puts item['bucketHash']
+          next
+        end
+      end
+
       characters_stats = []
       
 
@@ -826,7 +845,6 @@ class Micropost < ApplicationRecord
       # grimoire = @character["characterBase"]["grimoireScore"]
       background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
       emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
-      subclass_name = character_races[character_type.to_i]
       # get_items = Typhoeus::Request.new(
       #   # "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
       #   "https://www.bungie.net/Platform/Destiny2/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
@@ -857,7 +875,7 @@ class Micropost < ApplicationRecord
         "background" => background,
         "emblem" => emblem,
         "subclass_icon" => "",
-        "subclass_name" => character_races[character_type.to_i]
+        "subclass_name" => @subclass_name
       }
       characters_stats << {"character_type" => character_type, "character_stats" => stats}
     rescue StandardError => e
@@ -873,7 +891,7 @@ class Micropost < ApplicationRecord
         "background" => "https://www.bungie.net/common/destiny_content/icons/4b7ec936d5acb61f37077d0783952573.jpg",
         "emblem" => "https://s3.amazonaws.com/destinder/temp.png",
         "subclass_icon" => @subclass_icon,
-        "subclass_name" => character_races[character_type.to_i]
+        "subclass_name" => @subclass_name
       }
       characters_stats << {"character_type" => character_races[character_type.to_i], "character_stats" => stats}
     end
@@ -883,12 +901,20 @@ class Micropost < ApplicationRecord
   end
 
   def self.get_story_stats_d2(user, character_id)
-    # http://www.bungie.net/Platform/Destiny2/2/Account/4611686018428389623/Character/2305843009262373961/Stats/
-      # get_characters = Typhoeus.get(
-      #   # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-      #   "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-      #   headers: {"x-api-key" => ENV['API_TOKEN']}
-      # )
+      subclasses = {
+        "3225959819" => "Nightstalker",
+        "3635991036" => "Gunslinger",
+        "1334959255" => "Arcstrider",            
+        "3887892656" => "Voidwalker",
+        "1751782730" => "Stormcaller",
+        "3481861797" => "Dawnblade",       
+        "2958378809" => "Striker",
+        "3105935002" => "Sunbreaker",
+        "3382391785" => "Sentinel",      
+        "2863201134" => "Lost Light",
+        "2934029575" => "Lost Light",
+        "1112909340" => "Lost Light"
+      }
       character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
       get_characters = Typhoeus::Request.get(
         # "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
@@ -907,6 +933,16 @@ class Micropost < ApplicationRecord
         end
       end
 
+      character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+        if item['bucketHash'] == "3284755031".to_i
+          @subclass_name = subclasses[item["itemHash"].to_s]
+          break
+        else
+          puts item['bucketHash']
+          next
+        end
+      end
+
       characters_stats = []
       
 
@@ -916,7 +952,6 @@ class Micropost < ApplicationRecord
       # grimoire = @character["characterBase"]["grimoireScore"]
       background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
       emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
-      subclass_name = character_races[character_type.to_i]
 
       begin 
         get_story_stats = Typhoeus.get(
@@ -983,7 +1018,7 @@ class Micropost < ApplicationRecord
         "background" => background,
         "emblem" => emblem,
         "subclass_icon" => "",
-        "subclass_name" => subclass_name,
+        "subclass_name" => @subclass_name,
         "activities_cleared" => activities_cleared,
         "activities_entered" => activities_entered,
         "activity_completion_rate" => completion_rate,
@@ -1006,7 +1041,20 @@ class Micropost < ApplicationRecord
   end
 
   def self.get_strikes_stats_d2(user, character_id)
-
+      subclasses = {
+        "3225959819" => "Nightstalker",
+        "3635991036" => "Gunslinger",
+        "1334959255" => "Arcstrider",            
+        "3887892656" => "Voidwalker",
+        "1751782730" => "Stormcaller",
+        "3481861797" => "Dawnblade",       
+        "2958378809" => "Striker",
+        "3105935002" => "Sunbreaker",
+        "3382391785" => "Sentinel",      
+        "2863201134" => "Lost Light",
+        "2934029575" => "Lost Light",
+        "1112909340" => "Lost Light"
+      }
       character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
       get_characters = Typhoeus::Request.get(
         "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
@@ -1024,6 +1072,16 @@ class Micropost < ApplicationRecord
         end
       end
 
+      character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+        if item['bucketHash'] == "3284755031".to_i
+          @subclass_name = subclasses[item["itemHash"].to_s]
+          break
+        else
+          puts item['bucketHash']
+          next
+        end
+      end
+
       characters_stats = []
       
 
@@ -1033,7 +1091,7 @@ class Micropost < ApplicationRecord
       # grimoire = @character["characterBase"]["grimoireScore"]
       background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
       emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
-      subclass_name = character_races[character_type.to_i]
+      
 
       begin 
         get_story_stats = Typhoeus.get(
@@ -1079,18 +1137,6 @@ class Micropost < ApplicationRecord
       end
 
   
-      # get_items = Typhoeus::Request.new(
-      #   "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
-      #   method: :get,
-      #   headers: {"x-api-key" => ENV['API_TOKEN']}
-      #   )
-  
-  
-      # get_items.on_complete do |item_response|                     
-      #     item_data = JSON.parse(item_response.body)
-      #     @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
-      #     @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
-      # end
 
      
     
@@ -1100,7 +1146,7 @@ class Micropost < ApplicationRecord
         "background" => background,
         "emblem" => emblem,
         "subclass_icon" => "",
-        "subclass_name" => subclass_name,
+        "subclass_name" => @subclass_name,
         "activities_cleared" => activities_cleared,
         "activities_entered" => activities_entered,
         "activity_completion_rate" => completion_rate,
@@ -1123,6 +1169,20 @@ class Micropost < ApplicationRecord
   end
 
   def self.get_pvp_stats_d2(user, character_id)
+    subclasses = {
+      "3225959819" => "Nightstalker",
+      "3635991036" => "Gunslinger",
+      "1334959255" => "Arcstrider",            
+      "3887892656" => "Voidwalker",
+      "1751782730" => "Stormcaller",
+      "3481861797" => "Dawnblade",       
+      "2958378809" => "Striker",
+      "3105935002" => "Sunbreaker",
+      "3382391785" => "Sentinel",      
+      "2863201134" => "Lost Light",
+      "2934029575" => "Lost Light",
+      "1112909340" => "Lost Light"
+    }
     character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
     get_characters = Typhoeus::Request.get(
       "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
@@ -1133,10 +1193,20 @@ class Micropost < ApplicationRecord
     character_data = JSON.parse(get_characters.body)
 
     # character_data["Response"]["data"]["characters"].each do |char|
-      character_data["Response"]["characters"]["data"].each do |char|
+    character_data["Response"]["characters"]["data"].each do |char|
       if char[0] == character_id
         @character = char
         break
+      end
+    end
+
+    character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+      if item['bucketHash'] == "3284755031".to_i
+        @subclass_name = subclasses[item["itemHash"].to_s]
+        break
+      else
+        puts item['bucketHash']
+        next
       end
     end
 
@@ -1149,7 +1219,7 @@ class Micropost < ApplicationRecord
     # grimoire = @character["characterBase"]["grimoireScore"]
     background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
     emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
-    subclass_name = character_races[character_type.to_i]
+    # subclass_name = character_races[character_type.to_i]
     
     begin  
       get_story_stats = Typhoeus.get(
@@ -1183,8 +1253,8 @@ class Micropost < ApplicationRecord
       "grimoire" => "0",
       "background" => background,
       "emblem" => emblem,
-      "subclass_icon" => "",
-      "subclass_name" => subclass_name,
+      "subclass_icon" => "" ,
+      "subclass_name" => @subclass_name,
       "kills" => kills,
       "deaths" => deaths,
       "average_lifespan" => average_lifespan, 
