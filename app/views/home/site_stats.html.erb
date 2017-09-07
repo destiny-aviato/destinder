@@ -33,6 +33,7 @@
                                     <th>Gamertag</th>
                                     <th>Platform</th>
                                     <th>Badges</th>
+                                    <th>Last Activity</th>
                                 </tr>
                             </thead>
                         
@@ -51,6 +52,7 @@
                                         </div>                
                                     <% end %>
                                     </td>
+                                    <td><%= !user.last_active_at.nil? ? time_ago_in_words(user.last_active_at) : user.last_active_at %></td>
                                 </tr>
                                 <% end %>
 
