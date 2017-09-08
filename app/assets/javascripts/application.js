@@ -19,6 +19,7 @@
 //= require timeago
 //= require_self
 //= require typed
+//= require select2
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
@@ -881,6 +882,10 @@ $(document).on('turbolinks:load', function() {
     $('.tap-target').tapTarget('open');
     $('.tap-target').tapTarget('close');
 
+    $("#e1").select2({
+        placeholder: 'Tag your fireteam',
+        allowClear: true
+    });
 
     $('.parallax').parallax();
     $('.tooltipped').tooltip({
