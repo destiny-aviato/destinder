@@ -198,7 +198,7 @@ class Micropost < ApplicationRecord
 
         activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
         activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-        completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+        completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100
         kills = stats["kills"]["basic"]["displayValue"]
         deaths = stats["deaths"]["basic"]["displayValue"]
         average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
@@ -362,7 +362,7 @@ class Micropost < ApplicationRecord
 
       activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
       activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-      completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+      completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
       kills = stats["kills"]["basic"]["displayValue"]
       deaths = stats["deaths"]["basic"]["displayValue"]
       average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
@@ -468,7 +468,7 @@ class Micropost < ApplicationRecord
 
       activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
       activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-      completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+      completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
       kills = stats["kills"]["basic"]["displayValue"]
       deaths = stats["deaths"]["basic"]["displayValue"]
       average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
@@ -966,7 +966,7 @@ class Micropost < ApplicationRecord
   
         activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
         activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-        completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+        completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
         kills = stats["kills"]["basic"]["displayValue"]
         deaths = stats["deaths"]["basic"]["displayValue"]
         average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
@@ -1106,7 +1106,7 @@ class Micropost < ApplicationRecord
   
         activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
         activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-        completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+        completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
         kills = stats["kills"]["basic"]["displayValue"]
         deaths = stats["deaths"]["basic"]["displayValue"]
         average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
@@ -1334,7 +1334,7 @@ class Micropost < ApplicationRecord
 
       activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
       activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
-      completion_rate = (activities_cleared.to_i / activities_entered.to_i).round(2) 
+      completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
       kills = stats["kills"]["basic"]["displayValue"]
       deaths = stats["deaths"]["basic"]["displayValue"]
       average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
