@@ -66,6 +66,14 @@
             </div>
 
             <div class="row">
+                <div class="input-field col s12">
+                    <label class="character-label" style="top: -40px;">Fireteam (optional)</label>
+                    <i class="material-icons prefix tooltipped" data-position="top" data-delay="50" data-tooltip="Post your teammate's stats too! Players must have a Destinder account.">people</i>
+                    <%= react_component 'UserSelectD2', { xb_users: User.where(:api_membership_type => "1").all, ps_users: User.where(:api_membership_type => "2").all  }  %>
+                </div>     
+            </div>
+
+            <div class="row">
                 <div class="row">
 
                     <div class="input-field col s12 m12">
@@ -74,6 +82,8 @@
                     </div>
                 </div>
             </div>
+
+
             <%= f.hidden_field :destiny_version, value: 2 %>
             <%= f.submit "Post", {class: "btn waves-effect waves-light", id: "post-submit"} %>
         <% end %>

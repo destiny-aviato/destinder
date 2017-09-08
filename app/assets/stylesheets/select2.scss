@@ -662,7 +662,7 @@
     color: #fff;
     margin-top: 8px;
     padding: 3px 10px;
-    background-color: #42A5F5
+    background-color: #59C9A5
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove, .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
@@ -695,7 +695,7 @@
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected], div.tagsinput span.tag {
-    background-color: #42A5F5
+    background-color: #59C9A5
 }
 .select2-results__option {
     padding: 4px;
@@ -709,4 +709,8 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 strong.select2-results__group {
     font-weight: 800;
+}
+
+input.select2-search__field {
+    width: 130px !important;
 }

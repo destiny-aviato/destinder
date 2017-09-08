@@ -882,8 +882,13 @@ $(document).on('turbolinks:load', function() {
     $('.tap-target').tapTarget('open');
     $('.tap-target').tapTarget('close');
 
-    $("#e1").select2({
-        placeholder: 'Tag your fireteam',
+    $("#tags-d1").select2({
+        placeholder: 'Tag your team',
+        allowClear: true
+    });
+
+    $("#tags-d2").select2({
+        placeholder: 'Tag your team',
         allowClear: true
     });
 
