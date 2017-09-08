@@ -27,17 +27,13 @@ $(document).on("turbolinks:load", function() {
         ]
     });
 
+    $('.scroller-test').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false        
+    });
 
-
-    $('#gear-modal-0').modal('open');
-
-    $('#gear-modal-0').modal('close');
-
-    $('#gear-modal-1').modal('open');
-
-    $('#gear-modal-1').modal('close');
-
-    $('#gear-modal-2').modal('open');
-
-    $('#gear-modal-2').modal('close');
 });

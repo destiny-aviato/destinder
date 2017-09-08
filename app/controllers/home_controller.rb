@@ -117,8 +117,6 @@ def test2(username)
     end
 
     # characters_stats = Hash[*characters_stats]
-    
-    puts "test"
     characters_stats     
   end
   helper_method :test2
