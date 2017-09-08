@@ -1,7 +1,10 @@
 var UserSelect = React.createClass({
     render: function () {
-        var userLIs = this.props.users.map(function(user, i){
-            // return statement goes here:
+        var xbUserLIs = this.props.xb_users.map(function(user, i){
+            return <option value={user.id}>{user.display_name}</option>;
+        });
+
+        var psUserLIs = this.props.ps_users.map(function(user, i){
             return <option value={user.id}>{user.display_name}</option>;
         });
 
@@ -9,7 +12,10 @@ var UserSelect = React.createClass({
             
            <select class="js-example-responsive" id="e1" multiple="multiple" >
                <optgroup label="Xbox">
-                    {userLIs}
+                    {xbUserLIs}
+                </optgroup>
+               <optgroup label="Playstation">
+                    {psUserLIs}
                 </optgroup>
             </select>
         )
