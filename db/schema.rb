@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908174444) do
+ActiveRecord::Schema.define(version: 20170911145727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170908174444) do
     t.float    "kd"
     t.string   "destiny_version"
     t.text     "fireteam",         default: [],              array: true
+    t.text     "fireteam_stats"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_microposts_on_user_id", using: :btree
   end

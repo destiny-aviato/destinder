@@ -24,6 +24,7 @@
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 //= require tooltipster.bundle.min
+//= require introjs
 //= require Chart.min
 //= require react
 //= require react_ujs

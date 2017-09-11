@@ -16,6 +16,7 @@ class Micropost < ApplicationRecord
   validates :content,  length: { maximum: 50}
   validates :game_type, presence: true
   serialize :user_stats
+  serialize :fireteam_stats
 
 
   def self.get_elo(membership_id)
@@ -153,7 +154,7 @@ class Micropost < ApplicationRecord
       "subclass_icon" => @subclass_icon,
       "subclass_name" => @subclass_name
     }
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -264,7 +265,7 @@ class Micropost < ApplicationRecord
       }
 
       characters_stats = []
-      characters_stats << {"character_type" => character_type, "character_stats" => stats}
+      characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
       characters_stats = Hash[*characters_stats]
       characters_stats
     end
@@ -327,7 +328,7 @@ class Micropost < ApplicationRecord
       "subclass_icon" => @subclass_icon,
       "subclass_name" => @subclass_name
     }
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -433,7 +434,7 @@ class Micropost < ApplicationRecord
       "kd_ratio" => kd_ratio
     }
 
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -625,7 +626,7 @@ class Micropost < ApplicationRecord
       "games_played" => games_played
     }
 
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -686,7 +687,7 @@ class Micropost < ApplicationRecord
       "subclass_icon" => @subclass_icon,
       "subclass_name" => @subclass_name
     }
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -785,7 +786,7 @@ class Micropost < ApplicationRecord
         end
 
 
-        characters_stats << {"character_type" => character_type, "character_stats" => stats}
+        characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
         characters_stats = Hash[*characters_stats]
       
         characters_stats
@@ -893,7 +894,7 @@ class Micropost < ApplicationRecord
         "subclass_icon" => @subclass_icon,
         "subclass_name" => @subclass_name
       }
-      characters_stats << {"character_type" => character_races[character_type.to_i], "character_stats" => stats}
+      characters_stats << {"player_name" => user.display_name, "character_type" => character_races[character_type.to_i], "character_stats" => stats}
     end
     
     characters_stats = Hash[*characters_stats]
@@ -1035,7 +1036,7 @@ class Micropost < ApplicationRecord
         "highest_light" => highest_light
       }
   
-      characters_stats << {"character_type" => character_type, "character_stats" => stats}
+      characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
       characters_stats = Hash[*characters_stats]
       characters_stats
   end
@@ -1163,7 +1164,7 @@ class Micropost < ApplicationRecord
         "highest_light" => highest_light
       }
   
-      characters_stats << {"character_type" => character_type, "character_stats" => stats}
+      characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
       characters_stats = Hash[*characters_stats]
       characters_stats
   end
@@ -1263,7 +1264,7 @@ class Micropost < ApplicationRecord
       "games_played" => games_played
     }
 
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -1391,7 +1392,7 @@ class Micropost < ApplicationRecord
       "highest_light" => highest_light
     }
 
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
 end
