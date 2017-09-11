@@ -33,7 +33,12 @@ $(document).on("turbolinks:load", function() {
         speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false        
+        arrows: true        
     });
 
+    $('.scroller-test').on('swipe', function(event, slick, direction){
+        console.log(direction);
+        // left
+        $('ul.tabs').tabs();
+      });
 });

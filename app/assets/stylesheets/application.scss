@@ -21,6 +21,7 @@ $primary-color: color("blue", "lighten-2") !default;
 @import 'slick-theme';
 @import 'tooltipster.bundle.min';
 @import 'select2';
+@import 'introjs';
 body {
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -1192,4 +1193,19 @@ a.post-form-tabs {
 
 span.select2.select2-container.select2-container--default.select2-container--focus {
     width: 100%;
+}
+
+ul.slick-dots {
+    bottom: -9px;
+}
+
+.slick-prev {
+    left: 2px;
+    top: 57%;
+    z-index: 1;
+}
+
+.slick-next {
+    right: 2px;
+    top: 57%;
 }
