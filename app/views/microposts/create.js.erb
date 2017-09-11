@@ -19,3 +19,9 @@ $('.scroller-test').slick({
     slidesToScroll: 1,
     arrows: true        
 });
+
+$('.scroller-test').on('swipe', function(event, slick, direction){
+    console.log(direction);
+    // left
+    $('ul.tabs').tabs();
+  });
