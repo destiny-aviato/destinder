@@ -70,7 +70,7 @@
                 <div class="input-field col s12">
                     <label class="character-label" style="top: -40px;">Fireteam (optional)</label>
                     <i class="material-icons prefix tooltipped" data-position="top" data-delay="50" data-tooltip="Post your teammate's stats too! Players must have a Destinder account.">people</i>
-                    <%= react_component 'UserSelectD1', { xb_users: User.where(:api_membership_type => "1").all, ps_users: User.where(:api_membership_type => "2").all  }  %>
+                    <%= react_component 'UserSelectD1', { users: User.where(:api_membership_type => current_user.api_membership_type).all  }  %>
                 </div>     
             </div>
 

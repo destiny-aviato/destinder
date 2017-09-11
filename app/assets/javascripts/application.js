@@ -885,12 +885,14 @@ $(document).on('turbolinks:load', function() {
 
     $("#tags-d1").select2({
         placeholder: 'Tag your team',
-        allowClear: true
+        allowClear: true,
+        maximumSelectionLength: 4
     });
 
     $("#tags-d2").select2({
         placeholder: 'Tag your team',
-        allowClear: true
+        allowClear: true,
+        maximumSelectionLength: 4
     });
 
     $('.parallax').parallax();

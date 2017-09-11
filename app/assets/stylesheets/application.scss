@@ -1209,3 +1209,18 @@ ul.slick-dots {
     right: 2px;
     top: 57%;
 }
+.slick-prev:before, .slick-next:before {
+    font-family: FontAwesome;
+    line-height: 1;
+    color: #212121;
+    opacity: 0.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}   
+
+.slick-prev:before { content: "\f053"; }
+[dir="rtl"] .slick-prev:before { content: "\f054"; }
+
+[dir="rtl"] .slick-next { left: -10px; top: 70px; right: auto; }
+.slick-next:before { content: "\f054"; }
+[dir="rtl"] .slick-next:before { content: "\f053"; }
