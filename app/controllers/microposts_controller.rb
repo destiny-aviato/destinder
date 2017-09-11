@@ -25,7 +25,7 @@ class MicropostsController < ApplicationController
 
 
 
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         @micropost = current_user.microposts.build(micropost_params)
         @micropost.raid_difficulty = "Normal" if @micropost.raid_difficulty.nil?
 =begin
@@ -247,7 +247,7 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         @micropost.destroy
 
         respond_to do |format|

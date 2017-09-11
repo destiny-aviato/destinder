@@ -33,7 +33,7 @@ $(document).on("turbolinks:load", function() {
         speed: 300,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true        
+        arrows: true       
     });
 
     $('.scroller-test').on('swipe', function(event, slick, direction){
