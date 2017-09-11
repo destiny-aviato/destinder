@@ -49,27 +49,25 @@
 <% stats = micropost.user_stats %>
 
     
-
-
-    <% case micropost.mic_required
-        when  true %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when false %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  end %> 
-
-    <% case micropost.looking_for
-        when  "Any" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Sherpa" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Sherpee" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Similar" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  end %> 
-
     <% if micropost.fireteam != [] %>
+        <% case micropost.mic_required
+            when  true %>
+                <% mic = '<div class="col s3 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when false %>
+                <% mic = '<div class="col s3 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
+        <% case micropost.looking_for
+            when  "Any" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpa" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpee" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Similar" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
     
         <div class="col s12 m6 l4">
             <div class="scroller-test">   
@@ -91,12 +89,13 @@
                                 </div>
                             </div>
                         
-                            <div class="post-subheader" style="background: #C45455;">
+                            <div class="post-subheader" style="background: #212121;">
                                     <div class="row" style="overflow: hidden; max-height: 30px;">
                                         <div class="container" style="padding-top: 1%; width: 80%;">
-                                            <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
+                                            <div class="col s3 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
                                             <%= look_for %>
                                             <%= mic %>
+                                            <div class="col s3 right-align tooltip" style="color: #f5f5f5; font-weight: 700;" data-tooltip-content='<%= "#more-players-#{micropost.id}" %>'><%= "+#{micropost.fireteam.count}" %></div>
                                         </div>
                                     </div>
                             </div>
@@ -118,6 +117,9 @@
                                         <hr>
                                             
                                         <% end %>
+                                    </span>
+                                    <span id='<%= "more-players-#{micropost.id}" %>'>
+                                        <p><%= "This fireteam has #{micropost.fireteam.count} more player(s). "%></p>
                                     </span>
                                 <% if micropost.game_type.to_i == 6 %>
                                     <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
@@ -237,8 +239,9 @@
                     </div>
                 </div> 
                  
-                <% micropost.fireteam_stats.each do |stats| %>
+                <% micropost.fireteam_stats.each_with_index do |stats, index| %>
                     <div>
+                        <% player = User.find_by(id: micropost.fireteam[index].to_i) %>                    
                         <div id="<%= micropost.id %>-a">
                                 <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
                                     <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
@@ -246,9 +249,9 @@
                                             <div class="row" style="overflow: hidden; max-height: 65px; ">
                                                 <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
                                                 <% if stats["player_name"].length >= 11 %>
-                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(player.id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
                                                 <% else %>
-                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(player.id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
                                                 <% end %>
                                                 <div class="col s3 center-align large-break" style="height: 65px; color: white;">
                                                     <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
@@ -257,19 +260,20 @@
                                             </div>
                                         </div>
                                     
-                                        <div class="post-subheader" style="background: #C45455;">
+                                        <div class="post-subheader" style="background: #212121;">
                                                 <div class="row" style="overflow: hidden; max-height: 30px;">
                                                     <div class="container" style="padding-top: 1%; width: 80%;">
-                                                        <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
+                                                        <div class="col s3 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}-#{index}" %>' style="color: #f5f5f5;"></i></div>
                                                         <%= look_for %>
                                                         <%= mic %>
+                                                        <div class="col s3 right-align tooltip" style="color: #f5f5f5; font-weight: 700;" data-tooltip-content='<%= "#more-players-#{micropost.id}-#{index}" %>'><%= "+#{micropost.fireteam.count}" %></div>
                                                     </div>
                                                 </div>
                                         </div>
                                         <div class="tooltip_templates">
-                                                <span id='<%= "badge_content#{micropost.id}"%>'>
+                                                <span id='<%= "badge_content#{micropost.id}-#{index}"%>'>
                                                     <hr>
-                                                    <% micropost.user.badges.each do |badge| %>   
+                                                    <% player.badges.each do |badge| %>   
                                                     <div class="row" style="margin-bottom: -5%">
                                                         <div class="col s2"></div>                                
                                                         <div class="col s8 center-align">                              
@@ -284,6 +288,9 @@
                                                     <hr>
                                                         
                                                     <% end %>
+                                                </span>
+                                                <span id='<%= "more-players-#{micropost.id}-#{index}" %>'>
+                                                    <p><%= "This fireteam has #{micropost.fireteam.count} more player(s). "%></p>
                                                 </span>
                                             <% if micropost.game_type.to_i == 6 %>
                                                 <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
@@ -365,14 +372,7 @@
                                         <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
                                     <% end %>
                                     <br> 
-                                    <!-- <div class="row" style="margin-bottom: 5px;">
-                                        <% micropost.user.badges.each do |badge| %>                
-                                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                                            <%= badge.custom_fields[:icon].html_safe %>
-                                            </div>                
-                                        <% end %>
-                                    </div> -->
-                                    
+
                                     <div class="row">
                                         <div class="col s4 left-align">
                                             <% if micropost.user.api_membership_type == "1" %>
@@ -383,10 +383,10 @@
                                                 <% end %>
                                             <% end %>
                                         </div>
-                                        <% total = micropost.user.votes_for + micropost.user.votes_against %> 
+                                        <% total = player.votes_against %> 
                                         <% tip = "Player Reputation Score (#{total} votes)" %>    
                                         <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
-                                            <% rep =  total != 0  ? ((micropost.user.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
+                                            <% rep =  total != 0  ? ((player.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
                                             <%= rep %>%
                                         </div>
                                         <div class="col s4 right-align">
@@ -407,6 +407,24 @@
             </div>
         </div>
     <% else %>
+        <% case micropost.mic_required
+            when  true %>
+                <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when false %>
+                <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
+        <% case micropost.looking_for
+            when  "Any" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpa" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpee" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Similar" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
         <div class="col s12 m6 l4">
             <div id="<%= micropost.id %>">
                 <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
