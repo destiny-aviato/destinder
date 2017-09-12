@@ -28,13 +28,7 @@
       ga('send', 'pageview');
     
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-2757454986564342",
-        enable_page_level_ads: true
-      });
-    </script>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
@@ -42,6 +36,13 @@
       <%= yield(:head) %>
     <% end %>
   </head>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-2757454986564342",
+      enable_page_level_ads: true
+    });
+  </script>
   <body class="<%= params[:controller] %> <%= params[:action] %>">
     <header>
         <%= render 'layouts/header' %>
