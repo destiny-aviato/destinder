@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2757454986564342",
+          enable_page_level_ads: true
+        });
+      </script>
     <title>Destinder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="Destinder LFG" />
@@ -28,13 +35,7 @@
       ga('send', 'pageview');
     
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-2757454986564342",
-        enable_page_level_ads: true
-      });
-    </script>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
@@ -42,6 +43,7 @@
       <%= yield(:head) %>
     <% end %>
   </head>
+  
   <body class="<%= params[:controller] %> <%= params[:action] %>">
     <header>
         <%= render 'layouts/header' %>
