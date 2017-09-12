@@ -27,17 +27,18 @@ $(document).on("turbolinks:load", function() {
         ]
     });
 
+    $('.scroller-test').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true       
+    });
 
-
-    $('#gear-modal-0').modal('open');
-
-    $('#gear-modal-0').modal('close');
-
-    $('#gear-modal-1').modal('open');
-
-    $('#gear-modal-1').modal('close');
-
-    $('#gear-modal-2').modal('open');
-
-    $('#gear-modal-2').modal('close');
+    $('.scroller-test').on('swipe', function(event, slick, direction){
+        console.log(direction);
+        // left
+        $('ul.tabs').tabs();
+      });
 });

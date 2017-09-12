@@ -1,13 +1,16 @@
 <% case stats["character_stats"]["subclass_name"] 
-when "Nightstalker", "Voidwalker", "Defender" %>
-    <% subclass =  "background-image: url(#{image_path "void.png"});" %>
-    <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
-<% when "Sunsinger", "Gunslinger", "Sunbreaker" %>
-    <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
-    <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
-<% when "Bladedancer", "Striker", "Stormcaller" %>
-    <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
-    <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+when "Nightstalker", "Voidwalker", "Defender", "Sentinel" %>
+ <% subclass =  "background-image: url(#{image_path "void.png"});" %>
+ <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
+<% when "Sunsinger", "Gunslinger", "Sunbreaker", "Dawnbreaker" %>
+ <% subclass =  "background-image: url(#{image_path "solar.png"});" %>
+ <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+<% when "Bladedancer", "Striker", "Stormcaller", "Arcstrider" %>
+ <% subclass =  "background-image: url(#{image_path "arc.png"});" %>
+ <% text_color =  "color: #3a3a3a; font-size: 14px;" %>
+<% else  %>
+ <% subclass =  "background-image: url(#{image_path "lost.png"}); background-position-y: -10px;" %>
+ <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
 <% end %>
 
 
@@ -19,7 +22,7 @@ when "Nightstalker", "Voidwalker", "Defender" %>
         </ul>
     </div>
     <div class="card-content grey lighten-4">
-        <div id="<%= micropost.id %>-yearly">
+        <div id="<%= micropost.id %>-yearly" >
 
                 <table class="table centered highlight">
                     <thead>
@@ -58,7 +61,7 @@ when "Nightstalker", "Voidwalker", "Defender" %>
                 </table>
         </div>
 
-        <div id="<%= micropost.id %>-weekly">
+        <div id="<%= micropost.id %>-weekly" style="display: none;">
                 <table class="table centered highlight">
                     <thead>
                         <tr>
@@ -81,7 +84,7 @@ when "Nightstalker", "Voidwalker", "Defender" %>
                     </tbody>
                 </table>
         </div>
-        <div id="<%= micropost.id %>-map">
+        <div id="<%= micropost.id %>-map" style="display: none;">
                 <table class="table centered highlight">
                     <thead>
                         <tr>

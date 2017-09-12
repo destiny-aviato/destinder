@@ -48,191 +48,547 @@
 =end -->
 <% stats = micropost.user_stats %>
 
+    
+    <% if micropost.fireteam != [] %>
+        <% case micropost.mic_required
+            when  true %>
+                <% mic = '<div class="col s3 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when false %>
+                <% mic = '<div class="col s3 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
+        <% case micropost.looking_for
+            when  "Any" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpa" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpee" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Similar" %>
+                <% look_for = '<div class="col s3 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
 
     
-
-
-    <% case micropost.mic_required
-        when  true %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when false %>
-            <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  end %> 
-
-    <% case micropost.looking_for
-        when  "Any" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Sherpa" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Sherpee" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  when "Similar" %>
-            <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
-    <%  end %> 
-
-    <div class="col s12 m6 l4">
-        <div id="<%= micropost.id %>">
-            <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
-                <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
-                    <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
-                        <div class="row" style="overflow: hidden; max-height: 65px; ">
-                            <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
-                            <% if micropost.user["display_name"].length >= 11 %>
-                                <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
-                            <% else %>
-                                <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+        <div class="col s12 m6 l4">
+            <div class="scroller-test">   
+                <div id="<%= micropost.id %>">
+                    <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
+                        <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
+                            <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
+                                <div class="row" style="overflow: hidden; max-height: 65px; ">
+                                    <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
+                                    <% if micropost.user["display_name"].length >= 11 %>
+                                        <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                    <% else %>
+                                        <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                    <% end %>
+                                    <div class="col s3 center-align large-break" style="height: 65px; color: white;">
+                                        <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
+                                        <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["character_type"]] %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="post-subheader" style="background: #C45455;">
+                                    <div class="row" style="overflow: hidden; max-height: 30px;">
+                                        <div class="container" style="padding-top: 1%; width: 80%;">
+                                            <div class="col s3 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
+                                            <%= look_for %>
+                                            <%= mic %>
+                                            <div class="col s3 right-align tooltip" style="color: #f5f5f5; font-weight: 700;" data-tooltip-content='<%= "#more-players-#{micropost.id}" %>'><%= "+#{micropost.fireteam.count}" %></div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="tooltip_templates">
+                                    <span id='<%= "badge_content#{micropost.id}"%>'>
+                                        <hr>
+                                        <% micropost.user.badges.each do |badge| %>   
+                                        <div class="row" style="margin-bottom: -5%">
+                                            <div class="col s2"></div>                                
+                                            <div class="col s8 center-align">                              
+                                                <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
+                                                <%= badge.name %>
+                                                <%= badge.custom_fields[:icon].html_safe %>
+                                                </div>
+                                            </div>  
+                                            <div class="col s2"></div>                                      
+                                        </div>
+                                        <p class="center-align"><small><%= badge.description %></small></p>
+                                        <hr>
+                                            
+                                        <% end %>
+                                    </span>
+                                    <span id='<%= "more-players-#{micropost.id}" %>'>
+                                        <p><%= "This fireteam has #{micropost.fireteam.count} more player(s). "%></p>
+                                    </span>
+                                <% if micropost.game_type.to_i == 6 %>
+                                    <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
+                                        <div class="row center-align">
+                                            Diamond
+                                        </div>
+                                        <div class="row center-align">
+                                            # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                        </div>
+                                    </span>
+                                    <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
+                                        <div class="row center-align">
+                                            Platinum
+                                        </div>
+                                        <div class="row center-align">
+                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                        </div>
+                                    </span>
+                                    <span id='<%= "gold_elo_content#{micropost.id}"%>'>
+                                        <div class="row center-align">
+                                            Gold
+                                        </div>
+                                        <div class="row center-align">
+                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                        </div>
+                                    </span>
+                                    <span id='<%= "silver_elo_content#{micropost.id}"%>'>
+                                        <div class="row center-align">
+                                            Silver
+                                        </div>
+                                        <div class="row center-align">
+                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                        </div>
+                                    </span>
+                                    <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
+                                        <div class="row center-align">
+                                            Bronze
+                                        </div>
+                                        <div class="row center-align">
+                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                        </div>
+                                    </span>
+                                <% end %>
+                            </div>
+    
+                        <div class="card-content" style="padding-top: 25px;">
+                            <br>
+                            
+                            <span>
+                                <b><%= modes[micropost.game_type.to_i] %></b>
+                                <% if micropost.raid_difficulty != "" %>
+                                    <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
+                                <% else %>
+                                    <br><small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+                                <% end %>
+                            </span>
+                        
+    
+    
+                        <br><br>    
+                        <div class="row valign-wrapper">
+                            <div class="col s12" style="height: 32px; margin-top: -10px;">
+                                    <span class="black-text truncate" style="margin-left: -7%; white-space: inherit;">
+                                        <%= micropost.content %>
+                                    </span>
+                            </div>
+                        </div>
+                        <% if micropost.game_type.to_i == 6 %>
+                            <%= render partial: 'trials_data', locals: {micropost: micropost, stats: stats} %>
+                        <% elsif ["7", "8", "9", "10"].include? micropost.game_type %>
+                            <%= render partial: 'raid_data', locals: {micropost: micropost, stats: stats} %>
+                        <% elsif ["2", "3"].include? micropost.game_type %>
+                            <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
+                        <% elsif ["5"].include? micropost.game_type %>
+                            <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
+                        <% elsif ["4"].include? micropost.game_type %>
+                            <%= render partial: 'nightfall_data', locals: {micropost: micropost, stats: stats} %>
+                        <% else %>
+                            <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
+                        <% end %>
+                        <br> 
+                        <!-- <div class="row" style="margin-bottom: 5px;">
+                            <% micropost.user.badges.each do |badge| %>                
+                                <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                <%= badge.custom_fields[:icon].html_safe %>
+                                </div>                
                             <% end %>
-                            <div class="col s3 center-align" style="height: 65px; color: white;">
-                                <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
-                                <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["character_type"]] %></span>
+                        </div> -->
+                        
+                        <div class="row">
+                            <div class="col s4 left-align">
+                                <% if micropost.user.api_membership_type == "1" %>
+                                    <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
+                                        <span class="icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </span>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <% total = micropost.user.votes_for + micropost.user.votes_against %> 
+                            <% tip = "Player Reputation Score (#{total} votes)" %>    
+                            <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
+                                <% rep =  total != 0  ? ((micropost.user.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
+                                <%= rep %>%
+                            </div>
+                            <div class="col s4 right-align">
+                                <% if current_user == micropost.user %>
+                                    <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                                        <span class="icon">
+                                        <i class="fa fa-trash"></i>
+                                        </span>
+                                    <% end %>
+                                <% end %>
                             </div>
                         </div>
                     </div>
-                  
-                    <div class="post-subheader" style='background: #2c2c2c; height: 30px; margin-bottom: -40px; margin-left: -9.1%; margin-right: -9.1%;'>
-                            <div class="row" style="overflow: hidden; max-height: 30px;">
-                                <div class="container" style="padding-top: 1%; width: 80%;">
-                                    <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
-                                    <%= look_for %>
-                                    <%= mic %>
+                    </div>
+                </div> 
+                 
+                <% micropost.fireteam_stats.each_with_index do |stats, index| %>
+                    <div>
+                        <% player = User.find_by(id: micropost.fireteam[index].to_i) %>                    
+                        <div id="<%= micropost.id %>-a">
+                                <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
+                                    <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
+                                        <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
+                                            <div class="row" style="overflow: hidden; max-height: 65px; ">
+                                                <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
+                                                <% if stats["player_name"].length >= 11 %>
+                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(player.id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                                <% else %>
+                                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to stats["player_name"], user_path(player.id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                                <% end %>
+                                                <div class="col s3 center-align large-break" style="height: 65px; color: white;">
+                                                    <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
+                                                    <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["character_type"]] %></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="post-subheader" style="background: #C45455;">
+                                                <div class="row" style="overflow: hidden; max-height: 30px;">
+                                                    <div class="container" style="padding-top: 1%; width: 80%;">
+                                                        <div class="col s3 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}-#{index}" %>' style="color: #f5f5f5;"></i></div>
+                                                        <%= look_for %>
+                                                        <%= mic %>
+                                                        <div class="col s3 right-align tooltip" style="color: #f5f5f5; font-weight: 700;" data-tooltip-content='<%= "#more-players-#{micropost.id}-#{index}" %>'><%= "+#{micropost.fireteam.count}" %></div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="tooltip_templates">
+                                                <span id='<%= "badge_content#{micropost.id}-#{index}"%>'>
+                                                    <hr>
+                                                    <% player.badges.each do |badge| %>   
+                                                    <div class="row" style="margin-bottom: -5%">
+                                                        <div class="col s2"></div>                                
+                                                        <div class="col s8 center-align">                              
+                                                            <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
+                                                            <%= badge.name %>
+                                                            <%= badge.custom_fields[:icon].html_safe %>
+                                                            </div>
+                                                        </div>  
+                                                        <div class="col s2"></div>                                      
+                                                    </div>
+                                                    <p class="center-align"><small><%= badge.description %></small></p>
+                                                    <hr>
+                                                        
+                                                    <% end %>
+                                                </span>
+                                                <span id='<%= "more-players-#{micropost.id}-#{index}" %>'>
+                                                    <p><%= "This fireteam has #{micropost.fireteam.count} more player(s). "%></p>
+                                                </span>
+                                            <% if micropost.game_type.to_i == 6 %>
+                                                <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
+                                                    <div class="row center-align">
+                                                        Diamond
+                                                    </div>
+                                                    <div class="row center-align">
+                                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                                    </div>
+                                                </span>
+                                                <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
+                                                    <div class="row center-align">
+                                                        Platinum
+                                                    </div>
+                                                    <div class="row center-align">
+                                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                                    </div>
+                                                </span>
+                                                <span id='<%= "gold_elo_content#{micropost.id}"%>'>
+                                                    <div class="row center-align">
+                                                        Gold
+                                                    </div>
+                                                    <div class="row center-align">
+                                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                                    </div>
+                                                </span>
+                                                <span id='<%= "silver_elo_content#{micropost.id}"%>'>
+                                                    <div class="row center-align">
+                                                        Silver
+                                                    </div>
+                                                    <div class="row center-align">
+                                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                                    </div>
+                                                </span>
+                                                <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
+                                                    <div class="row center-align">
+                                                        Bronze
+                                                    </div>
+                                                    <div class="row center-align">
+                                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                                    </div>
+                                                </span>
+                                            <% end %>
+                                        </div>
+                
+                                    <div class="card-content" style="padding-top: 25px;">
+                                        <br>
+                                        
+                                        <span>
+                                            <b><%= modes[micropost.game_type.to_i] %></b>
+                                            <% if micropost.raid_difficulty != "" %>
+                                                <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
+                                            <% else %>
+                                                <br><small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+                                            <% end %>
+                                        </span>
+                                    
+                
+                
+                                    <br><br>    
+                                    <div class="row valign-wrapper">
+                                        <div class="col s12" style="height: 32px; margin-top: -10px;">
+                                                <span class="black-text truncate" style="margin-left: -7%; white-space: inherit;">
+                                                   
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <% if micropost.game_type.to_i == 6 %>
+                                        <%= render partial: 'trials_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% elsif ["7", "8", "9", "10"].include? micropost.game_type %>
+                                        <%= render partial: 'raid_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% elsif ["2", "3"].include? micropost.game_type %>
+                                        <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% elsif ["5"].include? micropost.game_type %>
+                                        <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% elsif ["4"].include? micropost.game_type %>
+                                        <%= render partial: 'nightfall_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% else %>
+                                        <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
+                                    <% end %>
+                                    <br> 
+
+                                    <div class="row">
+                                        <div class="col s4 left-align">
+                                            <% if micropost.user.api_membership_type == "1" %>
+                                                <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
+                                                    <span class="icon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                        <% total = player.votes_against %> 
+                                        <% tip = "Player Reputation Score (#{total} votes)" %>    
+                                        <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
+                                            <% rep =  total != 0  ? ((player.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
+                                            <%= rep %>%
+                                        </div>
+                                        <div class="col s4 right-align">
+                                            <% if current_user == micropost.user %>
+                                                <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                                                    <span class="icon">
+                                                    <i class="fa fa-trash"></i>
+                                                    </span>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div> 
+                    </div>
+                <% end %>               
+            </div>
+        </div>
+    <% else %>
+        <% case micropost.mic_required
+            when  true %>
+                <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone tooltip" title="I have a mic!" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when false %>
+                <% mic = '<div class="col s4 right-align"><i class="fa fa-microphone-slash tooltip" title="No mic." style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
+        <% case micropost.looking_for
+            when  "Any" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-circle-o tooltip" title="Looking for Any" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpa" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-exclamation-triangle tooltip" title="Looking to be carried" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Sherpee" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-diamond tooltip" title="Looking to Sherpa" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  when "Similar" %>
+                <% look_for = '<div class="col s4 center-align"><i class="fa fa-handshake-o tooltip" title="Looking for Similar" style="color: #f5f5f5;"></i></div>'.html_safe %>
+        <%  end %> 
+
+        <div class="col s12 m6 l4">
+            <div id="<%= micropost.id %>">
+                <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="max-height: 400px;">
+                    <% bg = "background-image: url(#{stats["character_stats"]["background"]});" %>
+                        <div class="post-header" style='<%= "#{bg} margin-bottom: 0px;" %>'>
+                            <div class="row" style="overflow: hidden; max-height: 65px; ">
+                                <div class="col s3 left-align" style="padding: 0; height: 65px;"><%= image_tag stats["character_stats"]["emblem"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %></div>
+                                <% if micropost.user["display_name"].length >= 11 %>
+                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 15px; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                <% else %>
+                                    <div class="col s6 center-align" style="height: 65px; color: white;"><%= link_to micropost.user["display_name"], user_path(user_id), style: "white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;"%></div>
+                                <% end %>
+                                <div class="col s3 center-align large-break" style="height: 65px; color: white;">
+                                    <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ <%= stats["character_stats"]["light_level"] %> </span>
+                                    <span style ="font-weight: 300; font-size: 0.9em;"><%= character_races[stats["character_type"]] %></span>
                                 </div>
                             </div>
-                    </div>
-                    <div class="tooltip_templates">
-                            <span id='<%= "badge_content#{micropost.id}"%>'>
-                                <hr>
-                                <% micropost.user.badges.each do |badge| %>   
-                                <div class="row" style="margin-bottom: -5%">
-                                    <div class="col s2"></div>                                
-                                    <div class="col s8 center-align">                              
-                                        <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
-                                        <%= badge.name %>
-                                        <%= badge.custom_fields[:icon].html_safe %>
-                                        </div>
-                                    </div>  
-                                    <div class="col s2"></div>                                      
+                        </div>
+                    
+                        <div class="post-subheader" >
+                                <div class="row" style="overflow: hidden; max-height: 30px;">
+                                    <div class="container" style="padding-top: 1%; width: 80%;">
+                                        <div class="col s4 left-align "><i class="fa fa-shield tooltip" data-tooltip-content='<%= "#badge_content#{micropost.id}" %>' style="color: #f5f5f5;"></i></div>
+                                        <%= look_for %>
+                                        <%= mic %>
+                                    </div>
                                 </div>
-                                <p class="center-align"><small><%= badge.description %></small></p>
-                                <hr>
-                                    
-                                <% end %>
-                            </span>
-                        <% if micropost.game_type.to_i == 6 %>
-                            <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
-                                <div class="row center-align">
-                                    Diamond
-                                </div>
-                                <div class="row center-align">
+                        </div>
+                        <div class="tooltip_templates">
+                                <span id='<%= "badge_content#{micropost.id}"%>'>
+                                    <hr>
+                                    <% micropost.user.badges.each do |badge| %>   
+                                    <div class="row" style="margin-bottom: -5%">
+                                        <div class="col s2"></div>                                
+                                        <div class="col s8 center-align">                              
+                                            <div class="chip" style='<%= badge.custom_fields[:color] %>' data-position="bottom">
+                                            <%= badge.name %>
+                                            <%= badge.custom_fields[:icon].html_safe %>
+                                            </div>
+                                        </div>  
+                                        <div class="col s2"></div>                                      
+                                    </div>
+                                    <p class="center-align"><small><%= badge.description %></small></p>
+                                    <hr>
+                                        
+                                    <% end %>
+                                </span>
+                            <% if micropost.game_type.to_i == 6 %>
+                                <span id='<%= "diamond_elo_content#{micropost.id}"%>'>
+                                    <div class="row center-align">
+                                        Diamond
+                                    </div>
+                                    <div class="row center-align">
+                                        # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                    </div>
+                                </span>
+                                <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
+                                    <div class="row center-align">
+                                        Platinum
+                                    </div>
+                                    <div class="row center-align">
                                     # <%= stats["character_stats"]['ELO']['Rank'] %>
-                                </div>
-                            </span>
-                            <span id='<%= "platinum_elo_content#{micropost.id}"%>'>
-                                <div class="row center-align">
-                                    Platinum
-                                </div>
-                                <div class="row center-align">
-                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
-                                </div>
-                            </span>
-                            <span id='<%= "gold_elo_content#{micropost.id}"%>'>
-                                <div class="row center-align">
-                                    Gold
-                                </div>
-                                <div class="row center-align">
-                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
-                                </div>
-                            </span>
-                            <span id='<%= "silver_elo_content#{micropost.id}"%>'>
-                                <div class="row center-align">
-                                    Silver
-                                </div>
-                                <div class="row center-align">
-                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
-                                </div>
-                            </span>
-                            <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
-                                <div class="row center-align">
-                                    Bronze
-                                </div>
-                                <div class="row center-align">
-                                   # <%= stats["character_stats"]['ELO']['Rank'] %>
-                                </div>
-                            </span>
-                        <% end %>
+                                    </div>
+                                </span>
+                                <span id='<%= "gold_elo_content#{micropost.id}"%>'>
+                                    <div class="row center-align">
+                                        Gold
+                                    </div>
+                                    <div class="row center-align">
+                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                    </div>
+                                </span>
+                                <span id='<%= "silver_elo_content#{micropost.id}"%>'>
+                                    <div class="row center-align">
+                                        Silver
+                                    </div>
+                                    <div class="row center-align">
+                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                    </div>
+                                </span>
+                                <span id='<%= "bronze_elo_content#{micropost.id}"%>'>
+                                    <div class="row center-align">
+                                        Bronze
+                                    </div>
+                                    <div class="row center-align">
+                                    # <%= stats["character_stats"]['ELO']['Rank'] %>
+                                    </div>
+                                </span>
+                            <% end %>
+                        </div>
+
+                    <div class="card-content" style="padding-top: 25px;">
+                        <br>
+                        
+                        <span>
+                            <b><%= modes[micropost.game_type.to_i] %></b>
+                            <% if micropost.raid_difficulty != "" %>
+                                <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
+                            <% else %>
+                                <br><small><%= time_ago_in_words(micropost.created_at) %> ago</small>
+                            <% end %>
+                        </span>
+                    
+
+
+                    <br><br>    
+                    <div class="row valign-wrapper">
+                        <div class="col s12" style="height: 32px; margin-top: -10px;">
+                                <span class="black-text truncate" style="margin-left: -7%; white-space: inherit;">
+                                    <%= micropost.content %>
+                                </span>
+                        </div>
                     </div>
-
-                <div class="card-content" style="padding-top: 25px;">
-                    <br>
-                     
-                    <span>
-                        <b><%= modes[micropost.game_type.to_i] %></b>
-                        <% if micropost.raid_difficulty != "" %>
-                            <br><small> <%= micropost.raid_difficulty %> - <%= time_ago_in_words(micropost.created_at) %> ago</small>
-                        <% else %>
-                            <br><small><%= time_ago_in_words(micropost.created_at) %> ago</small>
-                        <% end %>
-                    </span>
-                
-
-
-                <br><br>    
-                <div class="row valign-wrapper">
-                    <!-- <div class="col s2">
-                        <%= image_tag micropost.user.profile_picture, class: "circle responsive-img", style: "margin-left: -50%;" %>
-                    </div> -->
-                    <div class="col s12" style="height: 32px; margin-top: -10px;">
-                            <span class="black-text truncate" style="margin-left: -7%; white-space: inherit;">
-                                <%= micropost.content %>
-                            </span>
-                    </div>
-                </div>
-                <% if micropost.game_type.to_i == 6 %>
-                    <%= render partial: 'trials_data', locals: {micropost: micropost, stats: stats} %>
-                <% elsif ["7", "8", "9", "10"].include? micropost.game_type %>
-                    <%= render partial: 'raid_data', locals: {micropost: micropost, stats: stats} %>
-                <% elsif ["2", "3"].include? micropost.game_type %>
-                    <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
-                <% elsif ["5"].include? micropost.game_type %>
-                    <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
-                <% else %>
-                    <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
-                <% end %>
-                <br> 
-                <!-- <div class="row" style="margin-bottom: 5px;">
-                    <% micropost.user.badges.each do |badge| %>                
-                        <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
-                          <%= badge.custom_fields[:icon].html_safe %>
-                        </div>                
+                    <% if micropost.game_type.to_i == 6 %>
+                        <%= render partial: 'trials_data', locals: {micropost: micropost, stats: stats} %>
+                    <% elsif ["7", "8", "9", "10"].include? micropost.game_type %>
+                        <%= render partial: 'raid_data', locals: {micropost: micropost, stats: stats} %>
+                    <% elsif ["2", "3"].include? micropost.game_type %>
+                        <%= render partial: 'story_data', locals: {micropost: micropost, stats: stats} %>
+                    <% elsif ["5"].include? micropost.game_type %>
+                        <%= render partial: 'pvp_data', locals: {micropost: micropost, stats: stats} %>
+                    <% elsif ["4"].include? micropost.game_type %>
+                        <%= render partial: 'nightfall_data', locals: {micropost: micropost, stats: stats} %>
+                    <% else %>
+                        <%= render partial: 'other_data', locals: {micropost: micropost, stats: stats} %>
                     <% end %>
-                </div> -->
-                
-                <div class="row">
-                    <div class="col s4 left-align">
-                        <% if micropost.user.api_membership_type == "1" %>
-                            <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
-                                <span class="icon">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                            <% end %>
+                    <br> 
+                    <!-- <div class="row" style="margin-bottom: 5px;">
+                        <% micropost.user.badges.each do |badge| %>                
+                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 8px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                            <%= badge.custom_fields[:icon].html_safe %>
+                            </div>                
                         <% end %>
-                    </div>
-                    <% total = micropost.user.votes_for + micropost.user.votes_against %> 
-                    <% tip = "Player Reputation Score (#{total} votes)" %>    
-                    <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
-                        <% rep =  total != 0  ? ((micropost.user.votes_for / total).round(1) * 100) : "0" %>
-                        <%= rep %>%
-                    </div>
-                    <div class="col s4 right-align">
-                        <% if current_user == micropost.user %>
-                            <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
-                                <span class="icon">
-                                <i class="fa fa-trash"></i>
-                                </span>
+                    </div> -->
+                    
+                    <div class="row">
+                        <div class="col s4 left-align">
+                            <% if micropost.user.api_membership_type == "1" %>
+                                <%= link_to "https://account.xbox.com/en-US/SkypeMessages?gamerTag=#{micropost.user.display_name}", target: "_blank" do %>
+                                    <span class="icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                <% end %>
                             <% end %>
-                        <% end %>
+                        </div>
+                        <% total = micropost.user.votes_for + micropost.user.votes_against %> 
+                        <% tip = "Player Reputation Score (#{total} votes)" %>    
+                        <div class="col s4 center-align tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                            
+                            <% rep =  total != 0  ? ((micropost.user.votes_for.to_f / total.to_f).round(1) * 100) : "0" %>
+                            <%= rep %>%
+                        </div>
+                        <div class="col s4 right-align">
+                            <% if current_user == micropost.user %>
+                                <%=  link_to  micropost, method: :delete, data: { confirm: "Are you sure?" }, remote: true do %>
+                                    <span class="icon">
+                                    <i class="fa fa-trash"></i>
+                                    </span>
+                                <% end %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
+    <% end %>
+  

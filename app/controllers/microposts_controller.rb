@@ -25,7 +25,7 @@ class MicropostsController < ApplicationController
 
 
 
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         @micropost = current_user.microposts.build(micropost_params)
         @micropost.raid_difficulty = "Normal" if @micropost.raid_difficulty.nil?
 =begin
@@ -41,61 +41,194 @@ class MicropostsController < ApplicationController
         9 - raid 3
         10 - raid 4 
 =end
+        if @micropost.fireteam != []
+            
+            team_array = []
+            
+            @micropost.fireteam.each_with_index do |x,index|
+                user = User.find_by(id: x.to_i)
+                puts user.display_name
+                #add fireteam stats to model
+                # add get fireteam stats method to model, return array containing hash for each member
+                #in post partial, if fireteam stats !nil, create slider, iterate over fireteam stats, create card for each player
 
-        if @micropost.destiny_version == "1"
-            case @micropost.game_type.to_i
-            when 6 
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
-                @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
-                @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
-            when 10
-                @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
-            when 9
-                @micropost.user_stats = get_stats_d1(current_user, 9, @micropost.raid_difficulty, @micropost.character_choice)
-            when 8
-                @micropost.user_stats = get_stats_d1(current_user, 8, @micropost.raid_difficulty, @micropost.character_choice)
-            when 7
-                @micropost.user_stats = get_stats_d1(current_user, 7, @micropost.raid_difficulty, @micropost.character_choice)
-            when 5
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
-            when 4
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
-            when 3
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
-            when 2
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)
-            else 
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d1(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+                if @micropost.destiny_version == "1"
+                    get_characters = Typhoeus.get(
+                        "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+                        headers: {"x-api-key" => ENV['API_TOKEN']}
+                      )
+                  
+                      character_data = JSON.parse(get_characters.body)
+                      id = character_data["Response"]["data"]["characters"][0]["characterBase"]["characterId"]
+                    case @micropost.game_type.to_i
+                    when 6 
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 6, @micropost.raid_difficulty, id) 
+                    when 10
+                        team_array <<  get_stats_d1(user, 10, @micropost.raid_difficulty, id)
+                    when 9
+                        team_array <<  get_stats_d1(user, 9, @micropost.raid_difficulty, id) 
+                    when 8
+                        team_array << get_stats_d1(user, 8, @micropost.raid_difficulty, id)
+                    when 7
+                        team_array << get_stats_d1(user, 7, @micropost.raid_difficulty, id)
+                    when 5
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 5, @micropost.raid_difficulty, id)
+                    when 4
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 4, @micropost.raid_difficulty, id)
+                    when 3
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 3, @micropost.raid_difficulty, id)
+                    when 2
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 2, @micropost.raid_difficulty, id)
+                    else 
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d1(user, 1, @micropost.raid_difficulty, id)      
+                    end
+                else
+                    get_characters = Typhoeus::Request.get(
+                        "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
+                        method: :get,
+                        headers: {"x-api-key" => ENV['API_TOKEN']}
+                      )
+                
+                    character_data = JSON.parse(get_characters.body)
+                    id = character_data["Response"]["characters"]["data"].first[0]
+                    case @micropost.game_type.to_i
+                    when 2 
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d2(user, 2, @micropost.raid_difficulty, id) 
+                    when 4
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d2(user, 4, @micropost.raid_difficulty, id)
+                    when 3
+                        @micropost.raid_difficulty = ""
+                        team_array <<  get_stats_d2(user, 3, @micropost.raid_difficulty, id)
+                    when 5
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d2(user, 5, @micropost.raid_difficulty, id)
+                    when 0
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d2(user, 0, @micropost.raid_difficulty, id)  
+                    else 
+                        @micropost.raid_difficulty = ""
+                        team_array << get_stats_d2(user, 1, @micropost.raid_difficulty, id) 
+                    end
+                end
+                @micropost.fireteam_stats = team_array
+            end
+            if @micropost.destiny_version == "1"
+                case @micropost.game_type.to_i
+                when 6 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
+                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
+                when 10
+                    @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
+                when 9
+                    @micropost.user_stats = get_stats_d1(current_user, 9, @micropost.raid_difficulty, @micropost.character_choice)
+                when 8
+                    @micropost.user_stats = get_stats_d1(current_user, 8, @micropost.raid_difficulty, @micropost.character_choice)
+                when 7
+                    @micropost.user_stats = get_stats_d1(current_user, 7, @micropost.raid_difficulty, @micropost.character_choice)
+                when 5
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
+                when 4
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
+                when 3
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
+                when 2
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)
+                else 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+                end
+            else
+                case @micropost.game_type.to_i
+                when 2 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)            
+                when 4
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
+                when 3
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
+                when 5
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
+                when 0
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 0, @micropost.raid_difficulty, @micropost.character_choice)        
+                else 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+                end
             end
         else
-            case @micropost.game_type.to_i
-            when 2 
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)            
-            when 4
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
-            when 3
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
-            when 5
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
-            when 0
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 0, @micropost.raid_difficulty, @micropost.character_choice)        
-            else 
-                @micropost.raid_difficulty = ""
-                @micropost.user_stats = get_stats_d2(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+
+            if @micropost.destiny_version == "1"
+                case @micropost.game_type.to_i
+                when 6 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
+                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
+                when 10
+                    @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
+                when 9
+                    @micropost.user_stats = get_stats_d1(current_user, 9, @micropost.raid_difficulty, @micropost.character_choice)
+                when 8
+                    @micropost.user_stats = get_stats_d1(current_user, 8, @micropost.raid_difficulty, @micropost.character_choice)
+                when 7
+                    @micropost.user_stats = get_stats_d1(current_user, 7, @micropost.raid_difficulty, @micropost.character_choice)
+                when 5
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
+                when 4
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
+                when 3
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
+                when 2
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)
+                else 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d1(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+                end
+            else
+                case @micropost.game_type.to_i
+                when 2 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 2, @micropost.raid_difficulty, @micropost.character_choice)            
+                when 4
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 4, @micropost.raid_difficulty, @micropost.character_choice)
+                when 3
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 3, @micropost.raid_difficulty, @micropost.character_choice)
+                when 5
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
+                when 0
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 0, @micropost.raid_difficulty, @micropost.character_choice)        
+                else 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 1, @micropost.raid_difficulty, @micropost.character_choice)         
+                end
             end
         end
-        
 
         @micropost.platform = current_user.api_membership_type
         
@@ -114,7 +247,7 @@ class MicropostsController < ApplicationController
     end
 
     def destroy
-        @microposts = Micropost.all.paginate(page: params[:page], per_page: 12)
+        @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
         @micropost.destroy
 
         respond_to do |format|
@@ -159,12 +292,34 @@ class MicropostsController < ApplicationController
 
     def get_stats_d2(user, mode, diff, char_id)
         begin
-            Micropost.get_other_stats_d2(user, char_id)
+            case mode            
+            when 10
+                Micropost.get_other_stats_d2(user, char_id)
+            when 9
+                Micropost.get_other_stats_d2(user, char_id)
+            when 8
+                Micropost.get_other_stats_d2(user, char_id)
+            when 7
+                Micropost.get_other_stats_d2(user, char_id)
+            when 6 
+                Micropost.get_other_stats_d2(user, char_id)
+            when 5
+                Micropost.get_pvp_stats_d2(user, char_id)
+            when 4
+                Micropost.get_nightfall_stats_d2(user, char_id)
+            when 3
+                Micropost.get_strikes_stats_d2(user, char_id)
+            when 2
+               Micropost.get_story_stats_d2(user, char_id)
+            else
+                Micropost.get_other_stats_d2(user, char_id)
+            end
+
         rescue NoMethodError => e 
             # redirect_to request.referrer || root_url
             redirect_to root_url
             flash[:error] = "Error: #{e}"
-        end
+        end         
     end
     helper_method :get_stats_d2
 
@@ -193,24 +348,30 @@ class MicropostsController < ApplicationController
 
     def get_characters2(user)
         character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
-        
-        get_characters = Typhoeus.get(
-            "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-            headers: {"x-api-key" => ENV['API_TOKEN']}
-        )
-  
-        character_data = JSON.parse(get_characters.body)
-
-        characters = []
-
-        character_data["Response"]["data"]["characters"].each do |x| 
-           id =  x['characterBase']['characterId']
-           subclass_val =  x['characterBase']['classType']
-           subclass = character_races[subclass_val]
-           characters << [subclass, id]
+        begin
+            get_characters = Typhoeus.get(
+                # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+                "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters",
+                headers: {"x-api-key" => ENV['API_TOKEN']}
+            )
+    
+            character_data = JSON.parse(get_characters.body)
+    
+            characters = []
+    
+            character_data["Response"]["characters"]["data"].each do |x| 
+                id =  x[1]["characterId"]
+                subclass_val =  x[1]['classType']
+                subclass = character_races[subclass_val.to_i]
+                characters << [subclass, id]
+            end
+            characters
+        rescue StandardError => e
+            return get_characters(user)
         end
-
-        characters
+    
+              ###### STOP HERE FOR GETTING CHARACTERS
+  
     end 
     helper_method :get_characters2
 
@@ -218,7 +379,7 @@ class MicropostsController < ApplicationController
     private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for, :elo_min, :elo_max, :kd_min, :kd_max, :destiny_version)
+      params.require(:micropost).permit(:content, :game_type, :user_stats, :platform, :raid_difficulty, :checkpoint, :character_choice, :mic_required, :looking_for, :elo_min, :elo_max, :kd_min, :kd_max, :destiny_version, :fireteam_stats, fireteam: [])
     end
     
     def correct_user
@@ -228,5 +389,5 @@ class MicropostsController < ApplicationController
 
     def filtering_params(params)
         params.slice(:game_type, :raid_difficulty, :platform, :looking_for, :mic_required, :elo_min, :elo_max, :kd_min, :kd_max, :destiny_version)
-        end
+    end
 end

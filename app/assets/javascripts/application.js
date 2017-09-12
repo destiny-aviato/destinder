@@ -19,10 +19,12 @@
 //= require timeago
 //= require_self
 //= require typed
+//= require select2
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 //= require tooltipster.bundle.min
+//= require introjs
 //= require Chart.min
 //= require react
 //= require react_ujs
@@ -881,6 +883,17 @@ $(document).on('turbolinks:load', function() {
     $('.tap-target').tapTarget('open');
     $('.tap-target').tapTarget('close');
 
+    $("#tags-d1").select2({
+        placeholder: 'Tag your team',
+        allowClear: true,
+        maximumSelectionLength: 4
+    });
+
+    $("#tags-d2").select2({
+        placeholder: 'Tag your team',
+        allowClear: true,
+        maximumSelectionLength: 4
+    });
 
     $('.parallax').parallax();
     $('.tooltipped').tooltip({
