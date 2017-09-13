@@ -134,7 +134,6 @@ ActiveRecord::Schema.define(version: 20170911145727) do
     t.string   "api_membership_id"
     t.string   "api_membership_type"
     t.string   "elo"
-    t.text     "badges"
     t.integer  "sash_id"
     t.integer  "level",                  default: 0
     t.datetime "last_active_at"
