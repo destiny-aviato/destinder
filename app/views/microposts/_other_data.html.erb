@@ -18,7 +18,11 @@ when "Nightstalker", "Voidwalker", "Defender", "Sentinel" %>
          <li class="tab post" ><a href="#<%= micropost.id %>-yearly" class="tab-card-link" style='<%= text_color %>'>Stats</a></li>
      </ul>
  </div>
- <div class="card-content grey lighten-4 tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon! We're waiting for Bungie to give us this information.">
+ <% if micropost.destiny_version.to_i == 2 %>
+     <div class="card-content grey lighten-4 tooltipped" data-position="top" data-delay="50" data-tooltip="Coming soon! We're waiting for Bungie to give us this information.">
+<% else %>
+    <div class="card-content grey lighten-4"></div>
+<% end %>
      <div id="<%= micropost.id %>-yearly">
          <table class="table centered highlight">
              <thead>
