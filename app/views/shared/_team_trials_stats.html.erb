@@ -69,7 +69,7 @@
                     </div>
                     <li>
                         <% x = character %>
-                        <% user_id = User.find_by(:display_name => x["Player Name"]).nil? ? nil :  User.find_by(:display_name => x["Player Name"]).id %>                                            
+                        <% user_id = User.find_by(:display_name => x["player_name"]).nil? ? nil :  User.find_by(:display_name => x["player_name"]).id %>                                            
                         <% case x["Character Items"]["Subclass"]["Item Name"] 
                             when "Nightstalker", "Voidwalker", "Defender" %>
                             <% subclass =  "height: 20px; position: relative; bottom: 20px; background-image: url(#{image_path "void.png"}); background-size: cover;background-position-y: -50px;" %>
@@ -90,7 +90,7 @@
                                             <div class="col s3 left-align" style="padding: 0; height: 65px;">
                                                 <%= image_tag x["Character Items"]["emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %>
                                             </div>
-                                            <div class="col s6 center-align" style="height: 65px; color: white;"><span style="font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" ><%= x["Player Name"] %></span></div>
+                                            <div class="col s6 center-align" style="height: 65px; color: white;"><span style="font-size: 1.5em; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 25%; font-weight: 400;" ><%= x["player_name"] %></span></div>
                                             <div class="col s3 center-align" style="height: 65px; color: white;">
                                                 <span style="color: gold; position: relative; top: 10%; line-height: 2.4em; font-weight: 300; font-size: 1.3em;">✦ <%= x["character_stats"]["light_level"] %> </span>
                                                 <span style="font-weight: 300; font-size: 1.1em;"><%= character_races[x["character_type"]] %></span>
