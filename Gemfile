@@ -41,14 +41,11 @@ gem 'materialize-sass'
 gem 'figaro'
 gem 'omniauth-bungie-oauth2'
 gem 'bulma-rails'
-gem 'sidekiq'
 gem 'will_paginate'
 gem 'jquery-ui-rails'
 gem "jquery-slick-rails"
-gem 'annotate'
 gem "tabs_on_rails"
 gem 'material_icons'
-gem 'shareable'
 gem 'will_paginate-materialize'
 gem "typhoeus"
 gem 'thumbs_up'
@@ -60,6 +57,10 @@ gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 gem 'chart-js-rails'
 gem "select2-rails"
 gem "introjs-rails"
+gem 'derailed_benchmarks', group: :development
+gem 'stackprof', group: :development
+gem 'get_process_mem'
+gem 'scout_apm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
