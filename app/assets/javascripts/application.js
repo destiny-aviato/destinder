@@ -927,15 +927,15 @@ $(document).on('turbolinks:load', function() {
 
 
         if ($.inArray(selection, ["7", "8", "9", "10"]) >= 0) {
-            $('#d2-gametype-select').attr('class', 'input-field col s12 m6');
-            $('div#difficulty-d2').show();
-            $('label.difficulty-label-d2').show();
+            // $('#d2-gametype-select').attr('class', 'input-field col s12 m6');
+            // $('div#difficulty-d2').show();
+            // $('label.difficulty-label-d2').show();
             // $('label.checkpoint-label').show();
             $('div#checkpoint-d2').show();
         } else {
-            $('#d2-gametype-select').attr('class', 'input-field col s12');
-            $('div#difficulty-d2').hide();
-            $('label.difficulty-label-d2').hide();
+            // $('#d2-gametype-select').attr('class', 'input-field col s12');
+            // $('div#difficulty-d2').hide();
+            // $('label.difficulty-label-d2').hide();
             // $('label.checkpoint-label').hide();
             $('div#checkpoint-d2').hide();
         }
