@@ -974,7 +974,7 @@ $(document).on("turbolinks:load", function() {
 
 
 $(document).on("turbolinks:load", function() {
-
+    $("div#staggered-test").hide();
     $(document).ready(function() {
         $('.parallax').parallax();
     });
@@ -1005,36 +1005,27 @@ $(document).on("turbolinks:load", function() {
     if (('#load-link').length) {
         $('#load-link').click();
     }
+
+
+
+
+
 });
 
+$(document).on("turbolinks:load", function() {
 
-var options = [{
-        selector: '#staggered-test',
-        offset: 50,
-        callback: function(el) {
-            Materialize.toast("This is our ScrollFire Demo!", 1500);
-        }
-    },
-    {
-        selector: '#staggered-test',
-        offset: 205,
-        callback: function(el) {
-            Materialize.toast("Please continue scrolling!", 1500);
-        }
-    },
-    {
-        selector: '#staggered-test',
-        offset: 400,
-        callback: function(el) {
-            Materialize.showStaggeredList($(el));
-        }
-    },
-    {
-        selector: '#image-test',
-        offset: 500,
-        callback: function(el) {
-            Materialize.fadeInImage($(el));
-        }
-    }
-];
-Materialize.scrollFire(options);
+    $(document).ready(function() {
+        var options = [{
+            selector: 'div#staggered-test',
+            offset: 0,
+            callback: function(el) {
+                $("div#staggered-test").fadeIn(6000);
+                // Materialize.toast("Test");
+                console.log('scrollfire');
+            }
+        }];
+        Materialize.scrollFire(options);
+    });
+
+
+});
