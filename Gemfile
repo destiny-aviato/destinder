@@ -61,6 +61,7 @@ gem 'derailed_benchmarks', group: :development
 gem 'stackprof', group: :development
 gem 'get_process_mem'
 gem 'scout_apm'
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
