@@ -2,8 +2,7 @@ class HomeController < ApplicationController
     helper_method :get_stats
     
     def index
-        puts "test"
-        @stats = get_stats("too")
+
     end    
 
     def index2
