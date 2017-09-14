@@ -1,81 +1,157 @@
 <div class="home-header-text">
-  <h1 class="center-align" id="home-header" style="font-weight: 500;">DESTINDER</h1>
-  <h4 class="center-align" style="font-weight: 300;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
-</div>
-  
-<div class="container" style="width: 100%">
-  <section class="hero is-medium is-dark is-bold post-header-background" style="height: 150px;">
-      <div class="hero-body">
-          <div class="container" style="width: 80%">
-          </div>
-      </div>
-  </section>
+    <h1 class="center-align" id="home-header" style="font-weight: 500;">DESTINDER</h1>
+    <h4 class="center-align" style="font-weight: 300;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
 </div>
 
-<div class="container" style="width: 80%; padding-top: 5%;">
-  <div class="row">
-    <div class="col s12 m3">
-      <%= link_to microposts_path do %>
-          <div class="card-panel z-depth-2 hoverable" >
-              <span class="black-text">
+
+
+<div class="parallax-container">
+    <div class="parallax"><img src="http://download.gamezone.com/uploads/image/data/1219500/destiny2-gameplay.jpg"></div>
+
+
+    <div class="container" style="width: 80%; padding-top: 5%;">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col s12 m3">
+                <%= link_to microposts_path do %>
+                    <div class="card-panel z-depth-2 hoverable">
+                        <span class="black-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">message</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
               </span>
+                    </div>
+                    <% end %>
             </div>
-      <% end %>
-    </div>
-    <div class="col s12 m3">
-      <a class="modal-trigger" href="#team-search-modal">
-        <div class="card-panel z-depth-2 hoverable" >
-            <span class="black-text">
+            <div class="col s12 m3">
+                <a class="modal-trigger" href="#team-search-modal">
+                    <div class="card-panel z-depth-2 hoverable">
+                        <span class="black-text">
                 <center><i class="medium material-icons" style="color: #88BBD6;">people</i></center>
                 <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
             </span>
-          </div>
-      </a>
-    </div>
-    <div class="col s12 m3">
-      <%= link_to new_player_stat_path do %>
-          <div class="card-panel z-depth-2 hoverable" >
-              <span class="black-text">
+                    </div>
+                </a>
+            </div>
+            <div class="col s12 m3">
+                <%= link_to new_player_stat_path do %>
+                    <div class="card-panel z-depth-2 hoverable">
+                        <span class="black-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">accessibility</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
               </span>
+                    </div>
+                    <% end %>
             </div>
-      <% end %>
-    </div>          
-    <div class="col s12 m3">
-      <%= link_to profile_path do %>
-          <div class="card-panel z-depth-2 hoverable" >
-              <span class="black-text">
+            <div class="col s12 m3">
+                <%= link_to profile_path do %>
+                    <div class="card-panel z-depth-2 hoverable">
+                        <span class="black-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">person</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
               </span>
+                    </div>
+                    <% end %>
             </div>
-      <% end %>
-    </div>          
-  </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
 </div>
 
-<div class="fixed-action-btn hide-on-small-only">
-    <a class="btn-floating btn-large modal-trigger pulse" href="#home-modal">
-      <i class="large material-icons hide-on-small-only" style="border-radius: 100%;">info</i>
-    </a>
+<section>
+    <br>
+
+    <div class="row">
+        <div class="col s12 m6 center-align">
+            <%= image_tag "card-image.jpg", class: "card-image z-depth-3 center-align" %>
+        </div>
+        <div class="col s12 m6 center-align">
+            <br>
+            <br>
+
+            <h3><span style="color: #386F8B; font-weight: bold;" ;>LFG</span> <em>The Way It Was Meant To Be</em></h3>
+
+
+
+
+
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Out are the days of not knowing exactly what you are inviting to your group. LFG through Destinder automatically brings in the most relevant stats for whatever gametpe they are posting for.</p>
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Want someone with a specific ELO ranking? You can filter for that. Want to find people who have beaten the raid more than 1 time? Yeah easy to see that as well. Our advanced statistical tracking and filtering system allows you to find exactly
+                what you are looking for.</p>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col s12 m6 center-align">
+            <br>
+
+            <h3><span style="color: #913C31; font-weight: bold;">Fireteam</span> Tagging in LFG Posts</h3>
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Ever run with another really good player that you wish your new potential fireteam member could easily see as well? With LFG through Destinder, it's incredibly easy to tag a another player for others to see who you are playing with, along
+                with their stats as well!</p>
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Gone are the days of not knowing what the other fireteam members skill level is when you join a <strong>Trials of Osiris Group</strong>. Gone are the days of people joining, just to rage quit. Destinder LFG allows full transparency before
+                you players join up.</p>
+        </div>
+        <div class="col s12 m6 center-align">
+            <iframe width="284" height="500" class="z-depth-3" src="https://www.youtube.com/embed/H3JiUgrYlgc?rel=0&amp;controls=0&amp;showinfo=0&loop=1&autoplay=1&playlist=H3JiUgrYlgc" frameborder="0" autoplay=1 loop=1></iframe>
+        </div>
+
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://mmoexaminer.com/wp-content/uploads/2017/08/d2_pvp_heroic_02.jpg"></div>
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        <br>
+        <br>
+        <div class="col s12 m6 center-align">
+            <%= image_tag "badges.jpg", class: "card-image-badges z-depth-3 center-align" %>
+        </div>
+        <div class="col s12 m6 center-align" id="staggered-test">
+
+
+            <h3><span style="color: #F9E656; font-weight: bold;">Trials of The Nine</span> At A Glance</h3>
+
+
+
+
+
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Using our custom built badge system, you can easily look at a player and know what their tendancies are before you start the match. Now you know whether to expect a push, or more of a passive team just by checking out their character badges.</p>
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Badges are automatically created off of the statistical data provided directly from Bungie themselves. For more information on how players get their specific badges, check out the "About Badges" section in the slide-out navigation bar.</p>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col s12 m6 center-align">
+            <br>
+
+            <h3><span style="color: #522F65; font-weight: bold;">Account Badges</span> For The Loyal</h3>
+            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Account badges are separate from your "Player Analysis" badges and show more long-term accomplishments as well as reflect how active you are in the Destinder community. These badges are also documented in the "About Badges" section.</p>
+
+        </div>
+        <div class="col s12 m6 center-align">
+            <br>
+            <br>
+            <br>
+            <br>
+            <%= image_tag "account-badges.jpg", class: "card-image z-depth-3 center-align" %>
+        </div>
+
+    </div>
+
+
+
+
+</section>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="https://images4.alphacoders.com/843/843847.jpg"></div>
 </div>
-
-    <div id="home-modal" class="modal">
-      <div class="modal-content" style="color: black;">
-        <h2 class="center-align">Welcome to Destinder</h2>
-        <br>
-        <p>Destinder was started as a fun way for a couple friends to learn how to Code.  We, like many of you, used the popular websites to check stats and find groups but always became frustrated with the gap between them.  Using one website to check stats and another website to find groups seemed silly.  That's where the idea for Destinder was born.  Why not build a site that utilizes the best parts of both?</p>
-        <br>
-        <h4 style="color: #88BBD6;">LFG</h4>
-        <hr>
-        <p>Our LFG is completely unigue.  Insead of needing to find your stats and paste them into your LFG post, your stats are automatically brought in.  The goal was "One Click Posting" and we feel we got as close as possible.  The other advantage to this is that you never need to worry if people are lying about their stats.  Everything is pulled straight from Bungie.<p>
-        <br>
-        <h4 style="color: #88BBD6;">Team Stats</h4>
-        <hr>
-        <p>Again, our flare on what we feel is important to the players.  A quick overview of the opposing team when wanted and expandable, excess stats when needed.  In addition to the typical content of loadouts and player stats, we introduced an Account Badge system and a Player Analysis Badge system</p>
-      </div>
-  </div>
-
+</div>
