@@ -351,7 +351,7 @@ class TeamStat < ApplicationRecord
                         @profile = User.where('lower(display_name) = ?', player_name.downcase).first
                         badges = @profile.nil? ? "N/A" : @profile.badges 
                        
-                        @team << {"Player Name" => player_name, "character_type" => character_type, "character_stats" => @stats, "Character Items" => @items, "Badges" => badges, "recent_games" => get_recent_games(username.membership_type, player_membership_id, character_id)} 
+                        @team << {"player_name" => player_name, "character_type" => character_type, "character_stats" => @stats, "Character Items" => @items, "Badges" => badges, "recent_games" => get_recent_games(username.membership_type, player_membership_id, character_id)} 
                     end
                     hydra.queue(get_trials_stats)
 
@@ -361,7 +361,7 @@ class TeamStat < ApplicationRecord
             end
             hydra.run
         end
-        index = @team.index{|x| x["Player Name"].downcase == username.display_name.downcase}
+        index = @team.index{|x| x["player_name"].downcase == username.display_name.downcase}
         if index != 0
             @team[0], @team[index] = @team[index], @team[0]
         end

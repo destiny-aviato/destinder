@@ -540,7 +540,7 @@ class Micropost < ApplicationRecord
       "kd_ratio" => kd_ratio
     }
 
-    characters_stats << {"character_type" => character_type, "character_stats" => stats}
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
@@ -878,7 +878,7 @@ class Micropost < ApplicationRecord
         "subclass_icon" => "",
         "subclass_name" => @subclass_name
       }
-      characters_stats << {"character_type" => character_type, "character_stats" => stats}
+      characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     rescue StandardError => e
       characters_stats = []
       stats = {

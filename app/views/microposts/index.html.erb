@@ -35,11 +35,12 @@
                                 <li class="tab col s6"><a href="#d1" class="post-form-tabs">Destiny 1</a></li>
                             </ul>
                         </div>
+                        <% users = User.where(:api_membership_type => current_user.api_membership_type).all %>
                         <div id="d1">
-                            <%= render 'shared/micropost_form1' %>
+                            <%= render partial: 'shared/micropost_form1', locals: {users: users} %>
                         </div>
                         <div id="d2">
-                            <%= render 'shared/micropost_form2' %>
+                            <%= render partial: 'shared/micropost_form2', locals: {users: users} %>
                         </div>
                                         
                     </div>
