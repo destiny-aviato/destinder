@@ -24,7 +24,7 @@
     @import 'introjs';
     body {
         margin: 0;
-        font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        font-family: 'Lato', sans-serif;
         color: #4a4a4a;
         font-size: 1rem;
         font-weight: 400;
@@ -497,6 +497,20 @@
         max-height: 350px;
     }
     
+    .card-text {
+        color: #f5f5f5 !important;
+        font-weight: 600;
+    }
+
+    .home-card {
+        transition: box-shadow .25s;
+        padding: 24px;
+        margin: 0.5rem 0 1rem 0;
+        border-radius: 6px;
+        background-color: #212121;
+        opacity: 0.9;
+    }
+
     li.tab.card {
         background: transparent;
     }
@@ -1243,4 +1257,9 @@
     
     .card-video {
         width: 350px;
+    }
+
+    .parallax-container .parallax img {
+        width: 100%;
+        height: auto;
     }
