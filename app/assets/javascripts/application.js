@@ -974,7 +974,7 @@ $(document).on("turbolinks:load", function() {
 
 
 $(document).on("turbolinks:load", function() {
-    $("div#staggered-test").hide();
+
     $(document).ready(function() {
         $('.parallax').parallax();
     });
@@ -1013,19 +1013,21 @@ $(document).on("turbolinks:load", function() {
 });
 
 $(document).on("turbolinks:load", function() {
-
-    $(document).ready(function() {
-        var options = [{
-            selector: 'div#staggered-test',
-            offset: 0,
-            callback: function(el) {
-                $("div#staggered-test").fadeIn(6000);
-                // Materialize.toast("Test");
-                console.log('scrollfire');
-            }
-        }];
-        Materialize.scrollFire(options);
-    });
+    $('#trials-stuff').hide();
+    var options = [
+        {selector: '#fire-test', offset: 50, callback: function(el) {
+            // $('#staggered-test').hide();
+            $('#trials-stuff').toggle( "bounce", { times: 1, distance: 30 }, 1500 );
+            console.log("SCROLL INTIATED");
+        } },
+        {selector: '#fire-test', offset: 205, callback: function(el) {
+            console.log("205");
+        } },
+        {selector: '#fire-test', offset: 1000, callback: function(el) {            
+            console.log("at stag");
+        } }
+      ];
+      Materialize.scrollFire(options);
 
 
 });

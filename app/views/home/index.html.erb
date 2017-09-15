@@ -1,12 +1,17 @@
 <div class="home-header-text">
-    <h1 class="center-align" id="home-header" style="font-weight: 500;">DESTINDER</h1>
-    <h4 class="center-align" style="font-weight: 300;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+     <div class="row center-align">
+         <%= image_tag  "logo-title-only.png", style: "width: 20%; height: auto;" %>
+     </div>
+     <div class="row">
+        <h4 class="center-align" style="font-weight: 600;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+     </div>
+    
 </div>
 
 
 
 <div class="parallax-container">
-    <div class="parallax"><img src="http://download.gamezone.com/uploads/image/data/1219500/destiny2-gameplay.jpg"></div>
+    <div class="parallax"><%= image_tag  "war-zone.jpg" %></div>
 
 
     <div class="container" style="width: 80%; padding-top: 5%;">
@@ -15,8 +20,8 @@
         <div class="row">
             <div class="col s12 m3">
                 <%= link_to microposts_path do %>
-                    <div class="card-panel z-depth-2 hoverable">
-                        <span class="black-text">
+                    <div class="card-panel home-card z-depth-2 hoverable">
+                        <span class="card-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">message</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
               </span>
@@ -25,8 +30,8 @@
             </div>
             <div class="col s12 m3">
                 <a class="modal-trigger" href="#team-search-modal">
-                    <div class="card-panel z-depth-2 hoverable">
-                        <span class="black-text">
+                    <div class="card-panel home-card z-depth-2 hoverable">
+                        <span class="card-text">
                 <center><i class="medium material-icons" style="color: #88BBD6;">people</i></center>
                 <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
             </span>
@@ -35,8 +40,8 @@
             </div>
             <div class="col s12 m3">
                 <%= link_to new_player_stat_path do %>
-                    <div class="card-panel z-depth-2 hoverable">
-                        <span class="black-text">
+                    <div class="card-panel home-card z-depth-2 hoverable">
+                        <span class="card-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">accessibility</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
               </span>
@@ -45,8 +50,8 @@
             </div>
             <div class="col s12 m3">
                 <%= link_to profile_path do %>
-                    <div class="card-panel z-depth-2 hoverable">
-                        <span class="black-text">
+                    <div class="card-panel home-card z-depth-2 hoverable">
+                        <span class="card-text">
                   <center><i class="medium material-icons" style="color: #88BBD6;">person</i></center>
                   <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
               </span>
@@ -67,13 +72,13 @@
 
     <div class="row">
         <div class="col s12 m6 center-align">
-            <%= image_tag "card-image.jpg", class: "card-image z-depth-3 center-align" %>
+            <%= image_tag "card-image.jpg", class: "card-image z-depth-3 center-align", style: "margin-top: 7%;" %>
         </div>
         <div class="col s12 m6 center-align">
             <br>
             <br>
 
-            <h3><span style="color: #386F8B; font-weight: bold;" ;>LFG</span> <em>The Way It Was Meant To Be</em></h3>
+            <h3><span style="color: #386F8B; font-weight: bold;" >LFG</span> <em>The Way It Was Meant To Be</em></h3>
 
 
 
@@ -107,47 +112,46 @@
 
 
 
+    <div id="fire-test"></div> 
+    <div id="trials-stuff">
+        <div class="row">
+            <br>
+            <br>
+            <div class="col s12 m6 center-align">
+                <%= image_tag "badges.jpg", class: "card-image-badges z-depth-3 center-align" %>
+            </div>
+
+            <div class="col s12 m6 center-align scrollspy" >
 
 
-    <div class="row">
-        <br>
-        <br>
-        <div class="col s12 m6 center-align">
-            <%= image_tag "badges.jpg", class: "card-image-badges z-depth-3 center-align" %>
+                <h3><span style="color: #F9E656; font-weight: bold;">Trials of The Nine</span> At A Glance</h3>
+
+
+
+
+
+                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Using our custom built badge system, you can easily look at a player and know what their tendancies are before you start the match. Now you know whether to expect a push, or more of a passive team just by checking out their character badges.</p>
+                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Badges are automatically created off of the statistical data provided directly from Bungie themselves. For more information on how players get their specific badges, check out the "About Badges" section in the slide-out navigation bar.</p>
+            </div>
         </div>
-        <div class="col s12 m6 center-align" id="staggered-test">
+        <div class="row ">
+            <div class="col s12 m6 center-align">
+                <br>
 
+                <h3><span style="color: #522F65; font-weight: bold;">Account Badges</span> For The Loyal</h3>
+                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Account badges are separate from your "Player Analysis" badges and show more long-term accomplishments as well as reflect how active you are in the Destinder community. These badges are also documented in the "About Badges" section.</p>
 
-            <h3><span style="color: #F9E656; font-weight: bold;">Trials of The Nine</span> At A Glance</h3>
+            </div>
+            <div class="col s12 m6 center-align">
+                <br>
+                <br>
+                <br>
+                <br>
+                <%= image_tag "account-badges.jpg", class: "card-image z-depth-3 center-align" %>
+            </div>
 
-
-
-
-
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Using our custom built badge system, you can easily look at a player and know what their tendancies are before you start the match. Now you know whether to expect a push, or more of a passive team just by checking out their character badges.</p>
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Badges are automatically created off of the statistical data provided directly from Bungie themselves. For more information on how players get their specific badges, check out the "About Badges" section in the slide-out navigation bar.</p>
         </div>
     </div>
-    <div class="row ">
-        <div class="col s12 m6 center-align">
-            <br>
-
-            <h3><span style="color: #522F65; font-weight: bold;">Account Badges</span> For The Loyal</h3>
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Account badges are separate from your "Player Analysis" badges and show more long-term accomplishments as well as reflect how active you are in the Destinder community. These badges are also documented in the "About Badges" section.</p>
-
-        </div>
-        <div class="col s12 m6 center-align">
-            <br>
-            <br>
-            <br>
-            <br>
-            <%= image_tag "account-badges.jpg", class: "card-image z-depth-3 center-align" %>
-        </div>
-
-    </div>
-
-
-
 
 </section>
 

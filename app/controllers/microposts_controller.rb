@@ -324,53 +324,65 @@ class MicropostsController < ApplicationController
     helper_method :get_stats_d2
 
     def get_characters(user)
-        character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
-        
-        get_characters = Typhoeus.get(
-            "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-            headers: {"x-api-key" => ENV['API_TOKEN']}
-        )
-  
-        character_data = JSON.parse(get_characters.body)
+        Rails.cache.fetch("#{user.id}/posts1", expires_in: 12.hours) do
+            begin
+                character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+                
+                get_characters = Typhoeus.get(
+                    "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+                    headers: {"x-api-key" => ENV['API_TOKEN']}
+                )
+                puts "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/"
+                character_data = JSON.parse(get_characters.body)
 
-        characters = []
+                characters = []
 
-        character_data["Response"]["data"]["characters"].each do |x| 
-           id =  x['characterBase']['characterId']
-           subclass_val =  x['characterBase']['classType']
-           subclass = character_races[subclass_val]
-           characters << [subclass, id]
+                character_data["Response"]["data"]["characters"].each do |x| 
+                id =  x['characterBase']['characterId']
+                subclass_val =  x['characterBase']['classType']
+                subclass = character_races[subclass_val]
+                characters << [subclass, id]
+                end
+
+                characters
+            rescue StandardError => e
+                flash[:error] = "Error: #{e}"
+                redirect_to application_error_path
+            end
         end
-
-        characters
     end 
     helper_method :get_characters
 
     def get_characters2(user)
-        character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
-        begin
-            get_characters = Typhoeus.get(
-                # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
-                "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters",
-                headers: {"x-api-key" => ENV['API_TOKEN']}
-            )
-    
-            character_data = JSON.parse(get_characters.body)
-    
-            characters = []
-    
-            character_data["Response"]["characters"]["data"].each do |x| 
-                id =  x[1]["characterId"]
-                subclass_val =  x[1]['classType']
-                subclass = character_races[subclass_val.to_i]
-                characters << [subclass, id]
+       
+        Rails.cache.fetch("#{user.id}/posts2", expires_in: 12.hours) do
+
+            character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+            begin
+                get_characters = Typhoeus.get(
+                    # "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
+                    "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters",
+                    headers: {"x-api-key" => ENV['API_TOKEN']}
+                )
+                puts "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters"
+                character_data = JSON.parse(get_characters.body)
+        
+                characters = []
+        
+                character_data["Response"]["characters"]["data"].each do |x| 
+                    id =  x[1]["characterId"]
+                    subclass_val =  x[1]['classType']
+                    subclass = character_races[subclass_val.to_i]
+                    characters << [subclass, id]
+                end
+                characters
+            rescue StandardError => e
+                flash[:error] = "Error: #{e}"
+                redirect_to application_error_path
             end
-            characters
-        rescue StandardError => e
-            return get_characters(user)
+        
+                ###### STOP HERE FOR GETTING CHARACTERS
         end
-    
-              ###### STOP HERE FOR GETTING CHARACTERS
   
     end 
     helper_method :get_characters2
