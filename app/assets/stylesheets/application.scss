@@ -1263,3 +1263,113 @@
         width: 100%;
         height: auto;
     }
+
+    
+.body-homepage {
+	padding: 0;
+	margin: 0 !important;
+	background-color: #212121;
+	font-family: 'Lato', serif;
+	color: #fff;
+}
+
+#hero-homepage {
+    height: 800px;
+	overflow: hidden;
+	position: relative;
+}
+#content-homepage {
+    background: url(greyzz.png);
+    background-attachment: fixed;
+}
+.layer-homepage {
+	background-position: bottom center;
+	background-size: auto;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 800px;
+	position: fixed;
+	z-index: -1;
+}
+
+#hero-mobile-homepage {
+	display: none;
+	background: url(war-zone.jpg) no-repeat center bottom / cover;
+	height: 320px;
+}
+
+.first-section-homepage {
+	padding: 50px 0 20px 0;
+}
+.text-header-homepage {
+	font-size: 50px;
+	text-align: center;
+}
+// h1 {
+// 	line-height: 120%;
+// 	margin-bottom: 30px;
+// }
+// p {
+// 	color: #ede0d5;
+// 	font-size: 18px;
+// 	line-height: 150%;
+// }
+
+#hero-homepage, .layer-homepage {
+	min-height: 800px;
+}
+
+.layer-bg-homepage {
+	background-image: url(layers-test-bg-only.png);
+	background-size: cover;
+	background-position-y: 0px;
+}
+.layer-1-homepage {
+	background-image: url(layers-test-ships.png);
+    background-position-x: 2px;
+    background-position-y: 83px;
+    background-size: 400px;
+		}
+.layer-2-homepage {
+	background-image: url(logo-words-only-white.png);
+	background-size: 500px;
+    background-position-x: 95%;
+	background-position-y: 13%;
+	opacity: 0.8;
+}
+.layer-3-homepage {
+	background-image: url('');
+
+		}
+.layer-4-homepage{
+	background-image: url(layers-test-chars.png);
+	// background-position-x: 250px;
+	background-position: bottom;
+	background-size: 1200px;
+		}
+.layer-overlay-homepage {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
+
+		}
+
+
+// Media Queries
+@media only screen and (max-width: 768px) {
+	#hero-homepage {
+		display: none;
+	}
+	#hero-mobile-homepage {
+		display: block;
+	}
+}
+
+
+// Additional
+.tutorial-link {
+	color: #fff;
+	font-size: 18px;
+	text-decoration: underline;
+	&:hover {
+		color: #ede0d5;
+	}
+}
