@@ -6,8 +6,8 @@ class HomeController < ApplicationController
     end    
 
     def index2
-        puts "test"
-        @stats = get_stats("too")
+        # puts "test"
+        # @stats = get_stats("too")
     end
 
     def faq
