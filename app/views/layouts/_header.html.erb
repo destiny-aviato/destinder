@@ -72,13 +72,18 @@
         </div>
       </li>
     <% else %>
-      <li><div class="user-view">
-          <div class="background">
-            <!-- <img src="images/office.jpg"> -->
-          </div>
-        <span class="name" style="color:#D1D1D1;">Please sign in to continue.</span>
-        </div></li>
       <li>
+        <div class="user-view">
+          <div class="background">            
+          </div>
+          <span class="name" style="color:#D1D1D1;">Please sign in for more.</span>
+        </div>
+      </li>
+      <li>
+          <%= link_to root_path, class: "navbar-item" do %>
+            <i class="material-icons" style="color: #D1D1D1;">home</i> HOME
+          <% end %>
+        </li>
       <li>
         <%= link_to new_user_session_path, class: "navbar-item" do %>
           <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
