@@ -71,19 +71,6 @@
         <%= yield %>
       </div>
     </main>
-    <footer class="page-footer">
-      <%= render 'layouts/footer' %>
-    </footer>
-    <% if Rails.env.development? %>
-      <div class="container" style="background-color: #e6e6e6; padding: 0px 0px 0 100px; border-radius: 5px;">
-        <code>
-          <pre>
-            <%= debug(params)%>
-          </pre>
-        </code>
-      </div>
-      <% end %>
-
   </body>
   <div class="se-pre-con"></div>
 </html> 

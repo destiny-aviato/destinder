@@ -1,161 +1,137 @@
-<div class="home-header-text">
-     <div class="row center-align">
-         <%= image_tag  "logo-title-only.png", style: "width: 20%; height: auto;" %>
-     </div>
-     <div class="row">
-        <h4 class="center-align" style="font-weight: 600;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
-     </div>
+<body class="body-homepage" style="margin: 0;">
+        <div id='hero-homepage'>
+            <div class='layer-bg-homepage layer-homepage' data-depth='0.10' data-type='parallax'></div>
+            <div class='layer-1-homepage layer-homepage' data-depth='0.20' data-type='parallax'></div>
+            <div class='layer-2-homepage layer-homepage' data-depth='0.50' data-type='parallax'>
+                <div class="typed">
+                    <div class="row">
+                        <h4 class="center-align typed-header">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+                    </div>
+                </div>            
+            </div>
+            <div class='layer-3-homepage layer-homepage' data-depth='0.80' data-type='parallax'></div>
+            <div class='layer-overlay-homepage layer-homepage' data-depth='0.85' data-type='parallax'></div>
+            <div class='layer-4-homepage layer-homepage' data-depth='1.00' data-type='parallax'></div>
+        </div>
     
-</div>
-
-
-
-<div class="parallax-container">
-    <div class="parallax"><%= image_tag  "war-zone.jpg" %></div>
-
-
-    <div class="container" style="width: 80%; padding-top: 5%;">
-        <br>
-        <br>
-        <div class="row">
-            <div class="col s12 m3">
-                <%= link_to microposts_path do %>
-                    <div class="card-panel home-card z-depth-2 hoverable">
-                        <span class="card-text">
-                  <center><i class="medium material-icons" style="color: #88BBD6;">message</i></center>
-                  <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
-              </span>
+        <div class="home-header-text hide-on-med-and-up">
+            <%= image_tag  "logo-with-title-word-black.png", style: "width: 90%; margin: 10px 10px 0px 10px;" %>
+            <h4 class="center-align" style="font-weight: 500;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+            </div>
+            
+            <div class="container" style="width: 100%">
+            <section class="hero is-medium is-dark is-bold post-header-background hide-on-med-and-up" style="height: 150px;">
+                <div class="hero-body">
+                    <div class="container" style="width: 80%">
                     </div>
+                </div>
+            </section>
+        </div>
+    
+        <div id='content-homepage'>
+            <div class='container' style="width: 90%;">
+                <section class='first-section-homepage'>
+                    <% if user_signed_in? %>
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <%= link_to microposts_path do %>
+                                    <div class="card-panel home-card z-depth-2 hoverable">
+                                        <span class="card-text">
+                                            <center><i class="medium material-icons home-icon">message</i></center>
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
+                                        </span>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <div class="col s12 m3">
+                                <a class="modal-trigger" href="#team-search-modal">
+                                    <div class="card-panel home-card z-depth-2 hoverable">
+                                        <span class="card-text">
+                                            <center><i class="medium material-icons home-icon" >people</i></center>
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col s12 m3">
+                                <%= link_to new_player_stat_path do %>
+                                    <div class="card-panel home-card z-depth-2 hoverable">
+                                        <span class="card-text">
+                                            <center><i class="medium material-icons home-icon">accessibility</i></center>
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                        </span>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <div class="col s12 m3">
+                                <%= link_to profile_path do %>
+                                    <div class="card-panel home-card z-depth-2 hoverable">
+                                        <span class="card-text">
+                                            <center><i class="medium material-icons home-icon" >person</i></center>
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
+                                        </span>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% else %> 
+ 
+                            <div class="row  hide-on-small-only">
+                                <div class="col s12">                                        
+                                    <%= link_to user_bungie_omniauth_authorize_path do %>
+                                        <div class="card-panel home-card z-depth-2 hoverable hide-on-small-only" style="border: solid 1px #f44336;">
+                                            <span class="card-text">
+                                                <center><i class="medium material-icons" style="color: #f44336;">power_settings_new</i><span style="position: relative; margin-left: 10px; bottom: 20px; font-size: 18px;">SIGN IN WITH BUNGIE TO ACCESS LFG, PROFILES, AND MORE!</span></center>
+                                            </span>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>                            
+                            <div class="row">  
+                                    <div class="col s12 hide-on-med-and-up">
+                                            <%= link_to user_bungie_omniauth_authorize_path do %>
+                                            <div class="card-panel home-card z-depth-2 hoverable">
+                                                <span class="card-text center-align">
+                                                    <center><i class="medium material-icons" style="color: #CDAF35;">power_settings_new</i></center>
+                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">SIGN IN FOR MORE</p>                                                     
+                                                </span>
+                                            </div>
+                                        <% end %>
+                                    </div>                              
+                                    <div class="col s12 m6">
+                                        <a class="modal-trigger" href="#team-search-modal">
+                                            <div class="card-panel home-card z-depth-2 hoverable">
+                                                <span class="card-text">
+                                                    <center><i class="medium material-icons home-icon" >people</i></center>
+                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="col s12 m6">
+                                        <%= link_to new_player_stat_path do %>
+                                            <div class="card-panel home-card z-depth-2 hoverable">
+                                                <span class="card-text">
+                                                    <center><i class="medium material-icons home-icon">accessibility</i></center>
+                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                                </span>
+                                            </div>
+                                        <% end %>
+                                    </div>
+                                    
+                                </div>
+                                
                     <% end %>
-            </div>
-            <div class="col s12 m3">
-                <a class="modal-trigger" href="#team-search-modal">
-                    <div class="card-panel home-card z-depth-2 hoverable">
-                        <span class="card-text">
-                <center><i class="medium material-icons" style="color: #88BBD6;">people</i></center>
-                <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
-            </span>
-                    </div>
-                </a>
-            </div>
-            <div class="col s12 m3">
-                <%= link_to new_player_stat_path do %>
-                    <div class="card-panel home-card z-depth-2 hoverable">
-                        <span class="card-text">
-                  <center><i class="medium material-icons" style="color: #88BBD6;">accessibility</i></center>
-                  <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
-              </span>
-                    </div>
-                    <% end %>
-            </div>
-            <div class="col s12 m3">
-                <%= link_to profile_path do %>
-                    <div class="card-panel home-card z-depth-2 hoverable">
-                        <span class="card-text">
-                  <center><i class="medium material-icons" style="color: #88BBD6;">person</i></center>
-                  <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
-              </span>
-                    </div>
-                    <% end %>
+                    
+                </section>
+                
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <% if user_signed_in? %>
+            <%= render 'para-auth' %>
+        <% else %>
+            <%= render 'para-normal' %>
+        <% end %>
     </div>
-</div>
-
-<section>
-    <br>
-
-    <div class="row">
-        <div class="col s12 m6 center-align">
-            <%= image_tag "card-image.jpg", class: "card-image z-depth-3 center-align", style: "margin-top: 7%;" %>
-        </div>
-        <div class="col s12 m6 center-align">
-            <br>
-            <br>
-
-            <h3><span style="color: #386F8B; font-weight: bold;" >LFG</span> <em>The Way It Was Meant To Be</em></h3>
-
-
-
-
-
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Out are the days of not knowing exactly what you are inviting to your group. LFG through Destinder automatically brings in the most relevant stats for whatever gametpe they are posting for.</p>
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Want someone with a specific ELO ranking? You can filter for that. Want to find people who have beaten the raid more than 1 time? Yeah easy to see that as well. Our advanced statistical tracking and filtering system allows you to find exactly
-                what you are looking for.</p>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col s12 m6 center-align">
-            <br>
-
-            <h3><span style="color: #913C31; font-weight: bold;">Fireteam</span> Tagging in LFG Posts</h3>
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Ever run with another really good player that you wish your new potential fireteam member could easily see as well? With LFG through Destinder, it's incredibly easy to tag a another player for others to see who you are playing with, along
-                with their stats as well!</p>
-            <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Gone are the days of not knowing what the other fireteam members skill level is when you join a <strong>Trials of Osiris Group</strong>. Gone are the days of people joining, just to rage quit. Destinder LFG allows full transparency before
-                you players join up.</p>
-        </div>
-        <div class="col s12 m6 center-align">
-            <iframe width="284" height="500" class="z-depth-3" src="https://www.youtube.com/embed/H3JiUgrYlgc?rel=0&amp;controls=0&amp;showinfo=0&loop=1&autoplay=1&playlist=H3JiUgrYlgc" frameborder="0" autoplay=1 loop=1></iframe>
-        </div>
-
-    </div>
-
-    <div class="parallax-container">
-        <div class="parallax"><img src="https://mmoexaminer.com/wp-content/uploads/2017/08/d2_pvp_heroic_02.jpg"></div>
-    </div>
-
-
-
-
-    <div id="fire-test"></div> 
-    <div id="trials-stuff">
-        <div class="row">
-            <br>
-            <br>
-            <div class="col s12 m6 center-align">
-                <%= image_tag "badges.jpg", class: "card-image-badges z-depth-3 center-align" %>
-            </div>
-
-            <div class="col s12 m6 center-align scrollspy" >
-
-
-                <h3><span style="color: #F9E656; font-weight: bold;">Trials of The Nine</span> At A Glance</h3>
-
-
-
-
-
-                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Using our custom built badge system, you can easily look at a player and know what their tendancies are before you start the match. Now you know whether to expect a push, or more of a passive team just by checking out their character badges.</p>
-                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Badges are automatically created off of the statistical data provided directly from Bungie themselves. For more information on how players get their specific badges, check out the "About Badges" section in the slide-out navigation bar.</p>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col s12 m6 center-align">
-                <br>
-
-                <h3><span style="color: #522F65; font-weight: bold;">Account Badges</span> For The Loyal</h3>
-                <p style="margin-left: 10%; margin-right: 10%; font-size: 18px; color: grey;">Account badges are separate from your "Player Analysis" badges and show more long-term accomplishments as well as reflect how active you are in the Destinder community. These badges are also documented in the "About Badges" section.</p>
-
-            </div>
-            <div class="col s12 m6 center-align">
-                <br>
-                <br>
-                <br>
-                <br>
-                <%= image_tag "account-badges.jpg", class: "card-image z-depth-3 center-align" %>
-            </div>
-
-        </div>
-    </div>
-
-</section>
-
-<div class="parallax-container">
-    <div class="parallax"><img src="https://images4.alphacoders.com/843/843847.jpg"></div>
-</div>
-</div>
+    </body>

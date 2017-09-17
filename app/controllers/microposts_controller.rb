@@ -1,5 +1,7 @@
 class MicropostsController < ApplicationController
+    before_action :authenticate_user!, :except => [:application_error]
     before_action :correct_user, only: :destroy
+    
 
     def index
         @microposts = Micropost.where(:platform => current_user.api_membership_type).paginate(page: params[:page], per_page: 25)
