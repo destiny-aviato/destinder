@@ -182,7 +182,7 @@ module ApplicationHelper
                 "badge_name" => "Fight Forever",
                 "badge_description" => "Kill Spree Greater than 10",
                 "badge_icon" => '<i class="fa fa-fire-extinguisher" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
-                "badge_color" => 'color: red; border: 1px gold solid;'
+                "badge_color" => 'color: #FF3B3D; border: 1px #009EF9 solid;'
             }
          end
 
@@ -192,8 +192,8 @@ module ApplicationHelper
             badges << {
                 "badge_name" => "ArmyOfOne",
                 "badge_description" => "Kill Spree Greater than 15",
-                "badge_icon" => '<i class="fa fa-diamond " style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
-                "badge_color" => 'color: red; border: 1px gold solid;'
+                "badge_icon" => '<i class="fa fa-diamond " style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px; color: #5F523C;"></i>',
+                "badge_color" => 'color: #DFBF93; border: 1px #374730 solid;'
             }
          end
 
@@ -203,8 +203,8 @@ module ApplicationHelper
             badges << {
                 "badge_name" => "Trials God",
                 "badge_description" => "Kill Spree Greater than 20",
-                "badge_icon" => '<i class="fa fa-star" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px;"></i>',
-                "badge_color" => 'color: red; border: 1px gold solid;'
+                "badge_icon" => '<i class="fa fa-star" style="float: left; white-space: nowrap; font-size: 12px; line-height: 21px; padding-right: 4px; margin-left: -6px; color: #212121;"></i>',
+                "badge_color" => 'color: #009EF9; border: 1px #00FEFC solid;'
             }
          end
 
