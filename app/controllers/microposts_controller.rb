@@ -222,6 +222,11 @@ class MicropostsController < ApplicationController
                 when 5
                     @micropost.raid_difficulty = ""
                     @micropost.user_stats = get_stats_d2(current_user, 5, @micropost.raid_difficulty, @micropost.character_choice)
+                when 6 
+                    @micropost.raid_difficulty = ""
+                    @micropost.user_stats = get_stats_d2(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
+                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
                 when 0
                     @micropost.raid_difficulty = ""
                     @micropost.user_stats = get_stats_d2(current_user, 0, @micropost.raid_difficulty, @micropost.character_choice)        
@@ -304,7 +309,7 @@ class MicropostsController < ApplicationController
             when 7
                 Micropost.get_other_stats_d2(user, char_id)
             when 6 
-                Micropost.get_other_stats_d2(user, char_id)
+                Micropost.get_trials_stats_d2(user, char_id)
             when 5
                 Micropost.get_pvp_stats_d2(user, char_id)
             when 4

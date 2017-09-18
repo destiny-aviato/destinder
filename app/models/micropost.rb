@@ -1395,6 +1395,116 @@ class Micropost < ApplicationRecord
     characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
     characters_stats = Hash[*characters_stats]
     characters_stats
-end
+  end
   
+  def self.get_trials_stats_d2(user, character_id)
+    subclasses = {
+      "3225959819" => "Nightstalker",
+      "3635991036" => "Gunslinger",
+      "1334959255" => "Arcstrider",            
+      "3887892656" => "Voidwalker",
+      "1751782730" => "Stormcaller",
+      "3481861797" => "Dawnblade",       
+      "2958378809" => "Striker",
+      "3105935002" => "Sunbreaker",
+      "3382391785" => "Sentinel",      
+      "2863201134" => "Lost Light",
+      "2934029575" => "Lost Light",
+      "1112909340" => "Lost Light"
+    }
+    character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+    get_characters = Typhoeus::Request.get(
+      "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
+      method: :get,
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+
+    # character_data["Response"]["data"]["characters"].each do |char|
+    character_data["Response"]["characters"]["data"].each do |char|
+      if char[0] == character_id
+        @character = char
+        break
+      end
+    end
+
+    character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+      if item['bucketHash'] == "3284755031".to_i
+        @subclass_name = subclasses[item["itemHash"].to_s]
+        break
+      else
+        puts item['bucketHash']
+        next
+      end
+    end
+
+    characters_stats = []
+    
+
+    character_id = @character[0]
+    character_type = @character[1]["classType"]
+    light_level = @character[1]["light"]
+    # grimoire = @character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
+    emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
+    # subclass_name = character_races[character_type.to_i]
+    
+    begin  
+      get_story_stats = Typhoeus.get(
+        # "https://www.bungie.net/Platform/Destiny2/1/Account/4611686018439345596/Character/2305843009260359587/Stats/?modes=39",
+        "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/Character/#{character_id}/Stats/?modes=39",
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+      )   
+      
+      stat_data = JSON.parse(get_story_stats.body)
+
+
+      stats = stat_data["Response"]["trialsofthenine"]["allTime"]
+      elo = get_elo(user.api_membership_id)
+      
+      # win_rate = stats["winLossRatio"]["basic"]["displayValue"]
+      kills = stats["kills"]["basic"]["displayValue"]
+      assists = stats["assists"]["basic"]["displayValue"]
+      deaths = stats["deaths"]["basic"]["displayValue"]
+      average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
+      kd_ratio = stats["killsDeathsRatio"]["basic"]["displayValue"]
+      games_played = stats["activitiesEntered"]["basic"]["displayValue"]
+      games_won = stats["activitiesWon"]["basic"]["value"]
+
+      win_rate = (((games_won / games_played.to_f).round(2)) * 100).round
+      
+      kd = (kills.to_f / deaths.to_f).round(2)
+      kad = ((kills.to_f + assists.to_f) / deaths.to_f).round(2)
+    rescue StandardError => e
+      win_rate = "-"
+      kills = "-"
+      deaths = "-"
+      average_lifespan = "-"
+      kd = "-"
+      kad = "-"
+      games_played = "0"
+    end     
+  
+    stats = {
+      "light_level" => light_level,
+      "grimoire" => "0",
+      "background" => background,
+      "emblem" => emblem,
+      "subclass_icon" => "" ,
+      "subclass_name" => @subclass_name,
+      "kills" => kills,
+      "deaths" => deaths,
+      "average_lifespan" => average_lifespan, 
+      "win_rate" => win_rate,
+      "kd_ratio" => kd,
+      "games_played" => games_played,
+      "ELO" => elo,
+      "kad_ratio" => kad,
+    }
+
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
+    characters_stats = Hash[*characters_stats]
+    characters_stats
+  end
 end
