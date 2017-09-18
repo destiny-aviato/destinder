@@ -1507,4 +1507,145 @@ class Micropost < ApplicationRecord
     characters_stats = Hash[*characters_stats]
     characters_stats
   end
+
+  def self.get_raid_stats_d2(user, character_id)
+    subclasses = {
+      "3225959819" => "Nightstalker",
+      "3635991036" => "Gunslinger",
+      "1334959255" => "Arcstrider",            
+      "3887892656" => "Voidwalker",
+      "1751782730" => "Stormcaller",
+      "3481861797" => "Dawnblade",       
+      "2958378809" => "Striker",
+      "3105935002" => "Sunbreaker",
+      "3382391785" => "Sentinel",      
+      "2863201134" => "Lost Light",
+      "2934029575" => "Lost Light",
+      "1112909340" => "Lost Light"
+    }
+    character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} 
+    get_characters = Typhoeus::Request.get(
+      # "https://www.bungie.net/d1/Platform/Destiny/#{username.api_membership_type}/Account/#{username.api_membership_id}/",
+      "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Profile/#{user.api_membership_id}/?components=Characters,205",
+      method: :get,
+      headers: {"x-api-key" => ENV['API_TOKEN']}
+    )
+
+    character_data = JSON.parse(get_characters.body)
+
+    # character_data["Response"]["data"]["characters"].each do |char|
+      character_data["Response"]["characters"]["data"].each do |char|
+      if char[0] == character_id
+        @character = char
+        break
+      end
+    end
+
+    character_data["Response"]["characterEquipment"]["data"][character_id]["items"].each do |item|
+      if item['bucketHash'] == "3284755031".to_i
+        @subclass_name = subclasses[item["itemHash"].to_s]
+        break
+      else
+        puts item['bucketHash']
+        next
+      end
+    end
+
+    characters_stats = []
+    
+
+    character_id = @character[0]
+    character_type = @character[1]["classType"]
+    light_level = @character[1]["light"]
+    # grimoire = @character["characterBase"]["grimoireScore"]
+    background = "https://www.bungie.net#{@character[1]['emblemBackgroundPath']}"
+    emblem = "https://www.bungie.net#{@character[1]['emblemPath']}"
+
+    begin 
+      get_story_stats = Typhoeus.get(
+      "https://www.bungie.net/Platform/Destiny2/#{user.api_membership_type}/Account/#{user.api_membership_id}/Character/#{character_id}/Stats/?modes=4",           
+      # "https://www.bungie.net/Platform/Destiny2/2/Account/4611686018428388122/Character/2305843009260593955/Stats/?modes=4",
+        headers: {"x-api-key" => ENV['API_TOKEN']}
+      )   
+      
+      stat_data = JSON.parse(get_story_stats.body)
+
+
+      stats = stat_data["Response"]["raid"]["allTime"]
+
+      activities_cleared = stats["activitiesCleared"]["basic"]["displayValue"]
+      activities_entered = stats["activitiesEntered"]["basic"]["displayValue"]
+      completion_rate = (activities_cleared.to_f / activities_entered.to_f).round(2)  * 100 
+      kills = stats["kills"]["basic"]["displayValue"]
+      deaths = stats["deaths"]["basic"]["displayValue"]
+      average_lifespan = stats["averageLifespan"]["basic"]["displayValue"]
+      revives_given = stats["resurrectionsPerformed"]["basic"]["displayValue"]
+      revives_received = stats["resurrectionsReceived"]["basic"]["displayValue"]
+      suicides = stats["suicides"]["basic"]["displayValue"]
+      best_weapon = stats["weaponBestType"]["basic"]["displayValue"]
+      fastest_time = stats["fastestCompletionMs"]["basic"]["displayValue"]
+      kd_ratio = stats["killsDeathsRatio"]["basic"]["displayValue"]
+      highest_level = stats["highestCharacterLevel"]["basic"]["displayValue"]
+      highest_light = stats["highestLightLevel"]["basic"]["displayValue"]
+
+    rescue StandardError => e
+      activities_cleared = "0"
+      activities_entered = "0"
+      completion_rate = "0"
+      kills = "0"
+      deaths = "0"
+      average_lifespan = "N/A"
+      revives_given = "0"
+      revives_received = "0"
+      suicides = "0"
+      best_weapon = "0"
+      fastest_time = "0"
+      kd_ratio = "0"
+      highest_level = "0"
+      highest_light = "0"
+    end
+
+
+    # get_items = Typhoeus::Request.new(
+    #   "https://www.bungie.net/d1/Platform/Destiny/Manifest/InventoryItem/#{@character['characterBase']['peerView']['equipment'][0]['itemHash']}/",
+    #   method: :get,
+    #   headers: {"x-api-key" => ENV['API_TOKEN']}
+    #   )
+
+
+    # get_items.on_complete do |item_response|                     
+    #     item_data = JSON.parse(item_response.body)
+    #     @subclass_icon = "https://www.bungie.net#{item_data['Response']['data']['inventoryItem']['icon']}"
+    #     @subclass_name = item_data["Response"]["data"]["inventoryItem"]["itemName"]
+    # end
+
+   
+  
+    stats = {
+      "light_level" => light_level,
+      "grimoire" => "0",
+      "background" => background,
+      "emblem" => emblem,
+      "subclass_icon" => "",
+      "subclass_name" => @subclass_name,
+      "activities_cleared" => activities_cleared,
+      "activities_entered" => activities_entered,
+      "activity_completion_rate" => completion_rate,
+      "kills" => kills,
+      "deaths" => deaths,
+      "average_lifespan" => average_lifespan, 
+      "revives_given" => revives_given,
+      "revives_received" => revives_received,
+      "suicides" => suicides,
+      "best_weapon" => best_weapon, 
+      "fastest_time" => fastest_time,
+      "kd_ratio" => kd_ratio,
+      "highest_level" => highest_level,
+      "highest_light" => highest_light
+    }
+
+    characters_stats << {"player_name" => user.display_name, "character_type" => character_type, "character_stats" => stats}
+    characters_stats = Hash[*characters_stats]
+    characters_stats
+end
 end
