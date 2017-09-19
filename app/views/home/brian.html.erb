@@ -33,11 +33,11 @@
     
     <div class="row">
         <div class="col s12">
-            <div class="card-panel" style="padding: 0px; border-radius: 4px; background-color: #424242;">
+            <div class="card-panel" style="padding: 0px; border-radius: 6px; background-color: #424242; min-height: 600px;">
                 <div class="row" style="padding: 0;margin: 0;">
                     <div class="col s1" style="padding: 0;">
                             <div class="tabs-vertical">
-                                <ul class="tabs" style="border-radius: 4px 0px 0px 4px;">
+                                <ul class="tabs" style="border-radius: 6px 0px 0px 6px;">
                                     <li class="tab overview-icon">
                                         <a class="active" href="#overview"></a>
                                     </li>
@@ -48,17 +48,17 @@
                                     </li>
                                     <li class="tab">
                                         <a href="#player2">
-                                            <img class="trials-player-icon tooltipped" data-position="left" data-delay="50" data-tooltip="Luminusss" src="https://www.bungie.net/common/destiny2_content/icons/911791e90f955fc637398ea88aba74b7.jpg" alt="" data-tooltip-id="744837f2-e3d3-ce8f-928b-5c02dab98b7f">
-                                        </a>
-                                    </li>
-                                    <li class="tab">
-                                        <a href="#player3">
                                             <img class="trials-player-icon tooltipped" data-position="left" data-delay="50" data-tooltip="KURTO13" src="https://www.bungie.net/common/destiny2_content/icons/329b866699d4048e9a8ca8d8861b0277.jpg" alt="" data-tooltip-id="744837f2-e3d3-ce8f-928b-5c02dab98b7f">
                                         </a>
                                     </li>
                                     <li class="tab">
+                                            <a href="#player3">
+                                                <img class="trials-player-icon tooltipped" data-position="left" data-delay="50" data-tooltip="Luminusss" src="https://bungie.net//common/destiny2_content/icons/9a74b99143d97a7ccd01b958592b96cb.jpg" alt="" data-tooltip-id="744837f2-e3d3-ce8f-928b-5c02dab98b7f">
+                                            </a>
+                                        </li>
+                                    <li class="tab">
                                         <a href="#player4">
-                                            <img class="trials-player-icon tooltipped" data-position="left" data-delay="50" data-tooltip="Putin Pudding" src="https://www.bungie.net/common/destiny2_content/icons/cb30b5a9b34f7204b064570b56576562.jpg" alt="" data-tooltip-id="744837f2-e3d3-ce8f-928b-5c02dab98b7f">
+                                            <img class="trials-player-icon tooltipped" data-position="left" data-delay="50" data-tooltip="Putin Pudding" src="https://www.bungie.net/common/destiny2_content/icons/0a8dfa6d28e2c49068f445613e27a5d5.jpg" alt="" data-tooltip-id="744837f2-e3d3-ce8f-928b-5c02dab98b7f">
                                         </a>
                                     </li>
                                 </ul>
@@ -67,8 +67,8 @@
 
                     <div class="col s11" style="padding-left: 0px; padding-right: 0;">
                         <div id="overview" class="col s12" style="padding-left: 0px; padding-right: 0px;">
-                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 4px 0px 0px;">
-                                <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#full-team" style="color: #212121;">TEAM</a></li>
+                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 6px 0px 0px;">
+                                <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#full-team" style="color: #212121;">FIRETEAM</a></li>
                                 <li class="tab col s3 player-tab disabled"><a class="player-tab-link disabled" href="#" style="color: #212121;"></a></li>
                                 <li class="tab col s3 player-tab disabled"><a class="player-tab-link disabled" href="#" style="color: #212121;"></a></li>
                                 <li class="tab col s3 player-tab disabled"><a class="player-tab-link disabled" href="#" style="color: #212121;"></a></li>
@@ -76,36 +76,265 @@
                             <div id="full-team">
                                 <div class="row">
                                     <div class="col s3 trials-card-text" style="border-right: 1px #212121 solid;" >
-                                            <!-- <div class="post-header" style="background-image: url(https://www.bungie.net/common/destiny2_content/icons/d3c2e878297ea7e1152e2895ae20cf2c.jpg); margin: 0px;">
-                                                <div class="row" style="overflow: hidden; max-height: 65px; ">
-                                                    <div class="col s3 left-align" style="padding: 0; height: 65px;"><img style="max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" src="https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg" alt="1f5e4a3cfeaca5fd6465ffd15b81ffa6"></div>
-                                                        <div class="col s6 center-align" style="height: 65px; color: white;"><a style="white-space: nowrap; font-size: 17px; text-overflow: ellipsis; color: #f5f5f5; position: relative; top: 34%; font-weight: 400;" href="/users/1">ii WALZ ii</a></div>
-                                                    <div class="col s3 center-align large-break" style="height: 65px; color: white;">
-                                                        <span style="color: gold; position: relative; top: 10%; line-height: 2.5em; font-weight: 300; font-size: 0.9em;">✦ 276 </span>
-                                                        <span style="font-weight: 300; font-size: 0.9em;">Hunter</span>
+                                        <div class="row">
+                                            <div class="trials-player-header" style="background-image: url(https://www.bungie.net/common/destiny2_content/icons/d3c2e878297ea7e1152e2895ae20cf2c.jpg);">
+                                                <div class="row" style="overflow: hidden; max-height: 55px; margin-bottom: 0;">
+                                                    <div class="col s3 left-align"></div>
+                                                    <div class="col s6 center-align" style="padding: 0;">                         
+                                                        <span class="trials-player-name">ii WALZ ii</span>
+                                                    </div>
+                                                    <div class="col s3 center-align" style="height: 55px; color: white; padding: 0;">
+                                                        <span class="trials-player-light">✦ 303 </span>
+                                                        <span class="trials-player-subclass">Arcstrider</span>
                                                     </div>
                                                 </div>
-                                            </div>     -->
-                                            <div class="row">
-                                                <div class="col s8"> 
-                           
-                                                        <span style=" position: relative; top: 10%;  font-weight: 400; font-size: 1.1em;">ii WALZ ii</span>
-                                                        <br><span style="font-weight: 300; font-size: 0.9em; margin-left: -45px;">Titan</span>
-                                   
-                                                </div>
-                                                <div class="col s4" style=" background-image: url(https://www.bungie.net/common/destiny2_content/icons/1f5e4a3cfeaca5fd6465ffd15b81ffa6.jpg); height: 50px; background-size: 50px; background-repeat: no-repeat;"></div>
                                             </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 0;">
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #7198B7" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">1738</p>
+                                                <p class="trials-stat-heading" >ELO</p>
+                                            </div>
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #f5f5f5" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">59x</p>
+                                                <p class="trials-stat-heading" >FLAWLESS</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="min-height: 39vh; margin-bottom: 18%;">
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Judgement" src="https://bungie.net//common/destiny2_content/icons/e44d6ab2906bb2365993581761991ac3.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">JUDGEMENT</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">HAND CANNON</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Prosecutor" src="https://bungie.net//common/destiny2_content/icons/fe5c4ef13af20ed4c89a3e40085526c5.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">PROSECUTOR</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">AUTO RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Pentatonic-48" src="https://bungie.net//common/destiny2_content/icons/c453e9d723e52cffb94c00742c51c6f8.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">PENTATONIC-48</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SNIPER RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Foetracer" src="https://bungie.net//common/destiny2_content/icons/5e995f3d538bbfdc83f887b11a1f747c.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">FOETRACER</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">HELMET</span> 
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-left: 0;">
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;">1.26</p>
+                                                <p class="trials-stat-heading">K/D</p>
+                                            </div>
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;" >1.84</p>
+                                                <p class="trials-stat-heading">K/AD</p>
+                                            </div>
+                                            <div class="col s4 center-align">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C">68.5</p>
+                                                <p class="trials-stat-heading">WIN %</p>
+                                            </div>
+                                        </div>
                                     </div>                                   
                                     
-                                    <div class="col s3 trials-card-text" style="border-right: 1px #212121 solid;" >PLAYER 2 INFO</div>
-                                    <div class="col s3 trials-card-text" style="border-right: 1px #212121 solid;" >PLAYER 3 INFO</div>
-                                    <div class="col s3 trials-card-text" >PLAYER 4 INFO</div>
+                                    <div class="col s3 trials-card-text" style="border-right: 1px #212121 solid;" >
+                                        <div class="row">
+                                                <div class="trials-player-header" style="background-image: url(https://www.bungie.net/common/destiny2_content/icons/798f5839febe4ad28b42e2c88c94db9d.jpg);">
+                                                    <div class="row" style="overflow: hidden; max-height: 55px; margin-bottom: 0;">
+                                                        <div class="col s3 left-align"></div>
+                                                        <div class="col s6 center-align" style="padding: 0;">                         
+                                                            <span class="trials-player-name">KURTO13</span>
+                                                        </div>
+                                                        <div class="col s3 center-align" style="height: 55px; color: white; padding: 0;">
+                                                            <span class="trials-player-light" >✦ 297 </span>
+                                                            <span class="trials-player-subclass">Sentinel</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 0;">
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #AA885F;" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">1157</p>
+                                                <p class="trials-stat-heading" >ELO</p>
+                                            </div>
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #f5f5f5" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">0x</p>
+                                                <p class="trials-stat-heading" >FLAWLESS</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="min-height: 39vh; margin-bottom: 18%;">
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="ROS Lysis II" src="https://www.bungie.net/common/destiny2_content/icons/c33714a69ec2b8b06e4848aa8341ef83.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">ROS LYSIS II</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">AUTO RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="The Last Dance" src="https://www.bungie.net/common/destiny2_content/icons/2b85cf0c8f471a7ea679c210c19407b0.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">THE LAST DANCE</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SIDEARM</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Tongeren-LR3" src="https://www.bungie.net/common/destiny2_content/icons/4e01fe72996711168af633f8fc02f583.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">TONGEREN-LR3</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SNIPER RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Kerak Type 2" src="https://www.bungie.net/common/destiny2_content/icons/fe3c4ab116b1d9f8e45382ca51d405e7.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">KERAK TYPE 2</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">HELMET</span> 
+                                            </div>
+                                        </div>                                        
+                                        <div class="row" style="margin-left: 0;">
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C;">0.82</p>
+                                                <p class="trials-stat-heading">K/D</p>
+                                            </div>
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;" >1.20</p>
+                                                <p class="trials-stat-heading">K/AD</p>
+                                            </div>
+                                            <div class="col s4 center-align">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C;">52.3</p>
+                                                <p class="trials-stat-heading">WIN %</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s3 trials-card-text" style="border-right: 1px #212121 solid;" >
+                                        <div class="row">
+                                            <div class="trials-player-header" style="background-image: url(https://www.bungie.net/common/destiny2_content/icons/dacfa513281d101aa4dd276a0aacfc0f.jpg);">
+                                                <div class="row" style="overflow: hidden; max-height: 55px; margin-bottom: 0;">
+                                                    <div class="col s3 left-align"></div>
+                                                    <div class="col s6 center-align" style="padding: 0;">                         
+                                                        <span class="trials-player-name">Luminusss</span>
+                                                    </div>
+                                                    <div class="col s3 center-align" style="height: 55px; color: white; padding: 0;">
+                                                        <span class="trials-player-light" >✦ 301 </span>
+                                                        <span class="trials-player-subclass">Voidwalker</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 0;">
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #58907E;" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">1565</p>
+                                                <p class="trials-stat-heading" >ELO</p>
+                                            </div>
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #f5f5f5" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">27x</p>
+                                                <p class="trials-stat-heading" >FLAWLESS</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="min-height: 39vh; margin-bottom: 18%;">
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="MIDA Multi-Tool" src="https://bungie.net//common/destiny2_content/icons/077e9577fb39cb521b49048db236e39d.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">MIDA MULTI-TOOL</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SCOUT RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Prosecutor" src="https://bungie.net//common/destiny2_content/icons/fe5c4ef13af20ed4c89a3e40085526c5.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">PROSECUTOR</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">AUTO RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="The Long Walk" src="https://bungie.net//common/destiny2_content/icons/45892619a8917d8bd44684547f0b1e6f.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">THE LONG WALK</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SNIPER RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Transversive Steps" src="https://bungie.net//common/destiny2_content/icons/78874c268891725a68bdcc35432fec9e.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">TRANSVERSIVE STEPS</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">LEGS</span> 
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row" style="margin-left: 0;">
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;">1.26</p>
+                                                <p class="trials-stat-heading">K/D</p>
+                                            </div>
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;" >1.84</p>
+                                                <p class="trials-stat-heading">K/AD</p>
+                                            </div>
+                                            <div class="col s4 center-align">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C">68.5</p>
+                                                <p class="trials-stat-heading">WIN %</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col s3 trials-card-text" >
+                                        <div class="row">
+                                                <div class="trials-player-header" style="background-image: url(https://www.bungie.net/common/destiny2_content/icons/a0dd3e3444de2012b554ea4c8b655da9.jpg);">
+                                                    <div class="row" style="overflow: hidden; max-height: 55px; margin-bottom: 0;">
+                                                        <div class="col s3 left-align"></div>
+                                                        <div class="col s6 center-align" style="padding: 0;">                         
+                                                            <span class="trials-player-name">Putin Pudding</span>
+                                                        </div>
+                                                        <div class="col s3 center-align" style="height: 55px; color: white; padding: 0;">
+                                                            <span class="trials-player-light">✦ 299 </span>
+                                                            <span class="trials-player-subclass">Defender</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 0;">
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #CCAE50;" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">1370</p>
+                                                <p class="trials-stat-heading" >ELO</p>
+                                            </div>
+                                            <div class="col s6 center-align">
+                                                <p class="trials-stat-title tooltipped" style="font-size: 2rem; color: #f5f5f5" data-position="bottom" data-delay="50" data-tooltip="#7,456" data-tooltip-id="b58821a3-5235-7d4d-dd8d-8a3d27d8e8b5">9x</p>
+                                                <p class="trials-stat-heading" >FLAWLESS</p>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="min-height: 39vh; margin-bottom: 18%;">
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Nightshade" src="https://bungie.net//common/destiny2_content/icons/fe0a4a1d2d0f2a152b1f7ac63445ab54.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">NIGHTSHADE</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SCOUT RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Drang" src="https://bungie.net//common/destiny2_content/icons/81a592981429e73e0649d912241f1395.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">DRANG</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">SIDEARM</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Merciless" src="https://bungie.net//common/destiny2_content/icons/67fa7a1a1535515ccc482da4d30a08c9.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">MERCILESS</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">FUSION RIFLE</span> 
+                                            </div>
+                                            <div class="col s6 equip">
+                                                    <img class="gun-icons-trials-d2 tooltipped" data-position="right" data-delay="50" data-tooltip="Actium War Rig" src="https://bungie.net//common/destiny2_content/icons/957eae3f0e2e00ee7f8dba4b1f03c1e7.jpg" alt="" data-tooltip-id="e0644b98-c841-6ea0-7c5a-0e04b86fa877">
+                                                    <span class="truncate" style=" position: relative; top: 10%;  font-weight: 400; font-size: 0.7em;">ACTIUM WAR RIG</span>                                                    
+                                                    <span style="font-weight: 300; font-size: 0.7em;">CHEST</span> 
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row" style="margin-left: 0;">
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C;">0.99</p>
+                                                <p class="trials-stat-heading">K/D</p>
+                                            </div>
+                                            <div class="col s4 center-align" style="border-right: solid 1px #767676;">                                                
+                                                <p class="trials-stat-title" style="color: #2ECC71;" >1.36</p>
+                                                <p class="trials-stat-heading">K/AD</p>
+                                            </div>
+                                            <div class="col s4 center-align">                                                
+                                                <p class="trials-stat-title" style="color: #E74C3C">54.2</p>
+                                                <p class="trials-stat-heading">WIN %</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
                         <div id="player1" class="col s12" style="padding-left: 0px; padding-right: 0px;">
-                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 4px 0px 0px;">
+                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 6px 0px 0px;">
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#overview1" style="color: #212121;">Overview1</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#titan1" style="color: #212121;">Titan1</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#hunter1" style="color: #212121;">Hunter1</a></li>
@@ -117,7 +346,7 @@
                             <div id="warlock1" class="col s12">warlock1</div>
                         </div>
                         <div id="player2" class="col s12" style="padding-left: 0px; padding-right: 0px;">
-                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 4px 0px 0px;">
+                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 6px 0px 0px;">
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#overview2" style="color: #212121;">Overview2</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#titan2" style="color: #212121;">Titan2</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#hunter2" style="color: #212121;">Hunter2</a></li>
@@ -129,7 +358,7 @@
                             <div id="warlock2" class="col s12">warlock 2</div>
                         </div>
                         <div id="player3" class="col s12" style="padding-left: 0px; padding-right: 0px;">
-                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 4px 0px 0px;">
+                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 6px 0px 0px;">
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#overview3" style="color: #212121;">Overview2</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#titan3" style="color: #212121;">Titan2</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#hunter3" style="color: #212121;">Hunter2</a></li>
@@ -141,7 +370,7 @@
                             <div id="warlock3" class="col s12">warlock 3</div>
                         </div>
                         <div id="player4" class="col s12" style="padding-left: 0px; padding-right: 0px;">
-                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 4px 0px 0px;">
+                            <ul class="tabs player-tabs tabs-fixed-width" style="border-radius: 0px 6px 0px 0px;">
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#overview4" style="color: #212121;">Overview4</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link active" href="#titan4" style="color: #212121;">Titan4</a></li>
                                 <li class="tab col s3 player-tab"><a class="player-tab-link" href="#hunter4" style="color: #212121;">Hunter4</a></li>

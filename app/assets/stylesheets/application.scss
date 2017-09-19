@@ -1432,6 +1432,7 @@ a.player-tab-link.active {
         flex-direction: column;
         display: -webkit-flex;
         display: flex;
+        min-height: 642px;
     }
 
     .tab {
@@ -1484,9 +1485,70 @@ li.tab.overview-icon {
 }
 
 .col.s3.trials-card-text {
-    min-height: 310px;
+    min-height: 500px;
 }
 
+
+
+.col.s6.equip {
+    margin-top: 13%;
+}
+
+.gun-icons-trials-d2 {
+    width: 65px;
+    height: 65px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
+    border: 1px solid #727272;
+}
+.trials-stat-title {
+    color: #00d5d5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.125;
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+
+.trials-stat-heading {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.trials-player-header {
+    margin: -5.1%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+    margin-top: 0;
+    background-size: cover;
+    border-radius: 2px;
+}
+
+.trials-player-name {
+    line-height: 55px;
+    font-weight: 400;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+.trials-player-light {
+    color: gold;
+    line-height: 0.5em;
+    font-weight: 300;
+    font-size: 0.9em;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.trials-player-subclass {
+    font-weight: 300;
+    font-size: 0.8em;
+}
 
 // .col.s3.trials-card-text.vdivide [class*='col-']:not(:last-child):after {
 //     background: #e0e0e0;
