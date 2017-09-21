@@ -342,7 +342,7 @@ class MicropostsController < ApplicationController
                     "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/",
                     headers: {"x-api-key" => ENV['API_TOKEN']}
                 )
-                puts "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/"
+                # puts "https://www.bungie.net/d1/Platform/Destiny/#{user.api_membership_type}/Account/#{user.api_membership_id}/"
                 character_data = JSON.parse(get_characters.body)
 
                 characters = []

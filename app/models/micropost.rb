@@ -1471,11 +1471,15 @@ class Micropost < ApplicationRecord
       kd_ratio = stats["killsDeathsRatio"]["basic"]["displayValue"]
       games_played = stats["activitiesEntered"]["basic"]["displayValue"]
       games_won = stats["activitiesWon"]["basic"]["value"]
-
-      win_rate = (((games_won / games_played.to_f).round(2)) * 100).round
+      kad = stats["killsDeathsAssists"]["basic"]["displayValue"]
+      kd = stats["killsDeathsRatio"]["basic"]["displayValue"]
+      win_rate = stats["winLossRatio"]["basic"]["displayValue"]
       
-      kd = (kills.to_f / deaths.to_f).round(2)
-      kad = ((kills.to_f + assists.to_f) / deaths.to_f).round(2)
+
+      # win_rate = (((games_won / games_played.to_f).round(2)) * 100).round
+      
+      # kd = (kills.to_f / deaths.to_f).round(2)
+      # kad = ((kills.to_f + assists.to_f) / deaths.to_f).round(2)
     rescue StandardError => e
       win_rate = "-"
       kills = "-"
