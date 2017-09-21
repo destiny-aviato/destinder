@@ -7,18 +7,18 @@
                     <div class="row">
                         <h4 class="center-align typed-header">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
                     </div>
-                </div>            
+                </div>
             </div>
             <div class='layer-3-homepage layer-homepage' data-depth='0.80' data-type='parallax'></div>
             <div class='layer-overlay-homepage layer-homepage' data-depth='0.85' data-type='parallax'></div>
             <div class='layer-4-homepage layer-homepage' data-depth='1.00' data-type='parallax'></div>
         </div>
-    
+
         <div class="home-header-text hide-on-med-and-up">
             <%= image_tag  "logo-with-title-word-black.png", style: "width: 90%; margin: 10px 10px 0px 10px;" %>
             <h4 class="center-align" style="font-weight: 500;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
             </div>
-            
+
             <div class="container" style="width: 100%">
             <section class="hero is-medium is-dark is-bold post-header-background hide-on-med-and-up" style="height: 150px;">
                 <div class="hero-body">
@@ -27,7 +27,7 @@
                 </div>
             </section>
         </div>
-    
+
         <div id='content-homepage'>
             <div class='container' style="width: 90%;">
                 <section class='first-section-homepage'>
@@ -38,7 +38,7 @@
                                     <div class="card-panel home-card z-depth-2 hoverable">
                                         <span class="card-text">
                                             <center><i class="medium material-icons" style="color: #88BBD6;">message</i></center>
-                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p>
                                         </span>
                                     </div>
                                 <% end %>
@@ -48,7 +48,7 @@
                                     <div class="card-panel home-card z-depth-2 hoverable">
                                         <span class="card-text">
                                             <center><i class="medium material-icons" style="color: #88BBD6;">people</i></center>
-                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p>
                                         </span>
                                     </div>
                                 </a>
@@ -58,7 +58,7 @@
                                     <div class="card-panel home-card z-depth-2 hoverable">
                                         <span class="card-text">
                                             <center><i class="medium material-icons" style="color: #88BBD6;">accessibility</i></center>
-                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p>
                                         </span>
                                     </div>
                                 <% end %>
@@ -68,16 +68,16 @@
                                     <div class="card-panel home-card z-depth-2 hoverable">
                                         <span class="card-text">
                                             <center><i class="medium material-icons" style="color: #88BBD6;">person</i></center>
-                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
+                                            <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p>
                                         </span>
                                     </div>
                                 <% end %>
                             </div>
                         </div>
-                    <% else %> 
- 
+                    <% else %>
+
                             <div class="row  hide-on-small-only">
-                                <div class="col s12">                                        
+                                <div class="col s12">
                                     <%= link_to user_bungie_omniauth_authorize_path do %>
                                         <div class="card-panel home-card z-depth-2 hoverable hide-on-small-only" >
                                             <span class="card-text">
@@ -86,46 +86,46 @@
                                         </div>
                                     <% end %>
                                 </div>
-                            </div>                            
-                            <div class="row">  
+                            </div>
+                            <div class="row">
                                     <div class="col s12 hide-on-med-and-up">
                                             <%= link_to user_bungie_omniauth_authorize_path do %>
                                             <div class="card-panel home-card z-depth-2 hoverable" >
                                                 <span class="card-text">
                                                     <center><i class="medium material-icons" style="color: #CDAF35;">power_settings_new</i></center>
-                                                    <p class="cente r-align" style="font-size: 18px; white-space: nowrap;">SIGN IN FOR MORE</p>                                                     
+                                                    <p class="cente r-align" style="font-size: 18px; white-space: nowrap;">SIGN IN FOR MORE</p>
                                                 </span>
                                             </div>
                                         <% end %>
-                                    </div>                              
+                                    </div>
                                     <div class="col s12 m6">
                                         <a class="modal-trigger" href="#team-search-modal">
                                             <div class="card-panel home-card z-depth-2 hoverable">
                                                 <span class="card-text">
                                                     <center><i class="medium material-icons" style="color: #88BBD6;">people</i></center>
-                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p>
                                                 </span>
                                             </div>
                                         </a>
                                     </div>
-                                    
+
                                     <div class="col s12 m6">
                                         <%= link_to new_player_stat_path do %>
                                             <div class="card-panel home-card z-depth-2 hoverable">
                                                 <span class="card-text">
                                                     <center><i class="medium material-icons" style="color: #88BBD6;">accessibility</i></center>
-                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                                    <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p>
                                                 </span>
                                             </div>
                                         <% end %>
                                     </div>
-                                    
+
                                 </div>
-                                
+
                     <% end %>
-                    
+
                 </section>
-                
+
             </div>
         </div>
         <% if user_signed_in? %>

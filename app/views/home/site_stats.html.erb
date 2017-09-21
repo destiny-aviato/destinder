@@ -36,7 +36,7 @@
                                     <th>Last Activity</th>
                                 </tr>
                             </thead>
-                        
+
                             <tbody>
 
                                 <% User.find_each do |user| %>
@@ -46,23 +46,23 @@
                                     <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
                                     <td><%= platform %></td>
                                     <td>
-                                        <% user.badges.each do |badge| %>                
+                                        <% user.badges.each do |badge| %>
                                         <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                                         <%= badge.custom_fields[:icon].html_safe %>
-                                        </div>                
+                                        </div>
                                     <% end %>
                                     </td>
                                     <td><%= !user.last_active_at.nil? ? time_ago_in_words(user.last_active_at) : user.last_active_at %></td>
                                 </tr>
                                 <% end %>
 
-                                
+
                             </tbody>
                         </table>
                 </div>
             </li>
         </ul>
     </div>
-<% else %>  
+<% else %>
     <h1 class="center-align">WHO DO YOU THINK YOU ARE!</h1>
 <% end %>

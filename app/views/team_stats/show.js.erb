@@ -1,5 +1,5 @@
 $('#trials-data').html("<%= escape_javascript render('shared/team_trials_stats', team_stat: @team_stat) %>");
-$('.tooltipped').tooltip({ 
+$('.tooltipped').tooltip({
     delay: 50,
     html: true
  });
@@ -13,14 +13,14 @@ function collapseAll(){
       return "active";
     });
     $(".collapsible").collapsible({accordion: true});
-    $(".collapsible").collapsible({accordion: false});    
+    $(".collapsible").collapsible({accordion: false});
   }
 
   function expandAll(){
     $(".collapsible-header").addClass("active");
-    $(".collapsible").collapsible({accordion: false});        
+    $(".collapsible").collapsible({accordion: false});
   }
-  
+
 $("#expand-button").click(function() {
     expandAll();
   });

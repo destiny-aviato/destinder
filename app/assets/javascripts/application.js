@@ -950,7 +950,7 @@ $(document).on('turbolinks:load', function() {
 
 
 
-//allow close out functionality for notifications 
+//allow close out functionality for notifications
 $(document).on('click', '.notification > button.delete', function() {
     $(this).parent().addClass('is-hidden');
     return false;
@@ -1128,11 +1128,11 @@ $(document).on("turbolinks:load", function() {
                             },
                             formatter: Math.round
                         }
-    
+
                     },
                     scales: {
                         xAxes: [{
-                            display: false,  
+                            display: false,
                             scaleLabel: {
                                 display: false,
                                 labelString: 'Last 15 Games'
@@ -1145,9 +1145,9 @@ $(document).on("turbolinks:load", function() {
                             gridLines: {
                                 display: false
                             },
-                            ticks: {                          
+                            ticks: {
                                 max: 10,
-                                beginAtZero: true                            
+                                beginAtZero: true
                             },
                             display: false
                         }]
@@ -1177,12 +1177,12 @@ $(document).on("turbolinks:load", function() {
                             },
                         }
                     },
-                    
+
                 }
             });
         }
     }
-    
+
 
 
 });
@@ -1198,7 +1198,7 @@ $(document).on("turbolinks:load", function() {
         {selector: '#fire-test', offset: 205, callback: function(el) {
             console.log("205");
         } },
-        {selector: '#fire-test', offset: 1000, callback: function(el) {            
+        {selector: '#fire-test', offset: 1000, callback: function(el) {
             console.log("at stag");
         } }
       ];
@@ -1221,6 +1221,6 @@ $(document).on("turbolinks:load", function() {
             layer.style.transform = translate3d;
           }
         });
-      
+
       }).call(this);
 });
