@@ -1007,7 +1007,182 @@ $(document).on("turbolinks:load", function() {
     }
 
 
+    if ($(".chart-container1").length) {
+        console.log("length");
+        var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+        // var char_data = chart_data[0];
+        var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
+        var auto1 = parseInt(char_data1["character_stats"]["kill_stats"]["Auto Rifle"]);
+        var hand1 = parseInt(char_data1["character_stats"]["kill_stats"]["Hand Cannon"]);
+        var pulse1 = parseInt(char_data1["character_stats"]["kill_stats"]["Pulse Rifle"]);
+        var scout1 = parseInt(char_data1["character_stats"]["kill_stats"]["Scout Rifle"]);
+        var sniper1 = parseInt(char_data1["character_stats"]["kill_stats"]["Sniper"]);
+        var shotgun1 = parseInt(char_data1["character_stats"]["kill_stats"]["Shotgun"]);
+        var fusion1 = parseInt(char_data1["character_stats"]["kill_stats"]["Fusion Rifle"]);
+        var sidearm1 = parseInt(char_data1["character_stats"]["kill_stats"]["Side Arm"]);
+        var heavy1 = parseInt(char_data1["character_stats"]["kill_stats"]["Rocket Launcher"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sword"]);
+        var total_kills1 = (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
 
+        // console.log(total_kills1);
+        var weaponChart1 = new Chart(weaponctx1, {
+            type: 'pie',
+            data: {
+                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Heavy"],
+                datasets: [{
+                    backgroundColor: [
+                        "#FA8708",
+                        "#3498db",
+                        "#2ecc71",
+                        "#9b59b6",
+                        "#f1c40f",
+                        "#e74c3c",
+                        "#34495e",
+                        "#AA885F",
+                        "#95a5a6"
+                    ],
+                    data: [((auto1 / total_kills1) * 100).toFixed(0), ((hand1 / total_kills1) * 100).toFixed(0), ((pulse1 / total_kills1) * 100).toFixed(0), ((scout1 / total_kills1) * 100).toFixed(0), ((sniper1 / total_kills1) * 100).toFixed(0), ((shotgun1 / total_kills1) * 100).toFixed(0), ((fusion1 / total_kills1) * 100).toFixed(0), ((sidearm1 / total_kills1) * 100).toFixed(0), ((heavy1 / total_kills1) * 100).toFixed(0)]
+                }]
+            },
+            options: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15,
+                        fontColor: '#f5f5f5',
+                        fontSize: 15
+                    }
+                },
+                title: {
+                    display: true,
+                    text: '% Kills by Weapon Types'
+                }
+            }
+        });
+    }
+
+    if ($(".chart-container1").length) {
+        var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+        var killctx1 = document.getElementById('kill-chart-breakdown1').getContext('2d');
+        var temp_data1 = [];
+        var temp_wins1 = [];
+        var temp_dates1 = [];
+        // console.log(char_data1);
+
+        if (char_data1["recent_games"] != null) {
+            $.each(char_data1["recent_games"].reverse(), function(index, value) {
+                temp_data1.push(value["kd_ratio"]);
+                temp_wins1.push(value["standing"]);
+                temp_dates1.push(value["game_date"]);
+
+            });
+
+            var pointBackgroundColors1 = [];
+            for (i = 0; i < temp_wins1.length; i++) {
+                if (temp_wins1[i] == 0) {
+                    pointBackgroundColors1.push("#2ecc71");
+                } else {
+                    pointBackgroundColors1.push("#e74c3c");
+                }
+            }
+
+            var killChart1 = new Chart(killctx1, {
+                type: 'line',
+                data: {
+                    labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+                    datasets: [{
+                            fill: false,
+                            label: 'KD',
+                            data: temp_data1,
+                            pointBackgroundColor: pointBackgroundColors1,
+                            borderColor: "#f5f5f5",
+                            pointBorderColor: "white",
+                            pointRadius: 10,
+                            pointHoverRadius: 12,
+                            borderWidth: 4,
+                            pointBorderWidth: 1,
+                            datalabels: {
+                                align: 'start',
+                                anchor: 'start'
+                            }
+                        },
+                        {
+                            fill: false,
+                            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            backgroundColor: "#EEEEEE",
+                            label: "",
+                            borderColor: "#01d4d4",
+                            pointRadius: 0,
+                            borderWidth: 4,
+                            pointHoverRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        datalabels: {
+                            backgroundColor: 'blue',
+                            borderRadius: 4,
+                            color: 'white',
+                            font: {
+                                weight: 'bold'
+                            },
+                            formatter: Math.round
+                        }
+    
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: false,  
+                            scaleLabel: {
+                                display: false,
+                                labelString: 'Last 15 Games'
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {                          
+                                max: 10,
+                                beginAtZero: true                            
+                            },
+                            display: false
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false,
+                        text: 'Recent Games'
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0
+                        }
+                    },
+                    tooltips: {
+                        bodyFontSize: 22,
+                        bodySpacing: 150,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                console.log(temp_dates1[tooltipItem.index]);
+                                return "K/D: " + tooltipItem.yLabel + " (" + $.timeago(temp_dates1[tooltipItem.index]) + ")";
+                            },
+                        }
+                    },
+                    
+                }
+            });
+        }
+    }
+    
 
 
 });
