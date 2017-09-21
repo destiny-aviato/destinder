@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    puts "test"
+    puts 'test'
   end
 
   # DELETE /resource/sign_out
