@@ -11,31 +11,33 @@
               <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
               <p>Positive votes: <%= @user.votes_for %> | Negative votes: <%= @user.votes_against %></p>
               <p>Net Ranking: <%= @user.plusminus %> | Rep Percentage: <%= rep %> % </p>
+              <% if user_signed_in? %>
               <p>Already voted for this user?: <%= current_user.voted_for?(@user) %></p>
               <%if @user != current_user %>
-                <% if current_user.voted_for?(@user) %>
-                  <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                    <i class="material-icons">thumb_up</i>
-                  <% end %>
+                  <% if current_user.voted_for?(@user) %>
+                    <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                      <i class="material-icons">thumb_up</i>
+                    <% end %>
 
-                  <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                    <i class="material-icons">cancel</i>
-                  <% end %>
+                    <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                      <i class="material-icons">cancel</i>
+                    <% end %>
 
-                  <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                    <i class="material-icons">thumb_down</i>
-                  <% end %>
-                <% else %>
-                  <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                    <i class="material-icons">thumb_up</i>
-                  <% end %>
+                    <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                      <i class="material-icons">thumb_down</i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                      <i class="material-icons">thumb_up</i>
+                    <% end %>
 
-                  <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
-                    <i class="material-icons">cancel</i>
-                  <% end %>
+                    <%= link_to users_unvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
+                      <i class="material-icons">cancel</i>
+                    <% end %>
 
-                  <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
-                    <i class="material-icons">thumb_down</i>
+                    <%= link_to users_downvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn" do %>
+                      <i class="material-icons">thumb_down</i>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% end %>

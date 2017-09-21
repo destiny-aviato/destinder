@@ -72,13 +72,18 @@
         </div>
       </li>
     <% else %>
-      <li><div class="user-view">
-          <div class="background">
-            <!-- <img src="images/office.jpg"> -->
-          </div>
-        <span class="name" style="color:#D1D1D1;">Please sign in to continue.</span>
-        </div></li>
       <li>
+        <div class="user-view">
+          <div class="background">            
+          </div>
+          <span class="name" style="color:#D1D1D1;">Please sign in for more.</span>
+        </div>
+      </li>
+      <li>
+          <%= link_to root_path, class: "navbar-item" do %>
+            <i class="material-icons" style="color: #D1D1D1;">home</i> HOME
+          <% end %>
+        </li>
       <li>
         <%= link_to new_user_session_path, class: "navbar-item" do %>
           <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
@@ -105,6 +110,16 @@
           </div>
         </li>
       </div>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Header-Ad-R -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2757454986564342"
+           data-ad-slot="8363564935"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     <% end %>
 </ul>
 
@@ -212,3 +227,50 @@
       </div>
     </div>
   </div>
+
+     <!-- Modal Structure -->
+     <div id="badge-modal" class="modal" style="width: 80%; height: 75%;" >
+        <div class="modal-content">
+          <h3>Badge-Ography</h3>
+          <hr>
+          <%= render "shared/badgeography" %>
+        </div>
+      </div>
+  
+      <% users = featured_users %>
+      <div id="featured-players-modal" class="modal" style="width: 80%; height: 75%;" >
+          <div class="modal-content">
+            <h3>Featured Players</h3>
+            <hr>
+            <div class="row">
+                <table class="bordered centered highlight">
+                    <thead>
+                        <tr>
+                            <th>Gamertag</th>
+                            <th>Platform</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+    
+                        <% users.each do |user| %>
+                        <tr>
+                            <td><%= link_to user.display_name, user_path(user.id) %></td>
+                            <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
+                            <td><%= platform %></td>
+                            <td>
+                                <% user.badges.each do |badge| %>                
+                                <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                                <%= badge.custom_fields[:icon].html_safe %>
+                                </div>                
+                            <% end %>
+                            </td>
+                        </tr>
+                        <% end %>                  
+                    </tbody>
+                </table>
+    
+            </div>
+          </div>
+        </div>

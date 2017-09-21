@@ -1018,7 +1018,7 @@ $(document).on("turbolinks:load", function() {
         {selector: '#fire-test', offset: 50, callback: function(el) {
             // $('#staggered-test').hide();
             $('#trials-stuff').toggle( "bounce", { times: 1, distance: 30 }, 1500 );
-            console.log("SCROLL INTIATED");
+            // console.log("SCROLL INTIATED");
         } },
         {selector: '#fire-test', offset: 205, callback: function(el) {
             console.log("205");

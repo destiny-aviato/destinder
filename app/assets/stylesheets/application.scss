@@ -507,8 +507,8 @@
         padding: 24px;
         margin: 0.5rem 0 1rem 0;
         border-radius: 6px;
-        background-color: #212121;
-        opacity: 0.9;
+        background-color: rgba(196, 194, 194, 0.22);
+        border: 1px solid #5085a5;
     }
 
     li.tab.card {
@@ -963,6 +963,13 @@
         canvas#weapon-breakdown-chart3 {
             margin-left: 8%;
         }
+        .card-text {
+            color: #212121 !important;
+            font-weight: 600;
+        }
+        .home-card {
+            border: none;
+        }
     }
     
     .stat-heading {
@@ -1279,7 +1286,7 @@
 	position: relative;
 }
 #content-homepage {
-    background: url(greyzz.png);
+    background: url(binding_dark.png);
     background-attachment: fixed;
 }
 .layer-homepage {
@@ -1360,16 +1367,36 @@
 	}
 	#hero-mobile-homepage {
 		display: block;
-	}
+    }
+
+    #content-homepage {
+        background: url(greyzz.png);
+        background-attachment: fixed;
+    }
+    
+    .home-icon {
+        color: #88BBD6;        
+    }
 }
 
+.typed-header {
+    font-weight: 600; 
+    color: #f5f5f5;
+    margin: 13.14rem 0 0 66%;
+}
+.typed-header-mobile {
+    font-weight: 600; 
+    color: #212121;
+}
 
-// Additional
-.tutorial-link {
-	color: #fff;
-	font-size: 18px;
-	text-decoration: underline;
-	&:hover {
-		color: #ede0d5;
-	}
+.home-icon {
+    color: #5085a5;
+}
+
+@media only screen and (max-width: 1000px) {
+    .typed-header {
+        font-weight: 600; 
+        color: #f5f5f5;
+        margin: 13.14rem 0 0 45%;
+    }
 }

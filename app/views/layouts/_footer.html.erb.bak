@@ -1,0 +1,61 @@
+<% users = featured_users %>
+
+<div class="footer-copyright">
+    <div class="container" style="width: 80%;">
+      <center>
+        <% if !current_user.nil? && (["Luminusss", "ii WALZ ii", "Putin Pudding"].include?(current_user.display_name)) %>
+          <%= link_to "Site Statistics", site_stats_path %> -
+        <% end %>
+          <%= link_to "Contact Us", "mailto:help@destinder.com" %> -
+          <%= link_to "About Badges", "#badge-modal", class: "modal-trigger" %> -
+          <%= link_to "Featured Guardians", "#featured-players-modal", class: "modal-trigger" %> -
+          <%= link_to "Donate!", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HUYFMWSSJERU2" %>
+      </center>
+    </div>
+  </div>
+
+    <!-- Modal Structure -->
+    <div id="badge-modal" class="modal" style="width: 80%; height: 75%;" >
+      <div class="modal-content">
+        <h3>Badge-Ography</h3>
+        <hr>
+        <%= render "shared/badgeography" %>
+      </div>
+    </div>
+
+    <div id="featured-players-modal" class="modal" style="width: 80%; height: 75%;" >
+      <div class="modal-content">
+        <h3>Featured Players</h3>
+        <hr>
+        <div class="row">
+            <table class="bordered centered highlight">
+                <thead>
+                    <tr>
+                        <th>Gamertag</th>
+                        <th>Platform</th>
+                        <th>Badges</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+
+                    <% users.each do |user| %>
+                    <tr>
+                        <td><%= link_to user.display_name, user_path(user.id) %></td>
+                        <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
+                        <td><%= platform %></td>
+                        <td>
+                            <% user.badges.each do |badge| %>                
+                            <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
+                            <%= badge.custom_fields[:icon].html_safe %>
+                            </div>                
+                        <% end %>
+                        </td>
+                    </tr>
+                    <% end %>                  
+                </tbody>
+            </table>
+
+        </div>
+      </div>
+    </div>
