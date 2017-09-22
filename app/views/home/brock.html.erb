@@ -1,0 +1,137 @@
+<body class="body-homepage" style="margin: 0;">
+    <div id='hero-homepage'>
+        <div class='layer-bg-homepage layer-homepage' data-depth='0.10' data-type='parallax'></div>
+        <div class='layer-1-homepage layer-homepage' data-depth='0.20' data-type='parallax'></div>
+        <div class='layer-2-homepage layer-homepage' data-depth='0.50' data-type='parallax'>
+            <div class="typed">
+                <div class="row">
+                    <h4 class="center-align typed-header">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+                </div>
+            </div>            
+        </div>
+        <div class='layer-3-homepage layer-homepage' data-depth='0.80' data-type='parallax'></div>
+        <div class='layer-overlay-homepage layer-homepage' data-depth='0.85' data-type='parallax'></div>
+        <div class='layer-4-homepage layer-homepage' data-depth='1.00' data-type='parallax'></div>
+    </div>
+
+    <div class="home-header-text hide-on-med-and-up">
+        <%= image_tag  "logo-with-title-word-black.png", style: "width: 90%; margin: 10px 10px 0px 10px;" %>
+        <h4 class="center-align" style="font-weight: 500;">LFG for the <span id="home-subtitle" style="font-weight: 200;">elite</span></h4>
+        </div>
+        
+        <div class="container" style="width: 100%">
+        <section class="hero is-medium is-dark is-bold post-header-background hide-on-med-and-up" style="height: 150px;">
+            <div class="hero-body">
+                <div class="container" style="width: 80%">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id='content-homepage'>
+        <div class='container' style="width: 90%;">
+            <section class='first-section-homepage'>
+                <% if user_signed_in? %>
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <%= link_to microposts_path do %>
+                                <div class="card-panel home-card z-depth-2 hoverable" data-step='1' data-intro="This is the looking for group card, create posts to let others know you're LFG and ready to dominate!">
+                                    <span class="card-text">
+                                        <center><i class="medium material-icons home-icon">message</i></center>
+                                        <p class="center-align" style="font-size: 18px; white-space: nowrap;">LFG</p> 
+                                    </span>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="col s12 m3">
+                            <a class="modal-trigger" href="#team-search-modal">
+                                <div class="card-panel home-card z-depth-2 hoverable" data-step='2' data-intro='This the team lookup card, find the weak link easily while playing trials. Really? A fusion rifle, bro?'>
+                                    <span class="card-text">
+                                        <center><i class="medium material-icons home-icon" >people</i></center>
+                                        <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= link_to new_player_stat_path do %>
+                                <div class="card-panel home-card z-depth-2 hoverable" data-step='3' data-intro='Player Lookup gives you the ability to find the stats for an individual player.'>
+                                    <span class="card-text">
+                                        <center><i class="medium material-icons home-icon">accessibility</i></center>
+                                        <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                    </span>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="col s12 m3">
+                            <%= link_to profile_path do %>
+                                <div class="card-panel home-card z-depth-2 hoverable" data-step='4' data-intro='Profile directs you to your stats for Trials, Raids, and PVP. It also includes your Destinder profile which displays your badges and current reputation.'>
+                                    <span class="card-text">
+                                        <center><i class="medium material-icons home-icon" >person</i></center>
+                                        <p class="center-align" style="font-size: 18px; white-space: nowrap;">PROFILE</p> 
+                                    </span>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                <% else %> 
+
+                        <div class="row  hide-on-small-only">
+                            <div class="col s12">                                        
+                                <%= link_to user_bungie_omniauth_authorize_path do %>
+                                    <div class="card-panel home-card z-depth-2 hoverable hide-on-small-only" style="border: solid 1px #f44336;">
+                                        <span class="card-text">
+                                            <center><i class="medium material-icons" style="color: #f44336;">power_settings_new</i><span style="position: relative; margin-left: 10px; bottom: 20px; font-size: 18px;">SIGN IN WITH BUNGIE TO ACCESS LFG, PROFILES, AND MORE!</span></center>
+                                        </span>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>                            
+                        <div class="row">  
+                                <div class="col s12 hide-on-med-and-up">
+                                        <%= link_to user_bungie_omniauth_authorize_path do %>
+                                        <div class="card-panel home-card z-depth-2 hoverable">
+                                            <span class="card-text center-align">
+                                                <center><i class="medium material-icons" style="color: #CDAF35;">power_settings_new</i></center>
+                                                <p class="center-align" style="font-size: 18px; white-space: nowrap;">SIGN IN FOR MORE</p>                                                     
+                                            </span>
+                                        </div>
+                                    <% end %>
+                                </div>                              
+                                <div class="col s12 m6">
+                                    <a class="modal-trigger" href="#team-search-modal">
+                                        <div class="card-panel home-card z-depth-2 hoverable">
+                                            <span class="card-text">
+                                                <center><i class="medium material-icons home-icon" >people</i></center>
+                                                <p class="center-align" style="font-size: 18px; white-space: nowrap;">TEAM LOOKUP</p> 
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <div class="col s12 m6">
+                                    <%= link_to new_player_stat_path do %>
+                                        <div class="card-panel home-card z-depth-2 hoverable">
+                                            <span class="card-text">
+                                                <center><i class="medium material-icons home-icon">accessibility</i></center>
+                                                <p class="center-align" style="font-size: 18px; white-space: nowrap;">PLAYER LOOKUP</p> 
+                                            </span>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                
+                            </div>
+                            
+                <% end %>
+                
+            </section>
+            
+        </div>
+    </div>
+    <% if user_signed_in? %>
+        <%= render 'para-auth' %>
+    <% else %>
+        <%= render 'para-normal' %>
+    <% end %>
+</div>
+</body>
