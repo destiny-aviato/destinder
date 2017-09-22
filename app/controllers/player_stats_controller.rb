@@ -18,7 +18,7 @@ class PlayerStatsController < ApplicationController
         @player_stat.save
         redirect_to @player_stat
       rescue NoMethodError
-        redirect_to request.referrer || root_url
+        redirect_to request.referer || root_url
         # redirect_to root_url
         flash[:error] = 'Error: Player Not Found!'
       rescue StandardError => e
@@ -40,7 +40,7 @@ class PlayerStatsController < ApplicationController
       end
     end
   rescue NoMethodError
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:error] = 'Error: Player Not Found!'
   rescue StandardError => e
     redirect_to root_url

@@ -251,7 +251,7 @@ class MicropostsController < ApplicationController
     @micropost.destroy
 
     respond_to do |format|
-      format.html { request.referrer || root_url }
+      format.html { request.referer || root_url }
       format.js {}
     end
   end

@@ -17,11 +17,11 @@ class UsersController < ApplicationController
     if params[:voter]
       voteable = User.find_by(id: params[:voter])
       current_user.vote_for(voteable)
-      redirect_to request.referrer || root_url
+      redirect_to request.referer || root_url
       flash[:notice] = 'Vote Cast'
     end
   rescue StandardError => e
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:notice] = "Sorry, there was an issue: #{e}"
   end
 
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
     if params[:voter]
       voteable = User.find_by(id: params[:voter])
       current_user.vote_against(voteable)
-      redirect_to request.referrer || root_url
+      redirect_to request.referer || root_url
       flash[:notice] = 'Vote Cast'
     end
   rescue StandardError => e
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:notice] = "Sorry, there was an issue: #{e}"
   end
 
@@ -41,11 +41,11 @@ class UsersController < ApplicationController
     if params[:voter]
       voteable = User.find_by(id: params[:voter])
       current_user.unvote_for(voteable)
-      redirect_to request.referrer || root_url
+      redirect_to request.referer || root_url
       flash[:notice] = 'Vote Removed'
     end
   rescue StandardError => e
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:notice] = "Sorry, there was an issue: #{e}"
   end
 
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
         redirect_to player_stat_path(@users)
         flash[:notice] = 'Player profile not found in our system. Here are trials stats for that user.'
       rescue StandardError => e
-        redirect_to request.referrer || root_url
+        redirect_to request.referer || root_url
         flash[:error] = "Error: #{e}"
       end
     else
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
       end
     end
   rescue NoMethodError
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:error] = 'Error: Player Not Found!'
   rescue StandardError => e
     redirect_to root_url

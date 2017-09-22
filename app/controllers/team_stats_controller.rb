@@ -18,7 +18,7 @@ class TeamStatsController < ApplicationController
       begin
         redirect_to @team_stat
       rescue NoMethodError
-        redirect_to request.referrer || root_url
+        redirect_to request.referer || root_url
         flash[:error] = 'Error: Player Not Found!'
       rescue StandardError => e
         redirect_to root_url
@@ -41,7 +41,7 @@ class TeamStatsController < ApplicationController
       end
     end
   rescue NoMethodError
-    redirect_to request.referrer || root_url
+    redirect_to request.referer || root_url
     flash[:error] = 'Error: Player Not Found!'
   rescue StandardError => e
     redirect_to root_url
