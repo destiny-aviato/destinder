@@ -41,6 +41,32 @@ class HomeController < ApplicationController
     def site_stats
     end
 
+    def get_elo(membership_id)
+        elo = 1200
+        rank = 0
+        
+        begin 
+        response = Typhoeus.get(
+                "https://api.guardian.gg/elo/#{membership_id}"
+            )
+          
+        data = JSON.parse(response.body)
+
+        data.each do |x| 
+          if x["mode"] == 14
+            elo = x["elo"]
+            rank = x["rank"]
+            break
+          end
+        end
+      rescue StandardError => e
+        puts e 
+      end
+
+      {"elo" => elo.round, "rank" => rank.round}
+      
+    end
+
     def get_trials_stats_d2(username)
       username.display_name.strip!
       
@@ -48,7 +74,7 @@ class HomeController < ApplicationController
   
       hydra = Typhoeus::Hydra.hydra
       
-      elo = 1200 #get_elo(username.api_membership_id)
+      # elo = 1200 #get_elo(username.api_membership_id)
       
       # subclasses = {
       #   "3225959819" => "Nightstalker",
@@ -159,6 +185,7 @@ class HomeController < ApplicationController
             if stat_data["Response"]["trialsOfOsiris"] != {} 
               stats = stat_data["Response"]["trialsofthenine"]["allTime"]
               # elo = get_elo(user.api_membership_id)
+              elo = get_elo(  4611686018439345596)
               
               # win_rate = stats["winLossRatio"]["basic"]["displayValue"]
               kills = stats["kills"]["basic"]["displayValue"]
@@ -170,7 +197,7 @@ class HomeController < ApplicationController
               games_won = stats["activitiesWon"]["basic"]["value"]
               kad = stats["killsDeathsAssists"]["basic"]["displayValue"]
               kd = stats["killsDeathsRatio"]["basic"]["displayValue"]
-              win_rate = stats["winLossRatio"]["basic"]["displayValue"]
+              win_rate = ((games_won.to_f / games_played.to_f) * 100).round(1)
               auto_rifle = stats["weaponKillsAutoRifle"]["basic"]["displayValue"]
               fusion_rifle = stats["weaponKillsFusionRifle"]["basic"]["displayValue"] 
               hand_cannon = stats["weaponKillsHandCannon"]["basic"]["displayValue"] 
@@ -255,7 +282,7 @@ class HomeController < ApplicationController
               "sub_machine_gun" => sub_machine_gun,
               "side_arm" => side_arm,
               "sword" => sword,
-              # "Melee" => melee,
+              # "melee" => melee,
               "grenades" => grenades,
               "grenade_launcher" => grenade_launcher,
               # "Super" => super_kills,
@@ -288,13 +315,13 @@ class HomeController < ApplicationController
               "win_rate" => win_rate,
               "kd_ratio" => kd,
               "games_played" => games_played,
-              "ELO" => elo,
+              "elo" => elo,
               "kad_ratio" => kad,
               "games_won" => games_won,
               "games_lost" => (games_played.to_i - games_won.to_i),
               "kill_stats" => kill_stats
             }
-            @characters_stats << {"character_id" => character_id, "character_type" => character_type, "character_stats" => @stats, "Character Items" => items, "recent_games" =>  nil }#get_recent_games(username, character_id)}
+            @characters_stats << {"character_id" => character_id, "character_type" => character_type, "character_stats" => @stats, "character_items" => items, "recent_games" =>  nil }#get_recent_games(username, character_id)}
           end
           
           hydra.queue(get_trials_stats)
@@ -308,7 +335,7 @@ class HomeController < ApplicationController
       if index != 0
           @characters_stats[0], @characters_stats[index] = @characters_stats[index], @characters_stats[0]
       end
-      
+
       @characters_stats
     end
 
@@ -493,32 +520,32 @@ class HomeController < ApplicationController
                   end
   
                   kill_stats = {
-                      "Average Life Span" => avg_life_span,
-                      "Auto Rifle" => auto_rifle,
+                      "average_life_span" => avg_life_span,
+                      "auto_rifle" => auto_rifle,
                       "Fusion Rifle" => fusion_rifle, 
-                      "Hand Cannon" => hand_cannon,
-                      "Machine Gun" => machine_gun,
-                      "Pulse Rifle" => pulse_rifle,
-                      "Rocket Launcher" => rocket_launcher,
-                      "Scout Rifle" => scout_rifle,
-                      "Shotgun" => shotgun,
-                      "Sniper" => sniper,
+                      "hand_cannon" => hand_cannon,
+                      "machine_gun" => machine_gun,
+                      "pulse_rifle" => pulse_rifle,
+                      "rocket_launcher" => rocket_launcher,
+                      "scout_rifle" => scout_rifle,
+                      "shotgun" => shotgun,
+                      "sniper" => sniper,
                       "Sub Machine Gun" => sub_machine_gun,
-                      "Side Arm" => side_arm,
-                      "Sword" => sword,
-                      "Melee" => melee,
-                      "Grenades" => grenades,
+                      "side_arm" => side_arm,
+                      "sword" => sword,
+                      "melee" => melee,
+                      "grenades" => grenades,
                       "Super" => super_kills,
-                      "Ability" => ability_kills,
-                      "Longest Spree" => longest_spree,
-                      "Best Weapon Type" => weapon_best_type,
+                      "ability" => ability_kills,
+                      "longest_spree" => longest_spree,
+                      "best_weapon_type" => weapon_best_type,
                       "Longest Life" => longest_life,
                       "Orbs Dropped" => orbs_dropped,
                       "revives_received" => res_received,
                       "revives_performed" => res_performed,
-                      "Precision Kills" => precision_kills,
-                      "Average Lifespan" => average_lifespan,
-                      "Average Kill Distance" => avg_kill_distance,
+                      "precision_kills" => precision_kills,
+                      "average_life_span" => average_lifespan,
+                      "average_kill_distance" => avg_kill_distance,
                       "Average Death Distance" => avg_death_distance
                   }
   
@@ -531,7 +558,7 @@ class HomeController < ApplicationController
                       "Intellect" => stat_intellect,
                       "Discipline" => stat_dicipline,
                       "Strength" => stat_strength,
-                      "ELO" => elo,
+                      "elo" => elo,
                       "games_won" => games_won,
                       "games_lost" => (games_played - games_won),
                       "win_rate" => win_rate,

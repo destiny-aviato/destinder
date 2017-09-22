@@ -66,7 +66,7 @@ def get_elo(membership_id)
         puts e 
     end
   
-    {"ELO" => elo.round, "Rank" => rank.round}
+    {"elo" => elo.round, "rank" => rank.round}
   
 end
 
@@ -248,7 +248,6 @@ def get_trials_stats(username)
                         assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
                         games_played = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesEntered"]["basic"]["value"] 
                         games_won = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesWon"]["basic"]["value"]
-                        avg_life_span = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageLifespan"]["basic"]["displayValue"]
                         auto_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsAutoRifle"]["basic"]["value"]
                         fusion_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsFusionRifle"]["basic"]["value"]
                         hand_cannon = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsHandCannon"]["basic"]["value"]
@@ -319,32 +318,31 @@ def get_trials_stats(username)
                     end
 
                     kill_stats = {
-                        "Average Life Span" => avg_life_span,
-                        "Auto Rifle" => auto_rifle,
+                        "auto_rifle" => auto_rifle,
                         "Fusion Rifle" => fusion_rifle, 
-                        "Hand Cannon" => hand_cannon,
-                        "Machine Gun" => machine_gun,
-                        "Pulse Rifle" => pulse_rifle,
-                        "Rocket Launcher" => rocket_launcher,
-                        "Scout Rifle" => scout_rifle,
-                        "Shotgun" => shotgun,
-                        "Sniper" => sniper,
+                        "hand_cannon" => hand_cannon,
+                        "machine_gun" => machine_gun,
+                        "pulse_rifle" => pulse_rifle,
+                        "rocket_launcher" => rocket_launcher,
+                        "scout_rifle" => scout_rifle,
+                        "shotgun" => shotgun,
+                        "sniper" => sniper,
                         "Sub Machine Gun" => sub_machine_gun,
-                        "Side Arm" => side_arm,
-                        "Sword" => sword,
-                        "Melee" => melee,
-                        "Grenades" => grenades,
+                        "side_arm" => side_arm,
+                        "sword" => sword,
+                        "melee" => melee,
+                        "grenades" => grenades,
                         "Super" => super_kills,
-                        "Ability" => ability_kills,
-                        "Longest Spree" => longest_spree,
-                        "Best Weapon Type" => weapon_best_type,
+                        "ability" => ability_kills,
+                        "longest_spree" => longest_spree,
+                        "best_weapon_type" => weapon_best_type,
                         "Longest Life" => longest_life,
                         "Orbs Dropped" => orbs_dropped,
                         "revives_received" => res_received,
                         "revives_performed" => res_performed,
-                        "Precision Kills" => precision_kills,
-                        "Average Lifespan" => average_lifespan,
-                        "Average Kill Distance" => avg_kill_distance,
+                        "precision_kills" => precision_kills,
+                        "average_life_span" => average_lifespan,
+                        "average_kill_distance" => avg_kill_distance,
                         "Average Death Distance" => avg_death_distance
                     }
     
@@ -357,7 +355,7 @@ def get_trials_stats(username)
                         "Intellect" => stat_intellect,
                         "Discipline" => stat_dicipline,
                         "Strength" => stat_strength,
-                        "ELO" => elo,
+                        "elo" => elo,
                         "games_won" => games_won,
                         "games_lost" => (games_played - games_won),
                         "win_rate" => win_rate,
@@ -492,7 +490,7 @@ def self.get_trials_stats_d2(user, character_id)
       "win_rate" => win_rate,
       "kd_ratio" => kd,
       "games_played" => games_played,
-      "ELO" => elo,
+      "elo" => elo,
       "kad_ratio" => kad,
     }
 
@@ -611,7 +609,6 @@ def get_trials_stats_d2(username)
                     assists = stat_data["Response"]["trialsOfOsiris"]["allTime"]["assists"]["basic"]["value"] 
                     games_played = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesEntered"]["basic"]["value"] 
                     games_won = stat_data["Response"]["trialsOfOsiris"]["allTime"]["activitiesWon"]["basic"]["value"]
-                    avg_life_span = stat_data["Response"]["trialsOfOsiris"]["allTime"]["averageLifespan"]["basic"]["displayValue"]
                     auto_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsAutoRifle"]["basic"]["value"]
                     fusion_rifle = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsFusionRifle"]["basic"]["value"]
                     hand_cannon = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsHandCannon"]["basic"]["value"]
@@ -682,32 +679,31 @@ def get_trials_stats_d2(username)
                 end
 
                 kill_stats = {
-                    "Average Life Span" => avg_life_span,
-                    "Auto Rifle" => auto_rifle,
+                    "auto_rifle" => auto_rifle,
                     "Fusion Rifle" => fusion_rifle, 
-                    "Hand Cannon" => hand_cannon,
-                    "Machine Gun" => machine_gun,
-                    "Pulse Rifle" => pulse_rifle,
-                    "Rocket Launcher" => rocket_launcher,
-                    "Scout Rifle" => scout_rifle,
-                    "Shotgun" => shotgun,
-                    "Sniper" => sniper,
+                    "hand_cannon" => hand_cannon,
+                    "machine_gun" => machine_gun,
+                    "pulse_rifle" => pulse_rifle,
+                    "rocket_launcher" => rocket_launcher,
+                    "scout_rifle" => scout_rifle,
+                    "shotgun" => shotgun,
+                    "sniper" => sniper,
                     "Sub Machine Gun" => sub_machine_gun,
-                    "Side Arm" => side_arm,
-                    "Sword" => sword,
-                    "Melee" => melee,
-                    "Grenades" => grenades,
+                    "side_arm" => side_arm,
+                    "sword" => sword,
+                    "melee" => melee,
+                    "grenades" => grenades,
                     "Super" => super_kills,
-                    "Ability" => ability_kills,
-                    "Longest Spree" => longest_spree,
-                    "Best Weapon Type" => weapon_best_type,
+                    "ability" => ability_kills,
+                    "longest_spree" => longest_spree,
+                    "best_weapon_type" => weapon_best_type,
                     "Longest Life" => longest_life,
                     "Orbs Dropped" => orbs_dropped,
                     "revives_received" => res_received,
                     "revives_performed" => res_performed,
-                    "Precision Kills" => precision_kills,
-                    "Average Lifespan" => average_lifespan,
-                    "Average Kill Distance" => avg_kill_distance,
+                    "precision_kills" => precision_kills,
+                    "average_life_span" => average_lifespan,
+                    "average_kill_distance" => avg_kill_distance,
                     "Average Death Distance" => avg_death_distance
                 }
 
@@ -720,7 +716,7 @@ def get_trials_stats_d2(username)
                     "Intellect" => stat_intellect,
                     "Discipline" => stat_dicipline,
                     "Strength" => stat_strength,
-                    "ELO" => elo,
+                    "elo" => elo,
                     "games_won" => games_won,
                     "games_lost" => (games_played - games_won),
                     "win_rate" => win_rate,

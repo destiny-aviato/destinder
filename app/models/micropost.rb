@@ -41,7 +41,7 @@ class Micropost < ApplicationRecord
       puts e 
     end
 
-    {"ELO" => elo.round, "Rank" => rank.round}
+    {"elo" => elo.round, "rank" => rank.round}
     
   end
 
@@ -761,7 +761,7 @@ class Micropost < ApplicationRecord
           stats = {
               "kd_ratio" => kd,
               "kad_ratio" => kad,
-              "ELO" => elo,
+              "elo" => elo,
               "win_rate" => win_rate,
               "light_level" => light_level,
               "grimoire" => grimoire,
@@ -774,7 +774,7 @@ class Micropost < ApplicationRecord
           stats = {
             "kd_ratio" => "-",
             "kad_ratio" => "-",
-            "ELO" => "-",
+            "elo" => "-",
             "win_rate" => "-",
             "light_level" => light_level,
             "grimoire" => grimoire,
@@ -1503,7 +1503,7 @@ class Micropost < ApplicationRecord
       "win_rate" => win_rate,
       "kd_ratio" => kd,
       "games_played" => games_played,
-      "ELO" => elo,
+      "elo" => elo,
       "kad_ratio" => kad,
     }
 
