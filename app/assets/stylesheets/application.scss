@@ -501,7 +501,7 @@
         color: #f5f5f5 !important;
         font-weight: 600;
     }
-    
+
     .home-card {
         transition: box-shadow .25s;
         padding: 24px;
@@ -510,7 +510,7 @@
         background-color: rgba(196, 194, 194, 0.22);
         border: 1px solid #5085a5;
     }
-    
+
     li.tab.card {
         background: transparent;
     }
@@ -1265,306 +1265,303 @@
     .card-video {
         width: 350px;
     }
-    
+
     .parallax-container .parallax img {
         width: 100%;
         height: auto;
     }
+
     
-    .body-homepage {
-        padding: 0;
-        margin: 0 !important;
-        background-color: #212121;
-        font-family: 'Lato', serif;
-        color: #fff;
+.body-homepage {
+	padding: 0;
+	margin: 0 !important;
+	background-color: #212121;
+	font-family: 'Lato', serif;
+	color: #fff;
+}
+
+#hero-homepage {
+    height: 800px;
+	overflow: hidden;
+	position: relative;
+}
+#content-homepage {
+    background: url(binding_dark.png);
+    background-attachment: fixed;
+}
+.layer-homepage {
+	background-position: bottom center;
+	background-size: auto;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 800px;
+	position: fixed;
+	z-index: -1;
+}
+
+#hero-mobile-homepage {
+	display: none;
+	background: url(war-zone.jpg) no-repeat center bottom / cover;
+	height: 320px;
+}
+
+.first-section-homepage {
+	padding: 50px 0 20px 0;
+}
+.text-header-homepage {
+	font-size: 50px;
+	text-align: center;
+}
+// h1 {
+// 	line-height: 120%;
+// 	margin-bottom: 30px;
+// }
+// p {
+// 	color: #ede0d5;
+// 	font-size: 18px;
+// 	line-height: 150%;
+// }
+
+#hero-homepage, .layer-homepage {
+	min-height: 800px;
+}
+
+.layer-bg-homepage {
+	background-image: url(layers-test-bg-only.png);
+	background-size: cover;
+	background-position-y: 0px;
+}
+.layer-1-homepage {
+	background-image: url(layers-test-ships.png);
+    background-position-x: 2px;
+    background-position-y: 83px;
+    background-size: 400px;
+		}
+.layer-2-homepage {
+	background-image: url(logo-words-only-white.png);
+	background-size: 500px;
+    background-position-x: 95%;
+	background-position-y: 13%;
+	opacity: 0.8;
+}
+.layer-3-homepage {
+	background-image: url('');
+
+		}
+.layer-4-homepage{
+	background-image: url(layers-test-chars.png);
+	// background-position-x: 250px;
+	background-position: bottom;
+	background-size: 1200px;
+		}
+.layer-overlay-homepage {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
+
+		}
+
+
+// Media Queries
+@media only screen and (max-width: 768px) {
+	#hero-homepage {
+		display: none;
+	}
+	#hero-mobile-homepage {
+		display: block;
     }
-    
-    #hero-homepage {
-        height: 800px;
-        overflow: hidden;
-        position: relative;
-    }
-    
+
     #content-homepage {
-        background: url(binding_dark.png);
+        background: url(greyzz.png);
         background-attachment: fixed;
     }
     
-    .layer-homepage {
-        background-position: bottom center;
-        background-size: auto;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 800px;
-        position: fixed;
-        z-index: -1;
-    }
-    
-    #hero-mobile-homepage {
-        display: none;
-        background: url(war-zone.jpg) no-repeat center bottom / cover;
-        height: 320px;
-    }
-    
-    .first-section-homepage {
-        padding: 50px 0 20px 0;
-    }
-    
-    .text-header-homepage {
-        font-size: 50px;
-        text-align: center;
-    }
-    
-    // h1 {
-    // 	line-height: 120%;
-    // 	margin-bottom: 30px;
-    // }
-    // p {
-    // 	color: #ede0d5;
-    // 	font-size: 18px;
-    // 	line-height: 150%;
-    // }
-    #hero-homepage,
-    .layer-homepage {
-        min-height: 800px;
-    }
-    
-    .layer-bg-homepage {
-        background-image: url(layers-test-bg-only.png);
-        background-size: cover;
-        background-position-y: 0px;
-    }
-    
-    .layer-1-homepage {
-        background-image: url(layers-test-ships.png);
-        background-position-x: 2px;
-        background-position-y: 83px;
-        background-size: 400px;
-    }
-    
-    .layer-2-homepage {
-        background-image: url(logo-words-only-white.png);
-        background-size: 500px;
-        background-position-x: 95%;
-        background-position-y: 13%;
-        opacity: 0.8;
-    }
-    
-    .layer-3-homepage {
-        background-image: url('');
-    }
-    
-    .layer-4-homepage {
-        background-image: url(layers-test-chars.png);
-        // background-position-x: 250px;
-        background-position: bottom;
-        background-size: 1200px;
-    }
-    
-    .layer-overlay-homepage {
-        background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
-    }
-    
-    // Media Queries
-    @media only screen and (max-width: 768px) {
-        #hero-homepage {
-            display: none;
-        }
-        #hero-mobile-homepage {
-            display: block;
-        }
-        #content-homepage {
-            background: url(greyzz.png);
-            background-attachment: fixed;
-        }
-        .home-icon {
-            color: #88BBD6;
-        }
-    }
-    
-    .typed-header {
-        font-weight: 600;
-        color: #f5f5f5;
-        margin: 13.14rem 0 0 66%;
-    }
-    
-    .typed-header-mobile {
-        font-weight: 600;
-        color: #212121;
-    }
-    
     .home-icon {
-        color: #5085a5;
+        color: #88BBD6;        
     }
-    
-    @media only screen and (max-width: 1000px) {
-        .typed-header {
-            font-weight: 600;
-            color: #f5f5f5;
-            margin: 13.14rem 0 0 45%;
-        }
-    }
-    
-    a.player-tab-link {
-        border: 1px solid transparent;
-        // border-bottom: 1px solid #b0f2fd;
-        background-color: #212121;
-        color: #00d5d5 !important;
-    }
-    
-    // ul.tabs.player-tabs {
-    //     background-color: white;
-    // }
-    ul.tabs.player-tabs {
-        background-color: #424242;
-        margin-bottom: 0%;
-    }
-    
-    a.player-tab-link.active {
-        background-color: white;
-        // border-color: #dbdbdb;
-        border-bottom-color: transparent !important;
-        border-radius: 4px;
-    }
-    
-    .tabs-vertical {
-        .tabs {
-            height: auto;
-            -ms-flex-direction: column;
-            -webkit-flex-direction: column;
-            flex-direction: column;
-            display: -webkit-flex;
-            display: flex;
-            min-height: 642px;
-        }
-        .tab {
-            width: 100%;
-            .active {
-                -moz-transition: border-color .5s ease;
-                -o-transition: border-color .5s ease;
-                -webkit-transition: border-color .5s ease;
-                transition: border-color .5s ease;
-                border-left: 3px solid #00d5d5;
-            }
-             :hover {
-                border-left: 3px solid #f5f5f5;
-            }
-        }
-        .indicator {
-            display: none !important;
-        }
-    }
-    
-    li.tab.overview-icon {
-        background: url(trialsofthenine.png);
-        background-size: cover;
-        background-position: center;
-    }
-    
-    li.tab.profile-icon {
-        background: url(https://www.bungie.net/img/theme/destiny/bgs/bg_triumphs_nux.png?cv=3983621215&av=2340079736);
-        background-size: 80px 80px;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    
-    .tabs-vertical .tab {
-        width: 100%;
-        height: 85px;
-    }
-    
-    .trials-player-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        margin-left: 0;
-        -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
-        border: 2px solid #9a9a9a;
-        padding-right: 0px;
-        position: relative;
-        right: 9%;
-        top: 20%;
-    }
-    
-    .trials-card-text {
+}
+
+.typed-header {
+    font-weight: 600; 
+    color: #f5f5f5;
+    margin: 13.14rem 0 0 66%;
+}
+.typed-header-mobile {
+    font-weight: 600; 
+    color: #212121;
+}
+
+.home-icon {
+    color: #5085a5;
+}
+
+@media only screen and (max-width: 1000px) {
+    .typed-header {
+        font-weight: 600; 
         color: #f5f5f5;
-        text-align: center;
+        margin: 13.14rem 0 0 45%;
     }
-    
-    .col.s3.trials-card-text {
-        min-height: 500px;
+}
+
+a.player-tab-link {
+    border: 1px solid transparent;
+    // border-bottom: 1px solid #b0f2fd;
+    background-color: #212121;
+    color: #00d5d5 !important;
+}
+
+// ul.tabs.player-tabs {
+//     background-color: white;
+// }
+
+ul.tabs.player-tabs {
+    background-color: #424242;
+    margin-bottom: 0%;
+}
+
+
+a.player-tab-link.active {
+    background-color: white;
+    // border-color: #dbdbdb;
+    border-bottom-color: transparent !important;
+    border-radius: 4px;
+}
+
+.tabs-vertical {
+    .tabs {
+        height: auto;
+        -ms-flex-direction: column;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        display: -webkit-flex;
+        display: flex;
+        min-height: 642px;
     }
-    
-    .col.s6.equip {
-        margin-top: 5%;
+
+    .tab {
+        width: 100%;
+
+        .active {
+            -moz-transition: border-color .5s ease;
+            -o-transition: border-color .5s ease;
+            -webkit-transition: border-color .5s ease;
+            transition: border-color .5s ease;
+            border-left: 3px solid #00d5d5;
+        }
+
+        :hover {
+            border-left: 3px solid #f5f5f5;
+        }
     }
-    
-    .gun-icons-trials-d2 {
-        width: 65px;
-        height: 65px;
-        border-radius: 6px;
-        margin-left: auto;
-        margin-right: auto;
-        -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
-        border: 1px solid #727272;
+
+    .indicator {
+        display: none !important;
     }
-    
-    .trials-stat-title {
-        color: #00d5d5;
-        font-size: 1.5rem;
-        font-weight: 600;
-        line-height: 1.125;
-        margin-top: 0px;
-        margin-bottom: 0;
-    }
-    
-    .trials-stat-heading {
-        display: block;
-        font-size: 11px;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-        color: #01d4d4;
-    }
-    
-    .trials-player-header {
-        margin: -1.3%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        margin-bottom: 0px;
-        margin-top: 0;
-        background-size: cover;
-        border-radius: 6px 6px 0px 0px;
-    }
-    
-    .trials-player-name {
-        line-height: 55px;
-        font-weight: 400;
-        font-size: 1.1em;
-        vertical-align: middle;
-    }
-    
-    .trials-player-light {
-        color: gold;
-        line-height: 0.5em;
-        font-weight: 300;
-        font-size: 0.9em;
-        vertical-align: -webkit-baseline-middle;
-    }
-    
-    .trials-player-subclass {
-        font-weight: 300;
-        font-size: 0.8em;
-    }
-    
-    // .col.s3.trials-card-text.vdivide [class*='col-']:not(:last-child):after {
-    //     background: #e0e0e0;
-    //     width: 1px;
-    //     content: "";
-    //     display:block;
-    //     position: absolute;
-    //     top:0;
-    //     bottom: 0;
-    //     right: 0;
-    //     min-height: 70px;
-    //   }
+}
+
+li.tab.overview-icon {
+    background: url(trialsofthenine.png);
+    background-size: cover;
+    background-position: center;
+}
+.tabs-vertical .tab {
+    width: 100%;
+    height: 85px;
+}
+
+.trials-player-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-left: 0;
+    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
+    border: 2px solid #9a9a9a;
+    padding-right: 0px;
+    position: relative;
+    right: 9%;
+    top: 20%;
+}
+
+.trials-card-text {
+    color: #f5f5f5;
+    text-align: center;
+}
+
+.col.s3.trials-card-text {
+    min-height: 500px;
+}
+
+
+
+.col.s6.equip {
+    margin-top: 5%;
+}
+
+.gun-icons-trials-d2 {
+    width: 65px;
+    height: 65px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    -moz-box-shadow: 4px 6px 5px 0px #bdb7bd;
+    border: 1px solid #727272;
+}
+.trials-stat-title {
+    color: #00d5d5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.125;
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+
+.trials-stat-heading {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    color: #01d4d4;
+}
+
+.trials-player-header {
+    margin: -1.3%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+    margin-top: 0;
+    background-size: cover;
+    border-radius: 6px 6px 0px 0px;
+}
+
+.trials-player-name {
+    line-height: 55px;
+    font-weight: 400;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+.trials-player-light {
+    color: gold;
+    line-height: 0.5em;
+    font-weight: 300;
+    font-size: 0.9em;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.trials-player-subclass {
+    font-weight: 300;
+    font-size: 0.8em;
+}
+
+
+
+// .col.s3.trials-card-text.vdivide [class*='col-']:not(:last-child):after {
+//     background: #e0e0e0;
+//     width: 1px;
+//     content: "";
+//     display:block;
+//     position: absolute;
+//     top:0;
+//     bottom: 0;
+//     right: 0;
+//     min-height: 70px;
+//   }
