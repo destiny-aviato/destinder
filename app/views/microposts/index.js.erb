@@ -1,7 +1,7 @@
 $(".row.posts").html("<%= j (render @microposts) %>");
 $('ul.tabs').tabs();
 $('.collapsible').collapsible('close', 0);
-$('.tooltipped').tooltip({
+$('.tooltipped').tooltip({ 
     delay: 50,
     html: true
  });
@@ -16,7 +16,7 @@ $('.scroller-test').slick({
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true
+    arrows: true        
 });
 
 $('.scroller-test').on('swipe', function(event, slick, direction){

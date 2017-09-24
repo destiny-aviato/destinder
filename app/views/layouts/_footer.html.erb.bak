@@ -36,7 +36,7 @@
                         <th>Badges</th>
                     </tr>
                 </thead>
-
+            
                 <tbody>
 
                     <% users.each do |user| %>
@@ -45,14 +45,14 @@
                         <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
                         <td><%= platform %></td>
                         <td>
-                            <% user.badges.each do |badge| %>
+                            <% user.badges.each do |badge| %>                
                             <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                             <%= badge.custom_fields[:icon].html_safe %>
-                            </div>
+                            </div>                
                         <% end %>
                         </td>
                     </tr>
-                    <% end %>
+                    <% end %>                  
                 </tbody>
             </table>
 

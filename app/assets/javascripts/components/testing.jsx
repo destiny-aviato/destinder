@@ -6,7 +6,7 @@ var Testing = React.createClass({
         )
       }
     });
-
+  
   // //rendering element example
   // function tick() {
   //     const element = (
@@ -17,5 +17,6 @@ var Testing = React.createClass({
   //       document.getElementById('testing')
   //     );
   //   }
-
+  
   //   setInterval(tick, 1000);
+  

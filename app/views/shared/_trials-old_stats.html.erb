@@ -2,17 +2,17 @@
 
 <% username = @user.nil? ? @player_stat.display_name : @user.display_name %>
 
-<% if info.nil? %>
+<% if info.nil? %> 
   <div class="container games">
     ERROR: n00b!  NO TRIALS STATS FOUND FOR THIS PLAYER
   </div>
-<% else %>
-
+<% else %>  
+ 
 <div class="scroller">
 <% info.each_with_index do |x, index| %>
 
 
-<div class="shadow-effect" style="padding-top: 10px;"><!--OPEN FIRST CHARACTER-->
+<div class="shadow-effect" style="padding-top: 10px;"><!--OPEN FIRST CHARACTER--> 
 
 
         <!--OPEN GAMERTAG INFORMATION-->
@@ -37,7 +37,7 @@
                 <div class="row container-fix-trials"><!--OPEN PLAYER CARD ROW-->
 
                     <div class="col s12 container-fix-trials"><img class="emblem-background-trials z-depth-4" src=<%= x["Character Items"]["emblem_background"] %> alt=""></div><!--CLOSE EMBLEM CARD ROW-->
-
+                
                 </div><!--CLOSE PLAYER CARD ROW-->
 
         <!--CLOSE EMBLEM INFORMATION-->
@@ -49,9 +49,9 @@
                         <div class="slider">
                             <ul class="slides">
 
-
+                            
                             <li><!--OPEN GUN SLIDE-->
-
+                                
 
                                         <!--OPEN GUNS INFORMATION-->
 
@@ -66,9 +66,9 @@
                                 </div><!--CLOSE GUN NAMES ROW-->
 
 
-
-
-
+                                
+                                
+                                
                                 <div class="row"><!--OPEN GUN PICTURES ROW-->
                                     <div class="col s12"><!--OPEN FIRST COLUMN-->
                                         <div class="row"><!--OPEN NESTED ROW-->
@@ -81,7 +81,7 @@
 
 
                         <!--CLOSE GUNS INFORMATION-->
-
+                                
                             </li><!--CLOSE GUN SLIDE-->
 
 
@@ -103,9 +103,9 @@
                                 </div><!--CLOSE GEAR NAMES ROW-->
 
 
-
-
-
+                                
+                                
+                                
                                 <div class="row"><!--OPEN GEAR PICTURES ROW-->
                                     <div class="col s12"><!--OPEN FIRST COLUMN-->
                                         <div class="row"><!--OPEN NESTED ROW-->
@@ -120,7 +120,7 @@
                         <!--CLOSE GEAR INFORMATION-->
 
 
-
+                                
                             </li><!--CLOSE GEAR SLIDE-->
 
 
@@ -140,7 +140,7 @@
 
 
 
-
+        
 
 
 
@@ -155,12 +155,12 @@
                             <div class="col s6 center-align text-white">BADGES<hr style="height: 3px;"></div><!--CLOSE COLUMN-->
                             <div class="col s6 center-align text-white">CALLOUTS<hr style="height: 3px;"></div><!--CLOSE COLUMN-->
                         </div><!--CLOSE HEADER ROW-->
-
+                        
 
                         <div class="row left-align"><!--OPEN CONTENT ROW-->
 
                             <div class="col s6 left-align">
-
+                                
                                 <div class="chip chip-trials">
                                     <img class="mini-weapon-icons truncate" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Sniper">
                                     Sniper
@@ -180,7 +180,7 @@
                                     <img class="mini-weapon-icons truncate" src="https://vignette3.wikia.nocookie.net/destinypedia/images/5/54/Sniper_Rifle_Loader_perk_icon.png/revision/latest?cb=20160730002730" alt="Marksman">
                                     Marksman
                                 </div>
-
+                            
                             </div><!--CLOSE BADGES COLUMN-->
 
 
@@ -188,23 +188,23 @@
 
 
                             <div class="col s6 center-align">
-                            <table>
-                            <tr>
+                            <table> 
+                            <tr> 
                                 <th></th>
                                 <th class="center-align table-header-trials">WK</th>
                                 <th class="center-align table-header-trials">YR</th>
                             </tr>
-                            <tr>
+                            <tr> 
                                 <th class="center-align table-header-trials">KD</th>
                                 <th class="trials-table-stats center-align">?</th>
                                 <th class="trials-table-stats center-align"><%= x["character_stats"]["kd_ratio"] %></th>
                             </tr>
-                            <tr>
+                            <tr> 
                                 <th class="center-align table-header-trials">KA/D</th>
                                 <th class="trials-table-stats center-align">?</th>
                                 <th class="trials-table-stats center-align"><%= x["character_stats"]["kad_ratio"] %></th>
                             </tr>
-                            <tr>
+                            <tr> 
                                 <th class="center-align table-header-trials">ELO</th>
                                 <th class="trials-table-stats center-align">?</th>
                                 <th class="trials-table-stats center-align"><%= x["character_stats"]["ELO"]["ELO"] %></th>
@@ -235,14 +235,14 @@
 
 
             <div class="section white"> <!--OPEN SECOND SECTION-->
-
+            
                     <div class="row"> <!--OPEN ROW-->
                         <div class="col s12 player-reputation-trials center-align">Player Reputation</div>
 
 
-                        <div class="col s12 center-align">
-                            <% if !@user.nil? %>
-                                <% total = @user.votes_for + @user.votes_against %>
+                        <div class="col s12 center-align"> 
+                            <% if !@user.nil? %>     
+                                <% total = @user.votes_for + @user.votes_against %>      
                                 <% rep =  total != 0  ? ((@user.votes_for / total).round(1) * 100) : "0" %>
                                 <% if current_user.voted_for?(@user) %>
                                 <%= link_to users_upvote_path(:voter => @user), method: :post, class: "waves-effect waves-light btn disabled" do %>
@@ -271,7 +271,7 @@
                                 <% end %>
                             <% end %>
                         </div><!--CLOSE COLUMN-->
-
+                    
                     </div><!--CLOSE ROW-->
 
             </div><!--CLOSE SECOND SECTION-->
@@ -287,9 +287,9 @@
                 <div class="section trials-card-background" style="background-color: #f6f6f6; width: 103%; margin-left: -1.5%;">
                     <div class="row">
                         <div class="col s12">
-
+                        
                         </div><!--CLOSE COLUMN-->
-
+                    
                     </div><!--CLOSE ROW-->
 
                 </div><!--CLOSE SECTION-->
@@ -299,7 +299,7 @@
         <!--CLOSE SECTION INFORMATION-->
 
 
-</div><!--CLOSE FIRST CHARACTER-->
+</div><!--CLOSE FIRST CHARACTER--> 
 
 
 

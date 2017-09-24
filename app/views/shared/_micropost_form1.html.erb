@@ -1,5 +1,5 @@
 <% characters = get_characters(current_user)%>
-<% d1_options = {
+<% d1_options = { 
     "PVE" => [["Nightfall", 4], ["Wrath of the Machine", 10], ["King's Fall", 9], ["Crota's End", 8], ["Vault of Glass", 7], ["Challenge of the Elders", 1], ["Heroic Strikes", 3], ["Story", 2], ["Other", 1]],
     "PVP" => [["Trials of Osiris", 6], ["Iron Banner", 11], ["Crucible Playlist", 5], ["Other", 1]]
 } %>
@@ -12,10 +12,10 @@
 4 - nightfall
 5 - crucible playlist
 6 - trials of osiris
-7 - raid 1
+7 - raid 1 
 8 - raid 2
 9 - raid 3
-10 - raid 4
+10 - raid 4 
 11 - iron banner
 =end -->
 
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-
+            
 
             <div class="row">
                 <div class="input-field col s12 m5">
@@ -60,10 +60,10 @@
                     <%= f.select :looking_for, ["Any", "Sherpa", "Sherpee", "Similar"], {}, {id: "looking_for" } %>
                 </div>
 
-                <div class="col s12 m2 center-align">
-                    <label class="d1-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>
+                <div class="col s12 m2 center-align">               
+                    <label class="d1-mic-label" style="top: -25px;"><i class="fa fa-microphone" aria-hidden="true"></i> Have Mic?</label>  <div style="padding: 2%;"></div>       
                     <%= f.check_box :mic_required, id:"d1_mic_required" %>
-                    <%= f.label " ", for:"d1_mic_required", id:"d1_mic_required" %>
+                    <%= f.label " ", for:"d1_mic_required", id:"d1_mic_required" %>                         
                 </div>
             </div>
             <div class="row">
@@ -71,7 +71,7 @@
                     <label class="character-label" style="top: -40px;">Fireteam (optional)</label>
                     <i class="material-icons prefix tooltipped" data-position="top" data-delay="50" data-tooltip="Post your teammate's stats too! Players must have a Destinder account.">people</i>
                     <%= react_component 'UserSelectD1', { users: users  }  %>
-                </div>
+                </div>     
             </div>
 
             <div class="row">
