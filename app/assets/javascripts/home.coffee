@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
+ready = -> 
     $('span#home-subtitle').typed
         strings: ['elite', "winners", "salty", "complainers", "ragers", "try hards", "losers", "good looking", "masses"]
         loop: true
@@ -12,5 +12,5 @@ ready = ->
         showCursor: true
         cursorChar: "|"
         shuffle: true
-
+        
 $(document).on('turbolinks:load', ready)

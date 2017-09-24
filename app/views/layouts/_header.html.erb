@@ -74,7 +74,7 @@
     <% else %>
       <li>
         <div class="user-view">
-          <div class="background">
+          <div class="background">            
           </div>
           <span class="name" style="color:#D1D1D1;">Please sign in for more.</span>
         </div>
@@ -89,7 +89,7 @@
           <i class="material-icons" style="color: #D1D1D1;">power_settings_new</i> LOGIN
         <% end %>
       </li>
-
+      
       <div>
         <li><div class="divider"></div></li>
         <li><a class="subheader" style="color:#D1D1D1;">Social</a></li>
@@ -201,7 +201,7 @@
         <i class="material-icons" style="color: #D1D1D1;">menu</i>
     </a>
     </div>
-  </nav>
+  </nav>  
 </div>
 
  <!-- Team lookup Modal Structure -->
@@ -236,7 +236,7 @@
           <%= render "shared/badgeography" %>
         </div>
       </div>
-
+  
       <% users = featured_users %>
       <div id="featured-players-modal" class="modal" style="width: 80%; height: 75%;" >
           <div class="modal-content">
@@ -251,26 +251,26 @@
                             <th>Badges</th>
                         </tr>
                     </thead>
-
+                
                     <tbody>
-
+    
                         <% users.each do |user| %>
                         <tr>
                             <td><%= link_to user.display_name, user_path(user.id) %></td>
                             <% platform = user.api_membership_type == "1" ? "Xbox" : "PS4" %>
                             <td><%= platform %></td>
                             <td>
-                                <% user.badges.each do |badge| %>
+                                <% user.badges.each do |badge| %>                
                                 <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %> padding: 0 0px 0 11px;' data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                                 <%= badge.custom_fields[:icon].html_safe %>
-                                </div>
+                                </div>                
                             <% end %>
                             </td>
                         </tr>
-                        <% end %>
+                        <% end %>                  
                     </tbody>
                 </table>
-
+    
             </div>
           </div>
         </div>

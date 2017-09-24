@@ -27,21 +27,21 @@ var Hello = React.createClass({
 });
 
 var AdminPanel = React.createClass({
-
+    
   render: function() {
 
     return (
-        <div>
+        <div>           
             <p>Character type: {this.props.chartData[0]["Character Type"]}</p>
-        </div>
-
+        </div>  
+          
     );
   }
 });
 
 var Navigation = React.createClass({
     getDefaultProps: function() {
-      return {
+      return { 
         tabList: [
           {
             id: 1,
@@ -90,7 +90,7 @@ var CreatePost = React.createClass({
         return (
             <p>CreatePost Pane</p>
         );
-    }
+    }   
 });
 
 var PreviewPost = React.createClass({
@@ -123,7 +123,7 @@ var Tab = React.createClass({
         <a href={"#"+this.props.data.paneId} data-toggle="tab">
           {this.props.data.title}
         </a>
-      </li>
+      </li>  
     );
   }
 });
