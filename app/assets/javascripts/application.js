@@ -181,7 +181,7 @@ $(document).on('turbolinks:load', function() {
             var scout1 = parseInt(char_data1["character_stats"]["kill_stats"]["scout_rifle"]);
             var sniper1 = parseInt(char_data1["character_stats"]["kill_stats"]["sniper"]);
             var shotgun1 = parseInt(char_data1["character_stats"]["kill_stats"]["shotgun"]);
-            var fusion1 = parseInt(char_data1["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var fusion1 = parseInt(char_data1["character_stats"]["kill_stats"]["fusion_rifle"]);
             var sidearm1 = parseInt(char_data1["character_stats"]["kill_stats"]["side_arm"]);
             var heavy1 = parseInt(char_data1["character_stats"]["kill_stats"]["rocket_launcher"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data1["character_stats"]["kill_stats"]["sword"]);
             var total_kills1 = (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
@@ -231,7 +231,7 @@ $(document).on('turbolinks:load', function() {
             var scout2 = parseInt(char_data2["character_stats"]["kill_stats"]["scout_rifle"]);
             var sniper2 = parseInt(char_data2["character_stats"]["kill_stats"]["sniper"]);
             var shotgun2 = parseInt(char_data2["character_stats"]["kill_stats"]["shotgun"]);
-            var fusion2 = parseInt(char_data2["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var fusion2 = parseInt(char_data2["character_stats"]["kill_stats"]["fusion_rifle"]);
             var sidearm2 = parseInt(char_data2["character_stats"]["kill_stats"]["side_arm"]);
             var heavy2 = parseInt(char_data2["character_stats"]["kill_stats"]["rocket_launcher"]) + parseInt(char_data2["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data2["character_stats"]["kill_stats"]["sword"]);
             var total_kills2 = (auto2 + hand2 + pulse2 + scout2 + sniper2 + shotgun2 + fusion2 + sidearm2 + heavy2);
@@ -279,7 +279,7 @@ $(document).on('turbolinks:load', function() {
             var scout3 = parseInt(char_data3["character_stats"]["kill_stats"]["scout_rifle"]);
             var sniper3 = parseInt(char_data3["character_stats"]["kill_stats"]["sniper"]);
             var shotgun3 = parseInt(char_data3["character_stats"]["kill_stats"]["shotgun"]);
-            var fusion3 = parseInt(char_data3["character_stats"]["kill_stats"]["Fusion Rifle"]);
+            var fusion3 = parseInt(char_data3["character_stats"]["kill_stats"]["fusion_rifle"]);
             var sidearm3 = parseInt(char_data3["character_stats"]["kill_stats"]["side_arm"]);
             var heavy3 = parseInt(char_data3["character_stats"]["kill_stats"]["rocket_launcher"]) + parseInt(char_data3["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data3["character_stats"]["kill_stats"]["sword"]);
             var total_kills3 = (auto3 + hand3 + pulse3 + scout3 + sniper3 + shotgun3 + fusion3 + sidearm3 + heavy3);
@@ -1008,26 +1008,36 @@ $(document).on("turbolinks:load", function() {
 
 
     if ($(".chart-container1").length) {
-        console.log("length");
+        // console.log("length");
         var char_data1 = JSON.parse($(".chart-container1").attr("data-chart-data"));
+        console.log(char_data1);
         // var char_data = chart_data[0];
         var weaponctx1 = document.getElementById("weapon-breakdown-chart1").getContext('2d');
         var auto1 = parseInt(char_data1["character_stats"]["kill_stats"]["auto_rifle"]);
+        console.log(auto1);
         var hand1 = parseInt(char_data1["character_stats"]["kill_stats"]["hand_cannon"]);
+        console.log(hand1);
         var pulse1 = parseInt(char_data1["character_stats"]["kill_stats"]["pulse_rifle"]);
+        console.log(pulse1);
         var scout1 = parseInt(char_data1["character_stats"]["kill_stats"]["scout_rifle"]);
+        console.log(scout1);
         var sniper1 = parseInt(char_data1["character_stats"]["kill_stats"]["sniper"]);
+        console.log(sniper1);
         var shotgun1 = parseInt(char_data1["character_stats"]["kill_stats"]["shotgun"]);
-        var fusion1 = parseInt(char_data1["character_stats"]["kill_stats"]["Fusion Rifle"]);
+        console.log(shotgun1);
+        var fusion1 = parseInt(char_data1["character_stats"]["kill_stats"]["fusion_rifle"]);
+        console.log(fusion1);
         var sidearm1 = parseInt(char_data1["character_stats"]["kill_stats"]["side_arm"]);
-        var heavy1 = parseInt(char_data1["character_stats"]["kill_stats"]["rocket_launcher"]) + parseInt(char_data1["character_stats"]["kill_stats"]["Sub Machine Gun"]) + parseInt(char_data1["character_stats"]["kill_stats"]["sword"]);
-        var total_kills1 = (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1 + heavy1);
-
+        console.log(sidearm1);
+        // var heavy1 = parseInt(char_data1["character_stats"]["kill_stats"]["rocket_launcher"]) + parseInt(char_data1["character_stats"]["kill_stats"]["sub_machine_gun"]) + parseInt(char_data1["character_stats"]["kill_stats"]["sword"]));
+        var heavy1 = 0;
+        var total_kills1 = (auto1 + hand1 + pulse1 + scout1 + sniper1 + shotgun1 + fusion1 + sidearm1  + 0);
+        console.log(total_kills1);
         // console.log(total_kills1);
         var weaponChart1 = new Chart(weaponctx1, {
             type: 'pie',
             data: {
-                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Heavy"],
+                labels: ["Auto", "Hand Cannon", "Pulse", "Scout", "Sniper", "Shotgun", "Fusion", "Sidearm", "Other"],
                 datasets: [{
                     backgroundColor: [
                         "#FA8708",

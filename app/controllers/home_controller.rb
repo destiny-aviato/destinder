@@ -157,6 +157,8 @@ class HomeController < ApplicationController
               tier = item_data["Response"]["inventory"]["tierTypeName"]
               type = item_data["Response"]["itemTypeDisplayName"]
               bucket_hash = item_data["Response"]["inventory"]["bucketTypeHash"]
+              puts bucket_hash
+              
               item = {
                   "item_icon" => icon,
                   "item_name" => name,
@@ -171,6 +173,8 @@ class HomeController < ApplicationController
             end
             
             hydra.queue(get_items)
+
+
           end
 
           get_trials_stats = Typhoeus::Request.new(
@@ -207,7 +211,7 @@ class HomeController < ApplicationController
               scout_rifle = stats["weaponKillsScoutRifle"]["basic"]["displayValue"] 
               shotgun = stats["weaponKillsShotgun"]["basic"]["displayValue"] 
               sniper = stats["weaponKillsSniper"]["basic"]["displayValue"] 
-              sub_machine_gun = stats["weaponKillsSubmachinegun"]["displayValue"] 
+              sub_machine_gun = stats["weaponKillsSubmachinegun"]["basic"]["displayValue"] 
               side_arm = stats["weaponKillsSideArm"]["basic"]["displayValue"] 
               sword = stats["weaponKillsSword"]["basic"]["displayValue"] 
               # melee = stat_data["Response"]["trialsOfOsiris"]["allTime"]["weaponKillsMelee"]["basic"]["value"]
@@ -321,6 +325,19 @@ class HomeController < ApplicationController
               "games_lost" => (games_played.to_i - games_won.to_i),
               "kill_stats" => kill_stats
             }
+
+            #check to make sure items array conatins all items
+            item_types.each do|key, value|
+              if !items.key?(value)
+                items[value] = {
+                  "item_icon": "https://www.bungie.net/common/destiny2_content/icons/ca4f74ff4b80283445b3831b1bb613bd.jpg",
+                  "item_name": "NO DATA",
+                  "item_tier": "NO DATA",
+                  "item_type": "NO DATA"
+                }
+              end
+              
+            end
             @characters_stats << {"character_id" => character_id, "character_type" => character_type, "character_stats" => @stats, "character_items" => items, "recent_games" =>  nil }#get_recent_games(username, character_id)}
           end
           
@@ -522,7 +539,7 @@ class HomeController < ApplicationController
                   kill_stats = {
                       "average_life_span" => avg_life_span,
                       "auto_rifle" => auto_rifle,
-                      "Fusion Rifle" => fusion_rifle, 
+                      "fusion_rifle" => fusion_rifle, 
                       "hand_cannon" => hand_cannon,
                       "machine_gun" => machine_gun,
                       "pulse_rifle" => pulse_rifle,

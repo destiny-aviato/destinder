@@ -306,7 +306,7 @@ class PlayerStat < ApplicationRecord
                     kill_stats = {
                         "average_life_span" => avg_life_span,
                         "auto_rifle" => auto_rifle,
-                        "Fusion Rifle" => fusion_rifle, 
+                        "fusion_rifle" => fusion_rifle, 
                         "hand_cannon" => hand_cannon,
                         "machine_gun" => machine_gun,
                         "pulse_rifle" => pulse_rifle,

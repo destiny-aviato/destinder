@@ -59,7 +59,7 @@ class TeamStat < ApplicationRecord
         end
         games
     
-      end
+    end
 
     def self.get_activity(username)
         username.display_name.strip!
@@ -298,7 +298,7 @@ class TeamStat < ApplicationRecord
     
                         kill_stats = {
                             "auto_rifle" => auto_rifle,
-                            "Fusion Rifle" => fusion_rifle, 
+                            "fusion_rifle" => fusion_rifle, 
                             "hand_cannon" => hand_cannon,
                             "machine_gun" => machine_gun,
                             "pulse_rifle" => pulse_rifle,

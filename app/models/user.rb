@@ -319,7 +319,7 @@ def get_trials_stats(username)
 
                     kill_stats = {
                         "auto_rifle" => auto_rifle,
-                        "Fusion Rifle" => fusion_rifle, 
+                        "fusion_rifle" => fusion_rifle, 
                         "hand_cannon" => hand_cannon,
                         "machine_gun" => machine_gun,
                         "pulse_rifle" => pulse_rifle,
@@ -680,7 +680,7 @@ def get_trials_stats_d2(username)
 
                 kill_stats = {
                     "auto_rifle" => auto_rifle,
-                    "Fusion Rifle" => fusion_rifle, 
+                    "fusion_rifle" => fusion_rifle, 
                     "hand_cannon" => hand_cannon,
                     "machine_gun" => machine_gun,
                     "pulse_rifle" => pulse_rifle,
