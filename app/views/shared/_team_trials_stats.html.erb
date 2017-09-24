@@ -2,8 +2,8 @@
 
 <% username = @user.nil? ? @team_stat.display_name : @user.display_name %>
 <% character_races = {0 => "Titan", 1 => "Hunter", 2 => "Warlock"} %>
-<% weapons = {"Auto Rifle" => "auto3.png", 
-    "Pulse Rifle" => "pulse2.png", 
+<% weapons = {"Auto Rifle" => "auto3.png",
+    "Pulse Rifle" => "pulse2.png",
     "Hand Cannon" => "handcannon2.png",
     "Sniper Rifle" => "sniper2.png",
     "Shotgun" => "shotgun2.png",
@@ -13,19 +13,19 @@
     "Rocket Launcher" => "heavy2.png"
     } %>
 
-<% if info.nil? %> 
+<% if info.nil? %>
     <%= render 'shared/no_data' %>
-<% else %>  
+<% else %>
 <a id="expand-button" class="waves-effect waves-light btn" onClick="expandAll();"><i class="material-icons left">fullscreen</i>Open All</a>
 <a id="collapse-button" class="waves-effect waves-light btn" onClick="collapseAll();"><i class="material-icons left">fullscreen_exit</i>Close All</a>
 <hr>
-<div class="row player-stats-collapse" style="margin-left: -8%; margin-right: -8%">    
+<div class="row player-stats-collapse" style="margin-left: -8%; margin-right: -8%">
     <div class="col s12" >
-        <div id="stat-graphs"> 
+        <div id="stat-graphs">
             <ul id="test-collapse" class="collapsible popout" data-collapsible="expandable">
                 <% info.each_with_index do |character, index| %>
-                   
-                    <div class="tooltip_templates">                                                      
+
+                    <div class="tooltip_templates">
                         <span id="diamond_elo_content">
                             <div class="row center-align">
                                 Diamond Tier
@@ -69,8 +69,8 @@
                     </div>
                     <li>
                         <% x = character %>
-                        <% user_id = User.find_by(:display_name => x["player_name"]).nil? ? nil :  User.find_by(:display_name => x["player_name"]).id %>                                            
-                        <% case x["Character Items"]["Subclass"]["Item Name"] 
+                        <% user_id = User.find_by(:display_name => x["player_name"]).nil? ? nil :  User.find_by(:display_name => x["player_name"]).id %>
+                        <% case x["Character Items"]["Subclass"]["Item Name"]
                             when "Nightstalker", "Voidwalker", "Defender" %>
                             <% subclass =  "height: 20px; position: relative; bottom: 20px; background-image: url(#{image_path "void.png"}); background-size: cover;background-position-y: -50px;" %>
                             <% text_color =  "color: #f5f5f5; font-size: 14px; text-shadow: none;" %>
@@ -85,7 +85,7 @@
                             <div class="row" style="margin-right: 0; margin-left: 0; width: 100%;">
                                 <div class="col s12 m4">
                                     <% bg = "background-image: url(#{x['Character Items']['emblem_background']});" %>
-                                    <div class="post-header" style='<%= "#{bg} margin: -3.3%; height: 83px; margin-top: 0;" %>'>                            
+                                    <div class="post-header" style='<%= "#{bg} margin: -3.3%; height: 83px; margin-top: 0;" %>'>
                                         <div class="row" style="overflow: hidden; max-height: 65px; margin-right: 0;">
                                             <div class="col s3 left-align" style="padding: 0; height: 65px;">
                                                 <%= image_tag x["Character Items"]["emblem"]["Item Icon"], style:"max-width: calc(100% - 2.6em); min-width: 65px; position: relative; right: 3%; height: auto;" %>
@@ -110,7 +110,7 @@
                                                             <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
                                                         <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1200 %>
                                                             <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'> <b>#{x["character_stats"]['ELO']['ELO']}</b></span> " %>
-                                                        <% end %>  
+                                                        <% end %>
                                                         <span class="white-text" style="font-size: 13px; vertical-align: text-top;">ELO: <%= elo.html_safe %></span>
                                                     </div>
                                                     <div class="col s4 center-align" style="white-space: nowrap;">
@@ -126,7 +126,7 @@
                                             <div class="row">
                                                 <div class="col s12 m4"></div>
                                                 <div class="col s12 m4 center-align">
-                                                    <span class="" style="color: white;"> <%= x["Character Items"]["Subclass"]["Item Name"]  %></span>                                                                                                                                    
+                                                    <span class="" style="color: white;"> <%= x["Character Items"]["Subclass"]["Item Name"]  %></span>
                                                 </div>
                                                 <div class="col s12 m4"></div>
                                             </div>
@@ -134,18 +134,18 @@
                                     </div>
                                 </div>
                                 <div class="col s12 m6 center-align hide-on-small-only" style="height: 103px;">
-                                    <div class="row center-align" style="margin-top: 1.9%; margin-bottom: 0;"><!--OPEN GUN PICTURES ROW-->                                                                          
+                                    <div class="row center-align" style="margin-top: 1.9%; margin-bottom: 0;"><!--OPEN GUN PICTURES ROW-->
                                         <div class="col s3 weapon-container center-align">
                                             <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Primary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Primary Weapon"]["Item Icon"] %> alt=""><br>
-                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></span> 
+                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Primary Weapon"]["Item Name"] %></span>
                                         </div>
                                         <div class="col s3 weapon-container center-align">
                                             <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Secondary Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Secondary Weapon"]["Item Icon"] %> alt=""><br>
-                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></span> 
+                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Secondary Weapon"]["Item Name"] %></span>
                                         </div>
                                         <div class="col s3 weapon-container center-align">
                                             <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= x["Character Items"]["Heavy Weapon"]["Item Name"] %>" src=<%= x["Character Items"]["Heavy Weapon"]["Item Icon"] %> alt=""><br>
-                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span> 
+                                            <span class="truncate" style="font-size: 0.8em;"><%= x["Character Items"]["Heavy Weapon"]["Item Name"] %></span>
                                         </div>
                                         <% x["Character Items"].each do |item| %>
                                             <% next if ["emblem_background", "emblem"].include?(item[0])  %>
@@ -153,12 +153,12 @@
                                                 <% if ["Chest Armor", "Gauntlets", "Helmet", "Leg Armor"].include? (item[0])  %>
                                                     <div class="col s2 weapon-container center-align">
                                                         <img class="gun-icons-trials tooltipped" data-position="right" data-delay="50" data-tooltip="<%= item[1]["Item Name"] %>" src=<%= item[1]["Item Icon"] %> alt=""><br>
-                                                        <span class="truncate" style="font-size: 0.8em;"><%= item[1]["Item Name"] %></span> 
+                                                        <span class="truncate" style="font-size: 0.8em;"><%= item[1]["Item Name"] %></span>
                                                     </div>
-                                                    <% break %>                                                                                                                     
+                                                    <% break %>
                                                 <% end %>
                                             <% end %>
-                                        
+
                                         <% end %>
                                     </div><!--CLOSE GUN PICTURES ROW-->
                                 </div>
@@ -174,49 +174,49 @@
                                                 <% elo = "<span class='tooltip' data-tooltip-content='#silver_elo_content'  style='color:#BFC4C2;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
                                             <% elsif x["character_stats"]["ELO"]["ELO"].to_i < 1200 %>
                                                 <% elo = "<span class='tooltip' data-tooltip-content='#bronze_elo_content' style='color:#AA885F;'><b>#{x["character_stats"]['ELO']['ELO']}</b></span>" %>
-                                            <% end %> 
+                                            <% end %>
 
                                             <span  style="font-size: 16px;"><%= elo.html_safe %> ELO</span><br>
-                                            <span  style="font-size: 18px;"><b><%= x["character_stats"]["kd_ratio"] %> </b>K/D</span><br>                                                                                                   
+                                            <span  style="font-size: 18px;"><b><%= x["character_stats"]["kd_ratio"] %> </b>K/D</span><br>
                                     </div>
                                     <div class="col s12 m6 right-align hide-on-small-only" style="width: 35%;">
-                                        <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left more" style="color: #f5f5f5; font-size: 48px;">keyboard_arrow_down</i></span> 
-                                        <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left less" style="color: #f5f5f5; font-size: 48px; display: none">keyboard_arrow_up</i></span>                                                            
+                                        <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left more" style="color: #f5f5f5; font-size: 48px;">keyboard_arrow_down</i></span>
+                                        <span ><i id='<%= "collapse-icon-#{index}" %>'class="material-icons left less" style="color: #f5f5f5; font-size: 48px; display: none">keyboard_arrow_up</i></span>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
-                        </div>            
+                        </div>
                         <div class="collapsible-body" style="background: #fff;">
-                                <% if x["character_stats"]["kill_stats"] == 0 %> 
-                                    Sorry, no data found for this character. 
+                                <% if x["character_stats"]["kill_stats"] == 0 %>
+                                    Sorry, no data found for this character.
                                 <% else %>
-                                    <div class="row">                                
-                                        <div class="col s12 m3 center-align">                                            
+                                    <div class="row">
+                                        <div class="col s12 m3 center-align">
                                             <div class='<%="chart-container#{index + 1}" %>' data-chart-data="<%= character.to_json %>"></div>
-                                            <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 275px !important; max-height: 275px !important"></canvas></div>                    
+                                            <div><canvas id='<%= "weapon-breakdown-chart#{index + 1}" %>' style="max-width: 275px !important; max-height: 275px !important"></canvas></div>
                                         </div>
                                         <hr class="hide-on-med-and-up">
-                                        <div class="col s12 m6 center-align">                                                                        
-                                            <div><canvas id='<%= "kill-chart-breakdown#{index + 1}" %>'></canvas></div>                    
+                                        <div class="col s12 m6 center-align">
+                                            <div><canvas id='<%= "kill-chart-breakdown#{index + 1}" %>'></canvas></div>
                                         </div>
                                         <hr class="hide-on-med-and-up">
-                                        <div class="col s12 m3 center-align" >             
+                                        <div class="col s12 m3 center-align" >
                                                 <div class="col s6" style="margin-top: 2%;">
-                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div> 
-                                                    <br><p class="stat-heading"><%= "#{x["character_stats"]["win_rate"]}%" %></p>       
-                                                </div>                                        
+                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "ability-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>
+                                                    <br><p class="stat-heading"><%= "#{x["character_stats"]["win_rate"]}%" %></p>
+                                                </div>
                                                 <div class="col s6" style="margin-top: 2%;">
-                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "revive-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>        
+                                                    <div style="margin-bottom: -30%;"><canvas id='<%= "revive-chart-breakdown#{index + 1}" %>' style="max-width: 150px !important; max-height: 150px !important"></canvas></div>
                                                     <% total = x["character_stats"]["kill_stats"]["revives_performed"].to_i + x["character_stats"]["kill_stats"]["revives_received"].to_i %>
-                                                    
-                                                    <% res_percent =  total.to_i != 0  ? ((x["character_stats"]["kill_stats"]['Revives Performed'].to_i / total.to_i) * 100.0) : 0 %>                                                        
+
+                                                    <% res_percent =  total.to_i != 0  ? ((x["character_stats"]["kill_stats"]['Revives Performed'].to_i / total.to_i) * 100.0) : 0 %>
                                                     <br><p class="stat-heading"><b><span style="color: #3498db"><%= x["character_stats"]["kill_stats"]["revives_performed"] %></span> : <span style="color: #95a5a6"><%=  x["character_stats"]["kill_stats"]["revives_received"] %></span></b></p>
-                                                </div>                                        
+                                                </div>
                                                 <div class="col s12">
                                                     <p class="stat-heading">PLAYER ANALYSIS</p>
                                                     <%= render partial:"shared/character_badges", locals: {info: x, user: current_user} %>
-                                                </div>                                        
-                                        </div>                                    
+                                                </div>
+                                        </div>
                                     </div>
                                     <hr>
                                     <div class="row" style="padding-top: 1%;margin-bottom: 0%;">
@@ -243,47 +243,47 @@
                                         <div class="col s6 m2 center-align">
                                             <p class="stat-heading">Avg. Kill Distance</p>
                                             <p class="stat-title"><%=x["character_stats"]["kill_stats"]["Average Kill Distance"] %></p>
-                                        </div>  
+                                        </div>
                                     </div>
                                     <hr>
                                     <div class="row">
                                         <div class="col s12 m6">
                                             <h5>Account Badges</h5>
                                             <% if !user_id.nil? %>
-                                                <% user_profile = User.find_by(id: user_id) %>  
-                                                <% user_profile.badges.each do |badge| %>                
+                                                <% user_profile = User.find_by(id: user_id) %>
+                                                <% user_profile.badges.each do |badge| %>
                                                     <div class="chip tooltipped" style='<%= badge.custom_fields[:color] %>'data-position="top" data-delay="50" data-tooltip="<%= badge.description %>">
                                                         <%= badge.name %>
                                                         <%= badge.custom_fields[:icon].html_safe %>
-                                                    </div>                
+                                                    </div>
                                                 <% end %>
                                             <% end %>
                                         </div>
                                         <div class="col s12 m6">
                                             <h5>Reputation</h5>
-                                            <div class="col s12 m6">  
+                                            <div class="col s12 m6">
                                                 <% if user_id.nil? %>
                                                     Sorry, this player does not have a Destinder account.
                                                 <% else %>
-                                                    <% user_profile = User.find_by(id: user_id) %>    
-                                                    <% total = user_profile.votes_for + user_profile.votes_against %>      
+                                                    <% user_profile = User.find_by(id: user_id) %>
+                                                    <% total = user_profile.votes_for + user_profile.votes_against %>
                                                     <% rep =  total != 0  ? ((user_profile.votes_for / total).round(1) * 100) : "0" %>
-                                                    
+
                                                     <%if user_profile != current_user  && !current_user.nil?%>
                                                       <% if current_user.voted_for?(user_profile) %>
                                                         <div class="col s12 m6">
                                                             <%= link_to users_unvote_path(:voter => user_profile), method: :post, class: "waves-effect waves-light btn" do %>
                                                                 <i class="material-icons">cancel</i>
                                                             <% end %>
-                                                        </div>                         
-                                                        
+                                                        </div>
+
                                                       <% else %>
                                                       <div class="col s12 m4">
                                                         <%= link_to users_upvote_path(:voter => user_profile), method: :post, class: "btn", style: "background-color: transparent; box-shadow: none; color: #5085A5; padding: 0;" do %>
                                                             <i class="material-icons">thumb_up</i>
                                                           <% end %>
                                                       </div>
-                                                        
+
                                                       <div class="col s12 m4">
                                                             <%= link_to users_downvote_path(:voter => user_profile), method: :post, class: "btn", style: "background-color: transparent; box-shadow: none; color: #5085A5; padding: 0;" do %>
                                                             <i class="material-icons" >thumb_down</i>
@@ -291,8 +291,8 @@
                                                       </div>
                                                       <% end %>
                                                     <% end %>
-                                                    <% tip = "Player Reputation Score (#{total} votes)" %>    
-                                                    <p class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >                                                                                                                            
+                                                    <% tip = "Player Reputation Score (#{total} votes)" %>
+                                                    <p class="tooltipped" data-position="top" data-delay="50" data-tooltip="<%= tip %>" >
                                                             <p class="stat-title" style="line-height: 0.125;"><%= rep %>%</p>
                                                     </p>
                                                 <% end %>
@@ -301,7 +301,7 @@
                                     </div>
                                 <% end %>
                         </div>
-                    </li>            
+                    </li>
                 <% end %>
             </ul>
         </div>

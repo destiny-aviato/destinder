@@ -8,5 +8,5 @@
 users = User.order(:created_at).take(6)
 25.times do
   content = Faker::Lorem.sentence(1)
-  users.each { |user| user.microposts.create!(content: content, game_type: "Trials of Osiris") }
+  users.each { |user| user.microposts.create!(content: content, game_type: 'Trials of Osiris') }
 end

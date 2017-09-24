@@ -3,13 +3,13 @@ class TeamStatsController < ApplicationController
     @team_stat = TeamStat.new
   end
 
-  def show  
+  def show
     @team_stat = TeamStat.find(params[:id])
-    
-      respond_to do |format|
-        format.html { }
-        format.js { }
-      end
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   def create
@@ -18,8 +18,8 @@ class TeamStatsController < ApplicationController
       begin
         redirect_to @team_stat
       rescue NoMethodError
-        redirect_to request.referrer || root_url
-        flash[:error] = "Error: Player Not Found!"
+        redirect_to request.referer || root_url
+        flash[:error] = 'Error: Player Not Found!'
       rescue StandardError => e
         redirect_to root_url
         flash[:error] = "Error: #{e}"
@@ -30,30 +30,28 @@ class TeamStatsController < ApplicationController
   end
 
   def get_stats(mode)
-    begin
-      case mode
-      when "too"  
-        begin
-          # TeamStat.get_trials_stats(@team_stat.display_name,@team_stat.membership_type)
-          # TeamStat.get_recent_activity(@team_stat)
-          TeamStat.get_activity(@team_stat)
-        rescue StandardError => e
-          return nil
-        end
+    case mode
+    when 'too'
+      begin
+        # TeamStat.get_trials_stats(@team_stat.display_name,@team_stat.membership_type)
+        # TeamStat.get_recent_activity(@team_stat)
+        TeamStat.get_activity(@team_stat)
+      rescue StandardError => e
+        return nil
       end
-    rescue NoMethodError
-        redirect_to request.referrer || root_url
-        flash[:error] = "Error: Player Not Found!"
-    rescue StandardError => e
-        redirect_to root_url
-        flash[:error] = "Error: #{e}"
-    end    
+    end
+  rescue NoMethodError
+    redirect_to request.referer || root_url
+    flash[:error] = 'Error: Player Not Found!'
+  rescue StandardError => e
+    redirect_to root_url
+    flash[:error] = "Error: #{e}"
   end
   helper_method :get_stats
-  
 
   private
+
   def team_stat_params
-      params.require(:team_stat).permit(:display_name, :membership_type, :stats_data)
+    params.require(:team_stat).permit(:display_name, :membership_type, :stats_data)
   end
 end

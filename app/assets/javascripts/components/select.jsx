@@ -5,7 +5,7 @@ var UserSelectD1 = React.createClass({
         });
 
         return (
-            
+
            <select id="tags-d1" multiple="multiple" name='micropost[fireteam][]'>
                <optgroup label="Users">
                     {userLIs}
@@ -20,9 +20,9 @@ var UserSelectD2 = React.createClass({
         var userLIs = this.props.users.map(function(user, i){
             return <option key={user.id} value={user.id}>{user.display_name}</option>;
         });
-    
+
         return (
-            
+
            <select id="tags-d2" multiple="multiple" name='micropost[fireteam][]'>
                <optgroup label="Users">
                     {userLIs}
