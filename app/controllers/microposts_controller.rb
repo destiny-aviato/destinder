@@ -127,7 +127,7 @@ class MicropostsController < ApplicationController
                 when 6 
                     @micropost.raid_difficulty = ""
                     @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
-                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.elo = @micropost.user_stats["character_stats"]["elo"]["elo"].to_i
                     @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
                 when 10
                     @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
@@ -182,7 +182,7 @@ class MicropostsController < ApplicationController
                 when 6 
                     @micropost.raid_difficulty = ""
                     @micropost.user_stats = get_stats_d1(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
-                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.elo = @micropost.user_stats["character_stats"]["elo"]["elo"].to_i
                     @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
                 when 10
                     @micropost.user_stats = get_stats_d1(current_user, 10, @micropost.raid_difficulty, @micropost.character_choice)
@@ -225,7 +225,7 @@ class MicropostsController < ApplicationController
                 when 6 
                     @micropost.raid_difficulty = ""
                     @micropost.user_stats = get_stats_d2(current_user, 6, @micropost.raid_difficulty, @micropost.character_choice)            
-                    @micropost.elo = @micropost.user_stats["character_stats"]["ELO"]["ELO"].to_i
+                    @micropost.elo = @micropost.user_stats["character_stats"]["elo"]["elo"].to_i
                     @micropost.kd = @micropost.user_stats["character_stats"]["kd_ratio"].to_f
                 when 7
                     @micropost.raid_difficulty = ""
