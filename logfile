@@ -26,3 +26,10 @@ LOG:  autovacuum launcher shutting down
 LOG:  received smart shutdown request
 LOG:  shutting down
 LOG:  database system is shut down
+LOG:  database system was interrupted; last known up at 2017-09-14 19:05:10 MDT
+LOG:  database system was not properly shut down; automatic recovery in progress
+LOG:  invalid record length at 0/1683C30: wanted 24, got 0
+LOG:  redo is not required
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started

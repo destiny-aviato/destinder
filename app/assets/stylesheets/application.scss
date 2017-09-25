@@ -1572,3 +1572,22 @@ li.tab.profile-icon {
 //     right: 0;
 //     min-height: 70px;
 //   }
+
+.introjs-helperNumberLayer {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 9999999999 !important;
+    padding: 0px;
+    width: 25px;
+    height: 25px;
+    border-radius: 40%;
+}
+
+.introjs-tooltip {
+    left: 2px !important;
+}
+
+a.destinder_tutorial {
+    margin: 5px;
+}
