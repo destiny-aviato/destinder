@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-
   resources :team_stats
   resources :player_stats
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy' 
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'home#index'
-  resources :users, only: [:show, :index] 
+  resources :users, only: %i[show index]
   post 'users/upvote'
   post 'users/downvote'
   post 'users/unvote'
