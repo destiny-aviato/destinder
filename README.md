@@ -24,6 +24,11 @@
 
 >You will want to create an application on <https://www.bungie.net/en/Application/> to generate these keys. Select **OAuth Client Type = Confidential**, and add the same redirect_url above to the application settings. Select all permissions under scope except for "Move or equip Destiny gear and other items." Finally add `*` as the Origin header. 
 
+* Install [pow](http://pow.cx/) for subdomain api testing on development. 
+    - run `curl get.pow.cx | sh` 
+    - then `cd ~/.pow`
+    - and finally `ln -s /path/to/myapp` (example: `~/workspace/destinder`)
+
 * Now you should be able to run `rails db:migrate` (if it fails, try `rake db:create` first). This will create all of the databases
 
 * If those have been successful, you should now be able to start the rails server by typing `rails server`. Navigate to http://localhost:3000 to see if it works. 
