@@ -261,7 +261,7 @@ class MicropostsController < ApplicationController
         @micropost.destroy
 
         respond_to do |format|
-            format.html { request.referrer || root_url }
+            format.html { request.referer || root_url }
             format.js { }
         end
         
@@ -293,7 +293,7 @@ class MicropostsController < ApplicationController
             end
 
         rescue NoMethodError => e 
-            # redirect_to request.referrer || root_url
+            # redirect_to request.referer || root_url
             redirect_to root_url
             flash[:error] = "Error: #{e}"
         end
@@ -326,7 +326,7 @@ class MicropostsController < ApplicationController
             end
 
         rescue NoMethodError => e 
-            # redirect_to request.referrer || root_url
+            # redirect_to request.referer || root_url
             redirect_to root_url
             flash[:error] = "Error: #{e}"
         end         
