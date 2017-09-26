@@ -1236,7 +1236,7 @@ $(document).on("turbolinks:load", function() {
 });
 //start of JS for tutorial
 $(document).ready(function(){
-    let goToTeamLU = ()=>{
+    var goToTeamLU = ()=>{
         console.log("teamLU");
         introJs().exit();
     };
