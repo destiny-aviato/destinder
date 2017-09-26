@@ -31,3 +31,6 @@ dump.rdb
 erd.pdf/public/packs
 /public/packs-test
 /node_modules
+
+
+public/assets/

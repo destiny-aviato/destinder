@@ -1234,43 +1234,43 @@ $(document).on("turbolinks:load", function() {
       
       }).call(this);
 });
-//start of JS for tutorial
-$(document).ready(function(){
-    let goToTeamLU = ()=>{
-        console.log("teamLU");
-        introJs().exit();
-    };
-    if(window.location.pathname.indexOf("brock") > -1){
-        // $('').on("click", function(e) { //uncomment this and it's enclosure and put a css selector in to attach it to a button
-            // e.preventDefault();
-        setTimeout(function() {
-            currentStep = introJs().setOption('showProgress', true).start();
+// //start of JS for tutorial
+// $(document).ready(function(){
+//     var goToTeamLU = ()=>{
+//         console.log("teamLU");
+//         introJs().exit();
+//     };
+//     if(window.location.pathname.indexOf("brock") > -1){
+//         // $('').on("click", function(e) { //uncomment this and it's enclosure and put a css selector in to attach it to a button
+//             // e.preventDefault();
+//         setTimeout(function() {
+//             currentStep = introJs().setOption('showProgress', true).start();
 
-            $('.introjs-tooltipbuttons').prepend('<a href="/test" id="teamLUButton" class="introjs-button destinder_tutorial" style="display:none;">TeamLU Tutorial</a>', '<a id="LFGButton" class="introjs-button destinder_tutorial">LFG Tutorial</a>', '<a id="playerLUButton" class="introjs-button destinder_tutorial" style="display:none;">PlayerLU Tutorial</a>','<a id="profileButton" class="introjs-button destinder_tutorial" style="display:none;">Profile Tutorial</a>');
-            currentStep.onchange(()=>{
-                switch(currentStep._currentStep + 1) {
-                    case 1:
-                        $('.destinder_tutorial').hide();
-                        $('#LFGButton').show();
-                        break;
-                    case 2:
-                        $('.destinder_tutorial').hide();
-                        $('#teamLUButton').show();
-                        break;
-                    case 3:
-                        $('.destinder_tutorial').hide();
-                        $('#playerLUButton').show();
-                        break;
-                    case 4:
-                        $('.destinder_tutorial').hide();
-                        $('#profileButton').show();
-                        break;
-                }
-            });
-            $('#teamLUButton').on("click", goToTeamLU);
-            return false;
-        // }); //also uncomment this
-        }, 250);
-    }
-});
+//             $('.introjs-tooltipbuttons').prepend('<a href="/test" id="teamLUButton" class="introjs-button destinder_tutorial" style="display:none;">TeamLU Tutorial</a>', '<a id="LFGButton" class="introjs-button destinder_tutorial">LFG Tutorial</a>', '<a id="playerLUButton" class="introjs-button destinder_tutorial" style="display:none;">PlayerLU Tutorial</a>','<a id="profileButton" class="introjs-button destinder_tutorial" style="display:none;">Profile Tutorial</a>');
+//             currentStep.onchange(()=>{
+//                 switch(currentStep._currentStep + 1) {
+//                     case 1:
+//                         $('.destinder_tutorial').hide();
+//                         $('#LFGButton').show();
+//                         break;
+//                     case 2:
+//                         $('.destinder_tutorial').hide();
+//                         $('#teamLUButton').show();
+//                         break;
+//                     case 3:
+//                         $('.destinder_tutorial').hide();
+//                         $('#playerLUButton').show();
+//                         break;
+//                     case 4:
+//                         $('.destinder_tutorial').hide();
+//                         $('#profileButton').show();
+//                         break;
+//                 }
+//             });
+//             $('#teamLUButton').on("click", goToTeamLU);
+//             return false;
+//         // }); //also uncomment this
+//         }, 250);
+//     }
+// });
     //end of JS for tutorial
