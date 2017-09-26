@@ -67,6 +67,26 @@ class HomeController < ApplicationController
       
     end
 
+    def get_elo_d2(membership_type, membership_id)
+        elo = 1200
+        rank = 0
+        
+        begin 
+        response = Typhoeus.get(
+            "https://api.guardian.gg/v2/trials/players/#{membership_type}/#{membership_id}"
+        )
+        
+        data = JSON.parse(response.body)
+
+        elo = data["playerStats"][membership_id.to_s]["elo"]
+      rescue StandardError => e
+        puts e 
+      end
+
+      {"elo" => elo.round, "rank" => rank.round}
+      
+    end
+
     def get_trials_stats_d2(username)
       username.display_name.strip!
       
@@ -75,7 +95,7 @@ class HomeController < ApplicationController
       hydra = Typhoeus::Hydra.hydra
       
       # elo = 1200 #get_elo(username.api_membership_id)
-      
+      elo = get_elo_d2(username.api_membership_type, 4611686018439345596)
       # subclasses = {
       #   "3225959819" => "Nightstalker",
       #   "3635991036" => "Gunslinger",
@@ -189,7 +209,7 @@ class HomeController < ApplicationController
             if stat_data["Response"]["trialsOfOsiris"] != {} 
               stats = stat_data["Response"]["trialsofthenine"]["allTime"]
               # elo = get_elo(user.api_membership_id)
-              elo = get_elo(  4611686018439345596)
+              
               
               # win_rate = stats["winLossRatio"]["basic"]["displayValue"]
               kills = stats["kills"]["basic"]["displayValue"]
