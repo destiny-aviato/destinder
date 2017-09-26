@@ -14,7 +14,7 @@ function removeOuterSlashes(string) {
 }
 
 function formatPublicPath(host = '', path = '') {
-  let formattedHost = removeOuterSlashes(host)
+  var formattedHost = removeOuterSlashes(host)
   if (formattedHost && !/^http/i.test(formattedHost)) {
     formattedHost = `//${formattedHost}`
   }
@@ -28,7 +28,7 @@ const output = {
   publicPathWithHost: formatPublicPath(env.ASSET_HOST, settings.public_output_path)
 }
 
-let resolvedModules = [
+var resolvedModules = [
   resolve(settings.source_path),
   'node_modules'
 ]
