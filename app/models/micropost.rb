@@ -22,23 +22,43 @@ class Micropost < ApplicationRecord
     rank = 0
 
     begin
-    response = Typhoeus.get(
-      "https://api.guardian.gg/elo/#{membership_id}"
-    )
+      response = Typhoeus.get(
+        "https://api.guardian.gg/elo/#{membership_id}"
+      )
 
-    data = JSON.parse(response.body)
+      data = JSON.parse(response.body)
 
-    data.each do |x|
-      next unless x['mode'] == 14
-      elo = x['elo']
-      rank = x['rank']
-      break
+      data.each do |x|
+        next unless x['mode'] == 14
+        elo = x['elo']
+        rank = x['rank']
+        break
+      end
+    rescue StandardError => e
+      puts e
     end
-  rescue StandardError => e
-    puts e
-  end
 
     { 'elo' => elo.round, 'rank' => rank.round }
+  end
+
+  def self.get_elo_d2(membership_type, membership_id)
+    elo = 1200
+    rank = 0
+    
+    begin 
+      response = Typhoeus.get(
+          "https://api.guardian.gg/v2/trials/players/#{membership_type}/#{membership_id}"
+      )
+      
+      data = JSON.parse(response.body)
+
+      elo = data["playerStats"][membership_id.to_s]["elo"]
+    rescue StandardError => e
+      puts e 
+    end
+
+    {"elo" => elo.round, "rank" => rank.round}
+    
   end
 
   def self.get_raid_stats(user, raid, diff, character_id)
@@ -1397,7 +1417,7 @@ class Micropost < ApplicationRecord
       stat_data = JSON.parse(get_story_stats.body)
 
       stats = stat_data['Response']['trialsofthenine']['allTime']
-      elo = get_elo(user.api_membership_id)
+      elo = get_elo_d2(user.api_membership_type, user.api_membership_id)
 
       # win_rate = stats["winLossRatio"]["basic"]["displayValue"]
       kills = stats['kills']['basic']['displayValue']
