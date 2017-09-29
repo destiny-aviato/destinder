@@ -19,8 +19,23 @@ $('.scroller-test').slick({
     arrows: true       
 });
 
+$('.modal').modal();
+
 $('.scroller-test').on('swipe', function(event, slick, direction){
     console.log(direction);
     // left
     $('ul.tabs').tabs();
   });
+
+  $('.game_type_select').change(function() {
+    selection = $(this).val();
+    // console.log(selection);
+    $("#game-type-filter").val(selection);
+    if (selection == "Trials of Osiris" || selection == "Trials of the Nine") {
+        $('#filter-sliders').show();
+    } else {
+        $('#filter-sliders').hide();
+    }
+    // $('#new-post-modal').modal('close');
+    // $("#filter_game_form").submit();
+});

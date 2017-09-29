@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.remember_me = true
 
       if @user.badges == []
-        @user.add_badge(5) if @user.id <= 500
+        @user.add_badge(5) if @user.id <= 550
       end
 
       sign_in_and_redirect @user, event: :authentication
